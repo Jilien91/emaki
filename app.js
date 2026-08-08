@@ -2,6 +2,7 @@ const STORAGE_KEY = 'kaishi-progress';
 const SETTINGS_KEY = 'kaishi-settings';
 const DAILY_KEY = 'kaishi-daily-lessons';
 const DEFAULT_SETTINGS = { dailyNewLimit: 20 };
+const LESSON_BATCH_SIZE = 5;
 const STAGE_NAMES = ['New','Apprentice 1','Apprentice 2','Apprentice 3','Apprentice 4','Guru 1','Guru 2','Master','Enlightened','Burned'];
 const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
 const TIER_COLOR = s => s===0?'new':s<=4?'apprentice':s<=6?'guru':s===7?'master':s===8?'enlightened':'burned';
@@ -16,6 +17,7 @@ let currentReviewId = null;
 let showAnswer = false;
 let sessionCorrect = 0;
 let sessionTotal = 0;
+let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress}
 
 function loadProgress(){
   try{
@@ -110,6 +112,60 @@ function completeLesson(id){
   progress[id] = { stage:1, nextReview: now() + INTERVAL_HOURS[1]*3600*1000 };
   saveProgress();
   incrementDailyLessons();
+}
+
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function startLessonBatch(){
+  const pending = newWords();
+  const batchSize = Math.min(LESSON_BATCH_SIZE, pending.length, remainingToday());
+  if(batchSize===0) return;
+  lessonState = { batch: pending.slice(0,batchSize).map(v=>v.id), phase:'study', studyIndex:0, showAnswer:false };
+  render();
+}
+
+function nextStudyItem(){
+  lessonState.studyIndex++;
+  render();
+}
+
+function prevStudyItem(){
+  if(lessonState.studyIndex>0){ lessonState.studyIndex--; render(); }
+}
+
+function startQuiz(){
+  const quizProgress = {};
+  const queue = [];
+  lessonState.batch.forEach(id=>{
+    quizProgress[id] = { meaning:false, reading:false };
+    queue.push({id, type:'meaning'});
+    queue.push({id, type:'reading'});
+  });
+  lessonState.phase = 'quiz';
+  lessonState.quizQueue = shuffle(queue);
+  lessonState.quizProgress = quizProgress;
+  lessonState.showAnswer = false;
+  render();
+}
+
+function answerQuizQuestion(correct){
+  const q = lessonState.quizQueue.shift();
+  if(correct){
+    lessonState.quizProgress[q.id][q.type] = true;
+    if(lessonState.quizProgress[q.id].meaning && lessonState.quizProgress[q.id].reading){
+      completeLesson(q.id);
+    }
+  }else{
+    const insertAt = Math.min(lessonState.quizQueue.length, 3);
+    lessonState.quizQueue.splice(insertAt, 0, q);
+  }
+  lessonState.showAnswer = false;
   render();
 }
 
@@ -203,6 +259,9 @@ function renderDashboard(){
 }
 
 function renderLessons(){
+  if(lessonState){
+    return lessonState.phase==='study' ? renderLessonStudy() : renderLessonQuiz();
+  }
   const pending = newWords();
   if(pending.length===0){
     return `${nav('lessons')}<div class="empty">No new lessons available.<br>All words with mnemonics have been started.</div>`;
@@ -211,10 +270,24 @@ function renderLessons(){
   if(remaining===0){
     return `${nav('lessons')}<div class="empty">You've reached today's limit of ${settings.dailyNewLimit} new lesson${settings.dailyNewLimit===1?'':'s'}.<br>Come back tomorrow, or raise your limit in <span style="text-decoration:underline;cursor:pointer;" onclick="switchView('settings')">Settings</span>.</div>`;
   }
-  const item = pending[0];
-  const availableToday = Math.min(pending.length, remaining);
+  const batchSize = Math.min(LESSON_BATCH_SIZE, pending.length, remaining);
   return `
   ${nav('lessons')}
+  <div class="card" style="text-align:center;">
+    <div style="font-size:15px;margin-bottom:6px;">Ready to start ${batchSize} new lesson${batchSize===1?'':'s'}?</div>
+    <div class="forecast" style="margin-bottom:14px;">You'll study each word, then get quizzed on its meaning and reading before it's added to reviews.</div>
+    <button class="primary" onclick="startLessonBatch()">Begin lessons</button>
+  </div>
+  `;
+}
+
+function renderLessonStudy(){
+  const {batch, studyIndex} = lessonState;
+  const item = VOCAB.find(v=>v.id===batch[studyIndex]);
+  const isLast = studyIndex === batch.length-1;
+  return `
+  ${nav('lessons')}
+  <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
   <div class="bigword" style="background:var(--apprentice-bg);color:var(--apprentice);">
     ${item.word}
     <div class="jp" style="font-size:16px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
@@ -223,8 +296,41 @@ function renderLessons(){
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${item.mnemonic}</div></div>
   ${item.notes ? `<div class="field" style="background:var(--burned-bg);"><div class="k" style="color:var(--burned);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
   <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${item.sentence}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${item.sentence_meaning}</div></div>
-  <button class="primary" onclick="completeLesson(${item.id})">Got it — add to reviews</button>
-  <p class="forecast" style="text-align:center;margin-top:10px;">${availableToday-1} more waiting after this one · today's limit: ${settings.dailyNewLimit} · first review unlocks in 4 hours</p>
+  <div class="btnrow">
+    ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
+    <button class="primary" onclick="${isLast?'startQuiz()':'nextStudyItem()'}">${isLast?'Start quiz':'Next'}</button>
+  </div>
+  `;
+}
+
+function renderLessonQuiz(){
+  const {quizQueue} = lessonState;
+  if(quizQueue.length===0){
+    const batchLen = lessonState.batch.length;
+    lessonState = null;
+    return `${nav('lessons')}<div class="empty">Lesson batch complete — ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>`;
+  }
+  const q = quizQueue[0];
+  const item = VOCAB.find(v=>v.id===q.id);
+  const label = q.type==='meaning' ? 'Meaning' : 'Reading';
+  return `
+  ${nav('lessons')}
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:12px;color:var(--text-dim);">Quiz · ${quizQueue.length} left</span>
+    <span class="pill" style="background:var(--apprentice-bg);color:var(--apprentice);">${label}</span>
+  </div>
+  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
+  ${!lessonState.showAnswer ? `
+    <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off" onkeydown="if(event.key==='Enter'){lessonState.showAnswer=true;render();}">
+    <button class="primary" onclick="lessonState.showAnswer=true;render();">Check</button>
+  ` : `
+    <div class="field"><div class="k">${label}</div><div class="v ${q.type==='reading'?'jp':''}">${q.type==='meaning'?item.meaning:item.reading}</div></div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <div class="answerbtns">
+      <button class="wrong" onclick="answerQuizQuestion(false)">Didn't know it</button>
+      <button class="right" onclick="answerQuizQuestion(true)">Knew it</button>
+    </div>
+  `}
   `;
 }
 

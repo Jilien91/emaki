@@ -72,6 +72,13 @@ button.primary:hover{opacity:0.9;}
 .answerbtns button{flex:1;padding:12px;border-radius:10px;font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;border:1px solid;}
 .answerbtns .wrong{background:transparent;border-color:var(--danger);color:var(--danger);}
 .answerbtns .right{background:transparent;border-color:var(--success);color:var(--success);}
+.btnrow{display:flex;gap:10px;}
+.btnrow button.primary{width:auto;flex:1;}
+.btnrow button.secondary{
+  flex:0 0 auto;padding:13px 20px;border-radius:10px;border:1px solid var(--border-strong);
+  background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
+}
+.btnrow button.secondary:hover{background:var(--border);}
 input[type=text],input[type=number]{
   width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border-strong);
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:15px;margin-bottom:10px;
