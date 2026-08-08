@@ -485,13 +485,22 @@ function renderDashboard(){
     <div class="stat"><div class="n">${counts.anbu}</div><div class="l">Anbu</div></div>
     <div class="stat"><div class="n">${counts.kage}</div><div class="l">Kage</div></div>
   </div>
-  <p class="footer-note">
-    Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br>
-    SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br>
-    ${storageOk ? '<span class="savebadge" style="justify-content:center;"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge" style="justify-content:center;"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
-  </p>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
+  </div>
+  `;
+}
+
+function renderInfo(){
+  const learnableCount = learnableWords().length;
+  return `
+  <p class="footer-note" style="text-align:left;">
+    Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br><br>
+    SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br><br>
+    ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
+  </p>
+  <div style="text-align:center;margin-top:16px;">
+    <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
   </div>
   `;
 }
@@ -661,6 +670,7 @@ function render(){
   if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
   else if(view==='settings') body = renderSettings();
+  else if(view==='info') body = renderInfo();
   else if(view==='extrastudy') body = renderExtraStudy();
   else body = renderReview();
   root.innerHTML = `
@@ -668,7 +678,8 @@ function render(){
       <h1>Kaishi SRS</h1>
       <div style="display:flex;align-items:center;gap:10px;">
         <span class="sub">1500-word deck</span>
-        <button class="gear-btn" onclick="switchView('settings')" title="Settings" aria-label="Settings">⚙</button>
+        <button class="icon-btn" onclick="switchView('info')" title="Info" aria-label="Info">ⓘ</button>
+        <button class="icon-btn" onclick="switchView('settings')" title="Settings" aria-label="Settings">⚙</button>
       </div>
     </header>
     ${body}
