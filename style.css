@@ -80,11 +80,15 @@ button.primary:hover{opacity:0.9;}
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
 }
 .btnrow button.secondary:hover{background:var(--border);}
-input[type=text],input[type=number]{
+input[type=text],input[type=number],select{
   width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border-strong);
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:15px;margin-bottom:10px;
 }
-input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--text-dim);}
+input[type=text]:focus,input[type=number]:focus,select:focus{outline:none;border-color:var(--text-dim);}
+.settings-row{margin-bottom:18px;}
+.settings-row:last-of-type{margin-bottom:14px;}
+.settings-label{font-size:14px;font-weight:600;margin-bottom:4px;}
+.settings-desc{font-size:12px;color:var(--text-dim);line-height:1.55;margin-bottom:10px;}
 .icon-btn{
   width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:none;
   color:var(--text-dim);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;

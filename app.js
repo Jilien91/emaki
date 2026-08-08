@@ -4,8 +4,12 @@ const DAILY_KEY = 'kaishi-daily-lessons';
 const MISTAKES_KEY = 'kaishi-mistakes';
 const ACTIVITY_KEY = 'kaishi-activity';
 const REVIEW_HISTORY_KEY = 'kaishi-review-history';
-const DEFAULT_SETTINGS = { dailyNewLimit: 20 };
-const LESSON_BATCH_SIZE = 5;
+const DEFAULT_SETTINGS = {
+  dailyNewLimit: 20,        // 0 = unlimited
+  lessonBatchSize: 5,
+  reviewOrder: 'shuffled',  // 'shuffled' | 'genin-first' | 'lower-stage-first'
+  showSrsIndicator: true
+};
 const MISTAKE_WINDOW_MS = 24*3600*1000;
 const STAGE_NAMES = ['New','Genin 1','Genin 2','Genin 3','Genin 4','Chunin 1','Chunin 2','Jonin','Anbu','Kage'];
 const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
@@ -138,7 +142,18 @@ function incrementDailyLessons(){
 }
 
 function remainingToday(){
+  if(settings.dailyNewLimit === 0) return Infinity;
   return Math.max(0, settings.dailyNewLimit - dailyLessons.count);
+}
+
+// Preferred batch size, bumped up when it would otherwise leave a small
+// leftover batch (e.g. preferred 5, 7 pending -> do all 7, not 5 then 2).
+function plannedLessonBatchSize(){
+  const avail = Math.min(newWords().length, remainingToday());
+  const preferred = settings.lessonBatchSize;
+  if(avail <= preferred) return avail;
+  const leftover = avail - preferred;
+  return leftover < preferred ? avail : preferred;
 }
 
 function loadMistakes(){
@@ -277,7 +292,7 @@ function shuffle(arr){
 
 function startLessonBatch(){
   const pending = newWords();
-  const batchSize = Math.min(LESSON_BATCH_SIZE, pending.length, remainingToday());
+  const batchSize = plannedLessonBatchSize();
   if(batchSize===0) return;
   lessonState = { batch: pending.slice(0,batchSize).map(v=>v.id), phase:'study', studyIndex:0, showAnswer:false };
   render();
@@ -334,24 +349,57 @@ function submitQuizAnswer(){
   render();
 }
 
-function saveDailyLimit(){
-  const el = document.getElementById('dailyLimitInput');
-  let val = parseInt(el.value, 10);
-  if(isNaN(val)) val = DEFAULT_SETTINGS.dailyNewLimit;
-  val = Math.min(100, Math.max(1, val));
-  settings.dailyNewLimit = val;
+function saveLessonSettings(){
+  const batchEl = document.getElementById('lessonBatchSizeInput');
+  const dailyEl = document.getElementById('dailyLimitInput');
+  let batch = parseInt(batchEl.value, 10);
+  if(isNaN(batch) || batch < 1) batch = DEFAULT_SETTINGS.lessonBatchSize;
+  let daily = parseInt(dailyEl.value, 10);
+  if(isNaN(daily)) daily = DEFAULT_SETTINGS.dailyNewLimit;
+  daily = Math.min(100, Math.max(0, daily));
+  settings.lessonBatchSize = batch;
+  settings.dailyNewLimit = daily;
   saveSettings();
   switchView('dashboard');
 }
 
+function saveReviewSettings(){
+  const indicatorEl = document.getElementById('srsIndicatorInput');
+  const orderEl = document.getElementById('reviewOrderInput');
+  settings.showSrsIndicator = indicatorEl.value === 'yes';
+  settings.reviewOrder = orderEl.value;
+  saveSettings();
+  switchView('dashboard');
+}
+
+function computeReviewStage(stage, correct){
+  if(correct) return Math.min(9, stage+1);
+  return stage<=4 ? Math.max(1,stage-1) : Math.max(1,stage-2);
+}
+
+// Picks which due item to review next, per the review-ordering setting.
+function pickNextReview(due){
+  if(settings.reviewOrder === 'genin-first'){
+    const genin = due.filter(v => TIER_COLOR(getEntry(v.id).stage) === 'genin');
+    const pool = genin.length > 0 ? genin : due;
+    return pool[Math.floor(Math.random()*pool.length)].id;
+  }
+  if(settings.reviewOrder === 'lower-stage-first'){
+    let minStage = Infinity;
+    let candidates = [];
+    due.forEach(v=>{
+      const s = getEntry(v.id).stage;
+      if(s < minStage){ minStage = s; candidates = [v]; }
+      else if(s === minStage){ candidates.push(v); }
+    });
+    return candidates[Math.floor(Math.random()*candidates.length)].id;
+  }
+  return due[Math.floor(Math.random()*due.length)].id; // shuffled
+}
+
 function answerReview(id, correct){
   const p = getEntry(id);
-  let newStage;
-  if(correct){
-    newStage = Math.min(9, p.stage+1);
-  }else{
-    newStage = p.stage<=4 ? Math.max(1,p.stage-1) : Math.max(1,p.stage-2);
-  }
+  const newStage = computeReviewStage(p.stage, correct);
   const nextReview = newStage===9 ? null : now() + INTERVAL_HOURS[newStage]*3600*1000;
   progress[id] = { stage:newStage, nextReview };
   sessionTotal++;
@@ -517,7 +565,7 @@ function renderLessons(){
   if(remaining===0){
     return `${nav('lessons')}<div class="empty">You've reached today's limit of ${settings.dailyNewLimit} new lesson${settings.dailyNewLimit===1?'':'s'}.<br>Come back tomorrow, or raise your limit in <span style="text-decoration:underline;cursor:pointer;" onclick="switchView('settings')">Settings</span>.</div>`;
   }
-  const batchSize = Math.min(LESSON_BATCH_SIZE, pending.length, remaining);
+  const batchSize = plannedLessonBatchSize();
   return `
   ${nav('lessons')}
   <div class="card" style="text-align:center;">
@@ -584,15 +632,55 @@ function renderLessonQuiz(){
 }
 
 function renderSettings(){
+  const batchOptions = [3,5,10,15,20];
+  if(!batchOptions.includes(settings.lessonBatchSize)) batchOptions.push(settings.lessonBatchSize);
+  batchOptions.sort((a,b)=>a-b);
+  const dailyLabel = settings.dailyNewLimit===0
+    ? `${dailyLessons.count} new lesson${dailyLessons.count===1?'':'s'} today (no daily limit)`
+    : `${dailyLessons.count} of ${settings.dailyNewLimit} new lessons today`;
   return `
   <div class="card" style="margin-bottom:16px;">
-    <div class="field" style="margin-bottom:0;">
-      <div class="k">New lessons per day</div>
-      <input type="number" id="dailyLimitInput" min="1" max="100" value="${settings.dailyNewLimit}">
+    <div class="section-title">Lesson Settings</div>
+    <div class="settings-row">
+      <div class="settings-label">Preferred lesson batch size</div>
+      <div class="settings-desc">Number of new lessons to study before each quiz. May run slightly higher to avoid a small leftover batch at the end.</div>
+      <select id="lessonBatchSizeInput">
+        ${batchOptions.map(n=>`<option value="${n}" ${settings.lessonBatchSize===n?'selected':''}>${n}</option>`).join('')}
+      </select>
     </div>
+    <div class="settings-row">
+      <div class="settings-label">Maximum daily lessons</div>
+      <div class="settings-desc">Caps how many new words you'll be offered per day. 0 = no limit, 100 = maximum.</div>
+      <input type="number" id="dailyLimitInput" min="0" max="100" value="${settings.dailyNewLimit}">
+    </div>
+    <button class="primary" onclick="saveLessonSettings()">Save</button>
+    <p class="forecast" style="text-align:center;margin-top:12px;">You've started ${dailyLabel}.</p>
   </div>
-  <button class="primary" onclick="saveDailyLimit()">Save</button>
-  <p class="forecast" style="text-align:center;margin-top:14px;">You've started ${dailyLessons.count} of ${settings.dailyNewLimit} new lessons today.</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Review Settings</div>
+    <div class="settings-row">
+      <div class="settings-label">SRS update indicator</div>
+      <div class="settings-desc">Show the stage change (e.g. Genin 1 → Genin 2) after each review.</div>
+      <select id="srsIndicatorInput">
+        <option value="yes" ${settings.showSrsIndicator?'selected':''}>Yes</option>
+        <option value="no" ${!settings.showSrsIndicator?'selected':''}>No</option>
+      </select>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Review ordering</div>
+      <div class="settings-desc">
+        <b>Shuffled</b> — random order.<br>
+        <b>Genin First</b> — review Genin-stage items first, then randomize the rest. Best when you're short on time.<br>
+        <b>Lower Stages First</b> — always review whichever due item is least-learned, Genin → Chunin → Jonin → Anbu.
+      </div>
+      <select id="reviewOrderInput">
+        <option value="shuffled" ${settings.reviewOrder==='shuffled'?'selected':''}>Shuffled</option>
+        <option value="genin-first" ${settings.reviewOrder==='genin-first'?'selected':''}>Genin First</option>
+        <option value="lower-stage-first" ${settings.reviewOrder==='lower-stage-first'?'selected':''}>Lower Stages First</option>
+      </select>
+    </div>
+    <button class="primary" onclick="saveReviewSettings()">Save</button>
+  </div>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
   </div>
@@ -606,11 +694,12 @@ function renderReview(){
     return `${nav('review')}<div class="empty">No reviews due right now.${upcoming?`<br>Next batch unlocks in ${humanizeDuration(upcoming-now())}.`:'<br>Complete a lesson first.'}</div>`;
   }
   if(currentReviewId===null){
-    currentReviewId = due[Math.floor(Math.random()*due.length)].id;
+    currentReviewId = pickNextReview(due);
     showAnswer = false;
   }
   const item = VOCAB.find(v=>v.id===currentReviewId);
   const p = getEntry(item.id);
+  const newStagePreview = showAnswer ? computeReviewStage(p.stage, reviewGrade) : null;
   return `
   ${nav('review')}
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
@@ -629,6 +718,7 @@ function renderReview(){
       <div class="v">${item.meaning}</div>
       ${!reviewGrade ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewLastInput) || '(nothing)'}</div>` : ''}
     </div>
+    ${settings.showSrsIndicator ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
     <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
     <button class="primary" onclick="answerReview(${item.id}, ${reviewGrade})">Next</button>
   `}
