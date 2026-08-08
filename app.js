@@ -320,6 +320,7 @@ function renderLessonQuiz(){
     <span class="pill" style="background:var(--apprentice-bg);color:var(--apprentice);">${label}</span>
   </div>
   <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
   ${!lessonState.showAnswer ? `
     <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off" onkeydown="if(event.key==='Enter'){lessonState.showAnswer=true;render();}">
     <button class="primary" onclick="lessonState.showAnswer=true;render();">Check</button>
@@ -369,6 +370,7 @@ function renderReview(){
     <span class="pill" style="background:var(--${TIER_COLOR(p.stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(p.stage)});">${STAGE_NAMES[p.stage]}</span>
   </div>
   <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
   ${!showAnswer ? `
     <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off" onkeydown="if(event.key==='Enter'){showAnswer=true;render();}">
     <button class="primary" onclick="showAnswer=true;render();">Check</button>
