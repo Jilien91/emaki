@@ -401,8 +401,16 @@ function render(){
     </header>
     ${body}
   `;
-  const input = document.getElementById('reviewInput');
+  const reviewInput = document.getElementById('reviewInput');
+  const quizInput = document.getElementById('quizInput');
+  const input = reviewInput || quizInput;
   if(input) input.focus();
+  if(quizInput && lessonState && lessonState.phase==='quiz' && lessonState.quizQueue.length>0){
+    const currentQ = lessonState.quizQueue[0];
+    if(currentQ.type==='reading' && window.wanakana){
+      window.wanakana.bind(quizInput, { IMEMode: true });
+    }
+  }
 }
 
 async function init(){
