@@ -59,10 +59,11 @@ nav button.active{background:var(--surface-2);border-color:var(--border-strong);
 .wordrow .m{font-size:12px;color:var(--text-dim);margin-top:1px;}
 .pill{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600;letter-spacing:0.3px;text-transform:uppercase;white-space:nowrap;}
 .bigword{font-family:'Noto Sans JP';font-weight:500;text-align:center;padding:40px 20px;border-radius:14px;margin-bottom:16px;font-size:44px;}
-.field{background:var(--surface-2);border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.field{background:var(--surface-2);border-radius:10px;padding:14px 16px;margin-bottom:10px;text-align:center;}
 .field .k{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px;}
-.field .v{font-size:15px;line-height:1.5;}
-.field .v.mnem{font-family:'Spectral',serif;font-size:15px;line-height:1.7;}
+.field .v{font-size:17px;line-height:1.6;}
+.field .v.mnem{font-family:'Spectral',serif;font-size:17px;line-height:1.8;}
+.field .v.jp{font-size:20px;line-height:1.7;}
 button.primary{
   width:100%;padding:13px;border-radius:10px;border:none;background:var(--text);color:var(--bg);
   font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;

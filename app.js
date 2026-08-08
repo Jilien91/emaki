@@ -290,7 +290,7 @@ function renderLessonStudy(){
   <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
   <div class="bigword" style="background:var(--apprentice-bg);color:var(--apprentice);">
     ${item.word}
-    <div class="jp" style="font-size:16px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
+    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${item.mnemonic}</div></div>
