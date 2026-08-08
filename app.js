@@ -1,10 +1,15 @@
 const STORAGE_KEY = 'kaishi-progress';
+const SETTINGS_KEY = 'kaishi-settings';
+const DAILY_KEY = 'kaishi-daily-lessons';
+const DEFAULT_SETTINGS = { dailyNewLimit: 20 };
 const STAGE_NAMES = ['New','Apprentice 1','Apprentice 2','Apprentice 3','Apprentice 4','Guru 1','Guru 2','Master','Enlightened','Burned'];
 const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
 const TIER_COLOR = s => s===0?'new':s<=4?'apprentice':s<=6?'guru':s===7?'master':s===8?'enlightened':'burned';
 
 let VOCAB = [];
 let progress = {};
+let settings = { ...DEFAULT_SETTINGS };
+let dailyLessons = { date: null, count: 0 };
 let storageOk = true;
 let view = 'dashboard';
 let currentReviewId = null;
@@ -29,6 +34,44 @@ function saveProgress(){
   }catch(e){
     storageOk = false;
   }
+}
+
+function loadSettings(){
+  try{
+    const raw = window.localStorage.getItem(SETTINGS_KEY);
+    if(raw){ settings = Object.assign({}, DEFAULT_SETTINGS, JSON.parse(raw)); }
+  }catch(e){}
+}
+
+function saveSettings(){
+  try{ window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }catch(e){}
+}
+
+function todayKey(){
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function loadDailyLessons(){
+  try{
+    const raw = window.localStorage.getItem(DAILY_KEY);
+    if(raw){ dailyLessons = JSON.parse(raw); }
+  }catch(e){}
+  if(dailyLessons.date !== todayKey()){ dailyLessons = { date: todayKey(), count: 0 }; }
+}
+
+function saveDailyLessons(){
+  try{ window.localStorage.setItem(DAILY_KEY, JSON.stringify(dailyLessons)); }catch(e){}
+}
+
+function incrementDailyLessons(){
+  if(dailyLessons.date !== todayKey()){ dailyLessons = { date: todayKey(), count: 0 }; }
+  dailyLessons.count++;
+  saveDailyLessons();
+}
+
+function remainingToday(){
+  return Math.max(0, settings.dailyNewLimit - dailyLessons.count);
 }
 
 function getEntry(id){ return progress[id] || {stage:0, nextReview:null}; }
@@ -66,7 +109,18 @@ function humanizeDuration(ms){
 function completeLesson(id){
   progress[id] = { stage:1, nextReview: now() + INTERVAL_HOURS[1]*3600*1000 };
   saveProgress();
+  incrementDailyLessons();
   render();
+}
+
+function saveDailyLimit(){
+  const el = document.getElementById('dailyLimitInput');
+  let val = parseInt(el.value, 10);
+  if(isNaN(val)) val = DEFAULT_SETTINGS.dailyNewLimit;
+  val = Math.min(100, Math.max(1, val));
+  settings.dailyNewLimit = val;
+  saveSettings();
+  switchView('dashboard');
 }
 
 function answerReview(id, correct){
@@ -99,7 +153,7 @@ function resetProgress(){
 
 function nav(active){
   const due = dueReviews().length;
-  const lessons = newWords().length;
+  const lessons = Math.min(newWords().length, remainingToday());
   return `<nav>
     <button onclick="switchView('dashboard')" class="${active==='dashboard'?'active':''}">Dashboard</button>
     <button onclick="switchView('lessons')" class="${active==='lessons'?'active':''}">Lessons (${lessons})</button>
@@ -153,7 +207,12 @@ function renderLessons(){
   if(pending.length===0){
     return `${nav('lessons')}<div class="empty">No new lessons available.<br>All words with mnemonics have been started.</div>`;
   }
+  const remaining = remainingToday();
+  if(remaining===0){
+    return `${nav('lessons')}<div class="empty">You've reached today's limit of ${settings.dailyNewLimit} new lesson${settings.dailyNewLimit===1?'':'s'}.<br>Come back tomorrow, or raise your limit in <span style="text-decoration:underline;cursor:pointer;" onclick="switchView('settings')">Settings</span>.</div>`;
+  }
   const item = pending[0];
+  const availableToday = Math.min(pending.length, remaining);
   return `
   ${nav('lessons')}
   <div class="bigword" style="background:var(--apprentice-bg);color:var(--apprentice);">
@@ -165,7 +224,23 @@ function renderLessons(){
   ${item.notes ? `<div class="field" style="background:var(--burned-bg);"><div class="k" style="color:var(--burned);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
   <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${item.sentence}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${item.sentence_meaning}</div></div>
   <button class="primary" onclick="completeLesson(${item.id})">Got it — add to reviews</button>
-  <p class="forecast" style="text-align:center;margin-top:10px;">${pending.length-1} more waiting after this one · first review unlocks in 4 hours</p>
+  <p class="forecast" style="text-align:center;margin-top:10px;">${availableToday-1} more waiting after this one · today's limit: ${settings.dailyNewLimit} · first review unlocks in 4 hours</p>
+  `;
+}
+
+function renderSettings(){
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="field" style="margin-bottom:0;">
+      <div class="k">New lessons per day</div>
+      <input type="number" id="dailyLimitInput" min="1" max="100" value="${settings.dailyNewLimit}">
+    </div>
+  </div>
+  <button class="primary" onclick="saveDailyLimit()">Save</button>
+  <p class="forecast" style="text-align:center;margin-top:14px;">You've started ${dailyLessons.count} of ${settings.dailyNewLimit} new lessons today.</p>
+  <div style="text-align:center;margin-top:10px;">
+    <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
+  </div>
   `;
 }
 
@@ -208,11 +283,15 @@ function render(){
   let body;
   if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
+  else if(view==='settings') body = renderSettings();
   else body = renderReview();
   root.innerHTML = `
     <header>
       <h1>Kaishi SRS</h1>
-      <span class="sub">1500-word deck</span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="sub">1500-word deck</span>
+        <button class="gear-btn" onclick="switchView('settings')" title="Settings" aria-label="Settings">⚙</button>
+      </div>
     </header>
     ${body}
   `;
@@ -222,6 +301,8 @@ function render(){
 
 async function init(){
   loadProgress();
+  loadSettings();
+  loadDailyLessons();
   try{
     const res = await fetch('data/vocab.json');
     VOCAB = await res.json();
