@@ -1,16 +1,23 @@
 const STORAGE_KEY = 'kaishi-progress';
 const SETTINGS_KEY = 'kaishi-settings';
 const DAILY_KEY = 'kaishi-daily-lessons';
+const MISTAKES_KEY = 'kaishi-mistakes';
+const ACTIVITY_KEY = 'kaishi-activity';
+const REVIEW_HISTORY_KEY = 'kaishi-review-history';
 const DEFAULT_SETTINGS = { dailyNewLimit: 20 };
 const LESSON_BATCH_SIZE = 5;
-const STAGE_NAMES = ['New','Apprentice 1','Apprentice 2','Apprentice 3','Apprentice 4','Guru 1','Guru 2','Master','Enlightened','Burned'];
+const MISTAKE_WINDOW_MS = 24*3600*1000;
+const STAGE_NAMES = ['New','Genin 1','Genin 2','Genin 3','Genin 4','Chunin 1','Chunin 2','Jonin','Anbu','Kage'];
 const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
-const TIER_COLOR = s => s===0?'new':s<=4?'apprentice':s<=6?'guru':s===7?'master':s===8?'enlightened':'burned';
+const TIER_COLOR = s => s===0?'new':s<=4?'genin':s<=6?'chunin':s===7?'jonin':s===8?'anbu':'kage';
 
 let VOCAB = [];
 let progress = {};
 let settings = { ...DEFAULT_SETTINGS };
 let dailyLessons = { date: null, count: 0 };
+let mistakes = []; // [{id, timestamp}]
+let activityDates = []; // ['YYYY-MM-DD', ...]
+let reviewHistory = {}; // {'YYYY-MM-DD': count}
 let storageOk = true;
 let view = 'dashboard';
 let currentReviewId = null;
@@ -20,6 +27,7 @@ let sessionTotal = 0;
 let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress, lastCorrect, lastInput}
 let reviewGrade = null;
 let reviewLastInput = '';
+let extraStudyState = null; // {queue:[ids], index, showAnswer, lastCorrect, lastInput}
 
 function escapeHtml(str){
   const div = document.createElement('div');
@@ -105,10 +113,11 @@ function saveSettings(){
   try{ window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }catch(e){}
 }
 
-function todayKey(){
-  const d = new Date();
+function dateKey(d){
+  d = d || new Date();
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
+function todayKey(){ return dateKey(); }
 
 function loadDailyLessons(){
   try{
@@ -130,6 +139,93 @@ function incrementDailyLessons(){
 
 function remainingToday(){
   return Math.max(0, settings.dailyNewLimit - dailyLessons.count);
+}
+
+function loadMistakes(){
+  try{
+    const raw = window.localStorage.getItem(MISTAKES_KEY);
+    if(raw){ mistakes = JSON.parse(raw); }
+  }catch(e){}
+  pruneMistakes();
+}
+
+function saveMistakes(){
+  try{ window.localStorage.setItem(MISTAKES_KEY, JSON.stringify(mistakes)); }catch(e){}
+}
+
+function pruneMistakes(){
+  const cutoff = now() - MISTAKE_WINDOW_MS;
+  mistakes = mistakes.filter(m=>m.timestamp>=cutoff);
+}
+
+function recordMistake(id){
+  mistakes.push({id, timestamp: now()});
+  saveMistakes();
+}
+
+// Unique word ids with a mistake in the last 24h, most-recently-missed first.
+function recentMistakeIds(){
+  pruneMistakes();
+  const seen = new Set();
+  const result = [];
+  for(let i=mistakes.length-1;i>=0;i--){
+    if(!seen.has(mistakes[i].id)){ seen.add(mistakes[i].id); result.push(mistakes[i].id); }
+  }
+  return result;
+}
+
+function loadActivity(){
+  try{
+    const raw = window.localStorage.getItem(ACTIVITY_KEY);
+    if(raw){ activityDates = JSON.parse(raw); }
+  }catch(e){}
+}
+
+function saveActivity(){
+  try{ window.localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activityDates)); }catch(e){}
+}
+
+function recordActivityToday(){
+  const k = todayKey();
+  if(!activityDates.includes(k)){
+    activityDates.push(k);
+    saveActivity();
+  }
+}
+
+// Consecutive days with activity, counting back from today. A day that
+// hasn't happened yet (no activity today) doesn't break yesterday's streak.
+function studyStreak(){
+  const set = new Set(activityDates);
+  let d = new Date();
+  if(!set.has(dateKey(d))){ d = new Date(d.getTime() - 86400000); }
+  let streak = 0;
+  while(set.has(dateKey(d))){
+    streak++;
+    d = new Date(d.getTime() - 86400000);
+  }
+  return streak;
+}
+
+function loadReviewHistory(){
+  try{
+    const raw = window.localStorage.getItem(REVIEW_HISTORY_KEY);
+    if(raw){ reviewHistory = JSON.parse(raw); }
+  }catch(e){}
+}
+
+function saveReviewHistory(){
+  try{ window.localStorage.setItem(REVIEW_HISTORY_KEY, JSON.stringify(reviewHistory)); }catch(e){}
+}
+
+function recordReviewCompleted(){
+  const k = todayKey();
+  reviewHistory[k] = (reviewHistory[k]||0) + 1;
+  saveReviewHistory();
+}
+
+function reviewsCompletedOn(d){
+  return reviewHistory[dateKey(d)] || 0;
 }
 
 function getEntry(id){ return progress[id] || {stage:0, nextReview:null}; }
@@ -168,6 +264,7 @@ function completeLesson(id){
   progress[id] = { stage:1, nextReview: now() + INTERVAL_HOURS[1]*3600*1000 };
   saveProgress();
   incrementDailyLessons();
+  recordActivityToday();
 }
 
 function shuffle(arr){
@@ -259,7 +356,10 @@ function answerReview(id, correct){
   progress[id] = { stage:newStage, nextReview };
   sessionTotal++;
   if(correct) sessionCorrect++;
+  else recordMistake(id);
   saveProgress();
+  recordActivityToday();
+  recordReviewCompleted();
   currentReviewId = null;
   showAnswer = false;
   reviewGrade = null;
@@ -276,7 +376,32 @@ function submitReviewAnswer(){
   render();
 }
 
-function switchView(v){ view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; render(); }
+function startExtraStudy(){
+  const ids = recentMistakeIds();
+  if(ids.length===0) return;
+  extraStudyState = { queue: shuffle(ids.slice()), index:0, showAnswer:false };
+  view = 'extrastudy';
+  render();
+}
+
+function submitExtraStudyAnswer(){
+  const id = extraStudyState.queue[extraStudyState.index];
+  const item = VOCAB.find(v=>v.id===id);
+  const input = document.getElementById('extraInput');
+  const value = input ? input.value : '';
+  extraStudyState.lastCorrect = checkMeaning(value, item.meaning);
+  extraStudyState.lastInput = value;
+  extraStudyState.showAnswer = true;
+  render();
+}
+
+function advanceExtraStudy(){
+  extraStudyState.index++;
+  extraStudyState.showAnswer = false;
+  render();
+}
+
+function switchView(v){ view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; extraStudyState=null; render(); }
 
 function resetProgress(){
   if(!confirm('Reset all progress? This clears every SRS level and cannot be undone.')) return;
@@ -297,38 +422,72 @@ function nav(active){
 }
 
 function renderDashboard(){
-  const counts = {new:0,apprentice:0,guru:0,master:0,enlightened:0,burned:0};
+  const counts = {new:0,genin:0,chunin:0,jonin:0,anbu:0,kage:0};
   VOCAB.forEach(v=>{
     const p = getEntry(v.id);
     counts[TIER_COLOR(p.stage)]++;
   });
   const due = dueReviews().length;
   const upcoming = nextUpcoming();
-  let forecast = '';
-  if(due===0 && upcoming){
-    forecast = `<p class="forecast">Next review batch unlocks in ${humanizeDuration(upcoming-now())}</p>`;
-  }
+  const lessonsAvailable = Math.min(newWords().length, remainingToday());
   const learnableCount = learnableWords().length;
+
+  const mistakeIds = recentMistakeIds();
+  const mistakeItems = mistakeIds.map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean);
+
+  const todayCount = reviewsCompletedOn();
+  const yesterday = new Date(now() - 86400000);
+  const yesterdayCount = reviewsCompletedOn(yesterday);
+
+  const streak = studyStreak();
+
   return `
   ${nav('dashboard')}
+  <div class="grid2">
+    <div class="card cta-card">
+      <div class="cta-label">Reviews</div>
+      <div class="cta-count">${due}</div>
+      <div class="cta-sub">${due>0 ? 'Reviews are ready.' : (upcoming ? `Next batch in ${humanizeDuration(upcoming-now())}` : 'All caught up.')}</div>
+      <button class="primary" onclick="switchView('review')">Start Reviews</button>
+    </div>
+    <div class="card cta-card">
+      <div class="cta-label">Today's Lessons</div>
+      <div class="cta-count">${lessonsAvailable}</div>
+      <div class="cta-sub">${lessonsAvailable>0 ? 'Learn something new.' : 'None available right now.'}</div>
+      <button class="primary" onclick="switchView('lessons')">Start Lessons</button>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Recent Mistakes</div>
+    <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
+    ${mistakeItems.length===0 ? `<div class="empty" style="padding:16px 0;">No recent mistakes. Nice work.</div>` : `
+      ${mistakeItems.map(item=>`<div class="wordrow"><span class="w jp">${item.word}</span><span class="m">${escapeHtml(item.meaning)}</span></div>`).join('')}
+      <button class="primary" style="margin-top:10px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
+    `}
+  </div>
+  <div class="grid2">
+    <div class="card stat-card">
+      <div class="section-title">Reviews Today</div>
+      <div class="cta-count">${todayCount}</div>
+      <div class="cta-sub">Yesterday: ${yesterdayCount}</div>
+    </div>
+    <div class="card stat-card">
+      <div class="section-title">Study Streak</div>
+      <div class="cta-count">${streak}</div>
+      <div class="cta-sub">${streak>0 ? `day${streak===1?'':'s'} in a row` : 'study today to start one'}</div>
+    </div>
+  </div>
   <div class="grid3">
     <div class="stat"><div class="n">${counts.new}</div><div class="l">New</div></div>
-    <div class="stat"><div class="n">${counts.apprentice}</div><div class="l">Apprentice</div></div>
-    <div class="stat"><div class="n">${counts.guru}</div><div class="l">Guru</div></div>
-    <div class="stat"><div class="n">${counts.master}</div><div class="l">Master</div></div>
-    <div class="stat"><div class="n">${counts.enlightened}</div><div class="l">Enlightened</div></div>
-    <div class="stat"><div class="n">${counts.burned}</div><div class="l">Burned</div></div>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;">
-      <span style="font-size:13px;color:var(--text-dim);">Reviews due right now</span>
-      <span style="font-size:20px;font-weight:600;font-family:'Spectral',serif;">${due}</span>
-    </div>
-    ${forecast}
+    <div class="stat"><div class="n">${counts.genin}</div><div class="l">Genin</div></div>
+    <div class="stat"><div class="n">${counts.chunin}</div><div class="l">Chunin</div></div>
+    <div class="stat"><div class="n">${counts.jonin}</div><div class="l">Jonin</div></div>
+    <div class="stat"><div class="n">${counts.anbu}</div><div class="l">Anbu</div></div>
+    <div class="stat"><div class="n">${counts.kage}</div><div class="l">Kage</div></div>
   </div>
   <p class="footer-note">
     Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br>
-    SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → burned.<br>
+    SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br>
     ${storageOk ? '<span class="savebadge" style="justify-content:center;"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge" style="justify-content:center;"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
   </p>
   <div style="text-align:center;margin-top:10px;">
@@ -367,13 +526,13 @@ function renderLessonStudy(){
   return `
   ${nav('lessons')}
   <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
-  <div class="bigword" style="background:var(--apprentice-bg);color:var(--apprentice);">
+  <div class="bigword" style="background:var(--genin-bg);color:var(--genin);">
     ${item.word}
     <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${item.mnemonic}</div></div>
-  ${item.notes ? `<div class="field" style="background:var(--burned-bg);"><div class="k" style="color:var(--burned);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
+  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
   <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${item.sentence}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${item.sentence_meaning}</div></div>
   <div class="btnrow">
     ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
@@ -396,7 +555,7 @@ function renderLessonQuiz(){
   ${nav('lessons')}
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
     <span style="font-size:12px;color:var(--text-dim);">Quiz · ${quizQueue.length} left</span>
-    <span class="pill" style="background:var(--apprentice-bg);color:var(--apprentice);">${label}</span>
+    <span class="pill" style="background:var(--genin-bg);color:var(--genin);">${label}</span>
   </div>
   <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
@@ -467,12 +626,42 @@ function renderReview(){
   `;
 }
 
+function renderExtraStudy(){
+  if(!extraStudyState || extraStudyState.index >= extraStudyState.queue.length){
+    const done = extraStudyState ? extraStudyState.queue.length : 0;
+    extraStudyState = null;
+    return `<div class="empty">Extra study complete — ${done} word${done===1?'':'s'} practiced.<br>This doesn't change their SRS timing, just extra reps.</div><div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button></div>`;
+  }
+  const item = VOCAB.find(v=>v.id===extraStudyState.queue[extraStudyState.index]);
+  return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+    <span style="font-size:12px;color:var(--text-dim);">Extra Study · ${extraStudyState.index+1} of ${extraStudyState.queue.length}</span>
+    <button class="reset-link" onclick="switchView('dashboard')">End session</button>
+  </div>
+  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
+  ${!extraStudyState.showAnswer ? `
+    <input type="text" id="extraInput" placeholder="Type the meaning" autocomplete="off">
+    <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
+  ` : `
+    <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
+      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
+      <div class="v">${item.meaning}</div>
+      ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
+    </div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <button class="primary" onclick="advanceExtraStudy()">Next</button>
+  `}
+  `;
+}
+
 function render(){
   const root = document.getElementById('root');
   let body;
   if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
   else if(view==='settings') body = renderSettings();
+  else if(view==='extrastudy') body = renderExtraStudy();
   else body = renderReview();
   root.innerHTML = `
     <header>
@@ -486,7 +675,8 @@ function render(){
   `;
   const reviewInput = document.getElementById('reviewInput');
   const quizInput = document.getElementById('quizInput');
-  const input = reviewInput || quizInput;
+  const extraInput = document.getElementById('extraInput');
+  const input = reviewInput || quizInput || extraInput;
   if(input) input.focus();
   if(quizInput && lessonState && lessonState.phase==='quiz' && lessonState.quizQueue.length>0){
     const currentQ = lessonState.quizQueue[0];
@@ -519,6 +709,15 @@ document.addEventListener('keydown', (e)=>{
       e.preventDefault();
       answerReview(currentReviewId, reviewGrade);
     }
+  }else if(view==='extrastudy' && extraStudyState){
+    if(!extraStudyState.showAnswer && document.getElementById('extraInput')){
+      e.preventDefault();
+      e.stopPropagation();
+      submitExtraStudyAnswer();
+    }else if(extraStudyState.showAnswer){
+      e.preventDefault();
+      advanceExtraStudy();
+    }
   }
 }, true);
 
@@ -526,6 +725,9 @@ async function init(){
   loadProgress();
   loadSettings();
   loadDailyLessons();
+  loadMistakes();
+  loadActivity();
+  loadReviewHistory();
   try{
     const res = await fetch('data/vocab.json');
     VOCAB = await res.json();
