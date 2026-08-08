@@ -1,0 +1,1002 @@
+[
+ {
+  "word": "私",
+  "reading": "わたし",
+  "meaning": "I (polite, general)",
+  "sentence": "私はアンです。",
+  "sentence_meaning": "I am Ann.",
+  "frequency": "19",
+  "mnemonic": "わたし sounds like 'want a sushi' — picture yourself pointing at your own chest saying 'I want a sushi', which is exactly how you'd say the word for I.",
+  "notes": "Can also be read わたくし (very formal) or あたし (feminine, casual). There are rarer readings too."
+ },
+ {
+  "word": "あなた",
+  "reading": "あなた",
+  "meaning": "you (usually when one doesn't know the person)",
+  "sentence": "あなたはトムさんですか。",
+  "sentence_meaning": "Are you Tom-san?",
+  "frequency": "136",
+  "mnemonic": "あなた sounds like 'another' — when you point at someone else and say 'another', you mean YOU, not me.",
+  "notes": ""
+ },
+ {
+  "word": "さん",
+  "reading": "さん",
+  "meaning": "san",
+  "sentence": "あなたはトムさんですか。",
+  "sentence_meaning": "Are you Tom-san?",
+  "frequency": "35",
+  "mnemonic": "さん sounds exactly like 'sun' — everyone bows respectfully to Mr Sun, the most polite honorific in the sky.",
+  "notes": "The most common neutral polite honorific, similar to using 'Mr/Ms' before a name in English."
+ },
+ {
+  "word": "彼",
+  "reading": "かれ",
+  "meaning": "he, him",
+  "sentence": "彼はトムさんです。",
+  "sentence_meaning": "He is Tom-san.",
+  "frequency": "150",
+  "mnemonic": "かれ sounds like 'karate' — picture HE does a karate chop, that's kare, that's him.",
+  "notes": ""
+ },
+ {
+  "word": "好き",
+  "reading": "すき",
+  "meaning": "fond of, liked",
+  "sentence": "私はワインが好きです。",
+  "sentence_meaning": "I like wine.",
+  "frequency": "186",
+  "mnemonic": "すき sounds like 'ski' — imagine saying 'I love to ski', you are fond of it, suki.",
+  "notes": "Grammatically not a verb, though it's often translated into English as 'to like'."
+ },
+ {
+  "word": "人",
+  "reading": "ひと",
+  "meaning": "person",
+  "sentence": "あの人はいい人です。",
+  "sentence_meaning": "That person is a good person.",
+  "frequency": "71",
+  "mnemonic": "ひと sounds like 'he-toe' — a PERSON steps on a hot coal and yells 'hee-toh!'",
+  "notes": ""
+ },
+ {
+  "word": "いい",
+  "reading": "いい",
+  "meaning": "good",
+  "sentence": "あの人はいい人です。",
+  "sentence_meaning": "That person is a good person.",
+  "frequency": "37",
+  "mnemonic": "いい is just the sound 'eee' — squeal 'eeee!' with delight because something is good.",
+  "notes": ""
+ },
+ {
+  "word": "人",
+  "reading": "じん",
+  "meaning": "person from (nationality)",
+  "sentence": "私はイギリス人です。",
+  "sentence_meaning": "I am British.",
+  "frequency": "71",
+  "mnemonic": "じん sounds like the name 'Jin' — a PERSON introduces himself: 'I'm Jin, I'm Nihonjin, a person from Japan.'",
+  "notes": "Used as a suffix on a country name to mean a person from that country, e.g. 日本人 nihonjin."
+ },
+ {
+  "word": "日本語",
+  "reading": "にほんご",
+  "meaning": "Japanese language",
+  "sentence": "私は日本語を勉強しています。",
+  "sentence_meaning": "I'm studying Japanese.",
+  "frequency": "5442",
+  "mnemonic": "にほんご sounds like 'knee-hone-go' — you skin your KNEE, HONE your skills, then GO study the Japanese language.",
+  "notes": ""
+ },
+ {
+  "word": "勉強",
+  "reading": "べんきょう",
+  "meaning": "study",
+  "sentence": "私は日本語を勉強しています。",
+  "sentence_meaning": "I'm studying Japanese.",
+  "frequency": "925",
+  "mnemonic": "べんきょう sounds like 'Ben Kyoto' — Ben travels all the way to Kyoto just to study.",
+  "notes": ""
+ },
+ {
+  "word": "本",
+  "reading": "ほん",
+  "meaning": "book",
+  "sentence": "いい本でしたね。",
+  "sentence_meaning": "It was a good book, wasn't it?",
+  "frequency": "499",
+  "mnemonic": "ほん sounds like 'hone' — you read a book to hone your skills.",
+  "notes": ""
+ },
+ {
+  "word": "これ",
+  "reading": "これ",
+  "meaning": "this",
+  "sentence": "これは日本語の本です。",
+  "sentence_meaning": "This is a Japanese book.",
+  "frequency": "40",
+  "mnemonic": "これ sounds like 'core' — you point at the core of an apple and say 'this, right here'.",
+  "notes": ""
+ },
+ {
+  "word": "何",
+  "reading": "なに・なん",
+  "meaning": "what",
+  "sentence": "A「これは何ですか。」B「本です。」",
+  "sentence_meaning": "A: What is this?B: It's a book.",
+  "frequency": "62",
+  "mnemonic": "なに sounds like 'nanny' — a confused nanny throws up her hands shouting 'WHAT?!'",
+  "notes": "Can be read either なに or なん depending on what follows."
+ },
+ {
+  "word": "それ",
+  "reading": "それ",
+  "meaning": "that",
+  "sentence": "それは本です。",
+  "sentence_meaning": "That is a book.",
+  "frequency": "17",
+  "mnemonic": "それ sounds like 'sore' — you point at a sore wound and say 'that, right there, hurts'.",
+  "notes": ""
+ },
+ {
+  "word": "あれ",
+  "reading": "あれ",
+  "meaning": "that over there",
+  "sentence": "あれは何ですか。",
+  "sentence_meaning": "What's that?",
+  "frequency": "129",
+  "mnemonic": "あれ sounds like the English word 'are' — pointing far into the distance, you ask 'what ARE those, over there?'",
+  "notes": ""
+ },
+ {
+  "word": "どれ",
+  "reading": "どれ",
+  "meaning": "which, what",
+  "sentence": "どれが好きですか。",
+  "sentence_meaning": "Which would you like?",
+  "frequency": "930",
+  "mnemonic": "どれ sounds like 'door' — faced with five doors you ask 'which one?'",
+  "notes": ""
+ },
+ {
+  "word": "毎日",
+  "reading": "まいにち",
+  "meaning": "every day",
+  "sentence": "毎日、日本語を勉強します。",
+  "sentence_meaning": "I study Japanese every day.",
+  "frequency": "877",
+  "mnemonic": "まいにち sounds like 'my knee' — 'my knee aches every single day.'",
+  "notes": ""
+ },
+ {
+  "word": "兄",
+  "reading": "あに",
+  "meaning": "older brother",
+  "sentence": "これは兄のパソコンです。",
+  "sentence_meaning": "This is my older brother's personal computer.",
+  "frequency": "980",
+  "mnemonic": "あに sounds like 'Annie' — your older brother dresses up as Annie every single year for Halloween.",
+  "notes": ""
+ },
+ {
+  "word": "いる",
+  "reading": "いる",
+  "meaning": "to have, to exist (animate)",
+  "sentence": "兄がいます。",
+  "sentence_meaning": "I have an older brother.",
+  "frequency": "21",
+  "mnemonic": "いる sounds like 'ear' — a rabbit's ear pops up from the grass, proof that it exists, right here.",
+  "notes": ""
+ },
+ {
+  "word": "ある",
+  "reading": "ある",
+  "meaning": "to have, to exist (inanimate)",
+  "sentence": "ペンがある。",
+  "sentence_meaning": "There is a pen.",
+  "frequency": "16",
+  "mnemonic": "ある sounds like the English word 'are' — 'there ARE rocks scattered over there', for things without life.",
+  "notes": ""
+ },
+ {
+  "word": "あまり",
+  "reading": "あまり",
+  "meaning": "(not) very, (not) much",
+  "sentence": "スポーツはあまり好きじゃありません。",
+  "sentence_meaning": "I don't really like sports.",
+  "frequency": "388",
+  "mnemonic": "あまり sounds like 'a Mary' — 'there's not very much left of Mary's cake.'",
+  "notes": ""
+ },
+ {
+  "word": "今",
+  "reading": "いま",
+  "meaning": "now",
+  "sentence": "彼は今、勉強しています。",
+  "sentence_meaning": "He's studying now.",
+  "frequency": "64",
+  "mnemonic": "いま sounds like 'Emma' — 'Emma, come here right now!'",
+  "notes": ""
+ },
+ {
+  "word": "時間",
+  "reading": "じかん",
+  "meaning": "time, hour",
+  "sentence": "今は時間がありません。",
+  "sentence_meaning": "I don't have time now.",
+  "frequency": "164",
+  "mnemonic": "じかん sounds like 'Genghis Khan' — Genghis Khan checks the time on his watch before charging into battle.",
+  "notes": ""
+ },
+ {
+  "word": "無い",
+  "reading": "ない",
+  "meaning": "nonexistent, not being",
+  "sentence": "今はあまり時間が無いのです。",
+  "sentence_meaning": "I don't have much time now.",
+  "frequency": "33",
+  "mnemonic": "ない sounds like 'nigh' as in Bill Nye — Bill Nye vanishes into thin air, he simply does not exist anymore.",
+  "notes": "Often used as the negative form of ある. Worth checking a grammar reference for full usage."
+ },
+ {
+  "word": "この",
+  "reading": "この",
+  "meaning": "this one",
+  "sentence": "山田さんの本はどれですか。この本ですか。",
+  "sentence_meaning": "Which book is Yamada-san's? Is it this book?",
+  "frequency": "30",
+  "mnemonic": "この sounds like 'cone' — you point at an ice cream cone and say 'this one is mine'.",
+  "notes": ""
+ },
+ {
+  "word": "その",
+  "reading": "その",
+  "meaning": "that one",
+  "sentence": "その本ですか。",
+  "sentence_meaning": "Is it that book?",
+  "frequency": "28",
+  "mnemonic": "その sounds like 'Sonic, no' — Sonic points and says 'that one, not this one'.",
+  "notes": ""
+ },
+ {
+  "word": "あの",
+  "reading": "あの",
+  "meaning": "that one there",
+  "sentence": "あの本ですか。",
+  "sentence_meaning": "That book (over there)?",
+  "frequency": "53",
+  "mnemonic": "あの sounds like 'ah, no' — pointing far away, shaking your head, 'that one there, no not this'.",
+  "notes": ""
+ },
+ {
+  "word": "どの",
+  "reading": "どの",
+  "meaning": "which one",
+  "sentence": "どの本ですか。",
+  "sentence_meaning": "Which book is it?",
+  "frequency": "1398",
+  "mnemonic": "どの sounds like 'dough, no' — holding a bowl of dough you ask 'which one do I knead first?'",
+  "notes": ""
+ },
+ {
+  "word": "見る",
+  "reading": "みる",
+  "meaning": "to see, to look at",
+  "sentence": "兄は毎日テレビを見ます。",
+  "sentence_meaning": "My older brother watches TV every day.",
+  "frequency": "38",
+  "mnemonic": "みる sounds like 'mirror' — you look in a mirror to see yourself.",
+  "notes": ""
+ },
+ {
+  "word": "全然",
+  "reading": "ぜんぜん",
+  "meaning": "(not) at all",
+  "sentence": "テレビを全然見ません。",
+  "sentence_meaning": "I never watch television.",
+  "frequency": "550",
+  "mnemonic": "ぜんぜん is doubled like 'zen zen' — a monk meditates so deeply he feels nothing at all, total zen.",
+  "notes": ""
+ },
+ {
+  "word": "面白い",
+  "reading": "おもしろい",
+  "meaning": "interesting, amusing",
+  "sentence": "この本は全然面白くなかった。",
+  "sentence_meaning": "This book wasn't interesting at all.",
+  "frequency": "603",
+  "mnemonic": "おもしろい sounds like 'oh Moe, Shirley' — 'oh Moe, Shirley, this is so interesting!'",
+  "notes": ""
+ },
+ {
+  "word": "する",
+  "reading": "する",
+  "meaning": "to do, to make",
+  "sentence": "彼はテニスをします。",
+  "sentence_meaning": "He plays tennis (lit: \"He does tennis\").",
+  "frequency": "12",
+  "mnemonic": "する sounds like 'sue' — 'I'll sue you if you don't do it!'",
+  "notes": ""
+ },
+ {
+  "word": "なる",
+  "reading": "なる",
+  "meaning": "to become, to result in, to come (to do)",
+  "sentence": "日本語の勉強が好きになりました。",
+  "sentence_meaning": "I have come to like Japanese study.",
+  "frequency": "15",
+  "mnemonic": "なる sounds like 'gnarly' — the surfing gets so gnarly it becomes genuinely dangerous.",
+  "notes": "Has many meanings and shades of use ('to become', 'to result in', 'to come to do') — it takes time to fully absorb."
+ },
+ {
+  "word": "先生",
+  "reading": "せんせい",
+  "meaning": "teacher",
+  "sentence": "私は日本語の先生になりたいです。",
+  "sentence_meaning": "I want to become a Japanese teacher.",
+  "frequency": "277",
+  "mnemonic": "せんせい sounds like 'sensei' from every karate movie — a wise teacher always has something to say.",
+  "notes": ""
+ },
+ {
+  "word": "ください",
+  "reading": "ください",
+  "meaning": "please give..., please do...",
+  "sentence": "コーヒーをください。",
+  "sentence_meaning": "Please give me a coffee.",
+  "frequency": "172",
+  "mnemonic": "ください sounds like 'coo-da-sigh' — kneeling down with a long sigh, 'please... give it to me...'",
+  "notes": ""
+ },
+ {
+  "word": "名前",
+  "reading": "なまえ",
+  "meaning": "name",
+  "sentence": "あなたの名前を教えてください。",
+  "sentence_meaning": "Please tell me your name.",
+  "frequency": "264",
+  "mnemonic": "なまえ sounds like 'not my A' — 'that's not my A, that's not my name on this test!'",
+  "notes": ""
+ },
+ {
+  "word": "教える",
+  "reading": "おしえる",
+  "meaning": "to teach, to tell",
+  "sentence": "あなたの名前を教えてください。",
+  "sentence_meaning": "Please tell me your name.",
+  "frequency": "257",
+  "mnemonic": "おしえる sounds like 'oh, she'll' — 'oh, she'll teach you everything she knows.'",
+  "notes": ""
+ },
+ {
+  "word": "ここ",
+  "reading": "ここ",
+  "meaning": "here",
+  "sentence": "ここに本があります。",
+  "sentence_meaning": "There's a book here.",
+  "frequency": "59",
+  "mnemonic": "ここ sounds like 'coco' — 'the cocoa is right here!'",
+  "notes": ""
+ },
+ {
+  "word": "そこ",
+  "reading": "そこ",
+  "meaning": "there",
+  "sentence": "そこはトイレです。",
+  "sentence_meaning": "There is the bathroom.",
+  "frequency": "110",
+  "mnemonic": "そこ sounds like 'socket' — 'plug it in there, in that socket.'",
+  "notes": ""
+ },
+ {
+  "word": "あそこ",
+  "reading": "あそこ",
+  "meaning": "over there",
+  "sentence": "彼はあそこにいます。",
+  "sentence_meaning": "He is over there.",
+  "frequency": "840",
+  "mnemonic": "あそこ sounds like 'ah, socket' — pointing further than soko, 'ah, it's over there, past the socket.'",
+  "notes": ""
+ },
+ {
+  "word": "どこ",
+  "reading": "どこ",
+  "meaning": "where",
+  "sentence": "あの本をどこに置きましたか。",
+  "sentence_meaning": "Where did you put that book?",
+  "frequency": "182",
+  "mnemonic": "どこ sounds like 'dough, coh' — 'where did I put my dough?'",
+  "notes": ""
+ },
+ {
+  "word": "置く",
+  "reading": "おく",
+  "meaning": "to put, to place",
+  "sentence": "あの本をどこに置きましたか。",
+  "sentence_meaning": "Where did you put that book?",
+  "frequency": "194",
+  "mnemonic": "おく sounds like 'oak' — you put your coffee cup down on the oak table.",
+  "notes": ""
+ },
+ {
+  "word": "家",
+  "reading": "いえ",
+  "meaning": "house, home",
+  "sentence": "ここが私の家です。",
+  "sentence_meaning": "This is my house.",
+  "frequency": "168",
+  "mnemonic": "いえ sounds like 'yeah' — coming home and sighing happily, 'yeahh, home at last.'",
+  "notes": "Can also be read うち in certain contexts."
+ },
+ {
+  "word": "帰る",
+  "reading": "かえる",
+  "meaning": "to return, to go back",
+  "sentence": "家に帰ろう。",
+  "sentence_meaning": "Let's go home.",
+  "frequency": "220",
+  "mnemonic": "かえる sounds like 'carry, ooh' — you carry your bags as you return home.",
+  "notes": ""
+ },
+ {
+  "word": "話",
+  "reading": "はなし",
+  "meaning": "talk, story",
+  "sentence": "あなたの話は面白いね。",
+  "sentence_meaning": "Your story is interesting.",
+  "frequency": "101",
+  "mnemonic": "はなし sounds like 'Hannah, she' — 'Hannah, she told me a whole story.'",
+  "notes": ""
+ },
+ {
+  "word": "知る",
+  "reading": "しる",
+  "meaning": "to know",
+  "sentence": "あの人を知っていますか。",
+  "sentence_meaning": "Do you know that person?",
+  "frequency": "68",
+  "mnemonic": "しる sounds like 'sure' — 'I'm sure, I know the answer.'",
+  "notes": ""
+ },
+ {
+  "word": "彼女",
+  "reading": "かのじょ",
+  "meaning": "she, her, girlfriend",
+  "sentence": "彼女の名前を知っていますか。",
+  "sentence_meaning": "Do you know her name?",
+  "frequency": "100",
+  "mnemonic": "かのじょ sounds like 'can o' Joe' — your girlfriend brings you a can of coffee every single morning.",
+  "notes": ""
+ },
+ {
+  "word": "ちゃん",
+  "reading": "ちゃん",
+  "meaning": "chan",
+  "sentence": "彼女はララちゃんです。",
+  "sentence_meaning": "She is Lara-chan.",
+  "frequency": "120",
+  "mnemonic": "ちゃん sounds like 'Chan', as in Jackie Chan — you affectionately call your little sister 'Jackie-chan'.",
+  "notes": "An honorific usually used to show endearment, especially with girls and small children."
+ },
+ {
+  "word": "はい",
+  "reading": "はい",
+  "meaning": "yes (polite)",
+  "sentence": "A「山田さんですか。」B「はい。」",
+  "sentence_meaning": "A: Are you Yamada-san?B: Yes, I am.",
+  "frequency": "92",
+  "mnemonic": "はい sounds exactly like 'hi' — someone asks a question, you toss a bale of hay and shout 'yes!'",
+  "notes": ""
+ },
+ {
+  "word": "いいえ",
+  "reading": "いいえ",
+  "meaning": "no (polite)",
+  "sentence": "A「山田さんですか。」B「いいえ。」",
+  "sentence_meaning": "A: Are you Yamada-san?B: No, I'm not.",
+  "frequency": "8787",
+  "mnemonic": "いいえ sounds like 'Eeyore' — gloomy Eeyore always says no to everything.",
+  "notes": ""
+ },
+ {
+  "word": "日本",
+  "reading": "にほん",
+  "meaning": "Japan",
+  "sentence": "日本のゲームは面白いです。",
+  "sentence_meaning": "Japanese games are fun.",
+  "frequency": "1026",
+  "mnemonic": "にほん sounds like 'knee-hone' — you land in Japan, skin your knee, then hone your samurai skills.",
+  "notes": "Can be read either にほん or にっぽん."
+ },
+ {
+  "word": "学校",
+  "reading": "がっこう",
+  "meaning": "school",
+  "sentence": "学校は日本にあります。",
+  "sentence_meaning": "The school is in Japan.",
+  "frequency": "563",
+  "mnemonic": "がっこう sounds like 'cuckoo' — a cuckoo clock rings out to end class at school.",
+  "notes": ""
+ },
+ {
+  "word": "行く",
+  "reading": "いく",
+  "meaning": "to go",
+  "sentence": "学校へ行きます。",
+  "sentence_meaning": "I will go to school.",
+  "frequency": "58",
+  "mnemonic": "いく sounds like 'eek!' — 'eek, I have to go!' you yell, dashing off.",
+  "notes": ""
+ },
+ {
+  "word": "明日",
+  "reading": "あした",
+  "meaning": "tomorrow",
+  "sentence": "明日、学校へ行きます。",
+  "sentence_meaning": "Tomorrow, I will go to school.",
+  "frequency": "423",
+  "mnemonic": "あした sounds like 'a cheetah' — a cheetah runs so fast it's already tomorrow by the time it stops.",
+  "notes": ""
+ },
+ {
+  "word": "来る",
+  "reading": "くる",
+  "meaning": "to come",
+  "sentence": "明日、来ますか。",
+  "sentence_meaning": "Will you come tomorrow?",
+  "frequency": "34",
+  "mnemonic": "くる sounds like 'kangaroo' — a kangaroo hops closer and closer, coming right at you.",
+  "notes": ""
+ },
+ {
+  "word": "また",
+  "reading": "また",
+  "meaning": "again, also",
+  "sentence": "明日、また来ます。",
+  "sentence_meaning": "I'll come again tomorrow.",
+  "frequency": "99",
+  "mnemonic": "また sounds like 'matter' — 'it doesn't matter, let's just do it again.'",
+  "notes": ""
+ },
+ {
+  "word": "いつ",
+  "reading": "いつ",
+  "meaning": "when",
+  "sentence": "彼女はいつ来ますか。",
+  "sentence_meaning": "When is she coming?",
+  "frequency": "407",
+  "mnemonic": "いつ sounds like 'it's due' — 'when is it due?'",
+  "notes": ""
+ },
+ {
+  "word": "思う",
+  "reading": "おもう",
+  "meaning": "to think",
+  "sentence": "これがいいと思います。",
+  "sentence_meaning": "I think this is good.",
+  "frequency": "25",
+  "mnemonic": "おもう sounds like 'Oh, Moe' — Moe from behind the bar is always thinking hard about something.",
+  "notes": ""
+ },
+ {
+  "word": "こう",
+  "reading": "こう",
+  "meaning": "like this, this kind of",
+  "sentence": "こうしましょう。",
+  "sentence_meaning": "Let’s do this (“this way”).",
+  "frequency": "211",
+  "mnemonic": "こう sounds like 'coe', as in a coach — a coach demonstrates: 'do it like this.'",
+  "notes": ""
+ },
+ {
+  "word": "そう",
+  "reading": "そう",
+  "meaning": "in such manner, that way",
+  "sentence": "私もそう思います。",
+  "sentence_meaning": "That's what I think too.",
+  "frequency": "31",
+  "mnemonic": "そう sounds like 'so' — 'oh, is that so?'",
+  "notes": ""
+ },
+ {
+  "word": "どう",
+  "reading": "どう",
+  "meaning": "how, what",
+  "sentence": "あなたはどう思いますか。",
+  "sentence_meaning": "What do you think?",
+  "frequency": "88",
+  "mnemonic": "どう sounds like 'doe', as in money — 'how much dough do you need?'",
+  "notes": ""
+ },
+ {
+  "word": "会う",
+  "reading": "あう",
+  "meaning": "to meet",
+  "sentence": "明日、彼と会います。",
+  "sentence_meaning": "I will meet him tomorrow.",
+  "frequency": "210",
+  "mnemonic": "あう sounds like 'ow' — you meet someone by literally bumping into them, 'ow!'",
+  "notes": ""
+ },
+ {
+  "word": "次",
+  "reading": "つぎ",
+  "meaning": "next, subsequent",
+  "sentence": "次はいつ会いましょうか。",
+  "sentence_meaning": "When next shall we meet?",
+  "frequency": "234",
+  "mnemonic": "つぎ sounds like 'too gooey' — the next donut in line is too gooey to eat yet.",
+  "notes": ""
+ },
+ {
+  "word": "方",
+  "reading": "ほう",
+  "meaning": "direction, side",
+  "sentence": "彼は私の方を見ました。",
+  "sentence_meaning": "He looked in my direction.",
+  "frequency": "135",
+  "mnemonic": "ほう sounds like 'hoe', the garden tool — you point your hoe in a direction.",
+  "notes": ""
+ },
+ {
+  "word": "方",
+  "reading": "かた",
+  "meaning": "person (polite form)",
+  "sentence": "次の方、どうぞ。",
+  "sentence_meaning": "The next person, please.",
+  "frequency": "135",
+  "mnemonic": "かた sounds like 'karate' — you politely refer to 'that person' mid karate kata.",
+  "notes": ""
+ },
+ {
+  "word": "聞く",
+  "reading": "きく",
+  "meaning": "to hear",
+  "sentence": "彼女はラジオを聞いています。",
+  "sentence_meaning": "She's listening to the radio.",
+  "frequency": "67",
+  "mnemonic": "きく sounds like 'kick, ooh' — you kick the door and someone shouts 'I heard that!'",
+  "notes": ""
+ },
+ {
+  "word": "聞く",
+  "reading": "きく",
+  "meaning": "to ask",
+  "sentence": "トムに聞いて。",
+  "sentence_meaning": "Ask Tom.",
+  "frequency": "67",
+  "mnemonic": "きく (same word as hear) sounds like 'kick, ooh' — you kick the door to ask a question loudly.",
+  "notes": ""
+ },
+ {
+  "word": "お願いします",
+  "reading": "おねがいします",
+  "meaning": "please",
+  "sentence": "A「これでお願いします。」B「はい。」",
+  "sentence_meaning": "A: This one, please.B: Okay.",
+  "frequency": "1069",
+  "mnemonic": "おねがいします breaks into 'oh, negate, she must' — bowing deeply, 'oh, please don't negate my request, she must grant it.'",
+  "notes": ""
+ },
+ {
+  "word": "分かる",
+  "reading": "わかる",
+  "meaning": "to understand",
+  "sentence": "日本語のニュースが全然分かりませんでした。",
+  "sentence_meaning": "I didn't understand the Japanese news at all.",
+  "frequency": "142",
+  "mnemonic": "わかる sounds like 'wacky, roo' — a wacky kangaroo finally explains it so well that you understand.",
+  "notes": ""
+ },
+ {
+  "word": "よく",
+  "reading": "よく",
+  "meaning": "well",
+  "sentence": "よく分かりました。",
+  "sentence_meaning": "I understood well.",
+  "frequency": "180",
+  "mnemonic": "よく sounds like 'yolk' — you eat egg yolk well, savoring every bite.",
+  "notes": ""
+ },
+ {
+  "word": "よく",
+  "reading": "よく",
+  "meaning": "often",
+  "sentence": "ジャズのCDをよく聞きます。",
+  "sentence_meaning": "I listen to Jazz CDs often.",
+  "frequency": "180",
+  "mnemonic": "よく (same word as well) sounds like 'yolk' — you eat egg yolk often, it's part of your daily routine.",
+  "notes": ""
+ },
+ {
+  "word": "考える",
+  "reading": "かんがえる",
+  "meaning": "to think, to consider",
+  "sentence": "よく考えてください。",
+  "sentence_meaning": "Please think carefully.",
+  "frequency": "91",
+  "mnemonic": "かんがえる sounds like 'conga, eh, roo' — you do the conga line while carefully considering your next move.",
+  "notes": ""
+ },
+ {
+  "word": "ありがとうございます",
+  "reading": "ありがとうございます",
+  "meaning": "thank you (formal)",
+  "sentence": "そうですか。分かりました。ありがとうございます。",
+  "sentence_meaning": "Is that so? I understand. Thank you.",
+  "frequency": "630",
+  "mnemonic": "ありがとうございます sounds like 'alligator, oh, go za-mas' — a very formal alligator bows and thanks you properly.",
+  "notes": ""
+ },
+ {
+  "word": "話す",
+  "reading": "はなす",
+  "meaning": "to talk, to speak",
+  "sentence": "先生と日本語で話します。",
+  "sentence_meaning": "I speak Japanese with the teacher.",
+  "frequency": "206",
+  "mnemonic": "はなす sounds like 'Hannah, sue' — 'Hannah, Sue will talk to you about it.'",
+  "notes": ""
+ },
+ {
+  "word": "もっと",
+  "reading": "もっと",
+  "meaning": "more, a bit more",
+  "sentence": "もっと勉強しなければいけないと思った。",
+  "sentence_meaning": "I thought that I would have to study more.",
+  "frequency": "200",
+  "mnemonic": "もっと sounds exactly like 'motto' — your family motto is simply 'always want more.'",
+  "notes": ""
+ },
+ {
+  "word": "ゆっくり",
+  "reading": "ゆっくり",
+  "meaning": "slowly",
+  "sentence": "もっとゆっくり話してください。",
+  "sentence_meaning": "Please speak more slowly.",
+  "frequency": "339",
+  "mnemonic": "ゆっくり sounds like 'you, curry' — you eat curry slowly because it's still far too hot.",
+  "notes": ""
+ },
+ {
+  "word": "言う",
+  "reading": "いう",
+  "meaning": "to say",
+  "sentence": "ゆっくり言ってください。",
+  "sentence_meaning": "Please say it slowly.",
+  "frequency": "20",
+  "mnemonic": "いう sounds like 'ewww' — you say 'ewww!' the moment you see something gross.",
+  "notes": ""
+ },
+ {
+  "word": "友達",
+  "reading": "ともだち",
+  "meaning": "friend, companion",
+  "sentence": "友達とレストランに行きました。",
+  "sentence_meaning": "I went to the restaurant with my friend.",
+  "frequency": "572",
+  "mnemonic": "ともだち sounds like 'toe much attach-y' — you and your friend are so close your toes are basically attached.",
+  "notes": ""
+ },
+ {
+  "word": "待つ",
+  "reading": "まつ",
+  "meaning": "to wait",
+  "sentence": "1時間友達を待ちました。",
+  "sentence_meaning": "I waited for my friend for an hour.",
+  "frequency": "114",
+  "mnemonic": "まつ sounds like 'mat, sue' — you sit on a mat and wait patiently for Sue.",
+  "notes": ""
+ },
+ {
+  "word": "昨日",
+  "reading": "きのう",
+  "meaning": "yesterday",
+  "sentence": "昨日、友達に会った。",
+  "sentence_meaning": "I met a friend yesterday.",
+  "frequency": "430",
+  "mnemonic": "きのう sounds like 'key, no' — 'no, that's not today's key, that's yesterday's key.'",
+  "notes": ""
+ },
+ {
+  "word": "町",
+  "reading": "まち",
+  "meaning": "town, city",
+  "sentence": "あの町に行きました。",
+  "sentence_meaning": "I went to that town over there.",
+  "frequency": "891",
+  "mnemonic": "まち sounds like 'match, ee' — you wander through a small town holding a lit match.",
+  "notes": ""
+ },
+ {
+  "word": "高い",
+  "reading": "たかい",
+  "meaning": "expensive",
+  "sentence": "このカメラは高いですね。",
+  "sentence_meaning": "This camera is expensive.",
+  "frequency": "319",
+  "mnemonic": "たかい sounds like 'taco, eye' — a giant taco stares at you with one eye and an expensive price tag.",
+  "notes": ""
+ },
+ {
+  "word": "高い",
+  "reading": "たかい",
+  "meaning": "high, tall",
+  "sentence": "これがこの町で一番高いビルです。",
+  "sentence_meaning": "This is the tallest building in town.",
+  "frequency": "319",
+  "mnemonic": "たかい (same word, tall/high) sounds like 'taco, eye' — the taco tower is impossibly high, staring down at you.",
+  "notes": ""
+ },
+ {
+  "word": "一番",
+  "reading": "いちばん",
+  "meaning": "(the) most",
+  "sentence": "これがこの町で一番高いビルです。",
+  "sentence_meaning": "This is the tallest building in this town.",
+  "frequency": "318",
+  "mnemonic": "いちばん sounds like 'itch, a bun' — winning number one gets you the most itchy golden bun as a prize.",
+  "notes": ""
+ },
+ {
+  "word": "ちょっと",
+  "reading": "ちょっと",
+  "meaning": "a little",
+  "sentence": "これはちょっと高いですね。",
+  "sentence_meaning": "This is a little expensive.",
+  "frequency": "93",
+  "mnemonic": "ちょっと sounds like 'Charlotte' — 'just a little more, Charlotte!'",
+  "notes": ""
+ },
+ {
+  "word": "もう",
+  "reading": "もう",
+  "meaning": "already, yet",
+  "sentence": "彼はもう帰りました。",
+  "sentence_meaning": "He's already gone home.",
+  "frequency": "56",
+  "mnemonic": "もう sounds like 'mow' — 'I've already mowed the lawn.'",
+  "notes": ""
+ },
+ {
+  "word": "もう",
+  "reading": "もう",
+  "meaning": "another, again",
+  "sentence": "もうちょっと食べたい。",
+  "sentence_meaning": "I want to eat a little more.",
+  "frequency": "56",
+  "mnemonic": "もう (same word, again) sounds like 'mow' — 'don't make me mow it again.'",
+  "notes": ""
+ },
+ {
+  "word": "父",
+  "reading": "ちち",
+  "meaning": "(speaker's) father",
+  "sentence": "私は父が大好きです。",
+  "sentence_meaning": "I love my father.",
+  "frequency": "681",
+  "mnemonic": "ちち sounds like 'Cheech', from Cheech and Chong — your father is basically Cheech, always cracking jokes.",
+  "notes": ""
+ },
+ {
+  "word": "大好き",
+  "reading": "だいすき",
+  "meaning": "love",
+  "sentence": "私は父が大好きです。",
+  "sentence_meaning": "I love my father.",
+  "frequency": "916",
+  "mnemonic": "だいすき is 'dai' (big) plus 'suki' (like) — skiing down a BIG mountain, you scream with joy, you love it.",
+  "notes": ""
+ },
+ {
+  "word": "母",
+  "reading": "はは",
+  "meaning": "(speaker's) mother",
+  "sentence": "昨日、母と話をしました。",
+  "sentence_meaning": "I talked to my mother yesterday.",
+  "frequency": "726",
+  "mnemonic": "はは sounds exactly like laughing 'haha' — your mother laughs 'haha' at all your jokes.",
+  "notes": ""
+ },
+ {
+  "word": "あげる",
+  "reading": "あげる",
+  "meaning": "to give (receiver is not in the speaker's group)",
+  "sentence": "友達にプレゼントをあげます。",
+  "sentence_meaning": "I will give a present to my friend.",
+  "frequency": "207",
+  "mnemonic": "あげる sounds like 'a jaguar' — you give a gift to a stranger while a jaguar watches curiously from afar.",
+  "notes": ""
+ },
+ {
+  "word": "くれる",
+  "reading": "くれる",
+  "meaning": "to give (receiver is in the speaker's group)",
+  "sentence": "父が本をくれました。",
+  "sentence_meaning": "My father gave me a book.",
+  "frequency": "39",
+  "mnemonic": "くれる sounds like 'cure, ooh' — someone gives you a cure for your illness, given TO you.",
+  "notes": ""
+ },
+ {
+  "word": "もらう",
+  "reading": "もらう",
+  "meaning": "to receive",
+  "sentence": "彼女からプレゼントをもらいました。",
+  "sentence_meaning": "I got a present from her.",
+  "frequency": "112",
+  "mnemonic": "もらう sounds like 'more, ow' — 'more, ow!' you say as you receive gift after gift, arms overflowing.",
+  "notes": ""
+ },
+ {
+  "word": "物",
+  "reading": "もの",
+  "meaning": "thing, object",
+  "sentence": "色々な物をもらいました。",
+  "sentence_meaning": "I received many things.",
+  "frequency": "51",
+  "mnemonic": "もの sounds exactly like 'mono' — you sort a big pile of things, mono-tonously, one by one.",
+  "notes": ""
+ },
+ {
+  "word": "君",
+  "reading": "きみ",
+  "meaning": "you (to someone of equal or lower status)",
+  "sentence": "この本を君にあげます。",
+  "sentence_meaning": "I'm going to give you this book.",
+  "frequency": "153",
+  "mnemonic": "きみ sounds like 'Kimmy' — 'Kimmy, you come here!' you call to a younger friend.",
+  "notes": ""
+ },
+ {
+  "word": "中",
+  "reading": "なか",
+  "meaning": "inside, middle",
+  "sentence": "父は家の中にいます。",
+  "sentence_meaning": "My father is inside the house.",
+  "frequency": "75",
+  "mnemonic": "なか sounds like 'nacho' — you reach inside the bowl of nachos to grab one from the middle.",
+  "notes": ""
+ },
+ {
+  "word": "出来る",
+  "reading": "できる",
+  "meaning": "to be able to do, to be good at",
+  "sentence": "あなたはスキーが出来ますか。",
+  "sentence_meaning": "Can you ski?",
+  "frequency": "103",
+  "mnemonic": "できる sounds like 'deck, ooh' — you built the whole deck yourself, 'I can do it!'",
+  "notes": ""
+ },
+ {
+  "word": "本当",
+  "reading": "ほんとう",
+  "meaning": "truth, reality",
+  "sentence": "その話は本当ですか。",
+  "sentence_meaning": "Is that story true?",
+  "frequency": "108",
+  "mnemonic": "ほんとう sounds like 'hone, tow' — 'is that the truth? I need to hone in and tow the line.'",
+  "notes": ""
+ },
+ {
+  "word": "立つ",
+  "reading": "たつ",
+  "meaning": "to stand, to rise",
+  "sentence": "彼はステージに立った。",
+  "sentence_meaning": "He stood on stage.",
+  "frequency": "330",
+  "mnemonic": "たつ sounds like 'tattoo' — you stand perfectly still while getting a tattoo.",
+  "notes": ""
+ },
+ {
+  "word": "前",
+  "reading": "まえ",
+  "meaning": "front, before",
+  "sentence": "ララちゃんは家の前に立っています。",
+  "sentence_meaning": "Lara-chan is standing in front of the house.",
+  "frequency": "79",
+  "mnemonic": "まえ sounds like 'may' — standing in front of the whole class, 'may I go first?'",
+  "notes": ""
+ }
+]

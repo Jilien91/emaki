@@ -1,0 +1,235 @@
+const STORAGE_KEY = 'kaishi-progress';
+const STAGE_NAMES = ['New','Apprentice 1','Apprentice 2','Apprentice 3','Apprentice 4','Guru 1','Guru 2','Master','Enlightened','Burned'];
+const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
+const TIER_COLOR = s => s===0?'new':s<=4?'apprentice':s<=6?'guru':s===7?'master':s===8?'enlightened':'burned';
+
+let VOCAB = [];
+let progress = {};
+let storageOk = true;
+let view = 'dashboard';
+let currentReviewId = null;
+let showAnswer = false;
+let sessionCorrect = 0;
+let sessionTotal = 0;
+
+function loadProgress(){
+  try{
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if(raw){ progress = JSON.parse(raw); }
+    storageOk = true;
+  }catch(e){
+    storageOk = false;
+  }
+}
+
+function saveProgress(){
+  try{
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    storageOk = true;
+  }catch(e){
+    storageOk = false;
+  }
+}
+
+function getEntry(id){ return progress[id] || {stage:0, nextReview:null}; }
+function now(){ return Date.now(); }
+
+// Only words with a written mnemonic are ready to be taught as lessons.
+function learnableWords(){ return VOCAB.filter(v=>v.mnemonic); }
+
+function dueReviews(){
+  const t = now();
+  return VOCAB.filter(v=>{
+    const p = getEntry(v.id);
+    return p.stage>=1 && p.stage<=8 && p.nextReview!==null && p.nextReview<=t;
+  });
+}
+function newWords(){ return learnableWords().filter(v=>getEntry(v.id).stage===0); }
+function nextUpcoming(){
+  const t = now();
+  const future = VOCAB.map(v=>getEntry(v.id)).filter(p=>p.stage>=1 && p.stage<=8 && p.nextReview!==null && p.nextReview>t);
+  if(future.length===0) return null;
+  return Math.min(...future.map(p=>p.nextReview));
+}
+function humanizeDuration(ms){
+  if(ms<=0) return 'now';
+  const mins = Math.round(ms/60000);
+  if(mins<60) return mins+'m';
+  const hrs = Math.round(mins/60);
+  if(hrs<48) return hrs+'h';
+  const days = Math.round(hrs/24);
+  if(days<60) return days+'d';
+  const months = Math.round(days/30);
+  return months+'mo';
+}
+
+function completeLesson(id){
+  progress[id] = { stage:1, nextReview: now() + INTERVAL_HOURS[1]*3600*1000 };
+  saveProgress();
+  render();
+}
+
+function answerReview(id, correct){
+  const p = getEntry(id);
+  let newStage;
+  if(correct){
+    newStage = Math.min(9, p.stage+1);
+  }else{
+    newStage = p.stage<=4 ? Math.max(1,p.stage-1) : Math.max(1,p.stage-2);
+  }
+  const nextReview = newStage===9 ? null : now() + INTERVAL_HOURS[newStage]*3600*1000;
+  progress[id] = { stage:newStage, nextReview };
+  sessionTotal++;
+  if(correct) sessionCorrect++;
+  saveProgress();
+  currentReviewId = null;
+  showAnswer = false;
+  render();
+}
+
+function switchView(v){ view=v; currentReviewId=null; showAnswer=false; render(); }
+
+function resetProgress(){
+  if(!confirm('Reset all progress? This clears every SRS level and cannot be undone.')) return;
+  progress = {};
+  sessionCorrect=0; sessionTotal=0;
+  saveProgress();
+  render();
+}
+
+function nav(active){
+  const due = dueReviews().length;
+  const lessons = newWords().length;
+  return `<nav>
+    <button onclick="switchView('dashboard')" class="${active==='dashboard'?'active':''}">Dashboard</button>
+    <button onclick="switchView('lessons')" class="${active==='lessons'?'active':''}">Lessons (${lessons})</button>
+    <button onclick="switchView('review')" class="${active==='review'?'active':''}">Reviews (${due})</button>
+  </nav>`;
+}
+
+function renderDashboard(){
+  const counts = {new:0,apprentice:0,guru:0,master:0,enlightened:0,burned:0};
+  VOCAB.forEach(v=>{
+    const p = getEntry(v.id);
+    counts[TIER_COLOR(p.stage)]++;
+  });
+  const due = dueReviews().length;
+  const upcoming = nextUpcoming();
+  let forecast = '';
+  if(due===0 && upcoming){
+    forecast = `<p class="forecast">Next review batch unlocks in ${humanizeDuration(upcoming-now())}</p>`;
+  }
+  const learnableCount = learnableWords().length;
+  return `
+  ${nav('dashboard')}
+  <div class="grid3">
+    <div class="stat"><div class="n">${counts.new}</div><div class="l">New</div></div>
+    <div class="stat"><div class="n">${counts.apprentice}</div><div class="l">Apprentice</div></div>
+    <div class="stat"><div class="n">${counts.guru}</div><div class="l">Guru</div></div>
+    <div class="stat"><div class="n">${counts.master}</div><div class="l">Master</div></div>
+    <div class="stat"><div class="n">${counts.enlightened}</div><div class="l">Enlightened</div></div>
+    <div class="stat"><div class="n">${counts.burned}</div><div class="l">Burned</div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;">
+      <span style="font-size:13px;color:var(--text-dim);">Reviews due right now</span>
+      <span style="font-size:20px;font-weight:600;font-family:'Spectral',serif;">${due}</span>
+    </div>
+    ${forecast}
+  </div>
+  <p class="footer-note">
+    Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br>
+    SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → burned.<br>
+    ${storageOk ? '<span class="savebadge" style="justify-content:center;"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge" style="justify-content:center;"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
+  </p>
+  <div style="text-align:center;margin-top:10px;">
+    <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
+  </div>
+  `;
+}
+
+function renderLessons(){
+  const pending = newWords();
+  if(pending.length===0){
+    return `${nav('lessons')}<div class="empty">No new lessons available.<br>All words with mnemonics have been started.</div>`;
+  }
+  const item = pending[0];
+  return `
+  ${nav('lessons')}
+  <div class="bigword" style="background:var(--apprentice-bg);color:var(--apprentice);">
+    ${item.word}
+    <div class="jp" style="font-size:16px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
+  </div>
+  <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
+  <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${item.mnemonic}</div></div>
+  ${item.notes ? `<div class="field" style="background:var(--burned-bg);"><div class="k" style="color:var(--burned);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
+  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${item.sentence}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${item.sentence_meaning}</div></div>
+  <button class="primary" onclick="completeLesson(${item.id})">Got it — add to reviews</button>
+  <p class="forecast" style="text-align:center;margin-top:10px;">${pending.length-1} more waiting after this one · first review unlocks in 4 hours</p>
+  `;
+}
+
+function renderReview(){
+  const due = dueReviews();
+  if(due.length===0){
+    const upcoming = nextUpcoming();
+    return `${nav('review')}<div class="empty">No reviews due right now.${upcoming?`<br>Next batch unlocks in ${humanizeDuration(upcoming-now())}.`:'<br>Complete a lesson first.'}</div>`;
+  }
+  if(currentReviewId===null){
+    currentReviewId = due[Math.floor(Math.random()*due.length)].id;
+    showAnswer = false;
+  }
+  const item = VOCAB.find(v=>v.id===currentReviewId);
+  const p = getEntry(item.id);
+  return `
+  ${nav('review')}
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:12px;color:var(--text-dim);">Session ${sessionCorrect}/${sessionTotal}</span>
+    <span class="pill" style="background:var(--${TIER_COLOR(p.stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(p.stage)});">${STAGE_NAMES[p.stage]}</span>
+  </div>
+  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
+  ${!showAnswer ? `
+    <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off" onkeydown="if(event.key==='Enter'){showAnswer=true;render();}">
+    <button class="primary" onclick="showAnswer=true;render();">Check</button>
+  ` : `
+    <div class="field"><div class="k">Reading</div><div class="v jp">${item.reading}</div></div>
+    <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <div class="answerbtns">
+      <button class="wrong" onclick="answerReview(${item.id}, false)">Didn't know it</button>
+      <button class="right" onclick="answerReview(${item.id}, true)">Knew it</button>
+    </div>
+  `}
+  `;
+}
+
+function render(){
+  const root = document.getElementById('root');
+  let body;
+  if(view==='dashboard') body = renderDashboard();
+  else if(view==='lessons') body = renderLessons();
+  else body = renderReview();
+  root.innerHTML = `
+    <header>
+      <h1>Kaishi SRS</h1>
+      <span class="sub">1500-word deck</span>
+    </header>
+    ${body}
+  `;
+  const input = document.getElementById('reviewInput');
+  if(input) input.focus();
+}
+
+async function init(){
+  loadProgress();
+  try{
+    const res = await fetch('data/vocab.json');
+    VOCAB = await res.json();
+  }catch(e){
+    document.getElementById('root').innerHTML = '<div class="empty">Failed to load vocab data. Make sure data/vocab.json is reachable (serve this over http, not file://).</div>';
+    return;
+  }
+  render();
+}
+
+init();
