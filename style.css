@@ -69,10 +69,10 @@ button.primary{
   font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
 }
 button.primary:hover{opacity:0.9;}
-.answerbtns{display:flex;gap:10px;margin-top:14px;}
-.answerbtns button{flex:1;padding:12px;border-radius:10px;font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;border:1px solid;}
-.answerbtns .wrong{background:transparent;border-color:var(--danger);color:var(--danger);}
-.answerbtns .right{background:transparent;border-color:var(--success);color:var(--success);}
+.field.result-correct{border:1px solid var(--success);background:rgba(62,207,142,0.12);}
+.field.result-correct .k{color:var(--success);}
+.field.result-incorrect{border:1px solid var(--danger);background:rgba(224,92,92,0.12);}
+.field.result-incorrect .k{color:var(--danger);}
 .btnrow{display:flex;gap:10px;}
 .btnrow button.primary{width:auto;flex:1;}
 .btnrow button.secondary{

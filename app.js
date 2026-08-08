@@ -17,7 +17,63 @@ let currentReviewId = null;
 let showAnswer = false;
 let sessionCorrect = 0;
 let sessionTotal = 0;
-let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress}
+let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress, lastCorrect, lastInput}
+let reviewGrade = null;
+let reviewLastInput = '';
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function levenshtein(a, b){
+  const m = a.length, n = b.length;
+  if(m===0) return n;
+  if(n===0) return m;
+  const dp = new Array(n+1);
+  for(let j=0;j<=n;j++) dp[j] = j;
+  for(let i=1;i<=m;i++){
+    let prev = dp[0];
+    dp[0] = i;
+    for(let j=1;j<=n;j++){
+      const tmp = dp[j];
+      dp[j] = Math.min(dp[j]+1, dp[j-1]+1, prev + (a[i-1]===b[j-1] ? 0 : 1));
+      prev = tmp;
+    }
+  }
+  return dp[n];
+}
+
+// Meanings like "I (polite, general)" or "he, him" can have several
+// acceptable answers — split out synonyms and drop parenthetical notes.
+function meaningCandidates(meaning){
+  const stripped = meaning.replace(/\([^)]*\)/g, '').trim();
+  const source = stripped || meaning;
+  const candidates = source.split(/[,/]/).map(s=>s.trim().toLowerCase()).filter(Boolean);
+  candidates.push(meaning.trim().toLowerCase());
+  return candidates;
+}
+
+function fuzzyMatch(input, candidate){
+  if(input === candidate) return true;
+  if(candidate.length <= 3) return false; // too short to safely allow typos
+  const dist = levenshtein(input, candidate);
+  const threshold = candidate.length <= 5 ? 1 : candidate.length <= 9 ? 2 : 3;
+  return dist <= threshold;
+}
+
+function checkMeaning(userInput, meaning){
+  const input = userInput.trim().toLowerCase();
+  if(!input) return false;
+  return meaningCandidates(meaning).some(c => fuzzyMatch(input, c));
+}
+
+function checkReading(userInput, reading){
+  const raw = userInput.trim();
+  const input = window.wanakana ? window.wanakana.toHiragana(raw) : raw;
+  return reading.split('・').map(s=>s.trim()).includes(input);
+}
 
 function loadProgress(){
   try{
@@ -169,6 +225,18 @@ function answerQuizQuestion(correct){
   render();
 }
 
+function submitQuizAnswer(){
+  const q = lessonState.quizQueue[0];
+  const item = VOCAB.find(v=>v.id===q.id);
+  const input = document.getElementById('quizInput');
+  const value = input ? input.value : '';
+  const correct = q.type==='meaning' ? checkMeaning(value, item.meaning) : checkReading(value, item.reading);
+  lessonState.showAnswer = true;
+  lessonState.lastCorrect = correct;
+  lessonState.lastInput = value;
+  render();
+}
+
 function saveDailyLimit(){
   const el = document.getElementById('dailyLimitInput');
   let val = parseInt(el.value, 10);
@@ -194,10 +262,21 @@ function answerReview(id, correct){
   saveProgress();
   currentReviewId = null;
   showAnswer = false;
+  reviewGrade = null;
   render();
 }
 
-function switchView(v){ view=v; currentReviewId=null; showAnswer=false; render(); }
+function submitReviewAnswer(){
+  const item = VOCAB.find(v=>v.id===currentReviewId);
+  const input = document.getElementById('reviewInput');
+  const value = input ? input.value : '';
+  reviewGrade = checkMeaning(value, item.meaning);
+  reviewLastInput = value;
+  showAnswer = true;
+  render();
+}
+
+function switchView(v){ view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; render(); }
 
 function resetProgress(){
   if(!confirm('Reset all progress? This clears every SRS level and cannot be undone.')) return;
@@ -322,15 +401,16 @@ function renderLessonQuiz(){
   <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
   ${!lessonState.showAnswer ? `
-    <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off" onkeydown="if(event.key==='Enter'){lessonState.showAnswer=true;render();}">
-    <button class="primary" onclick="lessonState.showAnswer=true;render();">Check</button>
+    <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
+    <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
-    <div class="field"><div class="k">${label}</div><div class="v ${q.type==='reading'?'jp':''}">${q.type==='meaning'?item.meaning:item.reading}</div></div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
-    <div class="answerbtns">
-      <button class="wrong" onclick="answerQuizQuestion(false)">Didn't know it</button>
-      <button class="right" onclick="answerQuizQuestion(true)">Knew it</button>
+    <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
+      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
+      <div class="v ${q.type==='reading'?'jp':''}">${q.type==='meaning'?item.meaning:item.reading}</div>
+      ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <button class="primary" onclick="answerQuizQuestion(${lessonState.lastCorrect})">Next</button>
   `}
   `;
 }
@@ -372,16 +452,17 @@ function renderReview(){
   <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
   ${!showAnswer ? `
-    <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off" onkeydown="if(event.key==='Enter'){showAnswer=true;render();}">
-    <button class="primary" onclick="showAnswer=true;render();">Check</button>
+    <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off">
+    <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
     <div class="field"><div class="k">Reading</div><div class="v jp">${item.reading}</div></div>
-    <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
-    <div class="answerbtns">
-      <button class="wrong" onclick="answerReview(${item.id}, false)">Didn't know it</button>
-      <button class="right" onclick="answerReview(${item.id}, true)">Knew it</button>
+    <div class="field result-${reviewGrade?'correct':'incorrect'}">
+      <div class="k">${reviewGrade ? 'Correct' : 'Incorrect'}</div>
+      <div class="v">${item.meaning}</div>
+      ${!reviewGrade ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewLastInput) || '(nothing)'}</div>` : ''}
     </div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <button class="primary" onclick="answerReview(${item.id}, ${reviewGrade})">Next</button>
   `}
   `;
 }
@@ -414,6 +495,32 @@ function render(){
     }
   }
 }
+
+// Capture phase so this runs before wanakana's own keydown handling on
+// #quizInput — otherwise wanakana swallows Enter (and clears the field)
+// before our submit/advance logic ever sees it.
+document.addEventListener('keydown', (e)=>{
+  if(e.key !== 'Enter') return;
+  if(view==='lessons' && lessonState && lessonState.phase==='quiz'){
+    if(!lessonState.showAnswer && document.getElementById('quizInput')){
+      e.preventDefault();
+      e.stopPropagation();
+      submitQuizAnswer();
+    }else if(lessonState.showAnswer){
+      e.preventDefault();
+      answerQuizQuestion(lessonState.lastCorrect);
+    }
+  }else if(view==='review' && currentReviewId!==null){
+    if(!showAnswer && document.getElementById('reviewInput')){
+      e.preventDefault();
+      e.stopPropagation();
+      submitReviewAnswer();
+    }else if(showAnswer){
+      e.preventDefault();
+      answerReview(currentReviewId, reviewGrade);
+    }
+  }
+}, true);
 
 async function init(){
   loadProgress();
