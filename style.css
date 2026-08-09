@@ -127,6 +127,23 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   padding:5px 10px;border-radius:20px;pointer-events:none;
 }
 .syncbadge.err{color:var(--danger);border-color:var(--danger);}
+
+/* On a phone the on-screen keyboard eats over half the viewport, and the
+   full-size question layout is taller than what's left — so the browser
+   scrolls the input into view and takes the word off the top of the screen
+   with it. Tighten the spacing (not the text) so the word, its example and
+   the answer box all still fit above the keyboard. */
+@media (max-width: 480px){
+  #root{padding:14px 14px 20px;}
+  header{margin-bottom:12px;}
+  nav{margin-bottom:14px;}
+  nav button{padding:9px 6px;}
+  .bigword{padding:16px 14px;font-size:36px;margin-bottom:10px;}
+  .field{padding:10px 12px;margin-bottom:8px;}
+  .field .k{margin-bottom:3px;}
+  input[type=text],input[type=number],input[type=email],select{padding:11px 13px;margin-bottom:8px;}
+  button.primary{padding:12px;}
+}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px;}
 .cta-card{text-align:center;}
 .cta-label{font-size:13px;color:var(--text-dim);margin-bottom:2px;}
