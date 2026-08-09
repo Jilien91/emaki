@@ -76,13 +76,19 @@ function fuzzyMatch(input, candidate){
 }
 
 function checkMeaning(userInput, meaning){
-  // Split the typed answer the same way we split the stored meaning, so
-  // "like, fond of" is checked as ["like","fond of"] against each accepted
-  // candidate rather than as one literal blob that matches nothing.
-  const inputCandidates = userInput.trim().toLowerCase().split(/[,/]/).map(s=>s.trim()).filter(Boolean);
-  if(inputCandidates.length===0) return false;
+  const whole = userInput.trim().toLowerCase().replace(/\s+/g, ' ');
+  if(!whole) return false;
   const correctCandidates = meaningCandidates(meaning);
-  return inputCandidates.some(input => correctCandidates.some(c => fuzzyMatch(input, c)));
+  // Try the whole answer first. This is what accepts an exact copy of a
+  // stored meaning whose own parentheses contain commas, e.g. typing
+  // "I (polite, general)" — splitting that on commas would match nothing.
+  if(correctCandidates.some(c => fuzzyMatch(whole, c))) return true;
+  // Otherwise treat it as a list of synonyms, so "like, fond of" is accepted
+  // for "fond of, liked". Every part must be a valid synonym — that keeps
+  // "he, cat" from passing for "he, him" on the strength of "he" alone.
+  const parts = whole.split(/[,/]/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length < 2) return false;
+  return parts.every(p => correctCandidates.some(c => fuzzyMatch(p, c)));
 }
 
 function checkReading(userInput, reading){
@@ -126,6 +132,16 @@ function dateKey(d){
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 function todayKey(){ return dateKey(); }
+
+// Step whole calendar days. Subtracting 86400000ms is not equivalent: on a
+// DST changeover day it can land back on the same date (verified in
+// Europe/London on 2026-10-25), which would double-count a streak day and
+// make "yesterday" resolve to today.
+function addDays(d, n){
+  const out = new Date(d.getTime());
+  out.setDate(out.getDate() + n);
+  return out;
+}
 
 function loadDailyLessons(){
   try{
@@ -217,11 +233,11 @@ function recordActivityToday(){
 function studyStreak(){
   const set = new Set(activityDates);
   let d = new Date();
-  if(!set.has(dateKey(d))){ d = new Date(d.getTime() - 86400000); }
+  if(!set.has(dateKey(d))){ d = addDays(d, -1); }
   let streak = 0;
   while(set.has(dateKey(d))){
     streak++;
-    d = new Date(d.getTime() - 86400000);
+    d = addDays(d, -1);
   }
   return streak;
 }
@@ -346,6 +362,7 @@ function submitQuizAnswer(){
   const item = VOCAB.find(v=>v.id===q.id);
   const input = document.getElementById('quizInput');
   const value = input ? input.value : '';
+  if(!value.trim()) return; // don't let a stray Enter count as a wrong answer
   const correct = q.type==='meaning' ? checkMeaning(value, item.meaning) : checkReading(value, item.reading);
   lessonState.showAnswer = true;
   lessonState.lastCorrect = correct;
@@ -422,6 +439,7 @@ function submitReviewAnswer(){
   const item = VOCAB.find(v=>v.id===currentReviewId);
   const input = document.getElementById('reviewInput');
   const value = input ? input.value : '';
+  if(!value.trim()) return; // don't let a stray Enter demote the item
   reviewGrade = checkMeaning(value, item.meaning);
   reviewLastInput = value;
   showAnswer = true;
@@ -441,6 +459,7 @@ function submitExtraStudyAnswer(){
   const item = VOCAB.find(v=>v.id===id);
   const input = document.getElementById('extraInput');
   const value = input ? input.value : '';
+  if(!value.trim()) return;
   extraStudyState.lastCorrect = checkMeaning(value, item.meaning);
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;
@@ -453,14 +472,30 @@ function advanceExtraStudy(){
   render();
 }
 
-function switchView(v){ view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; extraStudyState=null; render(); }
+function switchView(v){
+  // Session tally belongs to one sitting, so start it fresh each time the
+  // review screen is entered rather than letting it accumulate all page-load.
+  if(v==='review' && view!=='review'){ sessionCorrect=0; sessionTotal=0; }
+  view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; extraStudyState=null;
+  render();
+}
 
 function resetProgress(){
-  if(!confirm('Reset all progress? This clears every SRS level and cannot be undone.')) return;
+  if(!confirm('Reset all progress? This clears every SRS level, your recent mistakes, review history and study streak. It cannot be undone.')) return;
   progress = {};
+  mistakes = [];
+  activityDates = [];
+  reviewHistory = {};
+  dailyLessons = { date: todayKey(), count: 0 };
   sessionCorrect=0; sessionTotal=0;
+  lessonState = null;
+  extraStudyState = null;
   saveProgress();
-  render();
+  saveMistakes();
+  saveActivity();
+  saveReviewHistory();
+  saveDailyLessons();
+  switchView('dashboard');
 }
 
 function nav(active){
@@ -488,8 +523,7 @@ function renderDashboard(){
   const mistakeItems = mistakeIds.map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean);
 
   const todayCount = reviewsCompletedOn();
-  const yesterday = new Date(now() - 86400000);
-  const yesterdayCount = reviewsCompletedOn(yesterday);
+  const yesterdayCount = reviewsCompletedOn(addDays(new Date(), -1));
 
   const streak = studyStreak();
 
@@ -513,7 +547,7 @@ function renderDashboard(){
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
     ${mistakeItems.length===0 ? `<div class="empty" style="padding:16px 0;">No recent mistakes. Nice work.</div>` : `
-      ${mistakeItems.map(item=>`<div class="wordrow"><span class="w jp">${item.word}</span><span class="m">${escapeHtml(item.meaning)}</span></div>`).join('')}
+      ${mistakeItems.map(item=>`<div class="wordrow"><span class="w jp">${escapeHtml(item.word)}</span><span class="m">${escapeHtml(item.meaning)}</span></div>`).join('')}
       <button class="primary" style="margin-top:10px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
     `}
   </div>
@@ -588,13 +622,13 @@ function renderLessonStudy(){
   ${nav('lessons')}
   <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
   <div class="bigword" style="background:var(--genin-bg);color:var(--genin);">
-    ${item.word}
-    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${item.reading}</div>
+    ${escapeHtml(item.word)}
+    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
   </div>
-  <div class="field"><div class="k">Meaning</div><div class="v">${item.meaning}</div></div>
-  <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${item.mnemonic}</div></div>
-  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${item.notes}</div></div>` : ''}
-  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${item.sentence}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${item.sentence_meaning}</div></div>
+  <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
+  <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>
+  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
+  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   <div class="btnrow">
     ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
     <button class="primary" onclick="${isLast?'startQuiz()':'nextStudyItem()'}">${isLast?'Start quiz':'Next'}</button>
@@ -618,18 +652,18 @@ function renderLessonQuiz(){
     <span style="font-size:12px;color:var(--text-dim);">Quiz · ${quizQueue.length} left</span>
     <span class="pill" style="background:var(--genin-bg);color:var(--genin);">${label}</span>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
-  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
+  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!lessonState.showAnswer ? `
     <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
-      <div class="v ${q.type==='reading'?'jp':''}">${q.type==='meaning'?item.meaning:item.reading}</div>
+      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
     <button class="primary" onclick="answerQuizQuestion(${lessonState.lastCorrect})">Next</button>
   `}
   `;
@@ -710,20 +744,20 @@ function renderReview(){
     <span style="font-size:12px;color:var(--text-dim);">Session ${sessionCorrect}/${sessionTotal}</span>
     <span class="pill" style="background:var(--${TIER_COLOR(p.stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(p.stage)});">${STAGE_NAMES[p.stage]}</span>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
-  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
+  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!showAnswer ? `
     <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off">
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
-    <div class="field"><div class="k">Reading</div><div class="v jp">${item.reading}</div></div>
+    <div class="field"><div class="k">Reading</div><div class="v jp">${escapeHtml(item.reading)}</div></div>
     <div class="field result-${reviewGrade?'correct':'incorrect'}">
       <div class="k">${reviewGrade ? 'Correct' : 'Incorrect'}</div>
-      <div class="v">${item.meaning}</div>
+      <div class="v">${escapeHtml(item.meaning)}</div>
       ${!reviewGrade ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewLastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${settings.showSrsIndicator ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
     <button class="primary" onclick="answerReview(${item.id}, ${reviewGrade})">Next</button>
   `}
   `;
@@ -741,18 +775,18 @@ function renderExtraStudy(){
     <span style="font-size:12px;color:var(--text-dim);">Extra Study · ${extraStudyState.index+1} of ${extraStudyState.queue.length}</span>
     <button class="reset-link" onclick="switchView('dashboard')">End session</button>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${item.word}</div>
-  <div class="field"><div class="k">Example</div><div class="v jp">${item.sentence}</div></div>
+  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!extraStudyState.showAnswer ? `
     <input type="text" id="extraInput" placeholder="Type the meaning" autocomplete="off">
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
-      <div class="v">${item.meaning}</div>
+      <div class="v">${escapeHtml(item.meaning)}</div>
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${item.mnemonic}</div></div>
+    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
     <button class="primary" onclick="advanceExtraStudy()">Next</button>
   `}
   `;

@@ -10,13 +10,34 @@ use JSON::PP;
 
 my $json = JSON::PP->new->utf8(0);
 
+# The upstream deck is exported from Anki HTML, so some fields carry literal
+# "&nbsp;" entities (310 of them across 183 words). Rendered into innerHTML
+# they look like normal spaces, but answer grading compares against the raw
+# string — so "to&nbsp;believe" could never be matched by typing "to believe".
+# Normalize to plain spaces at build time.
+sub clean_text {
+    my ($s) = @_;
+    return $s unless defined $s && !ref $s;
+    $s =~ s/&nbsp;/ /g;
+    $s =~ s/\x{00A0}/ /g;
+    $s =~ s/[ \t]+/ /g;
+    $s =~ s/^\s+|\s+$//g;
+    return $s;
+}
+
 sub read_json {
     my ($path) = @_;
     open(my $fh, '<:encoding(UTF-8)', $path) or die "can't read $path: $!";
     local $/;
     my $raw = <$fh>;
     close $fh;
-    return $json->decode($raw);
+    my $data = $json->decode($raw);
+    # Clean on read so batch files and the full deck are normalized the same
+    # way before entries are matched up by word+reading+meaning.
+    for my $entry (@$data) {
+        $entry->{$_} = clean_text($entry->{$_}) for keys %$entry;
+    }
+    return $data;
 }
 
 my $full = read_json('raw/kaishi_1500_full.json');
