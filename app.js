@@ -112,10 +112,22 @@ function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
 
 // ---- Speech ---------------------------------------------------------------
 // Audio comes from the browser's own Japanese voice rather than shipped files.
+//
+// OFF for now. Handing the synthesiser a bare kanji makes it guess the reading,
+// and it guesses by frequency rather than by what the card teaches — 人 came
+// out as ひと on a card teaching じん, which trains the wrong reading. The
+// device voices also run fast enough to be hard to follow at 0.9x.
+//
+// Flip this to true to bring the whole feature back. The likely fix when we
+// return: speak item.reading (kana, unambiguous) instead of item.word, and
+// drop the default rate.
+const AUDIO_ENABLED = false;
+
 let jaVoice = null;
 
 function speechSupported(){
-  return typeof window.speechSynthesis !== 'undefined'
+  return AUDIO_ENABLED
+    && typeof window.speechSynthesis !== 'undefined'
     && typeof window.SpeechSynthesisUtterance !== 'undefined';
 }
 
@@ -887,6 +899,7 @@ function renderSettings(){
 }
 
 function renderAudioCard(){
+  if(!AUDIO_ENABLED) return ''; // feature parked; see AUDIO_ENABLED
   if(!speechSupported()){
     return `
     <div class="card" style="margin-bottom:16px;">
