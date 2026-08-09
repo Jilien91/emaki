@@ -76,9 +76,13 @@ function fuzzyMatch(input, candidate){
 }
 
 function checkMeaning(userInput, meaning){
-  const input = userInput.trim().toLowerCase();
-  if(!input) return false;
-  return meaningCandidates(meaning).some(c => fuzzyMatch(input, c));
+  // Split the typed answer the same way we split the stored meaning, so
+  // "like, fond of" is checked as ["like","fond of"] against each accepted
+  // candidate rather than as one literal blob that matches nothing.
+  const inputCandidates = userInput.trim().toLowerCase().split(/[,/]/).map(s=>s.trim()).filter(Boolean);
+  if(inputCandidates.length===0) return false;
+  const correctCandidates = meaningCandidates(meaning);
+  return inputCandidates.some(input => correctCandidates.some(c => fuzzyMatch(input, c)));
 }
 
 function checkReading(userInput, reading){
