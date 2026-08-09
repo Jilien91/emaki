@@ -11,6 +11,10 @@ const DEFAULT_SETTINGS = {
   showSrsIndicator: true
 };
 const MISTAKE_WINDOW_MS = 24*3600*1000;
+// Most-recent misses shown as tiles; the rest collapse into a "+N" chip so a
+// bad day doesn't turn the dashboard into a wall. Extra Study still drills
+// every one of them.
+const MISTAKE_TILE_LIMIT = 30;
 const STAGE_NAMES = ['New','Genin 1','Genin 2','Genin 3','Genin 4','Chunin 1','Chunin 2','Jonin','Anbu','Kage'];
 const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
 const TIER_COLOR = s => s===0?'new':s<=4?'genin':s<=6?'chunin':s===7?'jonin':s===8?'anbu':'kage';
@@ -31,10 +35,15 @@ let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer,
 let reviewState = null;
 let extraStudyState = null; // {queue:[{id,type}], index, showAnswer, lastCorrect, lastInput}
 
+// Escapes for both text and attribute contexts. Quotes matter because some
+// entries contain them (e.g. a sentence gloss with "He does tennis"), and an
+// unescaped one would terminate a title="..." attribute early. Quote
+// replacement runs after the element-based escaping so the ampersands it
+// introduces aren't escaped a second time.
 function escapeHtml(str){
   const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+  div.textContent = str == null ? '' : str;
+  return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 function levenshtein(a, b){
@@ -590,11 +599,14 @@ function renderDashboard(){
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
     ${mistakeItems.length===0 ? `<div class="empty" style="padding:16px 0;">No recent mistakes. Nice work.</div>` : `
-      ${mistakeItems.map(item=>`<div class="wordrow">
-        <span class="info"><span class="w jp">${escapeHtml(item.word)}</span><span class="m">${escapeHtml(item.meaning)}</span></span>
-        <span class="pill" style="background:var(--${TIER_COLOR(getEntry(item.id).stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(getEntry(item.id).stage)});">${STAGE_NAMES[getEntry(item.id).stage]}</span>
-      </div>`).join('')}
-      <button class="primary" style="margin-top:10px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
+      <div class="tilegrid">
+        ${mistakeItems.slice(0, MISTAKE_TILE_LIMIT).map(item=>{
+          const tier = TIER_COLOR(getEntry(item.id).stage);
+          return `<span class="tile" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});" title="${escapeHtml(item.reading + ' — ' + item.meaning)}">${escapeHtml(item.word)}</span>`;
+        }).join('')}
+        ${mistakeItems.length > MISTAKE_TILE_LIMIT ? `<span class="tile tile-more">+${mistakeItems.length - MISTAKE_TILE_LIMIT}</span>` : ''}
+      </div>
+      <button class="primary" style="margin-top:14px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
     `}
   </div>
   <div class="grid2">
