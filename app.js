@@ -19,19 +19,17 @@ let VOCAB = [];
 let progress = {};
 let settings = { ...DEFAULT_SETTINGS };
 let dailyLessons = { date: null, count: 0 };
-let mistakes = []; // [{id, timestamp}]
+let mistakes = []; // [{id, type:'meaning'|'reading', timestamp}]
 let activityDates = []; // ['YYYY-MM-DD', ...]
 let reviewHistory = {}; // {'YYYY-MM-DD': count}
 let storageOk = true;
 let view = 'dashboard';
-let currentReviewId = null;
-let showAnswer = false;
 let sessionCorrect = 0;
 let sessionTotal = 0;
 let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress, lastCorrect, lastInput}
-let reviewGrade = null;
-let reviewLastInput = '';
-let extraStudyState = null; // {queue:[ids], index, showAnswer, lastCorrect, lastInput}
+// {queue:[{id,type}], results:{id:{meaning,reading,missed}}, showAnswer, lastCorrect, lastInput}
+let reviewState = null;
+let extraStudyState = null; // {queue:[{id,type}], index, showAnswer, lastCorrect, lastInput}
 
 function escapeHtml(str){
   const div = document.createElement('div');
@@ -193,12 +191,14 @@ function pruneMistakes(){
   mistakes = mistakes.filter(m=>m.timestamp>=cutoff);
 }
 
-function recordMistake(id){
-  mistakes.push({id, timestamp: now()});
+function recordMistake(id, type){
+  mistakes.push({id, type: type || 'meaning', timestamp: now()});
   saveMistakes();
 }
 
-// Unique word ids with a mistake in the last 24h, most-recently-missed first.
+// Words missed in the last 24h, most recent first. A word is one mistake
+// whichever half of it you got wrong — meaning and reading are two halves of
+// the same item, not two separate things to get wrong.
 function recentMistakeIds(){
   pruneMistakes();
   const seen = new Set();
@@ -398,69 +398,111 @@ function computeReviewStage(stage, correct){
   return stage<=4 ? Math.max(1,stage-1) : Math.max(1,stage-2);
 }
 
-// Picks which due item to review next, per the review-ordering setting.
-function pickNextReview(due){
+// Orders the whole question queue per the review-ordering setting. Meaning
+// and reading questions stay interleaved across different words in every
+// mode — ordering only decides which items come earlier, never which half
+// of an item you get asked first.
+function orderReviewQueue(queue){
   if(settings.reviewOrder === 'genin-first'){
-    const genin = due.filter(v => TIER_COLOR(getEntry(v.id).stage) === 'genin');
-    const pool = genin.length > 0 ? genin : due;
-    return pool[Math.floor(Math.random()*pool.length)].id;
+    const isGenin = q => TIER_COLOR(getEntry(q.id).stage) === 'genin';
+    return shuffle(queue.filter(isGenin)).concat(shuffle(queue.filter(q=>!isGenin(q))));
   }
   if(settings.reviewOrder === 'lower-stage-first'){
-    let minStage = Infinity;
-    let candidates = [];
-    due.forEach(v=>{
-      const s = getEntry(v.id).stage;
-      if(s < minStage){ minStage = s; candidates = [v]; }
-      else if(s === minStage){ candidates.push(v); }
-    });
-    return candidates[Math.floor(Math.random()*candidates.length)].id;
+    // Shuffle first, then sort by stage: Array#sort is stable, so items
+    // sharing a stage keep their randomized order instead of deck order.
+    return shuffle(queue).sort((a,b)=>getEntry(a.id).stage - getEntry(b.id).stage);
   }
-  return due[Math.floor(Math.random()*due.length)].id; // shuffled
+  return shuffle(queue);
 }
 
-function answerReview(id, correct){
-  const p = getEntry(id);
-  const newStage = computeReviewStage(p.stage, correct);
+function buildReviewSession(){
+  const due = dueReviews();
+  if(due.length===0) return;
+  const results = {};
+  const queue = [];
+  due.forEach(v=>{
+    results[v.id] = { meaning:false, reading:false, missed:false };
+    queue.push({id:v.id, type:'meaning'});
+    queue.push({id:v.id, type:'reading'});
+  });
+  reviewState = { queue: orderReviewQueue(queue), results, showAnswer:false, lastCorrect:null, lastInput:'' };
+  sessionCorrect = 0;
+  sessionTotal = 0;
+}
+
+// An item's SRS stage only moves once both its meaning and reading have been
+// answered correctly, and it only moves up if neither was missed along the
+// way — same contract as WaniKani.
+function applyReviewResult(id, allCorrect){
+  const newStage = computeReviewStage(getEntry(id).stage, allCorrect);
   const nextReview = newStage===9 ? null : now() + INTERVAL_HOURS[newStage]*3600*1000;
   progress[id] = { stage:newStage, nextReview };
-  sessionTotal++;
-  if(correct) sessionCorrect++;
-  else recordMistake(id);
   saveProgress();
   recordActivityToday();
   recordReviewCompleted();
-  currentReviewId = null;
-  showAnswer = false;
-  reviewGrade = null;
-  render();
 }
 
 function submitReviewAnswer(){
-  const item = VOCAB.find(v=>v.id===currentReviewId);
+  const q = reviewState.queue[0];
+  const item = VOCAB.find(v=>v.id===q.id);
   const input = document.getElementById('reviewInput');
   const value = input ? input.value : '';
   if(!value.trim()) return; // don't let a stray Enter demote the item
-  reviewGrade = checkMeaning(value, item.meaning);
-  reviewLastInput = value;
-  showAnswer = true;
+  reviewState.lastCorrect = q.type==='meaning'
+    ? checkMeaning(value, item.meaning)
+    : checkReading(value, item.reading);
+  reviewState.lastInput = value;
+  reviewState.showAnswer = true;
+  render();
+}
+
+function advanceReview(){
+  const q = reviewState.queue.shift();
+  const res = reviewState.results[q.id];
+  sessionTotal++;
+  if(reviewState.lastCorrect){
+    sessionCorrect++;
+    res[q.type] = true;
+    if(res.meaning && res.reading) applyReviewResult(q.id, !res.missed);
+  }else{
+    if(!res[q.type+'Missed']){
+      res[q.type+'Missed'] = true;
+      res.missed = true;
+      recordMistake(q.id, q.type);
+    }
+    const insertAt = Math.min(reviewState.queue.length, 3);
+    reviewState.queue.splice(insertAt, 0, q);
+  }
+  reviewState.showAnswer = false;
+  reviewState.lastCorrect = null;
+  reviewState.lastInput = '';
   render();
 }
 
 function startExtraStudy(){
   const ids = recentMistakeIds();
   if(ids.length===0) return;
-  extraStudyState = { queue: shuffle(ids.slice()), index:0, showAnswer:false };
+  // Drill each missed word as a whole — both halves, interleaved — since a
+  // mistake is recorded against the word, not against one half of it.
+  const queue = [];
+  ids.forEach(id=>{
+    queue.push({id, type:'meaning'});
+    queue.push({id, type:'reading'});
+  });
+  extraStudyState = { queue: shuffle(queue), index:0, showAnswer:false, wordCount: ids.length };
   view = 'extrastudy';
   render();
 }
 
 function submitExtraStudyAnswer(){
-  const id = extraStudyState.queue[extraStudyState.index];
-  const item = VOCAB.find(v=>v.id===id);
+  const q = extraStudyState.queue[extraStudyState.index];
+  const item = VOCAB.find(v=>v.id===q.id);
   const input = document.getElementById('extraInput');
   const value = input ? input.value : '';
   if(!value.trim()) return;
-  extraStudyState.lastCorrect = checkMeaning(value, item.meaning);
+  extraStudyState.lastCorrect = q.type==='meaning'
+    ? checkMeaning(value, item.meaning)
+    : checkReading(value, item.reading);
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;
   render();
@@ -473,10 +515,11 @@ function advanceExtraStudy(){
 }
 
 function switchView(v){
-  // Session tally belongs to one sitting, so start it fresh each time the
-  // review screen is entered rather than letting it accumulate all page-load.
-  if(v==='review' && view!=='review'){ sessionCorrect=0; sessionTotal=0; }
-  view=v; currentReviewId=null; showAnswer=false; reviewGrade=null; extraStudyState=null;
+  view = v;
+  extraStudyState = null;
+  // Reviews run as a session; leaving and coming back resumes the same one,
+  // and a fresh session (with a fresh tally) is only built once it's done.
+  if(v==='review' && !reviewState) buildReviewSession();
   render();
 }
 
@@ -489,6 +532,7 @@ function resetProgress(){
   dailyLessons = { date: todayKey(), count: 0 };
   sessionCorrect=0; sessionTotal=0;
   lessonState = null;
+  reviewState = null;
   extraStudyState = null;
   saveProgress();
   saveMistakes();
@@ -519,8 +563,7 @@ function renderDashboard(){
   const lessonsAvailable = Math.min(newWords().length, remainingToday());
   const learnableCount = learnableWords().length;
 
-  const mistakeIds = recentMistakeIds();
-  const mistakeItems = mistakeIds.map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean);
+  const mistakeItems = recentMistakeIds().map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean);
 
   const todayCount = reviewsCompletedOn();
   const yesterdayCount = reviewsCompletedOn(addDays(new Date(), -1));
@@ -547,7 +590,10 @@ function renderDashboard(){
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
     ${mistakeItems.length===0 ? `<div class="empty" style="padding:16px 0;">No recent mistakes. Nice work.</div>` : `
-      ${mistakeItems.map(item=>`<div class="wordrow"><span class="w jp">${escapeHtml(item.word)}</span><span class="m">${escapeHtml(item.meaning)}</span></div>`).join('')}
+      ${mistakeItems.map(item=>`<div class="wordrow">
+        <span class="info"><span class="w jp">${escapeHtml(item.word)}</span><span class="m">${escapeHtml(item.meaning)}</span></span>
+        <span class="pill" style="background:var(--${TIER_COLOR(getEntry(item.id).stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(getEntry(item.id).stage)});">${STAGE_NAMES[getEntry(item.id).stage]}</span>
+      </div>`).join('')}
       <button class="primary" style="margin-top:10px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
     `}
   </div>
@@ -646,20 +692,21 @@ function renderLessonQuiz(){
   const q = quizQueue[0];
   const item = VOCAB.find(v=>v.id===q.id);
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
+  const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
   return `
   ${nav('lessons')}
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
     <span style="font-size:12px;color:var(--text-dim);">Quiz · ${quizQueue.length} left</span>
-    <span class="pill" style="background:var(--genin-bg);color:var(--genin);">${label}</span>
+    <span class="pill ${qClass}">${label}</span>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!lessonState.showAnswer ? `
     <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
+      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
       <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
@@ -726,64 +773,84 @@ function renderSettings(){
 }
 
 function renderReview(){
-  const due = dueReviews();
-  if(due.length===0){
+  if(reviewState && reviewState.queue.length===0){
+    const results = Object.values(reviewState.results);
+    const total = results.length;
+    const clean = results.filter(r=>!r.missed).length;
+    reviewState = null;
+    return `${nav('review')}<div class="empty">Review session complete — ${total} item${total===1?'':'s'} reviewed.<br>${clean} of ${total} answered correctly first time.</div>`;
+  }
+  if(!reviewState){
     const upcoming = nextUpcoming();
     return `${nav('review')}<div class="empty">No reviews due right now.${upcoming?`<br>Next batch unlocks in ${humanizeDuration(upcoming-now())}.`:'<br>Complete a lesson first.'}</div>`;
   }
-  if(currentReviewId===null){
-    currentReviewId = pickNextReview(due);
-    showAnswer = false;
-  }
-  const item = VOCAB.find(v=>v.id===currentReviewId);
+  const q = reviewState.queue[0];
+  const item = VOCAB.find(v=>v.id===q.id);
   const p = getEntry(item.id);
-  const newStagePreview = showAnswer ? computeReviewStage(p.stage, reviewGrade) : null;
+  const res = reviewState.results[item.id];
+  const label = q.type==='meaning' ? 'Meaning' : 'Reading';
+  const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
+  const answer = q.type==='meaning' ? item.meaning : item.reading;
+  // Only preview the stage change on the question that completes the item —
+  // before that nothing is committed, so promising a change would be a lie.
+  const completesItem = reviewState.showAnswer && reviewState.lastCorrect &&
+    (q.type==='meaning' ? res.reading : res.meaning);
+  const newStagePreview = completesItem ? computeReviewStage(p.stage, !res.missed) : null;
   return `
   ${nav('review')}
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-    <span style="font-size:12px;color:var(--text-dim);">Session ${sessionCorrect}/${sessionTotal}</span>
-    <span class="pill" style="background:var(--${TIER_COLOR(p.stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(p.stage)});">${STAGE_NAMES[p.stage]}</span>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;">
+    <span style="font-size:12px;color:var(--text-dim);">Session ${sessionCorrect}/${sessionTotal} · ${reviewState.queue.length} left</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <span class="pill" style="background:var(--${TIER_COLOR(p.stage)}-bg,var(--surface-2));color:var(--${TIER_COLOR(p.stage)});">${STAGE_NAMES[p.stage]}</span>
+      <span class="pill ${qClass}">${label}</span>
+    </span>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
-  ${!showAnswer ? `
-    <input type="text" id="reviewInput" placeholder="Type the meaning" autocomplete="off">
+  ${!reviewState.showAnswer ? `
+    <input type="text" id="reviewInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
-    <div class="field"><div class="k">Reading</div><div class="v jp">${escapeHtml(item.reading)}</div></div>
-    <div class="field result-${reviewGrade?'correct':'incorrect'}">
-      <div class="k">${reviewGrade ? 'Correct' : 'Incorrect'}</div>
-      <div class="v">${escapeHtml(item.meaning)}</div>
-      ${!reviewGrade ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewLastInput) || '(nothing)'}</div>` : ''}
+    <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
+      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
+      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
+      ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${settings.showSrsIndicator ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
+    ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
     <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
-    <button class="primary" onclick="answerReview(${item.id}, ${reviewGrade})">Next</button>
+    <button class="primary" onclick="advanceReview()">Next</button>
   `}
   `;
 }
 
 function renderExtraStudy(){
   if(!extraStudyState || extraStudyState.index >= extraStudyState.queue.length){
-    const done = extraStudyState ? extraStudyState.queue.length : 0;
+    const done = extraStudyState ? extraStudyState.wordCount : 0;
     extraStudyState = null;
     return `<div class="empty">Extra study complete — ${done} word${done===1?'':'s'} practiced.<br>This doesn't change their SRS timing, just extra reps.</div><div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button></div>`;
   }
-  const item = VOCAB.find(v=>v.id===extraStudyState.queue[extraStudyState.index]);
+  const q = extraStudyState.queue[extraStudyState.index];
+  const item = VOCAB.find(v=>v.id===q.id);
+  const label = q.type==='meaning' ? 'Meaning' : 'Reading';
+  const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
+  const answer = q.type==='meaning' ? item.meaning : item.reading;
   return `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;">
     <span style="font-size:12px;color:var(--text-dim);">Extra Study · ${extraStudyState.index+1} of ${extraStudyState.queue.length}</span>
-    <button class="reset-link" onclick="switchView('dashboard')">End session</button>
+    <span style="display:flex;align-items:center;gap:8px;">
+      <span class="pill ${qClass}">${label}</span>
+      <button class="reset-link" onclick="switchView('dashboard')">End session</button>
+    </span>
   </div>
-  <div class="bigword" style="background:var(--surface-2);">${escapeHtml(item.word)}</div>
+  <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!extraStudyState.showAnswer ? `
-    <input type="text" id="extraInput" placeholder="Type the meaning" autocomplete="off">
+    <input type="text" id="extraInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'}</div>
-      <div class="v">${escapeHtml(item.meaning)}</div>
+      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
+      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
@@ -812,17 +879,32 @@ function render(){
     </header>
     ${body}
   `;
-  const reviewInput = document.getElementById('reviewInput');
-  const quizInput = document.getElementById('quizInput');
-  const extraInput = document.getElementById('extraInput');
-  const input = reviewInput || quizInput || extraInput;
-  if(input) input.focus();
-  if(quizInput && lessonState && lessonState.phase==='quiz' && lessonState.quizQueue.length>0){
-    const currentQ = lessonState.quizQueue[0];
-    if(currentQ.type==='reading' && window.wanakana){
-      window.wanakana.bind(quizInput, { IMEMode: true });
+  const input = document.getElementById('reviewInput')
+    || document.getElementById('quizInput')
+    || document.getElementById('extraInput');
+  if(input){
+    input.focus();
+    // Reading questions get romaji->kana conversion so no OS-level Japanese
+    // IME is needed. Reviews and extra study ask readings too now, not just
+    // the lesson quiz.
+    if(currentQuestionType()==='reading' && window.wanakana){
+      window.wanakana.bind(input, { IMEMode: true });
     }
   }
+}
+
+// Which half of an item the on-screen question is asking, if any.
+function currentQuestionType(){
+  if(view==='lessons' && lessonState && lessonState.phase==='quiz' && lessonState.quizQueue.length>0){
+    return lessonState.quizQueue[0].type;
+  }
+  if(view==='review' && reviewState && reviewState.queue.length>0){
+    return reviewState.queue[0].type;
+  }
+  if(view==='extrastudy' && extraStudyState && extraStudyState.index < extraStudyState.queue.length){
+    return extraStudyState.queue[extraStudyState.index].type;
+  }
+  return null;
 }
 
 // Capture phase so this runs before wanakana's own keydown handling on
@@ -839,14 +921,14 @@ document.addEventListener('keydown', (e)=>{
       e.preventDefault();
       answerQuizQuestion(lessonState.lastCorrect);
     }
-  }else if(view==='review' && currentReviewId!==null){
-    if(!showAnswer && document.getElementById('reviewInput')){
+  }else if(view==='review' && reviewState && reviewState.queue.length>0){
+    if(!reviewState.showAnswer && document.getElementById('reviewInput')){
       e.preventDefault();
       e.stopPropagation();
       submitReviewAnswer();
-    }else if(showAnswer){
+    }else if(reviewState.showAnswer){
       e.preventDefault();
-      answerReview(currentReviewId, reviewGrade);
+      advanceReview();
     }
   }else if(view==='extrastudy' && extraStudyState){
     if(!extraStudyState.showAnswer && document.getElementById('extraInput')){
