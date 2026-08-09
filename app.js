@@ -104,6 +104,10 @@ function checkReading(userInput, reading){
   return reading.split('・').map(s=>s.trim()).includes(input);
 }
 
+// sync.js is optional — if it failed to load (offline, CDN blocked, or the
+// user never set sync up) the app must carry on as a local-only tool.
+function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
+
 function loadProgress(){
   try{
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -121,6 +125,7 @@ function saveProgress(){
   }catch(e){
     storageOk = false;
   }
+  flagSync();
 }
 
 function loadSettings(){
@@ -132,6 +137,7 @@ function loadSettings(){
 
 function saveSettings(){
   try{ window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }catch(e){}
+  flagSync();
 }
 
 function dateKey(d){
@@ -160,6 +166,7 @@ function loadDailyLessons(){
 
 function saveDailyLessons(){
   try{ window.localStorage.setItem(DAILY_KEY, JSON.stringify(dailyLessons)); }catch(e){}
+  flagSync();
 }
 
 function incrementDailyLessons(){
@@ -193,6 +200,7 @@ function loadMistakes(){
 
 function saveMistakes(){
   try{ window.localStorage.setItem(MISTAKES_KEY, JSON.stringify(mistakes)); }catch(e){}
+  flagSync();
 }
 
 function pruneMistakes(){
@@ -227,6 +235,7 @@ function loadActivity(){
 
 function saveActivity(){
   try{ window.localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activityDates)); }catch(e){}
+  flagSync();
 }
 
 function recordActivityToday(){
@@ -260,6 +269,7 @@ function loadReviewHistory(){
 
 function saveReviewHistory(){
   try{ window.localStorage.setItem(REVIEW_HISTORY_KEY, JSON.stringify(reviewHistory)); }catch(e){}
+  flagSync();
 }
 
 function recordReviewCompleted(){
@@ -778,8 +788,42 @@ function renderSettings(){
     </div>
     <button class="primary" onclick="saveReviewSettings()">Save</button>
   </div>
+  ${renderAccountCard()}
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
+  </div>
+  `;
+}
+
+function renderAccountCard(){
+  // sync.js is optional; degrade to a plain note rather than offering a button
+  // that would throw.
+  if(typeof signInWithEmail !== 'function'){
+    return `
+    <div class="card" style="margin-bottom:16px;">
+      <div class="section-title">Sync</div>
+      <div class="settings-desc">Sync is unavailable right now — progress is being saved to this device only.</div>
+    </div>`;
+  }
+  const notice = typeof syncNotice === 'string' && syncNotice
+    ? `<p class="forecast" style="text-align:center;margin-top:12px;">${escapeHtml(syncNotice)}</p>` : '';
+  const signedIn = typeof syncUser !== 'undefined' && syncUser;
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Sync</div>
+    ${signedIn ? `
+      <div class="settings-row">
+        <div class="settings-desc">Signed in as <b>${escapeHtml(syncUser.email || '')}</b>. Progress syncs across any device you sign in on.</div>
+      </div>
+      <button class="primary" onclick="signOutSync()">Sign out</button>
+    ` : `
+      <div class="settings-row">
+        <div class="settings-desc">Sign in to keep progress in step across devices. We'll email you a link — no password to remember. Without this, progress stays in this browser only.</div>
+        <input type="email" id="syncEmailInput" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <button class="primary" onclick="signInWithEmail()">Email me a sign-in link</button>
+    `}
+    ${notice}
   </div>
   `;
 }
@@ -969,6 +1013,10 @@ async function init(){
     return;
   }
   render();
+  // Sync is best-effort and must never block the app from being usable.
+  if(typeof initSync === 'function'){
+    initSync().catch(()=>{});
+  }
 }
 
 init();
