@@ -95,11 +95,11 @@ button.primary:hover{opacity:0.9;}
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
 }
 .btnrow button.secondary:hover{background:var(--border);}
-input[type=text],input[type=number],select{
+input[type=text],input[type=number],input[type=email],select{
   width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border-strong);
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:15px;margin-bottom:10px;
 }
-input[type=text]:focus,input[type=number]:focus,select:focus{outline:none;border-color:var(--text-dim);}
+input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:focus{outline:none;border-color:var(--text-dim);}
 .settings-row{margin-bottom:18px;}
 .settings-row:last-of-type{margin-bottom:14px;}
 .settings-label{font-size:14px;font-weight:600;margin-bottom:4px;}
