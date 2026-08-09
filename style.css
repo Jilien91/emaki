@@ -88,13 +88,15 @@ button.primary:hover{opacity:0.9;}
 .field.result-correct .k{color:var(--success);}
 .field.result-incorrect{border:1px solid var(--danger);background:rgba(224,92,92,0.12);}
 .field.result-incorrect .k{color:var(--danger);}
+button.secondary{
+  width:100%;padding:13px;border-radius:10px;border:1px solid var(--border-strong);
+  background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:14px;font-weight:600;
+  cursor:pointer;margin-bottom:10px;
+}
+button.secondary:hover{background:var(--border);}
 .btnrow{display:flex;gap:10px;}
 .btnrow button.primary{width:auto;flex:1;}
-.btnrow button.secondary{
-  flex:0 0 auto;padding:13px 20px;border-radius:10px;border:1px solid var(--border-strong);
-  background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
-}
-.btnrow button.secondary:hover{background:var(--border);}
+.btnrow button.secondary{width:auto;flex:0 0 auto;padding:13px 20px;margin-bottom:0;}
 input[type=text],input[type=number],input[type=email],select{
   width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border-strong);
   background:var(--surface-2);color:var(--text);font-family:'Inter';font-size:15px;margin-bottom:10px;

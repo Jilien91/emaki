@@ -10,7 +10,8 @@ const DEFAULT_SETTINGS = {
   reviewOrder: 'shuffled',  // 'shuffled' | 'genin-first' | 'lower-stage-first'
   showSrsIndicator: true,
   speechRate: 0.9,          // a touch under natural pace reads clearer
-  autoPlayLessonAudio: true
+  autoPlayLessonAudio: true,
+  hideAnswerOnMistake: true // make yourself recall it before it's handed over
 };
 const MISTAKE_WINDOW_MS = 24*3600*1000;
 // Most-recent misses shown as tiles; the rest collapse into a "+N" chip so a
@@ -497,8 +498,10 @@ function saveLessonSettings(){
 function saveReviewSettings(){
   const indicatorEl = document.getElementById('srsIndicatorInput');
   const orderEl = document.getElementById('reviewOrderInput');
+  const hideEl = document.getElementById('hideAnswerInput');
   settings.showSrsIndicator = indicatorEl.value === 'yes';
   settings.reviewOrder = orderEl.value;
+  settings.hideAnswerOnMistake = hideEl.value === 'manual';
   saveSettings();
   switchView('dashboard');
 }
@@ -563,6 +566,16 @@ function applyReviewResult(id, allCorrect){
   recordReviewCompleted();
 }
 
+// After a wrong answer the correct one stays hidden until asked for, so the
+// recall attempt isn't short-circuited. Anything that would give it away —
+// the mnemonic, the sentence translation — is withheld along with it.
+function answerVisible(state){
+  return state.lastCorrect || state.revealed || !settings.hideAnswerOnMistake;
+}
+
+function revealReviewAnswer(){ reviewState.revealed = true; render(); }
+function revealExtraStudyAnswer(){ extraStudyState.revealed = true; render(); }
+
 function submitReviewAnswer(){
   const q = reviewState.queue[0];
   const item = VOCAB.find(v=>v.id===q.id);
@@ -574,6 +587,7 @@ function submitReviewAnswer(){
     : checkReading(value, item.reading);
   reviewState.lastInput = value;
   reviewState.showAnswer = true;
+  reviewState.revealed = false;
   render();
 }
 
@@ -597,6 +611,7 @@ function advanceReview(){
   reviewState.showAnswer = false;
   reviewState.lastCorrect = null;
   reviewState.lastInput = '';
+  reviewState.revealed = false;
   render();
 }
 
@@ -626,12 +641,14 @@ function submitExtraStudyAnswer(){
     : checkReading(value, item.reading);
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;
+  extraStudyState.revealed = false;
   render();
 }
 
 function advanceExtraStudy(){
   extraStudyState.index++;
   extraStudyState.showAnswer = false;
+  extraStudyState.revealed = false;
   render();
 }
 
@@ -876,6 +893,14 @@ function renderSettings(){
       </select>
     </div>
     <div class="settings-row">
+      <div class="settings-label">Reveal the answer after a mistake</div>
+      <div class="settings-desc">"Only when asked" keeps the correct answer, mnemonic and sentence translation hidden behind a button, so you get a chance to recall it yourself first.</div>
+      <select id="hideAnswerInput">
+        <option value="manual" ${settings.hideAnswerOnMistake?'selected':''}>Only when asked</option>
+        <option value="auto" ${!settings.hideAnswerOnMistake?'selected':''}>Straight away</option>
+      </select>
+    </div>
+    <div class="settings-row">
       <div class="settings-label">Review ordering</div>
       <div class="settings-desc">
         <b>Shuffled</b> — random order.<br>
@@ -1017,13 +1042,17 @@ function renderReview(){
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
-      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
-      ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
+      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      ${answerVisible(reviewState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
+      ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(reviewState)?'margin-top:6px;':''}">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
-    <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div></div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ${answerVisible(reviewState) ? `
+      <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div></div>
+      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ` : `
+      <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
+    `}
     <button class="primary" onclick="advanceReview()">Next</button>
   `}
   `;
@@ -1055,11 +1084,15 @@ function renderExtraStudy(){
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
-      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
-      ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
+      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(extraStudyState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      ${answerVisible(extraStudyState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
+      ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ${answerVisible(extraStudyState) ? `
+      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ` : `
+      <button class="secondary" onclick="revealExtraStudyAnswer()">Show answer</button>
+    `}
     <button class="primary" onclick="advanceExtraStudy()">Next</button>
   `}
   `;
