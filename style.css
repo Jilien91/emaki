@@ -110,6 +110,15 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   transition:background .15s,color .15s;
 }
 .icon-btn:hover{background:var(--surface-2);color:var(--text);}
+.audio-btn{
+  border:none;background:none;cursor:pointer;padding:0 0 0 8px;
+  font-size:15px;line-height:1;opacity:0.65;vertical-align:middle;
+  transition:opacity .15s;
+}
+.audio-btn:hover{opacity:1;}
+.audio-btn:active{opacity:0.5;}
+.word-line{display:inline-flex;align-items:center;justify-content:center;gap:2px;}
+.word-line .audio-btn{font-size:18px;}
 .empty{color:var(--text-dim);font-size:14px;padding:40px 20px;text-align:center;line-height:1.6;}
 .forecast{font-size:12px;color:var(--text-faint);margin-top:6px;}
 .footer-note{font-size:11px;color:var(--text-faint);margin-top:24px;line-height:1.6;text-align:center;}

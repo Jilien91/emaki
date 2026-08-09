@@ -8,7 +8,9 @@ const DEFAULT_SETTINGS = {
   dailyNewLimit: 20,        // 0 = unlimited
   lessonBatchSize: 5,
   reviewOrder: 'shuffled',  // 'shuffled' | 'genin-first' | 'lower-stage-first'
-  showSrsIndicator: true
+  showSrsIndicator: true,
+  speechRate: 0.9,          // a touch under natural pace reads clearer
+  autoPlayLessonAudio: true
 };
 const MISTAKE_WINDOW_MS = 24*3600*1000;
 // Most-recent misses shown as tiles; the rest collapse into a "+N" chip so a
@@ -107,6 +109,69 @@ function checkReading(userInput, reading){
 // sync.js is optional — if it failed to load (offline, CDN blocked, or the
 // user never set sync up) the app must carry on as a local-only tool.
 function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
+
+// ---- Speech ---------------------------------------------------------------
+// Audio comes from the browser's own Japanese voice rather than shipped files.
+let jaVoice = null;
+
+function speechSupported(){
+  return typeof window.speechSynthesis !== 'undefined'
+    && typeof window.SpeechSynthesisUtterance !== 'undefined';
+}
+
+// Voices load asynchronously in most browsers, so this is re-run on the
+// voiceschanged event as well as at startup.
+function pickJapaneseVoice(){
+  if(!speechSupported()) return null;
+  const voices = window.speechSynthesis.getVoices() || [];
+  const ja = voices.filter(v => (v.lang||'').toLowerCase().replace('_','-').startsWith('ja'));
+  if(ja.length===0){ jaVoice = null; return null; }
+  // Prefer a voice the platform marks as local: network voices cut out offline
+  // and lag behind the tap that triggered them.
+  jaVoice = ja.find(v=>v.localService) || ja[0];
+  return jaVoice;
+}
+
+function initSpeech(){
+  if(!speechSupported()) return;
+  pickJapaneseVoice();
+  window.speechSynthesis.onvoiceschanged = ()=>{
+    const had = !!jaVoice;
+    pickJapaneseVoice();
+    // The audio buttons are hidden until a voice exists, so repaint once one
+    // turns up — otherwise they'd stay hidden until the next navigation.
+    if(!had && jaVoice && document.getElementById('root')) render();
+  };
+}
+
+function canSpeak(){ return speechSupported() && !!jaVoice; }
+
+function speakJa(text){
+  if(!canSpeak() || !text) return;
+  try{
+    window.speechSynthesis.cancel(); // don't queue up behind a previous tap
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = jaVoice;
+    u.lang = jaVoice.lang || 'ja-JP';
+    u.rate = settings.speechRate;
+    window.speechSynthesis.speak(u);
+  }catch(e){ /* speech is a nicety; never let it break a review */ }
+}
+
+function speakWord(id){
+  const item = VOCAB.find(v=>v.id===id);
+  if(item) speakJa(item.word);
+}
+function speakSentence(id){
+  const item = VOCAB.find(v=>v.id===id);
+  if(item) speakJa(item.sentence);
+}
+
+// Small speaker button; renders to nothing when no Japanese voice is installed.
+function audioBtn(fn, id, label){
+  if(!canSpeak()) return '';
+  return `<button class="audio-btn" onclick="event.stopPropagation();${fn}(${id})" title="${label}" aria-label="${label}">🔊</button>`;
+}
 
 function loadProgress(){
   try{
@@ -335,15 +400,29 @@ function startLessonBatch(){
   if(batchSize===0) return;
   lessonState = { batch: pending.slice(0,batchSize).map(v=>v.id), phase:'study', studyIndex:0, showAnswer:false };
   render();
+  autoPlayStudyWord();
+}
+
+// Called after the click that advanced the card, so browsers count it as
+// user-initiated and don't block the audio.
+function autoPlayStudyWord(){
+  if(!settings.autoPlayLessonAudio) return;
+  if(!lessonState || lessonState.phase!=='study') return;
+  speakWord(lessonState.batch[lessonState.studyIndex]);
 }
 
 function nextStudyItem(){
   lessonState.studyIndex++;
   render();
+  autoPlayStudyWord();
 }
 
 function prevStudyItem(){
-  if(lessonState.studyIndex>0){ lessonState.studyIndex--; render(); }
+  if(lessonState.studyIndex>0){
+    lessonState.studyIndex--;
+    render();
+    autoPlayStudyWord();
+  }
 }
 
 function startQuiz(){
@@ -408,6 +487,17 @@ function saveReviewSettings(){
   const orderEl = document.getElementById('reviewOrderInput');
   settings.showSrsIndicator = indicatorEl.value === 'yes';
   settings.reviewOrder = orderEl.value;
+  saveSettings();
+  switchView('dashboard');
+}
+
+function saveAudioSettings(){
+  const autoEl = document.getElementById('autoPlayInput');
+  const rateEl = document.getElementById('speechRateInput');
+  settings.autoPlayLessonAudio = autoEl.value === 'yes';
+  let rate = parseFloat(rateEl.value);
+  if(isNaN(rate)) rate = DEFAULT_SETTINGS.speechRate;
+  settings.speechRate = Math.min(1.5, Math.max(0.5, rate));
   saveSettings();
   switchView('dashboard');
 }
@@ -690,13 +780,13 @@ function renderLessonStudy(){
   ${nav('lessons')}
   <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
   <div class="bigword" style="background:var(--genin-bg);color:var(--genin);">
-    ${escapeHtml(item.word)}
+    <span class="word-line">${escapeHtml(item.word)}${audioBtn('speakWord', item.id, 'Play word')}</span>
     <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>
   ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
-  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
+  <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   <div class="btnrow">
     ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
     <button class="primary" onclick="${isLast?'startQuiz()':'nextStudyItem()'}">${isLast?'Start quiz':'Next'}</button>
@@ -728,7 +818,7 @@ function renderLessonQuiz(){
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
+      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
       <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
@@ -788,9 +878,55 @@ function renderSettings(){
     </div>
     <button class="primary" onclick="saveReviewSettings()">Save</button>
   </div>
+  ${renderAudioCard()}
   ${renderAccountCard()}
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
+  </div>
+  `;
+}
+
+function renderAudioCard(){
+  if(!speechSupported()){
+    return `
+    <div class="card" style="margin-bottom:16px;">
+      <div class="section-title">Audio</div>
+      <div class="settings-desc">This browser doesn't support speech synthesis, so audio is unavailable.</div>
+    </div>`;
+  }
+  if(!jaVoice){
+    return `
+    <div class="card" style="margin-bottom:16px;">
+      <div class="section-title">Audio</div>
+      <div class="settings-desc">No Japanese voice is installed on this device, so audio buttons are hidden. On Windows add one under Settings → Time &amp; language → Language &amp; region → add Japanese. iOS and Android generally ship one already.</div>
+    </div>`;
+  }
+  const rates = [0.6,0.7,0.8,0.9,1.0,1.1,1.2];
+  if(!rates.includes(settings.speechRate)) rates.push(settings.speechRate);
+  rates.sort((a,b)=>a-b);
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Audio</div>
+    <div class="settings-row">
+      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered — never on the question itself.</div>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Play the word automatically in lessons</div>
+      <select id="autoPlayInput">
+        <option value="yes" ${settings.autoPlayLessonAudio?'selected':''}>Yes</option>
+        <option value="no" ${!settings.autoPlayLessonAudio?'selected':''}>No</option>
+      </select>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Speaking speed</div>
+      <select id="speechRateInput">
+        ${rates.map(r=>`<option value="${r}" ${settings.speechRate===r?'selected':''}>${r.toFixed(1)}×${r===0.9?' (default)':''}</option>`).join('')}
+      </select>
+    </div>
+    <button class="primary" onclick="saveAudioSettings()">Save</button>
+    <p class="forecast" style="text-align:center;margin-top:12px;">
+      <button class="reset-link" onclick="speakJa('日本語を勉強しています。')">Play a test phrase</button>
+    </p>
   </div>
   `;
 }
@@ -868,11 +1004,12 @@ function renderReview(){
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
+      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
       <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
       ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
+    <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div></div>
     <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
     <button class="primary" onclick="advanceReview()">Next</button>
   `}
@@ -905,7 +1042,7 @@ function renderExtraStudy(){
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}</div>
+      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
       <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
@@ -1005,6 +1142,7 @@ async function init(){
   loadMistakes();
   loadActivity();
   loadReviewHistory();
+  initSpeech();
   try{
     const res = await fetch('data/vocab.json');
     VOCAB = await res.json();
