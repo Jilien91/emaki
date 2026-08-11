@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+
+# LibreOffice writes a lock file next to any open document
+.~lock.*#

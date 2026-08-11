@@ -851,7 +851,19 @@ function renderLessonQuiz(){
   if(quizQueue.length===0){
     const batchLen = lessonState.batch.length;
     lessonState = null;
-    return `${nav('lessons')}<div class="empty">Lesson batch complete — ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>`;
+    // Offer the next batch here rather than making you walk back out to the
+    // Lessons tab to start it again.
+    const next = plannedLessonBatchSize();
+    let follow;
+    if(next > 0){
+      follow = `<button class="primary" onclick="startLessonBatch()">Study the next ${next}</button>
+        <div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="switchView('dashboard')">That's enough for now</button></div>`;
+    }else if(remainingToday() === 0){
+      follow = `<p class="forecast" style="text-align:center;">That's your ${settings.dailyNewLimit} new words for today. Come back tomorrow, or raise the limit in <span style="text-decoration:underline;cursor:pointer;" onclick="switchView('settings')">Settings</span>.</p>`;
+    }else{
+      follow = `<p class="forecast" style="text-align:center;">No more words are ready to learn yet.</p>`;
+    }
+    return `${nav('lessons')}<div class="empty">Lesson batch complete — ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>${follow}`;
   }
   const q = quizQueue[0];
   const item = VOCAB.find(v=>v.id===q.id);
