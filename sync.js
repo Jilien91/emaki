@@ -62,7 +62,8 @@ function localSnapshot(){
     mistakes: mistakes,
     activity_dates: activityDates,
     review_history: reviewHistory,
-    daily_lessons: dailyLessons
+    daily_lessons: dailyLessons,
+    streak_saves: streakSaves
   };
 }
 
@@ -73,12 +74,15 @@ function applySnapshot(row){
   activityDates  = row.activity_dates || [];
   reviewHistory  = row.review_history || {};
   dailyLessons   = row.daily_lessons  || { date: todayKey(), count: 0 };
+  if(row.streak_saves && typeof row.streak_saves.count === 'number'){
+    streakSaves = row.streak_saves;
+  }
   if(dailyLessons.date !== todayKey()) dailyLessons = { date: todayKey(), count: 0 };
   // Persist locally too, so the app still works offline / signed out later.
   applyingRemote = true;
   try{
     saveProgress(); saveSettings(); saveMistakes(); saveActivity();
-    saveReviewHistory(); saveDailyLessons();
+    saveStreakSaves(); saveReviewHistory(); saveDailyLessons();
   }finally{
     applyingRemote = false;
   }
@@ -151,7 +155,14 @@ async function pullRemote(){
 
 async function pushRemote(){
   const payload = Object.assign({ user_id: syncUser.id }, localSnapshot());
-  const { error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' });
+  let { error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' });
+  // streak_saves was added after the original schema. Until the ALTER TABLE in
+  // supabase/schema.sql has been run, drop that one field and sync the rest
+  // rather than letting the whole push fail.
+  if(error && /streak_saves/.test(error.message || '')){
+    delete payload.streak_saves;
+    ({ error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' }));
+  }
   if(error) throw error;
   clearDirty();
 }

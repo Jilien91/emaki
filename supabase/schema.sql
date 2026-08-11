@@ -10,8 +10,13 @@ create table if not exists public.user_state (
   activity_dates jsonb not null default '[]'::jsonb,
   review_history jsonb not null default '{}'::jsonb,
   daily_lessons  jsonb not null default '{}'::jsonb,
+  streak_saves   jsonb not null default '{}'::jsonb,
   updated_at     timestamptz not null default now()
 );
+
+-- Added after the original schema; safe to run against an existing table.
+alter table public.user_state
+  add column if not exists streak_saves jsonb not null default '{}'::jsonb;
 
 -- The publishable key ships inside the client, so anyone can read it out of
 -- the page source. Row-level security is the only thing keeping one account's

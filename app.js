@@ -13,6 +13,11 @@ const DEFAULT_SETTINGS = {
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true // make yourself recall it before it's handed over
 };
+const STREAK_SAVE_KEY = 'kaishi-streak-saves';
+// One kunai in hand at a time, replenishing every 3 days. A missed day spends
+// it and the streak carries on; miss two in a row and it breaks.
+const STREAK_SAVE_MAX = 1;
+const STREAK_SAVE_DAYS = 3;
 const MISTAKE_WINDOW_MS = 24*3600*1000;
 // Most-recent misses shown as tiles; the rest collapse into a "+N" chip so a
 // bad day doesn't turn the dashboard into a wall. Extra Study still drills
@@ -29,6 +34,7 @@ let settings = { ...DEFAULT_SETTINGS };
 let dailyLessons = { date: null, count: 0 };
 let mistakes = []; // [{id, type:'meaning'|'reading', timestamp}]
 let activityDates = []; // ['YYYY-MM-DD', ...]
+let streakSaves = { count: STREAK_SAVE_MAX, lastEarned: null, savedDates: [] };
 let reviewHistory = {}; // {'YYYY-MM-DD': count}
 let storageOk = true;
 let view = 'dashboard';
@@ -325,10 +331,78 @@ function recordActivityToday(){
   }
 }
 
+function loadStreakSaves(){
+  try{
+    const raw = window.localStorage.getItem(STREAK_SAVE_KEY);
+    if(raw){ streakSaves = Object.assign({count:STREAK_SAVE_MAX, lastEarned:null, savedDates:[]}, JSON.parse(raw)); }
+  }catch(e){}
+  if(!streakSaves.lastEarned) streakSaves.lastEarned = todayKey();
+}
+
+function saveStreakSaves(){
+  try{ window.localStorage.setItem(STREAK_SAVE_KEY, JSON.stringify(streakSaves)); }catch(e){}
+  flagSync();
+}
+
+function daysSince(key){
+  const [y,m,d] = key.split('-').map(Number);
+  const then = new Date(y, m-1, d);
+  const now = new Date();
+  return Math.round((new Date(now.getFullYear(),now.getMonth(),now.getDate()) - then) / 86400000);
+}
+
+// A kunai every STREAK_SAVE_DAYS days, capped at STREAK_SAVE_MAX. While you're
+// holding a full set the clock idles, so the wait always starts from the moment
+// you actually spent one.
+function replenishStreakSaves(){
+  if(streakSaves.count >= STREAK_SAVE_MAX){
+    streakSaves.lastEarned = todayKey();
+    return;
+  }
+  const elapsed = daysSince(streakSaves.lastEarned);
+  if(elapsed >= STREAK_SAVE_DAYS){
+    streakSaves.count = Math.min(STREAK_SAVE_MAX, streakSaves.count + Math.floor(elapsed/STREAK_SAVE_DAYS));
+    streakSaves.lastEarned = todayKey();
+  }
+}
+
+// Spends kunai on days you missed, so studyStreak() reads them as covered.
+// Only bridges gaps that sit between earlier activity and today — it will never
+// spend one to invent a streak you never had.
+function applyStreakSaves(){
+  if(activityDates.length === 0) return;
+  const earliest = activityDates.slice().sort()[0];
+  const covered = new Set(activityDates.concat(streakSaves.savedDates));
+  let d = addDays(new Date(), -1);
+  let guard = 0;
+  while(streakSaves.count > 0 && guard < 40){
+    guard++;
+    const key = dateKey(d);
+    if(key < earliest) break;      // nothing before this to keep alive
+    if(covered.has(key)){ d = addDays(d, -1); continue; }
+    streakSaves.count--;
+    streakSaves.savedDates.push(key);
+    covered.add(key);
+    d = addDays(d, -1);
+  }
+}
+
+function refreshStreakSaves(){
+  const before = JSON.stringify(streakSaves);
+  replenishStreakSaves();
+  applyStreakSaves();
+  if(JSON.stringify(streakSaves) !== before) saveStreakSaves();
+}
+
+function nextKunaiInDays(){
+  if(streakSaves.count >= STREAK_SAVE_MAX) return 0;
+  return Math.max(0, STREAK_SAVE_DAYS - daysSince(streakSaves.lastEarned));
+}
+
 // Consecutive days with activity, counting back from today. A day that
 // hasn't happened yet (no activity today) doesn't break yesterday's streak.
 function studyStreak(){
-  const set = new Set(activityDates);
+  const set = new Set(activityDates.concat(streakSaves.savedDates));
   let d = new Date();
   if(!set.has(dateKey(d))){ d = addDays(d, -1); }
   let streak = 0;
@@ -670,6 +744,7 @@ function resetProgress(){
   progress = {};
   mistakes = [];
   activityDates = [];
+  streakSaves = { count: STREAK_SAVE_MAX, lastEarned: todayKey(), savedDates: [] };
   reviewHistory = {};
   dailyLessons = { date: todayKey(), count: 0 };
   sessionCorrect=0; sessionTotal=0;
@@ -679,6 +754,7 @@ function resetProgress(){
   saveProgress();
   saveMistakes();
   saveActivity();
+  saveStreakSaves();
   saveReviewHistory();
   saveDailyLessons();
   switchView('dashboard');
@@ -710,6 +786,7 @@ function renderDashboard(){
   const todayCount = reviewsCompletedOn();
   const yesterdayCount = reviewsCompletedOn(addDays(new Date(), -1));
 
+  refreshStreakSaves();
   const streak = studyStreak();
 
   return `
@@ -752,6 +829,13 @@ function renderDashboard(){
       <div class="section-title">Study Streak</div>
       <div class="cta-count">${streak}</div>
       <div class="cta-sub">${streak>0 ? `day${streak===1?'':'s'} in a row` : 'study today to start one'}</div>
+      <div class="kunai ${streakSaves.count>0?'held':'spent'}">
+        <svg class="kunai-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.1" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="11.2" y="5.2" width="1.6" height="3.6" fill="currentColor"/><path d="M12 8.6 L15.4 12.4 L12 23 L8.6 12.4 Z" fill="currentColor"/></svg>
+        <span>${streakSaves.count>0 ? 'Kunai ready' : 'Kunai spent'}</span>
+      </div>
+      <div class="kunai-note">${streakSaves.count>0
+        ? `Miss a day and this covers it. A new one ${STREAK_SAVE_DAYS} days after it's used.`
+        : `It covered a missed day. New kunai ${nextKunaiInDays()===0 ? 'today' : `in ${nextKunaiInDays()} day${nextKunaiInDays()===1?'':'s'}`}.`}</div>
     </div>
   </div>
   <div class="grid3">
@@ -774,6 +858,9 @@ function renderInfo(){
   <p class="footer-note" style="text-align:left;">
     Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br><br>
     SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br><br>
+    <b>Kunai.</b> You hold one at a time. Miss a day and it's spent automatically to keep your
+    study streak alive — you'll see it marked as spent on the dashboard. A replacement arrives
+    ${STREAK_SAVE_DAYS} days later, so missing two days close together will still break the streak.<br><br>
     ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
   </p>
   <div style="text-align:center;margin-top:16px;">
@@ -1226,7 +1313,9 @@ async function init(){
   loadDailyLessons();
   loadMistakes();
   loadActivity();
+  loadStreakSaves();
   loadReviewHistory();
+  refreshStreakSaves();
   initSpeech();
   try{
     const res = await fetch('data/vocab.json');
