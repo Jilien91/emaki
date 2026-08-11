@@ -23,6 +23,7 @@ const INTERVAL_HOURS = [null,4,8,23,47,168,336,720,2880,null];
 const TIER_COLOR = s => s===0?'new':s<=4?'genin':s<=6?'chunin':s===7?'jonin':s===8?'anbu':'kage';
 
 let VOCAB = [];
+let KANJI = {}; // char -> {meaning, parts:[{c,name}], note}
 let progress = {};
 let settings = { ...DEFAULT_SETTINGS };
 let dailyLessons = { date: null, count: 0 };
@@ -804,6 +805,24 @@ function renderLessons(){
   `;
 }
 
+// Shows what each kanji in the word is built from. Recognition aid only —
+// these aren't SRS items, they're context while the word is being taught.
+function renderKanjiParts(word){
+  const chars = Array.from(word).filter(ch => KANJI[ch]);
+  if(chars.length === 0) return '';
+  const rows = chars.map(ch=>{
+    const k = KANJI[ch];
+    const detail = k.parts && k.parts.length
+      ? k.parts.map(p=>`<span class="part"><span class="jp">${escapeHtml(p.c)}</span> ${escapeHtml(p.name)}</span>`).join('<span class="plus">+</span>')
+      : `<span class="part-note">${escapeHtml(k.note || '')}</span>`;
+    return `<div class="kanjirow">
+      <span class="jp kanjirow-char">${escapeHtml(ch)}</span>
+      <span class="kanjirow-body"><span class="kanjirow-meaning">${escapeHtml(k.meaning)}</span><span class="kanjirow-parts">${detail}</span></span>
+    </div>`;
+  }).join('');
+  return `<div class="field"><div class="k">Built from</div><div class="kanjiparts">${rows}</div></div>`;
+}
+
 function renderLessonStudy(){
   const {batch, studyIndex} = lessonState;
   const item = VOCAB.find(v=>v.id===batch[studyIndex]);
@@ -816,6 +835,7 @@ function renderLessonStudy(){
     <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
+  ${renderKanjiParts(item.word)}
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>
   ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
   <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
@@ -1199,6 +1219,11 @@ async function init(){
   try{
     const res = await fetch('data/vocab.json');
     VOCAB = await res.json();
+    // Component data is a nice-to-have; a failure here must not stop lessons.
+    try{
+      const kres = await fetch('data/kanji.json');
+      KANJI = await kres.json();
+    }catch(e){ KANJI = {}; }
   }catch(e){
     document.getElementById('root').innerHTML = '<div class="empty">Failed to load vocab data. Make sure data/vocab.json is reachable (serve this over http, not file://).</div>';
     return;

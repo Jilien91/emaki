@@ -1,0 +1,37 @@
+{
+  "_comment": "Component breakdown for kanji appearing in the deck. Hand-authored. Component names are conventional radical meanings (grain, step, woman, child...) — deliberately NOT the invented names used by other courses, which are their own creative work. 'parts' omitted for pictographs that don't usefully decompose.",
+
+  "人": { "meaning": "person", "note": "A pictograph — a figure walking, seen from the side." },
+  "日": { "meaning": "sun, day", "note": "A pictograph — the sun with a mark in the middle." },
+
+  "私": { "meaning": "I, private", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "厶", "name": "private" }
+  ]},
+  "彼": { "meaning": "he, that", "parts": [
+    { "c": "彳", "name": "step" },
+    { "c": "皮", "name": "skin" }
+  ]},
+  "好": { "meaning": "fond of, good", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "子", "name": "child" }
+  ]},
+  "本": { "meaning": "origin, book", "parts": [
+    { "c": "木", "name": "tree" },
+    { "c": "一", "name": "one line, at the root" }
+  ]},
+  "語": { "meaning": "language, word", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "五", "name": "five" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "勉": { "meaning": "exertion", "parts": [
+    { "c": "免", "name": "exempt" },
+    { "c": "力", "name": "power" }
+  ]},
+  "強": { "meaning": "strong", "parts": [
+    { "c": "弓", "name": "bow" },
+    { "c": "厶", "name": "private" },
+    { "c": "虫", "name": "insect" }
+  ]}
+}
