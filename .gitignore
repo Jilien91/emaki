@@ -3,3 +3,6 @@ node_modules/
 
 # LibreOffice writes a lock file next to any open document
 .~lock.*#
+
+# Personal working notes, kept out of the repo
+Changes/
