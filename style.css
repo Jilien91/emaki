@@ -184,7 +184,9 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .cta-card{display:flex;flex-direction:column;}
 .cta-card button.primary{margin-top:auto;}
 .kunai{
-  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  /* align-self keeps the pill shrink-wrapped and centred: the stat card is a
+     flex column, whose children would otherwise stretch to its full width. */
+  display:inline-flex;align-self:center;align-items:center;gap:6px;margin-top:10px;
   font-size:11px;padding:4px 10px;border-radius:20px;
   border:1px solid var(--border);background:var(--surface-2);
 }
