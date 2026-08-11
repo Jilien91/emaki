@@ -32,6 +32,19 @@
   "母": { "meaning": "mother", "note": "A pictograph of a woman with the feeding marks drawn in." },
   "父": { "meaning": "father", "note": "A hand gripping an axe — the one who does the heavy work." },
   "立": { "meaning": "stand", "note": "A person planted on a line of ground, feet apart." },
+  "入": { "meaning": "enter", "note": "A way in, drawn narrowing as it goes." },
+  "声": { "meaning": "voice", "note": "A voice carrying — the older form had an ear listening to it." },
+  "目": { "meaning": "eye", "note": "An eye stood on end, the lines of the lid across it." },
+  "手": { "meaning": "hand", "note": "A hand with the fingers drawn out from the wrist." },
+  "上": { "meaning": "up, above", "note": "A mark sitting above the line." },
+  "元": { "meaning": "origin, base", "note": "Two strokes over 儿 legs — a person at their starting point." },
+  "気": { "meaning": "spirit, energy", "note": "Steam rising off something — the old form had rice giving off vapour." },
+  "丈": { "meaning": "length, height", "note": "A measure of a person's full height." },
+  "夫": { "meaning": "husband, grown man", "note": "大 a person with a pin through the hair — an adult man." },
+  "食": { "meaning": "eat, food", "note": "A lid sitting over a heaped dish." },
+  "山": { "meaning": "mountain", "note": "Three peaks. One of the plainest pictographs there is." },
+  "族": { "meaning": "clan, tribe", "note": "A banner with arrows beneath it — a family gathered under one flag." },
+  "部": { "meaning": "section, part", "note": "阝 on the right marks a place or district — one section of it." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -163,5 +176,37 @@
   "物": { "meaning": "thing, object", "parts": [
     { "c": "牛", "name": "cow" },
     { "c": "勿", "name": "must not" }
+  ]},
+  "住": { "meaning": "live, reside", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "主", "name": "master" }
+  ]},
+  "嫌": { "meaning": "dislike", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "兼", "name": "hold both at once" }
+  ]},
+  "持": { "meaning": "hold, have", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "寺", "name": "temple" }
+  ]},
+  "使": { "meaning": "use, employ", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "吏", "name": "official" }
+  ]},
+  "始": { "meaning": "begin", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "台", "name": "platform" }
+  ]},
+  "屋": { "meaning": "roof, shop", "parts": [
+    { "c": "尸", "name": "shelter" },
+    { "c": "至", "name": "arrive" }
+  ]},
+  "悪": { "meaning": "bad, evil", "parts": [
+    { "c": "亜", "name": "second-rate" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "沢": { "meaning": "marsh, plenty", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "尺", "name": "measure" }
   ]}
 }
