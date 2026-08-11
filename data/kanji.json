@@ -9,6 +9,12 @@
   "今": { "meaning": "now", "note": "A lid drawn shut over a single stroke — this moment, closed off from the rest." },
   "先": { "meaning": "ahead, previous", "note": "A figure striding out in front, on 儿 legs." },
   "無": { "meaning": "nothing, without", "note": "A thicket of strokes over 灬 fire — the lot of it burnt away to nothing." },
+  "女": { "meaning": "woman", "note": "A pictograph — a figure kneeling, arms folded across." },
+  "来": { "meaning": "come", "note": "Originally a wheat plant — the crop that comes to you at harvest." },
+  "行": { "meaning": "go, conduct", "note": "A crossroads seen from above. Its left half is 彳, the step radical." },
+  "前": { "meaning": "front, before", "note": "Horns over 月 moon over 刂 knife — the part that goes out in front." },
+  "学": { "meaning": "study, learn", "note": "Sparks over a cover over 子 a child — a child under a roof, learning." },
+  "帰": { "meaning": "return home", "note": "帚 a broom on the right — sweep up, then go back where you came from." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -72,5 +78,41 @@
   "間": { "meaning": "interval, gap", "parts": [
     { "c": "門", "name": "gate" },
     { "c": "日", "name": "sun" }
+  ]},
+  "名": { "meaning": "name", "parts": [
+    { "c": "夕", "name": "evening" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "教": { "meaning": "teach", "parts": [
+    { "c": "孝", "name": "filial devotion" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "置": { "meaning": "put, place", "parts": [
+    { "c": "罒", "name": "net" },
+    { "c": "直", "name": "straight" }
+  ]},
+  "家": { "meaning": "house, home", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "豕", "name": "pig" }
+  ]},
+  "話": { "meaning": "talk, story", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "舌", "name": "tongue" }
+  ]},
+  "知": { "meaning": "know", "parts": [
+    { "c": "矢", "name": "arrow" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "校": { "meaning": "school", "parts": [
+    { "c": "木", "name": "tree" },
+    { "c": "交", "name": "cross, mix" }
+  ]},
+  "明": { "meaning": "bright, next", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "月", "name": "moon" }
+  ]},
+  "思": { "meaning": "think", "parts": [
+    { "c": "田", "name": "field" },
+    { "c": "心", "name": "heart" }
   ]}
 }

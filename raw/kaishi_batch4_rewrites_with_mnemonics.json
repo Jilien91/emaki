@@ -1,0 +1,252 @@
+[
+ {
+  "word": "名前",
+  "reading": "なまえ",
+  "meaning": "name",
+  "sentence": "あなたの名前を教えてください。",
+  "sentence_meaning": "Please tell me your name.",
+  "frequency": "264",
+  "mnemonic": "名 is 夕 an evening with 口 a mouth — calling out into the dark to find who's there. 前 is what comes first, and what comes back is なまえ.",
+  "notes": ""
+ },
+ {
+  "word": "教える",
+  "reading": "おしえる",
+  "meaning": "to teach, to tell",
+  "sentence": "あなたの名前を教えてください。",
+  "sentence_meaning": "Please tell me your name.",
+  "frequency": "257",
+  "mnemonic": "孝 devotion to your elders, next to 攵 a stick to rap you with. That was teaching, once. Oh, she'll teach you one way or another: おしえる.",
+  "notes": ""
+ },
+ {
+  "word": "ここ",
+  "reading": "ここ",
+  "meaning": "here",
+  "sentence": "ここに本があります。",
+  "sentence_meaning": "There's a book here.",
+  "frequency": "59",
+  "mnemonic": "こ- always marks the near one, so ここ is the ground you're standing on right now. The cocoa is here, still warm in your hands: ここ.",
+  "notes": ""
+ },
+ {
+  "word": "そこ",
+  "reading": "そこ",
+  "meaning": "there",
+  "sentence": "そこはトイレです。",
+  "sentence_meaning": "There is the bathroom.",
+  "frequency": "110",
+  "mnemonic": "そ- is your side of the room rather than mine, so そこ is where you're standing. The socket by your foot, not the one by mine: そこ.",
+  "notes": ""
+ },
+ {
+  "word": "あそこ",
+  "reading": "あそこ",
+  "meaning": "over there",
+  "sentence": "彼はあそこにいます。",
+  "sentence_meaning": "He is over there.",
+  "frequency": "840",
+  "mnemonic": "あ- is far from us both, so あそこ is the socket on the far wall — ah, that socket, the one neither of us can reach from here: あそこ.",
+  "notes": ""
+ },
+ {
+  "word": "どこ",
+  "reading": "どこ",
+  "meaning": "where",
+  "sentence": "あの本をどこに置きましたか。",
+  "sentence_meaning": "Where did you put that book?",
+  "frequency": "182",
+  "mnemonic": "ど- is the question again. You put the dough down somewhere in this kitchen and now not one person can find it. Where? どこ.",
+  "notes": ""
+ },
+ {
+  "word": "置く",
+  "reading": "おく",
+  "meaning": "to put, to place",
+  "sentence": "あの本をどこに置きましたか。",
+  "sentence_meaning": "Where did you put that book?",
+  "frequency": "194",
+  "mnemonic": "罒 an eye above 直 straight — setting something down and lining it up dead level. You place the cup on the oak table: おく.",
+  "notes": ""
+ },
+ {
+  "word": "家",
+  "reading": "いえ",
+  "meaning": "house, home",
+  "sentence": "ここが私の家です。",
+  "sentence_meaning": "This is my house.",
+  "frequency": "168",
+  "mnemonic": "宀 a roof with 豕 a pig underneath it. That is what a house was: the animals in out of the rain. Walk in, drop the bags, sigh — yeah: いえ.",
+  "notes": "Can also be read うち in certain contexts."
+ },
+ {
+  "word": "帰る",
+  "reading": "かえる",
+  "meaning": "to return, to go back",
+  "sentence": "家に帰ろう。",
+  "sentence_meaning": "Let's go home.",
+  "frequency": "220",
+  "mnemonic": "That is a broom (帚) on the right, and it is the whole point: sweep up, then head back where you came from. Carry your bags in: かえる.",
+  "notes": ""
+ },
+ {
+  "word": "話",
+  "reading": "はなし",
+  "meaning": "talk, story",
+  "sentence": "あなたの話は面白いね。",
+  "sentence_meaning": "Your story is interesting.",
+  "frequency": "101",
+  "mnemonic": "言 speech with 舌 a tongue right beside it — words with a tongue doing all the work. Hannah, she talked the whole night: はなし.",
+  "notes": ""
+ },
+ {
+  "word": "知る",
+  "reading": "しる",
+  "meaning": "to know",
+  "sentence": "あの人を知っていますか。",
+  "sentence_meaning": "Do you know that person?",
+  "frequency": "68",
+  "mnemonic": "矢 an arrow and 口 a mouth: the answer out fast and straight, no hesitation. That's the difference between guessing and knowing. Sure: しる.",
+  "notes": ""
+ },
+ {
+  "word": "彼女",
+  "reading": "かのじょ",
+  "meaning": "she, her, girlfriend",
+  "sentence": "彼女の名前を知っていますか。",
+  "sentence_meaning": "Do you know her name?",
+  "frequency": "100",
+  "mnemonic": "彼 him with 女 woman bolted onto the end — the same word, other half. She brings you a can o' Joe every single morning: かのじょ.",
+  "notes": ""
+ },
+ {
+  "word": "ちゃん",
+  "reading": "ちゃん",
+  "meaning": "chan",
+  "sentence": "彼女はララちゃんです。",
+  "sentence_meaning": "She is Lara-chan.",
+  "frequency": "120",
+  "mnemonic": "Tack it onto a name and the name gets smaller and fonder at the same time. Your little sister is Jackie Chan for the afternoon: ちゃん.",
+  "notes": "An honorific usually used to show endearment, especially with girls and small children."
+ },
+ {
+  "word": "はい",
+  "reading": "はい",
+  "meaning": "yes (polite)",
+  "sentence": "A「山田さんですか。」B「はい。」",
+  "sentence_meaning": "A: Are you Yamada-san?B: Yes, I am.",
+  "frequency": "92",
+  "mnemonic": "Someone asks and you don't leave a gap — you throw a bale of hay in the air and shout it. High, hay, はい. That's the sound of yes.",
+  "notes": ""
+ },
+ {
+  "word": "いいえ",
+  "reading": "いいえ",
+  "meaning": "no (polite)",
+  "sentence": "A「山田さんですか。」B「いいえ。」",
+  "sentence_meaning": "A: Are you Yamada-san?B: No, I'm not.",
+  "frequency": "8787",
+  "mnemonic": "いい means good, so いいえ ought to mean better. It doesn't. Gloomy Eeyore says no to everything, including that: いいえ.",
+  "notes": ""
+ },
+ {
+  "word": "日本",
+  "reading": "にほん",
+  "meaning": "Japan",
+  "sentence": "日本のゲームは面白いです。",
+  "sentence_meaning": "Japanese games are fun.",
+  "frequency": "1026",
+  "mnemonic": "日 the sun and 本 the origin: the place the sun starts out from. Land of the rising sun, said in two characters. にほん.",
+  "notes": "Can be read either にほん or にっぽん."
+ },
+ {
+  "word": "学校",
+  "reading": "がっこう",
+  "meaning": "school",
+  "sentence": "学校は日本にあります。",
+  "sentence_meaning": "The school is in Japan.",
+  "frequency": "563",
+  "mnemonic": "学 a child under a roof learning, 校 a 木 tree where the paths 交 cross. Somewhere in it a cuckoo clock rings to let you out: がっこう.",
+  "notes": ""
+ },
+ {
+  "word": "行く",
+  "reading": "いく",
+  "meaning": "to go",
+  "sentence": "学校へ行きます。",
+  "sentence_meaning": "I will go to school.",
+  "frequency": "58",
+  "mnemonic": "行 is a crossroads from above, and its left half is 彳 — the same step radical as 彼. Stood at the junction you have to move: eek, いく.",
+  "notes": ""
+ },
+ {
+  "word": "明日",
+  "reading": "あした",
+  "meaning": "tomorrow",
+  "sentence": "明日、学校へ行きます。",
+  "sentence_meaning": "Tomorrow, I will go to school.",
+  "frequency": "423",
+  "mnemonic": "明 is 日 sun and 月 moon side by side: bright. Add another 日 and you have the next bright morning. A cheetah gets there first: あした.",
+  "notes": ""
+ },
+ {
+  "word": "来る",
+  "reading": "くる",
+  "meaning": "to come",
+  "sentence": "明日、来ますか。",
+  "sentence_meaning": "Will you come tomorrow?",
+  "frequency": "34",
+  "mnemonic": "The old shape is a wheat plant — the thing that comes to you at harvest without you going anywhere. A kangaroo closes the gap: くる.",
+  "notes": ""
+ },
+ {
+  "word": "また",
+  "reading": "また",
+  "meaning": "again, also",
+  "sentence": "明日、また来ます。",
+  "sentence_meaning": "I'll come again tomorrow.",
+  "frequency": "99",
+  "mnemonic": "It doesn't matter how many times you've already done it, you are doing it again tomorrow and the day after that. Matter: また.",
+  "notes": ""
+ },
+ {
+  "word": "いつ",
+  "reading": "いつ",
+  "meaning": "when",
+  "sentence": "彼女はいつ来ますか。",
+  "sentence_meaning": "When is she coming?",
+  "frequency": "407",
+  "mnemonic": "There is only one thing anyone actually wants to know about a deadline, and it isn't what or why. When is it due? It's-due: いつ.",
+  "notes": ""
+ },
+ {
+  "word": "思う",
+  "reading": "おもう",
+  "meaning": "to think",
+  "sentence": "これがいいと思います。",
+  "sentence_meaning": "I think this is good.",
+  "frequency": "25",
+  "mnemonic": "田 a field sat on 心 a heart — thinking happens in the chest here, not the head. Moe leans on the bar working something out: おもう.",
+  "notes": ""
+ },
+ {
+  "word": "こう",
+  "reading": "こう",
+  "meaning": "like this, this kind of",
+  "sentence": "こうしましょう。",
+  "sentence_meaning": "Let’s do this (“this way”).",
+  "frequency": "211",
+  "mnemonic": "こ- is near me, so こう is my way of doing it: like this, watch. The coach demonstrates once and expects you to copy it: こう.",
+  "notes": ""
+ },
+ {
+  "word": "そう",
+  "reading": "そう",
+  "meaning": "in such manner, that way",
+  "sentence": "私もそう思います。",
+  "sentence_meaning": "That's what I think too.",
+  "frequency": "31",
+  "mnemonic": "そ- is your side, so そう is your way of putting it — that's so, that's how you see it. And I think so too: そう.",
+  "notes": ""
+ }
+]
