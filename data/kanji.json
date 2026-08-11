@@ -25,6 +25,13 @@
   "言": { "meaning": "say, speech", "note": "A mouth with the sound drawn coming out of it." },
   "達": { "meaning": "reach, plural marker", "note": "辶 the road radical — getting there; on people it makes a group." },
   "高": { "meaning": "tall, expensive", "note": "A pictograph — a tall building, roof and gate stacked up." },
+  "中": { "meaning": "inside, middle", "note": "A single line driven through the centre of a box." },
+  "出": { "meaning": "exit, come out", "note": "Stacked peaks — something pushing up and out into view." },
+  "大": { "meaning": "big", "note": "A person stood with both arms flung wide." },
+  "当": { "meaning": "hit the mark, this", "note": "A simplified form — landing squarely on the right spot." },
+  "母": { "meaning": "mother", "note": "A pictograph of a woman with the feeding marks drawn in." },
+  "父": { "meaning": "father", "note": "A hand gripping an axe — the one who does the heavy work." },
+  "立": { "meaning": "stand", "note": "A person planted on a line of ground, feet apart." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -148,5 +155,13 @@
   "願": { "meaning": "wish, request", "parts": [
     { "c": "原", "name": "plain, origin" },
     { "c": "頁", "name": "head" }
+  ]},
+  "君": { "meaning": "you (familiar), lord", "parts": [
+    { "c": "尹", "name": "rule" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "物": { "meaning": "thing, object", "parts": [
+    { "c": "牛", "name": "cow" },
+    { "c": "勿", "name": "must not" }
   ]}
 }
