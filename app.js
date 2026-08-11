@@ -92,10 +92,25 @@ function fuzzyMatch(input, candidate){
   return dist <= threshold;
 }
 
-function checkMeaning(userInput, meaning){
+// A single-kanji word inherits its kanji's meanings as acceptable answers, so a
+// mnemonic that teaches 本 as "the origin a thing grows from" doesn't then mark
+// "origin" wrong. Skipped where the same character backs more than one entry
+// (方 is both ほう "direction" and かた "person"), since there the other
+// meaning belongs to a different card and accepting it would be a free pass.
+function acceptedMeanings(meaning, item){
+  const list = meaningCandidates(meaning);
+  if(!item) return list;
+  const chars = Array.from(item.word);
+  if(chars.length === 1 && KANJI[chars[0]] && VOCAB.filter(v=>v.word===item.word).length === 1){
+    meaningCandidates(KANJI[chars[0]].meaning).forEach(m=>{ if(!list.includes(m)) list.push(m); });
+  }
+  return list;
+}
+
+function checkMeaning(userInput, meaning, item){
   const whole = userInput.trim().toLowerCase().replace(/\s+/g, ' ');
   if(!whole) return false;
-  const correctCandidates = meaningCandidates(meaning);
+  const correctCandidates = acceptedMeanings(meaning, item);
   // Try the whole answer first. This is what accepts an exact copy of a
   // stored meaning whose own parentheses contain commas, e.g. typing
   // "I (polite, general)" — splitting that on commas would match nothing.
@@ -550,7 +565,7 @@ function submitQuizAnswer(){
   const input = document.getElementById('quizInput');
   const value = input ? input.value : '';
   if(!value.trim()) return; // don't let a stray Enter count as a wrong answer
-  const correct = q.type==='meaning' ? checkMeaning(value, item.meaning) : checkReading(value, item.reading);
+  const correct = q.type==='meaning' ? checkMeaning(value, item.meaning, item) : checkReading(value, item.reading);
   lessonState.showAnswer = true;
   lessonState.lastCorrect = correct;
   lessonState.lastInput = value;
@@ -661,7 +676,7 @@ function submitReviewAnswer(){
   const value = input ? input.value : '';
   if(!value.trim()) return; // don't let a stray Enter demote the item
   reviewState.lastCorrect = q.type==='meaning'
-    ? checkMeaning(value, item.meaning)
+    ? checkMeaning(value, item.meaning, item)
     : checkReading(value, item.reading);
   reviewState.lastInput = value;
   reviewState.showAnswer = true;
@@ -715,7 +730,7 @@ function submitExtraStudyAnswer(){
   const value = input ? input.value : '';
   if(!value.trim()) return;
   extraStudyState.lastCorrect = q.type==='meaning'
-    ? checkMeaning(value, item.meaning)
+    ? checkMeaning(value, item.meaning, item)
     : checkReading(value, item.reading);
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;

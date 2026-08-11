@@ -84,7 +84,7 @@
     { "c": "母", "name": "mother" }
   ]},
   "然": { "meaning": "so, thus", "parts": [
-    { "c": "月", "name": "meat" },
+    { "c": "月", "name": "flesh, not moon" },
     { "c": "犬", "name": "dog" },
     { "c": "灬", "name": "fire" }
   ]},
@@ -126,7 +126,7 @@
   ]},
   "明": { "meaning": "bright, next", "parts": [
     { "c": "日", "name": "sun" },
-    { "c": "月", "name": "moon" }
+    { "c": "月", "name": "moon, genuinely" }
   ]},
   "思": { "meaning": "think", "parts": [
     { "c": "田", "name": "field" },
