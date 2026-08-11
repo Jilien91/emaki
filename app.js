@@ -414,6 +414,20 @@ function nextKunaiInDays(){
   return Math.max(0, STREAK_SAVE_DAYS - daysSince(streakSaves.lastEarned));
 }
 
+// Replenishment is reckoned in whole calendar days, so the kunai is back at
+// the very start of the day STREAK_SAVE_DAYS after it was spent — midnight,
+// not the time of day you happened to lose it.
+function nextKunaiAt(){
+  if(streakSaves.count >= STREAK_SAVE_MAX) return null;
+  const [y,m,d] = streakSaves.lastEarned.split('-').map(Number);
+  return new Date(y, m-1, d + STREAK_SAVE_DAYS);
+}
+
+function formatStamp(dt){
+  const p = n => String(n).padStart(2,'0');
+  return `${p(dt.getDate())}/${p(dt.getMonth()+1)}/${String(dt.getFullYear()).slice(-2)} ${p(dt.getHours())}:${p(dt.getMinutes())}`;
+}
+
 // Consecutive days with activity, counting back from today. A day that
 // hasn't happened yet (no activity today) doesn't break yesterday's streak.
 function studyStreak(){
@@ -850,7 +864,7 @@ function renderDashboard(){
       </div>
       <div class="kunai-note">${streakSaves.count>0
         ? `Miss a day and this covers it. A new one ${STREAK_SAVE_DAYS} days after it's used.`
-        : `It covered a missed day. New kunai ${nextKunaiInDays()===0 ? 'today' : `in ${nextKunaiInDays()} day${nextKunaiInDays()===1?'':'s'}`}.`}</div>
+        : `It covered a missed day.<br>New kunai ${formatStamp(nextKunaiAt())}.`}</div>
     </div>
   </div>
   <div class="grid3">

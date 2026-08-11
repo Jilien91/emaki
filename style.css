@@ -175,7 +175,14 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .cta-count{font-size:32px;font-weight:600;font-family:'Spectral',serif;margin-bottom:2px;}
 .cta-sub{font-size:12px;color:var(--text-faint);margin-bottom:14px;min-height:15px;}
 .section-title{font-size:13px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;}
-.stat-card{text-align:center;}
+/* Grid stretches both cards to the tallest, so the shorter one's content
+   would otherwise sit at the top with dead space beneath it. */
+.stat-card{text-align:center;display:flex;flex-direction:column;justify-content:center;}
+/* .cta-sub's bottom margin exists to stand the CTA button off; in a stat card
+   there is no button, so it would just weight the content upward. */
+.stat-card .cta-sub{margin-bottom:0;}
+.cta-card{display:flex;flex-direction:column;}
+.cta-card button.primary{margin-top:auto;}
 .kunai{
   display:inline-flex;align-items:center;gap:6px;margin-top:10px;
   font-size:11px;padding:4px 10px;border-radius:20px;
