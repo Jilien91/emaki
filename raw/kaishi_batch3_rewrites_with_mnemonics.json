@@ -1,0 +1,252 @@
+[
+ {
+  "word": "本",
+  "reading": "ほん",
+  "meaning": "book",
+  "sentence": "いい本でしたね。",
+  "sentence_meaning": "It was a good book, wasn't it?",
+  "frequency": "499",
+  "mnemonic": "木 a tree with 一 a line struck across its root — the origin a thing grows from, and what books are made of. Hone your mind on one: ほん.",
+  "notes": ""
+ },
+ {
+  "word": "これ",
+  "reading": "これ",
+  "meaning": "this",
+  "sentence": "これは日本語の本です。",
+  "sentence_meaning": "This is a Japanese book.",
+  "frequency": "40",
+  "mnemonic": "こ- marks whatever is nearest me, so これ is the thing in my own hand. Hold up the apple core you're still holding: core — これ.",
+  "notes": "One of the こ/そ/あ/ど set: こ near me, そ near you, あ away from us both, ど the question."
+ },
+ {
+  "word": "何",
+  "reading": "なに・なん",
+  "meaning": "what",
+  "sentence": "A「これは何ですか。」B「本です。」",
+  "sentence_meaning": "A: What is this?B: It's a book.",
+  "frequency": "62",
+  "mnemonic": "亻 a person next to 可 \"can\" — someone demanding to know what can possibly be going on. The nanny throws up her hands: what?! なに.",
+  "notes": "Can be read either なに or なん depending on what follows."
+ },
+ {
+  "word": "それ",
+  "reading": "それ",
+  "meaning": "that",
+  "sentence": "それは本です。",
+  "sentence_meaning": "That is a book.",
+  "frequency": "17",
+  "mnemonic": "そ- marks whatever is near you rather than me, so それ is that thing by your elbow. Point at the sore on it: sore — それ.",
+  "notes": ""
+ },
+ {
+  "word": "あれ",
+  "reading": "あれ",
+  "meaning": "that over there",
+  "sentence": "あれは何ですか。",
+  "sentence_meaning": "What's that?",
+  "frequency": "129",
+  "mnemonic": "あ- is the far one, away from us both. あれ is the thing across the road, too distant to name, so you just ask what those ARE. あれ.",
+  "notes": ""
+ },
+ {
+  "word": "どれ",
+  "reading": "どれ",
+  "meaning": "which, what",
+  "sentence": "どれが好きですか。",
+  "sentence_meaning": "Which would you like?",
+  "frequency": "930",
+  "mnemonic": "ど- always marks the question. Five identical doors, no labels, and you still have to choose one of them: which? Door — どれ.",
+  "notes": ""
+ },
+ {
+  "word": "毎日",
+  "reading": "まいにち",
+  "meaning": "every day",
+  "sentence": "毎日、日本語を勉強します。",
+  "sentence_meaning": "I study Japanese every day.",
+  "frequency": "877",
+  "mnemonic": "毎 is 母 mother with a stroke through her, 日 is the sun. Mother, at every single sunrise, without fail. My knee aches at each one: まいにち.",
+  "notes": ""
+ },
+ {
+  "word": "兄",
+  "reading": "あに",
+  "meaning": "older brother",
+  "sentence": "これは兄のパソコンです。",
+  "sentence_meaning": "This is my older brother's personal computer.",
+  "frequency": "980",
+  "mnemonic": "口 a mouth on 儿 two legs — a boy who is mostly mouth, and older than you. He lost a bet and has been called Annie ever since: あに.",
+  "notes": ""
+ },
+ {
+  "word": "いる",
+  "reading": "いる",
+  "meaning": "to have, to exist (animate)",
+  "sentence": "兄がいます。",
+  "sentence_meaning": "I have an older brother.",
+  "frequency": "21",
+  "mnemonic": "An ear twitches above the long grass. You can't see the rabbit, but the ear is proof something alive is in there. いる is for things that breathe.",
+  "notes": ""
+ },
+ {
+  "word": "ある",
+  "reading": "ある",
+  "meaning": "to have, to exist (inanimate)",
+  "sentence": "ペンがある。",
+  "sentence_meaning": "There is a pen.",
+  "frequency": "16",
+  "mnemonic": "Rocks don't twitch or breathe. They are simply there, and the most you can say is that they ARE. ある is existence with no pulse in it.",
+  "notes": ""
+ },
+ {
+  "word": "あまり",
+  "reading": "あまり",
+  "meaning": "(not) very, (not) much",
+  "sentence": "スポーツはあまり好きじゃありません。",
+  "sentence_meaning": "I don't really like sports.",
+  "frequency": "388",
+  "mnemonic": "One dry sliver of Mary's cake is left and nobody is reaching for it. Not very much, and not very good. A-Mary: あまり.",
+  "notes": "Almost always paired with a negative — あまり…ない, \"not very…\"."
+ },
+ {
+  "word": "今",
+  "reading": "いま",
+  "meaning": "now",
+  "sentence": "彼は今、勉強しています。",
+  "sentence_meaning": "He's studying now.",
+  "frequency": "64",
+  "mnemonic": "A lid pulled shut over a single stroke — this one moment, sealed off from every other. Emma wants you at the table now: いま.",
+  "notes": ""
+ },
+ {
+  "word": "時間",
+  "reading": "じかん",
+  "meaning": "time, hour",
+  "sentence": "今は時間がありません。",
+  "sentence_meaning": "I don't have time now.",
+  "frequency": "164",
+  "mnemonic": "日 the sun in a 寺 temple, then 日 the sun in a 門 gate — time is the sun crossing something. Genghis Khan checks his watch: じかん.",
+  "notes": ""
+ },
+ {
+  "word": "無い",
+  "reading": "ない",
+  "meaning": "nonexistent, not being",
+  "sentence": "今はあまり時間が無いのです。",
+  "sentence_meaning": "I don't have much time now.",
+  "frequency": "33",
+  "mnemonic": "灬 four fire-dots under the whole tangle above them, burning until not one stroke is left. Bill Nye vanishes mid-sentence: ない.",
+  "notes": "Often used as the negative form of ある. Worth checking a grammar reference for full usage."
+ },
+ {
+  "word": "この",
+  "reading": "この",
+  "meaning": "this one",
+  "sentence": "山田さんの本はどれですか。この本ですか。",
+  "sentence_meaning": "Which book is Yamada-san's? Is it this book?",
+  "frequency": "30",
+  "mnemonic": "こ- is the near one again, but この always needs a noun behind it — this cone, this book. It points first and names second. この.",
+  "notes": ""
+ },
+ {
+  "word": "その",
+  "reading": "その",
+  "meaning": "that one",
+  "sentence": "その本ですか。",
+  "sentence_meaning": "Is it that book?",
+  "frequency": "28",
+  "mnemonic": "そ- is yours rather than mine, and その needs a noun too. Sonic points down at the one by your foot: that book, not this one. その.",
+  "notes": ""
+ },
+ {
+  "word": "あの",
+  "reading": "あの",
+  "meaning": "that one there",
+  "sentence": "あの本ですか。",
+  "sentence_meaning": "That book (over there)?",
+  "frequency": "53",
+  "mnemonic": "あ- is far from both of us, so あの book is the one on the other shelf and you both have to turn to look. Ah, no — further: あの.",
+  "notes": ""
+ },
+ {
+  "word": "どの",
+  "reading": "どの",
+  "meaning": "which one",
+  "sentence": "どの本ですか。",
+  "sentence_meaning": "Which book is it?",
+  "frequency": "1398",
+  "mnemonic": "ど- asks the question. A shelf of identical spines, dough all over your hands, and you still have to point at one of them: どの.",
+  "notes": ""
+ },
+ {
+  "word": "見る",
+  "reading": "みる",
+  "meaning": "to see, to look at",
+  "sentence": "兄は毎日テレビを見ます。",
+  "sentence_meaning": "My older brother watches TV every day.",
+  "frequency": "38",
+  "mnemonic": "目 an eye up on 儿 two legs, wandering about looking at things. It stops in front of a mirror and finally sees itself: みる.",
+  "notes": ""
+ },
+ {
+  "word": "全然",
+  "reading": "ぜんぜん",
+  "meaning": "(not) at all",
+  "sentence": "テレビを全然見ません。",
+  "sentence_meaning": "I never watch television.",
+  "frequency": "550",
+  "mnemonic": "全 is 王 a king under 𠆢 one roof: everything. 然 is 犬 dog meat over 灬 fire. Burn the whole lot and there is nothing left at all: ぜんぜん.",
+  "notes": "Usually paired with a negative, though colloquially it also turns up with positives."
+ },
+ {
+  "word": "面白い",
+  "reading": "おもしろい",
+  "meaning": "interesting, amusing",
+  "sentence": "この本は全然面白くなかった。",
+  "sentence_meaning": "This book wasn't interesting at all.",
+  "frequency": "603",
+  "mnemonic": "面 a face gone 白 white — someone so gripped by the thing that the blood has drained out of them. Oh, Moe, Shirley: おもしろい.",
+  "notes": ""
+ },
+ {
+  "word": "する",
+  "reading": "する",
+  "meaning": "to do, to make",
+  "sentence": "彼はテニスをします。",
+  "sentence_meaning": "He plays tennis (lit: \"He does tennis\").",
+  "frequency": "12",
+  "mnemonic": "The verb that does anything at all: bolt it onto a noun and the noun becomes an action — tennis, study, whatever. Sue me if I don't: する.",
+  "notes": ""
+ },
+ {
+  "word": "なる",
+  "reading": "なる",
+  "meaning": "to become, to result in, to come (to do)",
+  "sentence": "日本語の勉強が好きになりました。",
+  "sentence_meaning": "I have come to like Japanese study.",
+  "frequency": "15",
+  "mnemonic": "Nothing becomes anything all at once. The swell builds through the afternoon until the surf is properly gnarly — なる is the turning, not the state.",
+  "notes": "Has many meanings and shades of use ('to become', 'to result in', 'to come to do') — it takes time to fully absorb."
+ },
+ {
+  "word": "先生",
+  "reading": "せんせい",
+  "meaning": "teacher",
+  "sentence": "私は日本語の先生になりたいです。",
+  "sentence_meaning": "I want to become a Japanese teacher.",
+  "frequency": "277",
+  "mnemonic": "先 is someone striding out ahead of you, 生 is life itself. The one who went first and has already lived it — sensei: せんせい.",
+  "notes": ""
+ },
+ {
+  "word": "ください",
+  "reading": "ください",
+  "meaning": "please give..., please do...",
+  "sentence": "コーヒーをください。",
+  "sentence_meaning": "Please give me a coffee.",
+  "frequency": "172",
+  "mnemonic": "Kneel, sigh, and hold the pose: coo-da-sigh. Hang it on a noun or a て-form verb and the whole thing turns into a request. ください.",
+  "notes": ""
+ }
+]

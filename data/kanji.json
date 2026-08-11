@@ -1,8 +1,14 @@
 {
-  "_comment": "Component breakdown for kanji appearing in the deck. Hand-authored. Component names are conventional radical meanings (grain, step, woman, child...) — deliberately NOT the invented names used by other courses, which are their own creative work. 'parts' omitted for pictographs that don't usefully decompose.",
+  "_comment": "Component breakdown for kanji appearing in the deck. Hand-authored. Component names are conventional radical meanings (grain, step, woman, child...) — deliberately NOT the invented names used by other courses, which are their own creative work. Where a decomposition is contested or unhelpful, 'note' is used instead of inventing parts.",
 
   "人": { "meaning": "person", "note": "A pictograph — a figure walking, seen from the side." },
   "日": { "meaning": "sun, day", "note": "A pictograph — the sun with a mark in the middle." },
+  "生": { "meaning": "life, raw", "note": "A pictograph — a shoot pushing up out of the ground." },
+  "白": { "meaning": "white", "note": "A pictograph — usually read as the sun just breaking the horizon." },
+  "面": { "meaning": "face, surface", "note": "A pictograph — a face inside its outline." },
+  "今": { "meaning": "now", "note": "A lid drawn shut over a single stroke — this moment, closed off from the rest." },
+  "先": { "meaning": "ahead, previous", "note": "A figure striding out in front, on 儿 legs." },
+  "無": { "meaning": "nothing, without", "note": "A thicket of strokes over 灬 fire — the lot of it burnt away to nothing." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -33,5 +39,38 @@
     { "c": "弓", "name": "bow" },
     { "c": "厶", "name": "private" },
     { "c": "虫", "name": "insect" }
+  ]},
+  "何": { "meaning": "what", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "可", "name": "can, possible" }
+  ]},
+  "兄": { "meaning": "older brother", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "儿", "name": "legs" }
+  ]},
+  "全": { "meaning": "whole, entire", "parts": [
+    { "c": "𠆢", "name": "roof" },
+    { "c": "王", "name": "king" }
+  ]},
+  "時": { "meaning": "time, hour", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "寺", "name": "temple" }
+  ]},
+  "毎": { "meaning": "every", "parts": [
+    { "c": "𠂉", "name": "slash" },
+    { "c": "母", "name": "mother" }
+  ]},
+  "然": { "meaning": "so, thus", "parts": [
+    { "c": "月", "name": "meat" },
+    { "c": "犬", "name": "dog" },
+    { "c": "灬", "name": "fire" }
+  ]},
+  "見": { "meaning": "see", "parts": [
+    { "c": "目", "name": "eye" },
+    { "c": "儿", "name": "legs" }
+  ]},
+  "間": { "meaning": "interval, gap", "parts": [
+    { "c": "門", "name": "gate" },
+    { "c": "日", "name": "sun" }
   ]}
 }
