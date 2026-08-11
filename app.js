@@ -465,6 +465,7 @@ function answerQuizQuestion(correct){
     lessonState.quizQueue.splice(insertAt, 0, q);
   }
   lessonState.showAnswer = false;
+  lessonState.revealed = false;
   render();
 }
 
@@ -478,6 +479,7 @@ function submitQuizAnswer(){
   lessonState.showAnswer = true;
   lessonState.lastCorrect = correct;
   lessonState.lastInput = value;
+  lessonState.revealed = false;
   render();
 }
 
@@ -575,6 +577,7 @@ function answerVisible(state){
 
 function revealReviewAnswer(){ reviewState.revealed = true; render(); }
 function revealExtraStudyAnswer(){ extraStudyState.revealed = true; render(); }
+function revealQuizAnswer(){ lessonState.revealed = true; render(); }
 
 function submitReviewAnswer(){
   const q = reviewState.queue[0];
@@ -847,11 +850,15 @@ function renderLessonQuiz(){
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${audioBtn('speakWord', item.id, 'Play word')}</div>
-      <div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>
-      ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:6px;">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
+      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(lessonState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      ${answerVisible(lessonState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>` : ''}
+      ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ${answerVisible(lessonState) ? `
+      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+    ` : `
+      <button class="secondary" onclick="revealQuizAnswer()">Show answer</button>
+    `}
     <button class="primary" onclick="answerQuizQuestion(${lessonState.lastCorrect})">Next</button>
   `}
   `;
@@ -894,7 +901,7 @@ function renderSettings(){
     </div>
     <div class="settings-row">
       <div class="settings-label">Reveal the answer after a mistake</div>
-      <div class="settings-desc">"Only when asked" keeps the correct answer, mnemonic and sentence translation hidden behind a button, so you get a chance to recall it yourself first.</div>
+      <div class="settings-desc">"Only when asked" keeps the correct answer, mnemonic and sentence translation hidden behind a button, so you get a chance to recall it yourself first. Applies to reviews, lesson quizzes and extra study.</div>
       <select id="hideAnswerInput">
         <option value="manual" ${settings.hideAnswerOnMistake?'selected':''}>Only when asked</option>
         <option value="auto" ${!settings.hideAnswerOnMistake?'selected':''}>Straight away</option>
