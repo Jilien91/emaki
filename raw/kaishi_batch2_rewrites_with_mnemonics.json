@@ -6,7 +6,7 @@
   "sentence": "私はアンです。",
   "sentence_meaning": "I am Ann.",
   "frequency": "19",
-  "mnemonic": "You're at the sushi counter and the chef asks who ordered. Every hand in the place goes up, so you jab a thumb into your own chest and say it louder than anyone: \"I want a sushi.\" Wa-ta-shi. The one pointing at themselves is the one saying わたし.",
+  "mnemonic": "The sushi chef asks whose order it is. Every hand goes up, so you jab a thumb into your own chest: \"I want a sushi.\" Wa-ta-shi. わたし.",
   "notes": "Can also be read わたくし (very formal) or あたし (feminine, casual). There are rarer readings too."
  },
  {
@@ -16,7 +16,7 @@
   "sentence": "あなたはトムさんですか。",
   "sentence_meaning": "Are you Tom-san?",
   "frequency": "136",
-  "mnemonic": "The man handing out prizes has not learned a single name and is not going to start now. Another. Another. Another. Every time the finger lands on a stranger they get called the same thing. あなた is what you call someone whose name you haven't got.",
+  "mnemonic": "The prize-giver hasn't learned a single name all night. Another. Another. Every time the finger lands on a stranger, that's what they get. あなた.",
   "notes": ""
  },
  {
@@ -26,7 +26,7 @@
   "sentence": "あなたはトムさんですか。",
   "sentence_meaning": "Are you Tom-san?",
   "frequency": "35",
-  "mnemonic": "Nobody has ever got away with shortening the sun's name. Emperors bow to it, farmers thank it, and not one of them tries calling it Sunny. Stick さん on the end of a name and you're doing exactly that — a small bow, every single time.",
+  "mnemonic": "Nobody has ever shortened the sun's name. Emperors bow to it, farmers thank it, no one calls it Sunny. さん on a name is that same small bow, every time.",
   "notes": "The most common neutral polite honorific, similar to using 'Mr/Ms' before a name in English."
  },
  {
@@ -36,7 +36,7 @@
   "sentence": "彼はトムさんです。",
   "sentence_meaning": "He is Tom-san.",
   "frequency": "150",
-  "mnemonic": "Someone flattens a stack of roof tiles in the dojo and is gone before anyone sees a face. Nobody will say who. The sensei just shrugs and says the karate guy did it. Not you, not her. かれ.",
+  "mnemonic": "Roof tiles flattened, no face seen, nobody talking. The sensei just shrugs: the karate guy did it. Not you, not her — かれ.",
   "notes": ""
  },
  {
@@ -46,7 +46,7 @@
   "sentence": "私はワインが好きです。",
   "sentence_meaning": "I like wine.",
   "frequency": "186",
-  "mnemonic": "The lifts stopped an hour ago and it's dark, and there is still one person up on the mountain taking one more run. Ask her why she won't come inside and all you get back is \"ski.\" That isn't liking something. That's すき.",
+  "mnemonic": "The lifts stopped an hour ago and she's still up there, taking one more run in the dark. Ask why and all you get back is \"ski.\" すき.",
   "notes": "Grammatically not a verb, though it's often translated into English as 'to like'."
  },
  {
@@ -56,7 +56,7 @@
   "sentence": "あの人はいい人です。",
   "sentence_meaning": "That person is a good person.",
   "frequency": "71",
-  "mnemonic": "On a packed train something heavy comes down on your foot and you surface ready to fight about it. Heel, toe, and attached to them a bloke wincing back at you, every bit as sorry as you are annoyed. Just a person. ひと.",
+  "mnemonic": "On a packed train a heel comes down on your toe and you surface ready to fight. It's just a bloke, wincing back at you. Heel, toe. ひと.",
   "notes": ""
  },
  {
@@ -66,7 +66,7 @@
   "sentence": "あの人はいい人です。",
   "sentence_meaning": "That person is a good person.",
   "frequency": "37",
-  "mnemonic": "The tasting spoon goes in and the chef says nothing at all — just a long rising \"eeee\" with his eyes shut and one hand up to stop you talking. He never does find an adjective. いい.",
+  "mnemonic": "The spoon goes in and the chef says nothing — just a long rising \"eeee\", eyes shut, one hand up to stop you talking. He never finds a word. いい.",
   "notes": ""
  },
  {
@@ -76,7 +76,7 @@
   "sentence": "私はイギリス人です。",
   "sentence_meaning": "I am British.",
   "frequency": "71",
-  "mnemonic": "A man shakes your hand at the airport before you've asked him anything: \"Jin. Nihon-jin.\" He works down the whole queue like that, name and country welded into one word. Whenever a country's name has じん stuck on the end, that's a person from there.",
+  "mnemonic": "He shakes your hand before you've asked anything: \"Jin. Nihon-jin.\" Name and country welded together. A country plus じん is a person from there.",
   "notes": "Used as a suffix on a country name to mean a person from that country, e.g. 日本人 nihonjin."
  },
  {
@@ -86,7 +86,7 @@
   "sentence": "私は日本語を勉強しています。",
   "sentence_meaning": "I'm studying Japanese.",
   "frequency": "5442",
-  "mnemonic": "No pun needed for this one — it's two pieces bolted together. 日本 is Japan, ご is the tag meaning \"the language of\". Japan plus language tag, にほんご. Every other language works the same way, so once you can hear that ご on the end you can name all of them.",
+  "mnemonic": "No pun here, just two parts. 日本 is Japan, ご is \"language of\". Bolt them together and you have にほんご. Every language works the same way.",
   "notes": ""
  },
  {
@@ -96,7 +96,7 @@
   "sentence": "私は日本語を勉強しています。",
   "sentence_meaning": "I'm studying Japanese.",
   "frequency": "925",
-  "mnemonic": "Ben moved to Kyoto for one exam. Three years on he is still at the same desk, still highlighting the same page, still has not sat it. Ben-Kyo. べんきょう is the thing he does instead of getting on with his life.",
+  "mnemonic": "Ben moved to Kyoto for one exam and still hasn't sat it — three years, same desk, same page. Ben-Kyo. べんきょう is what he does instead of living.",
   "notes": ""
  }
 ]
