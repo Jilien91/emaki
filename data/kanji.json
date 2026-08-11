@@ -15,6 +15,16 @@
   "前": { "meaning": "front, before", "note": "Horns over 月 moon over 刂 knife — the part that goes out in front." },
   "学": { "meaning": "study, learn", "note": "Sparks over a cover over 子 a child — a child under a roof, learning." },
   "帰": { "meaning": "return home", "note": "帚 a broom on the right — sweep up, then go back where you came from." },
+  "一": { "meaning": "one", "note": "A single stroke. It doesn't get simpler than this." },
+  "会": { "meaning": "meet", "note": "A roof with people gathering in underneath it." },
+  "友": { "meaning": "friend", "note": "Two hand shapes reaching the same way." },
+  "方": { "meaning": "direction, person (polite)", "note": "A pictograph of a plough or banner — a thing that points a way." },
+  "昨": { "meaning": "previous", "note": "日 the sun with a marker beside it — the day just gone." },
+  "番": { "meaning": "turn, number", "note": "釆 sorting laid over 田 a field — taking things in order." },
+  "考": { "meaning": "consider", "note": "耂 an old man bent over, taking his time over it." },
+  "言": { "meaning": "say, speech", "note": "A mouth with the sound drawn coming out of it." },
+  "達": { "meaning": "reach, plural marker", "note": "辶 the road radical — getting there; on people it makes a group." },
+  "高": { "meaning": "tall, expensive", "note": "A pictograph — a tall building, roof and gate stacked up." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -114,5 +124,29 @@
   "思": { "meaning": "think", "parts": [
     { "c": "田", "name": "field" },
     { "c": "心", "name": "heart" }
+  ]},
+  "分": { "meaning": "part, understand", "parts": [
+    { "c": "八", "name": "divide" },
+    { "c": "刀", "name": "sword" }
+  ]},
+  "待": { "meaning": "wait", "parts": [
+    { "c": "彳", "name": "step" },
+    { "c": "寺", "name": "temple" }
+  ]},
+  "次": { "meaning": "next", "parts": [
+    { "c": "冫", "name": "ice" },
+    { "c": "欠", "name": "yawn, lack" }
+  ]},
+  "町": { "meaning": "town", "parts": [
+    { "c": "田", "name": "field" },
+    { "c": "丁", "name": "street block" }
+  ]},
+  "聞": { "meaning": "hear, ask", "parts": [
+    { "c": "門", "name": "gate" },
+    { "c": "耳", "name": "ear" }
+  ]},
+  "願": { "meaning": "wish, request", "parts": [
+    { "c": "原", "name": "plain, origin" },
+    { "c": "頁", "name": "head" }
   ]}
 }
