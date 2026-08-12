@@ -59,7 +59,22 @@ for my $entry (@merged) {
     $by_key{$key} = $entry;
 }
 
-my @batch_files = sort glob('raw/*_with_mnemonics.json');
+# Later batches must overwrite earlier ones for the same word — that's how a
+# rewrite ships. A plain lexicographic sort breaks that once batch numbers hit
+# double digits: "batch13_rewrites" sorts before "batch1", so a rewrite of a
+# word first written in batch8 was silently undone by batch8 running after it.
+# Sort on the batch number instead, with a rewrite applying after the plain
+# batch of the same number, and anything unnumbered last.
+sub batch_order {
+    my ($path) = @_;
+    my ($n) = $path =~ /batch(\d+)/;
+    return (defined $n ? $n : 1e9, ($path =~ /rewrites/ ? 1 : 0), $path);
+}
+my @batch_files = sort {
+    my @a = batch_order($a);
+    my @b = batch_order($b);
+    $a[0] <=> $b[0] || $a[1] <=> $b[1] || $a[2] cmp $b[2]
+} glob('raw/*_with_mnemonics.json');
 for my $file (@batch_files) {
     my $batch = read_json($file);
     my $applied = 0;

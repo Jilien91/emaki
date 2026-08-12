@@ -1,5 +1,5 @@
 {
-  "_comment": "Component breakdown for kanji appearing in the deck. Hand-authored. Component names are conventional radical meanings (grain, step, woman, child...) — deliberately NOT the invented names used by other courses, which are their own creative work. Where a decomposition is contested or unhelpful, 'note' is used instead of inventing parts.",
+  "_comment": "Component breakdown for kanji appearing in the deck. Hand-authored. Component names are conventional radical meanings (grain, step, woman, child...) — deliberately NOT the invented names used by other courses, which are their own creative work. Where a decomposition is contested or unhelpful, 'note' is used instead of inventing parts. A component is glossed the same way everywhere, with two deliberate exceptions where one shape really is two different components: 月 is 'moon' in 明 but 'flesh' in 然, and 王 is 'king' in 全 but 'jewel' in 理 (玉 loses its dot on the left). Both have their own entry explaining the split — don't 'fix' them.",
 
   "人": { "meaning": "person", "note": "A pictograph — a figure walking, seen from the side." },
   "日": { "meaning": "sun, day", "note": "A pictograph — the sun with a mark in the middle." },
@@ -122,7 +122,7 @@
     { "c": "母", "name": "mother" }
   ]},
   "然": { "meaning": "so, thus", "parts": [
-    { "c": "月", "name": "flesh, not moon" },
+    { "c": "月", "name": "flesh" },
     { "c": "犬", "name": "dog" },
     { "c": "灬", "name": "fire" }
   ]},
@@ -164,7 +164,7 @@
   ]},
   "明": { "meaning": "bright, next", "parts": [
     { "c": "日", "name": "sun" },
-    { "c": "月", "name": "moon, genuinely" }
+    { "c": "月", "name": "moon" }
   ]},
   "思": { "meaning": "think", "parts": [
     { "c": "田", "name": "field" },
@@ -172,7 +172,7 @@
   ]},
   "分": { "meaning": "part, understand", "parts": [
     { "c": "八", "name": "divide" },
-    { "c": "刀", "name": "sword" }
+    { "c": "刀", "name": "knife" }
   ]},
   "待": { "meaning": "wait", "parts": [
     { "c": "彳", "name": "step" },
@@ -244,7 +244,7 @@
   ]},
   "信": { "meaning": "believe, trust", "parts": [
     { "c": "亻", "name": "person" },
-    { "c": "言", "name": "word" }
+    { "c": "言", "name": "speech" }
   ]},
   "動": { "meaning": "move", "parts": [
     { "c": "重", "name": "heavy" },
@@ -377,7 +377,7 @@
   ]},
   "飲": { "meaning": "drink", "parts": [
     { "c": "食", "name": "eat" },
-    { "c": "欠", "name": "open mouth" }
+    { "c": "欠", "name": "yawn, lack" }
   ]},
 
   "二": { "meaning": "two", "note": "Two strokes. One line for each." },
@@ -440,5 +440,6 @@
     { "c": "女", "name": "woman" }
   ]},
   "死": { "meaning": "death", "note": "歹 bare bones with a figure folded over beside them." },
-  "早": { "meaning": "early", "note": "日 the sun already up over a single bare stalk." }
+  "早": { "meaning": "early", "note": "日 the sun already up over a single bare stalk." },
+  "王": { "meaning": "king", "note": "Heaven, earth and humanity threaded on one vertical stroke. On the left of another kanji this same shape is usually 玉 jewel with its dot worn off, which is why 理 has a jewel in it and 全 has a king." }
 }
