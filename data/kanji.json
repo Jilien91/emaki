@@ -777,5 +777,30 @@
     { "c": "虫", "name": "insect" }
   ]},
   "赤": { "meaning": "red", "note": "大 a big figure standing over 火 a fire, taking the colour off it." },
-  "送": { "meaning": "send, see off", "note": "辶 the road radical with two hands lifting something onto it. It goes and you do not." }
+  "送": { "meaning": "send, see off", "note": "辶 the road radical with two hands lifting something onto it. It goes and you do not." },
+  "仲": { "meaning": "relations, go-between", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "中", "name": "middle" }
+  ]},
+  "再": { "meaning": "again, a second time", "note": "One shape, nothing to pull off it. Round again." },
+  "可": { "meaning": "can, possible", "note": "A bent line over 口 a mouth. The thing you are allowed to say yes to." },
+  "喜": { "meaning": "rejoice, delight", "note": "A drum up on a stand with 口 a mouth underneath. Noise made on purpose." },
+  "届": { "meaning": "reach, deliver", "note": "尸 the shelter radical with 由 a channel running under it. What comes down and lands at your door." },
+  "急": { "meaning": "sudden, hurry", "note": "心 a heart underneath with a hand grabbing above it. No time left." },
+  "愛": { "meaning": "love", "note": "心 a heart bundled up in the middle with 夂 trailing feet under it. Carried about wherever you go." },
+  "求": { "meaning": "seek, request", "note": "A fur coat with the tails left hanging off it. What everybody in the village was after." },
+  "渡": { "meaning": "cross over, hand across", "note": "氵 water on the left, with the same 度 as 一度 beside it. Getting a thing over the river and into a hand." },
+  "突": { "meaning": "thrust, sudden", "parts": [
+    { "c": "穴", "name": "hole" },
+    { "c": "犬", "name": "dog" }
+  ]},
+  "肩": { "meaning": "shoulder", "parts": [
+    { "c": "戸", "name": "door" },
+    { "c": "月", "name": "flesh" }
+  ]},
+  "背": { "meaning": "back, stature", "note": "北 two figures drawn back to back, over 月 the flesh sense. The side of you that faces away." },
+  "色": { "meaning": "colour", "note": "Two figures, one bent over the other, and nobody agrees why that came to mean colour. Take the meaning and leave the shape." },
+  "身": { "meaning": "body, oneself", "note": "A figure in profile with the belly drawn out. The body you carry about." },
+  "静": { "meaning": "quiet, still", "note": "青 blue and fresh down the left. The colour of a room with nothing going on in it." },
+  "飛": { "meaning": "fly", "note": "Both wings up and the tail streaming out behind. A pictograph." }
 }
