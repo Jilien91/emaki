@@ -1,4 +1,4 @@
--- Kaishi SRS — cross-device sync schema.
+-- Kaishi SRS, cross-device sync schema.
 -- Run once: Supabase dashboard -> SQL Editor -> New query -> paste -> Run.
 -- Safe to re-run; every statement is idempotent.
 
@@ -20,7 +20,7 @@ alter table public.user_state
 
 -- The publishable key ships inside the client, so anyone can read it out of
 -- the page source. Row-level security is the only thing keeping one account's
--- data private from another's — these policies are not optional.
+-- data private from another's. These policies are not optional.
 alter table public.user_state enable row level security;
 
 drop policy if exists "read own state"   on public.user_state;

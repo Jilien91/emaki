@@ -38,7 +38,7 @@ try {
                     $response.OutputStream.Write($bytes, 0, $bytes.Length)
                 }
             } catch {
-                # client disconnected mid-response or similar — drop this request, keep serving
+                # client disconnected mid-response or similar, drop this request, keep serving
             }
         } finally {
             try { $response.OutputStream.Close() } catch {}

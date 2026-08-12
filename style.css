@@ -155,7 +155,7 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .syncbadge.err{color:var(--danger);border-color:var(--danger);}
 
 /* On a phone the on-screen keyboard eats over half the viewport, and the
-   full-size question layout is taller than what's left — so the browser
+   full-size question layout is taller than what's left, so the browser
    scrolls the input into view and takes the word off the top of the screen
    with it. Tighten the spacing (not the text) so the word, its example and
    the answer box all still fit above the keyboard. */

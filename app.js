@@ -20,7 +20,7 @@ const STREAK_SAVE_KEY = 'kaishi-streak-saves';
 const STREAK_SAVE_MAX = 1;
 const STREAK_SAVE_DAYS = 3;
 // iOS capitalises the first letter of a text field by default, and wanakana
-// maps uppercase romaji to katakana on purpose — so "Watashi" could come out
+// maps uppercase romaji to katakana on purpose, so "Watashi" could come out
 // starting ワ. Grading survives it (checkReading runs toHiragana), but the box
 // looked wrong while typing. autocorrect and spellcheck are off for the same
 // family of reasons: predictive text mangles romaji.
@@ -83,7 +83,7 @@ function levenshtein(a, b){
 }
 
 // Meanings like "I (polite, general)" or "he, him" can have several
-// acceptable answers — split out synonyms and drop parenthetical notes.
+// acceptable answers, split out synonyms and drop parenthetical notes.
 function meaningCandidates(meaning){
   const stripped = meaning.replace(/\([^)]*\)/g, '').trim();
   const source = stripped || meaning;
@@ -121,10 +121,10 @@ function checkMeaning(userInput, meaning, item){
   const correctCandidates = acceptedMeanings(meaning, item);
   // Try the whole answer first. This is what accepts an exact copy of a
   // stored meaning whose own parentheses contain commas, e.g. typing
-  // "I (polite, general)" — splitting that on commas would match nothing.
+  // "I (polite, general)". Splitting that on commas would match nothing.
   if(correctCandidates.some(c => fuzzyMatch(whole, c))) return true;
   // Otherwise treat it as a list of synonyms, so "like, fond of" is accepted
-  // for "fond of, liked". Every part must be a valid synonym — that keeps
+  // for "fond of, liked". Every part must be a valid synonym. That keeps
   // "he, cat" from passing for "he, him" on the strength of "he" alone.
   const parts = whole.split(/[,/]/).map(s=>s.trim()).filter(Boolean);
   if(parts.length < 2) return false;
@@ -137,7 +137,7 @@ function checkReading(userInput, reading){
   return reading.split('・').map(s=>s.trim()).includes(input);
 }
 
-// sync.js is optional — if it failed to load (offline, CDN blocked, or the
+// sync.js is optional, if it failed to load (offline, CDN blocked, or the
 // user never set sync up) the app must carry on as a local-only tool.
 function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
 
@@ -145,7 +145,7 @@ function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
 // Audio comes from the browser's own Japanese voice rather than shipped files.
 //
 // OFF for now. Handing the synthesiser a bare kanji makes it guess the reading,
-// and it guesses by frequency rather than by what the card teaches — 人 came
+// and it guesses by frequency rather than by what the card teaches. 人 came
 // out as ひと on a card teaching じん, which trains the wrong reading. The
 // device voices also run fast enough to be hard to follow at 0.9x.
 //
@@ -182,7 +182,7 @@ function initSpeech(){
     const had = !!jaVoice;
     pickJapaneseVoice();
     // The audio buttons are hidden until a voice exists, so repaint once one
-    // turns up — otherwise they'd stay hidden until the next navigation.
+    // turns up, otherwise they'd stay hidden until the next navigation.
     if(!had && jaVoice && document.getElementById('root')) render();
   };
 }
@@ -322,7 +322,7 @@ function recordMistake(id, type){
 }
 
 // Words missed in the last 24h, most recent first. A word is one mistake
-// whichever half of it you got wrong — meaning and reading are two halves of
+// whichever half of it you got wrong. Meaning and reading are two halves of
 // the same item, not two separate things to get wrong.
 function recentMistakeIds(){
   pruneMistakes();
@@ -390,7 +390,7 @@ function replenishStreakSaves(){
 }
 
 // Spends kunai on days you missed, so studyStreak() reads them as covered.
-// Only bridges gaps that sit between earlier activity and today — it will never
+// Only bridges gaps that sit between earlier activity and today. It will never
 // spend one to invent a streak you never had.
 function applyStreakSaves(){
   if(activityDates.length === 0) return;
@@ -423,7 +423,7 @@ function nextKunaiInDays(){
 }
 
 // Replenishment is reckoned in whole calendar days, so the kunai is back at
-// the very start of the day STREAK_SAVE_DAYS after it was spent — midnight,
+// the very start of the day STREAK_SAVE_DAYS after it was spent, midnight,
 // not the time of day you happened to lose it.
 function nextKunaiAt(){
   if(streakSaves.count >= STREAK_SAVE_MAX) return null;
@@ -640,7 +640,7 @@ function computeReviewStage(stage, correct){
 
 // Orders the whole question queue per the review-ordering setting. Meaning
 // and reading questions stay interleaved across different words in every
-// mode — ordering only decides which items come earlier, never which half
+// mode. Ordering only decides which items come earlier, never which half
 // of an item you get asked first.
 function orderReviewQueue(queue){
   if(settings.reviewOrder === 'genin-first'){
@@ -672,7 +672,7 @@ function buildReviewSession(){
 
 // An item's SRS stage only moves once both its meaning and reading have been
 // answered correctly, and it only moves up if neither was missed along the
-// way — same contract as WaniKani.
+// way, same contract as WaniKani.
 function applyReviewResult(id, allCorrect){
   const newStage = computeReviewStage(getEntry(id).stage, allCorrect);
   const nextReview = newStage===9 ? null : now() + INTERVAL_HOURS[newStage]*3600*1000;
@@ -683,8 +683,8 @@ function applyReviewResult(id, allCorrect){
 }
 
 // After a wrong answer the correct one stays hidden until asked for, so the
-// recall attempt isn't short-circuited. Anything that would give it away —
-// the mnemonic, the sentence translation — is withheld along with it.
+// recall attempt isn't short-circuited. Anything that would give it away, 
+// the mnemonic, the sentence translation. Is withheld along with it.
 function answerVisible(state){
   return state.lastCorrect || state.revealed || !settings.hideAnswerOnMistake;
 }
@@ -692,7 +692,7 @@ function answerVisible(state){
 // Every item is asked twice, meaning and reading, interleaved in one queue. So
 // the panel shown after answering one half can hand over the other half before
 // it's been asked: the sentence translation is the meaning in English, and the
-// mnemonic gives away both — it tells the meaning story and signs off with the
+// mnemonic gives away both. It tells the meaning story and signs off with the
 // reading in kana. Only reveal those once the sibling question is out of the
 // queue. `rest` is whatever is still to come, current question excluded.
 function siblingPending(rest, id){
@@ -745,7 +745,7 @@ function advanceReview(){
 function startExtraStudy(){
   const ids = recentMistakeIds();
   if(ids.length===0) return;
-  // Drill each missed word as a whole — both halves, interleaved — since a
+  // Drill each missed word as a whole, both halves, interleaved, since a
   // mistake is recorded against the word, not against one half of it.
   const queue = [];
   ids.forEach(id=>{
@@ -861,7 +861,7 @@ function renderDashboard(){
       <div class="tilegrid">
         ${mistakeItems.slice(0, MISTAKE_TILE_LIMIT).map(item=>{
           const tier = TIER_COLOR(getEntry(item.id).stage);
-          return `<span class="tile" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});" title="${escapeHtml(item.reading + ' — ' + item.meaning)}">${escapeHtml(item.word)}</span>`;
+          return `<span class="tile" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});" title="${escapeHtml(item.reading + ', ' + item.meaning)}">${escapeHtml(item.word)}</span>`;
         }).join('')}
         ${mistakeItems.length > MISTAKE_TILE_LIMIT ? `<span class="tile tile-more">+${mistakeItems.length - MISTAKE_TILE_LIMIT}</span>` : ''}
       </div>
@@ -905,12 +905,12 @@ function renderInfo(){
   const learnableCount = learnableWords().length;
   return `
   <p class="footer-note" style="text-align:left;">
-    Kaishi 1.5k deck — ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br><br>
+    Kaishi 1.5k deck: ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br><br>
     SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br><br>
     <b>Kunai.</b> You hold one at a time. Miss a day and it's spent automatically to keep your
-    study streak alive — you'll see it marked as spent on the dashboard. A replacement arrives
+    study streak alive, you'll see it marked as spent on the dashboard. A replacement arrives
     ${STREAK_SAVE_DAYS} days later, so missing two days close together will still break the streak.<br><br>
-    ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable — progress will not persist this session</span>'}
+    ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable. Progress will not persist this session</span>'}
   </p>
   <div style="text-align:center;margin-top:16px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
@@ -941,7 +941,7 @@ function renderLessons(){
   `;
 }
 
-// Shows what each kanji in the word is built from. Recognition aid only —
+// Shows what each kanji in the word is built from. Recognition aid only, 
 // these aren't SRS items, they're context while the word is being taught.
 function renderKanjiParts(word){
   const chars = Array.from(word).filter(ch => KANJI[ch]);
@@ -999,7 +999,7 @@ function renderLessonQuiz(){
     }else{
       follow = `<p class="forecast" style="text-align:center;">No more words are ready to learn yet.</p>`;
     }
-    return `${nav('lessons')}<div class="empty">Lesson batch complete — ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>${follow}`;
+    return `${nav('lessons')}<div class="empty">Lesson batch complete: ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>${follow}`;
   }
   const q = quizQueue[0];
   const holdBack = siblingPending(quizQueue.slice(1), q.id);
@@ -1088,9 +1088,9 @@ function renderSettings(){
     <div class="settings-row">
       <div class="settings-label">Review ordering</div>
       <div class="settings-desc">
-        <b>Shuffled</b> — random order.<br>
-        <b>Genin First</b> — review Genin-stage items first, then randomize the rest. Best when you're short on time.<br>
-        <b>Lower Stages First</b> — always review whichever due item is least-learned, Genin → Chunin → Jonin → Anbu.
+        <b>Shuffled</b>, random order.<br>
+        <b>Genin First</b>, review Genin-stage items first, then randomize the rest. Best when you're short on time.<br>
+        <b>Lower Stages First</b>. Always review whichever due item is least-learned, Genin → Chunin → Jonin → Anbu.
       </div>
       <select id="reviewOrderInput">
         <option value="shuffled" ${settings.reviewOrder==='shuffled'?'selected':''}>Shuffled</option>
@@ -1131,7 +1131,7 @@ function renderAudioCard(){
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Audio</div>
     <div class="settings-row">
-      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered — never on the question itself.</div>
+      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered, never on the question itself.</div>
     </div>
     <div class="settings-row">
       <div class="settings-label">Play the word automatically in lessons</div>
@@ -1161,7 +1161,7 @@ function renderAccountCard(){
     return `
     <div class="card" style="margin-bottom:16px;">
       <div class="section-title">Sync</div>
-      <div class="settings-desc">Sync is unavailable right now — progress is being saved to this device only.</div>
+      <div class="settings-desc">Sync is unavailable right now. Progress is being saved to this device only.</div>
     </div>`;
   }
   const notice = typeof syncNotice === 'string' && syncNotice
@@ -1177,7 +1177,7 @@ function renderAccountCard(){
       <button class="primary" onclick="signOutSync()">Sign out</button>
     ` : `
       <div class="settings-row">
-        <div class="settings-desc">Sign in to keep progress in step across devices. We'll email you a link — no password to remember. Without this, progress stays in this browser only.</div>
+        <div class="settings-desc">Sign in to keep progress in step across devices. We'll email you a link, no password to remember. Without this, progress stays in this browser only.</div>
         <input type="email" id="syncEmailInput" placeholder="you@example.com" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false">
       </div>
       <button class="primary" onclick="signInWithEmail()">Email me a sign-in link</button>
@@ -1193,7 +1193,7 @@ function renderReview(){
     const total = results.length;
     const clean = results.filter(r=>!r.missed).length;
     reviewState = null;
-    return `${nav('review')}<div class="empty">Review session complete — ${total} item${total===1?'':'s'} reviewed.<br>${clean} of ${total} answered correctly first time.</div>`;
+    return `${nav('review')}<div class="empty">Review session complete: ${total} item${total===1?'':'s'} reviewed.<br>${clean} of ${total} answered correctly first time.</div>`;
   }
   if(!reviewState){
     const upcoming = nextUpcoming();
@@ -1206,7 +1206,7 @@ function renderReview(){
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
   const answer = q.type==='meaning' ? item.meaning : item.reading;
-  // Only preview the stage change on the question that completes the item —
+  // Only preview the stage change on the question that completes the item, 
   // before that nothing is committed, so promising a change would be a lie.
   const completesItem = reviewState.showAnswer && reviewState.lastCorrect &&
     (q.type==='meaning' ? res.reading : res.meaning);
@@ -1249,7 +1249,7 @@ function renderExtraStudy(){
   if(!extraStudyState || extraStudyState.index >= extraStudyState.queue.length){
     const done = extraStudyState ? extraStudyState.wordCount : 0;
     extraStudyState = null;
-    return `<div class="empty">Extra study complete — ${done} word${done===1?'':'s'} practiced.<br>This doesn't change their SRS timing, just extra reps.</div><div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button></div>`;
+    return `<div class="empty">Extra study complete: ${done} word${done===1?'':'s'} practiced.<br>This doesn't change their SRS timing, just extra reps.</div><div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button></div>`;
   }
   const q = extraStudyState.queue[extraStudyState.index];
   const item = VOCAB.find(v=>v.id===q.id);
@@ -1336,7 +1336,7 @@ function currentQuestionType(){
 }
 
 // Capture phase so this runs before wanakana's own keydown handling on
-// #quizInput — otherwise wanakana swallows Enter (and clears the field)
+// #quizInput, otherwise wanakana swallows Enter (and clears the field)
 // before our submit/advance logic ever sees it.
 document.addEventListener('keydown', (e)=>{
   if(e.key !== 'Enter') return;

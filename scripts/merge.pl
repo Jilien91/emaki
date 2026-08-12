@@ -13,7 +13,7 @@ my $json = JSON::PP->new->utf8(0);
 # The upstream deck is exported from Anki HTML, so some fields carry literal
 # "&nbsp;" entities (310 of them across 183 words). Rendered into innerHTML
 # they look like normal spaces, but answer grading compares against the raw
-# string — so "to&nbsp;believe" could never be matched by typing "to believe".
+# string, so "to&nbsp;believe" could never be matched by typing "to believe".
 # Normalize to plain spaces at build time.
 sub clean_text {
     my ($s) = @_;
@@ -59,7 +59,7 @@ for my $entry (@merged) {
     $by_key{$key} = $entry;
 }
 
-# Later batches must overwrite earlier ones for the same word — that's how a
+# Later batches must overwrite earlier ones for the same word, that's how a
 # rewrite ships. A plain lexicographic sort breaks that once batch numbers hit
 # double digits: "batch13_rewrites" sorts before "batch1", so a rewrite of a
 # word first written in batch8 was silently undone by batch8 running after it.

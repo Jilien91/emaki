@@ -1,6 +1,6 @@
 // Cross-device sync via Supabase.
 //
-// The publishable key below is meant to ship in the client — it identifies the
+// The publishable key below is meant to ship in the client, it identifies the
 // project, it doesn't authorise anything on its own. Privacy comes from the
 // row-level security policies in supabase/schema.sql, so that SQL must be run
 // before sync will work (or do anything safe).
@@ -134,7 +134,7 @@ async function syncNow(){
     }
     setSyncStatus('synced');
   }catch(e){
-    setSyncStatus('error', 'Sync failed — working offline');
+    setSyncStatus('error', 'Sync failed, working offline');
   }
 }
 
@@ -150,7 +150,7 @@ async function pullRemote(){
   const progressBefore = JSON.stringify(progress);
   applySnapshot(data);
   // An in-flight lesson, review or extra-study session was built from the
-  // progress that has just been replaced — its queue and per-item results
+  // progress that has just been replaced, its queue and per-item results
   // describe SRS stages that no longer exist, so finishing it would write
   // decisions based on the other device's stale view. Drop it and let the
   // items fall back into the due pool. Only when progress actually moved:
@@ -189,7 +189,7 @@ function schedulePush(){
       await pushRemote();
       setSyncStatus('synced');
     }catch(e){
-      setSyncStatus('error', 'Sync failed — working offline');
+      setSyncStatus('error', 'Sync failed, working offline');
     }
   }, PUSH_DEBOUNCE_MS);
 }
