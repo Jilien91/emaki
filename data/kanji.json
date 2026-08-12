@@ -668,5 +668,46 @@
   "恥": { "meaning": "shame, embarrassment", "parts": [
     { "c": "耳", "name": "ear" },
     { "c": "心", "name": "heart" }
+  ]},
+
+  "反": { "meaning": "opposite, turn back", "note": "A cliff with 又 a hand underneath, turning something back the way it came." },
+  "幸": { "meaning": "fortune, happiness", "note": "A shape read as good fortune — the lucky escape." },
+  "得": { "meaning": "gain, obtain", "note": "彳 the step radical, with a hand and a prize on the right — going out and coming back holding it." },
+  "撃": { "meaning": "strike, attack", "note": "A hand at the bottom driving down the whole weight of what sits above it." },
+  "昔": { "meaning": "long ago", "note": "Strokes stacked over 日 the sun — days piled up behind you." },
+  "深": { "meaning": "deep", "note": "氵 water on the left, with a hand reaching down into it." },
+  "髪": { "meaning": "hair", "note": "髟 the long-hair radical spread across the top." },
+  "勝": { "meaning": "win, excel", "note": "力 power down in the bottom right — whoever came out on top." },
+  "合": { "meaning": "fit together, join", "parts": [
+    { "c": "𠆢", "name": "roof" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "員": { "meaning": "member, staff", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "貝", "name": "shell, money" }
+  ]},
+  "応": { "meaning": "respond, answer", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "憶": { "meaning": "recollection", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "意", "name": "thought" }
+  ]},
+  "攻": { "meaning": "attack, offence", "parts": [
+    { "c": "工", "name": "carpenter's square" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "記": { "meaning": "record, write down", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "己", "name": "self" }
+  ]},
+  "近": { "meaning": "near, close", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "斤", "name": "axe" }
+  ]},
+  "黙": { "meaning": "silent", "parts": [
+    { "c": "黒", "name": "black" },
+    { "c": "犬", "name": "dog" }
   ]}
 }
