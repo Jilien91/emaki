@@ -1,0 +1,252 @@
+[
+ {
+  "word": "とりあえず",
+  "reading": "とりあえず",
+  "meaning": "for now, first of all",
+  "sentence": "とりあえずお知らせしておきます。",
+  "sentence_meaning": "I will let them know for now.",
+  "frequency": "567",
+  "mnemonic": "The waiter is at the table and nobody has opened the menu. Beer, says Torrey. Ah, easy, and the rest gets sorted when it turns up: とりあえず.",
+  "notes": "Parks the decision rather than making it. とりあえずビール is the whole of Friday night in one word."
+ },
+ {
+  "word": "送る",
+  "reading": "おくる",
+  "meaning": "to send",
+  "sentence": "彼の家に荷物を送りました。",
+  "sentence_meaning": "I sent a package to his house.",
+  "frequency": "568",
+  "mnemonic": "Two hands put the box down on 辶 the road and let go of it. Forty pounds at the counter to post a jumper: oh, cruel. おくる.",
+  "notes": "Also seeing somebody off: 駅まで送る. 送別会 そうべつかい is the leaving do."
+ },
+ {
+  "word": "では",
+  "reading": "では",
+  "meaning": "then",
+  "sentence": "では、こちらはいかがですか。6万円です。",
+  "sentence_meaning": "Then how about this one? It's 60,000 yen.",
+  "frequency": "570",
+  "mnemonic": "The first jacket is wrong and she has already turned to the rail behind her, saying nothing about it. Right then, this one? では.",
+  "notes": "じゃ is the spoken contraction of it. Same では as in 〜ではない, where it is doing a different job."
+ },
+ {
+  "word": "安心",
+  "reading": "あんしん",
+  "meaning": "peace of mind, relief",
+  "sentence": "それを聞いて安心しました。",
+  "sentence_meaning": "I was relieved to hear that.",
+  "frequency": "570",
+  "mnemonic": "宀 a roof with 女 a woman settled under it, over 心 a heart. The test came back clear, her knees go, and she sits down hard on the step. Ann, your shin: あんしん.",
+  "notes": "安心する is to be relieved. 不安 ふあん is this same 安 with the 不 in front, so it is exactly this taken away."
+ },
+ {
+  "word": "失う",
+  "reading": "うしなう",
+  "meaning": "to lose, to miss",
+  "sentence": "彼は地震で親を失いました。",
+  "sentence_meaning": "He lost his parents due to the earthquake.",
+  "frequency": "571",
+  "mnemonic": "失 the hand that has let go without meaning to. The gate stood open all night and the field is empty this morning. Ooh, she is gone now: うしなう.",
+  "notes": "Heavier than なくす. 失う takes what does not come back: a job, your sight, somebody. Same 失 as 失礼します."
+ },
+ {
+  "word": "行動",
+  "reading": "こうどう",
+  "meaning": "action, conduct",
+  "sentence": "彼の行動は理解できない。",
+  "sentence_meaning": "I can't understand his conduct.",
+  "frequency": "574",
+  "mnemonic": "行 the crossroads with 動 heavy things being shoved about by force. Not what he said he would do. What he actually did, on camera, at the co-op door: こうどう.",
+  "notes": "行 reads こう in compounds, as in 銀行 ぎんこう. 行動する is to take action."
+ },
+ {
+  "word": "触れる",
+  "reading": "ふれる",
+  "meaning": "to touch, to come in contact with",
+  "sentence": "手と手が触れてどきどきしたよ。",
+  "sentence_meaning": "My heart pounded as our hands touched.",
+  "frequency": "575",
+  "mnemonic": "角 a horn with 虫 an insect on it, a feeler going out to check what is there. Your hand meets hers on the handrail and there are suddenly very few rules: ふれる.",
+  "notes": "に marks what you touch: 手に触れる. It also does touching on a subject. 触る さわる is the deliberate hands-on one."
+ },
+ {
+  "word": "そもそも",
+  "reading": "そもそも",
+  "meaning": "in the first place",
+  "sentence": "彼はそもそもこの仕事に向いていない。",
+  "sentence_meaning": "He wasn't suited for this job in the first place.",
+  "frequency": "579",
+  "mnemonic": "The argument has been going an hour when somebody at the back points out the job was never his to take. Two sumo, and neither should be in the ring: そもそも.",
+  "notes": "Reaches back past the argument to whether the thing should have started at all. Usually has a negative behind it."
+ },
+ {
+  "word": "少ない",
+  "reading": "すくない",
+  "meaning": "few, little",
+  "sentence": "今年は雨が少ないです。",
+  "sentence_meaning": "There's not much rain this year.",
+  "frequency": "580",
+  "mnemonic": "Two inches of rain since April, a bicycle standing up out of the reservoir, and not enough left in it to scoop. Nigh on nothing: すくない.",
+  "notes": "少し すこし is a little, an amount. 少ない is the adjective, there are few of them."
+ },
+ {
+  "word": "結局",
+  "reading": "けっきょく",
+  "meaning": "after all, finally",
+  "sentence": "彼は結局何を言いたかったのだろう。",
+  "sentence_meaning": "I wonder what he wanted to say after all.",
+  "frequency": "581",
+  "mnemonic": "糸 the thread knotted off and 局 the office you end up in whatever else you tried. Three hours of arguing and the answer was on page one all along: けっきょく.",
+  "notes": "結果 けっか is the outcome itself. 結局 is the after all that comes in front of it."
+ },
+ {
+  "word": "空",
+  "reading": "そら",
+  "meaning": "sky, weather",
+  "sentence": "空が真っ青です。",
+  "sentence_meaning": "The sky is bright blue.",
+  "frequency": "582",
+  "mnemonic": "穴 a hole with 工 a square under it, a space with nothing filling it. Flat on your back in the field, and the solar glare takes your eyebrows off: そら.",
+  "notes": "The same kanji is から empty in 空手 からて and くう in 空気 くうき. そら is the one over your head."
+ },
+ {
+  "word": "済む",
+  "reading": "すむ",
+  "meaning": "to be settled, to complete",
+  "sentence": "父の手術が無事に済みました。",
+  "sentence_meaning": "My father's operation came off without a hitch.",
+  "frequency": "583",
+  "mnemonic": "氵 water on the left, and you are up the far bank with the whole thing behind you. In at seven, out by nine, and somebody summed it up in three words: すむ.",
+  "notes": "Same reading as 住む すむ, to live somewhere. This one is a thing being over with. 〜ないで済む is getting away without having to."
+ },
+ {
+  "word": "任せる",
+  "reading": "まかせる",
+  "meaning": "to entrust to, to leave it to",
+  "sentence": "この仕事は君に任せる。",
+  "sentence_meaning": "I leave this work up to you.",
+  "frequency": "585",
+  "mnemonic": "The load is stacked up on the right and you have both hands in your pockets. The boat is his problem now. Mark, sell her if you like: まかせる.",
+  "notes": "に marks who gets it: 君に任せる. 任せておいて is leave it with me."
+ },
+ {
+  "word": "赤い",
+  "reading": "あかい",
+  "meaning": "red",
+  "sentence": "赤いコートを買いました。",
+  "sentence_meaning": "I bought a red coat.",
+  "frequency": "586",
+  "mnemonic": "A big figure stood over the fire, close enough to take its colour. Her coat coming up the street: a car, I said, and I was wrong by a mile. あかい.",
+  "notes": "赤ちゃん あかちゃん is a baby, red from the off. 赤 on its own is the colour."
+ },
+ {
+  "word": "大事",
+  "reading": "だいじ",
+  "meaning": "important, precious",
+  "sentence": "彼女は私の大事な人です。",
+  "sentence_meaning": "She is an important person to me.",
+  "frequency": "587",
+  "mnemonic": "大 big with 事 a matter being carried on, so a big matter. Not the ring and not the house. The one photograph. I would die, Jean. だいじ.",
+  "notes": "大事にする is to treasure a thing. 大切 たいせつ is the near twin, and either does most of the time."
+ },
+ {
+  "word": "残す",
+  "reading": "のこす",
+  "meaning": "to leave, to reserve",
+  "sentence": "彼女はメッセージを残しました。",
+  "sentence_meaning": "She left a message.",
+  "frequency": "588",
+  "mnemonic": "歹 the bare bones and blades again, except this time somebody left it there on purpose. Three words on the pad by the phone, no cost to her: のこす.",
+  "notes": "残る のこる is a thing being left over. 残す is somebody leaving it deliberately."
+ },
+ {
+  "word": "止まる",
+  "reading": "とまる",
+  "meaning": "to stop, to come to a stop",
+  "sentence": "道に大きいバスが止まっています。",
+  "sentence_meaning": "There is a big bus parked on the street.",
+  "frequency": "589",
+  "mnemonic": "止 the flat footprint that goes nowhere else, and nobody parked this one. The bus has sat across the road since Tuesday. Tom, are you shifting it? とまる.",
+  "notes": "止める とめる is you stopping the thing. 止まる is it stopping, or sitting there stopped."
+ },
+ {
+  "word": "朝",
+  "reading": "あさ",
+  "meaning": "morning",
+  "sentence": "朝、6時に起きます。",
+  "sentence_meaning": "I wake up at 6 A.M. in the morning.",
+  "frequency": "592",
+  "mnemonic": "日 the sun already up with 月 the moon not gone yet, both of them in the sky at once. Six in the morning, and somebody two doors down starts a saw: あさ.",
+  "notes": "今朝 けさ is this morning and does not use あさ at all. 朝ご飯 あさごはん is breakfast."
+ },
+ {
+  "word": "命",
+  "reading": "いのち",
+  "meaning": "life",
+  "sentence": "命より大切なものは無いよ。",
+  "sentence_meaning": "There is nothing more important than life.",
+  "frequency": "593",
+  "mnemonic": "Handed down to the kneeling figure under the roof, and not a parcel. Up on the face it comes to one rope, one knot, and the man on the other end checking it twice: いのち.",
+  "notes": "The life itself, not 生活 せいかつ which is how you live it. It reads めい in 命令 めいれい, an order."
+ },
+ {
+  "word": "不安",
+  "reading": "ふあん",
+  "meaning": "uneasiness, anxiety",
+  "sentence": "明日、病院に検査に行くので少し不安です。",
+  "sentence_meaning": "I'm a bit worried since I have to go to the hospital for a check-up tomorrow.",
+  "frequency": "594",
+  "mnemonic": "不 cancels whatever comes after it, and 安 is a woman settled under a roof. Take that away and you have the night before the hospital, awake at three: no fun. ふあん.",
+  "notes": "The 安 of 安心 あんしん with 不 in front of it, so it is precisely that peace of mind removed."
+ },
+ {
+  "word": "結構",
+  "reading": "けっこう",
+  "meaning": "all right, no thank you",
+  "sentence": "お腹がいっぱいなのでお代わりは結構です。",
+  "sentence_meaning": "I am full so no seconds for me, thank you.",
+  "frequency": "595",
+  "mnemonic": "糸 a thread tied off and 構 the frame already built. Nothing more is going in. Your hand goes flat over the glass before the bottle is halfway across: けっこう.",
+  "notes": "Same word as 結構 \"quite\". This one turns things down, politely and firmly, and the tone is what tells you which you are getting."
+ },
+ {
+  "word": "結構",
+  "reading": "けっこう",
+  "meaning": "quite",
+  "sentence": "彼女は結構めがねが似合うね。",
+  "sentence_meaning": "Glasses suit her quite well.",
+  "frequency": "595",
+  "mnemonic": "The very same word said the very same way, doing a different job. Nobody expected the glasses to suit her and they suit her more than a bit: けっこう.",
+  "notes": "Same word as 結構 \"all right, no thank you\". This one goes in front of an adjective: 結構高い, quite expensive."
+ },
+ {
+  "word": "新しい",
+  "reading": "あたらしい",
+  "meaning": "new",
+  "sentence": "彼の車は新しい。",
+  "sentence_meaning": "His car is new.",
+  "frequency": "596",
+  "mnemonic": "立 standing, 木 a tree, 斤 an axe already in it, timber cut this morning. He got the car at a rally, she says, and he has told every single person: あたらしい.",
+  "notes": "新しい is the adjective. 新 reads しん in compounds, as in 新聞 しんぶん."
+ },
+ {
+  "word": "程度",
+  "reading": "ていど",
+  "meaning": "degree, extent",
+  "sentence": "この程度の怪我なら大丈夫です。",
+  "sentence_meaning": "If it's an injury of such a small extent then it'll be fine.",
+  "frequency": "597",
+  "mnemonic": "禾 grain on the left, from when you measured a thing by weighing out the crop. How bad is the cut? A graze. Nurses see worse than that: they do, daily. ていど.",
+  "notes": "How far along a scale a thing sits. この程度 is this much, and 〜程度 after a number is about that many."
+ },
+ {
+  "word": "壁",
+  "reading": "かべ",
+  "meaning": "wall, partition",
+  "sentence": "壁に絵が掛かっている。",
+  "sentence_meaning": "There's a painting on the wall.",
+  "frequency": "601",
+  "mnemonic": "土 earth down at the bottom, because you built this out of the field it stands in. He misjudged the car bay by six inches and the garage has a new window: かべ.",
+  "notes": "Also the wall you hit: 壁にぶつかる is to come up against a problem."
+ }
+]

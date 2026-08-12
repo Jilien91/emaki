@@ -751,5 +751,31 @@
     { "c": "辶", "name": "road" },
     { "c": "首", "name": "neck" }
   ]},
-  "隣": { "meaning": "neighbouring", "note": "阝 on the left is a mound, the bank between one plot and the next. Whoever lives on the other side of it." }
+  "隣": { "meaning": "neighbouring", "note": "阝 on the left is a mound, the bank between one plot and the next. Whoever lives on the other side of it." },
+  "任": { "meaning": "entrust, duty", "note": "亻 a person on the left with the load stacked up on the right. Handing the job over and stepping back from it." },
+  "命": { "meaning": "life, command", "note": "A figure kneeling under a roof to be handed an order. The one character does the order and the life you were given." },
+  "壁": { "meaning": "wall", "note": "土 earth at the foot of it. A wall is the ground stood up on end." },
+  "安": { "meaning": "peaceful, cheap", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "女", "name": "woman" }
+  ]},
+  "局": { "meaning": "bureau, office", "note": "尸 the shelter radical with the room cut short underneath. An office, or the fix you are stuck in." },
+  "新": { "meaning": "new", "parts": [
+    { "c": "立", "name": "stand" },
+    { "c": "木", "name": "tree" },
+    { "c": "斤", "name": "axe" }
+  ]},
+  "構": { "meaning": "construct, frame", "note": "木 a tree on the left. Timber put together into a frame, so the way a thing is built up." },
+  "済": { "meaning": "finish, settle", "note": "氵 water on the left. Getting across it and being done, the way you are once you are on the far bank." },
+  "程": { "meaning": "extent, degree", "note": "禾 grain on the left, from when you measured a thing by weighing the crop. How much of it there is." },
+  "空": { "meaning": "sky, empty", "parts": [
+    { "c": "穴", "name": "hole" },
+    { "c": "工", "name": "carpenter's square" }
+  ]},
+  "触": { "meaning": "touch, feel", "parts": [
+    { "c": "角", "name": "horn" },
+    { "c": "虫", "name": "insect" }
+  ]},
+  "赤": { "meaning": "red", "note": "大 a big figure standing over 火 a fire, taking the colour off it." },
+  "送": { "meaning": "send, see off", "note": "辶 the road radical with two hands lifting something onto it. It goes and you do not." }
 }
