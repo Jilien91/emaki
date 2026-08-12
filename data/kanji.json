@@ -60,6 +60,16 @@
   "夜": { "meaning": "night", "note": "A lid pulled over the day with the moon tucked underneath." },
   "束": { "meaning": "bundle", "note": "A tree with a band tied round it — everything gathered in." },
   "止": { "meaning": "stop", "note": "A footprint planted flat. It goes no further." },
+  "俺": { "meaning": "I (blunt, male)", "note": "亻 a person — the rough, masculine way of saying I." },
+  "僕": { "meaning": "I (softer, male)", "note": "亻 a person; originally \"servant\", which is why it lands humbler than 俺." },
+  "単": { "meaning": "single, simple", "note": "One of a thing, with nothing else added to it." },
+  "夢": { "meaning": "dream", "note": "罒 an eye at 夕 evening, seeing something that isn't in the room." },
+  "寝": { "meaning": "sleep", "note": "宀 a roof with a bed underneath it — lying down for the night." },
+  "小": { "meaning": "small", "note": "Three short strokes, the middle one shortest of all." },
+  "座": { "meaning": "sit, seat", "note": "广 a shelter with people down on 土 the ground beneath it." },
+  "暇": { "meaning": "free time", "note": "日 the sun with hours borrowed off it and nothing put back." },
+  "水": { "meaning": "water", "note": "A stream, with the current drawn running down the middle." },
+  "選": { "meaning": "choose", "note": "辶 the road radical — walking the row and picking one out." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -335,5 +345,38 @@
   "頼": { "meaning": "rely, request", "parts": [
     { "c": "束", "name": "bundle" },
     { "c": "頁", "name": "head" }
+  ]},
+  "奴": { "meaning": "guy (rude)", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "又", "name": "hand" }
+  ]},
+  "理": { "meaning": "reason, logic", "parts": [
+    { "c": "王", "name": "jewel" },
+    { "c": "里", "name": "village" }
+  ]},
+  "解": { "meaning": "untie, understand", "parts": [
+    { "c": "角", "name": "horn" },
+    { "c": "刀", "name": "knife" },
+    { "c": "牛", "name": "cow" }
+  ]},
+  "男": { "meaning": "man", "parts": [
+    { "c": "田", "name": "field" },
+    { "c": "力", "name": "power" }
+  ]},
+  "簡": { "meaning": "simple, brief", "parts": [
+    { "c": "竹", "name": "bamboo" },
+    { "c": "間", "name": "gap" }
+  ]},
+  "進": { "meaning": "advance", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "隹", "name": "small bird" }
+  ]},
+  "難": { "meaning": "difficult", "parts": [
+    { "c": "堇", "name": "clay" },
+    { "c": "隹", "name": "small bird" }
+  ]},
+  "飲": { "meaning": "drink", "parts": [
+    { "c": "食", "name": "eat" },
+    { "c": "欠", "name": "open mouth" }
   ]}
 }
