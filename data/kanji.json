@@ -709,5 +709,47 @@
   "黙": { "meaning": "silent", "parts": [
     { "c": "黒", "name": "black" },
     { "c": "犬", "name": "dog" }
-  ]}
+  ]},
+  "不": { "meaning": "not, un-", "note": "Nothing to break off it. It cancels whatever follows." },
+  "与": { "meaning": "give, grant", "note": "One hand passing a thing across to another hand." },
+  "乗": { "meaning": "ride, board", "note": "A figure standing up in a tree, on top of the thing rather than beside it." },
+  "実": { "meaning": "real, fruit", "note": "宀 a roof with the crop safe underneath. What a thing turned out to actually be." },
+  "形": { "meaning": "shape, form", "note": "彡 three brush strokes down the right, the marks you draw round a thing to show its outline." },
+  "扉": { "meaning": "door panel", "note": "戸 the door radical with 非 behind it. The panel that swings, not the doorway it swings in." },
+  "指": { "meaning": "finger, point at", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "旨", "name": "gist, point" }
+  ]},
+  "更": { "meaning": "again, renew", "note": "One shape, no clean parts. Doing the thing over, or doing more of it." },
+  "服": { "meaning": "clothes", "note": "The left half is not 月, it was 舟 a boat once. The right is a hand laid on a kneeling figure, something fitted onto a person." },
+  "果": { "meaning": "fruit, result", "note": "木 a tree with the fruit drawn in above it. What the tree finally puts out." },
+  "特": { "meaning": "special", "parts": [
+    { "c": "牛", "name": "cow" },
+    { "c": "寺", "name": "temple" }
+  ]},
+  "用": { "meaning": "use", "note": "One shape, no parts worth pulling off. A thing put to work." },
+  "神": { "meaning": "god, spirit", "parts": [
+    { "c": "礻", "name": "altar" },
+    { "c": "申", "name": "speak" }
+  ]},
+  "結": { "meaning": "tie, bind", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "吉", "name": "good fortune" }
+  ]},
+  "血": { "meaning": "blood", "note": "皿 a dish with one mark above it for what has been poured in." },
+  "識": { "meaning": "know, discern", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "音", "name": "sound" },
+    { "c": "戈", "name": "halberd" }
+  ]},
+  "議": { "meaning": "discuss, deliberate", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "義", "name": "righteousness" }
+  ]},
+  "負": { "meaning": "lose, bear", "note": "貝 a shell, money, with a figure bent over it. Carrying what you owe." },
+  "道": { "meaning": "road, way", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "首", "name": "neck" }
+  ]},
+  "隣": { "meaning": "neighbouring", "note": "阝 on the left is a mound, the bank between one plot and the next. Whoever lives on the other side of it." }
 }

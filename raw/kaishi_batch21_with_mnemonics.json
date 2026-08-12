@@ -1,0 +1,252 @@
+[
+ {
+  "word": "別",
+  "reading": "べつ",
+  "meaning": "another, different",
+  "sentence": "別の本も見せてください。",
+  "sentence_meaning": "Please show me another book.",
+  "frequency": "531",
+  "mnemonic": "刂 a blade cuts one card out of the deck and drops it face up, a different suit from everything else on the table. I would bet Sue swapped it: べつ.",
+  "notes": "別に べつに is this word plus に, and nearly always sits in a negative sentence. 別 on its own is just separate, or another one."
+ },
+ {
+  "word": "決まる",
+  "reading": "きまる",
+  "meaning": "to be decided, to be set",
+  "sentence": "旅行の日程が決まりました。",
+  "sentence_meaning": "The travel dates have been set.",
+  "frequency": "532",
+  "mnemonic": "氵 a channel cut long before you turned up, and the water only goes one way now. The dates are on the calendar already. Ask Kim: a rule is a rule. きまる.",
+  "notes": "決める きめる is somebody deciding. 決まる is it coming out decided, often with nobody visible doing it."
+ },
+ {
+  "word": "しばらく",
+  "reading": "しばらく",
+  "meaning": "for a while, for the time being",
+  "sentence": "そこでしばらく休んでいます。",
+  "sentence_meaning": "He's resting over there for a while.",
+  "frequency": "533",
+  "mnemonic": "The landlady drops the bar across the door and sits back down. Nobody is leaving for a good while yet. She barred the lock: しばらく.",
+  "notes": "Vague on purpose. Anything from a few minutes to a few years, and しばらくぶり is what you say after a long gap."
+ },
+ {
+  "word": "行う",
+  "reading": "おこなう",
+  "meaning": "to perform, to do",
+  "sentence": "１９９８年に日本で冬のオリンピックが行われました。",
+  "sentence_meaning": "The Winter Olympics were held in Japan in 1998.",
+  "frequency": "534",
+  "mnemonic": "行 the crossroads from above, closed off today for the race. Someone has to set out every cone, and shin one doing it: oh, cone, ow. おこなう.",
+  "notes": "Same 行 as 行く いく. 行く is going somewhere, 行う is putting the event on, and its reading is the odd one to hold on to."
+ },
+ {
+  "word": "上がる",
+  "reading": "あがる",
+  "meaning": "to go up, to rise",
+  "sentence": "私たちは２階に上がった。",
+  "sentence_meaning": "We went up to the second floor.",
+  "frequency": "535",
+  "mnemonic": "上 a mark sitting above the line. Leave the dough by the Aga, ruin the cloth over it, and by morning it has climbed the bowl on its own: あがる.",
+  "notes": "上げる あげる is you raising something. 上がる is it going up by itself: prices, temperature, or you to the next floor."
+ },
+ {
+  "word": "隣",
+  "reading": "となり",
+  "meaning": "next to, adjacent",
+  "sentence": "隣の家には犬がいます。",
+  "sentence_meaning": "They have a dog next door.",
+  "frequency": "536",
+  "mnemonic": "阝 a mound on the left, and somebody else's garden behind it. Whatever they are cooking comes over the bank every evening, tuna rice again: となり.",
+  "notes": "The one immediately beside you. 近く ちかく is loosely nearby."
+ },
+ {
+  "word": "扉",
+  "reading": "とびら",
+  "meaning": "door",
+  "sentence": "彼は扉を開けたんだ。",
+  "sentence_meaning": "He opened the door.",
+  "frequency": "537",
+  "mnemonic": "戸 a door with 非 stacked up behind it. It swings in harder than anyone expects. Your toe, then the beer, then the whole room going ah: とびら.",
+  "notes": "The panel that swings, and a shade more literary than ドア. It is also the title page of a book."
+ },
+ {
+  "word": "指",
+  "reading": "ゆび",
+  "meaning": "finger, toe",
+  "sentence": "彼は指が太い。",
+  "sentence_meaning": "He has fat fingers.",
+  "frequency": "539",
+  "mnemonic": "扌 a hand and 旨 the point of the thing, so this is what you point with. Reach in among the flowers and the sting lands on it first: you, bee. ゆび.",
+  "notes": "Fingers and toes both. 足の指 あしのゆび is a toe."
+ },
+ {
+  "word": "結果",
+  "reading": "けっか",
+  "meaning": "result, outcome",
+  "sentence": "試合の結果を早く知りたい。",
+  "sentence_meaning": "I want to know the results of the game soon.",
+  "frequency": "541",
+  "mnemonic": "糸 a thread pulled into a knot and 果 the fruit a tree finally lets go of. Nobody wants the story of the match, only the number chalked up at the end: けっか.",
+  "notes": "その結果 is as a result, and 〜した結果 is what came of doing the thing."
+ },
+ {
+  "word": "与える",
+  "reading": "あたえる",
+  "meaning": "to give",
+  "sentence": "そのニュースは彼に大きなショックを与えた。",
+  "sentence_meaning": "That news gave him a great shock.",
+  "frequency": "542",
+  "mnemonic": "与 is one hand passing a thing across to another. She folds your fingers round it and the hall claps before you have even looked. Ah, ta. Eh? A ruler. あたえる.",
+  "notes": "Formal, and it takes the abstract objects: 影響を与える to have an influence, ショックを与える to give someone a shock. あげる is the everyday give."
+ },
+ {
+  "word": "道",
+  "reading": "みち",
+  "meaning": "road",
+  "sentence": "この道を知っています。",
+  "sentence_meaning": "I know this road.",
+  "frequency": "543",
+  "mnemonic": "辶 the road radical under 首 a neck, the way running off wherever your head points. He knows this one so well the Michelin map stays in the glovebox: みち.",
+  "notes": "Also the way of doing a thing, which is the 道 in 柔道 and 書道."
+ },
+ {
+  "word": "乗る",
+  "reading": "のる",
+  "meaning": "to ride, to take",
+  "sentence": "駅からはタクシーに乗ってください。",
+  "sentence_meaning": "Please take a taxi from the station.",
+  "frequency": "545",
+  "mnemonic": "乗 is a figure standing up in a tree, on top of the thing rather than beside it. The doors open on a packed carriage and the platform gets on anyway: no room. のる.",
+  "notes": "Takes に and not を: バスに乗る. 乗せる のせる is putting somebody else on board."
+ },
+ {
+  "word": "特に",
+  "reading": "とくに",
+  "meaning": "specially, particularly",
+  "sentence": "特に質問はありません。",
+  "sentence_meaning": "I don't have any question in particular.",
+  "frequency": "546",
+  "mnemonic": "牛 a cow walks in through 寺 the temple gate while the rest of the herd stands in the field. Out of forty of them they took Neil, only Neil: とくに.",
+  "notes": "Very often with a negative. 特に〜ない is not particularly."
+ },
+ {
+  "word": "形",
+  "reading": "かたち",
+  "meaning": "shape",
+  "sentence": "このクッキーは星の形です。",
+  "sentence_meaning": "This cookie is in the shape of a star.",
+  "frequency": "548",
+  "mnemonic": "彡 three strokes down the right, the marks you draw round a thing to show its outline. He cut a cheese into stars for the party and nobody ate one: かたち.",
+  "notes": "形 also reads けい in compounds, as in 形式 けいしき."
+ },
+ {
+  "word": "さあ",
+  "reading": "さあ",
+  "meaning": "I'm not sure, Hmm...",
+  "sentence": "A「どちらが勝つでしょうか。」B「さあ.....わかりません。」",
+  "sentence_meaning": "A: Which side do you think will win?B: Hmm... I don't know.",
+  "frequency": "549",
+  "mnemonic": "Asked which side will win, he lets the breath out slowly and looks at the ceiling. Nothing follows it. The whole answer is that noise: さあ.",
+  "notes": "The same さあ gets things moving as well: さあ、行こう. Tone tells you which one you are hearing."
+ },
+ {
+  "word": "血",
+  "reading": "ち",
+  "meaning": "blood",
+  "sentence": "血が出ていますよ。",
+  "sentence_meaning": "You're bleeding.",
+  "frequency": "552",
+  "mnemonic": "皿 a dish, and the mark above it is whatever got poured in. He raises his glass, says cheers, and only then sees what is running down your arm: ち.",
+  "notes": "Same reading as 地 ち, ground. This is the one that comes out of you."
+ },
+ {
+  "word": "更に",
+  "reading": "さらに",
+  "meaning": "furthermore, even more",
+  "sentence": "彼は更に質問を続けたの。",
+  "sentence_meaning": "He kept raising even more questions.",
+  "frequency": "553",
+  "mnemonic": "The questions got answered, came round again, then a third time on top of those. Sarah, knee going under the desk, stopped writing them down: さらに.",
+  "notes": "更 reads こう in compounds, as in 変更 へんこう. さらに piles more on top of what is already there."
+ },
+ {
+  "word": "用意",
+  "reading": "ようい",
+  "meaning": "preparation, getting ready",
+  "sentence": "食事の用意ができました。",
+  "sentence_meaning": "The meal is ready.",
+  "frequency": "554",
+  "mnemonic": "用 a thing set out to be used, and 意 a sound sitting on a heart, your mind on it. The table was laid an hour early. Yo, we eat at seven: ようい.",
+  "notes": "用意ができる is to be ready. 準備 じゅんび is the same idea a step more formal."
+ },
+ {
+  "word": "負ける",
+  "reading": "まける",
+  "meaning": "to lose",
+  "sentence": "山田さんはホアンさんに負けました。",
+  "sentence_meaning": "Yamada-san lost to Huang-san.",
+  "frequency": "555",
+  "mnemonic": "貝 a shell for money with a figure stooped over it, carrying what he owes. Everyone else weighs in a salmon and you put down one mackerel: まける.",
+  "notes": "に marks whoever beat you: 山田さんに負けました. 勝つ かつ is to win."
+ },
+ {
+  "word": "神",
+  "reading": "かみ",
+  "meaning": "god, spirit",
+  "sentence": "彼は神を信じている。",
+  "sentence_meaning": "He believes in God.",
+  "frequency": "557",
+  "mnemonic": "礻 an altar on the left with 申 speaking beside it, a man saying things to a wooden box in an empty field. Calm me, he keeps saying: かみ.",
+  "notes": "Three かみ in the deck and the kanji is what separates them: 神 god with 礻 an altar, 髪 hair with 髟 long hair, 紙 paper with 糸 thread."
+ },
+ {
+  "word": "実は",
+  "reading": "じつは",
+  "meaning": "actually, the truth is",
+  "sentence": "実は来月、帰国することになりました。",
+  "sentence_meaning": "Actually, I'll be going back to my country next month.",
+  "frequency": "558",
+  "mnemonic": "宀 a roof with the crop safe under it, what a thing really turns out to be. Coats on, hand on the door, and he lands it like a jujitsu throw: じつは.",
+  "notes": "Sets up news the listener did not have. 実 also reads み on its own, meaning fruit."
+ },
+ {
+  "word": "服",
+  "reading": "ふく",
+  "meaning": "clothes",
+  "sentence": "昨日、服を買いました。",
+  "sentence_meaning": "Yesterday, I bought clothes.",
+  "frequency": "559",
+  "mnemonic": "A hand laying cloth over a kneeling figure, fitted to the person inside it. She took a few into the booth, cool ones, and not one of them fit: ふく.",
+  "notes": "服を着る is to put them on. 履く はく is the verb for anything below the waist."
+ },
+ {
+  "word": "不思議",
+  "reading": "ふしぎ",
+  "meaning": "strange, wonderful",
+  "sentence": "それはとても不思議な話だね。",
+  "sentence_meaning": "That's a very strange story.",
+  "frequency": "561",
+  "mnemonic": "不 cancels whatever comes after it, and 思議 is thinking a thing through and arguing it out. Neither got anywhere with the fish in ghee left on the doorstep: ふしぎ.",
+  "notes": "It says the thing cannot be thought or argued out. Covers strange and wonderful both."
+ },
+ {
+  "word": "意識",
+  "reading": "いしき",
+  "meaning": "consciousness, awareness",
+  "sentence": "彼は意識を失いました。",
+  "sentence_meaning": "He lost consciousness.",
+  "frequency": "565",
+  "mnemonic": "識 sets 戈 a blade beside sound and speech, knowing a thing sharply. She is flat on the corridor floor and nobody can tell if anyone is home: is she keen? いしき.",
+  "notes": "意識を失う is to lose consciousness. It also does awareness of a thing, as in 意識が高い."
+ },
+ {
+  "word": "一体",
+  "reading": "いったい",
+  "meaning": "what on earth, what the…",
+  "sentence": "一体何事ですか。",
+  "sentence_meaning": "What on earth is going on?",
+  "frequency": "566",
+  "mnemonic": "一 one and 体 a body, the whole thing balled up into a single question. You come home and he is sat at the table eating a tie: いったい.",
+  "notes": "Goes in front of a question word to sharpen it: 一体何ですか, 一体誰が."
+ }
+]
