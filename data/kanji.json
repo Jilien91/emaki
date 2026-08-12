@@ -55,6 +55,11 @@
   "申": { "meaning": "say humbly", "note": "Originally a bolt of lightning — a message sent upward." },
   "礼": { "meaning": "courtesy, bow", "note": "礻 an altar on the left, and the bow you make in front of it." },
   "自": { "meaning": "self", "note": "A nose. Japanese speakers point at their own nose to mean \"me\"." },
+  "回": { "meaning": "turn, time", "note": "A square inside a square — something going round." },
+  "変": { "meaning": "change", "note": "A simplified form: one thing turning into another." },
+  "夜": { "meaning": "night", "note": "A lid pulled over the day with the moon tucked underneath." },
+  "束": { "meaning": "bundle", "note": "A tree with a band tied round it — everything gathered in." },
+  "止": { "meaning": "stop", "note": "A footprint planted flat. It goes no further." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -282,5 +287,53 @@
   "配": { "meaning": "distribute", "parts": [
     { "c": "酉", "name": "wine jar" },
     { "c": "己", "name": "self" }
+  ]},
+  "優": { "meaning": "gentle, superior", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "憂", "name": "grief" }
+  ]},
+  "国": { "meaning": "country", "parts": [
+    { "c": "囗", "name": "border" },
+    { "c": "玉", "name": "jewel" }
+  ]},
+  "嬉": { "meaning": "glad", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "喜", "name": "rejoice" }
+  ]},
+  "守": { "meaning": "protect, keep", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "寸", "name": "hand" }
+  ]},
+  "度": { "meaning": "degree, occasion", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "又", "name": "hand" }
+  ]},
+  "張": { "meaning": "stretch, strain", "parts": [
+    { "c": "弓", "name": "bow" },
+    { "c": "長", "name": "long" }
+  ]},
+  "忘": { "meaning": "forget", "parts": [
+    { "c": "亡", "name": "lost" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "約": { "meaning": "promise, roughly", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "勺", "name": "ladle" }
+  ]},
+  "許": { "meaning": "permit, forgive", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "午", "name": "noon" }
+  ]},
+  "買": { "meaning": "buy", "parts": [
+    { "c": "罒", "name": "net" },
+    { "c": "貝", "name": "shell, money" }
+  ]},
+  "頑": { "meaning": "stubborn", "parts": [
+    { "c": "元", "name": "origin" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "頼": { "meaning": "rely, request", "parts": [
+    { "c": "束", "name": "bundle" },
+    { "c": "頁", "name": "head" }
   ]}
 }

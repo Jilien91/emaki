@@ -1,0 +1,252 @@
+[
+   {
+      "word" : "見せる",
+      "meaning" : "to show",
+      "sentence" : "あのカメラを見せてください。",
+      "mnemonic" : "見る is you doing the seeing; 見せる is making somebody else do it. You hold the camera out and put it in front of their eyes: みせる.",
+      "frequency" : "244",
+      "notes" : "",
+      "reading" : "みせる",
+      "sentence_meaning" : "Please show me that camera."
+   },
+   {
+      "word" : "うち",
+      "sentence" : "うちへ帰ります。",
+      "mnemonic" : "The other reading of 家. Not the building this time but the people and the life going on inside it — your lot, your place: うち.",
+      "reading" : "うち",
+      "notes" : "Same kanji as いえ \"house\"; うち leans on the household rather than the structure.",
+      "meaning" : "one's household",
+      "frequency" : "254",
+      "sentence_meaning" : "I will go home."
+   },
+   {
+      "sentence" : "友達と約束があります。",
+      "word" : "約束",
+      "reading" : "やくそく",
+      "notes" : "",
+      "mnemonic" : "糸 thread inside 約 and 束 a bundle tied up tight. A promise is the two of you bound together by a thread you both agreed to: やくそく.",
+      "meaning" : "promise, appointment",
+      "sentence_meaning" : "I have an appointment with my friend.",
+      "frequency" : "602"
+   },
+   {
+      "notes" : "",
+      "reading" : "わすれる",
+      "sentence_meaning" : "Please don't forget your promise.",
+      "mnemonic" : "亡 lost sitting on top of 心 a heart — the same 亡 you met in 忙しい. Something has gone from you and you cannot say when: わすれる.",
+      "frequency" : "284",
+      "meaning" : "to forget",
+      "sentence" : "約束を忘れないでください。",
+      "word" : "忘れる"
+   },
+   {
+      "frequency" : "307",
+      "mnemonic" : "宀 a roof with 寸 a hand held out underneath it. You put your hand over a thing and keep it that way. Your mother would: まもる.",
+      "sentence_meaning" : "He's one to keep his promises.",
+      "notes" : "",
+      "reading" : "まもる",
+      "word" : "守る",
+      "sentence" : "彼は約束を守る人です。",
+      "meaning" : "to protect, to observe"
+   },
+   {
+      "meaning" : "to change, to alter",
+      "sentence_meaning" : "I will change the time of the appointment.",
+      "frequency" : "512",
+      "sentence" : "約束の時間を変えます。",
+      "word" : "変える",
+      "notes" : "Careful: 帰る かえる is to return home. Same reading, different character.",
+      "reading" : "かえる",
+      "mnemonic" : "The same かえる sound as 帰る \"to go home\", but a completely different kanji. This one turns a thing into something else: かえる."
+   },
+   {
+      "sentence_meaning" : "Let's continue the conversation we had earlier.",
+      "frequency" : "290",
+      "meaning" : "(only) a moment ago",
+      "notes" : "",
+      "reading" : "さっき",
+      "mnemonic" : "Not yesterday and not this morning — the thing that happened a sec ago and is still hanging in the air right behind you: さっき.",
+      "sentence" : "さっきの話を続けましょう。",
+      "word" : "さっき"
+   },
+   {
+      "mnemonic" : "今 this moment and 度 one turn of the wheel. Not this go round at all, but the very next one coming along after it. Con-doh: こんど.",
+      "notes" : "",
+      "reading" : "こんど",
+      "word" : "今度",
+      "sentence" : "今度はどこに行きたいですか。",
+      "frequency" : "292",
+      "sentence_meaning" : "Where do you want to go next time?",
+      "meaning" : "next time"
+   },
+   {
+      "frequency" : "313",
+      "mnemonic" : "これ is this and から is from. From this point onward. You draw a line where you are standing and start counting there: これから.",
+      "sentence_meaning" : "I will think about it from now.",
+      "notes" : "",
+      "reading" : "これから",
+      "word" : "これから",
+      "sentence" : "これから考えます。",
+      "meaning" : "from now on, after this"
+   },
+   {
+      "frequency" : "332",
+      "mnemonic" : "止 is a footprint planted flat on the ground: it goes no further. Pull the car in and leave it standing right there: とめる.",
+      "sentence_meaning" : "Stop in front of that building, please.",
+      "reading" : "とめる",
+      "notes" : "Same characters as やめる — this reading stops a moving thing in a place.",
+      "word" : "止める",
+      "sentence" : "あのビルの前で止めてください。",
+      "meaning" : "to stop (at some place)"
+   },
+   {
+      "meaning" : "to stop (doing something)",
+      "sentence_meaning" : "Please stop talking.",
+      "frequency" : "332",
+      "sentence" : "話すのを止めてください。",
+      "word" : "止める",
+      "notes" : "Written identically to とめる — とめる stops a thing somewhere, やめる stops an action.",
+      "reading" : "やめる",
+      "mnemonic" : "The very same 止める, read やめる instead. This one halts an activity rather than a moving thing: quit talking, not park the car: やめる."
+   },
+   {
+      "sentence_meaning" : "I ordered a hamburger.",
+      "notes" : "",
+      "reading" : "たのむ",
+      "frequency" : "338",
+      "mnemonic" : "束 a bundle and 頁 a head — the same 頁 you met in お願いします. You hand the whole bundle of it over to somebody else to carry: たのむ.",
+      "sentence" : "私はハンバーガーを頼みました。",
+      "meaning" : "to ask, to request",
+      "word" : "頼む"
+   },
+   {
+      "sentence_meaning" : "I forgave him.",
+      "reading" : "ゆるす",
+      "notes" : "",
+      "frequency" : "349",
+      "mnemonic" : "言 speech with 午 noon standing beside it. Whatever was said first thing in the morning, by midday you have let it go: ゆるす.",
+      "sentence" : "私は彼を許しました。",
+      "meaning" : "to forgive, to permit",
+      "word" : "許す"
+   },
+   {
+      "notes" : "",
+      "reading" : "うれしい",
+      "sentence_meaning" : "I was glad to be able to meet him.",
+      "mnemonic" : "女 a woman with 喜 rejoicing stood right next to her. Not content and not fine — properly and visibly glad about the whole thing: うれしい.",
+      "frequency" : "355",
+      "meaning" : "happy, glad",
+      "sentence" : "彼に会えて嬉しかった。",
+      "word" : "嬉しい"
+   },
+   {
+      "meaning" : "to persevere, to do one's best",
+      "frequency" : "359",
+      "sentence_meaning" : "I do my best in sports and my studies.",
+      "word" : "頑張る",
+      "sentence" : "勉強もスポーツも頑張っています。",
+      "mnemonic" : "頑 is 元 the start under 頁 a head: stubborn. 張 is 弓 a bow pulled 長 long. Head down, bowstring drawn, and keep going: がんばる.",
+      "notes" : "",
+      "reading" : "がんばる"
+   },
+   {
+      "frequency" : "361",
+      "mnemonic" : "The noise you make when a thing finally clicks into place. Not agreement exactly — the sound of the penny dropping: なるほど.",
+      "sentence_meaning" : "I see, I understand quite well.",
+      "notes" : "",
+      "reading" : "なるほど",
+      "word" : "なるほど",
+      "sentence" : "なるほど、よく分かりました。",
+      "meaning" : "I see, really"
+   },
+   {
+      "meaning" : "in short, basically",
+      "frequency" : "368",
+      "sentence_meaning" : "So, basically, you don't know anything.",
+      "word" : "つまり",
+      "sentence" : "つまり、あなたは何も知らないのですね。",
+      "mnemonic" : "You have sat through all of it and now you are going to say the one sentence that was underneath the lot. So, basically: つまり.",
+      "notes" : "",
+      "reading" : "つまり"
+   },
+   {
+      "sentence_meaning" : "Which country do you like?",
+      "reading" : "くに",
+      "notes" : "",
+      "frequency" : "374",
+      "mnemonic" : "囗 a border drawn the whole way round 玉 the jewel that is kept inside it. That is what a country is, on paper at least: くに.",
+      "sentence" : "どこの国が好きですか。",
+      "meaning" : "country",
+      "word" : "国"
+   },
+   {
+      "sentence" : "彼はとても優しい人です。",
+      "meaning" : "gentle, kind",
+      "word" : "優しい",
+      "sentence_meaning" : "He's a very kind person.",
+      "reading" : "やさしい",
+      "notes" : "",
+      "frequency" : "382",
+      "mnemonic" : "亻 a person stood next to 憂 grief — somebody who actually feels yours. Easy on you, and never once sharp about any of it: やさしい."
+   },
+   {
+      "frequency" : "383",
+      "sentence_meaning" : "I dislike waiting.",
+      "meaning" : "disliking, unwilling (to do)",
+      "mnemonic" : "The same 嫌 you met in 嫌い, only shorter and blunter. Not a considered dislike at all — just no. Ee-yah, I would rather not: いや.",
+      "reading" : "いや",
+      "notes" : "",
+      "word" : "嫌",
+      "sentence" : "私は待つのが嫌だ。"
+   },
+   {
+      "sentence" : "A「毎日忙しいですか。」B「そんなに忙しくないです。」",
+      "word" : "そんなに",
+      "notes" : "",
+      "reading" : "そんなに",
+      "mnemonic" : "そ- is your side of things, so そんなに means that much — the amount you have just suggested. Usually followed by a no: そんなに.",
+      "meaning" : "that much",
+      "sentence_meaning" : "A: Are you busy every day?B: No, not that much.",
+      "frequency" : "384"
+   },
+   {
+      "sentence_meaning" : "Well, I'll let you off this time.",
+      "reading" : "こんかい",
+      "notes" : "",
+      "frequency" : "373",
+      "mnemonic" : "今 this moment and 回 one turn round the loop. This particular go of it, as opposed to any of the other ones. Con-kai: こんかい.",
+      "sentence" : "まあ今回は許してあげよう。",
+      "meaning" : "this time",
+      "word" : "今回"
+   },
+   {
+      "sentence" : "昨日の夜は家にいました。",
+      "word" : "夜",
+      "reading" : "よる",
+      "notes" : "",
+      "mnemonic" : "A lid pulled right down over the day with the moon tucked in underneath it, and the whole place gone quiet. Yo-ru: よる.",
+      "meaning" : "evening, night",
+      "sentence_meaning" : "I was at home last night.",
+      "frequency" : "392"
+   },
+   {
+      "word" : "買う",
+      "meaning" : "to buy",
+      "sentence" : "昨日、シーディーを買いました。",
+      "mnemonic" : "罒 a net thrown over 貝 a shell — shells were the money, and you are scooping them up to hand over. Cow, for the price: かう.",
+      "frequency" : "394",
+      "reading" : "かう",
+      "notes" : "",
+      "sentence_meaning" : "Yesterday, I bought a CD."
+   },
+   {
+      "frequency" : "398",
+      "sentence_meaning" : "Where have you been up until now?",
+      "meaning" : "until now",
+      "mnemonic" : "今 now and まで as far as. Everything from back then right up to this exact second, and not a single step past it: いままで.",
+      "notes" : "",
+      "reading" : "いままで",
+      "word" : "今まで",
+      "sentence" : "今までどこにいたのですか。"
+   }
+]
