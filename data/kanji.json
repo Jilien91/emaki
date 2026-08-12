@@ -482,5 +482,49 @@
   "在": { "meaning": "exist, be located", "parts": [
     { "c": "才", "name": "sapling" },
     { "c": "土", "name": "earth" }
+  ]},
+
+  "受": { "meaning": "receive, accept", "note": "One hand reaching down and another reaching up, with something passing between them." },
+  "殺": { "meaning": "kill", "note": "The 殳 on the right is a hand with a weapon raised in it." },
+  "絶": { "meaning": "cut off, sever", "note": "糸 a thread with a blade taken to it — cut clean through, nothing after." },
+  "対": { "meaning": "facing, opposite", "note": "寸 a hand held out toward whatever is across from it." },
+  "由": { "meaning": "reason, origin", "note": "A field with one stroke pushing up out of the top — where a thing comes out of." },
+  "口": { "meaning": "mouth", "note": "A pictograph — a square drawn open, with nothing in it." },
+  "他": { "meaning": "other", "note": "亻 the person radical with 也 beside it: some person who isn't this one." },
+  "通": { "meaning": "pass through, commute", "note": "辶 the road radical — a way that goes all the way through." },
+  "春": { "meaning": "spring", "note": "Strokes tangled over 日 the sun — growth breaking open as it warms." },
+  "夏": { "meaning": "summer", "note": "A figure with an oversized head, drawn mid-dance. The season with the festivals in it." },
+  "以": { "meaning": "by means of, from", "note": "A person with a mark set beside them — 'starting from here', used to fix a boundary." },
+  "去": { "meaning": "leave, past", "parts": [
+    { "c": "土", "name": "earth" },
+    { "c": "厶", "name": "private" }
+  ]},
+  "外": { "meaning": "outside", "parts": [
+    { "c": "夕", "name": "evening" },
+    { "c": "卜", "name": "divining stick" }
+  ]},
+  "逃": { "meaning": "escape, flee", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "兆", "name": "omen, sign" }
+  ]},
+  "問": { "meaning": "question, ask", "parts": [
+    { "c": "門", "name": "gate" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "題": { "meaning": "topic, subject", "parts": [
+    { "c": "是", "name": "this one" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "普": { "meaning": "ordinary, widespread", "parts": [
+    { "c": "並", "name": "line up" },
+    { "c": "日", "name": "sun" }
+  ]},
+  "秋": { "meaning": "autumn", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "火", "name": "fire" }
+  ]},
+  "冬": { "meaning": "winter", "parts": [
+    { "c": "夂", "name": "trailing feet" },
+    { "c": "冫", "name": "ice" }
   ]}
 }
