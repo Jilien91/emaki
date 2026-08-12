@@ -526,5 +526,31 @@
   "冬": { "meaning": "winter", "parts": [
     { "c": "夂", "name": "trailing feet" },
     { "c": "冫", "name": "ice" }
+  ]},
+
+  "最": { "meaning": "most, extreme", "note": "A hand taking the very top thing off the pile." },
+  "左": { "meaning": "left", "note": "A hand over 工 a carpenter's square — the hand that holds the work steady." },
+  "右": { "meaning": "right", "note": "A hand over 口 a mouth — the hand you eat with. Same top as 左; the bottom is the difference." },
+  "胸": { "meaning": "chest, breast", "note": "The 月 that means flesh, with the ribcage wrapped round something beneath it." },
+  "表": { "meaning": "surface, express", "note": "衣 clothing with something showing through — the side that faces outward." },
+  "覚": { "meaning": "remember, perceive", "note": "The sparks and lid from the top of 学, sat down on 見 an eye." },
+  "別": { "meaning": "separate, different", "note": "刂 a standing blade cutting one thing away from the rest." },
+  "開": { "meaning": "open", "note": "門 a gate with two hands lifting the bar out of it." },
+  "残": { "meaning": "remain, leftover", "note": "歹 bare bones with blades beside them — what is still there once the rest has gone." },
+  "初": { "meaning": "first, beginning", "parts": [
+    { "c": "衤", "name": "clothing" },
+    { "c": "刀", "name": "knife" }
+  ]},
+  "情": { "meaning": "feeling, emotion", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "青", "name": "blue, fresh" }
+  ]},
+  "欲": { "meaning": "want, desire", "parts": [
+    { "c": "谷", "name": "valley" },
+    { "c": "欠", "name": "yawn, lack" }
+  ]},
+  "答": { "meaning": "answer", "parts": [
+    { "c": "竹", "name": "bamboo" },
+    { "c": "合", "name": "fit together" }
   ]}
 }

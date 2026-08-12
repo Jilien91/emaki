@@ -1,0 +1,252 @@
+[
+ {
+  "word": "生きる",
+  "reading": "いきる",
+  "meaning": "to&nbsp;live, to&nbsp;exist",
+  "sentence": "１００歳まで生きたいです。",
+  "sentence_meaning": "I want to live to 100.",
+  "frequency": "246",
+  "mnemonic": "生 a shoot forcing its way up out of the ground. Not comfortable and not guaranteed, but a hundred years of it is the plan: いきる.",
+  "notes": "生 turns up everywhere with different readings — 生 なま is raw, 先生 せんせい is a teacher."
+ },
+ {
+  "word": "最初",
+  "reading": "さいしょ",
+  "meaning": "first, beginning",
+  "sentence": "5ページの最初を見てください。",
+  "sentence_meaning": "Please look at the beginning of page 5.",
+  "frequency": "247",
+  "mnemonic": "最 a hand lifting the very top thing off the pile, and 初 the first cut of the knife into new cloth. Page five, right at the top of it: さいしょ.",
+  "notes": ""
+ },
+ {
+  "word": "最後",
+  "reading": "さいご",
+  "meaning": "last, final",
+  "sentence": "今日が夏休み最後の日だ。",
+  "sentence_meaning": "Today's the last day of summer vacation.",
+  "frequency": "248",
+  "mnemonic": "The same 最 reaching for the extreme end, except now it's 後, the one trailing at the back. Last day of the summer holiday, and you can feel it going: さいご.",
+  "notes": "後 reads ご here, same as in 今後 and 午後. 最初 さいしょ is the other end of the same pair."
+ },
+ {
+  "word": "日",
+  "reading": "ひ",
+  "meaning": "day",
+  "sentence": "休みの日に本を読みます。",
+  "sentence_meaning": "I read on free days.",
+  "frequency": "249",
+  "mnemonic": "The sun with a mark through the middle of it, and one turn of that is one day. A free one, and you spend the whole thing with a book: ひ.",
+  "notes": "日 carries a pile of readings: にち in 毎日, び in 曜日, か in dates like 三日. ひ is the bare word for a day."
+ },
+ {
+  "word": "間",
+  "reading": "あいだ",
+  "meaning": "interval (of time, space, etc.)",
+  "sentence": "雲の間から月が出た。",
+  "sentence_meaning": "The moon came out from between the clouds.",
+  "frequency": "250",
+  "mnemonic": "門 a gate with 日 the sun showing through the crack in it. The cloud parts exactly that much and the moon comes through the gap: あいだ.",
+  "notes": "Same kanji as 間 ま. あいだ is a gap you could point at — between two clouds, two people, two dates."
+ },
+ {
+  "word": "間",
+  "reading": "ま",
+  "meaning": "interval, duration of time, pause",
+  "sentence": "彼は少し間を置いてから返事した。",
+  "sentence_meaning": "He responded after a short pause.",
+  "frequency": "250",
+  "mnemonic": "The same gate with the light through it as あいだ, only now there is nothing in the gap. He stops. Nobody fills it. Then he answers: ま.",
+  "notes": "Same kanji as 間 あいだ, but ま is the pause itself — silence in a conversation, timing in a joke. The same character also reads かん in 時間 and げん in 人間."
+ },
+ {
+  "word": "について",
+  "reading": "について",
+  "meaning": "concerning, regarding",
+  "sentence": "日本の経済について調べています。",
+  "sentence_meaning": "I am researching about the Japanese economy.",
+  "frequency": "251",
+  "mnemonic": "Eleven tabs open and every single one of them the Japanese economy. について is the pin that holds the whole pile to one subject.",
+  "notes": ""
+ },
+ {
+  "word": "左",
+  "reading": "ひだり",
+  "meaning": "left",
+  "sentence": "そこを左に曲がってください。",
+  "sentence_meaning": "Please turn left there.",
+  "frequency": "252",
+  "mnemonic": "A hand over 工 a carpenter's square — the hand that only holds the work steady while the other one does the cutting. Go that way at the corner: ひだり.",
+  "notes": "Pairs with 右 みぎ, which is a hand over a mouth. The top halves are the same; the bottom is what tells them apart."
+ },
+ {
+  "word": "右",
+  "reading": "みぎ",
+  "meaning": "right",
+  "sentence": "右のポケットにハンカチが入っています。",
+  "sentence_meaning": "There's a handkerchief in my right pocket.",
+  "frequency": "253",
+  "mnemonic": "The same hand as 左, but sitting over 口 a mouth this time — the one you eat with. That's the pocket the handkerchief is in: みぎ.",
+  "notes": "Pairs with 左 ひだり. 工 underneath is left, 口 underneath is right."
+ },
+ {
+  "word": "感じ",
+  "reading": "かんじ",
+  "meaning": "feeling, impression",
+  "sentence": "あの子は感じの良い子です。",
+  "sentence_meaning": "That child seems like a good child.",
+  "frequency": "254",
+  "mnemonic": "咸 all of it landing on 心 the heart, the same shape as 感じる, but stopped just short of being a verb. Nothing you could prove about the child. He just seems good: かんじ.",
+  "notes": "Same sound as 漢字 かんじ, the characters. 感じる かんじる is the verb; 感じ is the impression it leaves."
+ },
+ {
+  "word": "胸",
+  "reading": "むね",
+  "meaning": "chest",
+  "sentence": "胸に少し痛みがあります。",
+  "sentence_meaning": "I have a slight pain in my chest.",
+  "frequency": "255",
+  "mnemonic": "The 月 that means flesh, with the ribcage wrapped around something underneath it. A small ache in there and you notice nothing else all day: むね.",
+  "notes": ""
+ },
+ {
+  "word": "表情",
+  "reading": "ひょうじょう",
+  "meaning": "expression, look",
+  "sentence": "彼はとても表情が豊かですね。",
+  "sentence_meaning": "He's very expressive.",
+  "frequency": "256",
+  "mnemonic": "表 the outward-facing side of a garment, and 情 a 忄 heart tucked under it. Everything going on in there, worn on the front of his face: ひょうじょう.",
+  "notes": ""
+ },
+ {
+  "word": "多い",
+  "reading": "おおい",
+  "meaning": "a lot",
+  "sentence": "6月は雨が多いです。",
+  "sentence_meaning": "It rains a lot in June.",
+  "frequency": "257",
+  "mnemonic": "夕 evening piled on 夕 evening, the same stack you met as 多く. June, and it has rained on more days than it hasn't: おおい.",
+  "notes": "The plain adjective. 多く おおく is the form that goes in front of の for 'a lot of'."
+ },
+ {
+  "word": "初めて",
+  "reading": "はじめて",
+  "meaning": "for the first time",
+  "sentence": "東京に来るのは初めてです。",
+  "sentence_meaning": "It's the first time I've been to Tokyo.",
+  "frequency": "258",
+  "mnemonic": "初 the first cut into new cloth, the same 初 that sits in 最初. You have never once stood in Tokyo before, and here you are: はじめて.",
+  "notes": "Careful with 始めて はじめて, written with 始 — that one means 'starting to do' something. This one is 'for the first time'."
+ },
+ {
+  "word": "無理",
+  "reading": "むり",
+  "meaning": "unreasonable, impossible",
+  "sentence": "毎日アルバイトをするのは無理です。",
+  "sentence_meaning": "It's impossible to work part-time everyday.",
+  "frequency": "259",
+  "mnemonic": "無 the whole lot burnt away to nothing, and 理 the sense of it gone with it. Every single day, on top of everything else? There is no version of that which works: むり.",
+  "notes": "Works as a flat refusal on its own. 無理しないで is 'don't push yourself'."
+ },
+ {
+  "word": "欲しい",
+  "reading": "ほしい",
+  "meaning": "wanting, wishing for",
+  "sentence": "小さいパソコンが欲しいです。",
+  "sentence_meaning": "I want a small computer.",
+  "frequency": "260",
+  "mnemonic": "谷 a valley with 欠 a wide yawn opened up in the middle of it — a gap that size. Small laptop. Nothing else is going to fill it: ほしい.",
+  "notes": "For things you want. For something you want to do, the verb takes ~たい instead."
+ },
+ {
+  "word": "ごめん",
+  "reading": "ごめん",
+  "meaning": "sorry",
+  "sentence": "ごめん。ビールはない。",
+  "sentence_meaning": "I am sorry. There is no beer.",
+  "frequency": "261",
+  "mnemonic": "You open the fridge, there is no beer, and you're the one who has to say it. Not a real apology — the small flat one you owe a friend: ごめん.",
+  "notes": "Casual. ごめんなさい is a step up from it, and すみません is the one for strangers."
+ },
+ {
+  "word": "覚える",
+  "reading": "おぼえる",
+  "meaning": "to&nbsp;memorize",
+  "sentence": "毎日、漢字を覚えます。",
+  "sentence_meaning": "I memorize kanji every day.",
+  "frequency": "262",
+  "mnemonic": "The sparks and lid off the top of 学, sat down on 見 an eye. You go at it until you can see the character with your eyes shut: おぼえる.",
+  "notes": "Covers memorising and remembering. 思い出す おもいだす is dragging back up something you already knew."
+ },
+ {
+  "word": "別に",
+  "reading": "べつに",
+  "meaning": "(not) particularly",
+  "sentence": "別に好きじゃありません。",
+  "sentence_meaning": "I don't particularly like it.",
+  "frequency": "263",
+  "mnemonic": "刂 a standing blade cutting one thing away from the rest of the pile. Do you like it? Not enough to separate it out from anything else: べつに.",
+  "notes": "Nearly always with a negative, and often the whole answer on its own — a shrug in one word."
+ },
+ {
+  "word": "思い出す",
+  "reading": "おもいだす",
+  "meaning": "to&nbsp;recollect, to&nbsp;recall",
+  "sentence": "大切な用事を思い出しました。",
+  "sentence_meaning": "I just remembered an important thing I have to do.",
+  "frequency": "264",
+  "mnemonic": "思う thinking and 出す hauling something out, bolted straight together. The important thing you had to do was in there the whole time, and out it comes: おもいだす.",
+  "notes": "Pulling a memory back up. 覚える おぼえる is getting it in there to start with."
+ },
+ {
+  "word": "入れる",
+  "reading": "いれる",
+  "meaning": "to&nbsp;put in",
+  "sentence": "彼はかばんに手帳を入れた。",
+  "sentence_meaning": "He put the notebook in his bag.",
+  "frequency": "265",
+  "mnemonic": "入 the way in, narrowing as it goes, except this time there's a hand behind it. The notebook does not climb into the bag on its own: いれる.",
+  "notes": "入る はいる is the thing going in by itself; 入れる is somebody putting it in. Same split as 出る and 出す."
+ },
+ {
+  "word": "開く",
+  "reading": "あく",
+  "meaning": "to&nbsp;open",
+  "sentence": "次の駅で右のドアが開きます。",
+  "sentence_meaning": "Doors on the right side will open at the next stop.",
+  "frequency": "266",
+  "mnemonic": "門 a gate with the bar lifted clean out of it and nobody's hand anywhere near. The train stops and the right-hand doors go by themselves: あく.",
+  "notes": "Same written form as 開く ひらく. あく is a thing opening on its own — a door, a shop. 開ける あける is you opening it."
+ },
+ {
+  "word": "開く",
+  "reading": "ひらく",
+  "meaning": "to&nbsp;open",
+  "sentence": "32ページを開いてください。",
+  "sentence_meaning": "Please open to page 32.",
+  "frequency": "266",
+  "mnemonic": "The same gate as あく, except this time it's your hands on the bar. Page thirty-two, thumb into the middle, and the whole book comes apart flat: ひらく.",
+  "notes": "Written exactly like 開く あく — only what's around it tells you which. ひらく is spreading something open: a book, an umbrella, an event."
+ },
+ {
+  "word": "残る",
+  "reading": "のこる",
+  "meaning": "to&nbsp;remain, to&nbsp;be left over",
+  "sentence": "料理がたくさん残りました。",
+  "sentence_meaning": "A lot of food was left over.",
+  "frequency": "267",
+  "mnemonic": "歹 bare bones with blades stacked up beside them — whatever is still on the table once everybody has finished. Far too much of it, as usual: のこる.",
+  "notes": "残す のこす is leaving something behind on purpose."
+ },
+ {
+  "word": "答える",
+  "reading": "こたえる",
+  "meaning": "to&nbsp;answer",
+  "sentence": "先生の質問に答えます。",
+  "sentence_meaning": "I will answer the teacher's question.",
+  "frequency": "268",
+  "mnemonic": "竹 bamboo strips with 合 the matching half fitted up against them. An answer is the piece that fits the question, and the teacher is waiting: こたえる.",
+  "notes": "答え こたえ is the answer itself."
+ }
+]
