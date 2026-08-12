@@ -8,5 +8,45 @@
   "frequency": "332",
   "mnemonic": "止 is a footprint planted flat on the ground: it goes no further. Pull the car in and leave it standing right there: とめる.",
   "notes": "Same characters as やめる, this reading stops a moving thing in a place. 止まる とまる is it coming to a stop on its own."
+ },
+ {
+  "word": "与える",
+  "reading": "あたえる",
+  "meaning": "to give",
+  "sentence": "そのニュースは彼に大きなショックを与えた。",
+  "sentence_meaning": "That news gave him a great shock.",
+  "frequency": "542",
+  "mnemonic": "与 is a thing going out of one hand and into another. She folds your fingers round it and the hall claps before you have even looked. Ah, ta. Eh? A ruler. あたえる.",
+  "notes": "Formal, and it takes the abstract objects: 影響を与える to have an influence, ショックを与える to give someone a shock. あげる is the everyday give."
+ },
+ {
+  "word": "乗る",
+  "reading": "のる",
+  "meaning": "to ride, to take",
+  "sentence": "駅からはタクシーに乗ってください。",
+  "sentence_meaning": "Please take a taxi from the station.",
+  "frequency": "545",
+  "mnemonic": "The doors open on a carriage that is already full, and the whole platform gets on regardless. No room in there, and up you go anyway: のる.",
+  "notes": "Takes に and not を: バスに乗る. 乗せる のせる is putting somebody else on board."
+ },
+ {
+  "word": "形",
+  "reading": "かたち",
+  "meaning": "shape",
+  "sentence": "このクッキーは星の形です。",
+  "sentence_meaning": "This cookie is in the shape of a star.",
+  "frequency": "548",
+  "mnemonic": "彡 three brush strokes on the right, doing the outlining. He cut a cheese into stars for the party and nobody ate a single one: かたち.",
+  "notes": "形 also reads けい in compounds, as in 形式 けいしき."
+ },
+ {
+  "word": "程度",
+  "reading": "ていど",
+  "meaning": "degree, extent",
+  "sentence": "この程度の怪我なら大丈夫です。",
+  "sentence_meaning": "If it's an injury of such a small extent then it'll be fine.",
+  "frequency": "597",
+  "mnemonic": "禾 grain, because this began as weighing out a crop to see how much of it there was. How bad is the cut? A graze. Nurses see worse: they do, daily. ていど.",
+  "notes": "How far along a scale a thing sits. この程度 is this much, and 〜程度 after a number is about that many."
  }
 ]
