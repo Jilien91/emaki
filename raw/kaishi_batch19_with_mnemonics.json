@@ -1,0 +1,252 @@
+[
+ {
+  "word": "下",
+  "reading": "した",
+  "meaning": "under, below",
+  "sentence": "財布は机の下にあった。",
+  "sentence_meaning": "My purse was under the desk.",
+  "frequency": "317",
+  "mnemonic": "A mark sitting below the line, the exact mirror of 上. Your purse has been under the desk the entire time you've been turning the house over: した.",
+  "notes": "Same kanji as 下 もと. した is physically underneath. It also reads か and げ in compounds — 地下 ちか is underground."
+ },
+ {
+  "word": "下",
+  "reading": "もと",
+  "meaning": "under (the supervision of)",
+  "sentence": "私はその教授の下で論文を書いたの。",
+  "sentence_meaning": "I wrote my thesis under that professor's supervision.",
+  "frequency": "317",
+  "mnemonic": "The same mark below the line as した, except nothing is physically on top of you. You wrote the whole thesis in that professor's shadow: もと.",
+  "notes": "Same kanji as 下 した. した is under a desk; もと is under someone's authority — a boss, a professor, a rule."
+ },
+ {
+  "word": "かかる",
+  "reading": "かかる",
+  "meaning": "to&nbsp;take (e.g. time or money)",
+  "sentence": "自転車で10分ぐらいかかります。",
+  "sentence_meaning": "It takes about 10 minutes by bicycle.",
+  "frequency": "318",
+  "mnemonic": "Ten minutes on the bike and you don't get to argue about it. かかる is the meter running: the thing costs whatever it costs.",
+  "notes": "Same sound as 掛かる かかる 'to hang', but this one is normally written in kana. 時間がかかる, お金がかかる."
+ },
+ {
+  "word": "掛かる",
+  "reading": "かかる",
+  "meaning": "to&nbsp;hang, to&nbsp;be hung",
+  "sentence": "綺麗なカレンダーが掛かっていますね。",
+  "sentence_meaning": "A beautiful calendar is hanging, isn't it?",
+  "frequency": "319",
+  "mnemonic": "扌 a hand at a peg, the same 掛 as 掛ける — but nobody's hand is on it now. The calendar is simply up there, being beautiful at you: かかる.",
+  "notes": "掛ける かける is you hanging it; 掛かる is it hanging. Same sound as the kana かかる, 'to take time'."
+ },
+ {
+  "word": "一度",
+  "reading": "いちど",
+  "meaning": "once",
+  "sentence": "一度、花見をしたことがあります。",
+  "sentence_meaning": "I went flower viewing once before.",
+  "frequency": "320",
+  "mnemonic": "一 one and 度 a single turn of the wheel. Flower viewing, exactly the one time, years ago, and you still bring it up: いちど.",
+  "notes": "Same 度 as 今度 こんど. もう一度 もういちど is 'one more time'."
+ },
+ {
+  "word": "完全",
+  "reading": "かんぜん",
+  "meaning": "perfect, complete",
+  "sentence": "この古い寺院は今でも完全な形を保っているんだ。",
+  "sentence_meaning": "This old Buddhist temple still maintains its complete form.",
+  "frequency": "321",
+  "mnemonic": "完 everything finished off under 宀 one roof, and 全 the whole of it still there. The temple has not lost a single beam in a thousand years: かんぜん.",
+  "notes": ""
+ },
+ {
+  "word": "後ろ",
+  "reading": "うしろ",
+  "meaning": "back, behind",
+  "sentence": "後ろを向いて。",
+  "sentence_meaning": "Turn around.",
+  "frequency": "322",
+  "mnemonic": "The same 後 you already have as あと, but aimed at space instead of time. Not later — behind you. Turn round and look: うしろ.",
+  "notes": "Same kanji as 後 あと 'after' and the ご in 今後. うしろ is the physical one."
+ },
+ {
+  "word": "泣く",
+  "reading": "なく",
+  "meaning": "to&nbsp;cry",
+  "sentence": "妹はすぐに泣く。",
+  "sentence_meaning": "My little sister cries easily.",
+  "frequency": "323",
+  "mnemonic": "氵 water beside 立 somebody standing there. She hasn't moved and she hasn't said anything, and it's already coming down her face: なく.",
+  "notes": "Tears. 鳴く なく is the identical sound for the noise an animal makes."
+ },
+ {
+  "word": "状態",
+  "reading": "じょうたい",
+  "meaning": "state, condition",
+  "sentence": "ここは道の状態がとても悪いです。",
+  "sentence_meaning": "The road is in a very bad state here.",
+  "frequency": "324",
+  "mnemonic": "状 the shape a thing has taken, with 態 putting 心 a heart under it. Look at the state of this road — potholes the entire way along: じょうたい.",
+  "notes": "Shares its 状 with 状況 じょうきょう. 状態 is the condition a thing is in; 状況 is the situation going on around it."
+ },
+ {
+  "word": "関係",
+  "reading": "かんけい",
+  "meaning": "relation(ship)",
+  "sentence": "彼はその事件に関係がない。",
+  "sentence_meaning": "He has nothing to do with that incident.",
+  "frequency": "325",
+  "mnemonic": "関 a gate with the bar across it, and 係 a person tied onto a line running through. He isn't anywhere on that line — nothing connects him to it: かんけい.",
+  "notes": "関係ない is one of the most common phrases going: 'nothing to do with me'."
+ },
+ {
+  "word": "向ける",
+  "reading": "むける",
+  "meaning": "to&nbsp;turn toward, to&nbsp;point at",
+  "sentence": "彼は上司に怒りの目を向けたんだよ。",
+  "sentence_meaning": "He stared with angry eyes at his superior.",
+  "frequency": "326",
+  "mnemonic": "向 the window that only faces one way, except now somebody has turned it. He puts both eyes on his boss and leaves them there: むける.",
+  "notes": "向かう むかう is heading that way yourself; 向ける is aiming something else."
+ },
+ {
+  "word": "奥",
+  "reading": "おく",
+  "meaning": "inner part, back (of...)",
+  "sentence": "はさみは机の奥にあった。",
+  "sentence_meaning": "The scissors were at the back of the desk.",
+  "frequency": "327",
+  "mnemonic": "Something shut deep inside the frame with 大 spread across the bottom to keep it in. The scissors were at the very back of the drawer the whole time: おく.",
+  "notes": "Same sound as 置く おく, 'to put'. 奥 is the depths of something — and 奥さん is somebody's wife."
+ },
+ {
+  "word": "軽い",
+  "reading": "かるい",
+  "meaning": "light",
+  "sentence": "この靴はとても軽い。",
+  "sentence_meaning": "These shoes are very light.",
+  "frequency": "328",
+  "mnemonic": "車 a cart on the left, built light enough for one person to pull. You brace to lift the shoes and nearly put them through the ceiling: かるい.",
+  "notes": "Also light in the sense of not serious — 軽い風邪 is a mild cold."
+ },
+ {
+  "word": "返す",
+  "reading": "かえす",
+  "meaning": "to&nbsp;return, to&nbsp;repay",
+  "sentence": "図書館に本を返した。",
+  "sentence_meaning": "I returned the book to the library.",
+  "frequency": "329",
+  "mnemonic": "辶 the road with 反 something turned over on it — back the way you came, carrying the thing. The book goes into the library slot: かえす.",
+  "notes": "Careful: 帰る かえる is you going home and 変える かえる is altering something. 返す is giving a thing back."
+ },
+ {
+  "word": "現れる",
+  "reading": "あらわれる",
+  "meaning": "to&nbsp;appear, to&nbsp;emerge",
+  "sentence": "雲の間から太陽が現れました。",
+  "sentence_meaning": "The sun appeared between the clouds.",
+  "frequency": "330",
+  "mnemonic": "王 a jewel with 見 an eye brought up to it — the instant a thing becomes visible. The cloud slides off and the sun is simply there: あらわれる.",
+  "notes": ""
+ },
+ {
+  "word": "痛い",
+  "reading": "いたい",
+  "meaning": "hurt, ouch",
+  "sentence": "歯が痛いです。",
+  "sentence_meaning": "My tooth hurts.",
+  "frequency": "331",
+  "mnemonic": "疒 the sickness radical wrapped the whole way round it. One tooth, and it has taken over that entire side of your head: いたい.",
+  "notes": "Also what you shout when it happens — 痛い is the Japanese for 'ouch'."
+ },
+ {
+  "word": "どうやら",
+  "reading": "どうやら",
+  "meaning": "(seems) likely, seems like",
+  "sentence": "明日はどうやら雨らしいよ。",
+  "sentence_meaning": "Seems like it's going to rain tomorrow.",
+  "frequency": "332",
+  "mnemonic": "Nobody has confirmed a thing. But the forecast, the sky and the way your knee feels all agree — どうやら it's raining tomorrow.",
+  "notes": "Usually has らしい or ようだ waiting later in the sentence."
+ },
+ {
+  "word": "点ける",
+  "reading": "つける",
+  "meaning": "to&nbsp;switch on",
+  "sentence": "電気を点けてください。",
+  "sentence_meaning": "Please turn on the light.",
+  "frequency": "333",
+  "mnemonic": "灬 fire down at the bottom, and 点 is one single spot of it. Somebody has to go and put a light to the room: つける.",
+  "notes": "Same sound as 付ける つける. This one is for anything that lights up — lamps, switches, the telly."
+ },
+ {
+  "word": "付ける",
+  "reading": "つける",
+  "meaning": "to&nbsp;attach, to&nbsp;set, to&nbsp;add",
+  "sentence": "おまけを付けました。",
+  "sentence_meaning": "I added a freebie.",
+  "frequency": "334",
+  "mnemonic": "亻 a person and 寸 a hand, pressing one thing onto another. Not the light this time — a freebie slipped into the bag on top of the order: つける.",
+  "notes": "Same sound as 点ける つける, which is for lights. This is attaching anything to anything, and it's the same 付 as 見つける."
+ },
+ {
+  "word": "一瞬",
+  "reading": "いっしゅん",
+  "meaning": "instant, for a moment",
+  "sentence": "一瞬自分の耳を疑ったよ。",
+  "sentence_meaning": "I doubted my ears for an instant.",
+  "frequency": "335",
+  "mnemonic": "一 one 瞬 blink, the same 瞬 that sits in 瞬間. That is precisely how long you spent not believing your own ears: いっしゅん.",
+  "notes": "瞬間 しゅんかん is the moment itself; 一瞬 is 'for an instant', and behaves like an adverb."
+ },
+ {
+  "word": "隠す",
+  "reading": "かくす",
+  "meaning": "to&nbsp;hide",
+  "sentence": "僕に隠していることは無いですか。",
+  "sentence_meaning": "Is there anything you're hiding from me?",
+  "frequency": "336",
+  "mnemonic": "阝 a hill on the left and something tucked round the back of it. Is there anything behind yours? — asked in the voice that already knows: かくす.",
+  "notes": "隠れる かくれる is you hiding yourself; 隠す is hiding something."
+ },
+ {
+  "word": "準備",
+  "reading": "じゅんび",
+  "meaning": "preparation, arrangements",
+  "sentence": "明日の会議の準備をした。",
+  "sentence_meaning": "I prepared for tomorrow's meeting.",
+  "frequency": "337",
+  "mnemonic": "準 water levelled off flat, and 備 a person with everything laid out ready beside them. Tomorrow's meeting, the whole of it sorted tonight: じゅんび.",
+  "notes": ""
+ },
+ {
+  "word": "そろそろ",
+  "reading": "そろそろ",
+  "meaning": "soon, about time",
+  "sentence": "そろそろ始めましょうか。",
+  "sentence_meaning": "It's about time to begin.",
+  "frequency": "338",
+  "mnemonic": "Nobody has said anything, but people have started looking at the clock and gathering their coats. そろそろ — shall we make a start, then?",
+  "notes": "Softens whatever comes after it. そろそろ帰ります is the polite way to announce you're going."
+ },
+ {
+  "word": "落ち着く",
+  "reading": "おちつく",
+  "meaning": "to&nbsp;calm down, to&nbsp;settle in",
+  "sentence": "私の話を落ち着いて聞いてください。",
+  "sentence_meaning": "Calm down and listen to me.",
+  "frequency": "339",
+  "mnemonic": "落ちる falling and 着く landing, bolted together — everything that was up in the air comes down and stays down. Sit. Now listen: おちつく.",
+  "notes": "Built straight out of 落ちる おちる. Also used of settling into a new place, and of a room that feels calm."
+ },
+ {
+  "word": "恥ずかしい",
+  "reading": "はずかしい",
+  "meaning": "embarrassing, shy",
+  "sentence": "とても恥ずかしかった。",
+  "sentence_meaning": "It was very embarrassing.",
+  "frequency": "340",
+  "mnemonic": "耳 an ear sat over 心 the heart, because the ears are the part that gives you away. Both of them scarlet before you'd even finished the sentence: はずかしい.",
+  "notes": "Covers embarrassed and shy at once — the feeling, and the thing that causes it."
+ }
+]

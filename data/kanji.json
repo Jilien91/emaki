@@ -632,5 +632,41 @@
   "付": { "meaning": "attach, fix on", "parts": [
     { "c": "亻", "name": "person" },
     { "c": "寸", "name": "hand" }
+  ]},
+
+  "下": { "meaning": "under, below", "note": "A mark sitting below the line — the mirror of 上." },
+  "態": { "meaning": "state, attitude", "note": "能 ability sat over 心 the heart — the state a thing is in." },
+  "関": { "meaning": "connection, barrier", "note": "門 a gate with the bar shape inside it — what joins one side to the other." },
+  "奥": { "meaning": "inner part, depths", "note": "Something shut deep inside a frame, with 大 spread across the bottom." },
+  "軽": { "meaning": "light, slight", "note": "車 a cart on the left, built light enough for one person to pull." },
+  "痛": { "meaning": "pain, hurt", "note": "疒 the sickness radical wrapped the whole way round it." },
+  "点": { "meaning": "point, dot, light up", "note": "灬 fire underneath — one single spot of it, and by extension lighting one." },
+  "隠": { "meaning": "hide, conceal", "note": "阝 a hill on the left, and something tucked round the back of it." },
+  "準": { "meaning": "standard, level", "note": "氵 water on the left — levelling a thing off flat before you start." },
+  "備": { "meaning": "prepare, equip", "note": "亻 a person on the left with everything laid out ready beside them." },
+  "着": { "meaning": "arrive, wear", "note": "目 an eye at the bottom under a woolly top — something landing on you and staying there." },
+  "完": { "meaning": "complete, finish", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "元", "name": "origin" }
+  ]},
+  "泣": { "meaning": "cry, weep", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "立", "name": "stand" }
+  ]},
+  "係": { "meaning": "connection, person in charge", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "系", "name": "thread, line" }
+  ]},
+  "返": { "meaning": "return, give back", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "反", "name": "turn over" }
+  ]},
+  "現": { "meaning": "appear, present", "parts": [
+    { "c": "王", "name": "jewel" },
+    { "c": "見", "name": "see" }
+  ]},
+  "恥": { "meaning": "shame, embarrassment", "parts": [
+    { "c": "耳", "name": "ear" },
+    { "c": "心", "name": "heart" }
   ]}
 }
