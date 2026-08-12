@@ -441,5 +441,46 @@
   ]},
   "死": { "meaning": "death", "note": "歹 bare bones with a figure folded over beside them." },
   "早": { "meaning": "early", "note": "日 the sun already up over a single bare stalk." },
-  "王": { "meaning": "king", "note": "Heaven, earth and humanity threaded on one vertical stroke. On the left of another kanji this same shape is usually 玉 jewel with its dot worn off, which is why 理 has a jewel in it and 全 has a king." }
+  "王": { "meaning": "king", "note": "Heaven, earth and humanity threaded on one vertical stroke. On the left of another kanji this same shape is usually 玉 jewel with its dot worn off, which is why 理 has a jewel in it and 全 has a king." },
+
+  "必": { "meaning": "certain, necessary", "note": "A heart with a stroke driven clean through it." },
+  "者": { "meaning": "person, the one who", "note": "A contested shape that settled into meaning whoever does the thing named before it." },
+  "後": { "meaning": "after, behind", "note": "彳 the step radical with the rest of it trailing along behind." },
+  "向": { "meaning": "face toward", "note": "A window set high in a wall, pointing one way out." },
+  "音": { "meaning": "sound", "note": "言 speech with one more stroke shut inside the mouth, so it never becomes a word." },
+  "掛": { "meaning": "hang, hook", "note": "扌 a hand reaching up to a peg to hang something on it." },
+  "過": { "meaning": "pass by, exceed", "note": "辶 the road radical — going past the turning, and going too far." },
+  "要": { "meaning": "need, essential", "note": "Originally hands on a waist — the part everything else hangs off." },
+  "頭": { "meaning": "head", "parts": [
+    { "c": "豆", "name": "bean" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "戻": { "meaning": "return, go back", "parts": [
+    { "c": "戸", "name": "door" },
+    { "c": "大", "name": "big" }
+  ]},
+  "終": { "meaning": "end, finish", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "冬", "name": "winter" }
+  ]},
+  "凄": { "meaning": "terrific, ghastly", "parts": [
+    { "c": "冫", "name": "ice" },
+    { "c": "妻", "name": "wife" }
+  ]},
+  "体": { "meaning": "body", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "本", "name": "root, origin" }
+  ]},
+  "歩": { "meaning": "walk, step", "parts": [
+    { "c": "止", "name": "footprint" },
+    { "c": "少", "name": "few" }
+  ]},
+  "存": { "meaning": "exist", "parts": [
+    { "c": "才", "name": "sapling" },
+    { "c": "子", "name": "child" }
+  ]},
+  "在": { "meaning": "exist, be located", "parts": [
+    { "c": "才", "name": "sapling" },
+    { "c": "土", "name": "earth" }
+  ]}
 }
