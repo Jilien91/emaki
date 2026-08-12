@@ -1,0 +1,252 @@
+[
+ {
+  "word": "時",
+  "reading": "とき",
+  "meaning": "time, occasion",
+  "sentence": "暇な時は本を読んでいます。",
+  "sentence_meaning": "In my free time, I read books.",
+  "frequency": "407",
+  "mnemonic": "日 the sun crossing the wall of 寺 the temple was the only clock they had. The monk nudges the dial round with his toe — key moment, とき.",
+  "notes": "Same kanji as 時 じ 'o'clock' — とき is time in general and the 'when' of a sentence, じ only counts hours."
+ },
+ {
+  "word": "時",
+  "reading": "じ",
+  "meaning": "hour, o'clock",
+  "sentence": "A「何時ですか。」B「3時です。」",
+  "sentence_meaning": "A: What time is it?B: It's 3 o'clock.",
+  "frequency": "407",
+  "mnemonic": "The same sun-over-temple you met as とき, but bolted onto a number it does one job. Gee, is it three already? 三時. じ.",
+  "notes": "Only ever follows a number: 3時 さんじ. Standing alone, the word for time is 時 とき."
+ },
+ {
+  "word": "一",
+  "reading": "いち",
+  "meaning": "one",
+  "sentence": "一から始めましょう。",
+  "sentence_meaning": "Let's start from the beginning.",
+  "frequency": "781",
+  "mnemonic": "One stroke, and the first thing anyone ever writes. One itch, dead centre of your back, and nothing else in the world matters — itchy. いち.",
+  "notes": "The reading shifts in compounds: 一つ ひとつ, 一日 ついたち."
+ },
+ {
+  "word": "二",
+  "reading": "に",
+  "meaning": "two",
+  "sentence": "その人には二回会った。",
+  "sentence_meaning": "I met that person twice.",
+  "frequency": "547",
+  "mnemonic": "Two strokes stacked, a matching pair. You own exactly two of the thing that finds the coffee table leg in the dark — knee. に.",
+  "notes": "Also read ふた- when counting things: 二つ ふたつ."
+ },
+ {
+  "word": "三",
+  "reading": "さん",
+  "meaning": "three",
+  "sentence": "彼女は三人の子供の母親だ。",
+  "sentence_meaning": "She's the mother of three children.",
+  "frequency": "779",
+  "mnemonic": "Three strokes, and the last number you can read just by counting lines. Three guests at the door, and every one of them gets a さん after their name.",
+  "notes": "Same sound as the honorific さん — the number sits in front of a counter, the honorific behind a name."
+ },
+ {
+  "word": "四",
+  "reading": "よん・し",
+  "meaning": "four",
+  "sentence": "ハワイは四回目です。",
+  "sentence_meaning": "This is my fourth trip to Hawaii.",
+  "frequency": "1462",
+  "mnemonic": "Four walls with a pair of legs tucked inside them. Say よん — the other reading し is also the word for death, and nobody wants four of those.",
+  "notes": "よん is the safe default. し survives in fixed compounds like 四月 しがつ, but is avoided elsewhere because it matches 死 death."
+ },
+ {
+  "word": "五",
+  "reading": "ご",
+  "meaning": "five",
+  "sentence": "五人で旅行に行きました。",
+  "sentence_meaning": "Five of us went on a trip.",
+  "frequency": "1039",
+  "mnemonic": "The countdown starts at five fingers and folds them one at a time. The last one drops and so does the starter's flag: go. ご.",
+  "notes": "Same sound as 語 ご 'language' — this one is the number."
+ },
+ {
+  "word": "六",
+  "reading": "ろく",
+  "meaning": "six",
+  "sentence": "彼には子供が六人います。",
+  "sentence_meaning": "He has six children.",
+  "frequency": "1673",
+  "mnemonic": "A lid balanced on two thin legs — that's the whole shape. Six strings under your fingers, and the first chord lands: rock. ろく.",
+  "notes": ""
+ },
+ {
+  "word": "七",
+  "reading": "なな・しち",
+  "meaning": "seven",
+  "sentence": "バナナが七本あります。",
+  "sentence_meaning": "There are seven bananas.",
+  "frequency": "1750",
+  "mnemonic": "Take a 7 and tip it over backwards. Nana has seven of them on the mantelpiece, one china cat per grandchild: なな.",
+  "notes": "なな is the safe default. しち holds on in 七月 しちがつ, but gets avoided otherwise because it's too easy to mishear as いち."
+ },
+ {
+  "word": "八",
+  "reading": "はち",
+  "meaning": "eight",
+  "sentence": "りんごを八個ください。",
+  "sentence_meaning": "Please give me eight apples.",
+  "frequency": "2072",
+  "mnemonic": "Two strokes opening outward, wider the further down you look. Eight of them pour out of the hatch and every one is a bee: はち.",
+  "notes": "はち is also the word for bee, written 蜂."
+ },
+ {
+  "word": "九",
+  "reading": "きゅう",
+  "meaning": "nine",
+  "sentence": "野球は九人で1チームです。",
+  "sentence_meaning": "In baseball there are nine people on one team.",
+  "frequency": "3036",
+  "mnemonic": "Nine people in the queue in front of you and not one of them has moved since you joined it. You're the tenth. きゅう.",
+  "notes": "Read く in a few set phrases: 九月 くがつ, 九時 くじ."
+ },
+ {
+  "word": "十",
+  "reading": "じゅう",
+  "meaning": "ten",
+  "sentence": "その子は指で十数えました。",
+  "sentence_meaning": "That child counted to ten on her fingers.",
+  "frequency": "1815",
+  "mnemonic": "Two strokes crossing, every direction covered — the count is closed. Ten fingers come off the tally and wrap round one glass of juice: じゅう.",
+  "notes": "Squeezes to じゅっ or じっ in front of counters: 十分 じゅっぷん."
+ },
+ {
+  "word": "くん",
+  "reading": "くん",
+  "meaning": "kun (usu. used with men younger or of the same age)",
+  "sentence": "健くんは１歳です。",
+  "sentence_meaning": "Ken-kun is one year old.",
+  "frequency": "140",
+  "mnemonic": "The same 君 you learned as きみ, but hung on the end of a name it goes soft. The teacher works down the register: Ken-kun, over here. くん.",
+  "notes": "Written 君 but nearly always in kana. For boys, and for younger or junior men; さん is the safe choice for anyone else."
+ },
+ {
+  "word": "すみません",
+  "reading": "すみません",
+  "meaning": "sorry, excuse me",
+  "sentence": "すみません。今日は用事があります。",
+  "sentence_meaning": "Sorry, I have something to do today.",
+  "frequency": "773",
+  "mnemonic": "Ink down a stranger's white sleeve, and nothing you can say makes it even again. That unsettled feeling is すみません — and it works for squeezing past someone too.",
+  "notes": "Does double duty: an apology, and a way to get a stranger's attention. ごめんなさい is warmer and more personal."
+ },
+ {
+  "word": "やる",
+  "reading": "やる",
+  "meaning": "to&nbsp;do",
+  "sentence": "一緒に宿題をやろう。",
+  "sentence_meaning": "Let's do our homework together.",
+  "frequency": "46",
+  "mnemonic": "Sleeves up, no ceremony. Who's doing the washing up? Yeah, all right. That shrug is やる — する with the polish taken off.",
+  "notes": "Casual; する is the neutral one. やる also means to give, but only downward — to a junior, a pet, or a plant."
+ },
+ {
+  "word": "顔",
+  "reading": "かお",
+  "meaning": "face",
+  "sentence": "彼はタオルで顔を拭きました。",
+  "sentence_meaning": "He wiped his face with a towel.",
+  "frequency": "76",
+  "mnemonic": "彦 a fine young man and 頁 a head — the head worth putting on a poster. He leans over the fence to pose and a cow puts hers right up against it: かお.",
+  "notes": ""
+ },
+ {
+  "word": "今朝",
+  "reading": "けさ",
+  "meaning": "this morning",
+  "sentence": "今朝は早く家を出ました。",
+  "sentence_meaning": "I left the house early this morning.",
+  "frequency": "81",
+  "mnemonic": "今 now and 朝 morning welded together, and then read like neither of them. Sun up, moon still hanging there, and the case you packed last night still by the door: けさ.",
+  "notes": "Irregular reading — けさ, never いまあさ."
+ },
+ {
+  "word": "出る",
+  "reading": "でる",
+  "meaning": "to&nbsp;go out, to&nbsp;leave",
+  "sentence": "今朝は早く家を出ました。",
+  "sentence_meaning": "I left the house early this morning.",
+  "frequency": "81",
+  "mnemonic": "出 is one peak shoved up out of another. Steam leaves the kettle, you leave the house, the train leaves the platform — all of it でる.",
+  "notes": "The thing leaves under its own steam. 出す だす is for putting something out."
+ },
+ {
+  "word": "そして",
+  "reading": "そして",
+  "meaning": "and, and then",
+  "sentence": "このロボットは言葉が分かります。そして、ダンスも出来ます。",
+  "sentence_meaning": "This robot understands words. On top of that, it can also dance.",
+  "frequency": "82",
+  "mnemonic": "The robot understands every word you say. そして — and then, without anyone asking for it, it dances. The word is the half-second before the thing that tops it.",
+  "notes": ""
+ },
+ {
+  "word": "まだ",
+  "reading": "まだ",
+  "meaning": "yet, more",
+  "sentence": "宿題はまだ終わっていません。",
+  "sentence_meaning": "I haven't finished my homework yet.",
+  "frequency": "96",
+  "mnemonic": "The homework is on the table exactly where it was three hours ago. Not started, not moved. Your mum asks how it's going and まだ is the whole answer.",
+  "notes": "With a negative it means 'not yet'; with a positive, 'still'."
+ },
+ {
+  "word": "じゃ",
+  "reading": "じゃ",
+  "meaning": "then, well",
+  "sentence": "じゃ、それをください。",
+  "sentence_meaning": "Okay, then I'll have that one.",
+  "frequency": "98",
+  "mnemonic": "You've had the menu long enough and the waiter's pen is already up. じゃ, that one. It's the sound of finally deciding.",
+  "notes": "A casual squeeze of では. じゃあ is the same word held a beat longer."
+ },
+ {
+  "word": "ため",
+  "reading": "ため",
+  "meaning": "sake, purpose",
+  "sentence": "これは医者のためのサイトです。",
+  "sentence_meaning": "This is a website made for doctors.",
+  "frequency": "109",
+  "mnemonic": "A whole website with nothing on it for you, because every page of it was built for doctors. The lot tamed to one purpose: ため.",
+  "notes": "Covers both the goal and the reason — 'for the sake of' and 'because of' are the same word."
+ },
+ {
+  "word": "ご飯",
+  "reading": "ごはん",
+  "meaning": "cooked rice, meal",
+  "sentence": "私はパンよりご飯が好きだ。",
+  "sentence_meaning": "I prefer rice to bread.",
+  "frequency": "1862",
+  "mnemonic": "食 food with 反 a wrist turning it over in the pot, and a polite ご stuck on the front because rice has earned it. Go on — hand me a bowl: ごはん.",
+  "notes": "Rice, and by extension the meal built round it: 朝ご飯 breakfast, 晩ご飯 dinner."
+ },
+ {
+  "word": "ところ",
+  "reading": "ところ",
+  "meaning": "place",
+  "sentence": "私は友達のところに泊まった。",
+  "sentence_meaning": "I stayed at my friend's place for the night.",
+  "frequency": "124",
+  "mnemonic": "Not an address — just wherever someone happens to be. You slept at your friend's ところ, on the strip of floor between the sofa and the door.",
+  "notes": "Stretches to time as well: 今のところ is 'at the moment'."
+ },
+ {
+  "word": "少し",
+  "reading": "すこし",
+  "meaning": "a bit, a little while",
+  "sentence": "少し疲れました。",
+  "sentence_meaning": "I'm a little tired.",
+  "frequency": "131",
+  "mnemonic": "小 small, with one more stroke slicing another bit off the corner of it. Barely anything left in the glass — just a scooch: すこし.",
+  "notes": "ちょっと is the casual version of the same idea."
+ }
+]

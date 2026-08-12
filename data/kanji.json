@@ -378,5 +378,25 @@
   "飲": { "meaning": "drink", "parts": [
     { "c": "食", "name": "eat" },
     { "c": "欠", "name": "open mouth" }
+  ]},
+
+  "二": { "meaning": "two", "note": "Two strokes. One line for each." },
+  "三": { "meaning": "three", "note": "Three strokes stacked up. The last number you can read by counting lines." },
+  "四": { "meaning": "four", "note": "Four walls with a pair of legs tucked inside. The shape is arbitrary — the old form was a picture of breath." },
+  "五": { "meaning": "five", "note": "A cross pinned between a lid and a floor. Halfway to ten." },
+  "六": { "meaning": "six", "note": "A lid balanced on two thin legs." },
+  "七": { "meaning": "seven", "note": "A 7 tipped over backwards — a stroke cut across by a hook." },
+  "八": { "meaning": "eight", "note": "Two strokes spreading apart. It also means to divide, which is where the shape came from." },
+  "九": { "meaning": "nine", "note": "A hook curling back on itself, one short of ten." },
+  "十": { "meaning": "ten", "note": "Two strokes crossing — every direction covered, the count closed." },
+  "朝": { "meaning": "morning", "note": "日 the sun caught among the strokes with 月 the moon still up beside it — the overlap at dawn." },
+  "少": { "meaning": "few, a little", "note": "小 small with one more stroke slicing a bit off the corner." },
+  "顔": { "meaning": "face", "parts": [
+    { "c": "彦", "name": "fine young man" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "飯": { "meaning": "cooked rice, meal", "parts": [
+    { "c": "食", "name": "eat" },
+    { "c": "反", "name": "turn over" }
   ]}
 }
