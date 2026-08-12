@@ -1,0 +1,252 @@
+[
+ {
+  "word": "女性",
+  "reading": "じょせい",
+  "meaning": "woman, female",
+  "sentence": "そのパーティーに女性は何人来ますか。",
+  "sentence_meaning": "How many women are coming to that party?",
+  "frequency": "293",
+  "mnemonic": "女 a woman with 性 a 忄 heart and 生 a life beside her — the whole person, not just the label. This is the word you use in front of people: じょせい.",
+  "notes": "The polite one. Bare 女 おんな can sound blunt about a person; 女性 never does."
+ },
+ {
+  "word": "頂く",
+  "reading": "いただく",
+  "meaning": "to&nbsp;receive, to&nbsp;take (humble form)",
+  "sentence": "お客様にお菓子を頂いた。",
+  "sentence_meaning": "A customer gave me some snacks.",
+  "frequency": "294",
+  "mnemonic": "頂 is the very top of a thing — 頁 a head with the crown marked on it. You take the sweets with both hands and your own head goes down: いただく.",
+  "notes": "The humble version of 受ける and もらう: it lowers you, not them. It's also the いただきます said before eating."
+ },
+ {
+  "word": "敵",
+  "reading": "てき",
+  "meaning": "enemy",
+  "sentence": "あそこに敵がひそんでいる。",
+  "sentence_meaning": "The enemy is lurking there.",
+  "frequency": "295",
+  "mnemonic": "攵 the strike radical stood on the right, waiting. Somebody is behind that wall and they are not on your side: てき.",
+  "notes": ""
+ },
+ {
+  "word": "起きる",
+  "reading": "おきる",
+  "meaning": "to&nbsp;occur",
+  "sentence": "近所で盗難事件が起きました。",
+  "sentence_meaning": "Some burglaries occurred in the neighborhood.",
+  "frequency": "296",
+  "mnemonic": "走 running with 己 yourself behind it — something stands up out of nowhere. Three break-ins on your own street, and none of them were there last week: おきる.",
+  "notes": "Same word as 起きる \"to get up\". Events use it too: a thing rises up and happens."
+ },
+ {
+  "word": "起きる",
+  "reading": "おきる",
+  "meaning": "to&nbsp;get up, to&nbsp;get out of bed",
+  "sentence": "私は毎朝6時に起きます。",
+  "sentence_meaning": "I get up at six o'clock every morning.",
+  "frequency": "296",
+  "mnemonic": "The same standing-up as the one events do, only this time it's you. Six o'clock, every single morning, upright before you've decided to be: おきる.",
+  "notes": "Same word as 起きる \"to occur\". Careful with 怒る おこる, to get angry — one vowel apart."
+ },
+ {
+  "word": "落ちる",
+  "reading": "おちる",
+  "meaning": "to&nbsp;fall",
+  "sentence": "荷物が下に落ちてしまいました。",
+  "sentence_meaning": "My bag fell down there.",
+  "frequency": "297",
+  "mnemonic": "艹 grass and 氵 water up at the top of the character, both on their way down. Your bag goes off the rack and lands somewhere under the seat: おちる.",
+  "notes": "落とす おとす is you dropping it; 落ちる is it falling by itself."
+ },
+ {
+  "word": "足",
+  "reading": "あし",
+  "meaning": "leg, foot",
+  "sentence": "彼は足が長い。",
+  "sentence_meaning": "He has long legs.",
+  "frequency": "298",
+  "mnemonic": "口 a knee drawn on top of the foot underneath it. His go on for ever — trousers never fit him off the peg: あし.",
+  "notes": "Covers the whole thing, leg and foot together — Japanese doesn't split them the way English does."
+ },
+ {
+  "word": "それに",
+  "reading": "それに",
+  "meaning": "in addition",
+  "sentence": "連休はホテル代が高いです。それに、どこも人が多いです。",
+  "sentence_meaning": "Hotel fares are expensive during extended weekends. In addition, it's crowded everywhere.",
+  "frequency": "299",
+  "mnemonic": "The hotels cost double over the long weekend. それに — and on top of that, every single place is heaving. One complaint stacked straight onto another.",
+  "notes": "Piles a second point onto the first. そして just adds the next thing; それで says the first caused the second."
+ },
+ {
+  "word": "先に",
+  "reading": "さきに",
+  "meaning": "before, ahead",
+  "sentence": "では、私たちは先に出発します。",
+  "sentence_meaning": "We will leave before you then.",
+  "frequency": "300",
+  "mnemonic": "先 a figure striding out in front on 儿 legs, the same 先 as 先生. You're off now and they can catch up later: さきに.",
+  "notes": "お先に失礼します is the standard line for leaving the office before your colleagues."
+ },
+ {
+  "word": "魔法",
+  "reading": "まほう",
+  "meaning": "magic",
+  "sentence": "彼女はまるで魔法にかかったみたいだ。",
+  "sentence_meaning": "She acts as if she is under a spell.",
+  "frequency": "301",
+  "mnemonic": "魔 a demon crouched under the roof, and 法 water finding the one way down. She's behaving as though somebody set that loose on her: まほう.",
+  "notes": ""
+ },
+ {
+  "word": "探す",
+  "reading": "さがす",
+  "meaning": "to&nbsp;look for, to&nbsp;search",
+  "sentence": "ピンクのセーターをずっと探しています。",
+  "sentence_meaning": "I've been looking for a pink sweater for a while.",
+  "frequency": "302",
+  "mnemonic": "扌 a hand reaching right down into somewhere deep and feeling about. Every shop, every week, still no pink jumper: さがす.",
+  "notes": ""
+ },
+ {
+  "word": "子供",
+  "reading": "こども",
+  "meaning": "child, kid",
+  "sentence": "電車で子供が騒いでいた。",
+  "sentence_meaning": "Kids were making a racket in the train.",
+  "frequency": "303",
+  "mnemonic": "子 a child with 供 more of them along for the ride. Not one of them on the whole carriage is sitting still: こども.",
+  "notes": "Same 子 as 子 こ. 子供 is the ordinary standalone word for a child."
+ },
+ {
+  "word": "怒る",
+  "reading": "おこる",
+  "meaning": "to&nbsp;get angry, to&nbsp;scold",
+  "sentence": "彼女が嘘をついたので、彼は怒った。",
+  "sentence_meaning": "He was angry because she lied.",
+  "frequency": "304",
+  "mnemonic": "奴 a servant sat on top of 心 the heart, and the heart underneath is doing all the work. She lied and he has gone quiet in a way that isn't quiet: おこる.",
+  "notes": "One vowel from 起きる おきる, to get up. Also covers telling someone off, not just being cross."
+ },
+ {
+  "word": "笑顔",
+  "reading": "えがお",
+  "meaning": "smile",
+  "sentence": "赤ちゃんの笑顔が可愛い。",
+  "sentence_meaning": "The baby's smile is cute.",
+  "frequency": "305",
+  "mnemonic": "笑 bamboo bent double and 顔 a face to put it on. Not the laugh itself, the face doing it — and on a baby it finishes you: えがお.",
+  "notes": "笑う わらう is the verb. 笑顔 is the face, and it's the word you'd use for a photo."
+ },
+ {
+  "word": "先輩",
+  "reading": "せんぱい",
+  "meaning": "senior (at work, school, etc.)",
+  "sentence": "先輩からメール来た？",
+  "sentence_meaning": "Did you get a text from your senior?",
+  "frequency": "306",
+  "mnemonic": "先 the one out in front, with 輩 a row of carts strung out behind. They joined a year before you and that never stops counting: せんぱい.",
+  "notes": "後輩 こうはい is the other end — anyone who joined after you. The pair runs your whole working life."
+ },
+ {
+  "word": "続く",
+  "reading": "つづく",
+  "meaning": "to&nbsp;continue, to&nbsp;keep up",
+  "sentence": "雨の日が２週間も続いています。",
+  "sentence_meaning": "Rainy days have continued for two weeks.",
+  "frequency": "307",
+  "mnemonic": "糸 a thread that nobody has cut. Two full weeks of rain, one day joined onto the next, and no end showing: つづく.",
+  "notes": "続ける つづける is you keeping something going; 続く is it going on by itself."
+ },
+ {
+  "word": "こんなに",
+  "reading": "こんなに",
+  "meaning": "this much, such",
+  "sentence": "こんなに面白い本は初めて読んだ。",
+  "sentence_meaning": "It's the first time I read such an interesting book.",
+  "frequency": "308",
+  "mnemonic": "こ- is the near one again, the same こ as これ. You're holding the book up so somebody can see how much you mean: こんなに.",
+  "notes": "そんなに is that much, over by them; あんなに is that much, over there."
+ },
+ {
+  "word": "変",
+  "reading": "へん",
+  "meaning": "strange, funny",
+  "sentence": "変な音が聞こえます。",
+  "sentence_meaning": "I hear a strange sound.",
+  "frequency": "309",
+  "mnemonic": "The same 変 as 変わる, one thing turning into another — but caught halfway, when it isn't either. Something in the wall is making a noise it shouldn't: へん.",
+  "notes": "Same kanji as 変わる かわる and 変える かえる, which are the verbs. 変 on its own is the adjective."
+ },
+ {
+  "word": "読む",
+  "reading": "よむ",
+  "meaning": "to&nbsp;read",
+  "sentence": "日本語の本を読みます。",
+  "sentence_meaning": "I read a Japanese language book.",
+  "frequency": "310",
+  "mnemonic": "言 speech with 売 selling beside it — the words were written down to be handed on. You take them off the page in Japanese now: よむ.",
+  "notes": ""
+ },
+ {
+  "word": "当然",
+  "reading": "とうぜん",
+  "meaning": "natural, as a matter of course",
+  "sentence": "彼女が怒るのも当然だ。",
+  "sentence_meaning": "It's natural that she would be angry.",
+  "frequency": "311",
+  "mnemonic": "当 landing squarely on the spot and 然 that being how it is. She was lied to. Of course she's angry — where else was that going to land: とうぜん.",
+  "notes": "Shares its 然 with 全然 ぜんぜん."
+ },
+ {
+  "word": "情報",
+  "reading": "じょうほう",
+  "meaning": "information",
+  "sentence": "私はホテルの情報が知りたいです。",
+  "sentence_meaning": "I'd like to know some information about the hotel.",
+  "frequency": "312",
+  "mnemonic": "情 what's going on inside a thing, and 報 a hand passing the news of it over. Everything about the hotel that isn't on the front page: じょうほう.",
+  "notes": "Shares its 情 with 表情 ひょうじょう, where the feeling shows on the outside instead."
+ },
+ {
+  "word": "見つける",
+  "reading": "みつける",
+  "meaning": "to&nbsp;find",
+  "sentence": "新しい仕事を見つけました。",
+  "sentence_meaning": "I found a new job.",
+  "frequency": "313",
+  "mnemonic": "見 an eye on legs and 付 a hand fixing onto what it saw. Months of looking, and then a job — spotted and taken hold of: みつける.",
+  "notes": "見る みる is looking, 見える みえる is it being visible, 見つける is the moment you land on it."
+ },
+ {
+  "word": "少女",
+  "reading": "しょうじょ",
+  "meaning": "girl",
+  "sentence": "少女は母親の手を握った。",
+  "sentence_meaning": "The girl clasped her mother's hand.",
+  "frequency": "314",
+  "mnemonic": "少 a small amount of 女 woman — not grown yet. She reaches up and takes her mother's hand without looking: しょうじょ.",
+  "notes": "A written, slightly literary word. In speech you'd say 女の子 おんなのこ."
+ },
+ {
+  "word": "大変",
+  "reading": "たいへん",
+  "meaning": "terrible, serious, grave",
+  "sentence": "大変なことが起こりました。",
+  "sentence_meaning": "A terrible thing happened.",
+  "frequency": "315",
+  "mnemonic": "大 big and 変 strange stuck together — a large amount of something going badly wrong. Whatever has happened, it isn't small: たいへん.",
+  "notes": "Also does duty as 'very' in front of an adjective: 大変おいしい is very tasty. Same 変 as 変 へん."
+ },
+ {
+  "word": "かなり",
+  "reading": "かなり",
+  "meaning": "fairly, rather",
+  "sentence": "彼はかなり英語が上手です。",
+  "sentence_meaning": "He's pretty good at English.",
+  "frequency": "316",
+  "mnemonic": "More than you were expecting, less than you'd call fluent. He opens his mouth and you quietly adjust upwards: かなり.",
+  "notes": "Stronger than ちょっと, softer than とても. It carries a small note of surprise."
+ }
+]

@@ -592,5 +592,45 @@
   "困": { "meaning": "be troubled, stuck", "parts": [
     { "c": "囗", "name": "border" },
     { "c": "木", "name": "tree" }
+  ]},
+
+  "敵": { "meaning": "enemy", "note": "攵 the strike radical stood on the right — the one you are up against." },
+  "落": { "meaning": "fall, drop", "note": "艹 grass and 氵 water up at the top, both on their way down." },
+  "足": { "meaning": "leg, foot", "note": "A pictograph — 口 a knee drawn over the foot beneath it." },
+  "魔": { "meaning": "demon, magic", "note": "鬼 a demon crouched at the bottom, under a roof stacked with hemp." },
+  "探": { "meaning": "search, look for", "note": "扌 a hand reaching down into somewhere deep and feeling about." },
+  "輩": { "meaning": "fellow, colleague", "note": "車 a cart at the bottom — a row of them, and whoever came before you in the line." },
+  "報": { "meaning": "report, news", "note": "幸 good fortune on the left with a hand on the right — news being handed over." },
+  "性": { "meaning": "nature, gender", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "生", "name": "life" }
+  ]},
+  "頂": { "meaning": "summit, receive humbly", "parts": [
+    { "c": "丁", "name": "street block" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "起": { "meaning": "rise, get up", "parts": [
+    { "c": "走", "name": "run" },
+    { "c": "己", "name": "self" }
+  ]},
+  "法": { "meaning": "law, method", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "去", "name": "leave" }
+  ]},
+  "供": { "meaning": "offer, accompany", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "共", "name": "together" }
+  ]},
+  "怒": { "meaning": "anger", "parts": [
+    { "c": "奴", "name": "servant" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "読": { "meaning": "read", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "売", "name": "sell" }
+  ]},
+  "付": { "meaning": "attach, fix on", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "寸", "name": "hand" }
   ]}
 }
