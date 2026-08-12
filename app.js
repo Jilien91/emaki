@@ -18,6 +18,13 @@ const STREAK_SAVE_KEY = 'kaishi-streak-saves';
 // it and the streak carries on; miss two in a row and it breaks.
 const STREAK_SAVE_MAX = 1;
 const STREAK_SAVE_DAYS = 3;
+// iOS capitalises the first letter of a text field by default, and wanakana
+// maps uppercase romaji to katakana on purpose — so "Watashi" could come out
+// starting ワ. Grading survives it (checkReading runs toHiragana), but the box
+// looked wrong while typing. autocorrect and spellcheck are off for the same
+// family of reasons: predictive text mangles romaji.
+const ANSWER_INPUT_ATTRS =
+  'autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"';
 const MISTAKE_WINDOW_MS = 24*3600*1000;
 // Most-recent misses shown as tiles; the rest collapse into a "+N" chip so a
 // bad day doesn't turn the dashboard into a wall. Extra Study still drills
@@ -994,7 +1001,7 @@ function renderLessonQuiz(){
   <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!lessonState.showAnswer ? `
-    <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
+    <input type="text" id="quizInput" placeholder="Type the ${label.toLowerCase()}" ${ANSWER_INPUT_ATTRS}>
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
@@ -1148,7 +1155,7 @@ function renderAccountCard(){
     ` : `
       <div class="settings-row">
         <div class="settings-desc">Sign in to keep progress in step across devices. We'll email you a link — no password to remember. Without this, progress stays in this browser only.</div>
-        <input type="email" id="syncEmailInput" placeholder="you@example.com" autocomplete="email">
+        <input type="email" id="syncEmailInput" placeholder="you@example.com" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false">
       </div>
       <button class="primary" onclick="signInWithEmail()">Email me a sign-in link</button>
     `}
@@ -1193,7 +1200,7 @@ function renderReview(){
   <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!reviewState.showAnswer ? `
-    <input type="text" id="reviewInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
+    <input type="text" id="reviewInput" placeholder="Type the ${label.toLowerCase()}" ${ANSWER_INPUT_ATTRS}>
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
@@ -1235,7 +1242,7 @@ function renderExtraStudy(){
   <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
   <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!extraStudyState.showAnswer ? `
-    <input type="text" id="extraInput" placeholder="Type the ${label.toLowerCase()}" autocomplete="off">
+    <input type="text" id="extraInput" placeholder="Type the ${label.toLowerCase()}" ${ANSWER_INPUT_ATTRS}>
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
