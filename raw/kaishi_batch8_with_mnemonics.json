@@ -1,0 +1,252 @@
+[
+   {
+      "meaning" : "place, location",
+      "word" : "場所",
+      "mnemonic" : "場 is 土 earth with the sun coming up over it, 所 is a 戸 door with an 斤 axe leaning by it. Two words for spot, stuck together: ばしょ.",
+      "sentence_meaning" : "There are many places I want to go to.",
+      "frequency" : "197",
+      "sentence" : "行ってみたい場所がたくさんあります。",
+      "notes" : "",
+      "reading" : "ばしょ"
+   },
+   {
+      "sentence" : "ウェイターを呼びましょう。",
+      "frequency" : "203",
+      "reading" : "よぶ",
+      "notes" : "",
+      "word" : "呼ぶ",
+      "meaning" : "to call, to name",
+      "sentence_meaning" : "Let's call the waiter.",
+      "mnemonic" : "口 a mouth with 乎 the breath pushed right out of it. You shout across the restaurant for the waiter — yo, boo, over here: よぶ."
+   },
+   {
+      "mnemonic" : "重 something heavy with 力 power put behind it — that is what shifting a thing actually takes. Oo, go on, get it moving: うごく.",
+      "sentence_meaning" : "The elevator is moving.",
+      "word" : "動く",
+      "meaning" : "to move",
+      "reading" : "うごく",
+      "notes" : "",
+      "frequency" : "218",
+      "sentence" : "エレベーターが動いています。"
+   },
+   {
+      "reading" : "きもち",
+      "notes" : "",
+      "frequency" : "225",
+      "sentence" : "彼の気持ちが分からない。",
+      "mnemonic" : "気 the steam coming off a person and 持 a hand holding on to it. Whatever you are carrying about inside you: key, mo, chi — きもち.",
+      "sentence_meaning" : "I don't understand his feelings.",
+      "word" : "気持ち",
+      "meaning" : "feeling, sensation"
+   },
+   {
+      "frequency" : "231",
+      "sentence" : "誰と会ってみたいですか。",
+      "notes" : "",
+      "reading" : "だれ",
+      "meaning" : "who",
+      "word" : "誰",
+      "mnemonic" : "言 speech next to 隹 a small bird — a voice up in the trees you can hear but cannot place at all. Who on earth was that? だれ.",
+      "sentence_meaning" : "Who would you like to meet one day?"
+   },
+   {
+      "reading" : "こ",
+      "notes" : "",
+      "frequency" : "247",
+      "sentence" : "その子は日本語が分からない。",
+      "sentence_meaning" : "That kid doesn't understand Japanese.",
+      "mnemonic" : "A swaddled infant with its arms out, drawn in three strokes. The same 子 you met inside 好き and 学校, now standing on its own: こ.",
+      "word" : "子",
+      "meaning" : "child, kid"
+   },
+   {
+      "frequency" : "248",
+      "sentence" : "スミスさんはどんな人ですか。",
+      "notes" : "",
+      "reading" : "どんな",
+      "meaning" : "what kind of...",
+      "word" : "どんな",
+      "sentence_meaning" : "What kind of person is Smith-san?",
+      "mnemonic" : "ど- is the question, the same as always. どんな asks what sort of thing it is — not which one of them, but what type of thing: どんな."
+   },
+   {
+      "frequency" : "261",
+      "sentence" : "意味が分かりません。",
+      "notes" : "",
+      "reading" : "いみ",
+      "meaning" : "meaning, significance",
+      "word" : "意味",
+      "sentence_meaning" : "I don't understand what you mean.",
+      "mnemonic" : "意 is 音 a sound over 心 a heart, 味 is 口 a mouth with 未 not-yet in it. The sense a thing carries before you can taste it: いみ."
+   },
+   {
+      "word" : "言葉",
+      "meaning" : "word, language",
+      "mnemonic" : "言 speech and 葉 a leaf. Words come off a person the way leaves come off a tree — one at a time, and there is no end to them: ことば.",
+      "sentence_meaning" : "I don't understand the meaning of this word.",
+      "sentence" : "この言葉の意味が分かりません。",
+      "frequency" : "115",
+      "reading" : "ことば",
+      "notes" : ""
+   },
+   {
+      "frequency" : "262",
+      "sentence" : "母が心配しています。",
+      "notes" : "",
+      "reading" : "しんぱい",
+      "meaning" : "worry",
+      "word" : "心配",
+      "sentence_meaning" : "My mother is worried.",
+      "mnemonic" : "心 a heart and 配 handing things out. Worry is your own heart being passed round to everybody else in the room. Shin-pai: しんぱい."
+   },
+   {
+      "reading" : "ようす",
+      "notes" : "",
+      "frequency" : "263",
+      "sentence" : "彼女の様子を見てきます。",
+      "sentence_meaning" : "I'm going to see how she's doing.",
+      "mnemonic" : "様 the way a thing looks and 子 a child. You glance across at somebody and read off how they are doing purely from the outside: ようす.",
+      "word" : "様子",
+      "meaning" : "appearance, state"
+   },
+   {
+      "meaning" : "to believe, to trust",
+      "word" : "信じる",
+      "mnemonic" : "亻 a person and 言 their word, stood side by side. Believing someone is exactly that: taking a person at their word. しんじる.",
+      "sentence_meaning" : "I believe his words.",
+      "sentence" : "彼の言葉を信じています。",
+      "frequency" : "279",
+      "notes" : "",
+      "reading" : "しんじる"
+   },
+   {
+      "mnemonic" : "自 is a nose, and Japanese speakers point at their own to mean me. Add 分 a part and you have your own share of things: じぶん.",
+      "sentence_meaning" : "Please look up any words you don't know on your own.",
+      "word" : "自分",
+      "meaning" : "self, oneself",
+      "reading" : "じぶん",
+      "notes" : "",
+      "frequency" : "65",
+      "sentence" : "分からない言葉は自分で調べてください。"
+   },
+   {
+      "mnemonic" : "言 speech going 周 all the way round a subject — asking about it from every angle until the answer finally turns up. Shirabe: しらべる.",
+      "sentence_meaning" : "Please look up any words you don't know on your own.",
+      "meaning" : "to look up, to search",
+      "word" : "調べる",
+      "notes" : "",
+      "reading" : "しらべる",
+      "sentence" : "分からない言葉は自分で調べてください。",
+      "frequency" : "727"
+   },
+   {
+      "sentence" : "インターネットで日本の事を調べました。",
+      "frequency" : "14",
+      "notes" : "物 is a thing you can hold; 事 is a thing that occurs.",
+      "reading" : "こと",
+      "meaning" : "thing, incident",
+      "word" : "事",
+      "sentence_meaning" : "I researched things about Japan on the internet.",
+      "mnemonic" : "A hand gripping a banner: an affair being conducted. Not an object you can pick up — a matter, a business, a thing that happens: こと."
+   },
+   {
+      "sentence" : "私も同じこと考えてた。",
+      "frequency" : "160",
+      "notes" : "",
+      "reading" : "おなじ",
+      "meaning" : "same, identical",
+      "word" : "同じ",
+      "sentence_meaning" : "I was thinking the same thing.",
+      "mnemonic" : "A frame with everything tucked up inside it, the whole lot under one cover. Oh, nudge them together — they match exactly: おなじ."
+   },
+   {
+      "reading" : "もうしわけない",
+      "notes" : "",
+      "sentence" : "彼には申し訳ないことをした。",
+      "frequency" : "1543",
+      "mnemonic" : "申 to say humbly, 訳 a reason, ない none at all. You have no excuse left to offer for what you did, and you are saying so: もうしわけない.",
+      "sentence_meaning" : "I did something inexcusable to him.",
+      "word" : "申し訳ない",
+      "meaning" : "sorry, inexcusable"
+   },
+   {
+      "word" : "もちろん",
+      "meaning" : "of course, no doubt",
+      "sentence_meaning" : "Of course we'll go together.",
+      "mnemonic" : "Ask something with an obvious answer and this comes straight back at you. Of course we're going — it's a mochi run, no discussion: もちろん.",
+      "frequency" : "294",
+      "sentence" : "もちろん一緒に行きます。",
+      "reading" : "もちろん",
+      "notes" : ""
+   },
+   {
+      "reading" : "とても",
+      "notes" : "",
+      "frequency" : "329",
+      "sentence" : "この本はとても面白い。",
+      "sentence_meaning" : "This book is very interesting.",
+      "mnemonic" : "Not a bit and not quite — all the way. Whatever adjective comes after it, とても takes it and turns the dial right up. Toe-tem-oh: とても.",
+      "word" : "とても",
+      "meaning" : "very"
+   },
+   {
+      "sentence_meaning" : "He's a very fun person.",
+      "mnemonic" : "楽 was strings stretched across a wooden frame — music, and the pleasure that comes with it. A tan, oh, she is enjoying herself: たのしい.",
+      "word" : "楽しい",
+      "meaning" : "fun, enjoyable",
+      "reading" : "たのしい",
+      "notes" : "",
+      "sentence" : "彼はとても楽しい人です。",
+      "frequency" : "315"
+   },
+   {
+      "mnemonic" : "失 to lose and 礼 the bow you make at an altar. You are admitting you have dropped the manners, usually on your way out: しつれいします.",
+      "sentence_meaning" : "Excuse me.",
+      "meaning" : "pardon me, excuse me (e.g. when leaving)",
+      "word" : "失礼します",
+      "notes" : "",
+      "reading" : "しつれいします",
+      "frequency" : "576",
+      "sentence" : "失礼します。"
+   },
+   {
+      "mnemonic" : "手 a hand and 伝 passing something along. You put your own hand in and move the work on down the line for somebody else: てつだう.",
+      "sentence_meaning" : "I will help you.",
+      "meaning" : "to help",
+      "word" : "手伝う",
+      "notes" : "",
+      "reading" : "てつだう",
+      "sentence" : "私が手伝いましょう。",
+      "frequency" : "808"
+   },
+   {
+      "reading" : "いそがしい",
+      "notes" : "",
+      "frequency" : "970",
+      "sentence" : "忙しいので手伝ってください。",
+      "sentence_meaning" : "I am busy so please help me.",
+      "mnemonic" : "忄 a heart next to 亡 lost: so busy that you have mislaid your own, and you have no time even to notice that it has gone: いそがしい.",
+      "word" : "忙しい",
+      "meaning" : "busy, occupied"
+   },
+   {
+      "meaning" : "work, job",
+      "word" : "仕事",
+      "mnemonic" : "仕 a person serving and 事 a matter being conducted. Somebody doing whatever needs doing, all day long. She got a job: しごと.",
+      "sentence_meaning" : "I help with my father's work.",
+      "sentence" : "父の仕事を手伝います。",
+      "frequency" : "236",
+      "notes" : "",
+      "reading" : "しごと"
+   },
+   {
+      "sentence" : "仕事を続けてください。",
+      "frequency" : "204",
+      "reading" : "つづける",
+      "notes" : "",
+      "word" : "続ける",
+      "meaning" : "to continue, to keep up",
+      "sentence_meaning" : "Please continue your work.",
+      "mnemonic" : "糸 thread running down the left-hand side, going on and on without a single break in it. That is what continuing looks like: つづける."
+   }
+]

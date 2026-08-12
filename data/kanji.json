@@ -45,6 +45,16 @@
   "山": { "meaning": "mountain", "note": "Three peaks. One of the plainest pictographs there is." },
   "族": { "meaning": "clan, tribe", "note": "A banner with arrows beneath it — a family gathered under one flag." },
   "部": { "meaning": "section, part", "note": "阝 on the right marks a place or district — one section of it." },
+  "事": { "meaning": "thing, matter", "note": "A hand gripping a banner — an affair being conducted, not an object." },
+  "同": { "meaning": "same", "note": "A frame with everything tucked inside it, all under one cover." },
+  "失": { "meaning": "lose", "note": "A hand with something slipping out of it." },
+  "子": { "meaning": "child", "note": "A swaddled infant with its arms out, in three strokes." },
+  "心": { "meaning": "heart", "note": "A pictograph of the organ itself, chambers and all." },
+  "楽": { "meaning": "fun, music, ease", "note": "Strings stretched on a wooden frame — music, and the pleasure of it." },
+  "様": { "meaning": "appearance, manner", "note": "The polite 様 of address, and the way a thing looks." },
+  "申": { "meaning": "say humbly", "note": "Originally a bolt of lightning — a message sent upward." },
+  "礼": { "meaning": "courtesy, bow", "note": "礻 an altar on the left, and the bow you make in front of it." },
+  "自": { "meaning": "self", "note": "A nose. Japanese speakers point at their own nose to mean \"me\"." },
 
   "私": { "meaning": "I, private", "parts": [
     { "c": "禾", "name": "grain" },
@@ -208,5 +218,69 @@
   "沢": { "meaning": "marsh, plenty", "parts": [
     { "c": "氵", "name": "water" },
     { "c": "尺", "name": "measure" }
+  ]},
+  "仕": { "meaning": "serve", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "士", "name": "retainer" }
+  ]},
+  "伝": { "meaning": "transmit, pass on", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "云", "name": "speak" }
+  ]},
+  "信": { "meaning": "believe, trust", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "言", "name": "word" }
+  ]},
+  "動": { "meaning": "move", "parts": [
+    { "c": "重", "name": "heavy" },
+    { "c": "力", "name": "power" }
+  ]},
+  "味": { "meaning": "taste, sense", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "未", "name": "not yet" }
+  ]},
+  "呼": { "meaning": "call out", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "乎", "name": "breath out" }
+  ]},
+  "場": { "meaning": "place, ground", "parts": [
+    { "c": "土", "name": "earth" },
+    { "c": "昜", "name": "sun rising" }
+  ]},
+  "忙": { "meaning": "busy", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "亡", "name": "lost" }
+  ]},
+  "意": { "meaning": "idea, mind", "parts": [
+    { "c": "音", "name": "sound" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "所": { "meaning": "place", "parts": [
+    { "c": "戸", "name": "door" },
+    { "c": "斤", "name": "axe" }
+  ]},
+  "続": { "meaning": "continue", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "売", "name": "sell" }
+  ]},
+  "葉": { "meaning": "leaf", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "木", "name": "tree" }
+  ]},
+  "訳": { "meaning": "reason, translation", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "尺", "name": "measure" }
+  ]},
+  "誰": { "meaning": "who", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "隹", "name": "small bird" }
+  ]},
+  "調": { "meaning": "investigate, tune", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "周", "name": "all the way round" }
+  ]},
+  "配": { "meaning": "distribute", "parts": [
+    { "c": "酉", "name": "wine jar" },
+    { "c": "己", "name": "self" }
   ]}
 }
