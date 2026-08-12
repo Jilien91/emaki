@@ -398,5 +398,47 @@
   "飯": { "meaning": "cooked rice, meal", "parts": [
     { "c": "食", "name": "eat" },
     { "c": "反", "name": "turn over" }
-  ]}
+  ]},
+
+  "月": { "meaning": "moon, month", "note": "A crescent with lines drawn across it. Squeezed onto the left of a word about the body it stands for flesh instead." },
+  "年": { "meaning": "year", "note": "Originally 禾 grain over a person carrying it — one harvest, one year." },
+  "違": { "meaning": "differ, be wrong", "note": "辶 the road with 韋 above it — two sets of feet going opposite ways round the same enclosure." },
+  "作": { "meaning": "make, produce", "note": "亻 a person beside 乍, a shape that began as notches cut into wood." },
+  "笑": { "meaning": "laugh, smile", "parts": [
+    { "c": "竹", "name": "bamboo" },
+    { "c": "夭", "name": "bend" }
+  ]},
+  "感": { "meaning": "feel, sense", "parts": [
+    { "c": "咸", "name": "all" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "多": { "meaning": "many, much", "parts": [
+    { "c": "夕", "name": "evening" },
+    { "c": "夕", "name": "evening" }
+  ]},
+  "姉": { "meaning": "older sister", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "市", "name": "market" }
+  ]},
+  "妹": { "meaning": "younger sister", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "未", "name": "not yet" }
+  ]},
+  "弟": { "meaning": "younger brother", "note": "Cord wound down a stake, turn by turn — the one further down the order." },
+  "力": { "meaning": "power, strength", "note": "An arm bent hard at the elbow, drawn in a single stroke." },
+  "世": { "meaning": "world, generation", "note": "Three tens joined at the foot — thirty years, one generation, and from there everyone in it." },
+  "界": { "meaning": "boundary, world", "parts": [
+    { "c": "田", "name": "field" },
+    { "c": "介", "name": "come between" }
+  ]},
+  "相": { "meaning": "mutual, each other", "parts": [
+    { "c": "木", "name": "tree" },
+    { "c": "目", "name": "eye" }
+  ]},
+  "姿": { "meaning": "figure, shape", "parts": [
+    { "c": "次", "name": "next" },
+    { "c": "女", "name": "woman" }
+  ]},
+  "死": { "meaning": "death", "note": "歹 bare bones with a figure folded over beside them." },
+  "早": { "meaning": "early", "note": "日 the sun already up over a single bare stalk." }
 }

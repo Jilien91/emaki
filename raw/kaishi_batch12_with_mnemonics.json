@@ -1,0 +1,252 @@
+[
+ {
+  "word": "見える",
+  "reading": "みえる",
+  "meaning": "be visible",
+  "sentence": "ここから富士山がよく見えます。",
+  "sentence_meaning": "You can see Mount Fuji well from here.",
+  "frequency": "133",
+  "mnemonic": "目 an eye up on 儿 legs, and it doesn't have to do a thing. You turn round and Fuji is already there above the rooftops, the whole of it: みえる.",
+  "notes": "見る みる is looking on purpose and 見せる みせる is showing someone. 見える is the thing simply being there to be seen."
+ },
+ {
+  "word": "違う",
+  "reading": "ちがう",
+  "meaning": "to&nbsp;differ, to&nbsp;be wrong",
+  "sentence": "答えが違います。",
+  "sentence_meaning": "That's the wrong answer.",
+  "frequency": "134",
+  "mnemonic": "辶 the road, and two sets of footprints leaving it in opposite directions. Your answer went one way and the marker's went the other: ちがう.",
+  "notes": "Doubles as 'that's wrong'. Being different and being incorrect are the same verb, so it's also the everyday way to contradict someone."
+ },
+ {
+  "word": "男",
+  "reading": "おとこ",
+  "meaning": "man, male",
+  "sentence": "男の人が私たちに話しかけた。",
+  "sentence_meaning": "A man began talking to us.",
+  "frequency": "138",
+  "mnemonic": "田 a field with 力 power driven into it — the one sent out to plough. He swings the thing round, catches his own toe with it and howls: おとこ.",
+  "notes": ""
+ },
+ {
+  "word": "ただ",
+  "reading": "ただ",
+  "meaning": "free",
+  "sentence": "この温泉はただです。",
+  "sentence_meaning": "This hot spring is free.",
+  "frequency": "143",
+  "mnemonic": "No gate, no honesty box, nobody taking money at the hot spring — you just walk in and get in. Ta-daa: ただ, and it costs you nothing.",
+  "notes": "Same word as ただ 'simply' — this one is about price."
+ },
+ {
+  "word": "ただ",
+  "reading": "ただ",
+  "meaning": "simply",
+  "sentence": "私はただ彼女と話したかっただけです。",
+  "sentence_meaning": "I just wanted to speak with her.",
+  "frequency": "143",
+  "mnemonic": "The same ただ as the free hot spring, thinned right down. You weren't after anything else. You ただ wanted to talk to her, and that was the whole of it.",
+  "notes": "Same word as ただ 'free' — this one shrinks whatever follows it down to that and nothing more."
+ },
+ {
+  "word": "人間",
+  "reading": "にんげん",
+  "meaning": "human being, people",
+  "sentence": "人間の心は複雑です。",
+  "sentence_meaning": "The human mind is a complex thing.",
+  "frequency": "158",
+  "mnemonic": "人 a person and 間 the gap between people. Not the body — what goes on in the space between them, and it is a mess in there: にんげん.",
+  "notes": "人 reads にん here. The word means humankind as a species, or a person's character, never a headcount."
+ },
+ {
+  "word": "作る",
+  "reading": "つくる",
+  "meaning": "to&nbsp;make, to&nbsp;create",
+  "sentence": "今、朝ご飯を作っています。",
+  "sentence_meaning": "I'm making breakfast now.",
+  "frequency": "166",
+  "mnemonic": "亻 a person next to 乍, the old shape for notching wood. Breakfast doesn't turn up on its own — someone stood there and cut it into shape: つくる.",
+  "notes": ""
+ },
+ {
+  "word": "感じる",
+  "reading": "かんじる",
+  "meaning": "to&nbsp;feel, to&nbsp;sense",
+  "sentence": "膝に痛みを感じます。",
+  "sentence_meaning": "I feel a pain in my knee.",
+  "frequency": "175",
+  "mnemonic": "咸 all of it landing on 心 the heart at once. Your knee goes and the whole of you knows about it before you've got a word for it: かんじる.",
+  "notes": ""
+ },
+ {
+  "word": "上",
+  "reading": "うえ",
+  "meaning": "up, above",
+  "sentence": "上を向いて。",
+  "sentence_meaning": "Look up.",
+  "frequency": "176",
+  "mnemonic": "A stroke sitting on top of the line, and that's the whole word. Head back, eyes up, the way you look when someone shouts down from a balcony: うえ.",
+  "notes": "Same kanji as 上げる あげる 'to raise' — this one is the position, not the lifting."
+ },
+ {
+  "word": "強い",
+  "reading": "つよい",
+  "meaning": "strong",
+  "sentence": "今日は風が強い。",
+  "sentence_meaning": "The wind is strong today.",
+  "frequency": "177",
+  "mnemonic": "弓 a bow hauled right back with 虫 an insect clinging on to it for dear life. That is what today's wind is doing to you on the way to the station: つよい.",
+  "notes": ""
+ },
+ {
+  "word": "出す",
+  "reading": "だす",
+  "meaning": "to&nbsp;take out",
+  "sentence": "彼はかばんから教科書を出した。",
+  "sentence_meaning": "He took the textbook out of his bag.",
+  "frequency": "178",
+  "mnemonic": "The same 出 you met as でる, except now there's a hand on it. The textbook is not leaving that bag by itself — he reaches in and drags it out: だす.",
+  "notes": "出る でる is the thing leaving under its own steam; 出す だす is somebody putting it out."
+ },
+ {
+  "word": "笑う",
+  "reading": "わらう",
+  "meaning": "to laugh, to smile",
+  "sentence": "赤ん坊が笑っています。",
+  "sentence_meaning": "The baby is laughing.",
+  "frequency": "181",
+  "mnemonic": "竹 bamboo 夭 bent double in the wind. That's the shape of the baby in the cot, and it's the shape of you about thirty seconds later: わらう.",
+  "notes": "Covers laughing out loud and just smiling — one verb does both."
+ },
+ {
+  "word": "毎月",
+  "reading": "まいつき",
+  "meaning": "every month",
+  "sentence": "私は毎月貯金をしています。",
+  "sentence_meaning": "I save money every month.",
+  "frequency": "12521",
+  "mnemonic": "毎 every one of them and 月 the moon coming round again. It fills, the money goes in the tin, and then it fills again: まいつき.",
+  "notes": "Also read まいげつ, but まいつき is the everyday one."
+ },
+ {
+  "word": "毎年",
+  "reading": "まいとし",
+  "meaning": "every year",
+  "sentence": "毎年、クリスマスに国へ帰ります。",
+  "sentence_meaning": "I return to my country on Christmas of every year.",
+  "frequency": "4148",
+  "mnemonic": "毎 every and 年 the harvest that only comes once. Same flight home, same December, until you've stopped counting them: まいとし.",
+  "notes": "Also read まいねん. Both are common; まいとし is a touch more spoken."
+ },
+ {
+  "word": "多く",
+  "reading": "おおく",
+  "meaning": "many, much",
+  "sentence": "毎年多くの人が海外へ旅行する。",
+  "sentence_meaning": "Each year, a lot of people travel abroad.",
+  "frequency": "181",
+  "mnemonic": "夕 one evening with 夕 another stacked straight on top of it, and you can feel more behind that. Oh — oh, there's a lot of them: おおく.",
+  "notes": "The adjective is 多い おおい. 多く is the form that turns up in front of の for 'a lot of'."
+ },
+ {
+  "word": "くらい",
+  "reading": "くらい",
+  "meaning": "approximately, about",
+  "sentence": "毎日、７時間くらい眠ります。",
+  "sentence_meaning": "I sleep for about seven hours every day.",
+  "frequency": "184",
+  "mnemonic": "Seven hours. Or six and a half. It was dark and you weren't checking — くらい is the shrug you hang on the end of a number.",
+  "notes": "ぐらい is the same word and just as common. Not 暗い くらい, which is dark."
+ },
+ {
+  "word": "姉",
+  "reading": "あね",
+  "meaning": "older sister",
+  "sentence": "姉は大学生です。",
+  "sentence_meaning": "My big sister is a college student.",
+  "frequency": "1167",
+  "mnemonic": "女 a woman at 市 the market, already running the stall on her own while you were still small enough to be holding onto it: あね.",
+  "notes": "Your own older sister. Someone else's is お姉さん — and you'd use that to her face, not あね."
+ },
+ {
+  "word": "弟",
+  "reading": "おとうと",
+  "meaning": "younger brother",
+  "sentence": "弟にプレゼントをあげました。",
+  "sentence_meaning": "I gave a present to my younger brother.",
+  "frequency": "1418",
+  "mnemonic": "Cord wound down a stake, one turn at a time, and he sits a turn below you. You hand him the present and he has it open before you've let go: おとうと.",
+  "notes": "Your own younger brother. Someone else's is 弟さん."
+ },
+ {
+  "word": "妹",
+  "reading": "いもうと",
+  "meaning": "younger sister",
+  "sentence": "私の妹は小学生です。",
+  "sentence_meaning": "My little sister goes to elementary school.",
+  "frequency": "677",
+  "mnemonic": "女 a woman and 未 not yet — she isn't one. She's off to primary school under a satchel bigger than she is: いもうと.",
+  "notes": "Your own younger sister; someone else's is 妹さん. Shares its ending with 弟 おとうと."
+ },
+ {
+  "word": "力",
+  "reading": "ちから",
+  "meaning": "strength, power",
+  "sentence": "私より妹の方が力があります。",
+  "sentence_meaning": "My younger sister has more strength than I do.",
+  "frequency": "188",
+  "mnemonic": "An arm bent hard at the elbow, the whole thing in one stroke. Your little sister lifts the end of the sofa you couldn't shift: ちから.",
+  "notes": ""
+ },
+ {
+  "word": "世界",
+  "reading": "せかい",
+  "meaning": "world",
+  "sentence": "世界の地図はありますか。",
+  "sentence_meaning": "Do you have a map of the world?",
+  "frequency": "189",
+  "mnemonic": "世 three tens joined at the foot — one generation — and 界 the lines drawn between 田 fields. Everyone alive, plus every border they argue about: せかい.",
+  "notes": ""
+ },
+ {
+  "word": "相手",
+  "reading": "あいて",
+  "meaning": "partner, opponent",
+  "sentence": "試合の相手は誰ですか。",
+  "sentence_meaning": "Who is the opponent of the match?",
+  "frequency": "190",
+  "mnemonic": "目 an eye fixed on 木 a tree, each taking the measure of the other, and 手 a hand out. Whoever is across the net from you, friend or not: あいて.",
+  "notes": "Covers your doubles partner and the person you're playing against. The word only ever means 'the other side'."
+ },
+ {
+  "word": "姿",
+  "reading": "すがた",
+  "meaning": "figure, appearance",
+  "sentence": "遠くに彼女の姿が見えた。",
+  "sentence_meaning": "Her figure was visible from a distance.",
+  "frequency": "191",
+  "mnemonic": "次 next sitting over 女 a woman — the shape of her a second before she turns. Right down the far end of the road you knew her by the outline alone: すがた.",
+  "notes": ""
+ },
+ {
+  "word": "死ぬ",
+  "reading": "しぬ",
+  "meaning": "to&nbsp;die",
+  "sentence": "犬が病気で死にました。",
+  "sentence_meaning": "My dog died due to sickness.",
+  "frequency": "192",
+  "mnemonic": "歹 bare bones with a figure folded over beside them. The dog was ill a long while, and then the basket by the door was just a basket: しぬ.",
+  "notes": "Blunt, and used plainly of animals. About a person, 亡くなる なくなる is the gentle way to say it."
+ },
+ {
+  "word": "早い",
+  "reading": "はやい",
+  "meaning": "early",
+  "sentence": "A「今朝、5時に起きました。」B「早いですね。」",
+  "sentence_meaning": "A: I woke up at 5 A.M. this morning.B: That's early, isn't it?",
+  "frequency": "198",
+  "mnemonic": "日 the sun already up over one bare stalk, and nothing else in the day has started. Five in the morning, and the person you tell just says it back at you: はやい.",
+  "notes": "Early in time. 速い is the same reading for fast in speed — a train is 速い, breakfast at five is 早い."
+ }
+]
