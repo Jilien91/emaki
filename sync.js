@@ -147,7 +147,20 @@ async function pullRemote(){
     return;
   }
   const before = JSON.stringify(localSnapshot());
+  const progressBefore = JSON.stringify(progress);
   applySnapshot(data);
+  // An in-flight lesson, review or extra-study session was built from the
+  // progress that has just been replaced — its queue and per-item results
+  // describe SRS stages that no longer exist, so finishing it would write
+  // decisions based on the other device's stale view. Drop it and let the
+  // items fall back into the due pool. Only when progress actually moved:
+  // pulls happen every time the tab regains focus, and discarding a session
+  // on an identical pull would lose your place for nothing.
+  if(JSON.stringify(progress) !== progressBefore){
+    lessonState = null;
+    reviewState = null;
+    extraStudyState = null;
+  }
   // Only repaint when something actually changed, so a background pull can't
   // clear an answer the user is midway through typing.
   if(JSON.stringify(localSnapshot()) !== before) render();
