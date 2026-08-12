@@ -1,0 +1,262 @@
+[
+ {
+  "word": "今度",
+  "reading": "こんど",
+  "meaning": "next time",
+  "sentence": "今度はどこに行きたいですか。",
+  "sentence_meaning": "Where do you want to go next time?",
+  "frequency": "1305",
+  "mnemonic": "今 this moment and 度 one turn of the wheel. Not this go round at all, but the very next one coming along after it. Con-doh: こんど.",
+  "notes": "Written exactly like 今度 \"this time\" — whether it looks forward or at the thing in front of you decides which."
+ },
+ {
+  "word": "怖い",
+  "reading": "こわい",
+  "meaning": "fearful, being afraid, fearsome",
+  "sentence": "私は犬が怖いです。",
+  "sentence_meaning": "I'm scared of dogs.",
+  "frequency": "269",
+  "mnemonic": "忄 a heart with 布 a cloth thrown over it, hiding. Doesn't matter how small the dog is or whose it is — you're already behind someone: こわい.",
+  "notes": "Does both jobs: the person who is afraid, and the thing that is frightening."
+ },
+ {
+  "word": "年",
+  "reading": "ねん",
+  "meaning": "counter for years",
+  "sentence": "韓国に5年いました。",
+  "sentence_meaning": "I was in South Korea for five years.",
+  "frequency": "270",
+  "mnemonic": "One harvest carried in, then another, and you count them off. Five of them in Korea before you looked up: 5年, ごねん.",
+  "notes": "Same kanji as 年 とし. ねん is the one that sits behind a number and counts."
+ },
+ {
+  "word": "年",
+  "reading": "とし",
+  "meaning": "year",
+  "sentence": "新しい年が始まりました。",
+  "sentence_meaning": "A new year has started.",
+  "frequency": "270",
+  "mnemonic": "The same harvest as ねん, except nobody is counting it. A whole new one has just started and it's still completely empty: とし.",
+  "notes": "Same kanji as 年 ねん, which only counts. とし is the year as a thing in itself — the reading you already met in 毎年 まいとし."
+ },
+ {
+  "word": "取る",
+  "reading": "とる",
+  "meaning": "to&nbsp;take, to get",
+  "sentence": "テストでいい点を取った。",
+  "sentence_meaning": "I got a good grade on the test.",
+  "frequency": "271",
+  "mnemonic": "耳 an ear with 又 a hand closed round it — old soldiers took ears off the field to prove the count. You took a good mark off that test: とる.",
+  "notes": ""
+ },
+ {
+  "word": "全て",
+  "reading": "すべて",
+  "meaning": "all, entirely",
+  "sentence": "彼に全てのことを伝えた。",
+  "sentence_meaning": "I told him everything.",
+  "frequency": "272",
+  "mnemonic": "全 a king under one roof, and everything under that roof with him. You told him the lot — nothing held back at all: すべて.",
+  "notes": "全部 ぜんぶ is the everyday spoken one; 全て leans a little more written."
+ },
+ {
+  "word": "助ける",
+  "reading": "たすける",
+  "meaning": "to&nbsp;help, to&nbsp;save",
+  "sentence": "彼女は病気の犬を助けた。",
+  "sentence_meaning": "She helped a sick dog.",
+  "frequency": "273",
+  "mnemonic": "力 power stuck on the right-hand side — an extra shoulder put under the load. The dog was ill in a ditch and she carried it home: たすける.",
+  "notes": "Stronger than English 'help' — it stretches all the way to rescuing and saving a life."
+ },
+ {
+  "word": "状況",
+  "reading": "じょうきょう",
+  "meaning": "state of affairs, conditions",
+  "sentence": "この状況では出発は難しいです。",
+  "sentence_meaning": "It will be difficult to depart in these conditions.",
+  "frequency": "274",
+  "mnemonic": "状 the shape a thing has taken, with 犬 a dog in it, and 況 water running past. Look at the state of it — nobody is setting off in this: じょうきょう.",
+  "notes": ""
+ },
+ {
+  "word": "確認",
+  "reading": "かくにん",
+  "meaning": "confirmation",
+  "sentence": "もう一度、予約を確認した。",
+  "sentence_meaning": "I confirmed my reservation one more time.",
+  "frequency": "275",
+  "mnemonic": "確 a 石 stone, solid enough to be sure of, and 認 words you finally accept. You check the booking one more time anyway: かくにん.",
+  "notes": "確認する is one of the most common words in Japanese office life — checking a thing before it goes wrong."
+ },
+ {
+  "word": "消える",
+  "reading": "きえる",
+  "meaning": "to go out, to&nbsp;disappear",
+  "sentence": "電気が消えているので、田中さんは部屋にいないでしょう。",
+  "sentence_meaning": "The light is off, so Tanaka-san must not be in this room.",
+  "frequency": "276",
+  "mnemonic": "氵 water on the left, wearing something away until there's nothing there. The light is off and the room has gone with it: きえる.",
+  "notes": "消す けす is you turning it off; 消える is it going out. Same split as 出る and 出す."
+ },
+ {
+  "word": "長い",
+  "reading": "ながい",
+  "meaning": "long",
+  "sentence": "彼女の髪はとても長い。",
+  "sentence_meaning": "Her hair is very long.",
+  "frequency": "277",
+  "mnemonic": "Long hair on an old figure, drawn flowing all the way down the character. Hers goes past where the drawing stops: ながい.",
+  "notes": "Length in space or in time. The same kanji reads ちょう in 社長 しゃちょう, a company head."
+ },
+ {
+  "word": "驚く",
+  "reading": "おどろく",
+  "meaning": "to&nbsp;be surprised, to&nbsp;be astonished",
+  "sentence": "夜中に道で大きな声がして、驚きました。",
+  "sentence_meaning": "I was surprised by a loud voice on the street in the middle of the night.",
+  "frequency": "278",
+  "mnemonic": "馬 a horse underneath the whole thing, and something has just gone off beside it. A shout in an empty street at two in the morning and you come off the ground: おどろく.",
+  "notes": ""
+ },
+ {
+  "word": "腕",
+  "reading": "うで",
+  "meaning": "arm",
+  "sentence": "腕を回してください。",
+  "sentence_meaning": "Please rotate your arm.",
+  "frequency": "279",
+  "mnemonic": "The 月 that means flesh, with a shape for bending sat beside it. The physio wants it all the way round, both directions: うで.",
+  "notes": "Also means skill — 腕がいい is 'good at it', the way English says a safe pair of hands."
+ },
+ {
+  "word": "以外",
+  "reading": "いがい",
+  "meaning": "except for",
+  "sentence": "私は雨の日以外は自転車で学校に行く。",
+  "sentence_meaning": "I go to school by bicycle except on rainy days.",
+  "frequency": "280",
+  "mnemonic": "以 the marker that fixes a boundary, and 外 everything sat outside it. Every day on the bike, and rain filed on the far side of the line: いがい.",
+  "notes": "Same 以 as 以上 いじょう. 以上 counts from a point upward; 以外 cuts one thing out and keeps the rest."
+ },
+ {
+  "word": "困る",
+  "reading": "こまる",
+  "meaning": "to&nbsp;be at a loss, to&nbsp;be troubled",
+  "sentence": "ケータイをなくして困っています。",
+  "sentence_meaning": "I'm at a loss because I lost my cell phone.",
+  "frequency": "281",
+  "mnemonic": "木 a tree boxed inside 囗 four walls, with nowhere left to grow. Phone gone, every number in it, and you're standing there doing nothing: こまる.",
+  "notes": ""
+ },
+ {
+  "word": "離れる",
+  "reading": "はなれる",
+  "meaning": "to&nbsp;be separated, to&nbsp;be apart",
+  "sentence": "実家を4年間離れていました。",
+  "sentence_meaning": "I was away from my parents' house for 4 years.",
+  "frequency": "282",
+  "mnemonic": "隹 a small bird on the right, gone off the branch and not coming back to it. Four years away from your parents' house before you saw it again: はなれる.",
+  "notes": ""
+ },
+ {
+  "word": "気",
+  "reading": "き",
+  "meaning": "spirit, temperament",
+  "sentence": "旅行に行く気があるか彼女に聞かれました。",
+  "sentence_meaning": "She asked if I was willing to travel.",
+  "frequency": "283",
+  "mnemonic": "Steam coming off something, the same 気 that sits in 元気. On its own it's whatever you've got rising in you — and she wants to know if any of it is for travelling: き.",
+  "notes": "Turns up in a huge number of set phrases: 気をつけて be careful, 気にしないで don't worry about it."
+ },
+ {
+  "word": "書く",
+  "reading": "かく",
+  "meaning": "to&nbsp;write",
+  "sentence": "彼に手紙を書きました。",
+  "sentence_meaning": "I wrote him a letter.",
+  "frequency": "284",
+  "mnemonic": "聿 a hand gripping a brush, sat straight down on the thing it's marking. A whole letter to him, by hand, and then you had to post it: かく.",
+  "notes": "描く かく is the same sound for drawing a picture. Writing is 書く."
+ },
+ {
+  "word": "光",
+  "reading": "ひかり",
+  "meaning": "light, flash",
+  "sentence": "この部屋は光がたくさん入って、いいね。",
+  "sentence_meaning": "It’s nice how much light comes into this room, isn’t it?",
+  "frequency": "285",
+  "mnemonic": "A figure on 儿 legs with brightness coming off the top of its head. Whoever built this room pointed it the right way — the stuff pours in: ひかり.",
+  "notes": "光る ひかる is the verb, to shine."
+ },
+ {
+  "word": "走る",
+  "reading": "はしる",
+  "meaning": "to&nbsp;run",
+  "sentence": "彼は毎晩3キロ走っています。",
+  "sentence_meaning": "Every night he runs three kilometers.",
+  "frequency": "286",
+  "mnemonic": "土 the earth up top with legs driving away underneath it. Three kilometres of it, every night, in the dark, without being asked: はしる.",
+  "notes": ""
+ },
+ {
+  "word": "戦う",
+  "reading": "たたかう",
+  "meaning": "to&nbsp;wage war, to&nbsp;fight",
+  "sentence": "彼は最後まで戦ったよ。",
+  "sentence_meaning": "He fought to the very end.",
+  "frequency": "287",
+  "mnemonic": "戈 a halberd stood up on the right-hand side, and somebody still holding it. 最後 the very last moment, and he had not put it down: たたかう.",
+  "notes": ""
+ },
+ {
+  "word": "余り",
+  "reading": "あまり",
+  "meaning": "remainder, leftover",
+  "sentence": "余りは次回使いましょう。",
+  "sentence_meaning": "Let's use the left-over portion next time.",
+  "frequency": "288",
+  "mnemonic": "A roof with whatever didn't get used stacked underneath it. Too much fabric, too much batter, and none of it thrown away: あまり.",
+  "notes": "Same word as the kana あまり 'not very' — with a negative it means there isn't much of something, and this is the something."
+ },
+ {
+  "word": "全部",
+  "reading": "ぜんぶ",
+  "meaning": "all, everything",
+  "sentence": "お弁当を全部食べました。",
+  "sentence_meaning": "I ate all that was in the lunchbox.",
+  "frequency": "289",
+  "mnemonic": "全 the whole thing and 部 every section of it accounted for. The lunchbox goes back empty — not most of it, all of it: ぜんぶ.",
+  "notes": "The everyday spoken one. 全て すべて is the same idea, a shade more written."
+ },
+ {
+  "word": "瞬間",
+  "reading": "しゅんかん",
+  "meaning": "instant, moment",
+  "sentence": "その瞬間、猫が跳び出しました。",
+  "sentence_meaning": "At that instant, the cat ran out.",
+  "frequency": "290",
+  "mnemonic": "目 an eye on the left, open exactly as long as a blink, and 間 the gap it makes. That's how much warning you got before the cat went: しゅんかん.",
+  "notes": "間 reads かん here, the same as in 時間 じかん."
+ },
+ {
+  "word": "説明",
+  "reading": "せつめい",
+  "meaning": "explanation",
+  "sentence": "この文法の説明は良く分かりません。",
+  "sentence_meaning": "I don't really understand the explanation of this grammar.",
+  "frequency": "291",
+  "mnemonic": "説 words worked at until they come loose, and 明 the sun and moon making it bright. Neither of those has happened to this grammar page: せつめい.",
+  "notes": ""
+ },
+ {
+  "word": "決める",
+  "reading": "きめる",
+  "meaning": "to decide",
+  "sentence": "会議の時間を決めましょう。",
+  "sentence_meaning": "Let's decide the time of the meeting.",
+  "frequency": "292",
+  "mnemonic": "氵 water on the left, cut a channel and it only runs one way after that. Pick the time for the meeting and everyone else's day pours into it: きめる.",
+  "notes": "決まる きまる is it being decided; 決める is somebody deciding it."
+ }
+]

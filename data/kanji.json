@@ -552,5 +552,45 @@
   "答": { "meaning": "answer", "parts": [
     { "c": "竹", "name": "bamboo" },
     { "c": "合", "name": "fit together" }
+  ]},
+
+  "助": { "meaning": "help, rescue", "note": "力 power added on the right — an extra shoulder put under the load." },
+  "状": { "meaning": "condition, form", "note": "犬 a dog beside a narrow upright. It means the shape a thing has taken." },
+  "確": { "meaning": "certain, confirm", "note": "石 a stone on the left — solid enough to be sure of." },
+  "消": { "meaning": "extinguish, vanish", "note": "氵 water on the left, wearing something away until it isn't there." },
+  "長": { "meaning": "long, chief", "note": "Long hair on an old figure, drawn flowing down." },
+  "腕": { "meaning": "arm, skill", "note": "The 月 that means flesh, with a shape for bending beside it." },
+  "離": { "meaning": "separate, leave", "note": "隹 a small bird on the right, gone off the branch and leaving the rest behind." },
+  "書": { "meaning": "write", "note": "聿 a hand gripping a brush, sat down on the thing it marks." },
+  "光": { "meaning": "light, shine", "note": "A figure on 儿 legs with brightness coming off the top." },
+  "走": { "meaning": "run", "note": "土 the earth up top with legs driving away underneath it." },
+  "戦": { "meaning": "war, fight", "note": "戈 a halberd stood up on the right — the weapon half of the character." },
+  "余": { "meaning": "surplus, remainder", "note": "A roof with whatever was left over stacked underneath it." },
+  "瞬": { "meaning": "blink, instant", "note": "目 an eye on the left, open exactly as long as a blink." },
+  "説": { "meaning": "explain, theory", "note": "言 speech on the left, worked at until the sense comes loose." },
+  "決": { "meaning": "decide", "note": "氵 water on the left — cut a channel and it only runs one way after that." },
+  "怖": { "meaning": "afraid, frightening", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "布", "name": "cloth" }
+  ]},
+  "取": { "meaning": "take, get", "parts": [
+    { "c": "耳", "name": "ear" },
+    { "c": "又", "name": "hand" }
+  ]},
+  "況": { "meaning": "circumstances", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "兄", "name": "elder brother" }
+  ]},
+  "認": { "meaning": "recognise, accept", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "忍", "name": "endure" }
+  ]},
+  "驚": { "meaning": "be surprised", "parts": [
+    { "c": "敬", "name": "respect" },
+    { "c": "馬", "name": "horse" }
+  ]},
+  "困": { "meaning": "be troubled, stuck", "parts": [
+    { "c": "囗", "name": "border" },
+    { "c": "木", "name": "tree" }
   ]}
 }
