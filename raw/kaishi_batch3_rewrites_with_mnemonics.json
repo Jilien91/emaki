@@ -6,7 +6,7 @@
   "sentence": "いい本でしたね。",
   "sentence_meaning": "It was a good book, wasn't it?",
   "frequency": "499",
-  "mnemonic": "木 a tree with 一 a line struck across its root — the origin a thing grows from, and what books are made of. Hone your mind on one: ほん.",
+  "mnemonic": "木 a tree with 一 a line struck across its root. The origin a thing grows from, and what books are made of. Hone your mind on one: ほん.",
   "notes": ""
  },
  {
@@ -16,7 +16,7 @@
   "sentence": "これは日本語の本です。",
   "sentence_meaning": "This is a Japanese book.",
   "frequency": "40",
-  "mnemonic": "こ- marks whatever is nearest me, so これ is the thing in my own hand. Hold up the apple core you're still holding: core — これ.",
+  "mnemonic": "こ- marks whatever is nearest me, so これ is the thing in my own hand. Hold up the apple core you're still holding: core, これ.",
   "notes": "One of the こ/そ/あ/ど set: こ near me, そ near you, あ away from us both, ど the question."
  },
  {
@@ -26,7 +26,7 @@
   "sentence": "A「これは何ですか。」B「本です。」",
   "sentence_meaning": "A: What is this?B: It's a book.",
   "frequency": "62",
-  "mnemonic": "亻 a person next to 可 \"can\" — someone demanding to know what can possibly be going on. The nanny throws up her hands: what?! なに.",
+  "mnemonic": "亻 a person next to 可 \"can\". Someone demanding to know what can possibly be going on. The nanny throws up her hands: what?! なに.",
   "notes": "Can be read either なに or なん depending on what follows."
  },
  {
@@ -36,7 +36,7 @@
   "sentence": "それは本です。",
   "sentence_meaning": "That is a book.",
   "frequency": "17",
-  "mnemonic": "そ- marks whatever is near you rather than me, so それ is that thing by your elbow. Point at the sore on it: sore — それ.",
+  "mnemonic": "そ- marks whatever is near you rather than me, so それ is that thing by your elbow. Point at the sore on it: sore, それ.",
   "notes": ""
  },
  {
@@ -56,7 +56,7 @@
   "sentence": "どれが好きですか。",
   "sentence_meaning": "Which would you like?",
   "frequency": "930",
-  "mnemonic": "ど- always marks the question. Five identical doors, no labels, and you still have to choose one of them: which? Door — どれ.",
+  "mnemonic": "ど- always marks the question. Five identical doors, no labels, and you still have to choose one of them: which? Door, どれ.",
   "notes": ""
  },
  {
@@ -76,7 +76,7 @@
   "sentence": "これは兄のパソコンです。",
   "sentence_meaning": "This is my older brother's personal computer.",
   "frequency": "980",
-  "mnemonic": "口 a mouth on 儿 two legs — a boy who is mostly mouth, and older than you. He lost a bet and has been called Annie ever since: あに.",
+  "mnemonic": "口 a mouth on 儿 two legs. A boy who is mostly mouth, and older than you. He lost a bet and has been called Annie ever since: あに.",
   "notes": ""
  },
  {
@@ -107,7 +107,7 @@
   "sentence_meaning": "I don't really like sports.",
   "frequency": "388",
   "mnemonic": "One dry sliver of Mary's cake is left and nobody is reaching for it. Not very much, and not very good. A-Mary: あまり.",
-  "notes": "Almost always paired with a negative — あまり…ない, \"not very…\"."
+  "notes": "Almost always paired with a negative, あまり…ない, \"not very…\"."
  },
  {
   "word": "今",
@@ -116,7 +116,7 @@
   "sentence": "彼は今、勉強しています。",
   "sentence_meaning": "He's studying now.",
   "frequency": "64",
-  "mnemonic": "A lid pulled shut over a single stroke — this one moment, sealed off from every other. Emma wants you at the table now: いま.",
+  "mnemonic": "A lid pulled shut over a single stroke, this one moment, sealed off from every other. Emma wants you at the table now: いま.",
   "notes": ""
  },
  {
@@ -126,7 +126,7 @@
   "sentence": "今は時間がありません。",
   "sentence_meaning": "I don't have time now.",
   "frequency": "164",
-  "mnemonic": "日 the sun in a 寺 temple, then 日 the sun in a 門 gate — time is the sun crossing something. Genghis Khan checks his watch: じかん.",
+  "mnemonic": "日 the sun in a 寺 temple, then 日 the sun in a 門 gate. Time is the sun crossing something. Genghis Khan checks his watch: じかん.",
   "notes": ""
  },
  {
@@ -146,7 +146,7 @@
   "sentence": "山田さんの本はどれですか。この本ですか。",
   "sentence_meaning": "Which book is Yamada-san's? Is it this book?",
   "frequency": "30",
-  "mnemonic": "こ- is the near one again, but この always needs a noun behind it — this cone, this book. It points first and names second. この.",
+  "mnemonic": "こ- is the near one again, but この always needs a noun behind it, this cone, this book. It points first and names second. この.",
   "notes": ""
  },
  {
@@ -166,7 +166,7 @@
   "sentence": "あの本ですか。",
   "sentence_meaning": "That book (over there)?",
   "frequency": "53",
-  "mnemonic": "あ- is far from both of us, so あの book is the one on the other shelf and you both have to turn to look. Ah, no — further: あの.",
+  "mnemonic": "あ- is far from both of us, so あの book is the one on the other shelf and you both have to turn to look. Ah, no, further: あの.",
   "notes": ""
  },
  {
@@ -206,7 +206,7 @@
   "sentence": "この本は全然面白くなかった。",
   "sentence_meaning": "This book wasn't interesting at all.",
   "frequency": "603",
-  "mnemonic": "面 a face gone 白 white — someone so gripped by the thing that the blood has drained out of them. Oh, Moe, Shirley: おもしろい.",
+  "mnemonic": "面 a face gone 白 white. Someone so gripped by the thing that the blood has drained out of them. Oh, Moe, Shirley: おもしろい.",
   "notes": ""
  },
  {
@@ -216,7 +216,7 @@
   "sentence": "彼はテニスをします。",
   "sentence_meaning": "He plays tennis (lit: \"He does tennis\").",
   "frequency": "12",
-  "mnemonic": "The verb that does anything at all: bolt it onto a noun and the noun becomes an action — tennis, study, whatever. Sue me if I don't: する.",
+  "mnemonic": "The verb that does anything at all: bolt it onto a noun and the noun becomes an action, tennis, study, whatever. Sue me if I don't: する.",
   "notes": ""
  },
  {
@@ -226,8 +226,8 @@
   "sentence": "日本語の勉強が好きになりました。",
   "sentence_meaning": "I have come to like Japanese study.",
   "frequency": "15",
-  "mnemonic": "The sea was flat this morning. All afternoon the waves grew, and by evening they are gnarly. It did not start that way — it became that way: なる.",
-  "notes": "Has many meanings and shades of use ('to become', 'to result in', 'to come to do') — it takes time to fully absorb."
+  "mnemonic": "The sea was flat this morning. All afternoon the waves grew, and by evening they are gnarly. It did not start that way, it became that way: なる.",
+  "notes": "Has many meanings and shades of use ('to become', 'to result in', 'to come to do'). It takes time to fully absorb."
  },
  {
   "word": "先生",
@@ -236,7 +236,7 @@
   "sentence": "私は日本語の先生になりたいです。",
   "sentence_meaning": "I want to become a Japanese teacher.",
   "frequency": "277",
-  "mnemonic": "先 is someone striding out ahead of you, 生 is life itself. The one who went first and has already lived it — sensei: せんせい.",
+  "mnemonic": "先 is someone striding out ahead of you, 生 is life itself. The one who went first and has already lived it, sensei: せんせい.",
   "notes": ""
  },
  {

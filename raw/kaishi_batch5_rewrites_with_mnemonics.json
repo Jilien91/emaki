@@ -16,7 +16,7 @@
   "sentence": "明日、彼と会います。",
   "sentence_meaning": "I will meet him tomorrow.",
   "frequency": "210",
-  "mnemonic": "会 is a roof with people gathering in underneath it. You meet this one by walking straight into them on the way in — ow: あう.",
+  "mnemonic": "会 is a roof with people gathering in underneath it. You meet this one by walking straight into them on the way in, ow: あう.",
   "notes": ""
  },
  {
@@ -26,7 +26,7 @@
   "sentence": "次はいつ会いましょうか。",
   "sentence_meaning": "When next shall we meet?",
   "frequency": "234",
-  "mnemonic": "冫 ice beside 欠 a yawn — waiting your turn in a cold queue. The next donut along is still too gooey to pick up: つぎ.",
+  "mnemonic": "冫 ice beside 欠 a yawn. Waiting your turn in a cold queue. The next donut along is still too gooey to pick up: つぎ.",
   "notes": ""
  },
  {
@@ -46,8 +46,8 @@
   "sentence": "次の方、どうぞ。",
   "sentence_meaning": "The next person, please.",
   "frequency": "135",
-  "mnemonic": "The same 方, read かた. Instead of pointing at a person you gesture their way — \"the next one, please.\" Said mid karate kata: かた.",
-  "notes": "Same kanji as ほう \"direction\" — pointing politely rather than naming."
+  "mnemonic": "The same 方, read かた. Instead of pointing at a person you gesture their way, \"the next one, please.\" Said mid karate kata: かた.",
+  "notes": "Same kanji as ほう \"direction\", pointing politely rather than naming."
  },
  {
   "word": "聞く",
@@ -66,8 +66,8 @@
   "sentence": "トムに聞いて。",
   "sentence_meaning": "Ask Tom.",
   "frequency": "67",
-  "mnemonic": "Same gate, same ear. You can kick it to hear what's inside, or kick it to get an answer out — hearing and asking are one verb: きく.",
-  "notes": "Identical to 聞く \"to hear\" — context decides which."
+  "mnemonic": "Same gate, same ear. You can kick it to hear what's inside, or kick it to get an answer out. Hearing and asking are one verb: きく.",
+  "notes": "Identical to 聞く \"to hear\". Context decides which."
  },
  {
   "word": "お願いします",
@@ -76,7 +76,7 @@
   "sentence": "A「これでお願いします。」B「はい。」",
   "sentence_meaning": "A: This one, please.B: Okay.",
   "frequency": "1069",
-  "mnemonic": "願 is 原 a plain with 頁 a head bowed low over it — wishing hard. Oh, negate the no, she must say yes: おねがいします.",
+  "mnemonic": "願 is 原 a plain with 頁 a head bowed low over it, wishing hard. Oh, negate the no, she must say yes: おねがいします.",
   "notes": ""
  },
  {
@@ -86,7 +86,7 @@
   "sentence": "日本語のニュースが全然分かりませんでした。",
   "sentence_meaning": "I didn't understand the Japanese news at all.",
   "frequency": "142",
-  "mnemonic": "分 is 八 splitting with 刀 a blade — cutting a thing into pieces small enough to see. A wacky kangaroo finally splits it for you: わかる.",
+  "mnemonic": "分 is 八 splitting with 刀 a blade, cutting a thing into pieces small enough to see. A wacky kangaroo finally splits it for you: わかる.",
   "notes": ""
  },
  {
@@ -106,8 +106,8 @@
   "sentence": "ジャズのCDをよく聞きます。",
   "sentence_meaning": "I listen to Jazz CDs often.",
   "frequency": "180",
-  "mnemonic": "Same よく, same yolk — except you have one every single morning. It means well or often depending on the verb behind it: よく.",
-  "notes": "Same word as よく \"well\" — the verb it modifies decides which."
+  "mnemonic": "Same よく, same yolk. Except you have one every single morning. It means well or often depending on the verb behind it: よく.",
+  "notes": "Same word as よく \"well\". The verb it modifies decides which."
  },
  {
   "word": "考える",
@@ -116,7 +116,7 @@
   "sentence": "よく考えてください。",
   "sentence_meaning": "Please think carefully.",
   "frequency": "91",
-  "mnemonic": "耂 an old man bent over, taking his time about it. Not a quick thought — a whole conga line of them, shuffled through slowly: かんがえる.",
+  "mnemonic": "耂 an old man bent over, taking his time about it. Not a quick thought, a whole conga line of them, shuffled through slowly: かんがえる.",
   "notes": ""
  },
  {
@@ -166,7 +166,7 @@
   "sentence": "ゆっくり言ってください。",
   "sentence_meaning": "Please say it slowly.",
   "frequency": "20",
-  "mnemonic": "言 is a mouth with the sound drawn coming out of it. Whatever you've just seen, the first thing out is ewww — and you've said it: いう.",
+  "mnemonic": "言 is a mouth with the sound drawn coming out of it. Whatever you've just seen, the first thing out is ewww. And you've said it: いう.",
   "notes": ""
  },
  {
@@ -186,7 +186,7 @@
   "sentence": "1時間友達を待ちました。",
   "sentence_meaning": "I waited for my friend for an hour.",
   "frequency": "114",
-  "mnemonic": "彳 a step outside 寺 a temple — the same two pieces you met in 彼 and 時, now meaning to stand there. Sit on the mat, Sue is late: まつ.",
+  "mnemonic": "彳 a step outside 寺 a temple. The same two pieces you met in 彼 and 時, now meaning to stand there. Sit on the mat, Sue is late: まつ.",
   "notes": ""
  },
  {
@@ -196,7 +196,7 @@
   "sentence": "昨日、友達に会った。",
   "sentence_meaning": "I met a friend yesterday.",
   "frequency": "430",
-  "mnemonic": "昨 is the day just gone and 日 makes it a day. That key doesn't open anything any more — no, that's yesterday's key: きのう.",
+  "mnemonic": "昨 is the day just gone and 日 makes it a day. That key doesn't open anything any more. No, that's yesterday's key: きのう.",
   "notes": ""
  },
  {
@@ -206,7 +206,7 @@
   "sentence": "あの町に行きました。",
   "sentence_meaning": "I went to that town over there.",
   "frequency": "891",
-  "mnemonic": "田 a field with 丁 a street cut through it — that is how a town starts. Walk the length of it at night holding a lit match: まち.",
+  "mnemonic": "田 a field with 丁 a street cut through it. That is how a town starts. Walk the length of it at night holding a lit match: まち.",
   "notes": ""
  },
  {
@@ -216,7 +216,7 @@
   "sentence": "このカメラは高いですね。",
   "sentence_meaning": "This camera is expensive.",
   "frequency": "319",
-  "mnemonic": "高 is a tall building drawn in strokes, and a price does the same thing — it goes up. A taco staring back at you with a high price tag: たかい.",
+  "mnemonic": "高 is a tall building drawn in strokes, and a price does the same thing. It goes up. A taco staring back at you with a high price tag: たかい.",
   "notes": ""
  },
  {
@@ -227,7 +227,7 @@
   "sentence_meaning": "This is the tallest building in town.",
   "frequency": "319",
   "mnemonic": "The very same 高い. One word covers a tall building and a steep bill, so the taco tower and the taco receipt are equally たかい.",
-  "notes": "Same word as 高い \"expensive\" — height and price share one adjective."
+  "notes": "Same word as 高い \"expensive\", height and price share one adjective."
  },
  {
   "word": "一番",
@@ -246,7 +246,7 @@
   "sentence": "これはちょっと高いですね。",
   "sentence_meaning": "This is a little expensive.",
   "frequency": "93",
-  "mnemonic": "Charlotte only ever wants a little. A little more, a little longer, a little cheaper — never a lot of anything: ちょっと.",
+  "mnemonic": "Charlotte only ever wants a little. A little more, a little longer, a little cheaper, never a lot of anything: ちょっと.",
   "notes": ""
  }
 ]

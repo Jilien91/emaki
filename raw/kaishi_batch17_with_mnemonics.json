@@ -7,7 +7,7 @@
   "sentence_meaning": "Where do you want to go next time?",
   "frequency": "1305",
   "mnemonic": "今 this moment and 度 one turn of the wheel. Not this go round at all, but the very next one coming along after it. Con-doh: こんど.",
-  "notes": "Written exactly like 今度 \"this time\" — whether it looks forward or at the thing in front of you decides which."
+  "notes": "Written exactly like 今度 \"this time\". Whether it looks forward or at the thing in front of you decides which."
  },
  {
   "word": "怖い",
@@ -16,7 +16,7 @@
   "sentence": "私は犬が怖いです。",
   "sentence_meaning": "I'm scared of dogs.",
   "frequency": "269",
-  "mnemonic": "忄 a heart with 布 a cloth thrown over it, hiding. Doesn't matter how small the dog is or whose it is — you're already behind someone: こわい.",
+  "mnemonic": "忄 a heart with 布 a cloth thrown over it, hiding. Doesn't matter how small the dog is or whose it is. You're already behind someone: こわい.",
   "notes": "Does both jobs: the person who is afraid, and the thing that is frightening."
  },
  {
@@ -37,7 +37,7 @@
   "sentence_meaning": "A new year has started.",
   "frequency": "270",
   "mnemonic": "The same harvest as ねん, except nobody is counting it. A whole new one has just started and it's still completely empty: とし.",
-  "notes": "Same kanji as 年 ねん, which only counts. とし is the year as a thing in itself — the reading you already met in 毎年 まいとし."
+  "notes": "Same kanji as 年 ねん, which only counts. とし is the year as a thing in itself, the reading you already met in 毎年 まいとし."
  },
  {
   "word": "取る",
@@ -46,7 +46,7 @@
   "sentence": "テストでいい点を取った。",
   "sentence_meaning": "I got a good grade on the test.",
   "frequency": "271",
-  "mnemonic": "耳 an ear with 又 a hand closed round it — old soldiers took ears off the field to prove the count. You took a good mark off that test: とる.",
+  "mnemonic": "耳 an ear with 又 a hand closed round it. Old soldiers took ears off the field to prove the count. You took a good mark off that test: とる.",
   "notes": ""
  },
  {
@@ -56,7 +56,7 @@
   "sentence": "彼に全てのことを伝えた。",
   "sentence_meaning": "I told him everything.",
   "frequency": "272",
-  "mnemonic": "全 a king under one roof, and everything under that roof with him. You told him the lot — nothing held back at all: すべて.",
+  "mnemonic": "全 a king under one roof, and everything under that roof with him. You told him the lot, nothing held back at all: すべて.",
   "notes": "全部 ぜんぶ is the everyday spoken one; 全て leans a little more written."
  },
  {
@@ -66,8 +66,8 @@
   "sentence": "彼女は病気の犬を助けた。",
   "sentence_meaning": "She helped a sick dog.",
   "frequency": "273",
-  "mnemonic": "力 power stuck on the right-hand side — an extra shoulder put under the load. The dog was ill in a ditch and she carried it home: たすける.",
-  "notes": "Stronger than English 'help' — it stretches all the way to rescuing and saving a life."
+  "mnemonic": "力 power stuck on the right-hand side. An extra shoulder put under the load. The dog was ill in a ditch and she carried it home: たすける.",
+  "notes": "Stronger than English 'help'. It stretches all the way to rescuing and saving a life."
  },
  {
   "word": "状況",
@@ -76,7 +76,7 @@
   "sentence": "この状況では出発は難しいです。",
   "sentence_meaning": "It will be difficult to depart in these conditions.",
   "frequency": "274",
-  "mnemonic": "状 the shape a thing has taken, with 犬 a dog in it, and 況 water running past. Look at the state of it — nobody is setting off in this: じょうきょう.",
+  "mnemonic": "状 the shape a thing has taken, with 犬 a dog in it, and 況 water running past. Look at the state of it. Nobody is setting off in this: じょうきょう.",
   "notes": ""
  },
  {
@@ -87,7 +87,7 @@
   "sentence_meaning": "I confirmed my reservation one more time.",
   "frequency": "275",
   "mnemonic": "確 a 石 stone, solid enough to be sure of, and 認 words you finally accept. You check the booking one more time anyway: かくにん.",
-  "notes": "確認する is one of the most common words in Japanese office life — checking a thing before it goes wrong."
+  "notes": "確認する is one of the most common words in Japanese office life. Checking a thing before it goes wrong."
  },
  {
   "word": "消える",
@@ -127,7 +127,7 @@
   "sentence_meaning": "Please rotate your arm.",
   "frequency": "279",
   "mnemonic": "The 月 that means flesh, with a shape for bending sat beside it. The physio wants it all the way round, both directions: うで.",
-  "notes": "Also means skill — 腕がいい is 'good at it', the way English says a safe pair of hands."
+  "notes": "Also means skill. 腕がいい is 'good at it', the way English says a safe pair of hands."
  },
  {
   "word": "以外",
@@ -166,7 +166,7 @@
   "sentence": "旅行に行く気があるか彼女に聞かれました。",
   "sentence_meaning": "She asked if I was willing to travel.",
   "frequency": "283",
-  "mnemonic": "Steam coming off something, the same 気 that sits in 元気. On its own it's whatever you've got rising in you — and she wants to know if any of it is for travelling: き.",
+  "mnemonic": "Steam coming off something, the same 気 that sits in 元気. On its own it's whatever you've got rising in you. And she wants to know if any of it is for travelling: き.",
   "notes": "Turns up in a huge number of set phrases: 気をつけて be careful, 気にしないで don't worry about it."
  },
  {
@@ -186,7 +186,7 @@
   "sentence": "この部屋は光がたくさん入って、いいね。",
   "sentence_meaning": "It’s nice how much light comes into this room, isn’t it?",
   "frequency": "285",
-  "mnemonic": "A figure on 儿 legs with brightness coming off the top of its head. Whoever built this room pointed it the right way — the stuff pours in: ひかり.",
+  "mnemonic": "A figure on 儿 legs with brightness coming off the top of its head. Whoever built this room pointed it the right way, the stuff pours in: ひかり.",
   "notes": "光る ひかる is the verb, to shine."
  },
  {
@@ -217,7 +217,7 @@
   "sentence_meaning": "Let's use the left-over portion next time.",
   "frequency": "288",
   "mnemonic": "A roof with whatever didn't get used stacked underneath it. Too much fabric, too much batter, and none of it thrown away: あまり.",
-  "notes": "Same word as the kana あまり 'not very' — with a negative it means there isn't much of something, and this is the something."
+  "notes": "Same word as the kana あまり 'not very'. With a negative it means there isn't much of something, and this is the something."
  },
  {
   "word": "全部",
@@ -226,7 +226,7 @@
   "sentence": "お弁当を全部食べました。",
   "sentence_meaning": "I ate all that was in the lunchbox.",
   "frequency": "289",
-  "mnemonic": "全 the whole thing and 部 every section of it accounted for. The lunchbox goes back empty — not most of it, all of it: ぜんぶ.",
+  "mnemonic": "全 the whole thing and 部 every section of it accounted for. The lunchbox goes back empty, not most of it, all of it: ぜんぶ.",
   "notes": "The everyday spoken one. 全て すべて is the same idea, a shade more written."
  },
  {

@@ -16,8 +16,8 @@
   "sentence": "A「東京から大阪まで2時間半です。」B「早いですね。」",
   "sentence_meaning": "A: It takes two and a half hours from Tokyo to Osaka.B: That's fast, isn't it?",
   "frequency": "198",
-  "mnemonic": "The same 早い as five in the morning, pointed at a clock instead of a sunrise. Tokyo to Osaka before lunch — not quick feet, just not much time gone: はやい.",
-  "notes": "Same word as 早い 'early'. Both are about the clock. For actual speed — a train, a runner — it's 速い."
+  "mnemonic": "The same 早い as five in the morning, pointed at a clock instead of a sunrise. Tokyo to Osaka before lunch, not quick feet, just not much time gone: はやい.",
+  "notes": "Same word as 早い 'early'. Both are about the clock. Actual speed, a train or a runner, is 速い."
  },
  {
   "word": "頭",
@@ -26,7 +26,7 @@
   "sentence": "今朝から頭が痛い。",
   "sentence_meaning": "My head has been hurting since this morning.",
   "frequency": "199",
-  "mnemonic": "豆 a bean balanced on 頁 a head — which is about the size yours feels this morning. It's been going since you woke up: あたま.",
+  "mnemonic": "豆 a bean balanced on 頁 a head. Which is about the size yours feels this morning. It's been going since you woke up: あたま.",
   "notes": ""
  },
  {
@@ -46,8 +46,8 @@
   "sentence": "ずっと日本へ留学したいと思っていました。",
   "sentence_meaning": "I always thought that I'd like to study abroad in Japan.",
   "frequency": "201",
-  "mnemonic": "Not since last year. Since before you could say why. The wanting never once stopped or started — it just sat there: ずっと.",
-  "notes": "Also does comparisons, where it means 'by far' — ずっといい is much better."
+  "mnemonic": "Not since last year. Since before you could say why. The wanting never once stopped or started, it just sat there: ずっと.",
+  "notes": "Also does comparisons, where it means 'by far'. ずっといい is much better."
  },
  {
   "word": "どうして",
@@ -66,7 +66,7 @@
   "sentence": "やっぱり旅が大好きだ。",
   "sentence_meaning": "I really love to travel after all.",
   "frequency": "203",
-  "mnemonic": "Three weeks of telling everyone you'd settle down, and here you are pricing flights again. Yep — knew it: やっぱり.",
+  "mnemonic": "Three weeks of telling everyone you'd settle down, and here you are pricing flights again. Yep. Knew it: やっぱり.",
   "notes": "やはり is the same word in a tie. Also does 'I've changed my mind back' at the front of a sentence."
  },
  {
@@ -76,7 +76,7 @@
   "sentence": "明日からタバコを止めるつもりです。",
   "sentence_meaning": "I intend to stop smoking starting tomorrow.",
   "frequency": "204",
-  "mnemonic": "Tomorrow, definitely. Not today, obviously — today there's still half a packet. つもり is what you've decided, sat at a safe distance from doing it.",
+  "mnemonic": "Tomorrow, definitely. Not today, obviously. Today there's still half a packet. つもり is what you've decided, sat at a safe distance from doing it.",
   "notes": ""
  },
  {
@@ -106,8 +106,8 @@
   "sentence": "私は先ほど電話した者です。",
   "sentence_meaning": "I'm the person who called a while earlier.",
   "frequency": "207",
-  "mnemonic": "Not a name, not a job — whoever it was that did the thing. You ring back and all you can offer is that you're the one who called earlier: もの.",
-  "notes": "Same sound as 物 もの 'thing'. This one is always a person, and it's humble — you use it about yourself, not about a guest."
+  "mnemonic": "Not a name, not a job. Whoever it was that did the thing. You ring back and all you can offer is that you're the one who called earlier: もの.",
+  "notes": "Same sound as 物 もの 'thing'. This one is always a person, and it's humble: you use it about yourself, not about a guest."
  },
  {
   "word": "後",
@@ -147,7 +147,7 @@
   "sentence_meaning": "It will surely rain tomorrow.",
   "frequency": "211",
   "mnemonic": "Nobody has checked anything. But the sky is that colour, the washing is out, and you'd bet the house on it: きっと, it'll rain.",
-  "notes": "Confidence, not proof — it goes with a guess you're sure about."
+  "notes": "Confidence, not proof. It goes with a guess you're sure about."
  },
  {
   "word": "変わる",
@@ -157,7 +157,7 @@
   "sentence_meaning": "The traffic light turned green.",
   "frequency": "212",
   "mnemonic": "Nobody touched it. You're stood at the crossing and the red goes green on its own while you watch: かわる.",
-  "notes": "The thing changes by itself; 変える かえる is you changing it. Careful with 帰る かえる, to go home — all three sit close together."
+  "notes": "The thing changes by itself; 変える かえる is you changing it. Careful with 帰る かえる, to go home. All three sit close together."
  },
  {
   "word": "凄い",
@@ -166,7 +166,7 @@
   "sentence": "凄い雨になった。",
   "sentence_meaning": "It began raining heavily.",
   "frequency": "213",
-  "mnemonic": "冫 ice and 妻 a wife — the word started out meaning blood-chilling. It still means that much of a thing, only now it's the rain: すごい.",
+  "mnemonic": "冫 ice and 妻 a wife, the word started out meaning blood-chilling. It still means that much of a thing, only now it's the rain: すごい.",
   "notes": "Says 'a lot of', not 'good'. 凄い雨 is heavy rain, not lovely rain. Usually written in kana."
  },
  {
@@ -186,7 +186,7 @@
   "sentence": "朝食はちゃんと食べましたか。",
   "sentence_meaning": "Did you properly eat breakfast?",
   "frequency": "215",
-  "mnemonic": "Sitting down, at the table, plate cleared, nothing skipped. Not just eaten — eaten ちゃんと, the way you were meant to.",
+  "mnemonic": "Sitting down, at the table, plate cleared, nothing skipped. Not just eaten. Eaten ちゃんと, the way you were meant to.",
   "notes": "Casual, but not rude. It says the thing was done the proper way rather than half done."
  },
  {
@@ -196,7 +196,7 @@
   "sentence": "外で大きい音がします。",
   "sentence_meaning": "There is a loud noise outside.",
   "frequency": "215",
-  "mnemonic": "言 speech with one extra stroke shut inside the mouth — so it never becomes a word. Something big goes over outside and you never find out what: おと.",
+  "mnemonic": "言 speech with one extra stroke shut inside the mouth. So it never becomes a word. Something big goes over outside and you never find out what: おと.",
   "notes": "A noise you hear. 声 こえ is a sound with a voice behind it."
  },
  {
@@ -206,7 +206,7 @@
   "sentence": "妹は体が弱いです。",
   "sentence_meaning": "My sister has a weak body.",
   "frequency": "216",
-  "mnemonic": "亻 a person and 本 the root they grow from. Not the mind, not the name — the thing that catches every cold going round: からだ.",
+  "mnemonic": "亻 a person and 本 the root they grow from. Not the mind, not the name, the thing that catches every cold going round: からだ.",
   "notes": ""
  },
  {
@@ -217,7 +217,7 @@
   "sentence_meaning": "I put my husband's clothes on a hanger.",
   "frequency": "217",
   "mnemonic": "扌 a hand reaching up to a peg. The shirt goes over the hanger and stays there, holding its own weight: かける.",
-  "notes": "Stretches a long way — 電話を掛ける is to make a phone call, 眼鏡を掛ける is to put glasses on. All of them hang something on something."
+  "notes": "Stretches a long way. 電話を掛ける is to make a phone call, 眼鏡を掛ける is to put glasses on. All of them hang something on something."
  },
  {
   "word": "歩く",
@@ -236,7 +236,7 @@
   "sentence": "宇宙人は存在すると思いますか。",
   "sentence_meaning": "Do you think that aliens exist?",
   "frequency": "219",
-  "mnemonic": "才 a sapling over 子 a child, then 才 a sapling in 土 the earth. Two ways of saying something is there at all — and the argument is about aliens: そんざい.",
+  "mnemonic": "才 a sapling over 子 a child, then 才 a sapling in 土 the earth. Two ways of saying something is there at all. And the argument is about aliens: そんざい.",
   "notes": ""
  },
  {
@@ -247,7 +247,7 @@
   "sentence_meaning": "Time passes quickly.",
   "frequency": "220",
   "mnemonic": "辶 the road, and you're already past the turning. Nobody stopped, and the afternoon went by the same way: すぎる.",
-  "notes": "Hung on the end of another word it means too much of it — 高過ぎる is too expensive."
+  "notes": "Hung on the end of another word it means too much of it. 高過ぎる is too expensive."
  },
  {
   "word": "聞こえる",
@@ -257,6 +257,6 @@
   "sentence_meaning": "I can hear the sound of the television from the next room.",
   "frequency": "221",
   "mnemonic": "門 a gate with 耳 an ear at it, not listening for anything. Next door's telly comes through the wall whether you want it or not: きこえる.",
-  "notes": "Built like 見える みえる — 聞く きく is listening on purpose, 聞こえる is the sound simply reaching you."
+  "notes": "Built like 見える みえる. 聞く きく is listening on purpose, 聞こえる is the sound simply reaching you."
  }
 ]

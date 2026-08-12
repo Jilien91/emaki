@@ -12,7 +12,7 @@
    {
       "word" : "うち",
       "sentence" : "うちへ帰ります。",
-      "mnemonic" : "The other reading of 家. Not the building this time but the people and the life going on inside it — your lot, your place: うち.",
+      "mnemonic" : "The other reading of 家. Not the building this time but the people and the life going on inside it, your lot, your place: うち.",
       "reading" : "うち",
       "notes" : "Same kanji as いえ \"house\"; うち leans on the household rather than the structure.",
       "meaning" : "one's household",
@@ -33,7 +33,7 @@
       "notes" : "",
       "reading" : "わすれる",
       "sentence_meaning" : "Please don't forget your promise.",
-      "mnemonic" : "亡 lost sitting on top of 心 a heart — the same 亡 you met in 忙しい. Something has gone from you and you cannot say when: わすれる.",
+      "mnemonic" : "亡 lost sitting on top of 心 a heart, the same 亡 you met in 忙しい. Something has gone from you and you cannot say when: わすれる.",
       "frequency" : "284",
       "meaning" : "to forget",
       "sentence" : "約束を忘れないでください。",
@@ -65,7 +65,7 @@
       "meaning" : "(only) a moment ago",
       "notes" : "",
       "reading" : "さっき",
-      "mnemonic" : "Not yesterday and not this morning — the thing that happened a sec ago and is still hanging in the air right behind you: さっき.",
+      "mnemonic" : "Not yesterday and not this morning. The thing that happened a sec ago and is still hanging in the air right behind you: さっき.",
       "sentence" : "さっきの話を続けましょう。",
       "word" : "さっき"
    },
@@ -94,7 +94,7 @@
       "mnemonic" : "止 is a footprint planted flat on the ground: it goes no further. Pull the car in and leave it standing right there: とめる.",
       "sentence_meaning" : "Stop in front of that building, please.",
       "reading" : "とめる",
-      "notes" : "Same characters as やめる — this reading stops a moving thing in a place.",
+      "notes" : "Same characters as やめる, this reading stops a moving thing in a place.",
       "word" : "止める",
       "sentence" : "あのビルの前で止めてください。",
       "meaning" : "to stop (at some place)"
@@ -105,7 +105,7 @@
       "frequency" : "332",
       "sentence" : "話すのを止めてください。",
       "word" : "止める",
-      "notes" : "Written identically to とめる — とめる stops a thing somewhere, やめる stops an action.",
+      "notes" : "Written identically to とめる, とめる stops a thing somewhere, やめる stops an action.",
       "reading" : "やめる",
       "mnemonic" : "The very same 止める, read やめる instead. This one halts an activity rather than a moving thing: quit talking, not park the car: やめる."
    },
@@ -114,7 +114,7 @@
       "notes" : "",
       "reading" : "たのむ",
       "frequency" : "338",
-      "mnemonic" : "束 a bundle and 頁 a head — the same 頁 you met in お願いします. You hand the whole bundle of it over to somebody else to carry: たのむ.",
+      "mnemonic" : "束 a bundle and 頁 a head, the same 頁 you met in お願いします. You hand the whole bundle of it over to somebody else to carry: たのむ.",
       "sentence" : "私はハンバーガーを頼みました。",
       "meaning" : "to ask, to request",
       "word" : "頼む"
@@ -133,7 +133,7 @@
       "notes" : "",
       "reading" : "うれしい",
       "sentence_meaning" : "I was glad to be able to meet him.",
-      "mnemonic" : "女 a woman with 喜 rejoicing stood right next to her. Not content and not fine — properly and visibly glad about the whole thing: うれしい.",
+      "mnemonic" : "女 a woman with 喜 rejoicing stood right next to her. Not content and not fine, properly and visibly glad about the whole thing: うれしい.",
       "frequency" : "355",
       "meaning" : "happy, glad",
       "sentence" : "彼に会えて嬉しかった。",
@@ -151,7 +151,7 @@
    },
    {
       "frequency" : "361",
-      "mnemonic" : "The noise you make when a thing finally clicks into place. Not agreement exactly — the sound of the penny dropping: なるほど.",
+      "mnemonic" : "The noise you make when a thing finally clicks into place. Not agreement exactly. The sound of the penny dropping: なるほど.",
       "sentence_meaning" : "I see, I understand quite well.",
       "notes" : "",
       "reading" : "なるほど",
@@ -187,13 +187,13 @@
       "reading" : "やさしい",
       "notes" : "",
       "frequency" : "382",
-      "mnemonic" : "亻 a person stood next to 憂 grief — somebody who actually feels yours. Easy on you, and never once sharp about any of it: やさしい."
+      "mnemonic" : "亻 a person stood next to 憂 grief. Somebody who actually feels yours. Easy on you, and never once sharp about any of it: やさしい."
    },
    {
       "frequency" : "383",
       "sentence_meaning" : "I dislike waiting.",
       "meaning" : "disliking, unwilling (to do)",
-      "mnemonic" : "The same 嫌 you met in 嫌い, only shorter and blunter. Not a considered dislike at all — just no. Ee-yah, I would rather not: いや.",
+      "mnemonic" : "The same 嫌 you met in 嫌い, only shorter and blunter. Not a considered dislike at all, just no. Ee-yah, I would rather not: いや.",
       "reading" : "いや",
       "notes" : "",
       "word" : "嫌",
@@ -204,7 +204,7 @@
       "word" : "そんなに",
       "notes" : "",
       "reading" : "そんなに",
-      "mnemonic" : "そ- is your side of things, so そんなに means that much — the amount you have just suggested. Usually followed by a no: そんなに.",
+      "mnemonic" : "そ- is your side of things, so そんなに means that much. The amount you have just suggested. Usually followed by a no: そんなに.",
       "meaning" : "that much",
       "sentence_meaning" : "A: Are you busy every day?B: No, not that much.",
       "frequency" : "384"
@@ -233,7 +233,7 @@
       "word" : "買う",
       "meaning" : "to buy",
       "sentence" : "昨日、シーディーを買いました。",
-      "mnemonic" : "罒 a net thrown over 貝 a shell — shells were the money, and you are scooping them up to hand over. Cow, for the price: かう.",
+      "mnemonic" : "罒 a net thrown over 貝 a shell. Shells were the money, and you are scooping them up to hand over. Cow, for the price: かう.",
       "frequency" : "394",
       "reading" : "かう",
       "notes" : "",

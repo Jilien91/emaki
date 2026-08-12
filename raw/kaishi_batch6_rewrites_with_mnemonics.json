@@ -16,8 +16,8 @@
   "sentence": "もうちょっと食べたい。",
   "sentence_meaning": "I want to eat a little more.",
   "frequency": "56",
-  "mnemonic": "The same もう, mown again. Pointed forwards instead of backwards it means one more — another slice, a little longer: もうちょっと.",
-  "notes": "Same word as もう \"already\" — whether it looks back or forward decides which."
+  "mnemonic": "The same もう, mown again. Pointed forwards instead of backwards it means one more, another slice, a little longer: もうちょっと.",
+  "notes": "Same word as もう \"already\". Whether it looks back or forward decides which."
  },
  {
   "word": "父",
@@ -36,7 +36,7 @@
   "sentence": "私は父が大好きです。",
   "sentence_meaning": "I love my father.",
   "frequency": "916",
-  "mnemonic": "大 is a person with both arms flung wide — big. Bolt that onto 好き fondness and you have the full span of it: だいすき.",
+  "mnemonic": "大 is a person with both arms flung wide, big. Bolt that onto 好き fondness and you have the full span of it: だいすき.",
   "notes": ""
  },
  {
@@ -66,7 +66,7 @@
   "sentence": "父が本をくれました。",
   "sentence_meaning": "My father gave me a book.",
   "frequency": "39",
-  "mnemonic": "The opposite direction to あげる: this one arrives. Someone presses the cure into your hand — ooh. くれる is giving that comes to you.",
+  "mnemonic": "The opposite direction to あげる: this one arrives. Someone presses the cure into your hand, ooh. くれる is giving that comes to you.",
   "notes": "Direction is the whole distinction: あげる goes out, くれる comes in."
  },
  {
@@ -76,7 +76,7 @@
   "sentence": "彼女からプレゼントをもらいました。",
   "sentence_meaning": "I got a present from her.",
   "frequency": "112",
-  "mnemonic": "Presents keep being handed to you and your arms are already full. More — ow. You are the one receiving all of it: もらう.",
+  "mnemonic": "Presents keep being handed to you and your arms are already full. More, ow. You are the one receiving all of it: もらう.",
   "notes": ""
  },
  {
@@ -86,7 +86,7 @@
   "sentence": "色々な物をもらいました。",
   "sentence_meaning": "I received many things.",
   "frequency": "51",
-  "mnemonic": "牛 a cow beside 勿 — livestock was once the thing you owned. Now it is any object at all, sorted mono-tonously one by one: もの.",
+  "mnemonic": "牛 a cow beside 勿. Livestock was once the thing you owned. Now it is any object at all, sorted mono-tonously one by one: もの.",
   "notes": ""
  },
  {
@@ -96,7 +96,7 @@
   "sentence": "この本を君にあげます。",
   "sentence_meaning": "I'm going to give you this book.",
   "frequency": "153",
-  "mnemonic": "尹 a hand giving orders over 口 a mouth. Spoken down the ranks, never up — Kimmy, come here. きみ is you to someone below you.",
+  "mnemonic": "尹 a hand giving orders over 口 a mouth. Spoken down the ranks, never up. Kimmy, come here. きみ is you to someone below you.",
   "notes": ""
  },
  {
@@ -116,7 +116,7 @@
   "sentence": "あなたはスキーが出来ますか。",
   "sentence_meaning": "Can you ski?",
   "frequency": "103",
-  "mnemonic": "出 coming out and 来 coming toward — what comes out of you when it is called for. You built the whole deck yourself, ooh: できる.",
+  "mnemonic": "出 coming out and 来 coming toward. What comes out of you when it is called for. You built the whole deck yourself, ooh: できる.",
   "notes": ""
  },
  {
@@ -126,7 +126,7 @@
   "sentence": "その話は本当ですか。",
   "sentence_meaning": "Is that story true?",
   "frequency": "108",
-  "mnemonic": "本 the origin and 当 hitting the mark: the version that lands where it started out. Hone in, tow the line — is it really ほんとう?",
+  "mnemonic": "本 the origin and 当 hitting the mark: the version that lands where it started out. Hone in, tow the line. Is it really ほんとう?",
   "notes": ""
  },
  {
@@ -147,6 +147,6 @@
   "sentence_meaning": "Lara-chan is standing in front of the house.",
   "frequency": "79",
   "mnemonic": "前 is the part that goes out ahead of everything else. Stood in front of the whole class with your hand up: may I? まえ.",
-  "notes": "Already met inside 名前 — the name that comes first."
+  "notes": "Already met inside 名前. The name that comes first."
  }
 ]

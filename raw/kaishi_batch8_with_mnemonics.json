@@ -17,10 +17,10 @@
       "word" : "呼ぶ",
       "meaning" : "to call, to name",
       "sentence_meaning" : "Let's call the waiter.",
-      "mnemonic" : "口 a mouth with 乎 the breath pushed right out of it. You shout across the restaurant for the waiter — yo, boo, over here: よぶ."
+      "mnemonic" : "口 a mouth with 乎 the breath pushed right out of it. You shout across the restaurant for the waiter, yo, boo, over here: よぶ."
    },
    {
-      "mnemonic" : "重 something heavy with 力 power put behind it — that is what shifting a thing actually takes. Oo, go on, get it moving: うごく.",
+      "mnemonic" : "重 something heavy with 力 power put behind it. That is what shifting a thing actually takes. Oo, go on, get it moving: うごく.",
       "sentence_meaning" : "The elevator is moving.",
       "word" : "動く",
       "meaning" : "to move",
@@ -34,7 +34,7 @@
       "notes" : "",
       "frequency" : "225",
       "sentence" : "彼の気持ちが分からない。",
-      "mnemonic" : "気 the steam coming off a person and 持 a hand holding on to it. Whatever you are carrying about inside you: key, mo, chi — きもち.",
+      "mnemonic" : "気 the steam coming off a person and 持 a hand holding on to it. Whatever you are carrying about inside you: key, mo, chi, きもち.",
       "sentence_meaning" : "I don't understand his feelings.",
       "word" : "気持ち",
       "meaning" : "feeling, sensation"
@@ -46,7 +46,7 @@
       "reading" : "だれ",
       "meaning" : "who",
       "word" : "誰",
-      "mnemonic" : "言 speech next to 隹 a small bird — a voice up in the trees you can hear but cannot place at all. Who on earth was that? だれ.",
+      "mnemonic" : "言 speech next to 隹 a small bird. A voice up in the trees you can hear but cannot place at all. Who on earth was that? だれ.",
       "sentence_meaning" : "Who would you like to meet one day?"
    },
    {
@@ -67,7 +67,7 @@
       "meaning" : "what kind of...",
       "word" : "どんな",
       "sentence_meaning" : "What kind of person is Smith-san?",
-      "mnemonic" : "ど- is the question, the same as always. どんな asks what sort of thing it is — not which one of them, but what type of thing: どんな."
+      "mnemonic" : "ど- is the question, the same as always. どんな asks what sort of thing it is, not which one of them, but what type of thing: どんな."
    },
    {
       "frequency" : "261",
@@ -82,7 +82,7 @@
    {
       "word" : "言葉",
       "meaning" : "word, language",
-      "mnemonic" : "言 speech and 葉 a leaf. Words come off a person the way leaves come off a tree — one at a time, and there is no end to them: ことば.",
+      "mnemonic" : "言 speech and 葉 a leaf. Words come off a person the way leaves come off a tree. One at a time, and there is no end to them: ことば.",
       "sentence_meaning" : "I don't understand the meaning of this word.",
       "sentence" : "この言葉の意味が分かりません。",
       "frequency" : "115",
@@ -130,7 +130,7 @@
       "sentence" : "分からない言葉は自分で調べてください。"
    },
    {
-      "mnemonic" : "言 speech going 周 all the way round a subject — asking about it from every angle until the answer finally turns up. Shirabe: しらべる.",
+      "mnemonic" : "言 speech going 周 all the way round a subject. Asking about it from every angle until the answer finally turns up. Shirabe: しらべる.",
       "sentence_meaning" : "Please look up any words you don't know on your own.",
       "meaning" : "to look up, to search",
       "word" : "調べる",
@@ -147,7 +147,7 @@
       "meaning" : "thing, incident",
       "word" : "事",
       "sentence_meaning" : "I researched things about Japan on the internet.",
-      "mnemonic" : "A hand gripping a banner: an affair being conducted. Not an object you can pick up — a matter, a business, a thing that happens: こと."
+      "mnemonic" : "A hand gripping a banner: an affair being conducted. Not an object you can pick up, a matter, a business, a thing that happens: こと."
    },
    {
       "sentence" : "私も同じこと考えてた。",
@@ -157,7 +157,7 @@
       "meaning" : "same, identical",
       "word" : "同じ",
       "sentence_meaning" : "I was thinking the same thing.",
-      "mnemonic" : "A frame with everything tucked up inside it, the whole lot under one cover. Oh, nudge them together — they match exactly: おなじ."
+      "mnemonic" : "A frame with everything tucked up inside it, the whole lot under one cover. Oh, nudge them together, they match exactly: おなじ."
    },
    {
       "reading" : "もうしわけない",
@@ -173,7 +173,7 @@
       "word" : "もちろん",
       "meaning" : "of course, no doubt",
       "sentence_meaning" : "Of course we'll go together.",
-      "mnemonic" : "Ask something with an obvious answer and this comes straight back at you. Of course we're going — it's a mochi run, no discussion: もちろん.",
+      "mnemonic" : "Ask something with an obvious answer and this comes straight back at you. Of course we're going. It's a mochi run, no discussion: もちろん.",
       "frequency" : "294",
       "sentence" : "もちろん一緒に行きます。",
       "reading" : "もちろん",
@@ -185,13 +185,13 @@
       "frequency" : "329",
       "sentence" : "この本はとても面白い。",
       "sentence_meaning" : "This book is very interesting.",
-      "mnemonic" : "Not a bit and not quite — all the way. Whatever adjective comes after it, とても takes it and turns the dial right up. Toe-tem-oh: とても.",
+      "mnemonic" : "Not a bit and not quite, all the way. Whatever adjective comes after it, とても takes it and turns the dial right up. Toe-tem-oh: とても.",
       "word" : "とても",
       "meaning" : "very"
    },
    {
       "sentence_meaning" : "He's a very fun person.",
-      "mnemonic" : "楽 was strings stretched across a wooden frame — music, and the pleasure that comes with it. A tan, oh, she is enjoying herself: たのしい.",
+      "mnemonic" : "楽 was strings stretched across a wooden frame. Music, and the pleasure that comes with it. A tan, oh, she is enjoying herself: たのしい.",
       "word" : "楽しい",
       "meaning" : "fun, enjoyable",
       "reading" : "たのしい",
