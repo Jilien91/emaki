@@ -33,7 +33,8 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:'Inter',sans-serif;
-  min-height:100vh;
+  min-height:100vh;   /* fallback for browsers without dvh */
+  min-height:100dvh;  /* dvh follows the keyboard; vh does not */
 }
 .jp{font-family:'Noto Sans JP',sans-serif;}
 .serif{font-family:'Spectral',serif;}
