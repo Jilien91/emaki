@@ -11,7 +11,8 @@ const DEFAULT_SETTINGS = {
   showSrsIndicator: true,
   speechRate: 0.9,          // a touch under natural pace reads clearer
   autoPlayLessonAudio: true,
-  hideAnswerOnMistake: true // make yourself recall it before it's handed over
+  hideAnswerOnMistake: true, // make yourself recall it before it's handed over
+  showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
 };
 const STREAK_SAVE_KEY = 'kaishi-streak-saves';
 // One kunai in hand at a time, replenishing every 3 days. A missed day spends
@@ -612,9 +613,11 @@ function saveReviewSettings(){
   const indicatorEl = document.getElementById('srsIndicatorInput');
   const orderEl = document.getElementById('reviewOrderInput');
   const hideEl = document.getElementById('hideAnswerInput');
+  const mnemEl = document.getElementById('showMnemonicInput');
   settings.showSrsIndicator = indicatorEl.value === 'yes';
   settings.reviewOrder = orderEl.value;
   settings.hideAnswerOnMistake = hideEl.value === 'manual';
+  settings.showMnemonicOnAnswer = mnemEl.value === 'yes';
   saveSettings();
   switchView('dashboard');
 }
@@ -684,6 +687,16 @@ function applyReviewResult(id, allCorrect){
 // the mnemonic, the sentence translation — is withheld along with it.
 function answerVisible(state){
   return state.lastCorrect || state.revealed || !settings.hideAnswerOnMistake;
+}
+
+// Every item is asked twice, meaning and reading, interleaved in one queue. So
+// the panel shown after answering one half can hand over the other half before
+// it's been asked: the sentence translation is the meaning in English, and the
+// mnemonic gives away both — it tells the meaning story and signs off with the
+// reading in kana. Only reveal those once the sibling question is out of the
+// queue. `rest` is whatever is still to come, current question excluded.
+function siblingPending(rest, id){
+  return rest.some(x => x.id === id);
 }
 
 function revealReviewAnswer(){ reviewState.revealed = true; render(); }
@@ -989,6 +1002,7 @@ function renderLessonQuiz(){
     return `${nav('lessons')}<div class="empty">Lesson batch complete — ${batchLen} word${batchLen===1?'':'s'} added to reviews.<br>First review in 4 hours.</div>${follow}`;
   }
   const q = quizQueue[0];
+  const holdBack = siblingPending(quizQueue.slice(1), q.id);
   const item = VOCAB.find(v=>v.id===q.id);
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
@@ -1009,9 +1023,10 @@ function renderLessonQuiz(){
       ${answerVisible(lessonState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>` : ''}
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${answerVisible(lessonState) ? `
+    ${answerVisible(lessonState) && settings.showMnemonicOnAnswer && !holdBack ? `
       <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
-    ` : `
+    ` : ''}
+    ${answerVisible(lessonState) ? '' : `
       <button class="secondary" onclick="revealQuizAnswer()">Show answer</button>
     `}
     <button class="primary" onclick="answerQuizQuestion(${lessonState.lastCorrect})">Next</button>
@@ -1052,6 +1067,14 @@ function renderSettings(){
       <select id="srsIndicatorInput">
         <option value="yes" ${settings.showSrsIndicator?'selected':''}>Yes</option>
         <option value="no" ${!settings.showSrsIndicator?'selected':''}>No</option>
+      </select>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Show the mnemonic after answering</div>
+      <div class="settings-desc">Off by default. The mnemonic tells the meaning story and ends on the reading, so seeing it hands you the answer to whichever half you haven't been asked yet. Either way it stays hidden until both halves of that word are done.</div>
+      <select id="showMnemonicInput">
+        <option value="no" ${!settings.showMnemonicOnAnswer?'selected':''}>No</option>
+        <option value="yes" ${settings.showMnemonicOnAnswer?'selected':''}>Yes</option>
       </select>
     </div>
     <div class="settings-row">
@@ -1188,6 +1211,8 @@ function renderReview(){
   const completesItem = reviewState.showAnswer && reviewState.lastCorrect &&
     (q.type==='meaning' ? res.reading : res.meaning);
   const newStagePreview = completesItem ? computeReviewStage(p.stage, !res.missed) : null;
+  // queue[0] is the question on screen; anything after it is still to come.
+  const holdBack = siblingPending(reviewState.queue.slice(1), item.id);
   return `
   ${nav('review')}
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;">
@@ -1210,8 +1235,8 @@ function renderReview(){
     </div>
     ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
     ${answerVisible(reviewState) ? `
-      <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div></div>
-      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
+      <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
+      ${settings.showMnemonicOnAnswer && !holdBack ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>` : ''}
     ` : `
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
@@ -1231,6 +1256,7 @@ function renderExtraStudy(){
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
   const answer = q.type==='meaning' ? item.meaning : item.reading;
+  const holdBack = siblingPending(extraStudyState.queue.slice(extraStudyState.index+1), item.id);
   return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;">
     <span style="font-size:12px;color:var(--text-dim);">Extra Study · ${extraStudyState.index+1} of ${extraStudyState.queue.length}</span>
@@ -1250,9 +1276,10 @@ function renderExtraStudy(){
       ${answerVisible(extraStudyState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${answerVisible(extraStudyState) ? `
+    ${answerVisible(extraStudyState) && settings.showMnemonicOnAnswer && !holdBack ? `
       <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
-    ` : `
+    ` : ''}
+    ${answerVisible(extraStudyState) ? '' : `
       <button class="secondary" onclick="revealExtraStudyAnswer()">Show answer</button>
     `}
     <button class="primary" onclick="advanceExtraStudy()">Next</button>
