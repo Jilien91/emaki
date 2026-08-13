@@ -68,8 +68,8 @@ without this. OAuth sends no email and is unaffected.
 2. Turn on **Enable Custom SMTP**
 3. Fill in host, port (587 for STARTTLS), username, password, sender email and
    sender name. The sender address must be on the domain you verified.
-4. Save, then **Authentication → Rate Limits** and raise the email limit. Custom
-   SMTP starts at 30 an hour.
+4. Save. Leave the email rate limit in **Authentication → Rate Limits** at its
+   default of 30 an hour, for the reason given in the Resend section above.
 5. Test it: sign out in the app, request a link, confirm it arrives.
 
 ### Or via the Management API
