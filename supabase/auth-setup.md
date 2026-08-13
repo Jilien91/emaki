@@ -74,17 +74,28 @@ https://uozdxhcyxwnyqrplwokr.supabase.co/auth/v1/callback
 
 ### Google
 
+Google replaced the old "APIs & Services → OAuth consent screen" with the
+**Google Auth Platform** console. There is no "User type" field any more; the
+Internal/External choice is now a step called Audience inside the setup wizard.
+Any guide still telling you to look for User type is out of date.
+
 1. Google Cloud Console → create or pick a project
-2. **APIs & Services → OAuth consent screen**, fill it in, add your email as a
-   test user while it is unverified
-3. **Credentials → Create credentials → OAuth client ID → Web application**
-4. Add the callback URL above under **Authorised redirect URIs**
-5. Copy the client ID and secret into Supabase → **Authentication → Providers →
+2. **Google Auth Platform → Overview → Get started**, then four screens:
+   - **App Information**: app name `Emaki`, and your address as user support email
+   - **Audience**: choose **External**
+   - **Contact Information**: your address
+   - **Finish**: agree to the User Data Policy, then Create
+3. **Clients → Create client → Web application**, and put the callback URL above
+   under **Authorised redirect URIs**. Copy the client ID and secret from the
+   panel that appears.
+4. **Audience → Test users → Add users**, and add every address you will test
+   with
+5. Paste the client ID and secret into Supabase → **Authentication → Providers →
    Google**, and enable it
 
-Note: an unverified consent screen shows an "unverified app" warning to anyone
-who is not a listed test user. Google verification takes days to weeks, so start
-it well before launch or expect that screen.
+Until Google verifies the app, anyone not on that test user list gets an
+"unverified app" warning. Verification lives under **Verification centre** and
+takes days to weeks, so start it well before launch or expect that screen.
 
 ### GitHub
 
