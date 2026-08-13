@@ -1,3 +1,8 @@
+// The app is called Emaki, but every localStorage key below keeps the old
+// kaishi- prefix on purpose. They are how existing installs find their
+// progress, and renaming them would silently orphan every user's history
+// including your own. Leave them alone unless you also ship a migration that
+// copies the old keys across first.
 const STORAGE_KEY = 'kaishi-progress';
 const SETTINGS_KEY = 'kaishi-settings';
 const DAILY_KEY = 'kaishi-daily-lessons';
@@ -1342,7 +1347,7 @@ function render(){
   else body = renderReview();
   root.innerHTML = `
     <header>
-      <h1>Kaishi SRS</h1>
+      <h1>Emaki</h1>
       <div style="display:flex;align-items:center;gap:10px;">
         <span class="sub">1500-word deck</span>
         <button class="icon-btn" onclick="switchView('info')" title="Info" aria-label="Info">ⓘ</button>

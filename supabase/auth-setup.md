@@ -49,7 +49,7 @@ curl -X PATCH "https://api.supabase.com/v1/projects/uozdxhcyxwnyqrplwokr/config/
     \"smtp_user\": \"resend\",
     \"smtp_pass\": \"$SMTP_PASSWORD\",
     \"smtp_admin_email\": \"noreply@your-domain.example\",
-    \"smtp_sender_name\": \"Kaishi SRS\"
+    \"smtp_sender_name\": \"Emaki\"
   }"
 ```
 
@@ -108,7 +108,7 @@ which is the confusing kind of broken.
 
 ```
 http://localhost:8123
-https://<user>.github.io/kaishi-srs/
+https://<user>.github.io/emaki/
 ```
 
 ---

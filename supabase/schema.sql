@@ -1,4 +1,4 @@
--- Kaishi SRS, cross-device sync schema.
+-- Emaki, cross-device sync schema.
 -- Run once: Supabase dashboard -> SQL Editor -> New query -> paste -> Run.
 -- Safe to re-run; every statement is idempotent.
 

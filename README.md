@@ -1,6 +1,15 @@
-# Kaishi SRS
+# Emaki
 
-A lightweight spaced-repetition trainer for the Kaishi 1.5k Japanese vocab deck. Static HTML/CSS/JS, no build step, no backend. Progress is saved to `localStorage`.
+Written mnemonics for the Kaishi 1.5k Japanese vocab deck, with a
+spaced-repetition trainer around them. Static HTML/CSS/JS, no build step, no
+backend. Progress is saved to `localStorage`.
+
+An emaki is a painted handscroll that tells a story one scene at a time as you
+unroll it, which is what the cards here are: one image per word rather than a
+stated link between a sound and a meaning. `MNEMONICS.md` is the style guide
+that keeps them that way.
+
+Not affiliated with, or endorsed by, Kaishi 1.5k.
 
 ## Structure
 
@@ -48,7 +57,7 @@ Setup, once per Supabase project:
 1. Run [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL editor.
    It creates the `user_state` table and the row-level security policies.
 2. In Supabase → Authentication → URL Configuration, add every origin the app
-   is served from to **Redirect URLs**, e.g. `https://<user>.github.io/kaishi-srs/`
+   is served from to **Redirect URLs**, e.g. `https://<user>.github.io/emaki/`
    and `http://localhost:8123` for local work. Both the magic link and the OAuth
    round trip only return to URLs listed here.
 3. Custom SMTP and the OAuth providers, both of which need secrets pasted into
