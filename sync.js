@@ -214,6 +214,34 @@ async function signInWithEmail(){
   render();
 }
 
+// A magic link means an email round trip on every new device, which is a lot of
+// friction for someone signing in on a phone. These are the alternative.
+//
+// Each provider has to be switched on in the Supabase dashboard first
+// (Authentication -> Providers) and the callback URL added there, otherwise the
+// call comes back as an error rather than a redirect. Keep this list matching
+// whatever is actually enabled, or the app offers buttons that cannot work.
+const OAUTH_PROVIDERS = [
+  { id: 'google', label: 'Continue with Google' },
+  { id: 'github', label: 'Continue with GitHub' }
+];
+
+async function signInWithProvider(provider){
+  if(!sb){ setSyncStatus('error', 'Sync unavailable'); return; }
+  setSyncStatus('signing-in');
+  const { error } = await sb.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: window.location.href.split('#')[0] }
+  });
+  // On success the browser has already navigated away, so there is nothing
+  // left to do here and no success branch to write.
+  if(error){
+    setSyncStatus('error', error.message);
+    syncNotice = 'Could not start sign-in with ' + provider + ': ' + error.message;
+    render();
+  }
+}
+
 async function signOutSync(){
   if(!sb) return;
   await sb.auth.signOut();

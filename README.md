@@ -49,8 +49,26 @@ Setup, once per Supabase project:
    It creates the `user_state` table and the row-level security policies.
 2. In Supabase → Authentication → URL Configuration, add every origin the app
    is served from to **Redirect URLs**, e.g. `https://<user>.github.io/kaishi-srs/`
-   and `http://localhost:8123` for local work. The magic link only returns to
-   URLs listed here.
+   and `http://localhost:8123` for local work. Both the magic link and the OAuth
+   round trip only return to URLs listed here.
+3. In Supabase → Authentication → Providers, enable each provider listed in
+   `OAUTH_PROVIDERS` at the top of [`sync.js`](sync.js), currently Google and
+   GitHub, and paste in the client ID and secret from each. On the Google and
+   GitHub side, the authorised callback is
+   `https://<project-ref>.supabase.co/auth/v1/callback`.
+
+   Sign-in offers a button for every provider in that list whether or not it is
+   switched on here, so delete the ones you don't enable. An un-enabled provider
+   returns an error instead of redirecting.
+4. **Before letting anyone else use it**, set up custom SMTP in
+   Supabase → Authentication → SMTP Settings. The built-in email sender is
+   capped at **two messages an hour** and Supabase describes it as best-effort
+   and not for production. Two sign-in links an hour is not a public app. Point
+   it at Resend, Postmark or similar, and note that custom SMTP starts at 30 an
+   hour until you raise it on the Rate Limits page.
+
+   OAuth doesn't send email, so Google and GitHub sign-in works fine without
+   this. It is the magic link that falls over.
 
 The project URL and publishable key in `sync.js` are meant to be public: they
 identify the project, they don't grant access. The RLS policies in step 1 are

@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
 };
 const STREAK_SAVE_KEY = 'kaishi-streak-saves';
+const SYNC_PROMPT_KEY = 'kaishi-sync-prompt-dismissed';
 // One kunai in hand at a time, replenishing every 3 days. A missed day spends
 // it and the streak carries on; miss two in a row and it breaks.
 const STREAK_SAVE_MAX = 1;
@@ -854,6 +855,7 @@ function renderDashboard(){
       <button class="primary" onclick="switchView('lessons')">Start Lessons</button>
     </div>
   </div>
+  ${renderSyncPrompt()}
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
@@ -1154,6 +1156,36 @@ function renderAudioCard(){
   `;
 }
 
+// Sync used to be findable only by opening Settings and scrolling, which meant
+// most people never learned their progress could follow them. This says so once
+// on the dashboard, under the two study buttons so it never comes between
+// somebody and their reviews.
+//
+// Dismissal lives in localStorage rather than settings: settings sync, and the
+// only people who see this are the ones with nowhere to sync to.
+function syncPromptDismissed(){
+  try{ return window.localStorage.getItem(SYNC_PROMPT_KEY) === '1'; }catch(e){ return false; }
+}
+function dismissSyncPrompt(){
+  try{ window.localStorage.setItem(SYNC_PROMPT_KEY, '1'); }catch(e){}
+  render();
+}
+
+function renderSyncPrompt(){
+  if(typeof signInWithEmail !== 'function') return '';   // sync.js absent
+  if(typeof syncUser !== 'undefined' && syncUser) return ''; // already signed in
+  if(syncPromptDismissed()) return '';
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Study on your other devices</div>
+    <div class="settings-desc">Progress is saved in this browser only. Sign in and it follows you to your phone, and survives clearing your history.</div>
+    <div class="btnrow" style="margin-top:12px;">
+      <button class="secondary" onclick="dismissSyncPrompt()">Not now</button>
+      <button class="primary" onclick="switchView('settings')">Sign in</button>
+    </div>
+  </div>`;
+}
+
 function renderAccountCard(){
   // sync.js is optional; degrade to a plain note rather than offering a button
   // that would throw.
@@ -1167,6 +1199,14 @@ function renderAccountCard(){
   const notice = typeof syncNotice === 'string' && syncNotice
     ? `<p class="forecast" style="text-align:center;margin-top:12px;">${escapeHtml(syncNotice)}</p>` : '';
   const signedIn = typeof syncUser !== 'undefined' && syncUser;
+  // OAuth is offered only for providers sync.js actually lists, so turning one
+  // off in the Supabase dashboard means deleting it there and the button goes.
+  const providers = (typeof signInWithProvider === 'function' && typeof OAUTH_PROVIDERS !== 'undefined')
+    ? OAUTH_PROVIDERS : [];
+  const providerButtons = providers.length ? `
+      <div class="btnrow" style="flex-direction:column;gap:8px;margin-bottom:14px;">
+        ${providers.map(p=>`<button class="primary" onclick="signInWithProvider('${escapeHtml(p.id)}')">${escapeHtml(p.label)}</button>`).join('')}
+      </div>` : '';
   return `
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Sync</div>
@@ -1177,10 +1217,14 @@ function renderAccountCard(){
       <button class="primary" onclick="signOutSync()">Sign out</button>
     ` : `
       <div class="settings-row">
-        <div class="settings-desc">Sign in to keep progress in step across devices. We'll email you a link, no password to remember. Without this, progress stays in this browser only.</div>
+        <div class="settings-desc">Sign in to keep progress in step across devices. No password to remember either way. Without this, progress stays in this browser only.</div>
+      </div>
+      ${providerButtons}
+      <div class="settings-row">
+        <div class="settings-desc">Or have a one-time link emailed to you.</div>
         <input type="email" id="syncEmailInput" placeholder="you@example.com" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false">
       </div>
-      <button class="primary" onclick="signInWithEmail()">Email me a sign-in link</button>
+      <button class="secondary" onclick="signInWithEmail()">Email me a sign-in link</button>
     `}
     ${notice}
   </div>
