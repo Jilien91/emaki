@@ -123,10 +123,22 @@ every origin the app is served from. Both magic link and OAuth return through
 this list, so a missing entry fails after the user has already authenticated,
 which is the confusing kind of broken.
 
+**Mind the trailing slash.** Supabase matches these as patterns, not as exact
+strings, and `.` and `/` count as separators. `http://localhost:8123` does not
+match `http://localhost:8123/`, and the app sends the second one, because
+`signInWithProvider` passes `window.location.href` and a bare origin always
+arrives with its slash. Add these four:
+
 ```
-http://localhost:8123
+http://localhost:8123/
+http://localhost:8123/**
 https://<user>.github.io/emaki/
+https://<user>.github.io/emaki/**
 ```
+
+The `/**` entries catch anything with a query string on the end. Supabase
+suggests keeping production tight to the exact path, so drop the wildcards once
+you know nothing needs them.
 
 ---
 
