@@ -18,11 +18,46 @@ The built-in sender is capped at **two emails an hour** and Supabase describes i
 as best-effort and not for production. Magic-link sign-in is unusable in public
 without this. OAuth sends no email and is unaffected.
 
-Pick a provider first. Resend and Postmark both have free tiers big enough here,
-and both want a verified sending domain, which is the slow part. Do that first
-and the rest is five minutes.
+### Resend, start to finish
 
-### Via the dashboard
+1. **resend.com**, sign up (GitHub or Google is fine).
+2. **Domains → Add Domain**. Use a subdomain, `auth.emakisrs.com`, not the bare
+   domain. Resend recommend it so sending reputation is isolated from the root,
+   and it means a future newsletter cannot poison sign-in delivery. Pick the
+   region closest to you.
+3. Resend shows a handful of DNS records. Add each one in
+   **Cloudflare → Websites → emakisrs.com → DNS → Records**.
+
+   **The Cloudflare trap:** it appends the zone to whatever you type in Name. If
+   Resend says the name is `resend._domainkey.auth.emakisrs.com`, type
+   `resend._domainkey.auth` and nothing more, or you end up with
+   `...emakisrs.com.emakisrs.com` and verification never passes. There is no
+   proxy toggle on TXT and MX records, so nothing to grey out here.
+
+4. Back in Resend, **Verify**. Usually a minute or two.
+5. **API Keys → Create API Key**. Sending access is enough. Copy it now, it is
+   shown once.
+6. Supabase → **Authentication → SMTP Settings**, enable custom SMTP:
+
+   | Field | Value |
+   |---|---|
+   | Host | `smtp.resend.com` |
+   | Port | `587` |
+   | Username | `resend` |
+   | Password | the Resend API key |
+   | Sender email | `noreply@auth.emakisrs.com` |
+   | Sender name | `Emaki` |
+
+   The sender address has to be on the domain you verified, so it is the
+   subdomain, not `noreply@emakisrs.com`.
+
+7. Supabase → **Authentication → Rate Limits**, raise the email limit. Custom
+   SMTP starts at 30 an hour.
+8. Test: sign out, request a link, then request a second one a minute later.
+   **Both arriving is the proof.** One arriving proves nothing, because the
+   built-in sender allows two an hour and would also deliver the first.
+
+### Via the dashboard, in general
 
 1. Supabase → your project → **Authentication** → **SMTP Settings**
 2. Turn on **Enable Custom SMTP**
