@@ -51,8 +51,13 @@ without this. OAuth sends no email and is unaffected.
    The sender address has to be on the domain you verified, so it is the
    subdomain, not `noreply@emakisrs.com`.
 
-7. Supabase → **Authentication → Rate Limits**, raise the email limit. Custom
-   SMTP starts at 30 an hour.
+7. Supabase → **Authentication → Rate Limits**. Custom SMTP starts at 30 emails
+   an hour, and **leave it there**. Resend's free tier is 3,000 a month and 100
+   a day, so 30 an hour is not what limits you: sustained, it would be 720 a day,
+   seven times more than Resend will send. Raising it buys no capacity and only
+   means somebody hammering the sign-in form with junk addresses burns the daily
+   allowance faster and does more damage to your sending reputation first. Raise
+   it if real users ever hit it, which would be a good problem to have.
 8. Test: sign out, request a link, then request a second one a minute later.
    **Both arriving is the proof.** One arriving proves nothing, because the
    built-in sender allows two an hour and would also deliver the first.
