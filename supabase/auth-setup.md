@@ -72,6 +72,12 @@ The callback URL, for both providers:
 https://uozdxhcyxwnyqrplwokr.supabase.co/auth/v1/callback
 ```
 
+On the Supabase side everything below happens under
+**Authentication → Sign In / Providers**, in the CONFIGURATION part of the
+sidebar. Not **OAuth Apps** under MANAGE, which sounds right and is the opposite
+thing: that one is for letting other applications authenticate against your
+project.
+
 ### Google
 
 Google replaced the old "APIs & Services → OAuth consent screen" with the
@@ -90,8 +96,8 @@ Any guide still telling you to look for User type is out of date.
    panel that appears.
 4. **Audience → Test users → Add users**, and add every address you will test
    with
-5. Paste the client ID and secret into Supabase → **Authentication → Providers →
-   Google**, and enable it
+5. Paste the client ID and secret into Supabase →
+   **Authentication → Sign In / Providers → Google**, and enable it
 
 Until Google verifies the app, anyone not on that test user list gets an
 "unverified app" warning. Verification lives under **Verification centre** and
@@ -102,8 +108,8 @@ takes days to weeks, so start it well before launch or expect that screen.
 1. GitHub → Settings → Developer settings → **OAuth Apps → New OAuth App**
 2. Authorization callback URL: the callback URL above
 3. Generate a client secret
-4. Copy the client ID and secret into Supabase → **Authentication → Providers →
-   GitHub**, and enable it
+4. Copy the client ID and secret into Supabase →
+   **Authentication → Sign In / Providers → GitHub**, and enable it
 
 GitHub has no review process, so it works immediately. If you only want one
 provider to start with, make it this one.
