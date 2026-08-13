@@ -61,3 +61,35 @@ Sync is best-effort: the app keeps working offline and signed out, local edits
 are flagged and pushed when a connection returns, and on load the device with
 unpushed changes wins. Studying offline on two devices at once can still lose
 one side's changes. It's last-write-wins, not a merge.
+
+## Licensing
+
+Three layers, three answers. Please don't treat any one of them as covering the
+others.
+
+**The app** (`index.html`, `style.css`, `app.js`, `sync.js`, `scripts/`,
+`supabase/`) is MIT. See [LICENSE](LICENSE). Take it and do what you like.
+
+**The written content** is CC BY-SA 4.0: every mnemonic and usage note, all of
+[`data/kanji.json`](data/kanji.json), the `raw/*_with_mnemonics.json` batch
+files and [`MNEMONICS.md`](MNEMONICS.md). This is original work written for this
+deck. Reuse it, including commercially, as long as you credit it and keep it
+under the same licence. Nothing in it is copied from WaniKani, Kanji Koohii,
+Ulrike's Mnemonics or any other course; see the Don't section of `MNEMONICS.md`
+for how that line is held.
+
+**The deck data** is not ours to license. The 1,500 words, readings, meanings
+and example sentences in [`raw/kaishi_1500_full.json`](raw/kaishi_1500_full.json),
+and the corresponding fields of `data/vocab.json`, come from
+[Kaishi 1.5k](https://github.com/donkuri/Kaishi) by 栗 (donkuri) and
+contributors, whose own sources are credited in their README. Only the six text
+fields are used here: word, reading, meaning, sentence, sentence meaning and
+frequency. The Kaishi audio (from AJT Japanese) and images (from irasutoya) are
+deliberately not included.
+
+> **Status:** permission to redistribute the deck data has been requested from
+> its authors and has not yet been granted. Until it is, treat that layer as all
+> rights reserved. If the answer is no, the deck data comes out and the app
+> loads a `.apkg` you import yourself.
+
+This project is not affiliated with, or endorsed by, Kaishi 1.5k.
