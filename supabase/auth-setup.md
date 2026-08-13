@@ -58,9 +58,13 @@ without this. OAuth sends no email and is unaffected.
    means somebody hammering the sign-in form with junk addresses burns the daily
    allowance faster and does more damage to your sending reputation first. Raise
    it if real users ever hit it, which would be a good problem to have.
-8. Test: sign out, request a link, then request a second one a minute later.
-   **Both arriving is the proof.** One arriving proves nothing, because the
-   built-in sender allows two an hour and would also deliver the first.
+8. Test: sign out and request a link, then **read the From address**. It should
+   say `Emaki <noreply@auth.emakisrs.com>`. That is the proof, because the
+   built-in sender sends from a Supabase address and cannot forge yours.
+
+   Counting emails does not prove it. The built-in sender allows two an hour, so
+   two arriving is consistent with either sender. Check the domain, not the
+   volume.
 
 ### Via the dashboard, in general
 
