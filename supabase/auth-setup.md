@@ -132,8 +132,8 @@ arrives with its slash. Add these four:
 ```
 http://localhost:8123/
 http://localhost:8123/**
-https://<user>.github.io/emaki/
-https://<user>.github.io/emaki/**
+https://emakisrs.com/
+https://emakisrs.com/**
 ```
 
 The `/**` entries catch anything with a query string on the end. Supabase

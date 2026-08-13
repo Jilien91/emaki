@@ -55,11 +55,11 @@ Setup, once per Supabase project:
 1. Run [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL editor.
    It creates the `user_state` table and the row-level security policies.
 2. In Supabase → Authentication → URL Configuration, add every origin the app
-   is served from to **Redirect URLs**, e.g. `https://<user>.github.io/emaki/`
-   and `http://localhost:8123/` for local work. Both the magic link and the
-   OAuth round trip only return to URLs listed here, and the trailing slash is
-   part of the match, so leaving it off silently breaks sign-in after the user
-   has already authenticated. See [`supabase/auth-setup.md`](supabase/auth-setup.md).
+   is served from to **Redirect URLs**, e.g. `https://emakisrs.com/` and
+   `http://localhost:8123/` for local work. Both the magic link and the OAuth
+   round trip only return to URLs listed here, and the trailing slash is part of
+   the match, so leaving it off silently breaks sign-in after the user has
+   already authenticated. See [`supabase/auth-setup.md`](supabase/auth-setup.md).
 3. Custom SMTP and the OAuth providers, both of which need secrets pasted into
    dashboards. Step by step in
    [`supabase/auth-setup.md`](supabase/auth-setup.md).
