@@ -107,9 +107,11 @@ fields are used here: word, reading, meaning, sentence, sentence meaning and
 frequency. The Kaishi audio (from AJT Japanese) and images (from irasutoya) are
 deliberately not included.
 
-> **Status:** permission to redistribute the deck data has been requested from
-> its authors and has not yet been granted. Until it is, treat that layer as all
-> rights reserved. If the answer is no, the deck data comes out and the app
-> loads a `.apkg` you import yourself.
+> **Status, and it is worth being plain about it.** Kaishi carries no licence,
+> so there is no permission to rely on and none has been granted here. Its
+> authors are being asked. Until they answer, treat that layer as all rights
+> reserved: it is not covered by either licence above, and it is not yours to
+> take from this repository. If they would rather it were not here it comes out
+> the same day, and the app will load a `.apkg` you import yourself instead.
 
 This project is not affiliated with, or endorsed by, Kaishi 1.5k.
