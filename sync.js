@@ -221,9 +221,15 @@ async function signInWithEmail(){
 // (Authentication -> Providers) and the callback URL added there, otherwise the
 // call comes back as an error rather than a redirect. Keep this list matching
 // whatever is actually enabled, or the app offers buttons that cannot work.
+// GitHub first on purpose. Its consent screen names the app ("to continue to
+// Emaki"), because GitHub shows the OAuth app name you registered. Google shows
+// the callback domain instead, which is the Supabase project ref until there is
+// a custom domain on it, and a random string on a sign-in page reads as
+// phishing to somebody who has never seen this app before. Put the one that
+// looks trustworthy first and revisit when the domain lands.
 const OAUTH_PROVIDERS = [
-  { id: 'google', label: 'Continue with Google' },
-  { id: 'github', label: 'Continue with GitHub' }
+  { id: 'github', label: 'Continue with GitHub' },
+  { id: 'google', label: 'Continue with Google' }
 ];
 
 async function signInWithProvider(provider){
