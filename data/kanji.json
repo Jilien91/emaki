@@ -901,5 +901,70 @@
     { "c": "木", "name": "tree" }
   ]},
   "風": { "meaning": "wind, style", "note": "A frame with 虫 an insect inside it, from the old idea that the wind carried them." },
-  "黒": { "meaning": "black", "note": "Soot caught in a window with 灬 fire underneath it. What the fire leaves behind." }
+  "黒": { "meaning": "black", "note": "Soot caught in a window with 灬 fire underneath it. What the fire leaves behind." },
+  "両": { "meaning": "both", "note": "Two of a thing held inside one frame." },
+  "予": { "meaning": "beforehand", "note": "One shape, nothing to pull off it. Settled in advance." },
+  "冗": { "meaning": "superfluous", "note": "宀 a roof over 儿 legs. Somebody underneath it with nothing much to do." },
+  "判": { "meaning": "judge, seal", "note": "刂 a standing blade on the right, cutting two things apart so you can tell which is which." },
+  "勢": { "meaning": "force, momentum", "note": "力 power down at the bottom, and everything above it building up on top." },
+  "嘘": { "meaning": "lie", "note": "口 a mouth on the left with emptiness beside it. Sound coming out with nothing behind it." },
+  "地": { "meaning": "ground, earth", "note": "土 earth on the left. The ground itself, and by extension a place on it." },
+  "増": { "meaning": "increase", "note": "土 earth on the left, piled higher, and then piled higher again." },
+  "奪": { "meaning": "snatch, take by force", "note": "大 a big figure over a bird held in a hand. It was somebody else's a second ago." },
+  "定": { "meaning": "fix, settle", "note": "宀 a roof with something settled underneath it and not moving again." },
+  "念": { "meaning": "thought, sense", "parts": [
+    { "c": "今", "name": "now" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "慢": { "meaning": "slow, indulgent", "note": "忄 a heart on the left slowed right down. Patience, or conceit, depending which way it goes." },
+  "我": { "meaning": "I, self", "note": "A hand holding a halberd. The self drawn as the thing that defends itself." },
+  "放": { "meaning": "release, let go", "parts": [
+    { "c": "方", "name": "direction" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "救": { "meaning": "rescue", "parts": [
+    { "c": "求", "name": "seek" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "敗": { "meaning": "defeat", "parts": [
+    { "c": "貝", "name": "shell, money" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "断": { "meaning": "cut off, decide", "note": "斤 an axe on the right, taking a thing off for good." },
+  "望": { "meaning": "hope, look afar", "note": "月 the moon down at the bottom right, and somebody a long way off looking up at it." },
+  "未": { "meaning": "not yet", "note": "A tree with the top branch not grown out. Not yet, rather than never." },
+  "流": { "meaning": "flow", "note": "氵 water on the left, going where water goes." },
+  "涙": { "meaning": "tear", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "戻", "name": "return" }
+  ]},
+  "窓": { "meaning": "window", "note": "穴 a hole in the wall with 心 a heart under it. The opening you stare out of." },
+  "素": { "meaning": "plain, element", "note": "糸 thread at the bottom, undyed. The material before anything has been done to it." },
+  "絡": { "meaning": "entwine, contact", "note": "糸 thread on the left, tying one thing on to the next." },
+  "綺": { "meaning": "finely woven", "note": "糸 thread on the left with 奇 strange beside it. Woven better than it needed to be." },
+  "緊": { "meaning": "tight, tense", "note": "糸 thread at the bottom, pulled until it will not give any further." },
+  "緒": { "meaning": "cord, together", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "者", "name": "person" }
+  ]},
+  "繰": { "meaning": "reel, repeat", "note": "糸 thread on the left, wound round and round and round again." },
+  "肉": { "meaning": "meat, flesh", "note": "A pictograph of a cut of meat with the grain drawn through it." },
+  "花": { "meaning": "flower", "note": "艹 grass over a figure changing into something else, which is what a plant does when it flowers." },
+  "裕": { "meaning": "abundance", "parts": [
+    { "c": "衤", "name": "clothing" },
+    { "c": "谷", "name": "valley" }
+  ]},
+  "談": { "meaning": "talk, discuss", "note": "言 speech on the left with a double fire beside it. Talk that goes on long enough to warm up." },
+  "追": { "meaning": "chase, follow", "note": "辶 the road radical with somebody already gone up it and you coming along behind." },
+  "連": { "meaning": "link, take along", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "車", "name": "cart" }
+  ]},
+  "避": { "meaning": "avoid", "note": "辶 a road that bends round a thing rather than going straight at it." },
+  "雰": { "meaning": "atmosphere", "parts": [
+    { "c": "雨", "name": "rain" },
+    { "c": "分", "name": "part" }
+  ]},
+  "響": { "meaning": "echo, resound", "note": "音 sound at the bottom, thrown back off everything stacked above it." },
+  "麗": { "meaning": "lovely", "note": "A deer with its antlers drawn out evenly on both sides. Fine, and matched." }
 }

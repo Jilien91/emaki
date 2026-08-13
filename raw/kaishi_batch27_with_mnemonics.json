@@ -1,0 +1,502 @@
+[
+ {
+  "word": "判断",
+  "reading": "はんだん",
+  "meaning": "judgment, decision",
+  "sentence": "彼の判断は正しい。",
+  "sentence_meaning": "His judgment is correct.",
+  "frequency": "804",
+  "mnemonic": "刂 a blade telling two things apart, and 断 an axe taking one of them off for good. Both halves are somebody deciding, and neither of them is reversible: はんだん.",
+  "notes": "判断する is to judge or to decide. 決める きめる is picking; 判断 is the weighing that comes first."
+ },
+ {
+  "word": "未来",
+  "reading": "みらい",
+  "meaning": "future",
+  "sentence": "未来は誰にも分からない。",
+  "sentence_meaning": "Nobody knows the future.",
+  "frequency": "805",
+  "mnemonic": "未 a tree with the top branch not out yet, and 来 the crop that has not come in. Nothing here has happened, which is the entire point of it: みらい.",
+  "notes": "未 means not yet, and turns up in 未定 みてい, undecided. 将来 しょうらい is your own future rather than the world's."
+ },
+ {
+  "word": "食う",
+  "reading": "くう",
+  "meaning": "to eat, to live on",
+  "sentence": "腹一杯食った。",
+  "sentence_meaning": "I ate heartily.",
+  "frequency": "806",
+  "mnemonic": "The same 食 as 食べる, a lid over a heaped dish, except nobody here is being delicate about it. He eats standing up over the sink: くう.",
+  "notes": "Blunt and masculine. 食べる たべる is the neutral one. 食う also does living on something: 芸で食う."
+ },
+ {
+  "word": "分",
+  "reading": "ぶん",
+  "meaning": "amount, share",
+  "sentence": "このケーキはあなたの分です。",
+  "sentence_meaning": "This cake is your portion.",
+  "frequency": "807",
+  "mnemonic": "八 splitting with 刀 a blade, so a portion cut off the whole. Your share of the bill, your share of the work, and the bun that comes with it: ぶん.",
+  "notes": "The portion belonging to something. 自分 じぶん is your own share, which is where the word for self comes from."
+ },
+ {
+  "word": "そっち",
+  "reading": "そっち",
+  "meaning": "there",
+  "sentence": "そっちが私の部屋です。",
+  "sentence_meaning": "That's my room over there.",
+  "frequency": "810",
+  "mnemonic": "そ- is your side of things again, and this is the offhand way of pointing at it. Not over there. Where you are, and nobody is reaching for こちら: そっち.",
+  "notes": "The casual form of そちら. こっち, そっち, あっち, どっち run exactly as これ, それ, あれ, どれ do."
+ },
+ {
+  "word": "上手い",
+  "reading": "うまい",
+  "meaning": "skilled, good",
+  "sentence": "彼はサッカーも野球もとても上手いです。",
+  "sentence_meaning": "He's good at soccer and baseball.",
+  "frequency": "811",
+  "mnemonic": "上 above the line and 手 a hand, so a hand above everybody else's. He makes it look like nothing at all, and you may as well not have tried: うまい.",
+  "notes": "Also means tasty. 上手 じょうず is the same two characters read differently, and is the politer word for skilled."
+ },
+ {
+  "word": "合わせる",
+  "reading": "あわせる",
+  "meaning": "to adjust, to match",
+  "sentence": "日時はご都合に合わせます。",
+  "sentence_meaning": "The date can be scheduled according to your circumstances.",
+  "frequency": "812",
+  "mnemonic": "𠆢 a lid coming down onto 口 a mouth, the same as 合う, except this time somebody is doing the fitting. Watches set to the same minute before anyone leaves: あわせる.",
+  "notes": "合う あう is things matching by themselves. 合わせる is you making them match."
+ },
+ {
+  "word": "大切",
+  "reading": "たいせつ",
+  "meaning": "important, valuable",
+  "sentence": "これは母が大切にしていた指輪です。",
+  "sentence_meaning": "This is a ring that meant a lot to my mother.",
+  "frequency": "813",
+  "mnemonic": "大 big and 切 a blade, which reads wrong until you think of cutting a thing out in order to keep it. Tie it, set it aside, let nobody else near: たいせつ.",
+  "notes": "大事 だいじ is the near twin and either does most of the time. 大切にする is to treasure something."
+ },
+ {
+  "word": "花",
+  "reading": "はな",
+  "meaning": "flower",
+  "sentence": "母は花が好きです。",
+  "sentence_meaning": "My mother likes flowers.",
+  "frequency": "814",
+  "mnemonic": "艹 grass on top, and underneath it something caught halfway through turning. One stem in a jar and the whole room is different: はな.",
+  "notes": "Later comes 鼻 はな, nose, which sounds identical. 花見 はなみ is flower viewing."
+ },
+ {
+  "word": "謝る",
+  "reading": "あやまる",
+  "meaning": "to apologize",
+  "sentence": "自分が悪い時は謝りましょう。",
+  "sentence_meaning": "Be sure to apologize when you've done something wrong.",
+  "frequency": "815",
+  "mnemonic": "言 speech with an arrow loosed beside it, the same 謝 as 感謝. Words sent out on purpose, except this time sending them costs you something: あやまる.",
+  "notes": "Same 謝 as 感謝 かんしゃ. Both are words you have to actually put out there."
+ },
+ {
+  "word": "奪う",
+  "reading": "うばう",
+  "meaning": "to snatch, to take by force",
+  "sentence": "その男は彼女のバッグを奪ったぞ。",
+  "sentence_meaning": "That man stole her bag.",
+  "frequency": "817",
+  "mnemonic": "The bird was in somebody else's hand a moment ago, and the big figure standing over it did not ask. It is his now: うばう.",
+  "notes": "Taking by force. 取る とる is neutral, and 盗む ぬすむ is stealing quietly."
+ },
+ {
+  "word": "勢い",
+  "reading": "いきおい",
+  "meaning": "vigor, momentum",
+  "sentence": "そのチームには勢いがありますね。",
+  "sentence_meaning": "That team has momentum.",
+  "frequency": "818",
+  "mnemonic": "力 power at the bottom and everything above it stacking up. Once it is moving nobody needs to push any more, and nobody could stop it either: いきおい.",
+  "notes": "勢いで means on a roll, carried by it. 力 ちから is strength standing still."
+ },
+ {
+  "word": "涙",
+  "reading": "なみだ",
+  "meaning": "tear",
+  "sentence": "動物の映画を見て、涙が出ました。",
+  "sentence_meaning": "I saw a movie about animals and cried.",
+  "frequency": "820",
+  "mnemonic": "氵 water with 戻 returning beside it, because it comes back whether you want it to or not. She got through the whole speech and then the last line went: なみだ.",
+  "notes": "涙が出る なみだがでる is the usual way of saying you are crying. 泣く なく is the act itself."
+ },
+ {
+  "word": "雰囲気",
+  "reading": "ふんいき",
+  "meaning": "atmosphere, mood",
+  "sentence": "とても雰囲気のいいお店ですね。",
+  "sentence_meaning": "The shop has a really good atmosphere.",
+  "frequency": "823",
+  "mnemonic": "雨 rain split into 分 parts, 囲 a border drawn round it, and 気 the steam of the place. Three characters for a thing nobody can point at. It was fun, then it went icky: ふんいき.",
+  "notes": "The feel of a place or a moment. 空気 くうき does the same job in 空気を読む, reading the room."
+ },
+ {
+  "word": "嘘",
+  "reading": "うそ",
+  "meaning": "lie",
+  "sentence": "嘘じゃありません。本当です。",
+  "sentence_meaning": "It's not a lie. It's true.",
+  "frequency": "824",
+  "mnemonic": "口 a mouth on the left with nothing whatsoever beside it. Sound coming out with no substance behind it, which is the whole definition: うそ.",
+  "notes": "嘘つき うそつき is a liar. 嘘! on its own is you are kidding."
+ },
+ {
+  "word": "望む",
+  "reading": "のぞむ",
+  "meaning": "to desire, to hope",
+  "sentence": "彼は私との結婚を望んでいます。",
+  "sentence_meaning": "He hopes to marry me.",
+  "frequency": "825",
+  "mnemonic": "月 the moon down in the corner, and the whole rest of the character is the distance to it. Wanting a thing you cannot reach from here, and no amount of zoom helps: のぞむ.",
+  "notes": "希望 きぼう is hope as a noun. 望む is the wanting itself."
+ },
+ {
+  "word": "緊張",
+  "reading": "きんちょう",
+  "meaning": "tension, strain, nervousness",
+  "sentence": "昨日のスピーチはとても緊張しました。",
+  "sentence_meaning": "I was really nervous during my speech yesterday.",
+  "frequency": "826",
+  "mnemonic": "糸 thread pulled until it will not give, and 張 a bow drawn 長 long. Two things at full stretch. Stood up to speak and your voice has gone elsewhere: きんちょう.",
+  "notes": "緊張する is to be nervous. Same 張 as 頑張る がんばる, where the stretch is effort rather than nerves."
+ },
+ {
+  "word": "一緒",
+  "reading": "いっしょ",
+  "meaning": "together",
+  "sentence": "一緒に食事しよっか。",
+  "sentence_meaning": "Do you want to eat together?",
+  "frequency": "827",
+  "mnemonic": "一 one and 緒 a thread with a person on the end of it. Two of you tied into a single strand, going the same way whether or not it was agreed: いっしょ.",
+  "notes": "一緒に is together as an adverb. It also means the same: 一緒だ, they are identical."
+ },
+ {
+  "word": "救う",
+  "reading": "すくう",
+  "meaning": "to save",
+  "sentence": "彼女は通りがかりの人に救われたよ。",
+  "sentence_meaning": "She was saved by a passing stranger.",
+  "frequency": "830",
+  "mnemonic": "求 seeking with 攵 a hand striking alongside, so going in and getting somebody out. Straight off the bank and scooped the dog up with one arm: すくう.",
+  "notes": "助ける たすける is helping, up to and including rescue. 救う is the rescue itself, and heavier."
+ },
+ {
+  "word": "自ら",
+  "reading": "みずから",
+  "meaning": "oneself",
+  "sentence": "社長自らがその会社と交渉したよ。",
+  "sentence_meaning": "The president himself negotiated with that company.",
+  "frequency": "832",
+  "mnemonic": "自 the nose you point at to mean me, the same as in 自分. Except this one is an adverb: nobody asked him, nobody sent him, he went: みずから.",
+  "notes": "Formal and written. 自分で じぶんで is the everyday by myself."
+ },
+ {
+  "word": "地面",
+  "reading": "じめん",
+  "meaning": "surface, ground",
+  "sentence": "地面に何か絵が描いてあるぞ。",
+  "sentence_meaning": "There is some kind of picture drawn on the ground.",
+  "frequency": "833",
+  "mnemonic": "土 earth on the left and 面 the face of a thing. Not the soil and not the planet. The flat top of it, which is what you land on: じめん.",
+  "notes": "地 reads ち on its own meaning ground, and じ in compounds like this one."
+ },
+ {
+  "word": "失敗",
+  "reading": "しっぱい",
+  "meaning": "failure, blunder",
+  "sentence": "一度の失敗であきらめてはいけないよ。",
+  "sentence_meaning": "You must not give up after one blunder.",
+  "frequency": "834",
+  "mnemonic": "失 a hand letting go without meaning to, and 敗 money with a hand striking at it. You lost hold and it cost something, and everybody saw: しっぱい.",
+  "notes": "失敗する is to fail or to make a mistake. 成功 せいこう is succeeding."
+ },
+ {
+  "word": "避ける",
+  "reading": "さける",
+  "meaning": "to avoid, to evade",
+  "sentence": "彼女は昨日から私のことを避けているようなんだ。",
+  "sentence_meaning": "She seems to have been avoiding me since yesterday.",
+  "frequency": "835",
+  "mnemonic": "辶 the road again, except this one takes the long way on purpose. He saw them at the far end of the aisle and found something urgent in the other direction: さける.",
+  "notes": "Avoiding a thing or a person. 逃げる にげる is running once it has already started."
+ },
+ {
+  "word": "窓",
+  "reading": "まど",
+  "meaning": "window",
+  "sentence": "窓を開けてください。",
+  "sentence_meaning": "Please open the window.",
+  "frequency": "839",
+  "mnemonic": "穴 an opening cut into the wall with 心 a heart sat below it, which is about right. Nothing whatsoever to see out there, and you look anyway: まど.",
+  "notes": "窓口 まどぐち is a service counter, the window you queue at."
+ },
+ {
+  "word": "素直",
+  "reading": "すなお",
+  "meaning": "honest, straightforward",
+  "sentence": "彼女はとても素直で可愛いですね。",
+  "sentence_meaning": "She is very honest and cute.",
+  "frequency": "843",
+  "mnemonic": "素 undyed thread with nothing done to it, and 直 an eye looking dead ahead. No angle, no colour added. She says what she thinks and it costs her nothing: すなお.",
+  "notes": "Not the same as 正直 しょうじき. 正直 is not lying; 素直 is not being difficult, and it is a compliment about temperament."
+ },
+ {
+  "word": "肉",
+  "reading": "にく",
+  "meaning": "flesh, meat",
+  "sentence": "肉が焼けました。",
+  "sentence_meaning": "The meat is cooked.",
+  "frequency": "844",
+  "mnemonic": "A pictograph of a cut with the grain drawn through it. Nick a slice off the joint before it reaches the table and see what happens: にく.",
+  "notes": "The same 肉 sits inside 月 when 月 carries the flesh sense, which is why 胸 and 腕 have it."
+ },
+ {
+  "word": "冗談",
+  "reading": "じょうだん",
+  "meaning": "joke",
+  "sentence": "冗談は止めてください。",
+  "sentence_meaning": "Please stop joking.",
+  "frequency": "845",
+  "mnemonic": "冗 somebody under a roof with nothing to do, and 談 talk warming up next to a double fire. Joe and Dan have been at it an hour and none of it was true: じょうだん.",
+  "notes": "冗談でしょ is you are joking. 嘘 うそ is a lie meant to deceive; a 冗談 is not."
+ },
+ {
+  "word": "余裕",
+  "reading": "よゆう",
+  "meaning": "room, leeway",
+  "sentence": "出発まで時間の余裕があります。",
+  "sentence_meaning": "We have some time until departure.",
+  "frequency": "846",
+  "mnemonic": "余 whatever did not get used, and 裕 clothing cut as wide as a valley. Room to move about inside it. He finished with an hour spare and never hurried: よゆう.",
+  "notes": "Time, money or composure, all the same word. 余裕がある is having slack in the system."
+ },
+ {
+  "word": "連絡",
+  "reading": "れんらく",
+  "meaning": "connection, communication",
+  "sentence": "仕事が終わったら連絡します。",
+  "sentence_meaning": "I'll contact you when I finish the job.",
+  "frequency": "847",
+  "mnemonic": "連 carts strung out along a road, and 絡 thread tying one to the next. Not a conversation. The wire staying up between you: れんらく.",
+  "notes": "連絡する is to get in touch. 連絡先 れんらくさき is your contact details."
+ },
+ {
+  "word": "人生",
+  "reading": "じんせい",
+  "meaning": "(human) life",
+  "sentence": "彼は自分の人生を振り返ったわ。",
+  "sentence_meaning": "He looked back on his life.",
+  "frequency": "848",
+  "mnemonic": "人 a person and 生 the shoot pushing up. Not being alive, which is 命, and not daily living, which is 生活. The whole span, looked at from the far end: じんせい.",
+  "notes": "命 いのち is life itself, 生活 せいかつ is how it gets lived, 人生 is the course of one."
+ },
+ {
+  "word": "放つ",
+  "reading": "はなつ",
+  "meaning": "to emit, to set free, to shoot (e.g. an arrow or bullet)",
+  "sentence": "的に向けて矢を放った。",
+  "sentence_meaning": "I shot the arrow at the target.",
+  "frequency": "849",
+  "mnemonic": "方 a direction with 攵 a strike behind it. Point the thing and let go of it. An arrow, a bird, or the smell off something left in the sun: はなつ.",
+  "notes": "放す はなす is letting go, and 放送 ほうそう is broadcasting, the same idea aimed outward."
+ },
+ {
+  "word": "流れる",
+  "reading": "ながれる",
+  "meaning": "to flow, to pass",
+  "sentence": "ラジオから美しい音楽が流れています。",
+  "sentence_meaning": "Beautiful music is coming from the radio.",
+  "frequency": "853",
+  "mnemonic": "氵 water, asking nobody's permission about anything at all. The tap and the Niagara are doing the same thing at different volumes: ながれる.",
+  "notes": "Time, water, music and rumours all 流れる. 流す ながす is you making it flow."
+ },
+ {
+  "word": "特別",
+  "reading": "とくべつ",
+  "meaning": "special, extraordinary",
+  "sentence": "あなたは私にとって特別な人です。",
+  "sentence_meaning": "You're special to me.",
+  "frequency": "854",
+  "mnemonic": "牛 the cow walked in through the temple gate, and 刂 the blade that cuts one thing out of the pile. Both halves single something out, so twice over it must be: とくべつ.",
+  "notes": "Same 特 as 特に とくに and the same 別 as 別 べつ. Both are about picking one out of the rest."
+ },
+ {
+  "word": "連中",
+  "reading": "れんちゅう",
+  "meaning": "party, this bunch",
+  "sentence": "あの連中は本当に面白い。",
+  "sentence_meaning": "That bunch is really interesting.",
+  "frequency": "855",
+  "mnemonic": "連 carts strung along a road again, and 中 the middle of them. That lot, taken as a single thing, and not admiringly: れんちゅう.",
+  "notes": "Familiar or dismissive depending entirely on tone. Not a word for people you are being polite about."
+ },
+ {
+  "word": "両手",
+  "reading": "りょうて",
+  "meaning": "both hands",
+  "sentence": "彼は両手を握り締めたの。",
+  "sentence_meaning": "He clenched both his fists.",
+  "frequency": "857",
+  "mnemonic": "両 two of a thing inside one frame, and 手 a hand. Both of them at once, because whatever it is will not go in one: りょうて.",
+  "notes": "両 means both: 両親 りょうしん is parents and 両方 りょうほう is both sides."
+ },
+ {
+  "word": "増える",
+  "reading": "ふえる",
+  "meaning": "to increase, to accrue",
+  "sentence": "この町は人口が増えた。",
+  "sentence_meaning": "The population has increased in this town.",
+  "frequency": "858",
+  "mnemonic": "土 earth piled up, and then piled up again. Nobody added any of them on purpose. You open the drawer and there are eleven where there were four: ふえる.",
+  "notes": "増やす ふやす is you increasing it. 減る へる is the opposite."
+ },
+ {
+  "word": "出会う",
+  "reading": "であう",
+  "meaning": "to meet (by chance), to come across",
+  "sentence": "アメリカで彼女と出会いました。",
+  "sentence_meaning": "I met her in the United States.",
+  "frequency": "860",
+  "mnemonic": "出 coming out and 会う meeting, welded together. Neither of you arranged any of it. You came round the corner and there they were, eight years later: であう.",
+  "notes": "会う あう is meeting, arranged or not. 出会う is specifically running into somebody."
+ },
+ {
+  "word": "少年",
+  "reading": "しょうねん",
+  "meaning": "boy",
+  "sentence": "少年たちがサッカーをしている。",
+  "sentence_meaning": "The boys are playing soccer.",
+  "frequency": "861",
+  "mnemonic": "少 a small quantity of 年 years, which is all a boy is. The word turns up on the news and in manga titles and almost nowhere in speech: しょうねん.",
+  "notes": "少女 しょうじょ is the girl. Both are written words rather than what you would call a child to their face."
+ },
+ {
+  "word": "繰り返す",
+  "reading": "くりかえす",
+  "meaning": "to repeat",
+  "sentence": "彼女は同じ間違いを繰り返した。",
+  "sentence_meaning": "She repeated the same mistake.",
+  "frequency": "862",
+  "mnemonic": "糸 thread wound round and round, and 返す giving it back. Round it comes again, and you are about to say the same sentence for the third time: くりかえす.",
+  "notes": "Same 返 as 返す かえす. 繰り返し くりかえし is a repetition as a noun."
+ },
+ {
+  "word": "我慢",
+  "reading": "がまん",
+  "meaning": "patience, bearing with",
+  "sentence": "彼のわがままには我慢できません。",
+  "sentence_meaning": "I can't put up with his selfishness.",
+  "frequency": "864",
+  "mnemonic": "我 the self drawn as a hand holding a weapon, and 慢 a heart slowed right down. Keeping still when everything in you says do not. Gah. Man. がまん.",
+  "notes": "我慢する is to put up with it. Endurance rather than patience: something is wrong and you are not reacting to it."
+ },
+ {
+  "word": "我々",
+  "reading": "われわれ",
+  "meaning": "we (formal)",
+  "sentence": "我々の決意は固いです。",
+  "sentence_meaning": "Our decision is firm.",
+  "frequency": "865",
+  "mnemonic": "我 the self, and 々 saying do that one again, so selves in the plural. Said from a podium by somebody speaking for everybody in the room: われわれ.",
+  "notes": "々 repeats the character before it, so this is 我我. Formal and a shade grand. 私たち わたしたち is the everyday we."
+ },
+ {
+  "word": "感覚",
+  "reading": "かんかく",
+  "meaning": "sensation",
+  "sentence": "冷えて指の感覚がない。",
+  "sentence_meaning": "There's no sensation in my cold fingers.",
+  "frequency": "866",
+  "mnemonic": "咸 all of it landing on 心 a heart, and 覚 the eye that took it in. Below thinking. What your hand knows about the water before you do: かんかく.",
+  "notes": "感じ かんじ is the impression; 感覚 is the faculty itself. Same 覚 as 覚える おぼえる."
+ },
+ {
+  "word": "響く",
+  "reading": "ひびく",
+  "meaning": "to reverberate",
+  "sentence": "このホールは音がよく響きます。",
+  "sentence_meaning": "Sounds carry well in this hall.",
+  "frequency": "867",
+  "mnemonic": "音 sound down at the bottom with a whole village piled on top of it to bounce off. One door in an empty building and the stairwell has an opinion: ひびく.",
+  "notes": "Also does words landing: 心に響く こころにひびく is something that resonates."
+ },
+ {
+  "word": "何とか",
+  "reading": "なんとか",
+  "meaning": "somehow, please",
+  "sentence": "何とかお願いします。",
+  "sentence_meaning": "Please, I'm begging you.",
+  "frequency": "868",
+  "mnemonic": "何 the same what-on-earth as なに, with the answer left deliberately vague. It got done. Nobody is going to explain how, and it is better not to ask: なんとか.",
+  "notes": "何とかなる is it will work out somehow. As a request, 何とかして is do something about it."
+ },
+ {
+  "word": "山",
+  "reading": "やま",
+  "meaning": "mountain",
+  "sentence": "山の空気はきれいだ。",
+  "sentence_meaning": "The mountain air is clean.",
+  "frequency": "871",
+  "mnemonic": "Three peaks and nothing else to it. Also a pile of anything at all: a 山 of washing, a 山 of work, and neither is going anywhere: やま.",
+  "notes": "富士山 ふじさん uses さん. 山 also means a heap, and 山場 やまば is the climax of something."
+ },
+ {
+  "word": "当たり前",
+  "reading": "あたりまえ",
+  "meaning": "of course, obvious",
+  "sentence": "あなたの成績が下がったのは当たり前です。",
+  "sentence_meaning": "No wonder your grades dropped.",
+  "frequency": "873",
+  "mnemonic": "当 landing squarely on the spot and 前 whatever is right in front of you. So obvious it is not worth the sentence, and saying it out loud is nearly rude: あたりまえ.",
+  "notes": "Same 当 as 当然 とうぜん, which is the more written version of the same idea."
+ },
+ {
+  "word": "予定",
+  "reading": "よてい",
+  "meaning": "schedule, plan",
+  "sentence": "今日の予定を教えてください。",
+  "sentence_meaning": "Please tell me what your schedule is for today.",
+  "frequency": "874",
+  "mnemonic": "予 beforehand and 定 something settled under a roof. Fixed in advance, which is exactly as much as it promises. Written in pencil: よてい.",
+  "notes": "予定通り よていどおり is on schedule, using the 通り you already have. 約束 やくそく is a promise, which binds harder."
+ },
+ {
+  "word": "残念",
+  "reading": "ざんねん",
+  "meaning": "regrettable, disappointing",
+  "sentence": "その試合は残念な結果になった。",
+  "sentence_meaning": "The result of that game was disappointing.",
+  "frequency": "876",
+  "mnemonic": "歹 bare bones with blades beside them, and 念 a heart stuck on 今 this moment. What is left over, and the feeling about it. The bus went as you reached the stop: ざんねん.",
+  "notes": "残念ながら opens bad news, meaning unfortunately. It is disappointment rather than apology."
+ },
+ {
+  "word": "追う",
+  "reading": "おう",
+  "meaning": "to chase, to pursue",
+  "sentence": "警官は怪しい男の後を追ったよ。",
+  "sentence_meaning": "The police officer went after the suspicious man.",
+  "frequency": "878",
+  "mnemonic": "辶 the road with somebody already well up it and you coming along behind. Not catching them. The state of being behind and still going: おう.",
+  "notes": "Same reading as 王 おう, king. 追いかける おいかける is the more active chasing."
+ },
+ {
+  "word": "綺麗",
+  "reading": "きれい",
+  "meaning": "beautiful, clean",
+  "sentence": "ハインさんは綺麗な人です。",
+  "sentence_meaning": "Hein-san is a beautiful person.",
+  "frequency": "880",
+  "mnemonic": "糸 finely woven thread, and 麗 a deer with its antlers drawn out matching. Neat is the point, which is why it does clean as readily as it does lovely: きれい.",
+  "notes": "Almost always written in kana. 美しい うつくしい is beauty only; きれい covers tidy as well."
+ }
+]
