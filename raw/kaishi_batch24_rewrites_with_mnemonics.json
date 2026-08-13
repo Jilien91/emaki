@@ -1,0 +1,102 @@
+[
+ {
+  "word": "ここ",
+  "reading": "ここ",
+  "meaning": "here",
+  "sentence": "ここに本があります。",
+  "sentence_meaning": "There's a book here.",
+  "frequency": "59",
+  "mnemonic": "こ- always marks the near one, so ここ is the ground under your own feet. He puts the stick down and taps twice, hard. Not there. Here. Here: ここ.",
+  "notes": ""
+ },
+ {
+  "word": "来る",
+  "reading": "くる",
+  "meaning": "to come",
+  "sentence": "明日、来ますか。",
+  "sentence_meaning": "Will you come tomorrow?",
+  "frequency": "34",
+  "mnemonic": "The old shape was wheat standing in a field, and nothing about it moves. You stay exactly where you are and by August the whole crew has arrived: くる.",
+  "notes": ""
+ },
+ {
+  "word": "ありがとうございます",
+  "reading": "ありがとうございます",
+  "meaning": "thank you (formal)",
+  "sentence": "そうですか。分かりました。ありがとうございます。",
+  "sentence_meaning": "Is that so? I understand. Thank you.",
+  "frequency": "630",
+  "mnemonic": "An alligator in a suit bows until his snout hits the floor, and then keeps going. The longer the bow runs the politer it is, and this one is the longest: ありがとうございます.",
+  "notes": ""
+ },
+ {
+  "word": "町",
+  "reading": "まち",
+  "meaning": "town, city",
+  "sentence": "あの町に行きました。",
+  "sentence_meaning": "I went to that town over there.",
+  "frequency": "891",
+  "mnemonic": "田 a field with 丁 a street cut straight through it, which is how a town starts. One road, and once a year the whole place turns out to march down it: まち.",
+  "notes": ""
+ },
+ {
+  "word": "高い",
+  "reading": "たかい",
+  "meaning": "expensive",
+  "sentence": "このカメラは高いですね。",
+  "sentence_meaning": "This camera is expensive.",
+  "frequency": "319",
+  "mnemonic": "高 is a tall building drawn in strokes, and a price does the same thing. It goes up. The tag is tacked high on the wall where you have to squint at it: たかい.",
+  "notes": "Same word as 高い \"high, tall\", height and price share one adjective."
+ },
+ {
+  "word": "高い",
+  "reading": "たかい",
+  "meaning": "high, tall",
+  "sentence": "これがこの町で一番高いビルです。",
+  "sentence_meaning": "This is the tallest building in town.",
+  "frequency": "319",
+  "mnemonic": "The very same 高い, and one word does the tower and the bill both. Forty floors, and the window cleaner's rate is tacked high by the lift: たかい.",
+  "notes": "Same word as 高い \"expensive\", height and price share one adjective."
+ },
+ {
+  "word": "買う",
+  "reading": "かう",
+  "meaning": "to buy",
+  "sentence": "昨日、シーディーを買いました。",
+  "sentence_meaning": "Yesterday, I bought a CD.",
+  "frequency": "394",
+  "mnemonic": "罒 a net thrown over 貝 a shell, and shells were the money once. You count them out into his hand and lead the cow away: かう.",
+  "notes": ""
+ },
+ {
+  "word": "時",
+  "reading": "じ",
+  "meaning": "hour, o'clock",
+  "sentence": "A「何時ですか。」B「3時です。」",
+  "sentence_meaning": "A: What time is it?B: It's 3 o'clock.",
+  "frequency": "407",
+  "mnemonic": "The same sun-over-temple you met as とき, except this one never stands on its own. Put a number in front and it counts hours and nothing else. 三時: じ.",
+  "notes": "Only ever follows a number: 3時 さんじ. Standing alone, the word for time is 時 とき."
+ },
+ {
+  "word": "顔",
+  "reading": "かお",
+  "meaning": "face",
+  "sentence": "彼はタオルで顔を拭きました。",
+  "sentence_meaning": "He wiped his face with a towel.",
+  "frequency": "76",
+  "mnemonic": "彦 a fine young man and 頁 a head, the one worth putting on a poster. He catches it in the wing mirror of the car. Oh. So that is what they were all looking at: かお.",
+  "notes": ""
+ },
+ {
+  "word": "隠す",
+  "reading": "かくす",
+  "meaning": "to hide",
+  "sentence": "僕に隠していることは無いですか。",
+  "sentence_meaning": "Is there anything you're hiding from me?",
+  "frequency": "489",
+  "mnemonic": "Whatever it was has gone round the far side of the hill where nobody can see it. Is there anything behind yours? Asked in the voice that already knows: かくす.",
+  "notes": "隠れる かくれる is you hiding yourself; 隠す is hiding something."
+ }
+]
