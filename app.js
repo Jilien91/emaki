@@ -908,6 +908,32 @@ function renderDashboard(){
   `;
 }
 
+// Somewhere for a reader to say a card is wrong. Kaishi has a few hundred
+// closed issues, most of them exactly this, so these will arrive. Pre-filling
+// the word and id matters more than it looks: a report that just says "the
+// あつい one is wrong" costs an exchange of messages to place, and most people
+// will not bother with the second message.
+const ISSUE_URL = 'https://github.com/Jilien91/emaki/issues/new';
+
+function reportCardUrl(item){
+  const title = `Card ${item.id}: ${item.word} (${item.reading})`;
+  const body = [
+    `**Card:** ${item.id} ${item.word} (${item.reading}) - ${item.meaning}`,
+    '',
+    '**What looks wrong:**',
+    '',
+    '',
+    '_(mnemonic, usage note, kanji breakdown, reading, example sentence, anything)_'
+  ].join('\n');
+  return ISSUE_URL + '?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+}
+
+function reportCardLink(item){
+  return `<div style="text-align:center;margin-top:10px;">
+    <a class="reset-link" style="text-decoration:none;" href="${escapeHtml(reportCardUrl(item))}" target="_blank" rel="noopener noreferrer">Something wrong with this card?</a>
+  </div>`;
+}
+
 function renderInfo(){
   const learnableCount = learnableWords().length;
   return `
@@ -918,6 +944,13 @@ function renderInfo(){
     study streak alive, you'll see it marked as spent on the dashboard. A replacement arrives
     ${STREAK_SAVE_DAYS} days later, so missing two days close together will still break the streak.<br><br>
     ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable. Progress will not persist this session</span>'}
+  </p>
+  <p class="footer-note" style="text-align:left;">
+    <b>Found a mistake?</b> The mnemonics and the kanji breakdowns are written by
+    hand and some of them will be wrong. There is a link at the bottom of every
+    lesson card, or
+    <a href="${ISSUE_URL}" target="_blank" rel="noopener noreferrer">open an issue</a>
+    directly. Corrections are welcome and get folded into the next batch.
   </p>
   <div style="text-align:center;margin-top:16px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
@@ -986,6 +1019,7 @@ function renderLessonStudy(){
     ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
     <button class="primary" onclick="${isLast?'startQuiz()':'nextStudyItem()'}">${isLast?'Start quiz':'Next'}</button>
   </div>
+  ${reportCardLink(item)}
   `;
 }
 
