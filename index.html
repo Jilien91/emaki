@@ -17,8 +17,19 @@
 <body>
 <div id="root"><div class="loading">Loading…</div></div>
 <div id="syncbadge" class="syncbadge" hidden></div>
-<script src="https://cdn.jsdelivr.net/npm/wanakana@5.3.1/wanakana.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2/dist/umd/supabase.js"></script>
+<!-- Pinned with Subresource Integrity. These two are the only third-party code
+     in the app, and without a hash a compromised CDN or a hijacked package
+     would run arbitrary JavaScript here with access to signed-in sessions. The
+     browser now refuses to execute either file unless it hashes to exactly
+     this. Recompute when bumping a version, or the script silently stops
+     loading:
+       curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A -->
+<script src="https://cdn.jsdelivr.net/npm/wanakana@5.3.1/wanakana.min.js"
+        integrity="sha384-ei/skGdXfWHx8zodPeKIHWR7N4qSpIlj3wBwEPMPfw2MvsbEJSFrPMUCPXnEuKSw"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2/dist/umd/supabase.js"
+        integrity="sha384-OUpie84zd1LdwNlK9uJJQRwab0BLqo3eKYKFh7hSVL58FSk7wPp2l0kfUMIIoaQd"
+        crossorigin="anonymous"></script>
 <script src="sync.js"></script>
 <script src="app.js"></script>
 </body>
