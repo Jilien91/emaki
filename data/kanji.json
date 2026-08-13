@@ -826,5 +826,32 @@
   "眠": { "meaning": "sleep", "note": "目 an eye on the left with the lids down. That is the whole story." },
   "腰": { "meaning": "lower back, hip", "note": "月 the flesh sense with 要 beside it, the shape that began as hands on a waist. The part that gives out first." },
   "険": { "meaning": "steep, harsh", "note": "阝 a mound on the left, and the steep sort. Ground you can come off." },
-  "頷": { "meaning": "nod", "note": "頁 a head on the right, doing the one thing that answers without a word." }
+  "頷": { "meaning": "nod", "note": "頁 a head on the right, doing the one thing that answers without a word." },
+  "々": { "meaning": "repeat mark", "note": "Not a kanji. It means repeat the character before it, so 色々 is 色色 and 人々 is 人人." },
+  "切": { "meaning": "cut", "note": "刀 a blade on the right. Everything to the left of it is what the blade goes through." },
+  "唇": { "meaning": "lip", "note": "口 a mouth down at the bottom. The lips are the part of it you can see." },
+  "料": { "meaning": "materials, fee", "note": "米 rice on the left with a measure beside it. Portioning out ingredients, and then what you are charged for them." },
+  "期": { "meaning": "period, term", "note": "月 the moon on the right, counting off months. A set stretch of time with an end to it." },
+  "森": { "meaning": "forest", "note": "Three 木 trees. 林 with two is a wood; three is a forest you could get lost in." },
+  "正": { "meaning": "correct, right", "note": "止 a footprint with 一 a line drawn in front of it. Pulling up exactly on the mark rather than past it." },
+  "甘": { "meaning": "sweet", "note": "A mouth with something held inside it. Whatever it is, nobody is spitting it out." },
+  "直": { "meaning": "straight, fix", "note": "目 an eye with a line running straight down out of it. Looking at a thing dead on." },
+  "移": { "meaning": "move, shift", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "多", "name": "many" }
+  ]},
+  "美": { "meaning": "beautiful", "parts": [
+    { "c": "羊", "name": "sheep" },
+    { "c": "大", "name": "big" }
+  ]},
+  "耳": { "meaning": "ear", "note": "A pictograph of an ear, drawn side on." },
+  "能": { "meaning": "ability", "note": "No clean parts to pull off. Take it as what a thing is able to do." },
+  "襲": { "meaning": "attack, inherit", "note": "龍 a dragon sat on top of 衣 clothing. It comes down on you from above and you had no say in it." },
+  "遅": { "meaning": "late, slow", "note": "辶 the road radical with something unhurried on it. Behind, and getting further behind." },
+  "遊": { "meaning": "play", "note": "辶 the road radical again, this time with nowhere in particular to be." },
+  "邪": { "meaning": "wicked, in the way", "note": "牙 a fang on the left with 阝 a mound behind it. Something in your way, and not kindly meant." },
+  "降": { "meaning": "descend, get off", "note": "阝 a mound on the left with feet coming down the side of it." },
+  "震": { "meaning": "tremble, quake", "note": "雨 rain across the top and everything underneath it shaking." },
+  "頃": { "meaning": "about that time", "note": "頁 a head on the right, tilted over the way it goes when somebody is guessing." },
+  "首": { "meaning": "neck, head", "note": "Hair drawn on top with the neck below it. The part the head sits on." }
 }

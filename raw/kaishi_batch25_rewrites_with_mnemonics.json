@@ -1,0 +1,32 @@
+[
+ {
+  "word": "会う",
+  "reading": "あう",
+  "meaning": "to meet",
+  "sentence": "明日、彼と会います。",
+  "sentence_meaning": "I will meet him tomorrow.",
+  "frequency": "210",
+  "mnemonic": "会 is a roof with people gathering in underneath it. You meet this one by walking straight into them on the way in, ow: あう.",
+  "notes": "Same reading as 合う あう, to fit. 会う is meeting a person; 合う is things matching."
+ },
+ {
+  "word": "動く",
+  "reading": "うごく",
+  "meaning": "to move",
+  "sentence": "エレベーターが動いています。",
+  "sentence_meaning": "The elevator is moving.",
+  "frequency": "218",
+  "mnemonic": "重 something heavy with 力 power put behind it. That is what shifting a thing actually takes. Oo, go on, get it moving: うごく.",
+  "notes": "Something moving under its own steam. 動かす うごかす is you moving it. 動き うごき is the movement itself."
+ },
+ {
+  "word": "見つける",
+  "reading": "みつける",
+  "meaning": "to find",
+  "sentence": "新しい仕事を見つけました。",
+  "sentence_meaning": "I found a new job.",
+  "frequency": "446",
+  "mnemonic": "見 an eye on legs and 付 a hand fixing onto what it saw. Months of looking, and then a job. Spotted and taken hold of: みつける.",
+  "notes": "You spotting it and taking hold. 見つかる みつかる is it being found, or you being caught."
+ }
+]
