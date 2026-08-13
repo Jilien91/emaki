@@ -6,8 +6,7 @@ backend. Progress is saved to `localStorage`.
 
 An emaki is a painted handscroll that tells a story one scene at a time as you
 unroll it, which is what the cards here are: one image per word rather than a
-stated link between a sound and a meaning. `MNEMONICS.md` is the style guide
-that keeps them that way.
+stated link between a sound and a meaning.
 
 Not affiliated with, or endorsed by, Kaishi 1.5k.
 
@@ -19,7 +18,6 @@ Not affiliated with, or endorsed by, Kaishi 1.5k.
 - `raw/kaishi_1500_full.json`: source deck of word, reading, meaning, sentence, frequency
 - `raw/kaishi_batchN_with_mnemonics.json`: mnemonics + usage notes, 25 words per batch
 - `scripts/merge.pl`: merges `raw/*_with_mnemonics.json` batches into `data/vocab.json`
-- `MNEMONICS.md`: the style guide to paste into whatever writes the next batch
 
 Only words with a mnemonic show up in Lessons. To add another batch of mnemonics (e.g. words 101-200), drop a `raw/kaishi_batchN_with_mnemonics.json` file (same shape as batch1, matched by word+reading+meaning) and rerun:
 
@@ -91,12 +89,10 @@ others.
 `supabase/`) is MIT. See [LICENSE](LICENSE). Take it and do what you like.
 
 **The written content** is CC BY-SA 4.0: every mnemonic and usage note, all of
-[`data/kanji.json`](data/kanji.json), the `raw/*_with_mnemonics.json` batch
-files and [`MNEMONICS.md`](MNEMONICS.md). This is original work written for this
-deck. Reuse it, including commercially, as long as you credit it and keep it
-under the same licence. Nothing in it is copied from WaniKani, Kanji Koohii,
-Ulrike's Mnemonics or any other course; see the Don't section of `MNEMONICS.md`
-for how that line is held.
+[`data/kanji.json`](data/kanji.json) and the `raw/*_with_mnemonics.json` batch
+files. This is original work, written from scratch for this deck. Reuse it,
+including commercially, as long as you credit it and keep it under the same
+licence.
 
 **The deck data** is not ours to license. The 1,500 words, readings, meanings
 and example sentences in [`raw/kaishi_1500_full.json`](raw/kaishi_1500_full.json),

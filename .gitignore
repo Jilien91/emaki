@@ -6,3 +6,6 @@ node_modules/
 
 # Personal working notes, kept out of the repo
 Changes/
+
+# The style guide stays local. It is the method, not the product.
+MNEMONICS.md
