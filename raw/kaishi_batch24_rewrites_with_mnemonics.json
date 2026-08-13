@@ -70,6 +70,16 @@
   "notes": ""
  },
  {
+  "word": "寝る",
+  "reading": "ねる",
+  "meaning": "to sleep",
+  "sentence": "もう寝よう。",
+  "sentence_meaning": "Let's sleep.",
+  "frequency": "427",
+  "mnemonic": "宀 a roof over you with a bed underneath it. Lie down and that is the day finished with. Neh-ru: ねる.",
+  "notes": "宀 a roof and a bed. 寝る is going to bed and lying down; 眠る ねむる is actually being asleep. You can 寝る all night without much 眠る."
+ },
+ {
   "word": "時",
   "reading": "じ",
   "meaning": "hour, o'clock",
@@ -88,6 +98,26 @@
   "frequency": "76",
   "mnemonic": "彦 a fine young man and 頁 a head, the one worth putting on a poster. He catches it in the wing mirror of the car. Oh. So that is what they were all looking at: かお.",
   "notes": ""
+ },
+ {
+  "word": "点ける",
+  "reading": "つける",
+  "meaning": "to switch on",
+  "sentence": "電気を点けてください。",
+  "sentence_meaning": "Please turn on the light.",
+  "frequency": "486",
+  "mnemonic": "灬 fire down at the bottom, and 点 is one single spot of it. Somebody has to go and put a light to the room: つける.",
+  "notes": "Same sound as 付ける つける. This one is for anything that lights up, lamps, switches, the telly. つく on its own is it coming on by itself."
+ },
+ {
+  "word": "付ける",
+  "reading": "つける",
+  "meaning": "to attach, to set, to add",
+  "sentence": "おまけを付けました。",
+  "sentence_meaning": "I added a freebie.",
+  "frequency": "486",
+  "mnemonic": "亻 a person and 寸 a hand, pressing one thing onto another. Not the light this time, a freebie slipped into the bag on top of the order: つける.",
+  "notes": "Same sound as 点ける つける, which is for lights. This is attaching anything to anything, and it is the same 付 as 見つける. 付く つく is it sticking to something on its own."
  },
  {
   "word": "隠す",

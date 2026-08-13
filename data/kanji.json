@@ -802,5 +802,29 @@
   "色": { "meaning": "colour", "note": "Two figures, one bent over the other, and nobody agrees why that came to mean colour. Take the meaning and leave the shape." },
   "身": { "meaning": "body, oneself", "note": "A figure in profile with the belly drawn out. The body you carry about." },
   "静": { "meaning": "quiet, still", "note": "青 blue and fresh down the left. The colour of a room with nothing going on in it." },
-  "飛": { "meaning": "fly", "note": "Both wings up and the tail streaming out behind. A pictograph." }
+  "飛": { "meaning": "fly", "note": "Both wings up and the tail streaming out behind. A pictograph." },
+  "似": { "meaning": "resemble", "note": "亻 a person on the left with 以 beside them, the marker that fixes one thing against another. Held up for comparison." },
+  "倒": { "meaning": "knock down, fall", "note": "亻 a person with 到 reaching its destination beside them, except this one arrives on the floor." },
+  "像": { "meaning": "image, likeness", "note": "亻 a person next to 象 an elephant, which also does the shape of a thing. A likeness rather than the thing itself." },
+  "危": { "meaning": "dangerous", "note": "A figure crouched at the top of a cliff with another underneath it. Nothing good is about to happen." },
+  "周": { "meaning": "circumference, lap", "note": "A border drawn the whole way round with 口 a mouth beneath it. The same 周 that sits inside 調べる." },
+  "囲": { "meaning": "surround, enclose", "parts": [
+    { "c": "囗", "name": "border" },
+    { "c": "井", "name": "well" }
+  ]},
+  "店": { "meaning": "shop", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "占", "name": "stake a claim" }
+  ]},
+  "想": { "meaning": "conceive, think of", "note": "相 taking the measure of something, sat on 心 a heart. What forms in there when the thing itself is not in front of you." },
+  "慌": { "meaning": "flustered, in a rush", "note": "忄 a heart on the left with everything running wild alongside it." },
+  "熱": { "meaning": "heat, fever", "note": "灬 fire down at the bottom, the same four dots as 然. Whatever is sitting above them is getting it." },
+  "的": { "meaning": "target, -ic", "parts": [
+    { "c": "白", "name": "white" },
+    { "c": "勺", "name": "ladle" }
+  ]},
+  "眠": { "meaning": "sleep", "note": "目 an eye on the left with the lids down. That is the whole story." },
+  "腰": { "meaning": "lower back, hip", "note": "月 the flesh sense with 要 beside it, the shape that began as hands on a waist. The part that gives out first." },
+  "険": { "meaning": "steep, harsh", "note": "阝 a mound on the left, and the steep sort. Ground you can come off." },
+  "頷": { "meaning": "nod", "note": "頁 a head on the right, doing the one thing that answers without a word." }
 }

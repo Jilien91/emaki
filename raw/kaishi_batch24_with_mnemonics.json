@@ -1,0 +1,252 @@
+[
+ {
+  "word": "生む",
+  "reading": "うむ",
+  "meaning": "to have children",
+  "sentence": "うちのネコが子猫を生みました。",
+  "sentence_meaning": "Our cat had kittens.",
+  "frequency": "640",
+  "mnemonic": "生 the same shoot forcing its way up. The cat went under the shed on Tuesday and came out with four on Thursday, and all anyone heard was a low hum: うむ.",
+  "notes": "生む is bearing offspring, and 産む is the more usual spelling for giving birth. 生まれる うまれる is being born."
+ },
+ {
+  "word": "倒す",
+  "reading": "たおす",
+  "meaning": "to bring down, to overthrow",
+  "sentence": "そのスキーヤーはポールを倒した。",
+  "sentence_meaning": "That skier knocked the pole down.",
+  "frequency": "641",
+  "mnemonic": "亻 a person and 到 arriving, except on the floor. He clips the gate and the pole goes flat behind him. Ta, and he owes the course a new one: たおす.",
+  "notes": "倒れる たおれる is it going over by itself. 倒す is you putting it down."
+ },
+ {
+  "word": "似る",
+  "reading": "にる",
+  "meaning": "to look similar to, to resemble",
+  "sentence": "私は母に、姉は父に似ています。",
+  "sentence_meaning": "I look like my mother and my older sister looks like my father.",
+  "frequency": "642",
+  "mnemonic": "亻 a person with 以 beside them, one thing held up against another. Same jaw, same walk, same way of standing in a doorway. Nearer than you would like: にる.",
+  "notes": "に marks who you take after: 母に似ている. It nearly always turns up in the ている form."
+ },
+ {
+  "word": "空気",
+  "reading": "くうき",
+  "meaning": "atmosphere, air",
+  "sentence": "田舎は空気がとても美味しいです。",
+  "sentence_meaning": "The air is very clear in the countryside.",
+  "frequency": "643",
+  "mnemonic": "穴 an empty space with 気 the steam that rises through it anyway. Out past the last farm you take a lungful and it is better than the cookie you brought with you: くうき.",
+  "notes": "Also the air in a room in the social sense: 空気を読む くうきをよむ is reading the mood."
+ },
+ {
+  "word": "腰",
+  "reading": "こし",
+  "meaning": "hip, lower back",
+  "sentence": "昨日から腰が痛い。",
+  "sentence_meaning": "I've had a pain in my lower back since yesterday.",
+  "frequency": "644",
+  "mnemonic": "月 the flesh sense with 要 next to it, hands on a waist from way back. Bend down once for a dropped sock and it goes like somebody took a cosh to you: こし.",
+  "notes": "The whole lower back and hips, not just the hip joint. 腰が痛い is the everyday complaint."
+ },
+ {
+  "word": "名",
+  "reading": "な",
+  "meaning": "name, reputation",
+  "sentence": "君の名は何？",
+  "sentence_meaning": "What is your name?",
+  "frequency": "645",
+  "mnemonic": "夕 an evening with 口 a mouth under it. Not the whole 名前, just the part of it people go on repeating after you have left the room: な.",
+  "notes": "名前 なまえ is the everyday word for a name. 名 on its own leans towards reputation, and 有名 ゆうめい is famous."
+ },
+ {
+  "word": "危険",
+  "reading": "きけん",
+  "meaning": "danger, dangerous",
+  "sentence": "この道は車が多くて、危険です。",
+  "sentence_meaning": "There are many cars on this road so it's dangerous.",
+  "frequency": "646",
+  "mnemonic": "危 a figure at a cliff edge and 険 the steep mound beside it, both ground you come off. Cars both ways, no pavement, somebody yelling keep in, Ken: きけん.",
+  "notes": "危険 works as a noun and with な in front of a noun. 危ない あぶない is the spoken one you shout."
+ },
+ {
+  "word": "付く",
+  "reading": "つく",
+  "meaning": "to attach itself to, to be connected with, to come in contact with",
+  "sentence": "靴に泥が付いています。",
+  "sentence_meaning": "I have mud on my shoes.",
+  "frequency": "647",
+  "mnemonic": "亻 a person and 寸 a hand, the same press as 付ける except nobody pressed. You crossed the yard and the mud came with you. Took the whole walk home to notice: つく.",
+  "notes": "付ける つける is you attaching it, 付く is it attaching itself. Three つく to keep apart: this one, つく for a light coming on, and 着く for arriving."
+ },
+ {
+  "word": "つく",
+  "reading": "つく",
+  "meaning": "to be on, to be switched on",
+  "sentence": "部屋の電気がついています。",
+  "sentence_meaning": "The room light is on.",
+  "frequency": "647",
+  "mnemonic": "Written in kana here, but it is the 点 of 点ける with nobody near the switch. You come back from the shops and the front room is already glowing at you: つく.",
+  "notes": "Also written 点く. 点ける つける is somebody switching it on; this is it being on. Same reading as 付く つく, which is about sticking to things."
+ },
+ {
+  "word": "熱い",
+  "reading": "あつい",
+  "meaning": "hot (things, touch)",
+  "sentence": "このスープはとても熱い。",
+  "sentence_meaning": "This soup is very hot.",
+  "frequency": "649",
+  "mnemonic": "灬 four dots of fire underneath, and the bowl above them has had an hour of it. The soup goes in and comes straight back out again, and the spoon goes down: あつい.",
+  "notes": "熱い is hot to the touch. 暑い あつい is hot weather, same reading and a different kanji. 熱 ねつ on its own is a fever."
+ },
+ {
+  "word": "ただいま",
+  "reading": "ただいま",
+  "meaning": "I'm back (said when arriving home)",
+  "sentence": "ただいま。",
+  "sentence_meaning": "I'm back!",
+  "frequency": "1726",
+  "mnemonic": "The door goes, the bag hits the floor, and a man who has been no further than the shops announces himself like a stage act. Ta-da, I am home: ただいま.",
+  "notes": "The set reply is おかえり, or おかえりなさい. Used coming back to the office as well as the house."
+ },
+ {
+  "word": "頂きます",
+  "reading": "いただきます",
+  "meaning": "let's eat!, thank you for the meal",
+  "sentence": "頂きます。",
+  "sentence_meaning": "Thank you for the meal.",
+  "frequency": "409",
+  "mnemonic": "頂 the same crown of the head as 頂く, and down it goes again. Hands together over the bowl, and not one grain moves until it has been said: いただきます.",
+  "notes": "The humble \"I receive\", said before eating. ごちそうさま is its pair afterwards. Same 頂 as 頂く いただく."
+ },
+ {
+  "word": "慌てる",
+  "reading": "あわてる",
+  "meaning": "to be flustered, to hurry",
+  "sentence": "そんなに慌ててどこに行くの。",
+  "sentence_meaning": "Where are you going in such a hurry?",
+  "frequency": "653",
+  "mnemonic": "忄 a heart with everything running wild alongside it. He is halfway out of the door with one shoe on and the kettle still going: ah, water, all over the floor. あわてる.",
+  "notes": "慌てないで is do not panic. It is the flapping about, not the fear underneath it."
+ },
+ {
+  "word": "周囲",
+  "reading": "しゅうい",
+  "meaning": "circumference, surroundings",
+  "sentence": "大声で話すと周囲の人に迷惑ですよ。",
+  "sentence_meaning": "If you speak loudly it will be a bother to people around you.",
+  "frequency": "654",
+  "mnemonic": "周 the whole way round, and 囲 a 囗 border closed on 井 a well. Everyone inside earshot, which at that volume is the entire room: しゅうい.",
+  "notes": "The people and things around you. 周り まわり is the everyday word for the same idea."
+ },
+ {
+  "word": "気分",
+  "reading": "きぶん",
+  "meaning": "mood, feeling",
+  "sentence": "早起きした日は気分がいいです。",
+  "sentence_meaning": "On days I wake up early, I feel good.",
+  "frequency": "655",
+  "mnemonic": "気 the steam off a person with 分 a portion cut from it, so this is your share of it today. Up at six, a key still in the door, and a warm bun on the side: きぶん.",
+  "notes": "気分がいい is feeling good. 気持ち きもち is nearer a physical sensation; 気分 is the mood you are in."
+ },
+ {
+  "word": "事実",
+  "reading": "じじつ",
+  "meaning": "fact, truth",
+  "sentence": "それは全て事実ですか。",
+  "sentence_meaning": "Is that all true?",
+  "frequency": "658",
+  "mnemonic": "事 a matter being carried on and 実 the crop safe under its roof. Not the version anybody wanted, and not the one in the report either. The one that happened: じじつ.",
+  "notes": "Same 実 as 実は じつは. 事実 is the fact itself; 真実 しんじつ is the truth of the matter."
+ },
+ {
+  "word": "まず",
+  "reading": "まず",
+  "meaning": "first (of all), to begin with",
+  "sentence": "まずキャッシュカードを入れてください。",
+  "sentence_meaning": "First, please insert your cash card.",
+  "frequency": "659",
+  "mnemonic": "The machine will not say a word to you until the card is in. Not the amount, not the receipt, that first. Every maze starts at the one entrance: まず.",
+  "notes": "Sets up the first step of a sequence. とりあえず is doing something provisionally rather than first."
+ },
+ {
+  "word": "本気",
+  "reading": "ほんき",
+  "meaning": "seriousness",
+  "sentence": "いや、僕は本気なんだ。",
+  "sentence_meaning": "No, I'm serious.",
+  "frequency": "660",
+  "mnemonic": "本 the root a thing grows from with 気 the steam rising off a person, so what is actually down there underneath all of it. He is not joking this time: ほんき.",
+  "notes": "本気で is seriously, and 本気? on its own is are you serious."
+ },
+ {
+  "word": "頷く",
+  "reading": "うなずく",
+  "meaning": "to nod",
+  "sentence": "彼女は頷いて同意を示したの。",
+  "sentence_meaning": "She showed agreement with a nod.",
+  "frequency": "661",
+  "mnemonic": "She never actually said yes. The chin went down once, 頁 the head doing the entire job, and nobody in the room needed anything more than that: うなずく.",
+  "notes": "The nod itself. 賛成する さんせいする is agreeing out loud."
+ },
+ {
+  "word": "通り",
+  "reading": "とおり",
+  "meaning": "street",
+  "sentence": "ここが町で一番広い通りです。",
+  "sentence_meaning": "This is the widest street in the city.",
+  "frequency": "662",
+  "mnemonic": "辶 the road radical, and this one carries on rather than stopping. Widest in town, and you could tour it end to end inside ten minutes: とおり.",
+  "notes": "通り is the street. Hung on the end of a word it means as per: 予定通り よていどおり, on schedule."
+ },
+ {
+  "word": "想像",
+  "reading": "そうぞう",
+  "meaning": "imagination",
+  "sentence": "そんなことは想像できないよ。",
+  "sentence_meaning": "I can't imagine such a thing.",
+  "frequency": "664",
+  "mnemonic": "想 what forms over 心 a heart when the thing is not there, and 像 a person stood next to 象 an elephant. There is no elephant. A whole zoo of nothing: そうぞう.",
+  "notes": "想像する is to imagine. 想像力 そうぞうりょく is imagination as a faculty."
+ },
+ {
+  "word": "店",
+  "reading": "みせ",
+  "meaning": "shop, store",
+  "sentence": "私はこの店によく来ます。",
+  "sentence_meaning": "I come to this store quite often.",
+  "frequency": "666",
+  "mnemonic": "广 a shelter with a claim staked under it, and the place where things are 見せる shown to you. Same man behind the counter, starting your order before you speak: みせ.",
+  "notes": "Same みせ as 見せる みせる, to show, which is where the word comes from. お店 おみせ is the polite form."
+ },
+ {
+  "word": "何だか",
+  "reading": "なんだか",
+  "meaning": "somehow, for some reason",
+  "sentence": "茶柱が立って、何だか少し幸せな気分です。",
+  "sentence_meaning": "Seeing the tea leaves floating upright, somehow I feel happy.",
+  "frequency": "668",
+  "mnemonic": "何 the same what-on-earth as なに. The tea leaf stands upright in the cup and the whole morning improves, and you could not tell anybody why: なんだか.",
+  "notes": "何 reads なん here. It marks a feeling you cannot account for."
+ },
+ {
+  "word": "目的",
+  "reading": "もくてき",
+  "meaning": "purpose, aim, object",
+  "sentence": "彼が来た目的が分かりません。",
+  "sentence_meaning": "I don't understand the purpose of his visit.",
+  "frequency": "669",
+  "mnemonic": "目 an eye and 的 the white circle you aim it at. Not why he came, which nobody knows, but the thing he was aiming for: もくてき.",
+  "notes": "目的 is the aim itself. 目標 もくひょう is the target you set in order to reach it."
+ },
+ {
+  "word": "眠る",
+  "reading": "ねむる",
+  "meaning": "to sleep",
+  "sentence": "昨日は8時間眠りました。",
+  "sentence_meaning": "I slept for eight hours yesterday.",
+  "frequency": "670",
+  "mnemonic": "目 an eye with the lids down, and that is all there is to it. Not getting into bed, which is 寝る, but the eight hours you were not present for: ねむる.",
+  "notes": "寝る ねる is lying down to sleep. 眠る is being asleep. 眠い ねむい is sleepy."
+ }
+]
