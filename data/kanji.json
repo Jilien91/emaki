@@ -853,5 +853,53 @@
   "降": { "meaning": "descend, get off", "note": "阝 a mound on the left with feet coming down the side of it." },
   "震": { "meaning": "tremble, quake", "note": "雨 rain across the top and everything underneath it shaking." },
   "頃": { "meaning": "about that time", "note": "頁 a head on the right, tilted over the way it goes when somebody is guessing." },
-  "首": { "meaning": "neck, head", "note": "Hair drawn on top with the neck below it. The part the head sits on." }
+  "首": { "meaning": "neck, head", "note": "Hair drawn on top with the neck below it. The part the head sits on." },
+  "件": { "meaning": "matter, case", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "牛", "name": "cow" }
+  ]},
+  "働": { "meaning": "work", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "動", "name": "move" }
+  ]},
+  "冷": { "meaning": "cold, cool", "note": "冫 two marks of ice on the left. Whatever they are stood next to has gone cold." },
+  "叫": { "meaning": "shout", "note": "口 a mouth on the left with something twisted beside it. The noise that comes out before you decide to make it." },
+  "告": { "meaning": "announce, tell", "parts": [
+    { "c": "牛", "name": "cow" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "婚": { "meaning": "marriage", "note": "女 a woman on the left. The right half is dusk, which is when the ceremony used to happen." },
+  "引": { "meaning": "pull, draw", "note": "弓 a bow, with the line beside it standing for the string coming back." },
+  "慣": { "meaning": "get used to", "note": "忄 a heart with the same thing threaded through it again and again until it stops registering." },
+  "捨": { "meaning": "throw away", "note": "扌 a hand on the left, opening. The rest of the character is what it was holding." },
+  "握": { "meaning": "grip, grasp", "note": "扌 a hand on the left closing round something and not opening again." },
+  "既": { "meaning": "already", "note": "A figure turning away from a bowl that has been finished with. Done, before you got here." },
+  "活": { "meaning": "lively, active", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "舌", "name": "tongue" }
+  ]},
+  "海": { "meaning": "sea", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "毎", "name": "every" }
+  ]},
+  "激": { "meaning": "violent, intense", "note": "氵 water on the left, thrown hard at something rather than merely running past it." },
+  "狙": { "meaning": "aim at", "note": "犭 the beast radical flattened into the grass on the left, with everything about it pointed one way." },
+  "珍": { "meaning": "rare, precious", "note": "王 in its jewel sense on the left, the same shape as in 理. Something you do not see twice." },
+  "疲": { "meaning": "tired", "parts": [
+    { "c": "疒", "name": "sickness" },
+    { "c": "皮", "name": "skin" }
+  ]},
+  "納": { "meaning": "put away, accept", "note": "糸 thread on the left, taking something in and stowing it where it belongs." },
+  "諦": { "meaning": "give up", "note": "言 speech on the left, because this one has to be said out loud before it counts." },
+  "謝": { "meaning": "thank, apologise", "note": "言 speech on the left with an arrow being loosed beside it. Words sent out on purpose." },
+  "逆": { "meaning": "reverse, against", "note": "辶 the road radical with a figure drawn upside down on it, going against the flow." },
+  "途": { "meaning": "route, way", "note": "辶 the road radical with 余 whatever is left over. The part of the journey still ahead." },
+  "酷": { "meaning": "cruel, harsh", "note": "酉 a wine jar on the left and the strength of what comes out of it. Too much of anything." },
+  "重": { "meaning": "heavy", "note": "A bundle with the weight of it drawn running straight through the middle." },
+  "集": { "meaning": "gather", "parts": [
+    { "c": "隹", "name": "small bird" },
+    { "c": "木", "name": "tree" }
+  ]},
+  "風": { "meaning": "wind, style", "note": "A frame with 虫 an insect inside it, from the old idea that the wind carried them." },
+  "黒": { "meaning": "black", "note": "Soot caught in a window with 灬 fire underneath it. What the fire leaves behind." }
 }

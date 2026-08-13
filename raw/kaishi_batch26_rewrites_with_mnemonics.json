@@ -1,0 +1,42 @@
+[
+ {
+  "word": "過ぎる",
+  "reading": "すぎる",
+  "meaning": "to exceed, to pass by",
+  "sentence": "時が過ぎるのは速い。",
+  "sentence_meaning": "Time passes quickly.",
+  "frequency": "266",
+  "mnemonic": "辶 the road, and you're already past the turning. Nobody stopped, and the afternoon went by the same way: すぎる.",
+  "notes": "Hung on the end of another word it means too much of it: 高過ぎる is too expensive. 過ごす すごす is you spending the time rather than it passing you."
+ },
+ {
+  "word": "助ける",
+  "reading": "たすける",
+  "meaning": "to help, to save",
+  "sentence": "彼女は病気の犬を助けた。",
+  "sentence_meaning": "She helped a sick dog.",
+  "frequency": "344",
+  "mnemonic": "力 power stuck on the right-hand side. An extra shoulder put under the load. The dog was ill in a ditch and she carried it home: たすける.",
+  "notes": "Stronger than English \"help\". It stretches all the way to rescuing and saving a life. 助かる たすかる is being on the receiving end of it."
+ },
+ {
+  "word": "以外",
+  "reading": "いがい",
+  "meaning": "except for",
+  "sentence": "私は雨の日以外は自転車で学校に行く。",
+  "sentence_meaning": "I go to school by bicycle except on rainy days.",
+  "frequency": "367",
+  "mnemonic": "以 the marker that fixes a boundary, and 外 everything sat outside it. Every day on the bike, and rain filed on the far side of the line: いがい.",
+  "notes": "Same 以 as 以上 いじょう. 以上 counts from a point upward; 以外 cuts one thing out and keeps the rest. Same reading as 意外 いがい, unexpected, which is a different word entirely."
+ },
+ {
+  "word": "怒る",
+  "reading": "おこる",
+  "meaning": "to get angry, to scold",
+  "sentence": "彼女が嘘をついたので、彼は怒った。",
+  "sentence_meaning": "He was angry because she lied.",
+  "frequency": "431",
+  "mnemonic": "奴 a servant sat on top of 心 the heart, and the heart underneath is doing all the work. She lied and he has gone quiet in a way that isn't quiet: おこる.",
+  "notes": "One vowel from 起きる おきる, to get up, and identical in sound to 起こる おこる, to happen. Also covers telling someone off, not just being cross."
+ }
+]
