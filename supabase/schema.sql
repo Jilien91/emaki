@@ -36,6 +36,13 @@ create policy "insert own state" on public.user_state
 create policy "update own state" on public.user_state
   for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
+-- Somebody has to be able to take their data back out again. Without this
+-- policy a delete silently affects nothing, because RLS denies by default and
+-- PostgREST reports success either way.
+drop policy if exists "delete own state" on public.user_state;
+create policy "delete own state" on public.user_state
+  for delete using (auth.uid() = user_id);
+
 -- Stamp updated_at on the server so "which device wrote last" never depends on
 -- two devices agreeing about the time.
 create or replace function public.touch_user_state()

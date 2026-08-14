@@ -53,7 +53,12 @@ Progress lives in `localStorage` by default, which is per-browser. Signing in
 Setup, once per Supabase project:
 
 1. Run [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL editor.
-   It creates the `user_state` table and the row-level security policies.
+   It creates the `user_state` table and the row-level security policies. Safe
+   to re-run, and it needs re-running after any change to it: the delete policy
+   was added later, and without it Settings → Delete my data reports success
+   and removes nothing, because RLS denies by default and PostgREST cannot tell
+   "no rows matched" from "not allowed". The app checks the row is really gone
+   and says so if it isn't.
 2. In Supabase → Authentication → URL Configuration, add every origin the app
    is served from to **Redirect URLs**, e.g. `https://emakisrs.com/` and
    `http://localhost:8123/` for local work. Both the magic link and the OAuth

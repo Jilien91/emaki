@@ -248,6 +248,26 @@ async function signInWithProvider(provider){
   }
 }
 
+// Removes the synced copy and signs out. The row goes via the "delete own
+// state" policy in supabase/schema.sql; without that policy this reports
+// success and deletes nothing, because RLS denies by default and PostgREST
+// does not distinguish "no rows matched" from "not allowed".
+//
+// It does not remove the row in auth.users, which holds the email address.
+// That needs the service key and so an Edge Function, which this app does not
+// have. The UI says so rather than implying a completeness it cannot deliver.
+async function deleteRemoteData(){
+  if(!sb || !syncUser) return { ok: false, error: 'Not signed in' };
+  const { error } = await sb.from('user_state').delete().eq('user_id', syncUser.id);
+  if(error) return { ok: false, error: error.message };
+  // Confirm it actually went, rather than trusting a silent no-op.
+  const { data, error: readErr } = await sb
+    .from('user_state').select('user_id').eq('user_id', syncUser.id).maybeSingle();
+  if(readErr) return { ok: false, error: readErr.message };
+  if(data) return { ok: false, error: 'The server still has a copy. Has the delete policy in schema.sql been run?' };
+  return { ok: true };
+}
+
 async function signOutSync(){
   if(!sb) return;
   await sb.auth.signOut();

@@ -934,6 +934,78 @@ function reportCardLink(item){
   </div>`;
 }
 
+// Shown instead of the dashboard to anybody who has not started yet. Somebody
+// arriving from a link needs to know what this is and, more importantly,
+// whether it is for them: the deck is written entirely in kana and kanji with
+// no romaji anywhere, so without kana it is unusable rather than merely hard.
+// Saying that up front is kinder than letting them find out on card one.
+const WELCOME_KEY = 'kaishi-welcome-seen';
+function welcomeSeen(){
+  try{ return window.localStorage.getItem(WELCOME_KEY) === '1'; }catch(e){ return false; }
+}
+function dismissWelcome(){
+  try{ window.localStorage.setItem(WELCOME_KEY, '1'); }catch(e){}
+  switchView('dashboard');
+}
+function isNewHere(){
+  return Object.keys(progress).length === 0 && !welcomeSeen();
+}
+
+function renderWelcome(){
+  const ready = learnableWords().length;
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">What this is</div>
+    <p class="footer-note" style="text-align:left;">
+      A spaced-repetition trainer for the <b>Kaishi 1.5k</b> Japanese vocabulary deck,
+      with a written mnemonic for every word and a breakdown of the kanji it is built
+      from. ${ready} of ${VOCAB.length} words have mnemonics so far and only those
+      appear in lessons. It is free, there are no adverts, and your progress is saved
+      in this browser.
+    </p>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;background:var(--kage-bg);">
+    <div class="section-title" style="color:var(--kage);">Before you start</div>
+    <p class="footer-note" style="text-align:left;">
+      <b>You need to be able to read hiragana and katakana already.</b> Every card
+      here is written in kana and kanji, there is no romaji anywhere, and the answers
+      are typed in kana. Without them this app will not be difficult so much as
+      unusable.
+    </p>
+    <p class="footer-note" style="text-align:left;">
+      If you have not learned them yet, go and do that first. It takes a few days,
+      not months, and Tofugu's guides are the ones the community keeps recommending:
+      <a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" rel="noopener noreferrer">hiragana</a>
+      and
+      <a href="https://www.tofugu.com/japanese/learn-katakana/" target="_blank" rel="noopener noreferrer">katakana</a>.
+      Come back when you can read them. Nothing here is going anywhere.
+    </p>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">How it works</div>
+    <p class="footer-note" style="text-align:left;">
+      You learn a few words at a time in a lesson, then the app asks for them again
+      at widening intervals: 4h, 8h, a day, two days, a week, and on up to four
+      months. Get one wrong and it comes back sooner. The ranks on the dashboard,
+      Genin through Kage, are how far along that ladder each word has climbed.
+    </p>
+    <p class="footer-note" style="text-align:left;">
+      Sign in from Settings and your progress follows you to other devices. You do
+      not have to, and everything works signed out.
+    </p>
+  </div>
+
+  <div class="btnrow">
+    <button class="primary" onclick="dismissWelcome()">Start studying</button>
+  </div>
+  <div style="text-align:center;margin-top:10px;">
+    <button class="reset-link" onclick="switchView('info')">More detail</button>
+  </div>
+  `;
+}
+
 function renderInfo(){
   const learnableCount = learnableWords().length;
   return `
@@ -1143,6 +1215,7 @@ function renderSettings(){
   </div>
   ${renderAudioCard()}
   ${renderAccountCard()}
+  ${renderDangerCard()}
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
   </div>
@@ -1222,6 +1295,59 @@ function renderSyncPrompt(){
       <button class="secondary" onclick="dismissSyncPrompt()">Not now</button>
       <button class="primary" onclick="switchView('settings')">Sign in</button>
     </div>
+  </div>`;
+}
+
+// Deleting the synced copy, as distinct from resetProgress() which only clears
+// this browser. Two steps on purpose: the first click is easy to make by
+// accident on a phone, and there is no undo behind it.
+let deleteArmed = false;
+function armDelete(){ deleteArmed = true; render(); }
+function cancelDelete(){ deleteArmed = false; render(); }
+
+async function confirmDeleteAccount(){
+  if(typeof deleteRemoteData !== 'function') return;
+  syncNotice = 'Deleting…';
+  render();
+  const res = await deleteRemoteData();
+  if(!res.ok){
+    deleteArmed = false;
+    syncNotice = 'Could not delete: ' + res.error + ' Nothing was removed.';
+    render();
+    return;
+  }
+  // Server copy is gone and confirmed gone. Now clear this device and sign out,
+  // in that order, so a failure above never leaves you locally wiped but still
+  // synced on the server.
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(SETTINGS_KEY);
+  localStorage.removeItem(DAILY_KEY);
+  localStorage.removeItem(MISTAKES_KEY);
+  localStorage.removeItem(ACTIVITY_KEY);
+  localStorage.removeItem(REVIEW_HISTORY_KEY);
+  localStorage.removeItem(STREAK_SAVE_KEY);
+  deleteArmed = false;
+  await signOutSync();
+  syncNotice = 'Deleted. Your study data is gone from this device and from the server.';
+  location.reload();
+}
+
+function renderDangerCard(){
+  if(typeof deleteRemoteData !== 'function') return '';
+  if(typeof syncUser === 'undefined' || !syncUser) return '';
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Delete your data</div>
+    ${deleteArmed ? `
+      <div class="settings-desc">This removes every SRS level, review, mistake and streak from this device and from the server. It cannot be undone.</div>
+      <div class="btnrow" style="margin-top:12px;">
+        <button class="secondary" onclick="cancelDelete()">Keep it</button>
+        <button class="reset-link" style="color:var(--bad,#e06c6c);" onclick="confirmDeleteAccount()">Yes, delete everything</button>
+      </div>
+    ` : `
+      <div class="settings-desc">Removes your progress from this device and from the server, then signs you out. Your sign-in itself stays on file, because removing that needs access this app deliberately does not hold. Open an issue and it will be removed by hand.</div>
+      <button class="secondary" style="margin-top:12px;" onclick="armDelete()">Delete my data</button>
+    `}
   </div>`;
 }
 
@@ -1373,7 +1499,8 @@ function renderExtraStudy(){
 function render(){
   const root = document.getElementById('root');
   let body;
-  if(view==='dashboard') body = renderDashboard();
+  if(view==='welcome') body = renderWelcome();
+  else if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
   else if(view==='settings') body = renderSettings();
   else if(view==='info') body = renderInfo();
@@ -1475,6 +1602,11 @@ async function init(){
     document.getElementById('root').innerHTML = '<div class="empty">Failed to load vocab data. Make sure data/vocab.json is reachable (serve this over http, not file://).</div>';
     return;
   }
+  // Decided after the deck loads, because the welcome page quotes how many
+  // words are ready. Anyone with progress goes straight to the dashboard, and
+  // a returning signed-in user on a new device gets it too once sync pulls
+  // their progress down.
+  if(isNewHere()) view = 'welcome';
   render();
   // Sync is best-effort and must never block the app from being usable.
   if(typeof initSync === 'function'){

@@ -36,6 +36,11 @@ body{
   min-height:100vh;   /* fallback for browsers without dvh */
   min-height:100dvh;  /* dvh follows the keyboard; vh does not */
 }
+/* There was no rule for these, so every link in the app was rendering in the
+   browser's default blue, which is close to unreadable on the dark cards and
+   worse still on the amber one. */
+a{color:var(--kage);text-decoration:underline;text-underline-offset:2px;}
+a:hover{opacity:0.8;}
 .jp{font-family:'Noto Sans JP',sans-serif;}
 .serif{font-family:'Spectral',serif;}
 #root{max-width:640px;margin:0 auto;padding:24px 20px 60px;}
