@@ -971,7 +971,7 @@ function renderWelcome(){
   const ready = learnableWords().length;
   return `
   <div class="card" style="margin-bottom:16px;">
-    <div class="section-title">What this is</div>
+    <div class="section-title">What Emaki is</div>
     <p class="footer-note" style="text-align:left;">
       A spaced-repetition trainer for the <b>Kaishi 1.5k</b> Japanese vocabulary deck,
       with a written mnemonic for every word and a breakdown of the kanji it is built
@@ -982,20 +982,26 @@ function renderWelcome(){
   </div>
 
   <div class="card" style="margin-bottom:16px;background:var(--kage-bg);">
-    <div class="section-title" style="color:var(--kage);">Before you start</div>
+    <div class="section-title" style="color:var(--kage);">Is this for you yet?</div>
     <p class="footer-note" style="text-align:left;">
-      <b>You need to be able to read hiragana and katakana already.</b> Every card
-      here is written in kana and kanji, there is no romaji anywhere, and the answers
-      are typed in kana. Without them this app will not be difficult so much as
-      unusable.
+      Emaki assumes that you can read/write hiragana and katakana. If this is the
+      case, go ahead and hit that button below.
     </p>
     <p class="footer-note" style="text-align:left;">
-      If you have not learned them yet, go and do that first. It takes a few days,
-      not months, and Tofugu's guides are the ones the community keeps recommending:
+      If you cannot, you should learn these first. It only takes a few hours or a
+      couple of days at max. Tofugu's guides are amazing and I highly recommend them:
       <a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" rel="noopener noreferrer">hiragana</a>
       and
       <a href="https://www.tofugu.com/japanese/learn-katakana/" target="_blank" rel="noopener noreferrer">katakana</a>.
-      Come back when you can read them. Nothing here is going anywhere.
+      You can practice them on
+      <a href="https://djtguide.github.io/learn/kana.html" target="_blank" rel="noopener noreferrer">this</a>
+      website. Come back after you are confident and all of this will make a great
+      deal more sense.
+    </p>
+    <p class="footer-note" style="text-align:left;">
+      The reason for this is simple. Every card on Emaki is kana and kanji with no
+      romaji anywhere, and you type your answers in kana as well, so it would be a
+      frustrating place to begin without it.
     </p>
   </div>
 
