@@ -15,6 +15,12 @@ const PUSH_DEBOUNCE_MS = 1500;
 
 let sb = null;
 let syncUser = null;
+// False until getSession() has come back, so the app can tell "signed out"
+// apart from "we have not looked yet". app.js renders before initSync has
+// restored the session, and pullRemote only repaints when the data actually
+// changed, which on a plain refresh it has not. Without this the dashboard
+// kept showing "sign in to sync" to somebody already signed in.
+let syncChecked = false;
 let syncStatus = 'off'; // 'off' | 'signing-in' | 'syncing' | 'synced' | 'error'
 let syncDetail = '';
 let syncNotice = ''; // one-off message shown on the Settings screen
@@ -97,11 +103,21 @@ async function initSync(){
   }
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-  const { data: { session } } = await sb.auth.getSession();
-  if(session && session.user){
-    syncUser = session.user;
-    await syncNow();
+  try{
+    const { data: { session } } = await sb.auth.getSession();
+    if(session && session.user){
+      syncUser = session.user;
+      await syncNow();
+    }
+  }finally{
+    // Set even if the lookup failed, or a network problem would leave the
+    // dashboard permanently unable to offer sign-in at all.
+    syncChecked = true;
   }
+  // Repaint now the answer is known. app.js painted before this point, so
+  // whatever it decided about the sign-in prompt was decided blind. Nothing is
+  // typed this early in the load, so a repaint cannot eat an answer.
+  render();
 
   sb.auth.onAuthStateChange(async (event, session) => {
     const nextUser = session && session.user ? session.user : null;

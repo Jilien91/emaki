@@ -1285,6 +1285,11 @@ function dismissSyncPrompt(){
 
 function renderSyncPrompt(){
   if(typeof signInWithEmail !== 'function') return '';   // sync.js absent
+  // Say nothing until sync.js has actually checked for a session. app.js paints
+  // first and initSync resolves a moment later, so before this the answer is
+  // simply unknown, and guessing "signed out" put the prompt in front of people
+  // who were signed in the whole time.
+  if(typeof syncChecked === 'undefined' || !syncChecked) return '';
   if(typeof syncUser !== 'undefined' && syncUser) return ''; // already signed in
   if(syncPromptDismissed()) return '';
   return `
