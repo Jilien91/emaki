@@ -785,7 +785,23 @@ function advanceExtraStudy(){
   render();
 }
 
+// The welcome page is the one view worth having a URL, so it can be sent to
+// somebody. Only ever touches the hash when it is empty or exactly #welcome:
+// Supabase returns from a magic link with the tokens in the hash, and wiping
+// those would break sign-in.
+function syncWelcomeHash(v){
+  try{
+    const h = window.location.hash;
+    if(v === 'welcome' && h !== '#welcome'){
+      if(h === '') history.replaceState(null, '', '#welcome');
+    }else if(v !== 'welcome' && h === '#welcome'){
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }catch(e){}
+}
+
 function switchView(v){
+  syncWelcomeHash(v);
   view = v;
   extraStudyState = null;
   // Reviews run as a session; leaving and coming back resumes the same one,
@@ -1025,6 +1041,9 @@ function renderInfo(){
     directly. Corrections are welcome and get folded into the next batch.
   </p>
   <div style="text-align:center;margin-top:16px;">
+    <button class="reset-link" onclick="switchView('welcome')">Show the welcome page</button>
+  </div>
+  <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
   </div>
   `;
@@ -1611,7 +1630,9 @@ async function init(){
   // words are ready. Anyone with progress goes straight to the dashboard, and
   // a returning signed-in user on a new device gets it too once sync pulls
   // their progress down.
-  if(isNewHere()) view = 'welcome';
+  // #welcome opens the intro whatever your progress, so the link works for
+  // somebody who already uses the app and is sending it to a friend.
+  if(window.location.hash === '#welcome' || isNewHere()) view = 'welcome';
   render();
   // Sync is best-effort and must never block the app from being usable.
   if(typeof initSync === 'function'){
