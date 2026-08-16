@@ -1112,25 +1112,16 @@ function renderTierList(){
   }
 
   const CAP = 300;
-  const shown = items.slice(0, CAP);
   const t = now();
 
-  const rows = shown.map(v=>{
+  const tiles = items.slice(0, CAP).map(v=>{
     const p = getEntry(v.id);
     const due = p.nextReview == null
-      ? (p.stage === 9 ? 'burned' : 'not scheduled')
+      ? (p.stage === 9 ? 'burned' : 'not started')
       : (p.nextReview <= t ? 'due now' : 'in ' + humanizeDuration(p.nextReview - t));
-    return `<div class="tierrow">
-      <span class="jp tierrow-word">${escapeHtml(v.word)}</span>
-      <span class="tierrow-body">
-        <span class="tierrow-meaning">${escapeHtml(v.meaning)}</span>
-        <span class="tierrow-sub jp">${escapeHtml(v.reading)}</span>
-      </span>
-      <span class="tierrow-right">
-        <span class="pill" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">${STAGE_NAMES[p.stage]}</span>
-        <span class="tierrow-sub">${tier === 'new' ? 'not started' : due}</span>
-      </span>
-    </div>`;
+    const hint = `${v.reading}, ${v.meaning}\n${STAGE_NAMES[p.stage]}, ${due}`;
+    return `<button class="tile tile-btn jp" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});"
+      onclick="showItem(${v.id})" title="${escapeHtml(hint)}">${escapeHtml(v.word)}</button>`;
   }).join('');
 
   return `
@@ -1139,14 +1130,60 @@ function renderTierList(){
     <div class="section-title">${label}</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">
       ${items.length} word${items.length===1?'':'s'}${items.length > CAP ? `, showing the first ${CAP}` : ''}.
-      ${tier === 'new' ? 'Words with a mnemonic that you have not started yet.' : 'Soonest due first.'}
+      ${tier === 'new'
+        ? 'Ready to learn but not started. Tap one to read its card.'
+        : 'Soonest due first. Tap one to read its card.'}
     </div>
     ${items.length === 0
       ? `<div class="empty" style="padding:16px 0;">Nothing at this rank yet.</div>`
-      : `<div class="tierlist">${rows}</div>`}
+      : `<div class="tilegrid">${tiles}</div>`}
   </div>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
+  </div>
+  `;
+}
+
+// A card you can read without being quizzed on it and without it counting for
+// anything. Same content as the lesson screen, deliberately: the point is to
+// look up a word you half remember, so it should look like where you met it.
+let detailId = null;
+function showItem(id){ detailId = id; switchView('item'); }
+
+function renderItemDetail(){
+  const item = VOCAB.find(v=>v.id === detailId);
+  if(!item) return renderTierList();
+  const p = getEntry(item.id);
+  const tier = TIER_COLOR(p.stage);
+  const t = now();
+  const due = p.stage === 0 ? 'Not started'
+    : p.nextReview == null ? (p.stage === 9 ? 'Burned, no more reviews' : 'Not scheduled')
+    : p.nextReview <= t ? 'Due now'
+    : 'Next review in ' + humanizeDuration(p.nextReview - t);
+
+  return `
+  ${nav('dashboard')}
+  <div class="bigword" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">
+    <span class="word-line">${escapeHtml(item.word)}</span>
+    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
+  </div>
+  <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
+  <div class="field">
+    <div class="k">Progress</div>
+    <div class="v" style="display:flex;align-items:center;gap:10px;">
+      <span class="pill" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">${STAGE_NAMES[p.stage]}</span>
+      <span style="font-size:13px;color:var(--text-dim);">${due}</span>
+    </div>
+  </div>
+  ${renderKanjiParts(item.word)}
+  ${item.mnemonic
+    ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>`
+    : `<div class="field"><div class="k">Mnemonic</div><div class="v" style="color:var(--text-faint);">Not written yet. This word cannot be learned until it is.</div></div>`}
+  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
+  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
+  ${reportCardLink(item)}
+  <div style="text-align:center;margin-top:14px;">
+    <button class="secondary" onclick="switchView('tierlist')">Back to ${tierView.charAt(0).toUpperCase()+tierView.slice(1)}</button>
   </div>
   `;
 }
@@ -1659,6 +1696,7 @@ function render(){
   else if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
   else if(view==='tierlist') body = renderTierList();
+  else if(view==='item') body = renderItemDetail();
   else if(view==='settings') body = renderSettings();
   else if(view==='info') body = renderInfo();
   else if(view==='extrastudy') body = renderExtraStudy();
