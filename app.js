@@ -973,11 +973,18 @@ function renderWelcome(){
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">What Emaki is</div>
     <p class="footer-note" style="text-align:left;">
-      A spaced-repetition trainer for the <b>Kaishi 1.5k</b> Japanese vocabulary deck,
-      with a written mnemonic for every word and a breakdown of the kanji it is built
-      from. ${ready} of ${VOCAB.length} words have mnemonics so far and only those
-      appear in lessons. It is free, there are no adverts, and your progress is saved
-      in this browser.
+      A spaced-repetition trainer built around the
+      <a href="https://github.com/donkuri/Kaishi" target="_blank" rel="noopener noreferrer">Kaishi 1.5k</a>
+      Japanese vocabulary deck, with a written mnemonic for every word and a
+      breakdown of the kanji it is built from. ${ready} of ${VOCAB.length} words have
+      mnemonics so far and only those appear in lessons. It is free, there are no
+      adverts, and your progress is saved in this browser.
+    </p>
+    <p class="footer-note" style="text-align:left;color:var(--text);">
+      <b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
+      The word list is theirs and is used with their kind permission. The mnemonics,
+      the kanji breakdowns and this app are not their work, so any complaint about
+      them belongs here rather than there.
     </p>
   </div>
 
@@ -1032,7 +1039,10 @@ function renderInfo(){
   const learnableCount = learnableWords().length;
   return `
   <p class="footer-note" style="text-align:left;">
-    Kaishi 1.5k deck: ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.<br><br>
+    <a href="https://github.com/donkuri/Kaishi" target="_blank" rel="noopener noreferrer">Kaishi 1.5k</a>
+    deck: ${learnableCount} of ${VOCAB.length} words have mnemonics and are ready to learn.
+    <b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors</b>, who kindly
+    gave permission for the word list to be used here.<br><br>
     SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br><br>
     <b>Kunai.</b> You hold one at a time. Miss a day and it's spent automatically to keep your
     study streak alive, you'll see it marked as spent on the dashboard. A replacement arrives

@@ -1,14 +1,20 @@
 # Emaki
 
-Written mnemonics for the Kaishi 1.5k Japanese vocab deck, with a
-spaced-repetition trainer around them. Static HTML/CSS/JS, no build step, no
-backend. Progress is saved to `localStorage`.
+Written mnemonics for the [Kaishi 1.5k](https://github.com/donkuri/Kaishi)
+Japanese vocab deck, with a spaced-repetition trainer around them.
+
+> **Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.**
+> The word list is theirs and is used with their kind permission
+> ([donkuri/Kaishi#158](https://github.com/donkuri/Kaishi/issues/158)). The
+> mnemonics, the kanji breakdowns and this app are not their work, so anything
+> wrong with those is a matter for this repository and not for theirs.
+
+Static HTML/CSS/JS, no build step, no backend. Progress is saved to
+`localStorage`.
 
 An emaki is a painted handscroll that tells a story one scene at a time as you
 unroll it, which is what the cards here are: one image per word rather than a
 stated link between a sound and a meaning.
-
-Not affiliated with, or endorsed by, Kaishi 1.5k.
 
 ## Structure
 
@@ -108,11 +114,15 @@ fields are used here: word, reading, meaning, sentence, sentence meaning and
 frequency. The Kaishi audio (from AJT Japanese) and images (from irasutoya) are
 deliberately not included.
 
-> **Status, and it is worth being plain about it.** Kaishi carries no licence,
-> so there is no permission to rely on and none has been granted here. Its
-> authors are being asked. Until they answer, treat that layer as all rights
-> reserved: it is not covered by either licence above, and it is not yours to
-> take from this repository. If they would rather it were not here it comes out
-> the same day, and the app will load a `.apkg` you import yourself instead.
+> **Status.** Kaishi carries no licence of its own, but its author has given
+> permission for the word list to be used here, in
+> [donkuri/Kaishi#158](https://github.com/donkuri/Kaishi/issues/158), on the
+> conditions that the lack of affiliation or endorsement is stated clearly at
+> the first mention of Kaishi and that the deck is linked. Both are done, above
+> and in the app itself.
+>
+> That permission covers this project and does not travel. Treat the deck layer
+> as all rights reserved: it is not covered by either licence above, and it is
+> not yours to take from this repository. Ask them yourself, as we did.
 
 This project is not affiliated with, or endorsed by, Kaishi 1.5k.
