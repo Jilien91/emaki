@@ -932,6 +932,7 @@ function renderDashboard(){
     </div>
   </div>
   ${renderSyncPrompt()}
+  ${renderSearchCard()}
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
@@ -1088,6 +1089,94 @@ function renderWelcome(){
   `;
 }
 
+// Look a word up without starting a review. Matches the written form and the
+// reading, and the meaning too, because a search box that cannot find "shop"
+// when you type shop feels broken even if it was only ever advertised for
+// Japanese.
+//
+// Romaji is converted with wanakana, so hanashi finds はなし without needing an
+// IME. The raw text is searched as well, since converting an English word
+// produces kana nonsense that must not be the only thing tried.
+const SEARCH_LIMIT = 60;
+let searchQuery = '';
+
+function searchMatches(raw){
+  const q = (raw || '').trim().toLowerCase();
+  if(q.length < 1) return [];
+  const kana = window.wanakana ? window.wanakana.toHiragana(q) : q;
+  const kata = window.wanakana ? window.wanakana.toKatakana(q) : q;
+
+  const scored = [];
+  for(const v of VOCAB){
+    const word = v.word.toLowerCase();
+    const reading = v.reading.toLowerCase();
+    const meaning = v.meaning.toLowerCase();
+    let score = 0;
+    // Exact hits first, then starts-with, then anywhere. Written form and
+    // reading outrank meaning so typing kana never buries what you meant.
+    if(word === q || word === kana || word === kata || reading === kana || reading === q) score = 100;
+    else if(word.startsWith(q) || word.startsWith(kana) || reading.startsWith(kana) || reading.startsWith(q)) score = 80;
+    else if(word.includes(q) || word.includes(kana) || reading.includes(kana) || reading.includes(q)) score = 60;
+    else if(meaning === q) score = 50;
+    else if(meaning.startsWith(q)) score = 40;
+    else if(meaning.includes(q)) score = 20;
+    if(score) scored.push([score, v]);
+  }
+  scored.sort((a,b)=> b[0]-a[0] || a[1].id-b[1].id);
+  return scored.map(s=>s[1]);
+}
+
+function renderSearchResults(){
+  const hits = searchMatches(searchQuery);
+  if(!searchQuery.trim()) return '';
+  if(hits.length === 0){
+    return `<div class="empty" style="padding:12px 0;">Nothing matches that.</div>`;
+  }
+  // Unlike the rank tiles, these carry the reading and meaning. A hit that
+  // matched on はな or on "flower" looks identical to its homophone as a bare
+  // kanji, so the tile has to show what it matched on.
+  const tiles = hits.slice(0, SEARCH_LIMIT).map(v=>{
+    const p = getEntry(v.id);
+    const tier = TIER_COLOR(p.stage);
+    return `<button class="hit tile-btn" style="background:var(--${tier}-bg,var(--surface-2));border-color:var(--${tier});"
+      onclick="showItem(${v.id},'dashboard')">
+      <span class="hit-w jp" style="color:var(--${tier});">${escapeHtml(v.word)}</span>
+      <span class="hit-r jp">${escapeHtml(v.reading)}</span>
+      <span class="hit-m">${escapeHtml(v.meaning)}</span>
+    </button>`;
+  }).join('');
+  return `<div class="hitgrid">${tiles}</div>
+    <div class="forecast" style="margin-top:10px;">
+      ${hits.length} match${hits.length===1?'':'es'}${hits.length > SEARCH_LIMIT ? `, showing the first ${SEARCH_LIMIT}` : ''}. Coloured by rank.
+    </div>`;
+}
+
+// Updates only the results, never the whole view. A full render would replace
+// the input element mid-keystroke and take the caret with it.
+function onSearchInput(el){
+  searchQuery = el.value;
+  const box = document.getElementById('searchResults');
+  if(box) box.innerHTML = renderSearchResults();
+}
+function clearSearch(){
+  searchQuery = '';
+  render();
+}
+
+function renderSearchCard(){
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Look up a word</div>
+    <div class="settings-row">
+      <input type="text" id="searchInput" placeholder="kanji, kana, romaji or English"
+             value="${escapeHtml(searchQuery)}" oninput="onSearchInput(this)"
+             autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+    </div>
+    <div id="searchResults">${renderSearchResults()}</div>
+    ${searchQuery ? `<div style="text-align:center;margin-top:10px;"><button class="reset-link" onclick="clearSearch()">Clear</button></div>` : ''}
+  </div>`;
+}
+
 // Drill-down from the rank tiles on the dashboard.
 let tierView = 'genin';
 function showTier(t){ tierView = t; switchView('tierlist'); }
@@ -1148,7 +1237,12 @@ function renderTierList(){
 // anything. Same content as the lesson screen, deliberately: the point is to
 // look up a word you half remember, so it should look like where you met it.
 let detailId = null;
-function showItem(id){ detailId = id; switchView('item'); }
+let itemOrigin = 'tierlist';
+function showItem(id, origin){
+  detailId = id;
+  itemOrigin = origin || 'tierlist';
+  switchView('item');
+}
 
 function renderItemDetail(){
   const item = VOCAB.find(v=>v.id === detailId);
@@ -1183,7 +1277,9 @@ function renderItemDetail(){
   <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   ${reportCardLink(item)}
   <div style="text-align:center;margin-top:14px;">
-    <button class="secondary" onclick="switchView('tierlist')">Back to ${tierView.charAt(0).toUpperCase()+tierView.slice(1)}</button>
+    ${itemOrigin === 'dashboard'
+      ? `<button class="secondary" onclick="switchView('dashboard')">Back to search</button>`
+      : `<button class="secondary" onclick="switchView('tierlist')">Back to ${tierView.charAt(0).toUpperCase()+tierView.slice(1)}</button>`}
   </div>
   `;
 }
