@@ -9,3 +9,6 @@ Changes/
 
 # The style guide stays local. It is the method, not the product.
 MNEMONICS.md
+
+# Local dev-server config, per-machine
+.claude/
