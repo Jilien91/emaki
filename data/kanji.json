@@ -1027,5 +1027,58 @@
   "頬": { "meaning": "cheek", "parts": [
     { "c": "夾", "name": "hold between" },
     { "c": "頁", "name": "head" }
+  ]},
+  "低": { "meaning": "low", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "氐", "name": "base" }
+  ]},
+  "傷": { "meaning": "wound, hurt", "note": "A person 亻 on the left and the mark of something driven into them on the right. What is left after the blow." },
+  "効": { "meaning": "effect, efficacy", "parts": [
+    { "c": "交", "name": "cross, mix" },
+    { "c": "力", "name": "power" }
+  ]},
+  "協": { "meaning": "cooperate", "note": "Ten 十 on the left and three lots of 力 power stacked on the right, everybody pulling the same way at once." },
+  "叩": { "meaning": "knock, strike", "note": "口 a mouth beside 卩 a kneeling figure. Knocking at a door and calling out through it at the same time." },
+  "噂": { "meaning": "rumor, gossip", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "尊", "name": "revere" }
+  ]},
+  "妙": { "meaning": "strange, exquisite", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "少", "name": "few" }
+  ]},
+  "娘": { "meaning": "daughter", "parts": [
+    { "c": "女", "name": "woman" },
+    { "c": "良", "name": "good" }
+  ]},
+  "巨": { "meaning": "huge", "note": "A carpenter's rule with a handle, drawn end on. The measure you reach for when the small one will not go round it." },
+  "影": { "meaning": "shadow", "note": "日 the sun over a tall building, and 彡 three streaks falling away from it. What the light leaves behind." },
+  "息": { "meaning": "breath, son", "parts": [
+    { "c": "自", "name": "nose" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "悟": { "meaning": "realize, perceive", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "吾", "name": "I, myself" }
+  ]},
+  "接": { "meaning": "contact, join", "note": "扌 a hand on the left reaching out until it touches. The point where two things meet and stay met." },
+  "数": { "meaning": "number, count", "note": "攵 a hand with a stick on the right, going along a row and ticking things off one at a time." },
+  "木": { "meaning": "tree, wood", "note": "A pictograph, a trunk with branches spread above it and roots spread below." },
+  "村": { "meaning": "village", "parts": [
+    { "c": "木", "name": "tree" },
+    { "c": "寸", "name": "hand" }
+  ]},
+  "浮": { "meaning": "float", "note": "氵 water on the left, and a hand reaching down over a child on the right. Held up so it does not go under." },
+  "計": { "meaning": "measure, plan", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "十", "name": "ten" }
+  ]},
+  "誘": { "meaning": "invite, tempt", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "秀", "name": "excel" }
+  ]},
+  "闇": { "meaning": "darkness", "parts": [
+    { "c": "門", "name": "gate" },
+    { "c": "音", "name": "sound" }
   ]}
 }

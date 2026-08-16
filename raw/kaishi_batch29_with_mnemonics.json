@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1241",
+      "meaning" : "son",
+      "mnemonic" : "A breath 息 of your own that walked off and turned into a person. He has been playing football since he was six and still eats everything in the house: むすこ.",
+      "notes" : "息子 むすこ and 娘 むすめ run together, son and daughter, apart in the last mora only.",
+      "reading" : "むすこ",
+      "sentence" : "息子は小学校からサッカーをやっています。",
+      "sentence_meaning" : "My son has been playing soccer since elementary school.",
+      "word" : "息子"
+   },
+   {
+      "frequency" : "471",
+      "meaning" : "daughter",
+      "mnemonic" : "The good 良 one, they always said, the woman 女 of the house before she was tall enough to reach the shelf. Now she lives in America: むすめ.",
+      "notes" : "Pairs with 息子 むすこ, son. Same opening two morae, and the last one is the whole difference.",
+      "reading" : "むすめ",
+      "sentence" : "私の娘はアメリカにいます。",
+      "sentence_meaning" : "My daughter is in America.",
+      "word" : "娘"
+   },
+   {
+      "frequency" : "950",
+      "meaning" : "in one go",
+      "mnemonic" : "One 一 breath 気 and the glass is empty, and the whole table is banging in time before he sets it down. Nobody sips anything: いっきに.",
+      "notes" : "",
+      "reading" : "いっきに",
+      "sentence" : "彼は一気にビールを飲んだ。",
+      "sentence_meaning" : "He downed the beer in one go.",
+      "word" : "一気に"
+   },
+   {
+      "frequency" : "952",
+      "meaning" : "softly, gently",
+      "mnemonic" : "She smooths the hair off the sleeping girl's face without waking her, hand barely landing. The whole thing done as though the air might break: そっと.",
+      "notes" : "",
+      "reading" : "そっと",
+      "sentence" : "母親は娘の髪をそっとなでたの。",
+      "sentence_meaning" : "The mother quietly patted her daughter's hair.",
+      "word" : "そっと"
+   },
+   {
+      "frequency" : "953",
+      "meaning" : "to&nbsp;be transmitted, to&nbsp;be handed down",
+      "mnemonic" : "One person 亻 says 云 it to the next, who says it to the next, all the way from China, and a thousand years later you are copying it into a notebook: つたわる.",
+      "notes" : "",
+      "reading" : "つたわる",
+      "sentence" : "漢字は中国から伝わった。",
+      "sentence_meaning" : "Kanji came from China.",
+      "word" : "伝わる"
+   },
+   {
+      "frequency" : "954",
+      "meaning" : "to&nbsp;hit, to&nbsp;strike",
+      "mnemonic" : "He turns round at exactly the wrong moment and the ball lands square 当 on the back of his head. Nobody aimed it and it went in anyway: あたる.",
+      "notes" : "",
+      "reading" : "あたる",
+      "sentence" : "ボールが彼の頭に当たった。",
+      "sentence_meaning" : "The ball hit him on the head.",
+      "word" : "当たる"
+   },
+   {
+      "frequency" : "955",
+      "meaning" : "pain, ache",
+      "mnemonic" : "The sickness 疒 has wrapped itself the whole way round your back and settled there, and you find it again every time you reach for anything: いたみ.",
+      "notes" : "",
+      "reading" : "いたみ",
+      "sentence" : "背中に痛みがあります。",
+      "sentence_meaning" : "I have a pain in my back.",
+      "word" : "痛み"
+   },
+   {
+      "frequency" : "956",
+      "meaning" : "strange",
+      "mnemonic" : "Very little 少 to go on and the room knows anyway. The way he crossed it was off by a degree and not one of them could say what: みょう.",
+      "notes" : "",
+      "reading" : "みょう",
+      "sentence" : "彼は妙な動きをした。",
+      "sentence_meaning" : "He made a strange movement.",
+      "word" : "妙"
+   },
+   {
+      "frequency" : "957",
+      "meaning" : "shadow, shade",
+      "mnemonic" : "The sun drops behind the building and three streaks 彡 fall across the window, and one of them is shaped like a man standing very still: かげ.",
+      "notes" : "",
+      "reading" : "かげ",
+      "sentence" : "窓に男性の影が映っています。",
+      "sentence_meaning" : "The shadow of a man is reflected in the window.",
+      "word" : "影"
+   },
+   {
+      "frequency" : "958",
+      "meaning" : "death",
+      "mnemonic" : "Bones 歹 on the ground with a figure folded over beside them, and the second one is not getting up either. Being frightened of it is the normal way round: し.",
+      "notes" : "",
+      "reading" : "し",
+      "sentence" : "死を恐れるのは自然なことです。",
+      "sentence_meaning" : "It's natural to be afraid of death.",
+      "word" : "死"
+   },
+   {
+      "frequency" : "959",
+      "meaning" : "probably, perhaps",
+      "mnemonic" : "Plenty 多 of ways it could go, so you cut 分 off the biggest piece and put your money on that one. Not certain, just how you would bet: たぶん.",
+      "notes" : "",
+      "reading" : "たぶん",
+      "sentence" : "彼女は多分家で寝ています。",
+      "sentence_meaning" : "She's probably sleeping at home.",
+      "word" : "多分"
+   },
+   {
+      "frequency" : "961",
+      "meaning" : "cooperation, collaboration",
+      "mnemonic" : "Three lots of 力 power on one rope and ten 十 pairs of hands along it, and the thing finally shifts. Not one of them moved it alone: きょうりょく.",
+      "notes" : "",
+      "reading" : "きょうりょく",
+      "sentence" : "このプロジェクトにはみんなの協力が必要です。",
+      "sentence_meaning" : "This project requires everyone's cooperation.",
+      "word" : "協力"
+   },
+   {
+      "frequency" : "962",
+      "meaning" : "to&nbsp;look up",
+      "mnemonic" : "You stop in the middle of the street and the eye 目 goes up on its legs 儿 until your neck complains. The sky was doing something worth it: みあげる.",
+      "notes" : "",
+      "reading" : "みあげる",
+      "sentence" : "私は空を見上げたの。",
+      "sentence_meaning" : "I looked up at the sky.",
+      "word" : "見上げる"
+   },
+   {
+      "frequency" : "964",
+      "meaning" : "readiness, resolution",
+      "mnemonic" : "You have looked 見 at the thing properly and your own 吾 heart 忄 has caught up with what you saw. Nothing left to talk yourself out of: かくご.",
+      "notes" : "",
+      "reading" : "かくご",
+      "sentence" : "覚悟はできています。",
+      "sentence_meaning" : "I am prepared.",
+      "word" : "覚悟"
+   },
+   {
+      "frequency" : "967",
+      "meaning" : "to&nbsp;take along, to&nbsp;bring along",
+      "mnemonic" : "The cart 車 goes off down the road 辶 and everybody small comes with it, whether the department store was their idea or not: つれる.",
+      "notes" : "",
+      "reading" : "つれる",
+      "sentence" : "子供を連れてデパートに行った。",
+      "sentence_meaning" : "I took my kids along to a department store.",
+      "word" : "連れる"
+   },
+   {
+      "frequency" : "968",
+      "meaning" : "low, short (height)",
+      "mnemonic" : "A person 亻 who tops out somewhere near the base 氐 of the shelf, and reaching the top one stays somebody else's job forever: ひくい.",
+      "notes" : "",
+      "reading" : "ひくい",
+      "sentence" : "私は背が低いです。",
+      "sentence_meaning" : "I am short.",
+      "word" : "低い"
+   },
+   {
+      "frequency" : "969",
+      "meaning" : "tree",
+      "mnemonic" : "Branches spread over the top, roots spread under the bottom, and one trunk drawn straight through the middle of both. The one in the garden: き.",
+      "notes" : "Same reading as 気, spirit. 気 is steam coming off something and you cannot stand under it. This one you can.",
+      "reading" : "き",
+      "sentence" : "庭に木があります。",
+      "sentence_meaning" : "There is a tree in the yard.",
+      "word" : "木"
+   },
+   {
+      "frequency" : "971",
+      "meaning" : "annoying, troublesome",
+      "mnemonic" : "Your face 面 when the thing lands 倒 on your desk at ten to five. Not difficult, just the whole evening gone: めんどう.",
+      "notes" : "",
+      "reading" : "めんどう",
+      "sentence" : "会社で面倒なことが起こったの。",
+      "sentence_meaning" : "There was some trouble at the office.",
+      "word" : "面倒"
+   },
+   {
+      "frequency" : "972",
+      "meaning" : "darkness",
+      "mnemonic" : "The gate 門 is shut and nothing comes back through it but sound 音. He went in there and you were not going to follow: やみ.",
+      "notes" : "",
+      "reading" : "やみ",
+      "sentence" : "犯人は闇に隠れた。",
+      "sentence_meaning" : "The criminal hid in the dark.",
+      "word" : "闇"
+   },
+   {
+      "frequency" : "973",
+      "meaning" : "wide, big",
+      "mnemonic" : "His shelter 广 has room in it for five-a-side, and everything he privately 厶 owns rattles about in one corner of it: ひろい.",
+      "notes" : "広がる is the spreading and 広い is the state it ends up in. A room that 広がる is afterwards 広い.",
+      "reading" : "ひろい",
+      "sentence" : "彼の家はとても広い。",
+      "sentence_meaning" : "His house is very big.",
+      "word" : "広い"
+   },
+   {
+      "frequency" : "974",
+      "meaning" : "to&nbsp;tell, to&nbsp;notify",
+      "mnemonic" : "It comes out of the mouth 口 like a cow 牛 through a gate, the whole of it at once and no softening on the way: つげる.",
+      "notes" : "",
+      "reading" : "つげる",
+      "sentence" : "彼に真実を告げました。",
+      "sentence_meaning" : "I told him the truth.",
+      "word" : "告げる"
+   },
+   {
+      "frequency" : "976",
+      "meaning" : "to tap, to hit",
+      "mnemonic" : "Knuckles on the door 叩 twice, then twice again when nobody comes. The same two beats every time, and they are in the word: たたく.",
+      "notes" : "",
+      "reading" : "たたく",
+      "sentence" : "彼は子供のおしりを叩いた。",
+      "sentence_meaning" : "He slapped his child on the bottom.",
+      "word" : "叩く"
+   },
+   {
+      "frequency" : "981",
+      "meaning" : "self-confidence",
+      "mnemonic" : "He believes 信 what he himself 自 says, and it is all over his face before he has opened his mouth: じしん.",
+      "notes" : "Same reading as 自身, self. 自身 is the plain fact of you, and 自信 has 信 believe in it, so it is what you reckon of yourself.",
+      "reading" : "じしん",
+      "sentence" : "あの人の顔には自信があふれているね。",
+      "sentence_meaning" : "That person's face is brimming with confidence.",
+      "word" : "自信"
+   },
+   {
+      "frequency" : "983",
+      "meaning" : "to&nbsp;gather, to&nbsp;collect",
+      "mnemonic" : "Birds 隹 keep coming down onto the one tree 木 until no branch is showing. Stamps, in a shoebox, when you were nine: あつめる.",
+      "notes" : "",
+      "reading" : "あつめる",
+      "sentence" : "子供の時、切手を集めていました。",
+      "sentence_meaning" : "I collected stamps when I was a child.",
+      "word" : "集める"
+   },
+   {
+      "frequency" : "984",
+      "meaning" : "to wave, to shake",
+      "mnemonic" : "The tail goes like a hand 扌 seeing off a dragon 辰, and it is not going to stop until somebody says the word: ふる.",
+      "notes" : "",
+      "reading" : "ふる",
+      "sentence" : "犬がしっぽを振っている。",
+      "sentence_meaning" : "The dog is wagging its tail.",
+      "word" : "振る"
+   },
+   {
+      "frequency" : "986",
+      "meaning" : "excess, needless",
+      "mnemonic" : "Ten 十 words 言 counted out and nine of them were needed, and the leftover 余 one is the one everybody goes home remembering: よけい.",
+      "notes" : "",
+      "reading" : "よけい",
+      "sentence" : "余計なことを言ってはだめよ。",
+      "sentence_meaning" : "Don't say things you don't need to say.",
+      "word" : "余計"
+   },
+   {
+      "frequency" : "987",
+      "meaning" : "else, in addition",
+      "mnemonic" : "Your coffee is written down and the pen is still up, waiting on whatever other 他 thing is coming. Anything at all besides this: ほかに.",
+      "notes" : "",
+      "reading" : "ほかに",
+      "sentence" : "A「他にご注文は？」B「コーヒーをお願いします。」",
+      "sentence_meaning" : "A: Would you like anything else?B: Coffee, please.",
+      "word" : "他に"
+   },
+   {
+      "frequency" : "988",
+      "meaning" : "to&nbsp;invite, to&nbsp;ask out",
+      "mnemonic" : "He rehearsed the words 言 for a week and got them out in one go, better 秀 than he had any right to expect. She said yes: さそう.",
+      "notes" : "",
+      "reading" : "さそう",
+      "sentence" : "彼女をデートに誘った。",
+      "sentence_meaning" : "I asked her out on a date.",
+      "word" : "誘う"
+   },
+   {
+      "frequency" : "989",
+      "meaning" : "to&nbsp;socialize with, to&nbsp;see someone",
+      "mnemonic" : "Two people stuck 付 together and fitting 合 under the one roof 𠆢, four years in and still turning up to each other's family things: つきあう.",
+      "notes" : "",
+      "reading" : "つきあう",
+      "sentence" : "彼女と4年ほど付き合っています。",
+      "sentence_meaning" : "I've been seeing her for 4 years now.",
+      "word" : "付き合う"
+   },
+   {
+      "frequency" : "990",
+      "meaning" : "village",
+      "mnemonic" : "A handful 寸 of houses under the one tree 木, everybody in it knowing whose bike that is. The next one along is an hour on foot: むら.",
+      "notes" : "",
+      "reading" : "むら",
+      "sentence" : "私は隣の村から来ました。",
+      "sentence_meaning" : "I came from the next village over.",
+      "word" : "村"
+   },
+   {
+      "frequency" : "991",
+      "meaning" : "character, person",
+      "mnemonic" : "A person 人 who counts as a thing 物 in the company, the sort whose name keeps coming up in rooms he is not in: じんぶつ.",
+      "notes" : "",
+      "reading" : "じんぶつ",
+      "sentence" : "彼は会社の重要な人物です。",
+      "sentence_meaning" : "He is an important person in the company.",
+      "word" : "人物"
+   },
+   {
+      "frequency" : "992",
+      "meaning" : "number",
+      "mnemonic" : "Somebody goes down the row with a stick 攵 touching each glass in turn, and stops two short of the people sitting down: かず.",
+      "notes" : "",
+      "reading" : "かず",
+      "sentence" : "グラスの数が足りません。",
+      "sentence_meaning" : "There are not enough glasses.",
+      "word" : "数"
+   },
+   {
+      "frequency" : "993",
+      "meaning" : "dangerous, uncertain",
+      "mnemonic" : "One figure up on the cliff 危 and another one directly underneath, and neither has looked up. That road, with all the cars on it: あぶない.",
+      "notes" : "",
+      "reading" : "あぶない",
+      "sentence" : "その道は車が多くて危ない。",
+      "sentence_meaning" : "There are many cars on that road, so it's dangerous.",
+      "word" : "危ない"
+   },
+   {
+      "frequency" : "994",
+      "meaning" : "circumstances, conditions",
+      "mnemonic" : "Once you have heard how the whole affair 事 has been sitting in his heart 忄 you stop arguing about what he ought to have done: じじょう.",
+      "notes" : "",
+      "reading" : "じじょう",
+      "sentence" : "あなたの事情はよく分かりました。",
+      "sentence_meaning" : "I understand your situation well.",
+      "word" : "事情"
+   },
+   {
+      "frequency" : "995",
+      "meaning" : "really, truly",
+      "mnemonic" : "He gets down to the root 本 of it and lands square 当 on the word, out loud, with the lights on. Not a nice thing to say, a true one: ほんとうに.",
+      "notes" : "",
+      "reading" : "ほんとうに",
+      "sentence" : "あなたが本当に好きです。",
+      "sentence_meaning" : "I really like you.",
+      "word" : "本当に"
+   },
+   {
+      "frequency" : "996",
+      "meaning" : "gossip, rumor",
+      "mnemonic" : "Mouths 口 passing it round the office like something holy 尊, and by Friday nobody can say who started it or whether any of it happened: うわさ.",
+      "notes" : "",
+      "reading" : "うわさ",
+      "sentence" : "その噂は本当ですか。",
+      "sentence_meaning" : "Is that rumor true?",
+      "word" : "噂"
+   },
+   {
+      "frequency" : "997",
+      "meaning" : "to&nbsp;refuse, to&nbsp;turn down",
+      "mnemonic" : "The axe 斤 comes down and that is the end of the conversation. He had the ring in his pocket and she said no: ことわる.",
+      "notes" : "",
+      "reading" : "ことわる",
+      "sentence" : "私は彼のプロポーズを断った。",
+      "sentence_meaning" : "I turned down his marriage proposal.",
+      "word" : "断る"
+   },
+   {
+      "frequency" : "998",
+      "meaning" : "if possible, somehow",
+      "mnemonic" : "On his knees in the doorway, asking for a thing he has no right to ask for and knows it. However it can be managed, if there is any way at all: どうか.",
+      "notes" : "The pleading one of the どう set. どうか is if there is any way, どうやって is by what method.",
+      "reading" : "どうか",
+      "sentence" : "どうかお許しください。",
+      "sentence_meaning" : "Please forgive me.",
+      "word" : "どうか"
+   },
+   {
+      "frequency" : "1000",
+      "meaning" : "huge, gigantic",
+      "mnemonic" : "You fetch the big rule 巨 and it still will not go round it, and a person 大 with both arms flung out covers one window. That is the museum: きょだい.",
+      "notes" : "",
+      "reading" : "きょだい",
+      "sentence" : "あの巨大な建物は博物館です。",
+      "sentence_meaning" : "That huge building is a museum.",
+      "word" : "巨大"
+   },
+   {
+      "frequency" : "1001",
+      "meaning" : "best, supreme",
+      "mnemonic" : "A hand goes to the very top 最 of the tallest 高 pile in the place and takes that one down. Best marks he has ever come home with: さいこう.",
+      "notes" : "",
+      "reading" : "さいこう",
+      "sentence" : "これまでで最高の結果が出たよ。",
+      "sentence_meaning" : "I got my best results so far.",
+      "word" : "最高"
+   },
+   {
+      "frequency" : "1002",
+      "meaning" : "money",
+      "mnemonic" : "The stuff out of the ground 金 with a polite お stuck on the front, because nobody says it bare. In this country it comes in yen: おかね.",
+      "notes" : "This is 金 かね wearing the polite お. かね on its own is the harder, blunter word.",
+      "reading" : "おかね",
+      "sentence" : "日本のお金は円です。",
+      "sentence_meaning" : "The Japanese currency is yen.",
+      "word" : "お金"
+   },
+   {
+      "frequency" : "1003",
+      "meaning" : "wound, cut",
+      "mnemonic" : "A person 亻 and the mark of whatever got them, still there a week on and going pale at the edges. It will close on its own: きず.",
+      "notes" : "",
+      "reading" : "きず",
+      "sentence" : "この傷はすぐ良くなるでしょう。",
+      "sentence_meaning" : "I'm sure this wound will get better right away.",
+      "word" : "傷"
+   },
+   {
+      "frequency" : "1004",
+      "meaning" : "anger, rage",
+      "mnemonic" : "A servant's 奴 heart 心 with the lid held down hard on it, and you can see exactly what it is costing him to say nothing: いかり.",
+      "notes" : "",
+      "reading" : "いかり",
+      "sentence" : "彼は怒りを抑えていたの。",
+      "sentence_meaning" : "He was holding back his anger.",
+      "word" : "怒り"
+   },
+   {
+      "frequency" : "1007",
+      "meaning" : "how, in what way",
+      "mnemonic" : "He has the airport up on his phone and no idea which of six lines gets him there. By what route, by what means, starting from where: どうやって.",
+      "notes" : "",
+      "reading" : "どうやって",
+      "sentence" : "A「空港までどうやって行きますか。」B「新宿からバスで行きます。」",
+      "sentence_meaning" : "A: How do I get to the airport?B: You can take the bus from Shinjuku.",
+      "word" : "どうやって"
+   },
+   {
+      "frequency" : "1009",
+      "meaning" : "effect, result",
+      "mnemonic" : "Mix 交 in something with enough power 力 behind it, wait, and the fruit 果 of that is your stomach finally leaving you alone: こうか.",
+      "notes" : "",
+      "reading" : "こうか",
+      "sentence" : "この薬には胃を守る効果がある。",
+      "sentence_meaning" : "This medicine is effective in protecting your stomach.",
+      "word" : "効果"
+   },
+   {
+      "frequency" : "1011",
+      "meaning" : "to&nbsp;take out, to&nbsp;pull out",
+      "mnemonic" : "The hand 又 goes in, takes 取 hold, and brings it out 出 into the light. His wallet, from a coat pocket, at the till: とりだす.",
+      "notes" : "",
+      "reading" : "とりだす",
+      "sentence" : "彼はポケットから財布を取り出したの。",
+      "sentence_meaning" : "He took his wallet out of his pocket.",
+      "word" : "取り出す"
+   },
+   {
+      "frequency" : "1013",
+      "meaning" : "black",
+      "mnemonic" : "Soot off the fire 灬 caught in the window frame until nothing shows through it at all. The pen he asked for, not the blue one: くろ.",
+      "notes" : "",
+      "reading" : "くろ",
+      "sentence" : "黒のボールペンはありますか。",
+      "sentence_meaning" : "Do you have a black pen?",
+      "word" : "黒"
+   },
+   {
+      "frequency" : "1015",
+      "meaning" : "love",
+      "mnemonic" : "A heart 心 bundled up in the middle of it and feet 夂 underneath carrying it about wherever you go. She got the whole of it into a letter: あい.",
+      "notes" : "",
+      "reading" : "あい",
+      "sentence" : "彼女は愛をこめて手紙を書いた。",
+      "sentence_meaning" : "She wrote a letter full of love.",
+      "word" : "愛"
+   },
+   {
+      "frequency" : "1016",
+      "meaning" : "directly",
+      "mnemonic" : "Look at him straight 直 and put the thing in his hand 接 yourself. Not through his secretary and not in an email: ちょくせつ.",
+      "notes" : "",
+      "reading" : "ちょくせつ",
+      "sentence" : "彼に直接お願いしなさい。",
+      "sentence_meaning" : "Ask him directly.",
+      "word" : "直接"
+   },
+   {
+      "frequency" : "1018",
+      "meaning" : "to float",
+      "mnemonic" : "The water 氵 holds it up the way a hand holds a child, and the boat sits out there all afternoon going nowhere at all: うかぶ.",
+      "notes" : "",
+      "reading" : "うかぶ",
+      "sentence" : "沖にボートが浮かんでいます。",
+      "sentence_meaning" : "The boat is floating off the coast.",
+      "word" : "浮かぶ"
+   }
+]
