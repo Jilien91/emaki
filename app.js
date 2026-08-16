@@ -1262,6 +1262,12 @@ function renderItemDetail(){
     <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
+  ${renderKanjiParts(item.word)}
+  ${item.mnemonic
+    ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>`
+    : `<div class="field"><div class="k">Mnemonic</div><div class="v" style="color:var(--text-faint);">Not written yet. This word cannot be learned until it is.</div></div>`}
+  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
+  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   <div class="field">
     <div class="k">Progress</div>
     <div class="v" style="display:flex;align-items:center;gap:10px;">
@@ -1269,12 +1275,6 @@ function renderItemDetail(){
       <span style="font-size:13px;color:var(--text-dim);">${due}</span>
     </div>
   </div>
-  ${renderKanjiParts(item.word)}
-  ${item.mnemonic
-    ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>`
-    : `<div class="field"><div class="k">Mnemonic</div><div class="v" style="color:var(--text-faint);">Not written yet. This word cannot be learned until it is.</div></div>`}
-  ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
-  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   ${reportCardLink(item)}
   <div style="text-align:center;margin-top:14px;">
     ${itemOrigin === 'dashboard'
