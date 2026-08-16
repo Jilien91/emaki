@@ -808,20 +808,28 @@ function revealMnemonic(which){
 // The panel under a graded answer. Three screens show it and all three want the
 // same bargain, so it lives here rather than being pasted three times.
 //
-// "Show the mnemonic after answering" prints it every time. With that off the
-// mnemonic is still the thing you want after getting one wrong, so it goes
-// behind a button: asked for, not handed over, exactly like the answer itself
-// under "reveal only when asked". It stays out of reach entirely while the
-// item's other half is still in the queue, because the mnemonic tells the
-// meaning story and ends on the reading, so showing it would answer a question
-// that hasn't been put yet.
+// holdBack means the item's other half is still in the queue. It only applies
+// to a correct answer, where that half is still a live question and the
+// mnemonic would answer it early: the mnemonic tells the meaning story and ends
+// on the reading.
+//
+// After a miss there is nothing left to protect. applyReviewResult runs on
+// !res.missed, so one wrong half fails the whole item then and there, and no
+// amount of reading the mnemonic afterwards can change the stage it lands on.
+// Withholding it there only kept you from the explanation at the moment you had
+// just proved you needed it. So on a miss it goes behind a button instead:
+// asked for, not handed over, the same bargain the answer itself gets under
+// "reveal only when asked".
+//
+// What that does cost: the other half can now be answered from the mnemonic
+// rather than from memory, and that counts as a clean first attempt in the
+// per-item stats and keeps it out of Recent Mistakes. The stage is already lost
+// either way.
 function mnemonicPanel(state, item, holdBack, which){
   if(!answerVisible(state) || !item.mnemonic) return '';
   const field = `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>`;
-  if(holdBack) return '';
-  if(settings.showMnemonicOnAnswer) return field;
-  if(state.lastCorrect) return '';
-  if(state.mnemonicShown) return field;
+  if(state.lastCorrect) return settings.showMnemonicOnAnswer && !holdBack ? field : '';
+  if(settings.showMnemonicOnAnswer || state.mnemonicShown) return field;
   return `<div style="text-align:center;margin-bottom:10px;">
     <button class="secondary" onclick="revealMnemonic('${which}')">Show mnemonic</button>
   </div>`;
@@ -1538,7 +1546,7 @@ function renderSettings(){
     </div>
     <div class="settings-row">
       <div class="settings-label">Show the mnemonic after answering</div>
-      <div class="settings-desc">Off by default. The mnemonic tells the meaning story and ends on the reading, so seeing it hands you the answer to whichever half you haven't been asked yet. Either way it stays hidden until both halves of that word are done.</div>
+      <div class="settings-desc">Off by default. The mnemonic tells the meaning story and ends on the reading, so after a <em>correct</em> answer it stays hidden until both halves of that word are done, otherwise it hands you the half you haven't been asked yet. After a wrong one there is nothing left to give away, since missing either half already fails the item, so the mnemonic is always available there behind a button.</div>
       <select id="showMnemonicInput">
         <option value="no" ${!settings.showMnemonicOnAnswer?'selected':''}>No</option>
         <option value="yes" ${settings.showMnemonicOnAnswer?'selected':''}>Yes</option>
