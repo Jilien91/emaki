@@ -60,6 +60,20 @@ nav button.active{background:var(--surface-2);border-color:var(--border-strong);
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;}
 .stat .n{font-size:22px;font-weight:600;font-family:'Spectral',serif;}
 .stat .l{font-size:11px;color:var(--text-dim);margin-top:2px;}
+/* The rank tiles are buttons now, so they need the button defaults stripped
+   back to what the div looked like, plus something to show they are pressable. */
+.stat-btn{font:inherit;color:inherit;text-align:left;width:100%;cursor:pointer;
+  transition:border-color .12s,background .12s;}
+.stat-btn:hover{border-color:var(--text-faint);background:var(--surface-2);}
+
+.tierlist{display:flex;flex-direction:column;gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.tierrow{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--surface);}
+.tierrow-word{font-size:20px;min-width:76px;}
+.tierrow-body{flex:1;display:flex;flex-direction:column;min-width:0;}
+.tierrow-meaning{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tierrow-sub{font-size:11px;color:var(--text-faint);}
+.tierrow-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
 .stagebar{display:flex;gap:2px;margin-top:8px;}
 .stagebar span{flex:1;height:4px;border-radius:2px;background:var(--border);}
 .stagebar span.on{background:var(--tier-color,var(--genin));}

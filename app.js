@@ -510,8 +510,50 @@ function humanizeDuration(ms){
   return months+'mo';
 }
 
+// Per-item history. Kept alongside stage and nextReview rather than in its own
+// store so it travels with the item through sync and reset.
+//
+// Short keys on purpose: this whole object is one JSON blob in Postgres and
+// eventually holds up to 1500 items, so "meaningCorrect" 1500 times is real
+// weight for no benefit. m is meaning, r is reading, and within each c is
+// correct, w is wrong, s is the current streak and b the best it has been.
+//
+// Only reviews are counted, not lesson quizzes and not extra study. Those are
+// practice and do not move the SRS stage, so counting them would flatter the
+// numbers and stop them meaning anything.
+function blankStats(){ return { c:0, w:0, s:0, b:0 }; }
+
+function ensureStats(id){
+  const p = progress[id];
+  if(!p) return null;
+  if(!p.m) p.m = blankStats();
+  if(!p.r) p.r = blankStats();
+  return p;
+}
+
+function recordAnswer(id, type, correct){
+  const p = ensureStats(id);
+  if(!p) return;
+  const s = (type === 'reading') ? p.r : p.m;
+  if(correct){
+    s.c++;
+    s.s++;
+    if(s.s > s.b) s.b = s.s;
+  }else{
+    s.w++;
+    s.s = 0;
+  }
+  saveProgress();
+}
+
 function completeLesson(id){
-  progress[id] = { stage:1, nextReview: now() + INTERVAL_HOURS[1]*3600*1000 };
+  progress[id] = {
+    stage: 1,
+    nextReview: now() + INTERVAL_HOURS[1]*3600*1000,
+    unlocked: now(),
+    m: blankStats(),
+    r: blankStats()
+  };
   saveProgress();
   incrementDailyLessons();
   recordActivityToday();
@@ -682,7 +724,15 @@ function buildReviewSession(){
 function applyReviewResult(id, allCorrect){
   const newStage = computeReviewStage(getEntry(id).stage, allCorrect);
   const nextReview = newStage===9 ? null : now() + INTERVAL_HOURS[newStage]*3600*1000;
-  progress[id] = { stage:newStage, nextReview };
+  // Merge rather than replace. This line used to be an assignment, which threw
+  // away everything except stage and nextReview on every single review, so any
+  // history added elsewhere would have lasted until the item next came up.
+  const p = progress[id] || {};
+  p.stage = newStage;
+  p.nextReview = nextReview;
+  if(!p.unlocked) p.unlocked = now();  // items from before this existed
+  progress[id] = p;
+  ensureStats(id);
   saveProgress();
   recordActivityToday();
   recordReviewCompleted();
@@ -730,12 +780,17 @@ function advanceReview(){
   sessionTotal++;
   if(reviewState.lastCorrect){
     sessionCorrect++;
+    // Count the first attempt only. Getting it right on the retry after a miss
+    // is still a miss for this review, which is how the percentage stays
+    // meaningful rather than drifting to 100% for everybody.
+    if(!res[q.type] && !res[q.type+'Missed']) recordAnswer(q.id, q.type, true);
     res[q.type] = true;
     if(res.meaning && res.reading) applyReviewResult(q.id, !res.missed);
   }else{
     if(!res[q.type+'Missed']){
       res[q.type+'Missed'] = true;
       res.missed = true;
+      recordAnswer(q.id, q.type, false);
       recordMistake(q.id, q.type);
     }
     const insertAt = Math.min(reviewState.queue.length, 3);
@@ -911,12 +966,10 @@ function renderDashboard(){
     </div>
   </div>
   <div class="grid3">
-    <div class="stat"><div class="n">${counts.new}</div><div class="l">New</div></div>
-    <div class="stat"><div class="n">${counts.genin}</div><div class="l">Genin</div></div>
-    <div class="stat"><div class="n">${counts.chunin}</div><div class="l">Chunin</div></div>
-    <div class="stat"><div class="n">${counts.jonin}</div><div class="l">Jonin</div></div>
-    <div class="stat"><div class="n">${counts.anbu}</div><div class="l">Anbu</div></div>
-    <div class="stat"><div class="n">${counts.kage}</div><div class="l">Kage</div></div>
+    ${['new','genin','chunin','jonin','anbu','kage'].map(t=>`
+      <button class="stat stat-btn" onclick="showTier('${t}')" title="Show these words">
+        <div class="n">${counts[t]}</div><div class="l">${t.charAt(0).toUpperCase()+t.slice(1)}</div>
+      </button>`).join('')}
   </div>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
@@ -1031,6 +1084,69 @@ function renderWelcome(){
   </div>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('info')">More detail</button>
+  </div>
+  `;
+}
+
+// Drill-down from the rank tiles on the dashboard.
+let tierView = 'genin';
+function showTier(t){ tierView = t; switchView('tierlist'); }
+
+function renderTierList(){
+  const tier = tierView;
+  const label = tier.charAt(0).toUpperCase() + tier.slice(1);
+  // "New" means never studied, so it is the only tier where the sensible list
+  // is what you could learn next rather than everything unstudied. Words with
+  // no mnemonic cannot be learned yet and would just be noise.
+  const items = tier === 'new'
+    ? learnableWords().filter(v=>getEntry(v.id).stage === 0)
+    : VOCAB.filter(v=>{ const p = getEntry(v.id); return p.stage > 0 && TIER_COLOR(p.stage) === tier; });
+
+  // Soonest first for anything scheduled; New has no schedule so keep deck order.
+  if(tier !== 'new'){
+    items.sort((a,b)=>{
+      const pa = getEntry(a.id), pb = getEntry(b.id);
+      if(pa.stage !== pb.stage) return pa.stage - pb.stage;
+      return (pa.nextReview || Infinity) - (pb.nextReview || Infinity);
+    });
+  }
+
+  const CAP = 300;
+  const shown = items.slice(0, CAP);
+  const t = now();
+
+  const rows = shown.map(v=>{
+    const p = getEntry(v.id);
+    const due = p.nextReview == null
+      ? (p.stage === 9 ? 'burned' : 'not scheduled')
+      : (p.nextReview <= t ? 'due now' : 'in ' + humanizeDuration(p.nextReview - t));
+    return `<div class="tierrow">
+      <span class="jp tierrow-word">${escapeHtml(v.word)}</span>
+      <span class="tierrow-body">
+        <span class="tierrow-meaning">${escapeHtml(v.meaning)}</span>
+        <span class="tierrow-sub jp">${escapeHtml(v.reading)}</span>
+      </span>
+      <span class="tierrow-right">
+        <span class="pill" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">${STAGE_NAMES[p.stage]}</span>
+        <span class="tierrow-sub">${tier === 'new' ? 'not started' : due}</span>
+      </span>
+    </div>`;
+  }).join('');
+
+  return `
+  ${nav('dashboard')}
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">${label}</div>
+    <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">
+      ${items.length} word${items.length===1?'':'s'}${items.length > CAP ? `, showing the first ${CAP}` : ''}.
+      ${tier === 'new' ? 'Words with a mnemonic that you have not started yet.' : 'Soonest due first.'}
+    </div>
+    ${items.length === 0
+      ? `<div class="empty" style="padding:16px 0;">Nothing at this rank yet.</div>`
+      : `<div class="tierlist">${rows}</div>`}
+  </div>
+  <div style="text-align:center;margin-top:10px;">
+    <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
   </div>
   `;
 }
@@ -1542,6 +1658,7 @@ function render(){
   if(view==='welcome') body = renderWelcome();
   else if(view==='dashboard') body = renderDashboard();
   else if(view==='lessons') body = renderLessons();
+  else if(view==='tierlist') body = renderTierList();
   else if(view==='settings') body = renderSettings();
   else if(view==='info') body = renderInfo();
   else if(view==='extrastudy') body = renderExtraStudy();
