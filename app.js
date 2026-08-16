@@ -88,6 +88,12 @@ function levenshtein(a, b){
   return dp[n];
 }
 
+// Senses are comma separated, but a comma inside brackets belongs to the note
+// rather than to the list: "I (polite, general)" is one sense, not two.
+function splitSenses(s){
+  return s.split(/[,/](?![^(]*\))/).map(t=>t.trim()).filter(Boolean);
+}
+
 // Meanings like "I (polite, general)" or "he, him" can have several
 // acceptable answers, split out synonyms and drop parenthetical notes.
 function meaningCandidates(meaning){
@@ -96,6 +102,24 @@ function meaningCandidates(meaning){
   const candidates = source.split(/[,/]/).map(s=>s.trim().toLowerCase()).filter(Boolean);
   candidates.push(meaning.trim().toLowerCase());
   return candidates;
+}
+
+// A bracket at the front of a sense is part of the sense: "(not) very" is read
+// as "not very" and gets typed that way, so accept it unwrapped. A bracket at
+// the end is a note about register instead, and unwrapping "I (polite,
+// general)" would accept "general" for 私, so only leading ones open.
+//
+// These match exactly, never fuzzily. They are short qualifier phrases, and
+// fuzzyMatch allows two edits at eight characters, which is the whole distance
+// from "not much" to "how much" and from "the most" to "the past".
+function openedSenses(meaning){
+  const out = [];
+  for(const sense of splitSenses(meaning)){
+    if(!sense.startsWith('(')) continue;
+    const opened = sense.replace(/[()]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+    if(opened && !out.includes(opened)) out.push(opened);
+  }
+  return out;
 }
 
 function fuzzyMatch(input, candidate){
@@ -121,20 +145,34 @@ function acceptedMeanings(meaning, item){
   return list;
 }
 
+function stripParens(s){
+  return s.replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 function checkMeaning(userInput, meaning, item){
   const whole = userInput.trim().toLowerCase().replace(/\s+/g, ' ');
   if(!whole) return false;
   const correctCandidates = acceptedMeanings(meaning, item);
+  const opened = openedSenses(meaning);
+  const hit = s => opened.includes(s) || correctCandidates.some(c => fuzzyMatch(s, c));
   // Try the whole answer first. This is what accepts an exact copy of a
   // stored meaning whose own parentheses contain commas, e.g. typing
   // "I (polite, general)". Splitting that on commas would match nothing.
-  if(correctCandidates.some(c => fuzzyMatch(whole, c))) return true;
+  if(hit(whole)) return true;
+  // meaningCandidates drops parentheticals from the stored meaning but nothing
+  // dropped them from the answer, so "(not) very" was marked wrong against
+  // "(not) very, (not) much" while a bare "very" passed. Copying the card back
+  // faithfully has to be at least as right as typing half of it.
+  const bare = stripParens(whole);
+  if(bare && bare !== whole && hit(bare)) return true;
   // Otherwise treat it as a list of synonyms, so "like, fond of" is accepted
   // for "fond of, liked". Every part must be a valid synonym. That keeps
-  // "he, cat" from passing for "he, him" on the strength of "he" alone.
-  const parts = whole.split(/[,/]/).map(s=>s.trim()).filter(Boolean);
+  // "he, cat" from passing for "he, him" on the strength of "he" alone. Order
+  // never mattered here and still doesn't: the senses are a set, so "(not)
+  // much, (not) very" is the same answer as "(not) very, (not) much".
+  const parts = splitSenses(whole).map(s => stripParens(s)).filter(Boolean);
   if(parts.length < 2) return false;
-  return parts.every(p => correctCandidates.some(c => fuzzyMatch(p, c)));
+  return parts.every(hit);
 }
 
 function checkReading(userInput, reading){
@@ -626,6 +664,7 @@ function answerQuizQuestion(correct){
   }
   lessonState.showAnswer = false;
   lessonState.revealed = false;
+  lessonState.mnemonicShown = false;
   render();
 }
 
@@ -640,6 +679,7 @@ function submitQuizAnswer(){
   lessonState.lastCorrect = correct;
   lessonState.lastInput = value;
   lessonState.revealed = false;
+  lessonState.mnemonicShown = false;
   render();
 }
 
@@ -759,6 +799,34 @@ function revealReviewAnswer(){ reviewState.revealed = true; render(); }
 function revealExtraStudyAnswer(){ extraStudyState.revealed = true; render(); }
 function revealQuizAnswer(){ lessonState.revealed = true; render(); }
 
+function revealMnemonic(which){
+  const state = which === 'review' ? reviewState : which === 'lesson' ? lessonState : extraStudyState;
+  if(state) state.mnemonicShown = true;
+  render();
+}
+
+// The panel under a graded answer. Three screens show it and all three want the
+// same bargain, so it lives here rather than being pasted three times.
+//
+// "Show the mnemonic after answering" prints it every time. With that off the
+// mnemonic is still the thing you want after getting one wrong, so it goes
+// behind a button: asked for, not handed over, exactly like the answer itself
+// under "reveal only when asked". It stays out of reach entirely while the
+// item's other half is still in the queue, because the mnemonic tells the
+// meaning story and ends on the reading, so showing it would answer a question
+// that hasn't been put yet.
+function mnemonicPanel(state, item, holdBack, which){
+  if(!answerVisible(state) || !item.mnemonic) return '';
+  const field = `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>`;
+  if(holdBack) return '';
+  if(settings.showMnemonicOnAnswer) return field;
+  if(state.lastCorrect) return '';
+  if(state.mnemonicShown) return field;
+  return `<div style="text-align:center;margin-bottom:10px;">
+    <button class="secondary" onclick="revealMnemonic('${which}')">Show mnemonic</button>
+  </div>`;
+}
+
 function submitReviewAnswer(){
   const q = reviewState.queue[0];
   const item = VOCAB.find(v=>v.id===q.id);
@@ -771,6 +839,7 @@ function submitReviewAnswer(){
   reviewState.lastInput = value;
   reviewState.showAnswer = true;
   reviewState.revealed = false;
+  reviewState.mnemonicShown = false;
   render();
 }
 
@@ -800,6 +869,7 @@ function advanceReview(){
   reviewState.lastCorrect = null;
   reviewState.lastInput = '';
   reviewState.revealed = false;
+  reviewState.mnemonicShown = false;
   render();
 }
 
@@ -830,6 +900,7 @@ function submitExtraStudyAnswer(){
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;
   extraStudyState.revealed = false;
+  extraStudyState.mnemonicShown = false;
   render();
 }
 
@@ -837,6 +908,7 @@ function advanceExtraStudy(){
   extraStudyState.index++;
   extraStudyState.showAnswer = false;
   extraStudyState.revealed = false;
+  extraStudyState.mnemonicShown = false;
   render();
 }
 
@@ -1420,9 +1492,7 @@ function renderLessonQuiz(){
       ${answerVisible(lessonState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>` : ''}
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${answerVisible(lessonState) && settings.showMnemonicOnAnswer && !holdBack ? `
-      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
-    ` : ''}
+    ${mnemonicPanel(lessonState, item, holdBack, 'lesson')}
     ${answerVisible(lessonState) ? '' : `
       <button class="secondary" onclick="revealQuizAnswer()">Show answer</button>
     `}
@@ -1734,7 +1804,7 @@ function renderReview(){
     ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
     ${answerVisible(reviewState) ? `
       <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
-      ${settings.showMnemonicOnAnswer && !holdBack ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>` : ''}
+      ${mnemonicPanel(reviewState, item, holdBack, 'review')}
     ` : `
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
@@ -1774,9 +1844,7 @@ function renderExtraStudy(){
       ${answerVisible(extraStudyState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${answerVisible(extraStudyState) && settings.showMnemonicOnAnswer && !holdBack ? `
-      <div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>
-    ` : ''}
+    ${mnemonicPanel(extraStudyState, item, holdBack, 'extra')}
     ${answerVisible(extraStudyState) ? '' : `
       <button class="secondary" onclick="revealExtraStudyAnswer()">Show answer</button>
     `}
