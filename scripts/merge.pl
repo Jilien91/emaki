@@ -92,7 +92,11 @@ for my $file (@batch_files) {
     print "$file: applied $applied/" . scalar(@$batch) . " entries\n";
 }
 
-my $out_json = JSON::PP->new->utf8(0)->pretty->canonical(0)->encode(\@merged);
+# canonical(1) sorts the keys of every entry. Without it JSON::PP writes them in
+# Perl's hash order, which is reseeded per process, so a rerun that changed one
+# card still reshuffled the keys of all 1500 and every batch commit carried an
+# 8,000 line diff with no content in it. Sorted output makes the diff the batch.
+my $out_json = JSON::PP->new->utf8(0)->pretty->canonical(1)->encode(\@merged);
 open(my $out, '>:encoding(UTF-8)', 'data/vocab.json') or die $!;
 print $out $out_json;
 close $out;

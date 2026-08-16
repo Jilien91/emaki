@@ -966,5 +966,66 @@
     { "c": "分", "name": "part" }
   ]},
   "響": { "meaning": "echo, resound", "note": "音 sound at the bottom, thrown back off everything stacked above it." },
-  "麗": { "meaning": "lovely", "note": "A deer with its antlers drawn out evenly on both sides. Fine, and matched." }
+  "麗": { "meaning": "lovely", "note": "A deer with its antlers drawn out evenly on both sides. Fine, and matched." },
+  "並": { "meaning": "line up, stand in a row", "note": "Two people standing 立 side by side in the older form. The modern shape has levelled them into one flat row." },
+  "休": { "meaning": "rest", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "木", "name": "tree" }
+  ]},
+  "内": { "meaning": "inside", "parts": [
+    { "c": "冂", "name": "cover" },
+    { "c": "入", "name": "enter" }
+  ]},
+  "器": { "meaning": "vessel, instrument", "note": "Four mouths 口 set around a dog in the middle, written 大 in the modern form. Vessels laid out on every side." },
+  "容": { "meaning": "contain, form", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "谷", "name": "valley" }
+  ]},
+  "寂": { "meaning": "lonely, quiet", "note": "A roof 宀 with almost nothing left underneath it. The right half only lends the sound." },
+  "広": { "meaning": "wide, spacious", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "厶", "name": "private" }
+  ]},
+  "床": { "meaning": "floor, bed", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "木", "name": "tree" }
+  ]},
+  "弱": { "meaning": "weak", "note": "Two bows 弓 side by side, each with its string hanging slack in a pair of soft marks." },
+  "振": { "meaning": "shake, swing", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "辰", "name": "dragon" }
+  ]},
+  "横": { "meaning": "side, sideways", "parts": [
+    { "c": "木", "name": "tree" },
+    { "c": "黄", "name": "yellow" }
+  ]},
+  "武": { "meaning": "military, warrior", "parts": [
+    { "c": "止", "name": "footprint" },
+    { "c": "戈", "name": "halberd" }
+  ]},
+  "段": { "meaning": "step, grade", "note": "Steps cut into a cliff on the left, and a hand holding a tool on the right doing the cutting." },
+  "眺": { "meaning": "gaze, look out", "parts": [
+    { "c": "目", "name": "eye" },
+    { "c": "兆", "name": "omen, sign" }
+  ]},
+  "興": { "meaning": "interest, rise", "note": "Hands at all four corners lifting something up together, the shape of a thing being raised." },
+  "若": { "meaning": "young", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "右", "name": "right hand" }
+  ]},
+  "貴": { "meaning": "precious, noble", "note": "Money 貝 carried up in both hands. What gets held that way is the precious thing." },
+  "質": { "meaning": "quality, substance", "note": "Two axes 斤 above money 貝, the weighing that says what a thing is really worth." },
+  "距": { "meaning": "distance, spur", "parts": [
+    { "c": "足", "name": "foot" },
+    { "c": "巨", "name": "huge" }
+  ]},
+  "運": { "meaning": "carry, fortune", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "軍", "name": "army" }
+  ]},
+  "金": { "meaning": "gold, money, metal", "note": "Two nuggets buried in the earth under a cover. The metal you dig for, and the money it becomes." },
+  "頬": { "meaning": "cheek", "parts": [
+    { "c": "夾", "name": "hold between" },
+    { "c": "頁", "name": "head" }
+  ]}
 }
