@@ -1259,5 +1259,62 @@
   "雨": { "meaning": "rain", "note": "A pictograph, drops falling out of a line of cloud." },
   "馬": { "meaning": "horse", "note": "A pictograph. The mane runs along the top and the four strokes underneath are the legs." },
   "鹿": { "meaning": "deer", "note": "A pictograph, antlers up top and the legs beneath. The same animal stands inside 麗 lovely." },
-  "魂": { "meaning": "soul", "note": "鬼 a ghost on the right with 云 a cloud beside it. Whatever is left of a person once the body has finished." }
+  "魂": { "meaning": "soul", "note": "鬼 a ghost on the right with 云 a cloud beside it. Whatever is left of a person once the body has finished." },
+  "介": { "meaning": "come between, mediate", "note": "A figure with something held out to either side, stood in the middle of the two of them." },
+  "写": { "meaning": "copy, photograph", "note": "A cover over a thing being set down again exactly as it was. Copying first, and photographs once those arrived." },
+  "剣": { "meaning": "sword", "note": "刂 the knife radical on the right, drawn out to twice the length. A blade meant to be held in both hands." },
+  "勘": { "meaning": "intuition, perception", "note": "力 power on the right with a heavy weight on the left. Working a thing out by feel instead of by looking." },
+  "奮": { "meaning": "rouse, stir up", "parts": [
+    { "c": "大", "name": "big" },
+    { "c": "隹", "name": "small bird" },
+    { "c": "田", "name": "field" }
+  ]},
+  "希": { "meaning": "hope, rare", "note": "Cloth woven loosely enough that the gaps show through. Thin, so scarce, and from there the thing you are hoping for." },
+  "悔": { "meaning": "regret", "parts": [
+    { "c": "忄", "name": "heart" },
+    { "c": "毎", "name": "every" }
+  ]},
+  "戒": { "meaning": "warn, guard against", "note": "戈 a halberd held up in both hands and kept ready rather than used. Standing guard over something." },
+  "拠": { "meaning": "basis, grounds", "note": "扌 a hand on the left, taking hold of whatever you are standing your argument on." },
+  "揺": { "meaning": "shake, sway", "note": "扌 a hand on the left with a jar stacked above and below on the right, and the whole lot rocking." },
+  "業": { "meaning": "work, trade", "note": "A rack of tools drawn hanging in a row. The work itself, and then the trade you do it in." },
+  "疑": { "meaning": "doubt, suspect", "note": "A figure stopped at a fork with a stick still in hand, not committing to either road yet." },
+  "真": { "meaning": "truth, real", "note": "A lid over something set down straight and true underneath it. Nothing altered on the way." },
+  "紹": { "meaning": "introduce", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "召", "name": "summon" }
+  ]},
+  "腹": { "meaning": "belly, abdomen", "note": "月 the flesh radical on the left. The part of you that gives out first when you laugh too hard." },
+  "舌": { "meaning": "tongue", "note": "A tongue drawn coming up out of 口 a mouth." },
+  "薬": { "meaning": "medicine", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "楽", "name": "ease" }
+  ]},
+  "衝": { "meaning": "collide, impact", "note": "重 heavy set inside a crossroads. Two things arriving at the same point at the same moment." },
+  "褒": { "meaning": "praise", "note": "衣 a garment wrapped the whole way round somebody, which is what praise feels like when it lands." },
+  "訪": { "meaning": "visit", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "方", "name": "direction" }
+  ]},
+  "証": { "meaning": "proof, evidence", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "正", "name": "correct" }
+  ]},
+  "警": { "meaning": "warn, admonish", "parts": [
+    { "c": "敬", "name": "respect" },
+    { "c": "言", "name": "speech" }
+  ]},
+  "迫": { "meaning": "press, urge", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "白", "name": "white" }
+  ]},
+  "適": { "meaning": "suitable, fit", "note": "辶 the road radical, and the one turning off it that happens to be right for where you are going." },
+  "鋭": { "meaning": "sharp, keen", "note": "金 metal on the left, worked down to an edge fine enough to cut you before you have noticed." },
+  "鍵": { "meaning": "key", "note": "金 metal on the left, cut to a shape that fits exactly one lock and no other." },
+  "階": { "meaning": "floor, stairs", "parts": [
+    { "c": "阝", "name": "hill" },
+    { "c": "皆", "name": "all" }
+  ]},
+  "際": { "meaning": "edge, occasion", "note": "阝 a hill on the left and the edge where it runs up against everything else. The moment two things touch." },
+  "電": { "meaning": "electricity", "note": "雨 rain along the top with the lightning coming down out of it. The storm first, then everything we run off it." }
 }
