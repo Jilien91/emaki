@@ -70,22 +70,27 @@ function escapeHtml(str){
   return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+// Damerau-Levenshtein: an adjacent transposition costs 1 rather than the 2 a
+// plain edit distance charges. Transposing two letters is the commonest typo
+// there is, and counting it double is what forced the old threshold up high
+// enough to start accepting different words.
 function levenshtein(a, b){
   const m = a.length, n = b.length;
   if(m===0) return n;
   if(n===0) return m;
-  const dp = new Array(n+1);
-  for(let j=0;j<=n;j++) dp[j] = j;
+  const dp = [];
+  for(let i=0;i<=m;i++) dp[i] = [i];
+  for(let j=0;j<=n;j++) dp[0][j] = j;
   for(let i=1;i<=m;i++){
-    let prev = dp[0];
-    dp[0] = i;
     for(let j=1;j<=n;j++){
-      const tmp = dp[j];
-      dp[j] = Math.min(dp[j]+1, dp[j-1]+1, prev + (a[i-1]===b[j-1] ? 0 : 1));
-      prev = tmp;
+      const cost = a[i-1]===b[j-1] ? 0 : 1;
+      dp[i][j] = Math.min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost);
+      if(i>1 && j>1 && a[i-1]===b[j-2] && a[i-2]===b[j-1]){
+        dp[i][j] = Math.min(dp[i][j], dp[i-2][j-2]+1);
+      }
     }
   }
-  return dp[n];
+  return dp[m][n];
 }
 
 // Senses are comma separated, but a comma inside brackets belongs to the note
@@ -122,12 +127,31 @@ function openedSenses(meaning){
   return out;
 }
 
+// Nearly every verb in the deck is glossed "to X", so a typo budget taken from
+// the whole string spends itself on boilerplate every gloss shares. "to have"
+// is seven characters and looks roomy, but only four of them carry any meaning,
+// and one substitution inside those four reaches save, wave, gave, take, give
+// and move. The budget therefore comes from the distinguishing part.
+//
+// Under the old rule 彼 "he, that" accepted "what", because what is one edit
+// from that, and いる "to have, to exist" accepted six other verbs in the deck.
+// 766 such acceptances existed across the written cards.
+const meaningCore = s => s.replace(/^to /, '');
+
 function fuzzyMatch(input, candidate){
   if(input === candidate) return true;
-  if(candidate.length <= 3) return false; // too short to safely allow typos
-  const dist = levenshtein(input, candidate);
-  const threshold = candidate.length <= 5 ? 1 : candidate.length <= 9 ? 2 : 3;
-  return dist <= threshold;
+  // The "to " is a convention of the deck's glosses, not part of the answer.
+  if(meaningCore(input) === meaningCore(candidate)) return true;
+  const ci = meaningCore(input), cc = meaningCore(candidate);
+  const len = cc.length;
+  if(len <= 5) return false; // short enough that a typo isn't worth guessing at
+  // A slip of the fingers almost never lands on the first letter, while the
+  // pairs that need keeping apart routinely differ only there: father and
+  // mother, mother and other, rather and father are each one edit apart.
+  if(ci[0] !== cc[0]) return false;
+  // Compare the cores, so dropping the "to " and fumbling a letter is one
+  // deviation rather than four.
+  return levenshtein(ci, cc) <= (len <= 9 ? 1 : 2);
 }
 
 // A single-kanji word inherits its kanji's meanings as acceptable answers, so a
