@@ -1080,5 +1080,85 @@
   "闇": { "meaning": "darkness", "parts": [
     { "c": "門", "name": "gate" },
     { "c": "音", "name": "sound" }
-  ]}
+  ]},
+  "主": { "meaning": "master, main", "note": "A lamp on its stand with the flame drawn in above. The one thing in a room that everything else is arranged around." },
+  "令": { "meaning": "order, command", "parts": [
+    { "c": "𠆢", "name": "roof" },
+    { "c": "卩", "name": "kneeling figure" }
+  ]},
+  "利": { "meaning": "profit, advantage", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "刂", "name": "knife" }
+  ]},
+  "功": { "meaning": "achievement, merit", "parts": [
+    { "c": "工", "name": "carpenter's square" },
+    { "c": "力", "name": "power" }
+  ]},
+  "加": { "meaning": "add", "parts": [
+    { "c": "力", "name": "power" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "匂": { "meaning": "smell", "note": "Made in Japan rather than borrowed from Chinese, which is why it has no on reading. A wrapper with something caught inside it." },
+  "化": { "meaning": "change, transform", "note": "A person 亻 on the left and the same figure turned over on the right. One thing going and another arriving in its place." },
+  "半": { "meaning": "half", "note": "A line drawn straight down the middle of something, and the two sides opened out either side of it." },
+  "厳": { "meaning": "strict, severe", "note": "A cliff face with something being taken firm hold of underneath it. Nothing here is making allowances for you." },
+  "参": { "meaning": "participate", "note": "Three streaks under a head, a figure falling in with something already under way rather than starting it." },
+  "否": { "meaning": "deny, no", "parts": [
+    { "c": "不", "name": "not" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "売": { "meaning": "sell", "note": "A stall with a lid over the top and 儿 legs underneath. Goods set out, and somebody standing behind them all day." },
+  "席": { "meaning": "seat", "note": "A shelter 广 with a mat spread out under it. The mat is the seat, and either somebody is on it or it is going spare." },
+  "徒": { "meaning": "on foot, follower", "parts": [
+    { "c": "彳", "name": "step" },
+    { "c": "走", "name": "run" }
+  ]},
+  "成": { "meaning": "become, achieve", "note": "Built on 戈 a halberd, with a stroke carried through it. Seeing a thing all the way to the end of itself." },
+  "抜": { "meaning": "pull out, extract", "note": "扌 a hand on the left pulling, and whatever it had hold of coming away with it." },
+  "抱": { "meaning": "embrace, hold", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "包", "name": "wrap" }
+  ]},
+  "挨": { "meaning": "push close", "note": "Half of 挨拶 and hardly seen outside it. 扌 a hand, pushing up close to somebody." },
+  "拶": { "meaning": "press together", "note": "The other half of 挨拶, and it appears nowhere else at all. 扌 a hand again, the two of them pressed together." },
+  "描": { "meaning": "draw, depict", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "苗", "name": "seedling" }
+  ]},
+  "暗": { "meaning": "dark", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "音", "name": "sound" }
+  ]},
+  "暮": { "meaning": "nightfall, live", "note": "日 the sun sitting at the bottom with the day's growth heaped over the top of it. The light going, and the days going with it." },
+  "満": { "meaning": "full", "note": "氵 water on the left, filled right up to the top of whatever is holding it and no room left." },
+  "石": { "meaning": "stone", "note": "A cliff on the left with a lump drawn underneath, fallen off and lying where it landed." },
+  "示": { "meaning": "show, indicate", "note": "An altar with the offerings set out on top, put up where everybody can see them." },
+  "経": { "meaning": "pass through, sutra", "note": "糸 thread on the left, run the whole length of the thing. What you have been through from one end to the other." },
+  "練": { "meaning": "train, knead", "note": "糸 thread on the left again, worked over and over by hand until it finally runs smooth." },
+  "習": { "meaning": "learn", "parts": [
+    { "c": "羽", "name": "feathers" },
+    { "c": "白", "name": "white" }
+  ]},
+  "耐": { "meaning": "endure", "note": "寸 a hand on the right, holding on. Whatever is pushing against it, it has not let go yet." },
+  "致": { "meaning": "bring about, do", "parts": [
+    { "c": "至", "name": "arrive" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "視": { "meaning": "look at, regard", "parts": [
+    { "c": "礻", "name": "altar" },
+    { "c": "見", "name": "see" }
+  ]},
+  "詳": { "meaning": "detailed", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "羊", "name": "sheep" }
+  ]},
+  "輝": { "meaning": "shine", "parts": [
+    { "c": "光", "name": "light" },
+    { "c": "軍", "name": "army" }
+  ]},
+  "駄": { "meaning": "packhorse, worthless", "parts": [
+    { "c": "馬", "name": "horse" },
+    { "c": "大", "name": "big" }
+  ]},
+  "験": { "meaning": "test, verify", "note": "馬 a horse on the left, and the going over you give one before you agree to buy it." }
 }

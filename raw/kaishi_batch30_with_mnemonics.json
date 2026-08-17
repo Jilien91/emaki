@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1019",
+      "meaning" : "to fall out, to leave",
+      "mnemonic" : "The hand 扌 pulls and the whole thing comes away in it, root and all. He walked out of the group the same way and the gap stayed: ぬける.",
+      "notes" : "",
+      "reading" : "ぬける",
+      "sentence" : "彼はグループから抜けました。",
+      "sentence_meaning" : "He left the group.",
+      "word" : "抜ける"
+   },
+   {
+      "frequency" : "1020",
+      "meaning" : "dark",
+      "mnemonic" : "The sun 日 has gone out of the room and there is nothing left in it but sound 音. You find the switch by feel: くらい.",
+      "notes" : "Same reading as くらい, about or approximately, which is written in kana. If it is doing a job on a number it is that one. This one is a room you cannot see across.",
+      "reading" : "くらい",
+      "sentence" : "部屋が暗いです。",
+      "sentence_meaning" : "The room is dark.",
+      "word" : "暗い"
+   },
+   {
+      "frequency" : "1021",
+      "meaning" : "breath",
+      "mnemonic" : "Straight down through the nose 自 to the heart 心 and back out again, and the doctor wants a big one held for four seconds: いき.",
+      "notes" : "The same 息 as 息子, son, where a breath of your own walks off and turns into a person.",
+      "reading" : "いき",
+      "sentence" : "大きく息を吸ってください。",
+      "sentence_meaning" : "Please take a deep breath.",
+      "word" : "息"
+   },
+   {
+      "frequency" : "1022",
+      "meaning" : "no good",
+      "mnemonic" : "駄 worthless and 目 a point on the board. In go it is a square that does nobody any good, and it kept that meaning when it left the game: だめ.",
+      "notes" : "Shares 駄 with 無駄, wasteful. だめ is a verdict on a thing or a person, むだ is effort that went nowhere.",
+      "reading" : "だめ",
+      "sentence" : "彼は駄目な男だ。",
+      "sentence_meaning" : "He's a loser.",
+      "word" : "駄目"
+   },
+   {
+      "frequency" : "1023",
+      "meaning" : "point, mark",
+      "mnemonic" : "One spot of fire 灬 and nothing else, and the teacher puts a row of them down the margin. His came to about ten out of forty: てん.",
+      "notes" : "",
+      "reading" : "てん",
+      "sentence" : "昨日のテストの点は良くなかったです。",
+      "sentence_meaning" : "My score on yesterday's test wasn't good.",
+      "word" : "点"
+   },
+   {
+      "frequency" : "1025",
+      "meaning" : "participation",
+      "mnemonic" : "You put your own 力 power and your 口 mouth in with the ones already going 参, and by Sunday you are running a marathon you never trained for: さんか.",
+      "notes" : "",
+      "reading" : "さんか",
+      "sentence" : "明日は市民マラソンに参加します。",
+      "sentence_meaning" : "I'll participate in the citizens' marathon tomorrow.",
+      "word" : "参加"
+   },
+   {
+      "frequency" : "1029",
+      "meaning" : "clearly",
+      "mnemonic" : "Yesterday the mountain was a rumour somewhere behind the haze. This morning you can count the trees along the ridge from the kitchen: はっきり.",
+      "notes" : "",
+      "reading" : "はっきり",
+      "sentence" : "今日は山がはっきり見える。",
+      "sentence_meaning" : "You can see the mountains clearly today.",
+      "word" : "はっきり"
+   },
+   {
+      "frequency" : "1030",
+      "meaning" : "to draw",
+      "mnemonic" : "A hand 扌 puts a seedling 苗 of the thing down on the paper and grows it from there. It came out as a panda: かく.",
+      "notes" : "Same reading as 書く, to write, and the same word as 描く えがく. 書く puts down words and 描く puts down a picture. かく for the everyday drawing, えがく when it is a proper depiction.",
+      "reading" : "かく",
+      "sentence" : "パンダの絵を描きました。",
+      "sentence_meaning" : "I drew a panda.",
+      "word" : "描く"
+   },
+   {
+      "frequency" : "1030",
+      "meaning" : "to depict, to describe, to draw",
+      "mnemonic" : "The same hand 扌 and the same seedling 苗, taken slowly this time. He can put a person on paper so that you know who it is: えがく.",
+      "notes" : "The same 描く as かく, to draw. えがく is the heavier of the two, a proper depiction, and it stretches to describing something in words as well.",
+      "reading" : "えがく",
+      "sentence" : "彼は人物を描くのがうまいな。",
+      "sentence_meaning" : "He is good at drawing people.",
+      "word" : "描く"
+   },
+   {
+      "frequency" : "1031",
+      "meaning" : "ignoring, disregarding",
+      "mnemonic" : "He looks 見 straight at it and carries on as though there were nothing 無 there at all. The opinion was said out loud and went nowhere: むし.",
+      "notes" : "",
+      "reading" : "むし",
+      "sentence" : "彼の意見は無視されたよ。",
+      "sentence_meaning" : "His opinion was disregarded.",
+      "word" : "無視"
+   },
+   {
+      "frequency" : "1032",
+      "meaning" : "pupil, student",
+      "mnemonic" : "Thirty young shoots 生 walking 彳 in through the same door at the same time every morning, and somebody has to count them: せいと.",
+      "notes" : "",
+      "reading" : "せいと",
+      "sentence" : "このクラスの生徒は30人です。",
+      "sentence_meaning" : "There are 30 students in this class.",
+      "word" : "生徒"
+   },
+   {
+      "frequency" : "1033",
+      "meaning" : "detailed",
+      "mnemonic" : "He can tell you about every sheep 羊 in the field one at a time 言, and you had asked for the short version: くわしい.",
+      "notes" : "",
+      "reading" : "くわしい",
+      "sentence" : "もっと詳しく説明してください。",
+      "sentence_meaning" : "Please explain in greater detail.",
+      "word" : "詳しい"
+   },
+   {
+      "frequency" : "1034",
+      "meaning" : "to touch",
+      "mnemonic" : "An insect 虫 puts one horn 角 out and barely makes contact, and the little sign under the painting says not to: さわる.",
+      "notes" : "",
+      "reading" : "さわる",
+      "sentence" : "この絵に触らないでください。",
+      "sentence_meaning" : "Please do not touch this picture.",
+      "word" : "触る"
+   },
+   {
+      "frequency" : "1035",
+      "meaning" : "until now, until here",
+      "mnemonic" : "He draws a line under everything as far as today and says the person who did all that is not the one standing here now: これまで.",
+      "notes" : "",
+      "reading" : "これまで",
+      "sentence" : "これまでの私とは違うんです。",
+      "sentence_meaning" : "I am different from the old me.",
+      "word" : "これまで"
+   },
+   {
+      "frequency" : "1038",
+      "meaning" : "half",
+      "mnemonic" : "The line goes down the middle 半 and the knife 刀 follows it, and you get one side of the tomato and I get the other: はんぶん.",
+      "notes" : "",
+      "reading" : "はんぶん",
+      "sentence" : "トマトを半分に切ってください。",
+      "sentence_meaning" : "Please cut the tomato in half.",
+      "word" : "半分"
+   },
+   {
+      "frequency" : "1042",
+      "meaning" : "to withstand, to endure",
+      "mnemonic" : "The ground goes and the building stays up, a hand 寸 holding on to the one thing not moving. Everything inside it fell over and it did not: たえる.",
+      "notes" : "",
+      "reading" : "たえる",
+      "sentence" : "このビルは大地震に耐えられるでしょうか。",
+      "sentence_meaning" : "Would this building be able to withstand a large earthquake?",
+      "word" : "耐える"
+   },
+   {
+      "frequency" : "1044",
+      "meaning" : "standpoint, position",
+      "mnemonic" : "Where you happen to be standing 立 on the ground 土, and what the thing looks like from there. She has not worked out where she is standing yet: たちば.",
+      "notes" : "",
+      "reading" : "たちば",
+      "sentence" : "彼女は自分の立場を分かっていない。",
+      "sentence_meaning" : "She doesn't understand her position.",
+      "word" : "立場"
+   },
+   {
+      "frequency" : "1045",
+      "meaning" : "stone, small rock",
+      "mnemonic" : "A lump off the cliff lying exactly where it landed 石, and your foot finds it in the dark. Down you go: いし.",
+      "notes" : "",
+      "reading" : "いし",
+      "sentence" : "私は石につまづいた。",
+      "sentence_meaning" : "I tripped on a stone.",
+      "word" : "石"
+   },
+   {
+      "frequency" : "1047",
+      "meaning" : "greeting",
+      "mnemonic" : "Two hands 扌 pushing up close and pressing together, which is the only thing either of these characters ever does. Said loudly, every morning: あいさつ.",
+      "notes" : "",
+      "reading" : "あいさつ",
+      "sentence" : "いつも元気に挨拶しています。",
+      "sentence_meaning" : "I always greet people enthusiastically.",
+      "word" : "挨拶"
+   },
+   {
+      "frequency" : "1050",
+      "meaning" : "consultation, advice",
+      "mnemonic" : "Two of you with an eye 目 on the same problem, and the talk 談 running long enough to warm the room. There is something I want to ask you about: そうだん.",
+      "notes" : "",
+      "reading" : "そうだん",
+      "sentence" : "相談したいことがあります。",
+      "sentence_meaning" : "I'd like to get your advice on something.",
+      "word" : "相談"
+   },
+   {
+      "frequency" : "1052",
+      "meaning" : "to accept, to accommodate",
+      "mnemonic" : "One hand down and one up 受 and the thing passes between them, and then it goes in 入 and stays in. He took the other man's view and kept it: うけいれる.",
+      "notes" : "",
+      "reading" : "うけいれる",
+      "sentence" : "私は彼の意見を受け入れました。",
+      "sentence_meaning" : "I accepted his opinion.",
+      "word" : "受け入れる"
+   },
+   {
+      "frequency" : "1055",
+      "meaning" : "practice, training",
+      "mnemonic" : "Feathers 羽 going over the same movement until it finally comes out smooth 練, an hour a day, and next door hears every minute: れんしゅう.",
+      "notes" : "",
+      "reading" : "れんしゅう",
+      "sentence" : "娘は今、バイオリンを練習しています。",
+      "sentence_meaning" : "My daughter is practicing the violin now.",
+      "word" : "練習"
+   },
+   {
+      "frequency" : "1056",
+      "meaning" : "wasteful, useless",
+      "mnemonic" : "A packhorse 駄 loaded up and walked all that way for nothing 無. Whatever was in the bags, nobody wanted any of it: むだ.",
+      "notes" : "Shares 駄 with 駄目, no good. むだ is the effort wasted, だめ is the verdict.",
+      "reading" : "むだ",
+      "sentence" : "無駄な買い物はしません。",
+      "sentence_meaning" : "I don't do wasteful shopping.",
+      "word" : "無駄"
+   },
+   {
+      "frequency" : "1057",
+      "meaning" : "to hold in one's arms",
+      "mnemonic" : "Both arms 扌 wrapped 包 right round it and his chin resting on the top, and he still has three floors to go: かかえる.",
+      "notes" : "Same 抱 as 抱く だく. 抱える is a load in your arms, 抱く is somebody held close.",
+      "reading" : "かかえる",
+      "sentence" : "彼は大きな荷物を抱えているわ。",
+      "sentence_meaning" : "He is carrying some large luggage.",
+      "word" : "抱える"
+   },
+   {
+      "frequency" : "1058",
+      "meaning" : "to show, to indicate",
+      "mnemonic" : "Everything set out on the altar 示 where the whole room can see it. She never said she was pleased, she let it show: しめす.",
+      "notes" : "",
+      "reading" : "しめす",
+      "sentence" : "彼女は良い反応を示したわ。",
+      "sentence_meaning" : "She showed a good reaction.",
+      "word" : "示す"
+   },
+   {
+      "frequency" : "1059",
+      "meaning" : "success",
+      "mnemonic" : "He carried the thing through 成 to the end of itself, and the work 工 and the power 力 in it finally came out where people could see. Twenty years at one company: せいこう.",
+      "notes" : "",
+      "reading" : "せいこう",
+      "sentence" : "田中さんは仕事で成功しました。",
+      "sentence_meaning" : "Tanaka-san succeeded at his job.",
+      "word" : "成功"
+   },
+   {
+      "frequency" : "1061",
+      "meaning" : "to hug, to hold in one's arms",
+      "mnemonic" : "The same wrapped 包 arms 扌, except what is in them this time is warm and would rather be somewhere else. Grandma has the cat: だく.",
+      "notes" : "Same 抱 as 抱える かかえる, to carry in your arms. That one is a load, this one is a person or an animal.",
+      "reading" : "だく",
+      "sentence" : "祖母がうちの猫を抱いているわよ。",
+      "sentence_meaning" : "Grandma is holding our cat.",
+      "word" : "抱く"
+   },
+   {
+      "frequency" : "1066",
+      "meaning" : "taste, flavor",
+      "mnemonic" : "It goes in the mouth 口 and for a second you have not 未 made up your mind, and then you have. This one needed salt: あじ.",
+      "notes" : "興味 きょうみ borrows the same 味. An interest in something is a taste for it.",
+      "reading" : "あじ",
+      "sentence" : "この料理は味が薄い。",
+      "sentence_meaning" : "This food is flavored lightly.",
+      "word" : "味"
+   },
+   {
+      "frequency" : "1067",
+      "meaning" : "male, man",
+      "mnemonic" : "Power 力 out in the field 田 and whatever the heart 忄 was born 生 with, put together for a form that only wants one box ticked: だんせい.",
+      "notes" : "",
+      "reading" : "だんせい",
+      "sentence" : "彼は素敵な男性です。",
+      "sentence_meaning" : "He's a wonderful man.",
+      "word" : "男性"
+   },
+   {
+      "frequency" : "1070",
+      "meaning" : "denial, negation",
+      "mnemonic" : "A mouth 口 saying not 不, and saying it firmly enough to settle 定 the matter. His friend put an idea up and he took it straight back down: ひてい.",
+      "notes" : "",
+      "reading" : "ひてい",
+      "sentence" : "彼、友達の意見を否定した。",
+      "sentence_meaning" : "He disagreed with his friend's opinion.",
+      "word" : "否定"
+   },
+   {
+      "frequency" : "1072",
+      "meaning" : "to do (humble form)",
+      "mnemonic" : "You watch the thing arrive 至 at their end, knowing you sent it, and you mention it as though you had barely been involved. I will be in touch: いたす.",
+      "notes" : "The humble form of する. Used about what you do yourself and never about anybody else, which is the whole point of it.",
+      "reading" : "いたす",
+      "sentence" : "私からご連絡致します。",
+      "sentence_meaning" : "I'll get in touch with you.",
+      "word" : "致す"
+   },
+   {
+      "frequency" : "1073",
+      "meaning" : "present time, now",
+      "mnemonic" : "What you can actually see 見 in front of you, standing 在 on the ground, this minute. Thirty degrees, whatever it was yesterday: げんざい.",
+      "notes" : "",
+      "reading" : "げんざい",
+      "sentence" : "現在の気温は30度です。",
+      "sentence_meaning" : "The current temperature is 30 degrees.",
+      "word" : "現在"
+   },
+   {
+      "frequency" : "1074",
+      "meaning" : "to glitter, to shine",
+      "mnemonic" : "An army 軍 of small lights 光 all going at once, and the whole of it is happening in her eyes: かがやく.",
+      "notes" : "",
+      "reading" : "かがやく",
+      "sentence" : "彼女の瞳は喜びで輝いていますね。",
+      "sentence_meaning" : "Her eyes are shining with delight.",
+      "word" : "輝く"
+   },
+   {
+      "frequency" : "1075",
+      "meaning" : "fever",
+      "mnemonic" : "The four dots of fire 灬 are underneath you now and have been since yesterday. Thermometer, bed, no arguing about it: ねつ.",
+      "notes" : "",
+      "reading" : "ねつ",
+      "sentence" : "昨日から熱があります。",
+      "sentence_meaning" : "I have a fever since yesterday.",
+      "word" : "熱"
+   },
+   {
+      "frequency" : "1075",
+      "meaning" : "beginning, origin",
+      "mnemonic" : "A woman 女 steps up onto the platform 台 and everything after that runs downhill from it. The trip was good for the first three days: はじめ.",
+      "notes" : "",
+      "reading" : "はじめ",
+      "sentence" : "私たちの旅は始めはよかったんだ。",
+      "sentence_meaning" : "The start of our trip was good.",
+      "word" : "始め"
+   },
+   {
+      "frequency" : "1076",
+      "meaning" : "strict",
+      "mnemonic" : "A cliff face 厳 with nothing to hold on to and no allowance made for how tired you are. Kimura-sensei, some days: きびしい.",
+      "notes" : "",
+      "reading" : "きびしい",
+      "sentence" : "木村先生は時々厳しいです。",
+      "sentence_meaning" : "Kimura-sensei is sometimes strict.",
+      "word" : "厳しい"
+   },
+   {
+      "frequency" : "1077",
+      "meaning" : "smell, odor",
+      "mnemonic" : "A character Japan made for itself, a wrapper with something shut inside it and getting out anyway. Somebody two doors down is cooking: におい.",
+      "notes" : "",
+      "reading" : "におい",
+      "sentence" : "いい匂いがする。",
+      "sentence_meaning" : "It smells good.",
+      "word" : "匂い"
+   },
+   {
+      "frequency" : "1078",
+      "meaning" : "seat",
+      "mnemonic" : "A mat spread out under the shelter 广 with nobody's coat on it. You ask anyway, because the alternative is standing: せき.",
+      "notes" : "",
+      "reading" : "せき",
+      "sentence" : "この席、空いてますか。",
+      "sentence_meaning" : "Is this seat free?",
+      "word" : "席"
+   },
+   {
+      "frequency" : "1079",
+      "meaning" : "to sell",
+      "mnemonic" : "The stall 売 goes up, the thing goes out on it, and by the end of the day it belongs to somebody else. He put the house out there: うる.",
+      "notes" : "",
+      "reading" : "うる",
+      "sentence" : "彼は家を売った。",
+      "sentence_meaning" : "He sold the house.",
+      "word" : "売る"
+   },
+   {
+      "frequency" : "1080",
+      "meaning" : "to live, to make a living",
+      "mnemonic" : "The sun 日 goes down under the heap of the day 暮, then comes up and does it again, and that is what a life is actually made of: くらす.",
+      "notes" : "",
+      "reading" : "くらす",
+      "sentence" : "ずっと日本で暮らしたいと思っています。",
+      "sentence_meaning" : "I think I would like to live in Japan all the time.",
+      "word" : "暮らす"
+   },
+   {
+      "frequency" : "1081",
+      "meaning" : "usage, utilization",
+      "mnemonic" : "You take the knife 刂 to the grain 禾 because that is what the pair of them are for 用. The library is there and he is in it every week: りよう.",
+      "notes" : "",
+      "reading" : "りよう",
+      "sentence" : "私はよく図書館を利用します。",
+      "sentence_meaning" : "I often use the library.",
+      "word" : "利用"
+   },
+   {
+      "frequency" : "1083",
+      "meaning" : "suddenly, unintentionally",
+      "mnemonic" : "He is halfway through washing a cup and a thing from twenty years ago arrives in his head, unasked and whole. Nothing brought it on: ふと.",
+      "notes" : "",
+      "reading" : "ふと",
+      "sentence" : "ふと昔の事を思い出したんだ。",
+      "sentence_meaning" : "I suddenly remembered the past.",
+      "word" : "ふと"
+   },
+   {
+      "frequency" : "1087",
+      "meaning" : "experience",
+      "mnemonic" : "The thread 糸 run end to end 経, and the horse 馬 gone over hoof by hoof 験. Do the lot of it while you are young and then you know: けいけん.",
+      "notes" : "",
+      "reading" : "けいけん",
+      "sentence" : "若い時に色々経験しておきます。",
+      "sentence_meaning" : "I will experience a lot when I am young.",
+      "word" : "経験"
+   },
+   {
+      "frequency" : "1088",
+      "meaning" : "change, variation",
+      "mnemonic" : "Twelve months and not one of them left the room the way it found it. One thing swapped out for another 化, then another, then another: へんか.",
+      "notes" : "",
+      "reading" : "へんか",
+      "sentence" : "今年は変化の多い年でした。",
+      "sentence_meaning" : "There was a lot of change this year.",
+      "word" : "変化"
+   },
+   {
+      "frequency" : "1089",
+      "meaning" : "prince",
+      "mnemonic" : "The king's 王 child 子, and there is nothing else on his CV. The country is fond of him anyway: おうじ.",
+      "notes" : "",
+      "reading" : "おうじ",
+      "sentence" : "その王子は国民に愛されている。",
+      "sentence_meaning" : "That prince is loved by the people.",
+      "word" : "王子"
+   },
+   {
+      "frequency" : "1092",
+      "meaning" : "satisfaction",
+      "mnemonic" : "Filled 満 right up to the top, and a foot 足 that has walked far enough to stop. He looked at the result and wanted nothing more than that: まんぞく.",
+      "notes" : "",
+      "reading" : "まんぞく",
+      "sentence" : "彼は結果に満足したようです。",
+      "sentence_meaning" : "He seems to be satisfied with the result.",
+      "word" : "満足"
+   },
+   {
+      "frequency" : "1093",
+      "meaning" : "steadily",
+      "mnemonic" : "The drum keeps going and he keeps going with it, straight up the mountain path without once stopping to look at the view: どんどん.",
+      "notes" : "",
+      "reading" : "どんどん",
+      "sentence" : "彼は山道をどんどん進んで行ったの。",
+      "sentence_meaning" : "He made steady progress along the mountain path.",
+      "word" : "どんどん"
+   },
+   {
+      "frequency" : "1095",
+      "meaning" : "order, command",
+      "mnemonic" : "Both halves are the same picture, somebody kneeling 卩 under a roof 𠆢 while it is handed down to them. She heard it and did not do it: めいれい.",
+      "notes" : "",
+      "reading" : "めいれい",
+      "sentence" : "彼女は命令に従わなかった。",
+      "sentence_meaning" : "She did not obey orders.",
+      "word" : "命令"
+   },
+   {
+      "frequency" : "1097",
+      "meaning" : "main, chief",
+      "mnemonic" : "The lamp 主 on its stand in the middle of the room, everything else arranged round where the light falls. Her job is mostly the customers: おも.",
+      "notes" : "",
+      "reading" : "おも",
+      "sentence" : "彼女の主な仕事は接客だよ。",
+      "sentence_meaning" : "Her main job is customer service.",
+      "word" : "主"
+   },
+   {
+      "frequency" : "1098",
+      "meaning" : "tasty",
+      "mnemonic" : "A big 大 sheep 羊 and what the mouth 口 makes of it, which here is a second slice before the first one is finished: おいしい.",
+      "notes" : "",
+      "reading" : "おいしい",
+      "sentence" : "このケーキは美味しいね。",
+      "sentence_meaning" : "This cake is yummy.",
+      "word" : "美味しい"
+   }
+]
