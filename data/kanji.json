@@ -1222,5 +1222,42 @@
     { "c": "辶", "name": "road" },
     { "c": "束", "name": "bundle" }
   ]},
-  "闘": { "meaning": "fight", "note": "門 a gate with two of them going at each other inside it. The older form put weapons in their hands." }
+  "闘": { "meaning": "fight", "note": "門 a gate with two of them going at each other inside it. The older form put weapons in their hands." },
+  "互": { "meaning": "mutual, each other", "note": "Two hooks turned to face each other and locked together. Neither of them does anything on its own." },
+  "城": { "meaning": "castle", "parts": [
+    { "c": "土", "name": "earth" },
+    { "c": "成", "name": "achieve" }
+  ]},
+  "室": { "meaning": "room", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "至", "name": "arrive" }
+  ]},
+  "密": { "meaning": "secret, dense", "note": "宀 a roof with everything packed in tight underneath it and a hill behind. Nothing gets out that way." },
+  "尋": { "meaning": "inquire, seek", "note": "A hand at the top and another at the bottom with a mouth in between, feeling about for something and asking after it." },
+  "復": { "meaning": "return, restore", "note": "彳 a step on the left, going back over ground already covered once." },
+  "悩": { "meaning": "be troubled", "note": "忄 a heart on the left and a head full of knots beside it, going round and round the same thing." },
+  "慮": { "meaning": "consider, concern", "note": "A tiger's stripes over a heart doing the thinking. Weighing a thing carefully, because it might yet bite." },
+  "敷": { "meaning": "spread out, lay", "note": "攵 a hand with a stick on the right, working something out flat across the ground." },
+  "星": { "meaning": "star", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "生", "name": "life" }
+  ]},
+  "椅": { "meaning": "chair", "note": "木 a tree on the left, cut up and put back together in an odd shape standing on four legs." },
+  "犬": { "meaning": "dog", "note": "A pictograph. 大 a big figure with one extra stroke, which is the ear standing up." },
+  "猫": { "meaning": "cat", "parts": [
+    { "c": "犭", "name": "animal" },
+    { "c": "苗", "name": "seedling" }
+  ]},
+  "秘": { "meaning": "secret, keep back", "note": "禾 grain on the left, held back and not shown to anybody who asks." },
+  "茶": { "meaning": "tea", "note": "艹 grass on top of a shelter. The leaf that gets picked and dried, and everything poured out of it after." },
+  "薄": { "meaning": "thin, weak", "note": "艹 grass on top with water underneath, spread out so thin you can see straight through it." },
+  "裏": { "meaning": "back, reverse", "note": "里 a village tucked away inside 衣 a garment. The side of the cloth that nobody is meant to see." },
+  "迎": { "meaning": "welcome, meet", "note": "辶 the road radical, going out along it to meet somebody coming the other way." },
+  "遠": { "meaning": "far", "note": "辶 the road radical with a long stretch of it drawn out below. Far enough that you think twice." },
+  "限": { "meaning": "limit", "note": "阝 a hill on the left. The point at which the ground stops going your way and you stop with it." },
+  "随": { "meaning": "follow, comply", "note": "阝 a hill on the left again, with a road running along beside it. Going where it goes rather than choosing." },
+  "雨": { "meaning": "rain", "note": "A pictograph, drops falling out of a line of cloud." },
+  "馬": { "meaning": "horse", "note": "A pictograph. The mane runs along the top and the four strokes underneath are the legs." },
+  "鹿": { "meaning": "deer", "note": "A pictograph, antlers up top and the legs beneath. The same animal stands inside 麗 lovely." },
+  "魂": { "meaning": "soul", "note": "鬼 a ghost on the right with 云 a cloud beside it. Whatever is left of a person once the body has finished." }
 }
