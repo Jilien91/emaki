@@ -1316,5 +1316,55 @@
     { "c": "皆", "name": "all" }
   ]},
   "際": { "meaning": "edge, occasion", "note": "阝 a hill on the left and the edge where it runs up against everything else. The moment two things touch." },
-  "電": { "meaning": "electricity", "note": "雨 rain along the top with the lightning coming down out of it. The storm first, then everything we run off it." }
+  "電": { "meaning": "electricity", "note": "雨 rain along the top with the lightning coming down out of it. The storm first, then everything we run off it." },
+  "伸": { "meaning": "stretch, extend", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "申", "name": "speak" }
+  ]},
+  "努": { "meaning": "endeavor, effort", "parts": [
+    { "c": "奴", "name": "servant" },
+    { "c": "力", "name": "power" }
+  ]},
+  "壊": { "meaning": "break, destroy", "note": "土 earth on the left, and whatever had been standing on it going back to being nothing but earth." },
+  "士": { "meaning": "retainer, samurai", "note": "A figure stood upright with something laid across the shoulders. The one who serves, and later the samurai." },
+  "展": { "meaning": "unfold, exhibit", "note": "尸 the shelter shape over something being laid out flat and opened up for people to come and look at." },
+  "差": { "meaning": "difference, hold out", "note": "A hand reaching out from under a slanted top. The gap between two things, and the holding of one of them out." },
+  "巻": { "meaning": "roll, volume", "note": "Something rolled up from the bottom, drawn coiling round on itself. A scroll, and the volume it holds." },
+  "建": { "meaning": "build, erect", "note": "A brush held upright over a long stride. Setting a thing up so that it stands there afterwards." },
+  "払": { "meaning": "pay, sweep away", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "厶", "name": "private" }
+  ]},
+  "扱": { "meaning": "handle, treat", "note": "扌 a hand on the left, taking hold of a thing and doing something with it. How you treat what you are holding." },
+  "支": { "meaning": "support, branch", "parts": [
+    { "c": "十", "name": "ten" },
+    { "c": "又", "name": "hand" }
+  ]},
+  "机": { "meaning": "desk", "note": "木 a tree on the left, cut down to a flat top and a couple of legs, and nothing else asked of it." },
+  "案": { "meaning": "plan, proposal", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "女", "name": "woman" },
+    { "c": "木", "name": "tree" }
+  ]},
+  "獣": { "meaning": "beast", "note": "犬 a dog stood on the right with a hunting weapon beside it. The wild sort, not the one asleep by the fire." },
+  "発": { "meaning": "depart, emit", "note": "Two feet at the top and a bow being loosed underneath. Something setting off, and whatever gets let go." },
+  "破": { "meaning": "break, tear", "parts": [
+    { "c": "石", "name": "stone" },
+    { "c": "皮", "name": "skin" }
+  ]},
+  "第": { "meaning": "order, ordinal", "note": "竹 bamboo on top, whose joints come one after another in order. It marks which number in a sequence." },
+  "臓": { "meaning": "internal organ", "note": "月 the flesh radical on the left, and what is kept stored away out of sight inside it." },
+  "良": { "meaning": "good, fine", "note": "Grain being sorted, with the good part kept back and everything else let fall." },
+  "荷": { "meaning": "load, baggage", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "何", "name": "what" }
+  ]},
+  "車": { "meaning": "cart, car", "note": "A pictograph seen from above, the axle running straight through with a wheel to either side of it." },
+  "軍": { "meaning": "army", "note": "A cart 車 with a cover pulled over the top. Chariots drawn up together, and the men who come with them." },
+  "辺": { "meaning": "vicinity, edge", "note": "辶 the road radical, and the ground lying either side of it. Round about, rather than anywhere exact." },
+  "込": { "meaning": "put into, crowd", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "入", "name": "enter" }
+  ]},
+  "量": { "meaning": "quantity, measure", "note": "A weight drawn sitting on a measure. How much of the thing there turns out to be once somebody has counted." }
 }

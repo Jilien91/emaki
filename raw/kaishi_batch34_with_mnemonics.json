@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1327",
+      "meaning" : "to roll up, to involve",
+      "mnemonic" : "The scroll rolls 巻 up and whatever was lying beside it goes in 込 with it. Your friend was standing too close: まきこむ.",
+      "notes" : "関わる かかわる is being connected to a thing. 巻き込む is dragging somebody else into it with you.",
+      "reading" : "まきこむ",
+      "sentence" : "友達をトラブルに巻き込んでしまった。",
+      "sentence_meaning" : "I got my friend involved in the trouble.",
+      "word" : "巻き込む"
+   },
+   {
+      "frequency" : "1328",
+      "meaning" : "to&nbsp;submit",
+      "mnemonic" : "The hand comes out 出 from under the cuff and then stays out there, waiting. He wanted to shake on it: さしだす.",
+      "notes" : "",
+      "reading" : "さしだす",
+      "sentence" : "彼は握手をしようと手を差し出したの。",
+      "sentence_meaning" : "He put out his hand to shake hands.",
+      "word" : "差し出す"
+   },
+   {
+      "frequency" : "1333",
+      "meaning" : "army, troops",
+      "mnemonic" : "Carts drawn up in rows with covers over them and everybody who came along with them. The wounded went to their hospital: ぐん.",
+      "notes" : "",
+      "reading" : "ぐん",
+      "sentence" : "怪我人は軍の病院に運ばれたよ。",
+      "sentence_meaning" : "The injured were taken to the army hospital.",
+      "word" : "軍"
+   },
+   {
+      "frequency" : "1334",
+      "meaning" : "there, that way",
+      "mnemonic" : "Not here and not over there, the way you happen to be standing. I will be with you by the evening: そちら.",
+      "notes" : "The polite one. そっち is casual and そこ is the plain there. Same set as こちら and あちら.",
+      "reading" : "そちら",
+      "sentence" : "夕方そちらに着きます。",
+      "sentence_meaning" : "I'll arrive there in the evening.",
+      "word" : "そちら"
+   },
+   {
+      "frequency" : "1335",
+      "meaning" : "vexing, frustrating",
+      "mnemonic" : "The heart 忄 goes over the losing goal every 毎 time you shut your eyes, and the match was two days ago: くやしい.",
+      "notes" : "後悔 こうかい is regret at something you did. 悔しい is the sting of having lost or been beaten.",
+      "reading" : "くやしい",
+      "sentence" : "試合に負けてとても悔しい。",
+      "sentence_meaning" : "I'm so frustrated that we lost the game.",
+      "word" : "悔しい"
+   },
+   {
+      "frequency" : "1337",
+      "meaning" : "to pull out",
+      "mnemonic" : "You get a grip on it and the whole thing comes away in your hand, cork and all, and the bottle is open: ぬく.",
+      "notes" : "取り出す とりだす is taking a thing out of somewhere. 抜く is pulling it free of whatever was holding it.",
+      "reading" : "ぬく",
+      "sentence" : "ワインのコルクを抜きました。",
+      "sentence_meaning" : "I uncorked the wine.",
+      "word" : "抜く"
+   },
+   {
+      "frequency" : "1338",
+      "meaning" : "breaking, destruction",
+      "mnemonic" : "Stone 石 through skin 皮, and then the ground 壊 itself goes back to being ground. It is happening to the countryside: はかい.",
+      "notes" : "",
+      "reading" : "はかい",
+      "sentence" : "自然の破壊が進んでいるのよ。",
+      "sentence_meaning" : "The destruction of nature is advancing.",
+      "word" : "破壊"
+   },
+   {
+      "frequency" : "1339",
+      "meaning" : "fate, fortune",
+      "mnemonic" : "Your life 命 gets carried 運 down a road you had no part in picking, and arguing with it has never worked for anybody: うんめい.",
+      "notes" : "",
+      "reading" : "うんめい",
+      "sentence" : "運命には逆らえないよ。",
+      "sentence_meaning" : "You can't go against fate.",
+      "word" : "運命"
+   },
+   {
+      "frequency" : "1344",
+      "meaning" : "guidance, showing around",
+      "mnemonic" : "You take somebody inside 内 the plan 案 of the place you already carry in your head, and walk them round it. Kyoto, all day: あんない.",
+      "notes" : "",
+      "reading" : "あんない",
+      "sentence" : "京都を案内します。",
+      "sentence_meaning" : "I will show you Kyoto.",
+      "word" : "案内"
+   },
+   {
+      "frequency" : "1345",
+      "meaning" : "endeavor, effort",
+      "mnemonic" : "A servant's 奴 power 力, which is the kind you have to keep putting in rather than the kind you have. Try harder: どりょく.",
+      "notes" : "",
+      "reading" : "どりょく",
+      "sentence" : "もっと努力しよう。",
+      "sentence_meaning" : "Let's try harder.",
+      "word" : "努力"
+   },
+   {
+      "frequency" : "1346",
+      "meaning" : "eventually, sometime",
+      "mnemonic" : "No date, no arrangement, and both of you mean it anyway. We will run into each other again at some point: いずれ.",
+      "notes" : "",
+      "reading" : "いずれ",
+      "sentence" : "いずれまたお会いしましょう。",
+      "sentence_meaning" : "Let's meet again sometime.",
+      "word" : "いずれ"
+   },
+   {
+      "frequency" : "1348",
+      "meaning" : "single word, a few words",
+      "mnemonic" : "One 一 word 言, which is exactly what you ask the president for when you actually want five minutes: ひとこと.",
+      "notes" : "",
+      "reading" : "ひとこと",
+      "sentence" : "社長に一言お願いしたの。",
+      "sentence_meaning" : "I asked the president to say a few words.",
+      "word" : "一言"
+   },
+   {
+      "frequency" : "1349",
+      "meaning" : "at last, finally",
+      "mnemonic" : "Four attempts and three years, and the letter has finally come. The end of a long road rather than a short one: ついに.",
+      "notes" : "やっと and ようやく do the same job. ついに leans on the length of what came before, and it works for bad endings too. At last is not at least: せめて and 少なくとも are at least.",
+      "reading" : "ついに",
+      "sentence" : "彼はついに弁護士の資格を取ったよ。",
+      "sentence_meaning" : "He finally passed the bar examination.",
+      "word" : "ついに"
+   },
+   {
+      "frequency" : "1350",
+      "meaning" : "heart",
+      "mnemonic" : "The heart 心 as the organ stored away 臓 in there doing the pumping, not the one you fall in love with. Hers is not well: しんぞう.",
+      "notes" : "心 こころ is the heart you feel things with. 心臓 is the one a doctor puts a stethoscope on.",
+      "reading" : "しんぞう",
+      "sentence" : "祖母は心臓が悪いんだ。",
+      "sentence_meaning" : "My grandmother has a heart condition.",
+      "word" : "心臓"
+   },
+   {
+      "frequency" : "1351",
+      "meaning" : "baggage, load",
+      "mnemonic" : "Whatever 何 the thing 物 is, it is in a box now and it is going to his house. Handle it gently on the way: にもつ.",
+      "notes" : "",
+      "reading" : "にもつ",
+      "sentence" : "彼の家に荷物を送りました。",
+      "sentence_meaning" : "I sent a package to his house.",
+      "word" : "荷物"
+   },
+   {
+      "frequency" : "1352",
+      "meaning" : "to stretch, to grow",
+      "mnemonic" : "A person 亻 reaching up and then carrying on reaching, and it turns out your hair has been at the same thing for months: のびる.",
+      "notes" : "",
+      "reading" : "のびる",
+      "sentence" : "髪がだいぶ伸びたね。",
+      "sentence_meaning" : "Your hair has grown a lot, hasn't it?",
+      "word" : "伸びる"
+   },
+   {
+      "frequency" : "1354",
+      "meaning" : "(both) parents",
+      "mnemonic" : "Both 両 of the ones who stood up on the tree to see further 親, in the same room, being introduced to your girlfriend: りょうしん.",
+      "notes" : "",
+      "reading" : "りょうしん",
+      "sentence" : "両親に彼女を紹介した。",
+      "sentence_meaning" : "I introduced my girlfriend to my parents.",
+      "word" : "両親"
+   },
+   {
+      "frequency" : "1355",
+      "meaning" : "amount, portion",
+      "mnemonic" : "Somebody has weighed it and there is a great deal of it. The spaghetti in that place turns up in a bucket: りょう.",
+      "notes" : "",
+      "reading" : "りょう",
+      "sentence" : "この店のスパゲッティは量が多いです。",
+      "sentence_meaning" : "This restaurant's spaghetti portions are big.",
+      "word" : "量"
+   },
+   {
+      "frequency" : "1356",
+      "meaning" : "to pay",
+      "mnemonic" : "Your own 厶 hand 扌 goes out with the money sitting on it, and the argument at the end of a meal is over who does that: はらう.",
+      "notes" : "",
+      "reading" : "はらう",
+      "sentence" : "私が払いましょう。",
+      "sentence_meaning" : "Let me pay for that.",
+      "word" : "払う"
+   },
+   {
+      "frequency" : "1357",
+      "meaning" : "never again",
+      "mnemonic" : "Not a second 二 time 度, not ever. He is walking out of the door and telling you he will not be back: にどと.",
+      "notes" : "Always with a negative later in the sentence: 二度と来ません, I will never come here again.",
+      "reading" : "にどと",
+      "sentence" : "もうここには二度と来ません。",
+      "sentence_meaning" : "I'll never come here again.",
+      "word" : "二度と"
+   },
+   {
+      "frequency" : "1358",
+      "meaning" : "vicinity, around",
+      "mnemonic" : "The ground lying either side of where you are stood, taken in with one turn of the head. We had a look round: あたり.",
+      "notes" : "Near 当たり あたり, a hit, in sound. 周り まわり is what is around a thing. 辺り is roughly here.",
+      "reading" : "あたり",
+      "sentence" : "辺りを見回したの。",
+      "sentence_meaning" : "We looked around the area.",
+      "word" : "辺り"
+   },
+   {
+      "frequency" : "1359",
+      "meaning" : "beginning",
+      "mnemonic" : "The gate opens 開 and the thing begins 始, and both halves of the word say so. Sports day starts at nine: かいし.",
+      "notes" : "最初 さいしょ is the first part of something and 始め はじめ is the beginning of it. 開始 is the moment it starts, and it is the one that goes with a time.",
+      "reading" : "かいし",
+      "sentence" : "運動会は9時開始です。",
+      "sentence_meaning" : "The sports festival meet begins at nine o'clock.",
+      "word" : "開始"
+   },
+   {
+      "frequency" : "1360",
+      "meaning" : "release, setting free",
+      "mnemonic" : "Untie 解 the thing first and then let go 放 of it, which is two separate kindnesses. They let the hostage walk: かいほう.",
+      "notes" : "",
+      "reading" : "かいほう",
+      "sentence" : "人質が解放されてよかった。",
+      "sentence_meaning" : "It is good that the hostage has been freed.",
+      "word" : "解放"
+   },
+   {
+      "frequency" : "1363",
+      "meaning" : "harmoniously, amicably",
+      "mnemonic" : "The go-between 仲 part of it is good 良, which is the whole of what getting on with somebody amounts to. That couple manage it: なかよく.",
+      "notes" : "",
+      "reading" : "なかよく",
+      "sentence" : "あの夫婦は仲良く暮らしているよ。",
+      "sentence_meaning" : "That married couple is living happily together.",
+      "word" : "仲良く"
+   },
+   {
+      "frequency" : "1364",
+      "meaning" : "beast, brute",
+      "mnemonic" : "The wild sort, the kind you would want a weapon for, and not the one asleep on the sofa. He had eyes like one: けもの.",
+      "notes" : "",
+      "reading" : "けもの",
+      "sentence" : "彼は獣のような目をしていたな。",
+      "sentence_meaning" : "He had eyes like a beast.",
+      "word" : "獣"
+   },
+   {
+      "frequency" : "1365",
+      "meaning" : "to come off, to be removed",
+      "mnemonic" : "Nobody took 取 it off. It took itself off, and the button is somewhere on the floor of the train: とれる.",
+      "notes" : "",
+      "reading" : "とれる",
+      "sentence" : "シャツのボタンが取れた。",
+      "sentence_meaning" : "My shirt's button came off.",
+      "word" : "取れる"
+   },
+   {
+      "frequency" : "1367",
+      "meaning" : "building, structure",
+      "mnemonic" : "A thing 物 that was put up 建 in order to stand there, and this one has been standing longer than any other in the country: たてもの.",
+      "notes" : "",
+      "reading" : "たてもの",
+      "sentence" : "これは日本一古い建物です。",
+      "sentence_meaning" : "This is the oldest building in Japan.",
+      "word" : "建物"
+   },
+   {
+      "frequency" : "1371",
+      "meaning" : "originally, essentially",
+      "mnemonic" : "What came 来 out of the root 本 of the thing before anything got piled on top of it. The pressure lifted and there she was again: ほんらい.",
+      "notes" : "",
+      "reading" : "ほんらい",
+      "sentence" : "彼女はプレッシャーから解放されて本来の自分に戻ったな。",
+      "sentence_meaning" : "She was relieved of the pressure and went back to her original self.",
+      "word" : "本来"
+   },
+   {
+      "frequency" : "1373",
+      "meaning" : "to handle, to deal with",
+      "mnemonic" : "It is in your hands now, and how it comes out the far end is entirely down to you. That box has glass in it: あつかう.",
+      "notes" : "",
+      "reading" : "あつかう",
+      "sentence" : "この荷物は丁寧に扱ってください。",
+      "sentence_meaning" : "Please handle this luggage carefully.",
+      "word" : "扱う"
+   },
+   {
+      "frequency" : "1376",
+      "meaning" : "serious, earnest",
+      "mnemonic" : "A true 真 face 面 and a straight eye 目, three characters all saying the same thing about the man. He means it: まじめ.",
+      "notes" : "真剣 しんけん is being in earnest about one particular thing. 真面目 is what somebody is like all the time.",
+      "reading" : "まじめ",
+      "sentence" : "彼は真面目な人です。",
+      "sentence_meaning" : "He's a serious-minded person.",
+      "word" : "真面目"
+   },
+   {
+      "frequency" : "1379",
+      "meaning" : "influence, effect",
+      "mnemonic" : "A shadow 影 of him and an echo 響 of him, both still going long after he has left the room. That is what he did to me: えいきょう.",
+      "notes" : "効果 こうか is the effect a thing has. 影響 is the mark somebody or something leaves on you.",
+      "reading" : "えいきょう",
+      "sentence" : "私は彼から大きな影響を受けました。",
+      "sentence_meaning" : "I was deeply influenced by him.",
+      "word" : "影響"
+   },
+   {
+      "frequency" : "1380",
+      "meaning" : "deep red",
+      "mnemonic" : "True 真 red 赤 with nothing else mixed into it, and his whole face had gone that colour: まっか.",
+      "notes" : "",
+      "reading" : "まっか",
+      "sentence" : "彼の顔は真っ赤でした。",
+      "sentence_meaning" : "His face was red.",
+      "word" : "真っ赤"
+   },
+   {
+      "frequency" : "1381",
+      "meaning" : "discovery, revelation",
+      "mnemonic" : "Something goes off 発 and somebody sees 見 it for the first time anybody has. A new star, last night: はっけん.",
+      "notes" : "",
+      "reading" : "はっけん",
+      "sentence" : "新しい星が発見された。",
+      "sentence_meaning" : "A new star was discovered.",
+      "word" : "発見"
+   },
+   {
+      "frequency" : "1382",
+      "meaning" : "to support, to maintain",
+      "mnemonic" : "A hand 又 underneath taking the whole weight, and it does not get to put the thing down. That is his father's job: ささえる.",
+      "notes" : "",
+      "reading" : "ささえる",
+      "sentence" : "父親には一家を支える責任がある。",
+      "sentence_meaning" : "My father has the responsibility to support the family.",
+      "word" : "支える"
+   },
+   {
+      "frequency" : "1384",
+      "meaning" : "number one, first",
+      "mnemonic" : "Whatever else is on the list, this is the one sitting at the top of it. Work, ahead of everything: だいいち.",
+      "notes" : "最初 さいしょ is first in time, the beginning of a thing. 第一 is first in importance.",
+      "reading" : "だいいち",
+      "sentence" : "私には仕事が第一です。",
+      "sentence_meaning" : "Work is my first priority.",
+      "word" : "第一"
+   },
+   {
+      "frequency" : "978",
+      "meaning" : "father",
+      "mnemonic" : "The one with the axe 父, with お on the front and さん on the end because you are talking to him rather than about him: おとうさん.",
+      "notes" : "父 ちち is your own father when you mention him to somebody else. お父さん is what you call him, and the word for anybody else's.",
+      "reading" : "おとうさん",
+      "sentence" : "お父さんは会社員です。",
+      "sentence_meaning" : "My father's a company employee.",
+      "word" : "お父さん"
+   },
+   {
+      "frequency" : "841",
+      "meaning" : "mother",
+      "mnemonic" : "The same お and さん wrapped round 母, and the one being talked about here belongs to somebody else, and she is a beauty: おかあさん.",
+      "notes" : "母 はは is your own mother when you mention her to others. お母さん is what you call her, and the word for anybody else's.",
+      "reading" : "おかあさん",
+      "sentence" : "彼のお母さんは美人です。",
+      "sentence_meaning" : "His mother is a beauty.",
+      "word" : "お母さん"
+   },
+   {
+      "frequency" : "3017",
+      "meaning" : "older brother",
+      "mnemonic" : "The big brother 兄 with the polite wrapping put back on. How old is yours: おにいさん.",
+      "notes" : "兄 あに is your own older brother when you talk about him. お兄さん is what you call him, and anybody else's.",
+      "reading" : "おにいさん",
+      "sentence" : "あなたのお兄さんは何歳？",
+      "sentence_meaning" : "How old is your big brother?",
+      "word" : "お兄さん"
+   },
+   {
+      "frequency" : "2165",
+      "meaning" : "older sister",
+      "mnemonic" : "The big sister 姉 done up politely, and the one you ran into yesterday was somebody else's: おねえさん.",
+      "notes" : "姉 あね is your own older sister when you talk about her. お姉さん is what you call her, and anybody else's.",
+      "reading" : "おねえさん",
+      "sentence" : "昨日、あなたのお姉さんに会ったよ。",
+      "sentence_meaning" : "I met your older sister yesterday.",
+      "word" : "お姉さん"
+   },
+   {
+      "frequency" : "2102",
+      "meaning" : "uncle",
+      "mnemonic" : "Your parent's brother, and the same word does duty for any middle-aged man whose name you have not been given: おじさん.",
+      "notes" : "One long vowel from おじいさん, grandfather. Short is the uncle and long is the grandfather, and おばさん and おばあさん split the same way.",
+      "reading" : "おじさん",
+      "sentence" : "昨日おじさんに会いました。",
+      "sentence_meaning" : "I met my uncle yesterday.",
+      "word" : "おじさん"
+   },
+   {
+      "frequency" : "3838",
+      "meaning" : "aunt",
+      "mnemonic" : "Your parent's sister, arriving with her whole family behind her and settling in for the afternoon: おばさん.",
+      "notes" : "One long vowel from おばあさん, grandmother. Short is the aunt and long is the grandmother.",
+      "reading" : "おばさん",
+      "sentence" : "おばさん一家が遊びに来ました。",
+      "sentence_meaning" : "My aunt and her family came to visit me.",
+      "word" : "おばさん"
+   },
+   {
+      "frequency" : "15676",
+      "meaning" : "cousin",
+      "mnemonic" : "Your aunt's child, born the same year as you, and the only relative you have anything at all in common with: いとこ.",
+      "notes" : "",
+      "reading" : "いとこ",
+      "sentence" : "いとこと私は同じ年です。",
+      "sentence_meaning" : "My cousin and I are the same age.",
+      "word" : "いとこ"
+   },
+   {
+      "frequency" : "1385",
+      "meaning" : "desk, table",
+      "mnemonic" : "Somebody bought it for you and now the homework has nowhere left to hide. Four legs, one flat surface: つくえ.",
+      "notes" : "",
+      "reading" : "つくえ",
+      "sentence" : "新しい机を買ってもらいました。",
+      "sentence_meaning" : "I was bought a new desk.",
+      "word" : "机"
+   },
+   {
+      "frequency" : "1386",
+      "meaning" : "of the same kind, each other, fellow",
+      "mnemonic" : "Two of the same 同 sort stood together, and he and I turn out to be cousins on both sides of it: どうし.",
+      "notes" : "お互い おたがい is each other as in mutually, what two people do to one another. 同士 tags two of the same kind.",
+      "reading" : "どうし",
+      "sentence" : "彼と私はいとこ同士です。",
+      "sentence_meaning" : "He and I are fellow cousins.",
+      "word" : "同士"
+   },
+   {
+      "frequency" : "1387",
+      "meaning" : "to be late",
+      "mnemonic" : "Whatever was in front of you went at its own pace and the gap opened up behind it. She got to school after the bell: おくれる.",
+      "notes" : "",
+      "reading" : "おくれる",
+      "sentence" : "今朝彼女は学校に遅れました。",
+      "sentence_meaning" : "She was late for school this morning.",
+      "word" : "遅れる"
+   },
+   {
+      "frequency" : "1388",
+      "meaning" : "car, automobile",
+      "mnemonic" : "Two wheels and the bar between them, drawn from directly overhead. His younger brother has just bought one: くるま.",
+      "notes" : "",
+      "reading" : "くるま",
+      "sentence" : "弟が車を買った。",
+      "sentence_meaning" : "My younger brother bought a car.",
+      "word" : "車"
+   },
+   {
+      "frequency" : "1389",
+      "meaning" : "to&nbsp;fly out, to&nbsp;dash out",
+      "mnemonic" : "Wings 飛 up and straight out 出 through the doorway without looking first, and the road was right there: とびだす.",
+      "notes" : "",
+      "reading" : "とびだす",
+      "sentence" : "彼は道路に飛び出したの。",
+      "sentence_meaning" : "He ran out into the road.",
+      "word" : "飛び出す"
+   },
+   {
+      "frequency" : "1390",
+      "meaning" : "situation, state of affairs",
+      "mnemonic" : "The affair 事 and the state 態 it has managed to get itself into, and this one has got into a bad one: じたい.",
+      "notes" : "状況 じょうきょう is the situation as circumstances. 事態 is the state a matter has reached, and it is usually grave. Near 時代 じだい in sound.",
+      "reading" : "じたい",
+      "sentence" : "事態は深刻です。",
+      "sentence_meaning" : "The situation is serious.",
+      "word" : "事態"
+   },
+   {
+      "frequency" : "1391",
+      "meaning" : "friend, ally",
+      "mnemonic" : "Somebody facing the same way 方 as you with the same taste 味 in a fight. Your mother, every single time: みかた.",
+      "notes" : "友達 ともだち and 友人 ゆうじん are friends. 味方 is about whose side somebody is on.",
+      "reading" : "みかた",
+      "sentence" : "母はいつも私の味方です。",
+      "sentence_meaning" : "My mother will always be my ally.",
+      "word" : "味方"
+   },
+   {
+      "frequency" : "1393",
+      "meaning" : "unfolding, development",
+      "mnemonic" : "The thing gets laid out 展 and opened up 開 as it goes along, and the story got away from you three turns back: てんかい.",
+      "notes" : "",
+      "reading" : "てんかい",
+      "sentence" : "話の展開についていけない。",
+      "sentence_meaning" : "I can't follow the thread of the conversation.",
+      "word" : "展開"
+   }
+]
