@@ -1160,5 +1160,67 @@
     { "c": "馬", "name": "horse" },
     { "c": "大", "name": "big" }
   ]},
-  "験": { "meaning": "test, verify", "note": "馬 a horse on the left, and the going over you give one before you agree to buy it." }
+  "験": { "meaning": "test, verify", "note": "馬 a horse on the left, and the going over you give one before you agree to buy it." },
+  "代": { "meaning": "substitute, generation", "note": "亻 a person on the left with a marker set beside them, one standing in the place of another." },
+  "位": { "meaning": "rank, position", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "立", "name": "stand" }
+  ]},
+  "借": { "meaning": "borrow", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "昔", "name": "long ago" }
+  ]},
+  "包": { "meaning": "wrap", "note": "A figure bent right over, drawn folded around whatever it is carrying." },
+  "原": { "meaning": "plain, origin", "note": "A cliff with a spring running out from underneath it. Open ground, and the place the water starts." },
+  "因": { "meaning": "cause", "parts": [
+    { "c": "囗", "name": "border" },
+    { "c": "大", "name": "big" }
+  ]},
+  "平": { "meaning": "flat, calm", "note": "A surface with the weight spread evenly to either side of the stem. Nothing sticking up anywhere." },
+  "廊": { "meaning": "corridor", "note": "广 a shelter on the left, and the long thin strip of space that runs along under it." },
+  "恐": { "meaning": "fear", "note": "心 a heart at the bottom with a pair of hands gripping something above it. The grip is the fear." },
+  "悲": { "meaning": "sad", "parts": [
+    { "c": "非", "name": "against" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "打": { "meaning": "hit, strike", "note": "扌 a hand on the left and a nail on the right, the hand bringing something down onto it." },
+  "押": { "meaning": "push, press", "note": "扌 a hand on the left, pressing down on something and keeping it pressed." },
+  "掴": { "meaning": "grip, grasp", "note": "扌 a hand on the left closing round something and not opening again. Usually written in kana." },
+  "撫": { "meaning": "stroke, pat", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "無", "name": "nothing" }
+  ]},
+  "改": { "meaning": "renew, reform", "parts": [
+    { "c": "己", "name": "self" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "景": { "meaning": "scene, view", "note": "日 the sun up over a tall building. Not the buildings, the thing you see when you look out at them." },
+  "格": { "meaning": "status, standard", "note": "木 a tree on the left, worked to a standard. The frame a thing is built to, and how it comes across." },
+  "機": { "meaning": "machine, opportunity", "note": "木 a tree on the left, cut into a frame with moving parts. It carries the machine and the moment things line up." },
+  "火": { "meaning": "fire", "note": "A pictograph, a flame with sparks going off to either side of it." },
+  "炎": { "meaning": "flame, blaze", "note": "One 火 fire stacked straight on top of another. Not the fire, the blaze coming off it." },
+  "皆": { "meaning": "all, everyone", "note": "Two figures side by side over 白 white at the bottom. Everybody, counted together rather than one at a time." },
+  "短": { "meaning": "short", "parts": [
+    { "c": "矢", "name": "arrow" },
+    { "c": "豆", "name": "bean" }
+  ]},
+  "紙": { "meaning": "paper", "note": "糸 thread on the left, pulped and pressed out flat. What paper was before it was paper." },
+  "苦": { "meaning": "bitter, painful", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "古", "name": "old" }
+  ]},
+  "親": { "meaning": "parent, intimate", "parts": [
+    { "c": "立", "name": "stand" },
+    { "c": "木", "name": "tree" },
+    { "c": "見", "name": "see" }
+  ]},
+  "迷": { "meaning": "lost, astray", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "米", "name": "rice" }
+  ]},
+  "速": { "meaning": "fast", "parts": [
+    { "c": "辶", "name": "road" },
+    { "c": "束", "name": "bundle" }
+  ]},
+  "闘": { "meaning": "fight", "note": "門 a gate with two of them going at each other inside it. The older form put weapons in their hands." }
 }

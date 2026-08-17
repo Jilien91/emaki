@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1099",
+      "meaning" : "letter",
+      "mnemonic" : "Written out by hand 手 on paper 紙 and put in an envelope, which almost nobody does any more. One turned up from a friend: てがみ.",
+      "notes" : "",
+      "reading" : "てがみ",
+      "sentence" : "友人から手紙をもらいました。",
+      "sentence_meaning" : "I received a letter from a friend.",
+      "word" : "手紙"
+   },
+   {
+      "frequency" : "1100",
+      "meaning" : "to grip, to grab",
+      "mnemonic" : "Her hand closes round your wrist and stays closed. Not a touch, a hold you would have to work at to get out of: つかむ.",
+      "notes" : "Near 使う つかう, to use, and 包む つつむ, to wrap, in sound and nothing else. 握る にぎる is the other grip, your own hand closing round something.",
+      "reading" : "つかむ",
+      "sentence" : "彼女が僕の手を掴みました。",
+      "sentence_meaning" : "She gripped my hand.",
+      "word" : "掴む"
+   },
+   {
+      "frequency" : "1101",
+      "meaning" : "another person, stranger",
+      "mnemonic" : "Not family and not a friend, some other 他 person 人 in the world, and you would rather they did not have your address: たにん.",
+      "notes" : "Same 他 as ほか, another. As a word it means specifically not one of yours.",
+      "reading" : "たにん",
+      "sentence" : "私は他人に住所を教えたくない。",
+      "sentence_meaning" : "I don't want to tell other people my address.",
+      "word" : "他人"
+   },
+   {
+      "frequency" : "1102",
+      "meaning" : "shape, appearance",
+      "mnemonic" : "How a thing measures up 格 and whether people like 好 what they see. He came through the door and the room decided he looked good: かっこう.",
+      "notes" : "Sits near 学校 がっこう and 結構 けっこう in sound. かっこいい, good looking, is this word. 形 かたち is the shape of a thing and 姿 すがた the figure of a person.",
+      "reading" : "かっこう",
+      "sentence" : "格好のいい青年に会ったよ。",
+      "sentence_meaning" : "I met a good-looking young man.",
+      "word" : "格好"
+   },
+   {
+      "frequency" : "1103",
+      "meaning" : "sight, spectacle",
+      "mnemonic" : "Light 光 landing on something in a way that stops you where you stand. You were not looking for it, it simply came into view: こうけい.",
+      "notes" : "",
+      "reading" : "こうけい",
+      "sentence" : "驚くような光景が目に入った。",
+      "sentence_meaning" : "I happened to see an astonishing sight.",
+      "word" : "光景"
+   },
+   {
+      "frequency" : "1104",
+      "meaning" : "all, completely",
+      "mnemonic" : "He went for milk and bread and came home with neither, having not so much forgotten as never once thought of it: すっかり.",
+      "notes" : "Sounds like しっかり, firmly, and means nothing whatever like it.",
+      "reading" : "すっかり",
+      "sentence" : "買い物をすっかり忘れていた。",
+      "sentence_meaning" : "I completely forgot the shopping.",
+      "word" : "すっかり"
+   },
+   {
+      "frequency" : "1105",
+      "meaning" : "which",
+      "mnemonic" : "Meat or fish, and the waiter is waiting. Two things on the table and you have to put a finger on one of them: どちら.",
+      "notes" : "The polite one. どっち is the casual version, and こちら, そちら and あちら are the rest of the set. どれ asks the same thing of a set you can see.",
+      "reading" : "どちら",
+      "sentence" : "肉と魚とどちらが好きですか。",
+      "sentence_meaning" : "Which do you prefer, meat or fish?",
+      "word" : "どちら"
+   },
+   {
+      "frequency" : "1110",
+      "meaning" : "parent",
+      "mnemonic" : "Somebody stood 立 up on a tree 木 to see 見 further down the road than you can from where you are. That is the entire job: おや.",
+      "notes" : "",
+      "reading" : "おや",
+      "sentence" : "親の愛はありがたい。",
+      "sentence_meaning" : "We're grateful for our parents' love.",
+      "word" : "親"
+   },
+   {
+      "frequency" : "1111",
+      "meaning" : "period, age",
+      "mnemonic" : "One stretch of time 時 handed straight on to the next 代, and this one belongs to the robots. Yours was the one before: じだい.",
+      "notes" : "",
+      "reading" : "じだい",
+      "sentence" : "今はロボットが働く時代です。",
+      "sentence_meaning" : "Now is the age of working robots.",
+      "word" : "時代"
+   },
+   {
+      "frequency" : "1112",
+      "meaning" : "tactic, strategy",
+      "mnemonic" : "You make 作 the plan before the fight 戦 rather than during it, and every one of them knows their part by Saturday: さくせん.",
+      "notes" : "Shares 戦 with 戦う たたかう and 戦闘 せんとう, which are the fighting. 作戦 is the thinking done beforehand.",
+      "reading" : "さくせん",
+      "sentence" : "彼らは次の試合のために作戦を立てたのよ。",
+      "sentence_meaning" : "They came up with a strategy for the next game.",
+      "word" : "作戦"
+   },
+   {
+      "frequency" : "1114",
+      "meaning" : "possibly, perhaps",
+      "mnemonic" : "Nobody has told him anything and he is already clearing the desk in his head, because there is an outside chance the transfer comes through: もしかしたら.",
+      "notes" : "Sits with 多分 たぶん. 多分 is a fair bet, もしかしたら is a smaller chance being raised just in case.",
+      "reading" : "もしかしたら",
+      "sentence" : "もしかしたら来年転勤になるかもしれない。",
+      "sentence_meaning" : "It's possible that I might be transferred next year.",
+      "word" : "もしかしたら"
+   },
+   {
+      "frequency" : "1115",
+      "meaning" : "painful, difficult",
+      "mnemonic" : "Old 古 grass 艹 chewed down to the stalk, and your stomach after a third helping. Not sharp pain, just everything gone wrong in there: くるしい.",
+      "notes" : "難しい むずかしい is difficult to work out. 苦しい is difficult to bear. Near 詳しい くわしい in sound only.",
+      "reading" : "くるしい",
+      "sentence" : "食べすぎておなかが苦しい。",
+      "sentence_meaning" : "I have eaten too much and my stomach hurts.",
+      "word" : "苦しい"
+   },
+   {
+      "frequency" : "1116",
+      "meaning" : "bright",
+      "mnemonic" : "Sun 日 and moon 月 in the one character and both of them switched on at once. Hit the switch and the room turns into this: あかるい.",
+      "notes" : "",
+      "reading" : "あかるい",
+      "sentence" : "電気を点けると、明るくなります。",
+      "sentence_meaning" : "If you turn the lights on, it gets bright.",
+      "word" : "明るい"
+   },
+   {
+      "frequency" : "1117",
+      "meaning" : "cause, origin",
+      "mnemonic" : "Something big 大 shut inside a boundary 囗, and everything that followed came out of it. Somebody has to work out what it was: げんいん.",
+      "notes" : "理由 りゆう is the reason you give for a thing. 原因 is what actually caused it. Near 全員 ぜんいん in sound.",
+      "reading" : "げんいん",
+      "sentence" : "この事故の原因は何ですか。",
+      "sentence_meaning" : "What's the cause of this accident?",
+      "word" : "原因"
+   },
+   {
+      "frequency" : "1119",
+      "meaning" : "hallway",
+      "mnemonic" : "The long strip under 下 the roof that is not a room, and everybody's shoes are along one side of it. Bathroom on the right: ろうか.",
+      "notes" : "",
+      "reading" : "ろうか",
+      "sentence" : "この廊下の右にトイレがあります。",
+      "sentence_meaning" : "There is a bathroom on the right of this hallway.",
+      "word" : "廊下"
+   },
+   {
+      "frequency" : "1120",
+      "meaning" : "that person, that guy",
+      "mnemonic" : "He nods at somebody across the bar without using a name, and the way he says it tells you what he thinks of him: そいつ.",
+      "notes" : "あいつ is over there, そいつ is nearer to you. 奴 やつ is the same idea with a character to write it.",
+      "reading" : "そいつ",
+      "sentence" : "そいつは誰だい。",
+      "sentence_meaning" : "Who's that guy?",
+      "word" : "そいつ"
+   },
+   {
+      "frequency" : "1122",
+      "meaning" : "some time ago",
+      "mnemonic" : "Not this morning and not last week, a stretch of this same day already gone by 先. The permission came through then and he is telling you now: さきほど.",
+      "notes" : "Formal. さっき is the everyday version of the same stretch of time.",
+      "reading" : "さきほど",
+      "sentence" : "その件でしたら、先ほど上司から許可を得ております。",
+      "sentence_meaning" : "Regarding that matter, I obtained permission from my superior a little while ago.",
+      "word" : "先ほど"
+   },
+   {
+      "frequency" : "1123",
+      "meaning" : "adult",
+      "mnemonic" : "A big 大 person 人, which is the whole of what the character claims, and the one telling you to listen. Nothing in it says wise: おとな.",
+      "notes" : "The reading is irregular and has to be learned whole, since neither 大 nor 人 is saying any part of おとな.",
+      "reading" : "おとな",
+      "sentence" : "大人の言うことを聞きなさい。",
+      "sentence_meaning" : "Listen to what adults say.",
+      "word" : "大人"
+   },
+   {
+      "frequency" : "1126",
+      "meaning" : "people",
+      "mnemonic" : "One person 人 and then the mark that says do that again 々, and now it is a whole village of them and every one is kind: ひとびと.",
+      "notes" : "人間 にんげん is people as a species. 人々 is people as a crowd made of individuals.",
+      "reading" : "ひとびと",
+      "sentence" : "あの村の人々はとても親切です。",
+      "sentence_meaning" : "People in that village are very kind.",
+      "word" : "人々"
+   },
+   {
+      "frequency" : "1128",
+      "meaning" : "to pat, to stroke",
+      "mnemonic" : "A hand 扌 with nothing 無 in it and nothing behind it, going over the cat's head slowly. Barely contact at all: なでる.",
+      "notes" : "",
+      "reading" : "なでる",
+      "sentence" : "猫の頭を撫でてあげた。",
+      "sentence_meaning" : "I patted the cat's head.",
+      "word" : "撫でる"
+   },
+   {
+      "frequency" : "1133",
+      "meaning" : "to put up, to erect",
+      "mnemonic" : "You stand 立 the umbrella against the wall by the door and it stays exactly where you left it. Somebody had to do the standing: たてる.",
+      "notes" : "立つ たつ is a thing standing on its own. 立てる is you standing it up.",
+      "reading" : "たてる",
+      "sentence" : "ドアのところに傘を立てておきます。",
+      "sentence_meaning" : "I'll put my umbrella by the door.",
+      "word" : "立てる"
+   },
+   {
+      "frequency" : "1136",
+      "meaning" : "occasionally, now and then",
+      "mnemonic" : "He cooks about once a month and everybody acts surprised each time. Not never and not often, somewhere in the middle: たまに.",
+      "notes" : "",
+      "reading" : "たまに",
+      "sentence" : "彼はたまに料理をします。",
+      "sentence_meaning" : "He cooks occasionally.",
+      "word" : "たまに"
+   },
+   {
+      "frequency" : "1137",
+      "meaning" : "to push, to press down",
+      "mnemonic" : "A flat hand on somebody's back on a crowded platform, and the sign on the wall says not to. Weight going one way and not letting up: おす.",
+      "notes" : "引く ひく is the pull on the other door.",
+      "reading" : "おす",
+      "sentence" : "後ろから押すと危ないですよ。",
+      "sentence_meaning" : "Pushing from behind is dangerous.",
+      "word" : "押す"
+   },
+   {
+      "frequency" : "1141",
+      "meaning" : "calm, all right",
+      "mnemonic" : "Whatever went on in there, her spirit 気 came back out level 平 and her face is giving away none of it: へいき.",
+      "notes" : "Less calm as a mood than unbothered. 平気です is I am fine, it does not matter.",
+      "reading" : "へいき",
+      "sentence" : "彼女は平気な顔をしていた。",
+      "sentence_meaning" : "She looked as if nothing had happened.",
+      "word" : "平気"
+   },
+   {
+      "frequency" : "1142",
+      "meaning" : "sad",
+      "mnemonic" : "A heart 心 with everything set against it 非, sat in the dark through the last twenty minutes of the film: かなしい.",
+      "notes" : "寂しい さびしい is the lonely sort of sad, a room with nobody in it. 悲しい is grief, and it has a cause.",
+      "reading" : "かなしい",
+      "sentence" : "その映画はとても悲しかった。",
+      "sentence_meaning" : "That movie was very sad.",
+      "word" : "悲しい"
+   },
+   {
+      "frequency" : "1143",
+      "meaning" : "to hide, to disappear",
+      "mnemonic" : "The sun goes round the back of a cloud 隠 and the whole field turns grey. Nobody moved it, it simply went out of sight: かくれる.",
+      "notes" : "隠す かくす is you hiding something. 隠れる is the thing hiding itself, or just going out of view.",
+      "reading" : "かくれる",
+      "sentence" : "太陽が雲に隠れた。",
+      "sentence_meaning" : "The sun hid behind the clouds.",
+      "word" : "隠れる"
+   },
+   {
+      "frequency" : "1145",
+      "meaning" : "still, not there yet",
+      "mnemonic" : "Told his Japanese is good, he waves it off twice over. Less modesty than being able to see exactly how far off it still is: まだまだ.",
+      "notes" : "",
+      "reading" : "まだまだ",
+      "sentence" : "A「日本語が上手ですね。」B「いいえ、まだまだです。」",
+      "sentence_meaning" : "A: Your Japanese is good.B: No, I still have a long way to go.",
+      "word" : "まだまだ"
+   },
+   {
+      "frequency" : "1146",
+      "meaning" : "everyone",
+      "mnemonic" : "The word you open with when the whole room has turned round to look at you and you have forty minutes on robots to fill: みなさん.",
+      "notes" : "みんな is the casual everyone. 皆さん puts さん on it and is what you say to a room.",
+      "reading" : "みなさん",
+      "sentence" : "皆さん、今日はロボットについて話します。",
+      "sentence_meaning" : "Everyone, today we will discuss about robots.",
+      "word" : "皆さん"
+   },
+   {
+      "frequency" : "1147",
+      "meaning" : "to return",
+      "mnemonic" : "You put the thing back through the door 戸 it came out of. The conversation wandered off and somebody drags it back: もどす.",
+      "notes" : "戻る もどる is you going back yourself. 戻す is putting something else back. 帰る かえる is going home and 返す かえす is giving a thing back to its owner.",
+      "reading" : "もどす",
+      "sentence" : "話を戻しましょう。",
+      "sentence_meaning" : "Let's return to the subject.",
+      "word" : "戻す"
+   },
+   {
+      "frequency" : "1148",
+      "meaning" : "battle, fight",
+      "mnemonic" : "The war 戦 as a whole is one thing. This is the part where people are actually going at each other 闘, and the town is full of the wounded: せんとう.",
+      "notes" : "戦い たたかい is the battle in the broad sense. 戦闘 is the combat itself, and 作戦 さくせん is the plan behind it.",
+      "reading" : "せんとう",
+      "sentence" : "戦闘で多くの市民が傷付きました。",
+      "sentence_meaning" : "A lot of civilians were wounded in combat.",
+      "word" : "戦闘"
+   },
+   {
+      "frequency" : "1157",
+      "meaning" : "fire",
+      "mnemonic" : "Sparks going off both sides of it and the pan beginning to catch. Get it turned off before the alarm starts: ひ.",
+      "notes" : "Same reading as 日 ひ, day or sun. 日 is the one up in the sky and 火 is the one on the stove.",
+      "reading" : "ひ",
+      "sentence" : "火を消して。",
+      "sentence_meaning" : "Put the fire out.",
+      "word" : "火"
+   },
+   {
+      "frequency" : "1151",
+      "meaning" : "flame, blaze",
+      "mnemonic" : "Two lots of fire 火 stacked up in the one character, and one candle throws enough of it to light the whole room: ほのお.",
+      "notes" : "火 ひ is the fire itself. 炎 is what comes off it.",
+      "reading" : "ほのお",
+      "sentence" : "ろうそくの炎が部屋を照らしたんだ。",
+      "sentence_meaning" : "The candle's flame lit the room.",
+      "word" : "炎"
+   },
+   {
+      "frequency" : "1152",
+      "meaning" : "fear",
+      "mnemonic" : "The heart 忄 goes first and the body follows, locked solid where it stands. Not nerves, the kind that stops you moving at all: きょうふ.",
+      "notes" : "怖い こわい is the everyday scared. 恐怖 is the noun, terror, and 恐ろしい おそろしい is the adjective for whatever is causing it.",
+      "reading" : "きょうふ",
+      "sentence" : "余りの恐怖に体が強張った。",
+      "sentence_meaning" : "My body went stiff with such terror.",
+      "word" : "恐怖"
+   },
+   {
+      "frequency" : "1154",
+      "meaning" : "to be perplexed, to get lost",
+      "mnemonic" : "Rice 米 spilled the length of the road 辶 and every grain the same as the next. Twenty minutes of walking and none of it familiar: まよう.",
+      "notes" : "",
+      "reading" : "まよう",
+      "sentence" : "道に迷いました。",
+      "sentence_meaning" : "I lost my way.",
+      "word" : "迷う"
+   },
+   {
+      "frequency" : "1155",
+      "meaning" : "all right",
+      "mnemonic" : "He hands the report across and waits, and the only thing he wants back is the one word that means it will do: よろしい.",
+      "notes" : "Formal, and usually spoken downward, by a teacher or a boss. いい is the everyday version. 結構 けっこう and 平気 へいき also gloss as all right and mean different things.",
+      "reading" : "よろしい",
+      "sentence" : "レポートはこれでよろしいですか。",
+      "sentence_meaning" : "Is this all right as a report?",
+      "word" : "よろしい"
+   },
+   {
+      "frequency" : "1158",
+      "meaning" : "chance, opportunity, occasion",
+      "mnemonic" : "The moment the parts line up 機 and the right people happen to be in the room together 会. There have been a great many of those lately: きかい.",
+      "notes" : "場 ば on its own is the occasion rather than the chance to act on it.",
+      "reading" : "きかい",
+      "sentence" : "この頃、お酒を飲む機会が増えました。",
+      "sentence_meaning" : "These days, I have more occasions to drink alcohol.",
+      "word" : "機会"
+   },
+   {
+      "frequency" : "1159",
+      "meaning" : "terrible, frightening",
+      "mnemonic" : "Whatever it was in the dream, it was still in the room when you woke and the light had to go on. Not startling, the other kind: おそろしい.",
+      "notes" : "Shares 恐 with 恐怖 きょうふ, fear. 恐怖 is what you feel and 恐ろしい is what the thing is.",
+      "reading" : "おそろしい",
+      "sentence" : "昨夜恐ろしい夢を見た。",
+      "sentence_meaning" : "I had a frightening dream last night.",
+      "word" : "恐ろしい"
+   },
+   {
+      "frequency" : "1160",
+      "meaning" : "to borrow",
+      "mnemonic" : "A person 亻 who lent you something long ago 昔 and has not forgotten it. Money off a friend is still money off a friend: かりる.",
+      "notes" : "The taking side of the arrangement. The lending side is 貸す かす.",
+      "reading" : "かりる",
+      "sentence" : "友達にお金を借ります。",
+      "sentence_meaning" : "I will borrow money from a friend.",
+      "word" : "借りる"
+   },
+   {
+      "frequency" : "1162",
+      "meaning" : "to remove",
+      "mnemonic" : "Whatever it was is outside 外 of where it was a second ago, and his glasses are in his hand instead of on his face: はずす.",
+      "notes" : "Near 話す はなす and 離す はなす in sound and in nothing else.",
+      "reading" : "はずす",
+      "sentence" : "彼はメガネを外しました。",
+      "sentence_meaning" : "He removed his glasses.",
+      "word" : "外す"
+   },
+   {
+      "frequency" : "1163",
+      "meaning" : "ground, place",
+      "mnemonic" : "The earth 土 underneath everything, and the particular patch of it where a man spent the whole rest of his life: ち.",
+      "notes" : "Same reading as 血 ち, blood. 地 has 土 earth in it, which is the entire difference. ところ and 場所 ばしょ are the everyday words for a place, and 場 ば leans towards the occasion.",
+      "reading" : "ち",
+      "sentence" : "彼はその地で残りの生涯を過ごしたんだ。",
+      "sentence_meaning" : "He spent the rest of his life in that place.",
+      "word" : "地"
+   },
+   {
+      "frequency" : "1168",
+      "meaning" : "fast (in terms of speed)",
+      "mnemonic" : "A bundle 束 going down the road 辶 strapped tight so that nothing on it slows it down. He is at the far end before anybody: はやい.",
+      "notes" : "Same reading as 早い はやい, early. 早い is about the clock and 速い is about the speed. Arriving early is 早い, running fast is 速い.",
+      "reading" : "はやい",
+      "sentence" : "彼は走るのが速い。",
+      "sentence_meaning" : "He runs fast.",
+      "word" : "速い"
+   },
+   {
+      "frequency" : "1169",
+      "meaning" : "short, brief",
+      "mnemonic" : "An arrow 矢 stood up next to a bean 豆 to settle which of them is which. She had the lot cut off in the summer: みじかい.",
+      "notes" : "低い ひくい is short in height. 短い is short in length, or in time.",
+      "reading" : "みじかい",
+      "sentence" : "ララちゃんは髪が短いです。",
+      "sentence_meaning" : "Lara-chan's hair is short.",
+      "word" : "短い"
+   },
+   {
+      "frequency" : "1170",
+      "meaning" : "to like, to be pleased with",
+      "mnemonic" : "The thing gets in 入 past your guard and settles into your spirit 気, and now the new shoes are being worn indoors: きにいる.",
+      "notes" : "Literally it enters your 気. Settled and more particular than 好き: it is about one thing rather than a taste in general.",
+      "reading" : "きにいる",
+      "sentence" : "新しい靴がとても気に入りました。",
+      "sentence_meaning" : "I really like my new shoes.",
+      "word" : "気に入る"
+   },
+   {
+      "frequency" : "1171",
+      "meaning" : "once again",
+      "mnemonic" : "You take the self 己 that turned up last time and give it a knock 攵, then put the question again from the top: あらためて.",
+      "notes" : "Not simply again. It is doing the thing over properly and from a clean start, and it is formal.",
+      "reading" : "あらためて",
+      "sentence" : "改めてあなたのご意見を聞かせてください。",
+      "sentence_meaning" : "Please let me hear your opinion once more.",
+      "word" : "改めて"
+   },
+   {
+      "frequency" : "1172",
+      "meaning" : "noisy, annoying",
+      "mnemonic" : "Traffic on that street from five in the morning, and by the third day it is not the volume, it is that it will not stop: うるさい.",
+      "notes" : "Also said straight at people. うるさい on its own is be quiet.",
+      "reading" : "うるさい",
+      "sentence" : "この通りは車の音がうるさい。",
+      "sentence_meaning" : "Traffic is noisy on this street.",
+      "word" : "うるさい"
+   },
+   {
+      "frequency" : "1173",
+      "meaning" : "to hit, to guess",
+      "mnemonic" : "You aim, and it lands square 当 on the spot, and the spot this time was your friend's head. It does guessing right as well: あてる.",
+      "notes" : "当たる あたる is the ball hitting on its own. 当てる is you hitting something with it.",
+      "reading" : "あてる",
+      "sentence" : "ボールを友達の頭に当ててしまった。",
+      "sentence_meaning" : "I hit my friend’s head with a ball.",
+      "word" : "当てる"
+   },
+   {
+      "frequency" : "1175",
+      "meaning" : "to wrap, to pack",
+      "mnemonic" : "Paper folded right over the thing until none of it is showing, and the ribbon goes on last of all: つつむ.",
+      "notes" : "Near 掴む つかむ, to grip, in sound and nothing else.",
+      "reading" : "つつむ",
+      "sentence" : "プレゼントをきれいな紙で包みました。",
+      "sentence_meaning" : "I wrapped the present in beautiful paper.",
+      "word" : "包む"
+   },
+   {
+      "frequency" : "1177",
+      "meaning" : "position, place",
+      "mnemonic" : "Where a person 亻 is standing 立 and where a thing has been put 置, which between them is all that position means. North of Tokyo, on the map: いち.",
+      "notes" : "Same reading as 一 いち, one. 立場 たちば is where you stand in an argument and ところ is a place loosely. 位置 is where a thing sits on a map.",
+      "reading" : "いち",
+      "sentence" : "私の町は東京の北に位置します。",
+      "sentence_meaning" : "My town is located north of Tokyo.",
+      "word" : "位置"
+   },
+   {
+      "frequency" : "1178",
+      "meaning" : "to hit, to strike",
+      "mnemonic" : "Down you go on the step and your knee finds the edge of it. Contact with the whole of your weight behind it: うつ.",
+      "notes" : "当てる あてる is hitting a target you aimed at, 叩く たたく is knocking or tapping, 打つ is a solid blow.",
+      "reading" : "うつ",
+      "sentence" : "転んでひざを打ちました。",
+      "sentence_meaning" : "I fell down and hit my knee.",
+      "word" : "打つ"
+   },
+   {
+      "frequency" : "1179",
+      "meaning" : "to aim for",
+      "mnemonic" : "The eye 目 picks the thing out and the finger 指 goes up at it, and everything after that is walking toward it. Chef, one day: めざす.",
+      "notes" : "目的 もくてき is the aim itself, the thing you want. 目指す is heading for it.",
+      "reading" : "めざす",
+      "sentence" : "私は料理人を目指しています。",
+      "sentence_meaning" : "I intend on becoming a cook.",
+      "word" : "目指す"
+   }
+]
