@@ -31,6 +31,31 @@ Only words with a mnemonic show up in Lessons. To add another batch of mnemonics
 perl scripts/merge.pl
 ```
 
+`scripts/batch-prep.pl` works out what the next batch needs. It runs in two
+stages because a batch is written in two passes, kanji entries first and
+mnemonics second:
+
+```
+perl scripts/batch-prep.pl          # the next 50 words, the data/kanji.json
+                                    # entries they need, and every collision
+perl scripts/batch-prep.pl --kanji  # after the kanji pass: the reference to
+                                    # write the mnemonics against
+```
+
+Stage one works the next free batch number out numerically and refuses to carry
+on if that file already exists, because reading it off a directory listing
+sorts `batch10` before `batch2` and that is how an existing batch once got
+overwritten. It reports two kinds of collision: the ones `verify.pl` enforces
+(shared readings, one written form with two cards) and the softer ones nothing
+enforces, near-identical readings and overlapping meanings, which are where the
+usage notes come from.
+
+Stage one also lists the kanji to add. Finish those before writing a single
+mnemonic, then run stage two, which prints components for everything but
+withholds the notes of entries added in the current pass. Those are the ones a
+mnemonic tends to quote back, having been written minutes earlier, and the card
+then says twice what the breakdown above it already said.
+
 ## Run locally
 
 `fetch()` can't load `data/vocab.json` over `file://`, so serve the folder over HTTP:
