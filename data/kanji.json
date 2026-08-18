@@ -1449,5 +1449,63 @@
     { "c": "氵", "name": "water" },
     { "c": "酉", "name": "wine jar" }
   ]},
-  "青": { "meaning": "blue, green, fresh", "note": "Fresh growth drawn over a well. The colour of new plants, and of the sea on a good day." }
+  "青": { "meaning": "blue, green, fresh", "note": "Fresh growth drawn over a well. The colour of new plants, and of the sea on a good day." },
+  "万": { "meaning": "ten thousand", "note": "One shape with nothing worth pulling off it. The number that started out meaning simply a great many." },
+  "価": { "meaning": "price, value", "note": "亻 a person on the left, weighing up what the thing in front of them is actually worth." },
+  "値": { "meaning": "value, price", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "直", "name": "straight" }
+  ]},
+  "吸": { "meaning": "suck in, inhale", "note": "口 a mouth on the left drawing something inward rather than letting it back out." },
+  "唯": { "meaning": "only, sole", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "隹", "name": "small bird" }
+  ]},
+  "央": { "meaning": "centre", "note": "A figure stood with a frame drawn to either side of it, dead in the middle of the two." },
+  "川": { "meaning": "river", "note": "Three lines running down the page, which is water between two banks seen from above." },
+  "役": { "meaning": "role, duty", "note": "彳 a step on the left. The part you are handed and then walk out to go and do." },
+  "技": { "meaning": "skill, technique", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "支", "name": "support, branch" }
+  ]},
+  "拾": { "meaning": "pick up", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "合", "name": "fit together" }
+  ]},
+  "晴": { "meaning": "clear weather", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "青", "name": "blue, fresh" }
+  ]},
+  "替": { "meaning": "replace, exchange", "note": "Two of the same thing side by side over 日 the sun, one of them stepping into the other's place." },
+  "毒": { "meaning": "poison", "note": "Growth drawn over 母 mother. The plant in the hedge that you do not put in your mouth." },
+  "汗": { "meaning": "sweat", "note": "氵 water on the left, the sort that comes out of you rather than out of a tap." },
+  "焦": { "meaning": "scorch, be impatient", "parts": [
+    { "c": "隹", "name": "small bird" },
+    { "c": "灬", "name": "fire" }
+  ]},
+  "異": { "meaning": "different, unusual", "note": "A figure holding something up in both hands, and whatever it is does not match anybody else's." },
+  "研": { "meaning": "polish, research", "note": "石 stone on the left, ground down flat and even. Working away at a thing until it finally comes clear." },
+  "穏": { "meaning": "calm, quiet", "note": "禾 grain on the left with everything settled in behind it. Nothing about the year is going wrong." },
+  "究": { "meaning": "investigate to the end", "note": "穴 a hole up at the top and somebody going all the way down to the bottom of it." },
+  "箱": { "meaning": "box", "parts": [
+    { "c": "竹", "name": "bamboo" },
+    { "c": "相", "name": "mutual, each other" }
+  ]},
+  "純": { "meaning": "pure, unmixed", "note": "糸 thread on the left with nothing else spun into it. One material and no mixture anywhere." },
+  "膝": { "meaning": "knee", "note": "月 the flesh radical on the left. The joint that takes the fall before any other part of you does." },
+  "術": { "meaning": "technique, art", "note": "行 a crossroads with something threaded through the middle. A way of doing a thing, learned rather than guessed at." },
+  "覆": { "meaning": "cover, overturn", "note": "A lid drawn across the top with something going back and forth underneath it. Covered right over." },
+  "趣": { "meaning": "purport, taste", "parts": [
+    { "c": "走", "name": "run" },
+    { "c": "取", "name": "take" }
+  ]},
+  "非": { "meaning": "not, against", "note": "Two wings drawn back to back, each facing away from the other. Against, and not." },
+  "額": { "meaning": "forehead, framed amount", "parts": [
+    { "c": "客", "name": "guest" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "鳴": { "meaning": "ring, cry out", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "鳥", "name": "bird" }
+  ]}
 }
