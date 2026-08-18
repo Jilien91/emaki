@@ -16,6 +16,7 @@ const DEFAULT_SETTINGS = {
   showSrsIndicator: true,
   speechRate: 0.8,          // device voices are hard to follow above this
   voiceName: null,          // null = pick one automatically; see pickJapaneseVoice
+  audioVoice: null,         // which shipped voice set to play; null = the first there is
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
   showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
@@ -274,13 +275,24 @@ function auditionVoice(name){
   speakJa('にほんごをべんきょうしています。');
 }
 
+// Same reasoning as auditionVoice: picking between two voices is something you
+// do by ear, so apply and play rather than making Save the moment it takes
+// effect. No re-render, which would close the open dropdown.
+function chooseShippedVoice(key){
+  if(!AUDIO_IDS[key]) return;
+  settings.audioVoice = key;
+  saveSettings();
+  const anyShipped = AUDIO_IDS[key];
+  if(anyShipped.size) speakWord(Math.min(...anyShipped));
+}
+
 // The settings sample should be the thing being configured. Once audio ships
 // with the app, a synthesised phrase would be demonstrating the fallback rather
 // than what the user is actually going to hear.
 function playAudioSample(){
-  if(AUDIO_IDS.size > 0){
-    const first = Math.min(...AUDIO_IDS);
-    speakWord(first);
+  const anyShipped = Object.values(AUDIO_IDS).find(s=>s.size);
+  if(anyShipped){
+    speakWord(Math.min(...anyShipped));
     return;
   }
   speakJa('にほんごをべんきょうしています。');
@@ -317,19 +329,37 @@ function speakJa(text){
 // not depend on what the device has installed. Every user hears the same thing
 // and nobody is asked to go and install a voice before they can study.
 //
-// AUDIO_IDS empty is the normal state until that script has been run, and
-// everything below then falls through to the device voice exactly as before.
-let AUDIO_IDS = new Set();
+// Two voices, keyed f and m, each with its own id set: audio/f/<id>.mp3. Both
+// empty is the normal state until that script has been run, and everything
+// below then falls through to the device voice exactly as before.
+let AUDIO_VOICES = [];              // [{key,label,azure,count}]
+let AUDIO_IDS = {};                 // {f: Set, m: Set}
 
-function hasWordAudio(id){ return AUDIO_IDS.has(id); }
+// Which set to play. The preferred voice wins, but a word only generated in the
+// other one still plays rather than dropping to the synthesiser: a half-done
+// run should sound inconsistent, not broken.
+function audioSrc(id){
+  const pref = settings.audioVoice;
+  if(pref && AUDIO_IDS[pref] && AUDIO_IDS[pref].has(id)) return `audio/${pref}/${id}.mp3`;
+  for(const key of Object.keys(AUDIO_IDS)){
+    if(AUDIO_IDS[key].has(id)) return `audio/${key}/${id}.mp3`;
+  }
+  return null;
+}
+
+function hasWordAudio(id){ return audioSrc(id) !== null; }
+function shippedAudioCount(){
+  return Object.values(AUDIO_IDS).reduce((n, s)=>Math.max(n, s.size), 0);
+}
 
 // Returns true if playback started. The caller falls back to the synthesiser on
 // false, which covers a missing file, a decode failure and autoplay refusal
 // alike: any of them should leave the user with audio rather than silence.
 function playWordAudio(id){
-  if(!hasWordAudio(id)) return false;
+  const src = audioSrc(id);
+  if(!src) return false;
   try{
-    const a = new Audio(`audio/${id}.mp3`);
+    const a = new Audio(src);
     // The speed setting should mean the same thing whichever source is playing.
     // preservesPitch matters more here than usual: pitch accent is part of what
     // the card teaches, so slowing a word down must not transpose it.
@@ -836,9 +866,11 @@ function saveAudioSettings(){
   const autoEl = document.getElementById('autoPlayInput');
   const rateEl = document.getElementById('speechRateInput');
   const voiceEl = document.getElementById('voiceInput');
-  // Already applied and saved on change by auditionVoice; read it back anyway
-  // so Save can't quietly revert a choice made in the dropdown.
+  const shippedEl = document.getElementById('shippedVoiceInput');
+  // Both are already applied and saved on change; read them back anyway so Save
+  // can't quietly revert a choice made in either dropdown.
   if(voiceEl && voiceEl.value) settings.voiceName = voiceEl.value;
+  if(shippedEl && shippedEl.value && AUDIO_IDS[shippedEl.value]) settings.audioVoice = shippedEl.value;
   settings.autoPlayLessonAudio = autoEl.value === 'yes';
   let rate = parseFloat(rateEl.value);
   if(isNaN(rate)) rate = DEFAULT_SETTINGS.speechRate;
@@ -1826,7 +1858,8 @@ function renderSettings(){
 
 function renderAudioCard(){
   if(!AUDIO_ENABLED) return ''; // feature parked; see AUDIO_ENABLED
-  const shipped = AUDIO_IDS.size > 0;
+  const shippedCount = shippedAudioCount();
+  const shipped = shippedCount > 0;
   const voices = japaneseVoices();
   // Only worth saying any of this when there is nothing to play. With shipped
   // audio present the device's voice situation stops being the user's problem,
@@ -1850,7 +1883,7 @@ function renderAudioCard(){
   rates.sort((a,b)=>a-b);
   const source = shipped
     ? `Words are read from audio that ships with Emaki, so it sounds the same on every device and needs nothing installed.${
-        AUDIO_IDS.size < VOCAB.length ? ` ${AUDIO_IDS.size} of ${VOCAB.length} words so far; the rest use your device's voice.` : ''}`
+        shippedCount < VOCAB.length ? ` ${shippedCount} of ${VOCAB.length} words so far; the rest use your device's voice.` : ''}`
     : `Audio is spoken by your device${jaVoice ? ` using <b>${escapeHtml(jaVoice.name)}</b>` : ''}.`;
   return `
   <div class="card" style="margin-bottom:16px;">
@@ -1858,9 +1891,19 @@ function renderAudioCard(){
     <div class="settings-row">
       <div class="settings-desc">${source} It only appears after you've answered, never on the question itself, and it reads the word's kana rather than its characters, so it can't give you a reading the card isn't teaching.</div>
     </div>
+    ${AUDIO_VOICES.length > 1 ? `
+    <div class="settings-row">
+      <div class="settings-label">Voice</div>
+      <select id="shippedVoiceInput" onchange="chooseShippedVoice(this.value)">
+        ${AUDIO_VOICES.map(v=>`<option value="${escapeHtml(v.key)}" ${settings.audioVoice===v.key?'selected':''}>${escapeHtml(v.label)}</option>`).join('')}
+      </select>
+    </div>
+    <div class="settings-desc" style="margin-top:-4px;margin-bottom:10px;">
+      Changing this plays a sample straight away.
+    </div>` : ''}
     ${voices.length ? `
     <div class="settings-row">
-      <div class="settings-label">Voice${shipped ? ' for anything not shipped' : ''}</div>
+      <div class="settings-label">${shipped ? 'Device voice, for anything not shipped' : 'Voice'}</div>
       <select id="voiceInput" onchange="auditionVoice(this.value)">
         ${voices.map(v=>`<option value="${escapeHtml(v.name)}" ${jaVoice && jaVoice.name===v.name?'selected':''}>${escapeHtml(v.name)}${v.localService?'':' (online)'}</option>`).join('')}
       </select>
@@ -2227,16 +2270,26 @@ async function init(){
       const kres = await fetch('data/kanji.json');
       KANJI = await kres.json();
     }catch(e){ KANJI = {}; }
-    // Same again for the audio manifest, which is absent until gen-audio.pl has
+    // Same again for the audio manifest, which is empty until gen-audio.pl has
     // been run and partial while it is being run. Either way the app falls back
     // to the device voice, so this must never be allowed to throw.
     try{
       const ares = await fetch('data/audio.json');
       if(ares.ok){
         const manifest = await ares.json();
-        if(manifest && Array.isArray(manifest.ids)) AUDIO_IDS = new Set(manifest.ids);
+        AUDIO_VOICES = Array.isArray(manifest.voices) ? manifest.voices : [];
+        AUDIO_IDS = {};
+        if(manifest.ids){
+          for(const key of Object.keys(manifest.ids)){
+            if(Array.isArray(manifest.ids[key])) AUDIO_IDS[key] = new Set(manifest.ids[key]);
+          }
+        }
+        // A preference pointing at a voice that was never generated would mean
+        // silence for every word the other voice does have.
+        if(settings.audioVoice && !AUDIO_IDS[settings.audioVoice]) settings.audioVoice = null;
+        if(!settings.audioVoice && AUDIO_VOICES.length) settings.audioVoice = AUDIO_VOICES[0].key;
       }
-    }catch(e){ AUDIO_IDS = new Set(); }
+    }catch(e){ AUDIO_VOICES = []; AUDIO_IDS = {}; }
   }catch(e){
     document.getElementById('root').innerHTML = '<div class="empty">Failed to load vocab data. Make sure data/vocab.json is reachable (serve this over http, not file://).</div>';
     return;

@@ -1,8 +1,7 @@
 {
-   "count" : 0,
    "format" : "mp3",
    "generated" : null,
-   "ids" : [],
+   "ids" : {},
    "note" : "Empty until scripts/gen-audio.pl has been run, which overwrites this file. Shipped empty rather than absent so the app does not 404 on every load. With no ids the app falls back to the device's Japanese voice.",
-   "voice" : null
+   "voices" : []
 }

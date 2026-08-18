@@ -24,7 +24,7 @@ stated link between a sound and a meaning.
 - `raw/kaishi_1500_full.json`: source deck of word, reading, meaning, sentence, frequency
 - `raw/kaishi_batchN_with_mnemonics.json`: mnemonics + usage notes, 25 words per batch
 - `scripts/merge.pl`: merges `raw/*_with_mnemonics.json` batches into `data/vocab.json`
-- `audio/<id>.mp3` + `data/audio.json`: generated word audio, optional (see below)
+- `audio/f/<id>.mp3`, `audio/m/<id>.mp3` + `data/audio.json`: generated word audio, optional (see below)
 
 Only words with a mnemonic show up in Lessons. To add another batch of mnemonics (e.g. words 101-200), drop a `raw/kaishi_batchN_with_mnemonics.json` file (same shape as batch1, matched by word+reading+meaning) and rerun:
 
@@ -85,26 +85,58 @@ network voices, and telling somebody to install a language pack before they can
 study is a bad first experience. Generated audio sounds the same everywhere and
 asks nothing of the user.
 
-`scripts/gen-audio.pl` builds them with Azure's neural Japanese voices. It reads
-`AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` from the environment, never from a
-file, so no key ends up in the repository:
+`scripts/gen-audio.pl` builds them with Azure's Dragon HD Japanese voices, one
+female and one male, into `audio/f/` and `audio/m/`. Learners pick between them
+in Settings. It reads `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` from the
+environment, never from a file, so no key ends up in the repository:
 
 ```
 export AZURE_SPEECH_KEY=...
 export AZURE_SPEECH_REGION=uksouth
-perl scripts/gen-audio.pl --limit 20   # hear the voice before committing to 1500
+perl scripts/gen-audio.pl --limit 20   # hear them before committing to 3000 files
 perl scripts/gen-audio.pl              # the rest
+perl scripts/gen-audio.pl --only f     # one voice
 ```
 
 It speaks the reading rather than the characters, the same rule the app uses, so
 the synthesiser is never left to guess which reading a card teaches. Cards
 already generated are skipped, so an interrupted run costs nothing to restart,
-and `--force` regenerates everything, which is what you want after `--voice`.
-It writes `data/audio.json` by scanning what is actually on disk, so a partly
+and `--force` regenerates, which is what you want after changing a voice. It
+writes `data/audio.json` by scanning what is actually on disk, so a partly
 generated deck produces a correct manifest and the remaining words fall back.
 
-The whole deck is about 4,900 characters of Japanese, comfortably inside Azure's
-free tier, and lands at roughly 4-8 MB of mp3.
+Both voices are `DragonHD`, which is a constraint rather than a preference:
+DragonHD accepts `<phoneme>` and Dragon HD Omni does not, so swapping either for
+an Omni voice would silently disable the pronunciation overrides below. HD
+voices reject `<prosody>` entirely, which is why speaking speed is applied in
+the browser rather than baked into the files.
+
+### Pitch accent
+
+Isolated words are where text to speech is weakest on Japanese: with no
+sentence around it, the model has only its own accent dictionary to go on. For
+common vocabulary, which is what this deck is, it is usually right, and both HD
+voices are generated with `enhancePronunciation` on, which asks the model to
+work harder on ambiguous words.
+
+Where it still gets one wrong, `data/pronunciation.json` overrides that card:
+
+```json
+{ "8": "ジ'ン" }
+```
+
+Keyed by card id, in Azure's `ja-JP` `sapi` phone set, which is katakana with
+`'` immediately before the mora carrying the accent nucleus. The generator then
+wraps that card in `<phoneme>` instead of sending plain kana.
+
+This is deliberately a list of corrections rather than a full accent layer.
+Azure documents the notation with three examples and no rules, so annotating
+1500 words on faith could easily make more of them wrong than it fixes. Add an
+entry after hearing a word come out wrong, then regenerate that card with
+`--force`.
+
+The whole deck is about 4,900 characters of Japanese per voice, comfortably
+inside Azure's free tier even for both, and lands at roughly 4-8 MB of mp3 each.
 
 ## Run locally
 

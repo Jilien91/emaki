@@ -1,0 +1,5 @@
+{
+   "_note" : "Per-card pronunciation overrides for scripts/gen-audio.pl, keyed by card id. Values are Azure's ja-JP sapi phone set: katakana, with ' immediately before the mora carrying the accent nucleus. This is the escape hatch for pitch accent. Add an entry only after hearing a word come out wrong, and regenerate that card with --force. Keys starting with _ are ignored.",
+   "_example" : "\"8\": \"ジ'ン\" would force the accent on the first mora of じん.",
+   "_why_not_bulk" : "Azure documents this notation with three examples and no rules, so a 1500-word accent layer applied on faith could easily make more words wrong than it fixes. The voices carry their own accent dictionaries and are usually right for common vocabulary, which is what this deck is. Corrections go here one at a time, each one heard first."
+}
