@@ -1507,5 +1507,44 @@
   "鳴": { "meaning": "ring, cry out", "parts": [
     { "c": "口", "name": "mouth" },
     { "c": "鳥", "name": "bird" }
-  ]}
+  ]},
+  "制": { "meaning": "control, system", "note": "刂 a blade on the right, cutting a thing down to a set shape. The rules, and whatever they hold in line." },
+  "刺": { "meaning": "pierce, stab", "note": "刂 a blade on the right with a thorn on the left. Something going in, and the jolt that comes with it." },
+  "吐": { "meaning": "spit, vomit", "parts": [
+    { "c": "口", "name": "mouth" },
+    { "c": "土", "name": "earth" }
+  ]},
+  "喉": { "meaning": "throat", "note": "口 a mouth on the left and the passage sitting behind it, which is the part that goes first in winter." },
+  "妻": { "meaning": "wife", "note": "A hand drawn over a figure with a hairpin in. The one who ran the house, in the old sense of it." },
+  "字": { "meaning": "character, letter", "parts": [
+    { "c": "宀", "name": "roof" },
+    { "c": "子", "name": "child" }
+  ]},
+  "寄": { "meaning": "draw near, drop in", "note": "宀 a roof you duck in under on the way to somewhere else. Stopping in rather than arriving." },
+  "察": { "meaning": "observe, judge", "note": "宀 a roof over a ceremony being watched closely to see how it goes. Looking hard enough at a thing to work it out." },
+  "文": { "meaning": "writing, sentence", "note": "A pattern drawn across a chest, which is the oldest writing there is. The mark first, and then the sentence." },
+  "有": { "meaning": "have, exist", "note": "A hand drawn over 月 the flesh. Holding onto something, and from there having it at all." },
+  "濡": { "meaning": "get wet", "note": "氵 water on the left with rain up above it. Soaked the whole way through rather than splashed." },
+  "焼": { "meaning": "burn, bake", "note": "火 fire on the left, put underneath a thing on purpose. Grilling, baking and burning it are all the one verb." },
+  "爆": { "meaning": "explode", "note": "火 fire on the left with something violent alongside. Fire that does not stay where it was put." },
+  "脱": { "meaning": "take off, escape", "note": "月 the flesh radical on the left with something coming away from it. A coat, or an escape." },
+  "船": { "meaning": "ship", "note": "舟 a boat on the left, drawn as a hull seen side on. The bigger sort, with people aboard." },
+  "訓": { "meaning": "instruction, reading", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "川", "name": "river" }
+  ]},
+  "謎": { "meaning": "riddle, mystery", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "迷", "name": "lost, astray" }
+  ]},
+  "貸": { "meaning": "lend", "parts": [
+    { "c": "代", "name": "substitute" },
+    { "c": "貝", "name": "shell, money" }
+  ]},
+  "転": { "meaning": "roll, turn", "parts": [
+    { "c": "車", "name": "cart" },
+    { "c": "云", "name": "speak" }
+  ]},
+  "門": { "meaning": "gate", "note": "A pair of doors drawn side by side, which is the shape you walk through." },
+  "鬼": { "meaning": "demon, ghost", "note": "A figure with an outsized head on it, the shape used for whatever is left of the dead." }
 }
