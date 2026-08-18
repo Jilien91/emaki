@@ -1413,5 +1413,41 @@
   "閉": { "meaning": "close, shut", "parts": [
     { "c": "門", "name": "gate" },
     { "c": "才", "name": "sapling" }
-  ]}
+  ]},
+  "久": { "meaning": "long time", "note": "A figure with something dragging along behind it, holding it back. Time going on for longer than it ought to." },
+  "了": { "meaning": "finish, complete", "note": "One stroke with a hook on the end of it, the shape of a thing closed off. Done, with nothing left hanging." },
+  "争": { "meaning": "contend, dispute", "note": "Two hands pulling at the same object from opposite ends, and neither of them letting go of it." },
+  "依": { "meaning": "depend on", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "衣", "name": "garment" }
+  ]},
+  "到": { "meaning": "arrive", "parts": [
+    { "c": "至", "name": "arrive" },
+    { "c": "刂", "name": "knife" }
+  ]},
+  "労": { "meaning": "labour, trouble", "note": "力 power down at the bottom under a cover, put in out of sight. The effort, and what it takes out of you." },
+  "寒": { "meaning": "cold", "note": "宀 a roof with straw packed underneath and 冫 two marks of ice along the bottom. Not enough of either of them." },
+  "式": { "meaning": "ceremony, form", "note": "工 a carpenter's square with a mark above it. A set form to be followed, and the ceremony run off it." },
+  "恋": { "meaning": "romantic love", "note": "心 a heart at the bottom with everything tangled up above it. The romantic sort, not the steady sort." },
+  "授": { "meaning": "grant, teach", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "受", "name": "receive" }
+  ]},
+  "殴": { "meaning": "beat, strike", "note": "A weapon in a hand on the right and somebody boxed in on the left. Nothing about it is a tap." },
+  "注": { "meaning": "pour, note", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "主", "name": "master" }
+  ]},
+  "画": { "meaning": "picture, stroke", "note": "A brush drawn across a field with a border ruled round the outside. The picture, and the strokes it is built from." },
+  "穴": { "meaning": "hole, cave", "note": "A cave mouth with a roof over it, drawn as an opening you could climb into." },
+  "罪": { "meaning": "crime, sin", "parts": [
+    { "c": "罒", "name": "net" },
+    { "c": "非", "name": "against" }
+  ]},
+  "辛": { "meaning": "spicy, harsh", "note": "A tattooing needle, the mark of a punishment. Sharp on the tongue, and hard to put up with." },
+  "酒": { "meaning": "alcohol", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "酉", "name": "wine jar" }
+  ]},
+  "青": { "meaning": "blue, green, fresh", "note": "Fresh growth drawn over a well. The colour of new plants, and of the sea on a good day." }
 }

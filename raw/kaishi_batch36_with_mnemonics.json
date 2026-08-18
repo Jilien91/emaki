@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1470",
+      "meaning" : "for the first time in a while",
+      "mnemonic" : "Long enough 久 that the first thing either of you says is how long it has been. Meeting a friend tomorrow: ひさしぶり.",
+      "notes" : "",
+      "reading" : "ひさしぶり",
+      "sentence" : "明日、久しぶりに友達に会います。",
+      "sentence_meaning" : "Tomorrow I'm meeting a friend I haven't seen in a long time.",
+      "word" : "久しぶり"
+   },
+   {
+      "frequency" : "1471",
+      "meaning" : "to stand out, to be conspicuous",
+      "mnemonic" : "The eye 目 goes straight to it and stands 立 there. That hat of hers can be picked out from the far end of the platform: めだつ.",
+      "notes" : "",
+      "reading" : "めだつ",
+      "sentence" : "彼女の大きな帽子はとても目立つ。",
+      "sentence_meaning" : "Her big hat really stands out.",
+      "word" : "目立つ"
+   },
+   {
+      "frequency" : "1472",
+      "meaning" : "arrival",
+      "mnemonic" : "Two characters for arriving stacked one on the other, which is what makes it the formal word. What time does the plane get in: とうちゃく.",
+      "notes" : "着く つく is the everyday arrive. 到着 is the noun, and it is the one on boards and announcements.",
+      "reading" : "とうちゃく",
+      "sentence" : "何時に日本に到着しますか。",
+      "sentence_meaning" : "What time will you arrive in Japan?",
+      "word" : "到着"
+   },
+   {
+      "frequency" : "1475",
+      "meaning" : "to hold down, to hold steady",
+      "mnemonic" : "A flat hand on the door so that it cannot swing while somebody gets through. Physical, and nothing to do with feelings: おさえる.",
+      "notes" : "Same reading as 抑える おさえる, holding back a feeling. 押さえる has 押 push in it and holds a thing still.",
+      "reading" : "おさえる",
+      "sentence" : "ドアを押さえてください。",
+      "sentence_meaning" : "Please hold the door.",
+      "word" : "押さえる"
+   },
+   {
+      "frequency" : "1476",
+      "meaning" : "to go to and from, to frequent a place",
+      "mnemonic" : "Down the same road 通 and back again, twice a week, for years. A gym is somewhere you go to and from, not somewhere you arrive: かよう.",
+      "notes" : "通る とおる is passing through once. 通う is going regularly and coming back each time.",
+      "reading" : "かよう",
+      "sentence" : "私はジムに通っています。",
+      "sentence_meaning" : "I go to a gym.",
+      "word" : "通う"
+   },
+   {
+      "frequency" : "1478",
+      "meaning" : "to hit, to strike",
+      "mnemonic" : "A weapon in the hand and somebody with nowhere to go, and he had not decided to do it until it was already done. His own friend: なぐる.",
+      "notes" : "叩く たたく is a knock or a tap, 打つ うつ is a solid blow and 当てる あてる is hitting a target. 殴る is thumping a person.",
+      "reading" : "なぐる",
+      "sentence" : "彼は思わず友人を殴ったの。",
+      "sentence_meaning" : "He hit his friend without thinking.",
+      "word" : "殴る"
+   },
+   {
+      "frequency" : "1480",
+      "meaning" : "to spread, to unfold",
+      "mnemonic" : "You take the folded thing and make it wide 広, elbows out to either side. Not on a train, please: ひろげる.",
+      "notes" : "広がる ひろがる is a thing spreading on its own. 広げる is you opening it out.",
+      "reading" : "ひろげる",
+      "sentence" : "電車の中では新聞を広げないで。",
+      "sentence_meaning" : "Don't spread your newspaper open in the train.",
+      "word" : "広げる"
+   },
+   {
+      "frequency" : "1481",
+      "meaning" : "to pull, to drag",
+      "mnemonic" : "Pull 引 and keep on pulling 張 until whatever is on the end of it comes along with you. A small hand on your sleeve: ひっぱる.",
+      "notes" : "引く ひく is a pull. 引っ張る is a sustained one, tugging or dragging.",
+      "reading" : "ひっぱる",
+      "sentence" : "娘が私の手を引っ張った。",
+      "sentence_meaning" : "My daughter tugged on my hand.",
+      "word" : "引っ張る"
+   },
+   {
+      "frequency" : "1482",
+      "meaning" : "endlessly, as long as one likes",
+      "mnemonic" : "No end date on it anywhere, which is the whole of the promise. I am not going to forget you: いつまでも.",
+      "notes" : "",
+      "reading" : "いつまでも",
+      "sentence" : "いつまでもあなたを忘れません。",
+      "sentence_meaning" : "I will never forget you.",
+      "word" : "いつまでも"
+   },
+   {
+      "frequency" : "1483",
+      "meaning" : "to be in time, to answer the purpose, to be good enough",
+      "mnemonic" : "You fit 合 into the gap 間 before it shuts, with nothing at all to spare. Through the door as the lesson starts: まにあう.",
+      "notes" : "",
+      "reading" : "まにあう",
+      "sentence" : "授業に間に合いました。",
+      "sentence_meaning" : "I made it in time for class.",
+      "word" : "間に合う"
+   },
+   {
+      "frequency" : "1484",
+      "meaning" : "consent, understanding, roger that",
+      "mnemonic" : "Whatever was being asked has been untied 解 and settled 了, and there is nothing left to discuss. The section head said yes: りょうかい.",
+      "notes" : "Common on radios and in messages, roger, understood. Said to a superior it can land curt, where 承知しました is safe.",
+      "reading" : "りょうかい",
+      "sentence" : "課長から有給の了解を得た。",
+      "sentence_meaning" : "I got consent from the section manager for my paid holiday.",
+      "word" : "了解"
+   },
+   {
+      "frequency" : "1485",
+      "meaning" : "one's turn",
+      "mnemonic" : "Everybody in a fixed order and the pointer has come round to you again. Your night for the washing up: ばん.",
+      "notes" : "数 かず is a count of how many there are. 番 is which position in an order, and it does number in that sense too, as in 一番.",
+      "reading" : "ばん",
+      "sentence" : "今日は私が皿を洗う番ですね。",
+      "sentence_meaning" : "It's my turn to do dishes today.",
+      "word" : "番"
+   },
+   {
+      "frequency" : "1486",
+      "meaning" : "war, battle",
+      "mnemonic" : "The fighting 戦 and the pulling against each other 争 that started it, welded into one word. Iraq, in 2003: せんそう.",
+      "notes" : "戦い たたかい is a battle or a struggle in general and 戦闘 せんとう is the combat itself. 戦争 is the whole war.",
+      "reading" : "せんそう",
+      "sentence" : "2003年にイラクで戦争があった。",
+      "sentence_meaning" : "There was a war in Iraq in 2003.",
+      "word" : "戦争"
+   },
+   {
+      "frequency" : "1487",
+      "meaning" : "cold (temperature)",
+      "mnemonic" : "Straw stuffed under the roof and ice along the floor, and neither of them is doing its job. That room wants a heater: さむい.",
+      "notes" : "冷たい つめたい is a thing that is cold when you touch it. 寒い is the air around you and how you feel standing in it.",
+      "reading" : "さむい",
+      "sentence" : "この部屋は寒いです。",
+      "sentence_meaning" : "This room is cold.",
+      "word" : "寒い"
+   },
+   {
+      "frequency" : "1488",
+      "meaning" : "splendid, admirable",
+      "mnemonic" : "A thing 事 worth having seen 見, and every person who saw it says so. He got the whole jump right: みごと.",
+      "notes" : "",
+      "reading" : "みごと",
+      "sentence" : "彼は見事なジャンプを見せたね。",
+      "sentence_meaning" : "He showed us a splendid jump.",
+      "word" : "見事"
+   },
+   {
+      "frequency" : "1490",
+      "meaning" : "alcoholic drink, Japanese rice wine",
+      "mnemonic" : "Water 氵 out of a wine jar 酉, which covers the whole category fairly. Too much of it, and now the room is moving: さけ.",
+      "notes" : "お酒 with the polite お is what you actually say. On its own 酒 also narrows to Japanese rice wine.",
+      "reading" : "さけ",
+      "sentence" : "お酒を飲みすぎて、気持ちが悪いです。",
+      "sentence_meaning" : "I drank too much alcohol, and now I feel sick.",
+      "word" : "酒"
+   },
+   {
+      "frequency" : "1491",
+      "meaning" : "lover, sweetheart",
+      "mnemonic" : "The person 人 your heart is tangled round 恋, which is a different word from the one you married. He lost his: こいびと.",
+      "notes" : "",
+      "reading" : "こいびと",
+      "sentence" : "彼は恋人を失った。",
+      "sentence_meaning" : "He lost his lover.",
+      "word" : "恋人"
+   },
+   {
+      "frequency" : "1492",
+      "meaning" : "not at all, absolutely nothing",
+      "mnemonic" : "One 一 cut 切 straight through it with nothing at all left on your side of the line. I have no part in that business: いっさい.",
+      "notes" : "Takes a negative: 一切〜ない, not in the slightest. Without one it swings round to mean the whole lot.",
+      "reading" : "いっさい",
+      "sentence" : "私は一切その問題とは関係がありません。",
+      "sentence_meaning" : "I have absolutely nothing to do with that issue.",
+      "word" : "一切"
+   },
+   {
+      "frequency" : "1493",
+      "meaning" : "hole, cavity",
+      "mnemonic" : "An opening you could climb into if you were small enough, and your sock has three of them: あな.",
+      "notes" : "",
+      "reading" : "あな",
+      "sentence" : "靴下に穴が開いている。",
+      "sentence_meaning" : "There are holes in my socks.",
+      "word" : "穴"
+   },
+   {
+      "frequency" : "1494",
+      "meaning" : "request, commission",
+      "mnemonic" : "You lean 依 on somebody and ask 頼 them properly, which is a step up from asking a favour. I put it to him in writing: いらい.",
+      "notes" : "頼む たのむ is asking. 依頼 is the noun, and it is the formal and usually written version.",
+      "reading" : "いらい",
+      "sentence" : "彼に協力を依頼しました。",
+      "sentence_meaning" : "I requested his cooperation.",
+      "word" : "依頼"
+   },
+   {
+      "frequency" : "1495",
+      "meaning" : "content, interior",
+      "mnemonic" : "What sits in the middle 中 of it, the body 身 of the thing rather than the bag around it. Open it up and let me see: なかみ.",
+      "notes" : "内容 ないよう is contents in the sense of what a book or a speech says. 中身 is what is physically inside.",
+      "reading" : "なかみ",
+      "sentence" : "かばんの中身を見せてください。",
+      "sentence_meaning" : "Please show me the contents of the bag.",
+      "word" : "中身"
+   },
+   {
+      "frequency" : "1496",
+      "meaning" : "a little, somewhat",
+      "mnemonic" : "Many 多 and few 少 in the one word, landing somewhere between the two of them. There are a few things wrong with it: たしょう.",
+      "notes" : "ちょっと is the everyday a little. 多少 is stiffer and is at home in writing.",
+      "reading" : "たしょう",
+      "sentence" : "このソフトには多少問題がある。",
+      "sentence_meaning" : "There are some problems with this software.",
+      "word" : "多少"
+   },
+   {
+      "frequency" : "1497",
+      "meaning" : "truth, reality",
+      "mnemonic" : "True 真 and real 実 at once, and the point of the word is that there is only ever one of it: しんじつ.",
+      "notes" : "事実 じじつ is a fact, a thing that happened. 真実 is the truth of the matter, and 本当 ほんとう is the everyday word.",
+      "reading" : "しんじつ",
+      "sentence" : "真実は一つです。",
+      "sentence_meaning" : "There is one truth.",
+      "word" : "真実"
+   },
+   {
+      "frequency" : "1499",
+      "meaning" : "outward appearance",
+      "mnemonic" : "What the eye 目 sees 見 from the outside and nothing whatever behind it. She minds about hers more than she should: みため.",
+      "notes" : "",
+      "reading" : "みため",
+      "sentence" : "彼女は見た目をすごく気にします。",
+      "sentence_meaning" : "She worries terribly about how she looks.",
+      "word" : "見た目"
+   },
+   {
+      "frequency" : "1500",
+      "meaning" : "mistake, error",
+      "mnemonic" : "The gap 間 between what is written and what would be right 違, sitting in the middle of your sentence: まちがい.",
+      "notes" : "間違う まちがう is the verb, being wrong. 間違い is the mistake itself.",
+      "reading" : "まちがい",
+      "sentence" : "この文には間違いがあります。",
+      "sentence_meaning" : "There's a mistake in this sentence.",
+      "word" : "間違い"
+   },
+   {
+      "frequency" : "1501",
+      "meaning" : "blue",
+      "mnemonic" : "Fresh growth and deep water share the one word here, and today the sea is showing you exactly why: あおい.",
+      "notes" : "青 covers some of what English calls green: a green traffic light is 青信号 and unripe fruit is 青い.",
+      "reading" : "あおい",
+      "sentence" : "ここの海はとても青い。",
+      "sentence_meaning" : "The sea here is very blue.",
+      "word" : "青い"
+   },
+   {
+      "frequency" : "1502",
+      "meaning" : "spicy",
+      "mnemonic" : "The needle 辛 lands on your tongue and the sweat starts, and you order the same thing again next week: からい.",
+      "notes" : "The same characters read つらい mean harsh, hard to bear. からい is the one on your tongue.",
+      "reading" : "からい",
+      "sentence" : "辛い料理をよく食べます。",
+      "sentence_meaning" : "I eat hot/spicy food often.",
+      "word" : "辛い"
+   },
+   {
+      "frequency" : "1502",
+      "meaning" : "difficult, harsh",
+      "mnemonic" : "The same needle 辛, except this time it is the job, and it has been going on for months. Nothing about it is spicy: つらい.",
+      "notes" : "The same characters read からい mean spicy. つらい is the one that wears you down. 難しい むずかしい is hard to work out, where this is hard to bear, the same split 苦しい くるしい makes.",
+      "reading" : "つらい",
+      "sentence" : "この仕事は辛いです。",
+      "sentence_meaning" : "This work is harsh.",
+      "word" : "辛い"
+   },
+   {
+      "frequency" : "1503",
+      "meaning" : "correspondence, equivalence, response",
+      "mnemonic" : "You turn to face 対 the thing and answer 応 it, which is what a good one looks like. He gets back to people the same day: たいおう.",
+      "notes" : "反応 はんのう is a reaction, what happens to you. 対応 is a response you choose and then manage.",
+      "reading" : "たいおう",
+      "sentence" : "彼はいつも素早い対応をするね。",
+      "sentence_meaning" : "He always responds quickly.",
+      "word" : "対応"
+   },
+   {
+      "frequency" : "1505",
+      "meaning" : "to shine, to emit light",
+      "mnemonic" : "Light 光 coming off the top of it in a way you cannot look away from. The waves were at it all afternoon: ひかる.",
+      "notes" : "光 ひかり is the noun, the light itself. 光る is the verb.",
+      "reading" : "ひかる",
+      "sentence" : "波がきらきら光っていました。",
+      "sentence_meaning" : "The waves shone bright.",
+      "word" : "光る"
+   },
+   {
+      "frequency" : "1507",
+      "meaning" : "difficulty, hardship",
+      "mnemonic" : "Bitter 苦 work 労, put in over years and almost all of it out of sight. She brought the pair of us up on it: くろう.",
+      "notes" : "難しい むずかしい is a thing being hard to work out. 苦労 is the hardship of getting through it.",
+      "reading" : "くろう",
+      "sentence" : "母は苦労して私たちを育てたの。",
+      "sentence_meaning" : "My mother had a hard time bringing us up.",
+      "word" : "苦労"
+   },
+   {
+      "frequency" : "1510",
+      "meaning" : "to pass, to communicate with",
+      "mnemonic" : "The message goes the whole way down the road 通 and arrives at the far end intact. Does English get through out there: つうじる.",
+      "notes" : "通る とおる is a thing physically passing through. 通じる is meaning getting through, and it is the word for whether a language works somewhere.",
+      "reading" : "つうじる",
+      "sentence" : "その国では英語は通じますか。",
+      "sentence_meaning" : "Can you communicate in English in that country?",
+      "word" : "通じる"
+   },
+   {
+      "frequency" : "1511",
+      "meaning" : "crime, sin",
+      "mnemonic" : "The net 罒 comes down on somebody who went against 非 it, and what he did was not a small thing: つみ.",
+      "notes" : "犯人 はんにん is the person who did it. 罪 is the deed, and it stretches to sin as well as crime.",
+      "reading" : "つみ",
+      "sentence" : "彼の罪は重いな。",
+      "sentence_meaning" : "His crime is serious.",
+      "word" : "罪"
+   },
+   {
+      "frequency" : "1512",
+      "meaning" : "class, lesson",
+      "mnemonic" : "One hand 扌 handing the work 業 across and another taking 受 it, which is the whole shape of a lesson. Four o'clock today: じゅぎょう.",
+      "notes" : "",
+      "reading" : "じゅぎょう",
+      "sentence" : "今日は４時まで授業があります。",
+      "sentence_meaning" : "Today, there are classes until 4:00.",
+      "word" : "授業"
+   },
+   {
+      "frequency" : "1514",
+      "meaning" : "worst, terrible",
+      "mnemonic" : "The most 最 badly 悪 it could possibly have gone, and you got out from under it by a hair: さいあく.",
+      "notes" : "",
+      "reading" : "さいあく",
+      "sentence" : "何とか最悪の事態を避けることができました。",
+      "sentence_meaning" : "Somehow we managed to avert the worst-case scenario.",
+      "word" : "最悪"
+   },
+   {
+      "frequency" : "1516",
+      "meaning" : "difference",
+      "mnemonic" : "The gap between two things held up next to one another, and this one has been closing since he stopped growing: さ.",
+      "notes" : "",
+      "reading" : "さ",
+      "sentence" : "兄との身長の差が縮まった。",
+      "sentence_meaning" : "The difference in height between my elder brother and I narrowed.",
+      "word" : "差"
+   },
+   {
+      "frequency" : "1517",
+      "meaning" : "trust, credit",
+      "mnemonic" : "Whether what a person 亻 says 言 is fit to be used 用, and in his case it is not: しんよう.",
+      "notes" : "",
+      "reading" : "しんよう",
+      "sentence" : "彼の言うことは信用できない。",
+      "sentence_meaning" : "I can't trust what he says.",
+      "word" : "信用"
+   },
+   {
+      "frequency" : "1519",
+      "meaning" : "to break, to destroy, to smash",
+      "mnemonic" : "Somebody has put the thing back to being a pile of bits, on purpose or otherwise, and this time it was your phone: こわす.",
+      "notes" : "壊れる こわれる is a thing breaking by itself. 壊す is somebody breaking it.",
+      "reading" : "こわす",
+      "sentence" : "彼女が私の携帯を壊した。",
+      "sentence_meaning" : "She destroyed my cell phone.",
+      "word" : "壊す"
+   },
+   {
+      "frequency" : "1520",
+      "meaning" : "ceremony",
+      "mnemonic" : "A set order of doing things, followed to the letter, which is the entire point of it. They did theirs in a church: しき.",
+      "notes" : "",
+      "reading" : "しき",
+      "sentence" : "彼らは教会で式を挙げました。",
+      "sentence_meaning" : "They had a wedding ceremony in the church.",
+      "word" : "式"
+   },
+   {
+      "frequency" : "1521",
+      "meaning" : "doll",
+      "mnemonic" : "The shape 形 of a person 人 with nobody at all inside it, and she has a shelf of them: にんぎょう.",
+      "notes" : "",
+      "reading" : "にんぎょう",
+      "sentence" : "彼女は人形をたくさん持っています。",
+      "sentence_meaning" : "She has a lot of dolls.",
+      "word" : "人形"
+   },
+   {
+      "frequency" : "1524",
+      "meaning" : "to tie, to join",
+      "mnemonic" : "Thread 糸 pulled into a knot until the two ends are one thing. A ribbon in her hair: むすぶ.",
+      "notes" : "",
+      "reading" : "むすぶ",
+      "sentence" : "彼女は髪にリボンを結んだね。",
+      "sentence_meaning" : "She tied a ribbon in her hair.",
+      "word" : "結ぶ"
+   },
+   {
+      "frequency" : "1524",
+      "meaning" : "that much, such...",
+      "mnemonic" : "Further off than そんな and more of it than you would have thought possible. You will not find another person that good: あんなに.",
+      "notes" : "そんなに is that much about something near the listener. あんなに is about something away from the both of you.",
+      "reading" : "あんなに",
+      "sentence" : "あんなにいい人はいません。",
+      "sentence_meaning" : "A person that good doesn't exist.",
+      "word" : "あんなに"
+   },
+   {
+      "frequency" : "1527",
+      "meaning" : "plan, project",
+      "mnemonic" : "Counted out 計 and drawn up 画 before anybody has moved. Change one part of it and leave the rest standing: けいかく.",
+      "notes" : "",
+      "reading" : "けいかく",
+      "sentence" : "計画を一部変更しましょう。",
+      "sentence_meaning" : "Let's change part of the plan.",
+      "word" : "計画"
+   },
+   {
+      "frequency" : "1528",
+      "meaning" : "to enclose, to encircle",
+      "mnemonic" : "A border 囗 drawn the whole way round the well 井 with everybody on the outside facing in. The entire family round one table: かこむ.",
+      "notes" : "",
+      "reading" : "かこむ",
+      "sentence" : "久しぶりに家族全員で食卓を囲みました。",
+      "sentence_meaning" : "We had the entire family around the dinner table for the first time in a long time.",
+      "word" : "囲む"
+   },
+   {
+      "frequency" : "1530",
+      "meaning" : "knowledge",
+      "mnemonic" : "Knowing 知 a thing and being able to tell it from the next one 識, which is what turns facts into knowledge. Travelling gave him plenty: ちしき.",
+      "notes" : "",
+      "reading" : "ちしき",
+      "sentence" : "私は旅行から多くの知識を得た。",
+      "sentence_meaning" : "I gained a lot of knowledge from traveling.",
+      "word" : "知識"
+   },
+   {
+      "frequency" : "1531",
+      "meaning" : "end, place to stop",
+      "mnemonic" : "A clean place to cut 切 it, which is not at all the same as being finished. Stop there and go home: きり.",
+      "notes" : "終わり おわり is the end of a thing. 切り is a good place to stop, which need not be the end at all.",
+      "reading" : "きり",
+      "sentence" : "切りがいいので今日の仕事はここまでにしましょう。",
+      "sentence_meaning" : "This is a good point to stop, so let's finish work here for today.",
+      "word" : "切り"
+   },
+   {
+      "frequency" : "1533",
+      "meaning" : "care, watch out",
+      "mnemonic" : "You pour 注 your mind 意 into one spot and hold it there. Traffic, on that road, right now: ちゅうい.",
+      "notes" : "",
+      "reading" : "ちゅうい",
+      "sentence" : "車に注意してください。",
+      "sentence_meaning" : "Please watch out for traffic.",
+      "word" : "注意"
+   },
+   {
+      "frequency" : "1536",
+      "meaning" : "way of speaking, expression",
+      "mnemonic" : "Not what you said 言 but the way 方 you said it, and the way was the entire problem: いいかた.",
+      "notes" : "",
+      "reading" : "いいかた",
+      "sentence" : "そんな言い方をしてはいけません。",
+      "sentence_meaning" : "You mustn't talk like that.",
+      "word" : "言い方"
+   },
+   {
+      "frequency" : "1537",
+      "meaning" : "to pass, to elapse",
+      "mnemonic" : "The thread 経 runs out end to end while nobody is watching the clock. Fourteen years since then: たつ.",
+      "notes" : "Same reading as 立つ たつ, to stand. This one is only ever about time going by, and it carries 経 the thread run through it.",
+      "reading" : "たつ",
+      "sentence" : "あれから14年が経ちました。",
+      "sentence_meaning" : "Fourteen years have passed since then.",
+      "word" : "経つ"
+   },
+   {
+      "frequency" : "1538",
+      "meaning" : "height, stature",
+      "mnemonic" : "The measure taken up the back 背 of somebody stood against a wall. She has a good deal of it: せ.",
+      "notes" : "背中 せなか is the back itself. 背 on its own is usually height: 背が高い is tall.",
+      "reading" : "せ",
+      "sentence" : "彼女は背が高い。",
+      "sentence_meaning" : "She's tall.",
+      "word" : "背"
+   }
+]
