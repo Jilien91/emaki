@@ -1745,5 +1745,14 @@
   ]},
   "録": { "meaning": "record", "note": "金 metal on the left, which is what a record was scratched into long before anybody had paper for it." },
   "類": { "meaning": "kind, sort", "note": "頁 a head on the right with rice and a dog beside it. Things gathered into groups by what they resemble." },
-  "骨": { "meaning": "bone", "note": "A pictograph of a joint, with 月 the flesh sense drawn in underneath it." }
+  "骨": { "meaning": "bone", "note": "A pictograph of a joint, with 月 the flesh sense drawn in underneath it." },
+  "収": { "meaning": "gather in, settle", "note": "A hand on the right gathering something in and putting it back where it is supposed to sit." },
+  "土": { "meaning": "earth, soil", "note": "A mound of earth drawn as a heap sitting on the line of the ground." },
+  "曜": { "meaning": "day of the week", "note": "日 the sun on the left with feathers and a bird above it. It marks the seven days, one for each of the old heavenly bodies." },
+  "織": { "meaning": "weave", "note": "糸 thread on the left, worked across and back and across again until the whole of it holds together as cloth." },
+  "評": { "meaning": "criticism, appraise", "parts": [
+    { "c": "言", "name": "speech" },
+    { "c": "平", "name": "flat, calm" }
+  ]},
+  "隙": { "meaning": "crack, gap", "note": "阝 a hill on the left with a thin line of light coming through where the stones do not quite meet." }
 }

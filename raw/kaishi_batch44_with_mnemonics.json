@@ -1,0 +1,252 @@
+[
+   {
+      "frequency" : "2136",
+      "meaning" : "strengthening",
+      "mnemonic" : "Made 化 stronger 強, which is something done to it rather than anything it managed itself. The curriculum, this year: きょうか.",
+      "notes" : "",
+      "reading" : "きょうか",
+      "sentence" : "国は国語教育を強化しています。",
+      "sentence_meaning" : "The government is strengthening its native language education.",
+      "word" : "強化"
+   },
+   {
+      "frequency" : "2137",
+      "meaning" : "to add, to include",
+      "mnemonic" : "You put your power 力 and your voice 口 in on top of whatever was already there. Salt and pepper: くわえる.",
+      "notes" : "含める ふくめる is counting something in that was there all along. 加える is putting in something that was not.",
+      "reading" : "くわえる",
+      "sentence" : "塩、コショウを加えてください。",
+      "sentence_meaning" : "Please add salt and pepper.",
+      "word" : "加える"
+   },
+   {
+      "frequency" : "2139",
+      "meaning" : "to&nbsp;begin to say, to&nbsp;be the first to say, to&nbsp;propose",
+      "mnemonic" : "The thing gets said 言 out 出 loud, and whoever gets there first owns it. Where on earth did that come from: いいだす.",
+      "notes" : "",
+      "reading" : "いいだす",
+      "sentence" : "突然何を言い出すのかと思った。",
+      "sentence_meaning" : "I wondered what you would say out of the blue.",
+      "word" : "言い出す"
+   },
+   {
+      "frequency" : "2141",
+      "meaning" : "to be settled (e.g. a dispute), to be contained within",
+      "mnemonic" : "Everything gets gathered back in and put where it belongs, and the room goes quiet again. The police arrived: おさまる.",
+      "notes" : "One kana from 抑える and 押さえる, both おさえる. 収まる is a disturbance settling, or a thing fitting into the space it was meant for.",
+      "reading" : "おさまる",
+      "sentence" : "警官が来て騒ぎが収まった。",
+      "sentence_meaning" : "The police came and the uproar was settled.",
+      "word" : "収まる"
+   },
+   {
+      "frequency" : "2143",
+      "meaning" : "organization, structure",
+      "mnemonic" : "Threads plaited 組 into rope and then woven 織 into cloth, and what comes out has a shape that none of the threads had. He runs one: そしき.",
+      "notes" : "",
+      "reading" : "そしき",
+      "sentence" : "彼はある組織のリーダーだ。",
+      "sentence_meaning" : "He's the leader of a certain organization.",
+      "word" : "組織"
+   },
+   {
+      "frequency" : "2144",
+      "meaning" : "crack, gap",
+      "mnemonic" : "A crack 隙 and the gap 間 inside it, which turns out to be exactly the width of one cat. That is how it got in: すきま.",
+      "notes" : "",
+      "reading" : "すきま",
+      "sentence" : "猫がドアの隙間から入って来た。",
+      "sentence_meaning" : "The cat entered through a crack in the door.",
+      "word" : "隙間"
+   },
+   {
+      "frequency" : "1971",
+      "meaning" : "today",
+      "mnemonic" : "This 本 day 日, said the way a menu or an announcement says it rather than the way you would. Today's lunch is hamburgers: ほんじつ.",
+      "notes" : "今日 きょう is what you say out loud. 本日 is what gets printed and announced, and it pairs with 先日 せんじつ, the other day.",
+      "reading" : "ほんじつ",
+      "sentence" : "本日のランチはハンバーグでございます。",
+      "sentence_meaning" : "Today's lunch is hamburgers.",
+      "word" : "本日"
+   },
+   {
+      "frequency" : "1920",
+      "meaning" : "the other day, a few days ago",
+      "mnemonic" : "A day 日 already gone past 先, without anybody saying which one. About that matter from then: せんじつ.",
+      "notes" : "Pairs with 本日 ほんじつ, today, and both belong to the formal register. 昨日 きのう is specifically yesterday.",
+      "reading" : "せんじつ",
+      "sentence" : "先日の件はどうなりましたか。",
+      "sentence_meaning" : "What happened regarding the matter from the other day?",
+      "word" : "先日"
+   },
+   {
+      "frequency" : "12170",
+      "meaning" : "Monday",
+      "mnemonic" : "Moon 月 day, and English says precisely the same thing. The week runs on the old heavenly bodies: げつようび.",
+      "notes" : "All seven: 月火水木金土日, moon, fire, water, wood, metal, earth, sun. English kept moon on Monday, Saturn on Saturday and sun on Sunday. The Romance languages kept the middle five as planets, and Japanese kept them as the elements those planets are named for.",
+      "reading" : "げつようび",
+      "sentence" : "月曜日に会いましょう。",
+      "sentence_meaning" : "Let's meet on Monday.",
+      "word" : "月曜日"
+   },
+   {
+      "frequency" : "22190",
+      "meaning" : "Tuesday",
+      "mnemonic" : "Fire 火 day, which is Mars, which is where French gets mardi from. There is a meeting on that one: かようび.",
+      "notes" : "",
+      "reading" : "かようび",
+      "sentence" : "火曜日に会議があります。",
+      "sentence_meaning" : "There's a meeting on Tuesday.",
+      "word" : "火曜日"
+   },
+   {
+      "frequency" : "19967",
+      "meaning" : "Wednesday",
+      "mnemonic" : "Water 水 day, which is Mercury, and mercredi in French. Part-time work, that one: すいようび.",
+      "notes" : "",
+      "reading" : "すいようび",
+      "sentence" : "水曜日はバイトがあります。",
+      "sentence_meaning" : "I work part time on Wednesdays.",
+      "word" : "水曜日"
+   },
+   {
+      "frequency" : "23008",
+      "meaning" : "Thursday",
+      "mnemonic" : "Wood 木 day, which is Jupiter, and jeudi. No work at all on that one: もくようび.",
+      "notes" : "",
+      "reading" : "もくようび",
+      "sentence" : "木曜日は仕事が休みです。",
+      "sentence_meaning" : "I don't have work on Thursday.",
+      "word" : "木曜日"
+   },
+   {
+      "frequency" : "13327",
+      "meaning" : "Friday",
+      "mnemonic" : "Metal 金 day, which is Venus, and vendredi. Out with friends that night: きんようび.",
+      "notes" : "",
+      "reading" : "きんようび",
+      "sentence" : "金曜日の夜は友達と出かけます。",
+      "sentence_meaning" : "I go out with my friends on Friday nights.",
+      "word" : "金曜日"
+   },
+   {
+      "frequency" : "8009",
+      "meaning" : "Saturday",
+      "mnemonic" : "Earth 土 day, which is Saturn, and English kept that one whole and unchanged. The club, that night: どようび.",
+      "notes" : "",
+      "reading" : "どようび",
+      "sentence" : "土曜日の夜はクラブに行きます。",
+      "sentence_meaning" : "I'm going to a club Saturday night.",
+      "word" : "土曜日"
+   },
+   {
+      "frequency" : "6372",
+      "meaning" : "Sunday",
+      "mnemonic" : "Sun 日 day, and English says exactly the same again. We went down to the sea: にちようび.",
+      "notes" : "月 and 日 bookend the week, moon at one end and sun at the other, in the same order English puts them.",
+      "reading" : "にちようび",
+      "sentence" : "日曜日は海に行きました。",
+      "sentence_meaning" : "We went to the beach on Sunday.",
+      "word" : "日曜日"
+   },
+   {
+      "frequency" : "371",
+      "meaning" : "one (thing)",
+      "mnemonic" : "The native count rather than いち, and it goes on the end of whatever you are pointing at. One of those, please: ひとつ.",
+      "notes" : "Japanese has two counting systems. いち, に, さん came in from Chinese, and ひとつ, ふたつ, みっつ are the older native ones, used for general objects up to ten. Ten is とお, with no つ on it.",
+      "reading" : "ひとつ",
+      "sentence" : "それを一つください。",
+      "sentence_meaning" : "Please give me one of those.",
+      "word" : "一つ"
+   },
+   {
+      "frequency" : "1336",
+      "meaning" : "two (things)",
+      "mnemonic" : "Two 二 of them, native count, and the one you say across a counter. Two ice creams: ふたつ.",
+      "notes" : "",
+      "reading" : "ふたつ",
+      "sentence" : "ソフトクリームを二つください。",
+      "sentence_meaning" : "Please give me two ice cream cones.",
+      "word" : "二つ"
+   },
+   {
+      "frequency" : "2776",
+      "meaning" : "three (things)",
+      "mnemonic" : "Three 三, and from here the つ starts doubling the consonant in front of it. Three cups: みっつ.",
+      "notes" : "",
+      "reading" : "みっつ",
+      "sentence" : "コップを三つ買いました。",
+      "sentence_meaning" : "I bought three cups.",
+      "word" : "三つ"
+   },
+   {
+      "frequency" : "5905",
+      "meaning" : "four (things)",
+      "mnemonic" : "Four 四, read よ here rather than し, which is what the native series prefers. Four wristwatches: よっつ.",
+      "notes" : "し is the Chinese reading of 四 and also the sound of 死, death, so よ and よん get used instead a great deal of the time.",
+      "reading" : "よっつ",
+      "sentence" : "私は腕時計を四つ持っています。",
+      "sentence_meaning" : "I have four wristwatches.",
+      "word" : "四つ"
+   },
+   {
+      "frequency" : "8764",
+      "meaning" : "five (things)",
+      "mnemonic" : "Five 五, and this one keeps a full い at the front of it. Five peaches: いつつ.",
+      "notes" : "",
+      "reading" : "いつつ",
+      "sentence" : "桃を五つください。",
+      "sentence_meaning" : "I'd like five peaches, please.",
+      "word" : "五つ"
+   },
+   {
+      "frequency" : "13907",
+      "meaning" : "six (things)",
+      "mnemonic" : "Six 六, back to the doubled consonant again. Six rice balls: むっつ.",
+      "notes" : "",
+      "reading" : "むっつ",
+      "sentence" : "おにぎりを六つ作りました。",
+      "sentence_meaning" : "I made six rice balls.",
+      "word" : "六つ"
+   },
+   {
+      "frequency" : "12371",
+      "meaning" : "seven (things)",
+      "mnemonic" : "Seven 七, なな rather than しち, which is the same avoidance the four made. Seven rolls: ななつ.",
+      "notes" : "しち is the other reading. It gets mistaken for いち over a phone, so なな is preferred out loud.",
+      "reading" : "ななつ",
+      "sentence" : "ロールパンを七つ買ってきてください。",
+      "sentence_meaning" : "Please go and buy seven bread rolls.",
+      "word" : "七つ"
+   },
+   {
+      "frequency" : "17804",
+      "meaning" : "eight (things)",
+      "mnemonic" : "Eight 八, doubled once more. Eight clocks in that one house: やっつ.",
+      "notes" : "",
+      "reading" : "やっつ",
+      "sentence" : "あの家には時計が八つあります。",
+      "sentence_meaning" : "There are eight clocks in that house.",
+      "word" : "八つ"
+   },
+   {
+      "frequency" : "26445",
+      "meaning" : "nine (things)",
+      "mnemonic" : "Nine 九, and this is the long one of the set, ここの before the つ. He got through nine of them: ここのつ.",
+      "notes" : "The last of the native series to take a つ. Ten is とお, standing on its own.",
+      "reading" : "ここのつ",
+      "sentence" : "兄はおにぎりを九つも食べた。",
+      "sentence_meaning" : "My older brother ate nine rice balls.",
+      "word" : "九つ"
+   },
+   {
+      "frequency" : "2156",
+      "meaning" : "evaluation, appraisal, recognition",
+      "mnemonic" : "Speech 言 levelled out 平 into a judgement of what the thing is actually worth 価. His has been going up lately: ひょうか.",
+      "notes" : "価値 かち is the worth itself. 評価 is somebody working out what that worth is, and it does recognition as well.",
+      "reading" : "ひょうか",
+      "sentence" : "最近、彼の評価が上がった。",
+      "sentence_meaning" : "He's been receiving more recognition lately.",
+      "word" : "評価"
+   }
+]
