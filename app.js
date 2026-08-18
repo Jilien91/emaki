@@ -675,14 +675,23 @@ function startQuiz(){
   render();
 }
 
+// The lesson quiz had the same fault as the review screen: everything was
+// committed by the Next button, so answering the last question of an item and
+// then leaving lost the unlock, having told you it was done. Grading commits
+// here instead, and answerQuizQuestion is left with the queue to manage.
+function commitQuizAnswer(){
+  const q = lessonState.quizQueue[0];
+  if(!lessonState.lastCorrect) return;
+  lessonState.quizProgress[q.id][q.type] = true;
+  if(lessonState.quizProgress[q.id].meaning && lessonState.quizProgress[q.id].reading){
+    completeLesson(q.id);
+  }
+}
+
 function answerQuizQuestion(correct){
   const q = lessonState.quizQueue.shift();
-  if(correct){
-    lessonState.quizProgress[q.id][q.type] = true;
-    if(lessonState.quizProgress[q.id].meaning && lessonState.quizProgress[q.id].reading){
-      completeLesson(q.id);
-    }
-  }else{
+  // Anything not yet answered correctly comes back round a few questions later.
+  if(!lessonState.quizProgress[q.id][q.type]){
     const insertAt = Math.min(lessonState.quizQueue.length, 3);
     lessonState.quizQueue.splice(insertAt, 0, q);
   }
@@ -693,6 +702,7 @@ function answerQuizQuestion(correct){
 }
 
 function submitQuizAnswer(){
+  if(lessonState.showAnswer) return; // already graded; Next is the only way on
   const q = lessonState.quizQueue[0];
   const item = VOCAB.find(v=>v.id===q.id);
   const input = document.getElementById('quizInput');
@@ -704,6 +714,7 @@ function submitQuizAnswer(){
   lessonState.lastInput = value;
   lessonState.revealed = false;
   lessonState.mnemonicShown = false;
+  commitQuizAnswer();
   render();
 }
 
@@ -859,7 +870,45 @@ function mnemonicPanel(state, item, holdBack, which){
   </div>`;
 }
 
+// An answer counts the moment it is graded, not when Next is pressed.
+//
+// All of this used to sit in advanceReview, one tap later. Answering the last
+// question of an item and then leaving by the nav instead of pressing Next
+// threw the whole thing away: the panel had already announced Genin 1 to Genin
+// 2 while the item was still sat at Genin 1, still in the due pile, and the
+// day's review count still read zero. The screen promised something that only
+// the next tap would deliver.
+//
+// It also means a session interrupted by a phone call or a closed tab keeps
+// whatever was actually answered.
+function commitReviewAnswer(){
+  const q = reviewState.queue[0];
+  const res = reviewState.results[q.id];
+  sessionTotal++;
+  if(reviewState.lastCorrect){
+    sessionCorrect++;
+    // Count the first attempt only. Getting it right on the retry after a miss
+    // is still a miss for this review, which is how the percentage stays
+    // meaningful rather than drifting to 100% for everybody.
+    if(!res[q.type] && !res[q.type+'Missed']) recordAnswer(q.id, q.type, true);
+    res[q.type] = true;
+    if(res.meaning && res.reading){
+      // Capture the stage either side, because the panel reports what happened
+      // now rather than predicting what Next would do.
+      const from = getEntry(q.id).stage;
+      applyReviewResult(q.id, !res.missed);
+      reviewState.stageChange = { from, to: getEntry(q.id).stage };
+    }
+  }else if(!res[q.type+'Missed']){
+    res[q.type+'Missed'] = true;
+    res.missed = true;
+    recordAnswer(q.id, q.type, false);
+    recordMistake(q.id, q.type);
+  }
+}
+
 function submitReviewAnswer(){
+  if(reviewState.showAnswer) return; // already graded; Next is the only way on
   const q = reviewState.queue[0];
   const item = VOCAB.find(v=>v.id===q.id);
   const input = document.getElementById('reviewInput');
@@ -872,28 +921,17 @@ function submitReviewAnswer(){
   reviewState.showAnswer = true;
   reviewState.revealed = false;
   reviewState.mnemonicShown = false;
+  reviewState.stageChange = null;
+  commitReviewAnswer();
   render();
 }
 
 function advanceReview(){
   const q = reviewState.queue.shift();
   const res = reviewState.results[q.id];
-  sessionTotal++;
-  if(reviewState.lastCorrect){
-    sessionCorrect++;
-    // Count the first attempt only. Getting it right on the retry after a miss
-    // is still a miss for this review, which is how the percentage stays
-    // meaningful rather than drifting to 100% for everybody.
-    if(!res[q.type] && !res[q.type+'Missed']) recordAnswer(q.id, q.type, true);
-    res[q.type] = true;
-    if(res.meaning && res.reading) applyReviewResult(q.id, !res.missed);
-  }else{
-    if(!res[q.type+'Missed']){
-      res[q.type+'Missed'] = true;
-      res.missed = true;
-      recordAnswer(q.id, q.type, false);
-      recordMistake(q.id, q.type);
-    }
+  // Anything still not answered correctly goes back in a few questions later.
+  // The grading itself already happened at submit time.
+  if(!res[q.type]){
     const insertAt = Math.min(reviewState.queue.length, 3);
     reviewState.queue.splice(insertAt, 0, q);
   }
@@ -902,6 +940,7 @@ function advanceReview(){
   reviewState.lastInput = '';
   reviewState.revealed = false;
   reviewState.mnemonicShown = false;
+  reviewState.stageChange = null;
   render();
 }
 
@@ -1806,11 +1845,11 @@ function renderReview(){
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
   const answer = q.type==='meaning' ? item.meaning : item.reading;
-  // Only preview the stage change on the question that completes the item, 
-  // before that nothing is committed, so promising a change would be a lie.
-  const completesItem = reviewState.showAnswer && reviewState.lastCorrect &&
-    (q.type==='meaning' ? res.reading : res.meaning);
-  const newStagePreview = completesItem ? computeReviewStage(p.stage, !res.missed) : null;
+  // Set by commitReviewAnswer on the question that completed the item, with the
+  // stage read either side of the move. It is a report of what has already been
+  // written, not a forecast of what pressing Next would do, which is what it
+  // used to be back when Next was the thing that committed.
+  const stageChange = reviewState.stageChange;
   // queue[0] is the question on screen; anything after it is still to come.
   const holdBack = siblingPending(reviewState.queue.slice(1), item.id);
   return `
@@ -1833,7 +1872,7 @@ function renderReview(){
       ${answerVisible(reviewState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
       ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(reviewState)?'margin-top:6px;':''}">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${settings.showSrsIndicator && completesItem ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[p.stage]} → ${STAGE_NAMES[newStagePreview]}</p>` : ''}
+    ${settings.showSrsIndicator && stageChange ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[stageChange.from]} → ${STAGE_NAMES[stageChange.to]}</p>` : ''}
     ${answerVisible(reviewState) ? `
       <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
       ${mnemonicPanel(reviewState, item, holdBack, 'review')}
