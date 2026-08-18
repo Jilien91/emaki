@@ -12,3 +12,8 @@ MNEMONICS.md
 
 # Local dev-server config, per-machine
 .claude/
+
+# Full Anki export of the upstream deck, used only for local comparison.
+# It carries audio filenames, images and pitch accent that this project
+# deliberately does not ship. Never commit it.
+Kaishi*.txt
