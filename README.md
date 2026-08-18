@@ -56,6 +56,21 @@ withholds the notes of entries added in the current pass. Those are the ones a
 mnemonic tends to quote back, having been written minutes earlier, and the card
 then says twice what the breakdown above it already said.
 
+`scripts/check-notes.pl` compares the usage notes here against the upstream
+deck's own Notes field, which it carries on 56 of its 1,500 cards:
+
+```
+perl scripts/check-notes.pl
+```
+
+That field is not in `raw/kaishi_1500_full.json`, so it is invisible from
+inside this repository, and ten early notes turned out to have been copied or
+lightly reworded from it before anyone compared the two. Run it before shipping
+a batch. It needs an Anki export of the deck saved in the project root as
+`Kaishi*.txt`, which is gitignored and must stay that way, since it carries the
+audio, images and pitch accent this project does not ship. Without one the
+script says so and exits clean.
+
 ## Run locally
 
 `fetch()` can't load `data/vocab.json` over `file://`, so serve the folder over HTTP:
