@@ -1546,5 +1546,40 @@
     { "c": "云", "name": "speak" }
   ]},
   "門": { "meaning": "gate", "note": "A pair of doors drawn side by side, which is the shape you walk through." },
-  "鬼": { "meaning": "demon, ghost", "note": "A figure with an outsized head on it, the shape used for whatever is left of the dead." }
+  "鬼": { "meaning": "demon, ghost", "note": "A figure with an outsized head on it, the shape used for whatever is left of the dead." },
+  "具": { "meaning": "tool, ingredient", "note": "A vessel held up in both hands with whatever goes in it. The gear you need, and what a dish is actually made of." },
+  "古": { "meaning": "old", "note": "十 ten mouths that have passed the thing down between them. Old enough to have been told ten times over." },
+  "含": { "meaning": "contain, hold in", "note": "口 a mouth at the bottom with something being held inside it rather than swallowed down." },
+  "微": { "meaning": "faint, slight", "note": "彳 a step on the left, taken so small that nobody would notice it being taken at all." },
+  "捕": { "meaning": "catch, seize", "note": "扌 a hand on the left closing round something that was in the middle of getting away." },
+  "掃": { "meaning": "sweep", "note": "扌 a hand on the left with 帚 a broom in it, the same broom that stands on the right of 帰." },
+  "援": { "meaning": "help, aid", "note": "扌 a hand on the left, put out toward somebody who is in need of one." },
+  "旅": { "meaning": "travel, journey", "note": "方 a banner on the left with people drawn following behind it. A party on the move rather than one person." },
+  "沈": { "meaning": "sink", "note": "氵 water on the left with something going down into it and not coming back up again." },
+  "洗": { "meaning": "wash", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "先", "name": "ahead, previous" }
+  ]},
+  "溢": { "meaning": "overflow", "note": "氵 water on the left and a dish already full to the brim. Over the edge of it and onto the floor." },
+  "漏": { "meaning": "leak", "note": "氵 water on the left, coming through a roof that was put there to keep it out." },
+  "潰": { "meaning": "crush, collapse", "note": "氵 water on the left with whatever is under it going flat. Crushed rather than broken in two." },
+  "硬": { "meaning": "hard, stiff", "note": "石 stone on the left. Hard the way a stone is, and it gives nothing at all when you press it." },
+  "秀": { "meaning": "excel, outstanding", "note": "禾 grain with the head of it drawn bending over, the one ear that came up better than the rest of the field." },
+  "組": { "meaning": "assemble, group", "note": "糸 thread on the left, plaited in with another one. Two separate things made into a single team." },
+  "絵": { "meaning": "picture", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "会", "name": "meet" }
+  ]},
+  "育": { "meaning": "raise, bring up", "note": "A child drawn upside down over 月 the flesh, which is the way one arrives. Everything after that is the raising." },
+  "舐": { "meaning": "lick", "note": "舌 a tongue on the left, out and doing the work itself." },
+  "誤": { "meaning": "mistake, err", "note": "言 speech on the left that came out other than the way it was meant to." },
+  "除": { "meaning": "remove, exclude", "parts": [
+    { "c": "阝", "name": "hill" },
+    { "c": "余", "name": "surplus" }
+  ]},
+  "雪": { "meaning": "snow", "note": "雨 rain along the top with a hand underneath it, sweeping. The sort of weather you clear rather than shelter from." },
+  "香": { "meaning": "fragrance", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "日", "name": "sun" }
+  ]}
 }
