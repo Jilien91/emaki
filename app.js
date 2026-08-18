@@ -274,6 +274,18 @@ function auditionVoice(name){
   speakJa('にほんごをべんきょうしています。');
 }
 
+// The settings sample should be the thing being configured. Once audio ships
+// with the app, a synthesised phrase would be demonstrating the fallback rather
+// than what the user is actually going to hear.
+function playAudioSample(){
+  if(AUDIO_IDS.size > 0){
+    const first = Math.min(...AUDIO_IDS);
+    speakWord(first);
+    return;
+  }
+  speakJa('にほんごをべんきょうしています。');
+}
+
 function initSpeech(){
   if(!speechSupported()) return;
   pickJapaneseVoice();
@@ -300,14 +312,48 @@ function speakJa(text){
   }catch(e){ /* speech is a nicety; never let it break a review */ }
 }
 
+// ---- Shipped audio --------------------------------------------------------
+// Generated once by scripts/gen-audio.pl and served as files, so the audio does
+// not depend on what the device has installed. Every user hears the same thing
+// and nobody is asked to go and install a voice before they can study.
+//
+// AUDIO_IDS empty is the normal state until that script has been run, and
+// everything below then falls through to the device voice exactly as before.
+let AUDIO_IDS = new Set();
+
+function hasWordAudio(id){ return AUDIO_IDS.has(id); }
+
+// Returns true if playback started. The caller falls back to the synthesiser on
+// false, which covers a missing file, a decode failure and autoplay refusal
+// alike: any of them should leave the user with audio rather than silence.
+function playWordAudio(id){
+  if(!hasWordAudio(id)) return false;
+  try{
+    const a = new Audio(`audio/${id}.mp3`);
+    // The speed setting should mean the same thing whichever source is playing.
+    // preservesPitch matters more here than usual: pitch accent is part of what
+    // the card teaches, so slowing a word down must not transpose it.
+    a.preservesPitch = true;
+    a.playbackRate = settings.speechRate;
+    a.play().catch(()=>{ speakJa(spokenReading(id)); });
+    return true;
+  }catch(e){ return false; }
+}
+
 // The reading, not the word: kana leaves the synthesiser nothing to guess at.
 // Three cards carry two readings separated by ・ (何 なに・なん, 四 よん・し,
 // 七 なな・しち) and the first is the one the card teaches in each, which is
 // also the one the notes tell you to prefer, so take that and don't read the
-// separator out loud.
-function speakWord(id){
+// separator out loud. scripts/gen-audio.pl picks the text the same way; if the
+// two ever disagree the audio starts teaching a reading the card does not.
+function spokenReading(id){
   const item = VOCAB.find(v=>v.id===id);
-  if(item) speakJa(item.reading.split('・')[0].trim());
+  return item ? item.reading.split('・')[0].trim() : '';
+}
+
+function speakWord(id){
+  if(playWordAudio(id)) return;
+  speakJa(spokenReading(id));
 }
 // Deliberately not wired to anything: see the note on AUDIO_ENABLED. Speaking a
 // sentence means handing raw kanji over, which is what got the feature parked.
@@ -317,9 +363,11 @@ function speakSentence(id){
   if(item) speakJa(item.sentence);
 }
 
-// Small speaker button; renders to nothing when no Japanese voice is installed.
+// Small speaker button. Shipped audio is enough on its own, so this no longer
+// requires a Japanese voice to be installed — only that one of the two sources
+// can actually produce a sound.
 function audioBtn(fn, id, label){
-  if(!canSpeak()) return '';
+  if(!hasWordAudio(id) && !canSpeak()) return '';
   return `<button class="audio-btn" onclick="event.stopPropagation();${fn}(${id})" title="${label}" aria-label="${label}">🔊</button>`;
 }
 
@@ -1778,14 +1826,19 @@ function renderSettings(){
 
 function renderAudioCard(){
   if(!AUDIO_ENABLED) return ''; // feature parked; see AUDIO_ENABLED
-  if(!speechSupported()){
+  const shipped = AUDIO_IDS.size > 0;
+  const voices = japaneseVoices();
+  // Only worth saying any of this when there is nothing to play. With shipped
+  // audio present the device's voice situation stops being the user's problem,
+  // so telling them to go and install one would be both wrong and off-putting.
+  if(!shipped && !speechSupported()){
     return `
     <div class="card" style="margin-bottom:16px;">
       <div class="section-title">Audio</div>
       <div class="settings-desc">This browser doesn't support speech synthesis, so audio is unavailable.</div>
     </div>`;
   }
-  if(!jaVoice){
+  if(!shipped && !jaVoice){
     return `
     <div class="card" style="margin-bottom:16px;">
       <div class="section-title">Audio</div>
@@ -1795,23 +1848,28 @@ function renderAudioCard(){
   const rates = [0.6,0.7,0.8,0.9,1.0,1.1,1.2];
   if(!rates.includes(settings.speechRate)) rates.push(settings.speechRate);
   rates.sort((a,b)=>a-b);
+  const source = shipped
+    ? `Words are read from audio that ships with Emaki, so it sounds the same on every device and needs nothing installed.${
+        AUDIO_IDS.size < VOCAB.length ? ` ${AUDIO_IDS.size} of ${VOCAB.length} words so far; the rest use your device's voice.` : ''}`
+    : `Audio is spoken by your device${jaVoice ? ` using <b>${escapeHtml(jaVoice.name)}</b>` : ''}.`;
   return `
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Audio</div>
     <div class="settings-row">
-      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered, never on the question itself. It reads the word's kana rather than its characters, so it can't give you a reading the card isn't teaching.</div>
+      <div class="settings-desc">${source} It only appears after you've answered, never on the question itself, and it reads the word's kana rather than its characters, so it can't give you a reading the card isn't teaching.</div>
     </div>
+    ${voices.length ? `
     <div class="settings-row">
-      <div class="settings-label">Voice</div>
+      <div class="settings-label">Voice${shipped ? ' for anything not shipped' : ''}</div>
       <select id="voiceInput" onchange="auditionVoice(this.value)">
-        ${japaneseVoices().map(v=>`<option value="${escapeHtml(v.name)}" ${jaVoice && jaVoice.name===v.name?'selected':''}>${escapeHtml(v.name)}${v.localService?'':' (online)'}</option>`).join('')}
+        ${voices.map(v=>`<option value="${escapeHtml(v.name)}" ${jaVoice && jaVoice.name===v.name?'selected':''}>${escapeHtml(v.name)}${v.localService?'':' (online)'}</option>`).join('')}
       </select>
     </div>
     <div class="settings-desc" style="margin-top:-4px;margin-bottom:10px;">
       Changing this plays a sample straight away, so try them. Ones marked
       online are usually the better ones and need a connection; the others
       work offline.
-    </div>
+    </div>` : ''}
     <div class="settings-row">
       <div class="settings-label">Play the word automatically in lessons</div>
       <select id="autoPlayInput">
@@ -1827,7 +1885,7 @@ function renderAudioCard(){
     </div>
     <button class="primary" onclick="saveAudioSettings()">Save</button>
     <p class="forecast" style="text-align:center;margin-top:12px;">
-      <button class="reset-link" onclick="speakJa('にほんごをべんきょうしています。')">Play a test phrase</button>
+      <button class="reset-link" onclick="playAudioSample()">${shipped ? 'Play a sample word' : 'Play a test phrase'}</button>
     </p>
   </div>
   `;
@@ -2169,6 +2227,16 @@ async function init(){
       const kres = await fetch('data/kanji.json');
       KANJI = await kres.json();
     }catch(e){ KANJI = {}; }
+    // Same again for the audio manifest, which is absent until gen-audio.pl has
+    // been run and partial while it is being run. Either way the app falls back
+    // to the device voice, so this must never be allowed to throw.
+    try{
+      const ares = await fetch('data/audio.json');
+      if(ares.ok){
+        const manifest = await ares.json();
+        if(manifest && Array.isArray(manifest.ids)) AUDIO_IDS = new Set(manifest.ids);
+      }
+    }catch(e){ AUDIO_IDS = new Set(); }
   }catch(e){
     document.getElementById('root').innerHTML = '<div class="empty">Failed to load vocab data. Make sure data/vocab.json is reachable (serve this over http, not file://).</div>';
     return;

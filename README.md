@@ -24,6 +24,7 @@ stated link between a sound and a meaning.
 - `raw/kaishi_1500_full.json`: source deck of word, reading, meaning, sentence, frequency
 - `raw/kaishi_batchN_with_mnemonics.json`: mnemonics + usage notes, 25 words per batch
 - `scripts/merge.pl`: merges `raw/*_with_mnemonics.json` batches into `data/vocab.json`
+- `audio/<id>.mp3` + `data/audio.json`: generated word audio, optional (see below)
 
 Only words with a mnemonic show up in Lessons. To add another batch of mnemonics (e.g. words 101-200), drop a `raw/kaishi_batchN_with_mnemonics.json` file (same shape as batch1, matched by word+reading+meaning) and rerun:
 
@@ -70,6 +71,40 @@ a batch. It needs an Anki export of the deck saved in the project root as
 `Kaishi*.txt`, which is gitignored and must stay that way, since it carries the
 audio, images and pitch accent this project does not ship. Without one the
 script says so and exits clean.
+
+## Word audio (optional)
+
+The app speaks a word by playing `audio/<id>.mp3` if it exists, and otherwise
+falls back to the device's own Japanese voice. Neither is required: with no
+audio generated and no voice installed, the speaker buttons simply don't
+appear and nothing else changes.
+
+Shipping the files is worth it because the device voices are a lottery. On
+Windows the locally installed one is old and flat, the good neural voices are
+network voices, and telling somebody to install a language pack before they can
+study is a bad first experience. Generated audio sounds the same everywhere and
+asks nothing of the user.
+
+`scripts/gen-audio.pl` builds them with Azure's neural Japanese voices. It reads
+`AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` from the environment, never from a
+file, so no key ends up in the repository:
+
+```
+export AZURE_SPEECH_KEY=...
+export AZURE_SPEECH_REGION=uksouth
+perl scripts/gen-audio.pl --limit 20   # hear the voice before committing to 1500
+perl scripts/gen-audio.pl              # the rest
+```
+
+It speaks the reading rather than the characters, the same rule the app uses, so
+the synthesiser is never left to guess which reading a card teaches. Cards
+already generated are skipped, so an interrupted run costs nothing to restart,
+and `--force` regenerates everything, which is what you want after `--voice`.
+It writes `data/audio.json` by scanning what is actually on disk, so a partly
+generated deck produces a correct manifest and the remaining words fall back.
+
+The whole deck is about 4,900 characters of Japanese, comfortably inside Azure's
+free tier, and lands at roughly 4-8 MB of mp3.
 
 ## Run locally
 
@@ -153,6 +188,14 @@ contributors, whose own sources are credited in their README. Only the six text
 fields are used here: word, reading, meaning, sentence, sentence meaning and
 frequency. The Kaishi audio (from AJT Japanese) and images (from irasutoya) are
 deliberately not included.
+
+**The word audio**, if `audio/` is present, is none of Kaishi's. It is
+synthesised by [`scripts/gen-audio.pl`](scripts/gen-audio.pl) from the reading
+field using Azure's neural voices, whose terms allow generated speech to be
+shipped inside an application. It is a machine reading of a word, not a
+recording, and it is not the AJT Japanese audio that the deck itself carries —
+that is still deliberately absent, and the fact that this repository now has an
+`audio/` directory does not change it.
 
 > **Status.** Kaishi carries no licence of its own, but its author has given
 > permission for the word list to be used here, in
