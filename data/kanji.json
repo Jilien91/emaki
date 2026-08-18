@@ -1614,5 +1614,37 @@
   "雑": { "meaning": "miscellaneous, mixed", "note": "隹 a small bird on the right with everything else heaped in on the left. Mixed together, and not sorted." },
   "騒": { "meaning": "noisy, make a din", "note": "馬 a horse on the left with something biting at it. Nothing about the result is quiet." },
   "魚": { "meaning": "fish", "note": "A pictograph stood on its tail, the head up top and the fins drawn as the four marks below." },
-  "鳥": { "meaning": "bird", "note": "A pictograph, the eye and beak at the top and the tail feathers as the marks underneath." }
+  "鳥": { "meaning": "bird", "note": "A pictograph, the eye and beak at the top and the tail feathers as the marks underneath." },
+  "保": { "meaning": "preserve, keep", "note": "亻 a person on the left with a child held in against them. Keeping a thing safe rather than merely having it." },
+  "偉": { "meaning": "great, admirable", "note": "亻 a person on the left who stands clear of the row. Great in the sense of somebody worth looking up at." },
+  "印": { "meaning": "seal, mark", "note": "A hand pressing down on a kneeling figure. The stamp itself, and then the mark it leaves behind." },
+  "史": { "meaning": "history, chronicle", "note": "A hand holding a writing tablet, which is the record keeper. Whatever got written down and then kept." },
+  "太": { "meaning": "fat, thick", "note": "大 big with one extra mark put on it. Bigger than big, and thick along with it." },
+  "島": { "meaning": "island", "note": "A bird 鳥 sitting over a mountain 山, which from a boat is exactly what an island looks like." },
+  "幼": { "meaning": "young, infant", "note": "力 power on the right and a very small thread on the left. Not a great deal of either one yet." },
+  "戸": { "meaning": "door", "note": "One leaf of a door, which is to say half of 門 the gate." },
+  "担": { "meaning": "carry, take charge of", "note": "扌 a hand on the left taking the weight of a thing and then keeping hold of it." },
+  "捲": { "meaning": "roll up", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "巻", "name": "roll, volume" }
+  ]},
+  "揃": { "meaning": "be complete, gather", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "前", "name": "front, before" }
+  ]},
+  "整": { "meaning": "arrange, put in order", "parts": [
+    { "c": "束", "name": "bundle" },
+    { "c": "攵", "name": "strike" },
+    { "c": "正", "name": "correct" }
+  ]},
+  "歴": { "meaning": "successive, history", "note": "止 a footprint at the bottom under a row of trees. One step after another, and then the record of them." },
+  "漂": { "meaning": "drift, float", "note": "氵 water on the left with something riding on top of it, going wherever the water happens to go." },
+  "片": { "meaning": "one side, one of a pair", "note": "Half of a tree split straight down the middle, the right hand half. One of a pair, and the other is elsewhere." },
+  "象": { "meaning": "elephant, figure", "note": "A pictograph of an elephant, trunk included. It also does the shape or figure that a thing presents." },
+  "踏": { "meaning": "step on, tread", "note": "足 the foot radical on the left, put down flat on top of something." },
+  "陽": { "meaning": "sun, positive", "parts": [
+    { "c": "阝", "name": "hill" },
+    { "c": "昜", "name": "sun rising" }
+  ]},
+  "鼻": { "meaning": "nose", "note": "The 自 nose shape sat on a stand. 自 was the original nose and got taken over to mean self, so this was built to replace it." }
 }
