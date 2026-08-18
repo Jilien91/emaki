@@ -1860,7 +1860,13 @@ function renderAudioCard(){
   if(!AUDIO_ENABLED) return ''; // feature parked; see AUDIO_ENABLED
   const shippedCount = shippedAudioCount();
   const shipped = shippedCount > 0;
+  // The device voice is only ever heard on a word the shipped audio misses, so
+  // once it covers the deck this picker is a control that changes nothing. It
+  // was the confusing half of the card: four Windows voices offered next to the
+  // two that actually play. It comes back on its own if coverage ever drops,
+  // which is the only state where the choice means something.
   const voices = japaneseVoices();
+  const showDevicePicker = voices.length > 0 && shippedCount < VOCAB.length;
   // Only worth saying any of this when there is nothing to play. With shipped
   // audio present the device's voice situation stops being the user's problem,
   // so telling them to go and install one would be both wrong and off-putting.
@@ -1895,13 +1901,13 @@ function renderAudioCard(){
     <div class="settings-row">
       <div class="settings-label">Voice</div>
       <select id="shippedVoiceInput" onchange="chooseShippedVoice(this.value)">
-        ${AUDIO_VOICES.map(v=>`<option value="${escapeHtml(v.key)}" ${settings.audioVoice===v.key?'selected':''}>${escapeHtml(v.label)}</option>`).join('')}
+        ${AUDIO_VOICES.map(v=>`<option value="${escapeHtml(v.key)}" ${settings.audioVoice===v.key?'selected':''}>${escapeHtml(v.label)}${v.gender?` (${escapeHtml(v.gender)})`:''}</option>`).join('')}
       </select>
     </div>
     <div class="settings-desc" style="margin-top:-4px;margin-bottom:10px;">
       Changing this plays a sample straight away.
     </div>` : ''}
-    ${voices.length ? `
+    ${showDevicePicker ? `
     <div class="settings-row">
       <div class="settings-label">${shipped ? 'Device voice, for anything not shipped' : 'Voice'}</div>
       <select id="voiceInput" onchange="auditionVoice(this.value)">

@@ -1,6 +1,6 @@
 {
    "format" : "mp3",
-   "generated" : "Tue Aug 18 20:02:30 2026 UTC",
+   "generated" : "Tue Aug 18 20:30:22 2026 UTC",
    "ids" : {
       "f" : [
          1,
@@ -3011,12 +3011,14 @@
       {
          "azure" : "ja-JP-Nanami:DragonHDLatestNeural",
          "count" : 1500,
+         "gender" : "female",
          "key" : "f",
          "label" : "Nanami"
       },
       {
          "azure" : "ja-JP-Masaru:DragonHDLatestNeural",
          "count" : 1500,
+         "gender" : "male",
          "key" : "m",
          "label" : "Masaru"
       }

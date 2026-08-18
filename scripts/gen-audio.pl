@@ -47,14 +47,14 @@ binmode STDERR, ':encoding(UTF-8)';
 #     https://$AZURE_SPEECH_REGION.tts.speech.microsoft.com/cognitiveservices/voices/list
 my %VOICE_SETS = (
     standard => {
-        f => { label => 'Nanami', azure => 'ja-JP-NanamiNeural' },
-        m => { label => 'Keita',  azure => 'ja-JP-KeitaNeural' },
+        f => { label => 'Nanami', gender => 'female', azure => 'ja-JP-NanamiNeural' },
+        m => { label => 'Keita',  gender => 'male',   azure => 'ja-JP-KeitaNeural' },
     },
     # Casing taken from the region's own voices/list rather than the docs, which
     # print these as ja-jp-. The API reports ja-JP-.
     hd => {
-        f => { label => 'Nanami', azure => 'ja-JP-Nanami:DragonHDLatestNeural' },
-        m => { label => 'Masaru', azure => 'ja-JP-Masaru:DragonHDLatestNeural' },
+        f => { label => 'Nanami', gender => 'female', azure => 'ja-JP-Nanami:DragonHDLatestNeural' },
+        m => { label => 'Masaru', gender => 'male',   azure => 'ja-JP-Masaru:DragonHDLatestNeural' },
     },
 );
 my $SET = 'standard';
@@ -253,10 +253,11 @@ print $mfh JSON::PP->new->canonical->pretty->encode({
     format    => 'mp3',
     generated => scalar(gmtime) . ' UTC',
     voices    => [ map { {
-        key   => $_,
-        label => $VOICES{$_}{label},
-        azure => $VOICES{$_}{azure},
-        count => scalar @{ $ids{$_} || [] },
+        key    => $_,
+        label  => $VOICES{$_}{label},
+        gender => $VOICES{$_}{gender},
+        azure  => $VOICES{$_}{azure},
+        count  => scalar @{ $ids{$_} || [] },
     } } grep { $ids{$_} && @{$ids{$_}} } sort keys %VOICES ],
     ids       => \%ids,
 });
