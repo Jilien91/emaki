@@ -814,8 +814,11 @@ function applyReviewResult(id, allCorrect){
 }
 
 // After a wrong answer the correct one stays hidden until asked for, so the
-// recall attempt isn't short-circuited. Anything that would give it away, 
-// the mnemonic, the sentence translation. Is withheld along with it.
+// recall attempt isn't short-circuited. The sentence translation is withheld
+// along with it, being the meaning in English. The mnemonic is not: it has a
+// button of its own next to this one, because on a word you have just missed
+// it is the thing you actually want, and it should not cost you the answer
+// first. What it still governs is the mnemonic printing itself unasked.
 function answerVisible(state){
   return state.lastCorrect || state.revealed || !settings.hideAnswerOnMistake;
 }
@@ -824,8 +827,11 @@ function answerVisible(state){
 // the panel shown after answering one half can hand over the other half before
 // it's been asked: the sentence translation is the meaning in English, and the
 // mnemonic gives away both. It tells the meaning story and signs off with the
-// reading in kana. Only reveal those once the sibling question is out of the
-// queue. `rest` is whatever is still to come, current question excluded.
+// reading in kana. Nothing that does that is printed unasked while the sibling
+// question is still pending. It no longer gates the "Show mnemonic" button,
+// only the automatic reveals: missing either half loses the stage anyway, so
+// there was nothing left for the gate to protect, and asking for a mnemonic is
+// a deliberate press. `rest` is whatever is still to come, current excluded.
 function siblingPending(rest, id){
   return rest.some(x => x.id === id);
 }
@@ -880,14 +886,22 @@ function completedCard(item, askedType){
   `;
 }
 
+// On a wrong answer this is a second button under "Show answer" rather than
+// something waiting behind it. The two reveals are independent: the mnemonic
+// tells the meaning story and signs off with the reading, so for a word you
+// have just missed it is often the more useful of the two, and making it the
+// reward for giving up on the answer first put it a tap further away than it
+// deserved.
 function mnemonicPanel(state, item, holdBack, which){
-  if(!answerVisible(state) || !item.mnemonic) return '';
+  if(!item.mnemonic) return '';
   const field = `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>`;
   if(state.lastCorrect) return settings.showMnemonicOnAnswer && !holdBack ? field : '';
-  if(settings.showMnemonicOnAnswer || state.mnemonicShown) return field;
-  return `<div style="text-align:center;margin-bottom:10px;">
-    <button class="secondary" onclick="revealMnemonic('${which}')">Show mnemonic</button>
-  </div>`;
+  if(state.mnemonicShown) return field;
+  // Asking for it is always allowed; printing it unasked still waits for the
+  // answer to be out. Otherwise "show mnemonic on answer" would quietly hand
+  // over an answer that "hide answer on mistake" is holding back.
+  if(settings.showMnemonicOnAnswer && answerVisible(state)) return field;
+  return `<button class="secondary" onclick="revealMnemonic('${which}')">Show mnemonic</button>`;
 }
 
 // An answer counts the moment it is graded, not when Next is pressed.
@@ -1635,10 +1649,10 @@ function renderLessonQuiz(){
       ${answerVisible(lessonState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>` : ''}
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${mnemonicPanel(lessonState, item, holdBack, 'lesson')}
     ${answerVisible(lessonState) ? '' : `
       <button class="secondary" onclick="revealQuizAnswer()">Show answer</button>
     `}
+    ${mnemonicPanel(lessonState, item, holdBack, 'lesson')}
     <button class="primary" onclick="answerQuizQuestion(${lessonState.lastCorrect})">Next</button>
   `}
   `;
@@ -1948,10 +1962,10 @@ function renderReview(){
     ${answerVisible(reviewState) ? `
       ${stageChange ? completedCard(item, q.type) : ''}
       <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
-      ${stageChange ? '' : mnemonicPanel(reviewState, item, holdBack, 'review')}
     ` : `
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
+    ${stageChange ? '' : mnemonicPanel(reviewState, item, holdBack, 'review')}
     <button class="primary" onclick="advanceReview()">Next</button>
   `}
   `;
@@ -1988,10 +2002,10 @@ function renderExtraStudy(){
       ${answerVisible(extraStudyState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
-    ${mnemonicPanel(extraStudyState, item, holdBack, 'extra')}
     ${answerVisible(extraStudyState) ? '' : `
       <button class="secondary" onclick="revealExtraStudyAnswer()">Show answer</button>
     `}
+    ${mnemonicPanel(extraStudyState, item, holdBack, 'extra')}
     <button class="primary" onclick="advanceExtraStudy()">Next</button>
   `}
   `;
