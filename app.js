@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   reviewOrder: 'shuffled',  // 'shuffled' | 'genin-first' | 'lower-stage-first'
   showSrsIndicator: true,
   speechRate: 0.8,          // device voices are hard to follow above this
+  voiceName: null,          // null = pick one automatically; see pickJapaneseVoice
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
   showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
@@ -241,10 +242,36 @@ function pickJapaneseVoice(){
   const voices = window.speechSynthesis.getVoices() || [];
   const ja = voices.filter(v => (v.lang||'').toLowerCase().replace('_','-').startsWith('ja'));
   if(ja.length===0){ jaVoice = null; return null; }
-  // Prefer a voice the platform marks as local: network voices cut out offline
-  // and lag behind the tap that triggered them.
+  // A chosen voice wins over the guess below. Matched by name because that is
+  // the only stable identifier the API gives, and missing the match is fine:
+  // settings sync between devices, and a voice installed on one is not
+  // installed on the next, so it falls through to the automatic pick.
+  const chosen = settings.voiceName && ja.find(v => v.name === settings.voiceName);
+  if(chosen){ jaVoice = chosen; return jaVoice; }
+  // Failing that, prefer a voice the platform marks as local: network voices
+  // cut out offline and lag behind the tap that triggered them. This is a
+  // safety-first default and not a quality judgement — on Windows the local
+  // one is usually the older, flatter voice, and the good neural voices are
+  // the network ones. Hence the picker in settings.
   jaVoice = ja.find(v=>v.localService) || ja[0];
   return jaVoice;
+}
+
+// Every Japanese voice the device exposes, for the settings picker.
+function japaneseVoices(){
+  if(!speechSupported()) return [];
+  return (window.speechSynthesis.getVoices() || [])
+    .filter(v => (v.lang||'').toLowerCase().replace('_','-').startsWith('ja'));
+}
+
+// Auditioning is the whole point of the picker, so this applies and saves the
+// choice as soon as it changes and speaks a sample in the new voice. No
+// re-render: that would rebuild the select and throw away the open dropdown.
+function auditionVoice(name){
+  settings.voiceName = name || null;
+  pickJapaneseVoice();
+  saveSettings();
+  speakJa('にほんごをべんきょうしています。');
 }
 
 function initSpeech(){
@@ -760,6 +787,10 @@ function saveReviewSettings(){
 function saveAudioSettings(){
   const autoEl = document.getElementById('autoPlayInput');
   const rateEl = document.getElementById('speechRateInput');
+  const voiceEl = document.getElementById('voiceInput');
+  // Already applied and saved on change by auditionVoice; read it back anyway
+  // so Save can't quietly revert a choice made in the dropdown.
+  if(voiceEl && voiceEl.value) settings.voiceName = voiceEl.value;
   settings.autoPlayLessonAudio = autoEl.value === 'yes';
   let rate = parseFloat(rateEl.value);
   if(isNaN(rate)) rate = DEFAULT_SETTINGS.speechRate;
@@ -1769,6 +1800,17 @@ function renderAudioCard(){
     <div class="section-title">Audio</div>
     <div class="settings-row">
       <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered, never on the question itself. It reads the word's kana rather than its characters, so it can't give you a reading the card isn't teaching.</div>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Voice</div>
+      <select id="voiceInput" onchange="auditionVoice(this.value)">
+        ${japaneseVoices().map(v=>`<option value="${escapeHtml(v.name)}" ${jaVoice && jaVoice.name===v.name?'selected':''}>${escapeHtml(v.name)}${v.localService?'':' (online)'}</option>`).join('')}
+      </select>
+    </div>
+    <div class="settings-desc" style="margin-top:-4px;margin-bottom:10px;">
+      Changing this plays a sample straight away, so try them. Ones marked
+      online are usually the better ones and need a connection; the others
+      work offline.
     </div>
     <div class="settings-row">
       <div class="settings-label">Play the word automatically in lessons</div>
