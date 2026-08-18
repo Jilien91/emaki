@@ -1608,7 +1608,7 @@ function renderItemDetail(){
   return `
   ${nav('dashboard')}
   <div class="bigword" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">
-    <span class="word-line">${escapeHtml(item.word)}</span>
+    <span class="word-line">${escapeHtml(item.word)}${audioBtn('speakWord', item.id, 'Play word')}</span>
     <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
