@@ -1703,5 +1703,47 @@
     { "c": "予", "name": "beforehand" },
     { "c": "頁", "name": "head" }
   ]},
-  "齢": { "meaning": "age", "note": "歯 teeth on the left, which is how you tell the age of a horse and once of a person." }
+  "齢": { "meaning": "age", "note": "歯 teeth on the left, which is how you tell the age of a horse and once of a person." },
+  "丁": { "meaning": "block, counter", "note": "A nail seen from the side. It came to mark a city block, and it turns up as a counter for various things." },
+  "仮": { "meaning": "temporary, provisional", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "反", "name": "turn over" }
+  ]},
+  "勇": { "meaning": "courage", "note": "力 power down at the bottom with something rising up over it. The sort you have to find rather than the sort you have." },
+  "寧": { "meaning": "careful, peaceful", "note": "宀 a roof with everything settled and quiet underneath it. Careful, and taking the time over it." },
+  "将": { "meaning": "commander, about to", "note": "A hand with meat offered on it, which is the shape used for the one who leads. It also does what is just about to come." },
+  "布": { "meaning": "cloth, spread", "note": "A hand over 巾 a hanging cloth. What gets spread out, and from there spreading anything at all." },
+  "底": { "meaning": "bottom", "parts": [
+    { "c": "广", "name": "shelter" },
+    { "c": "氐", "name": "base" }
+  ]},
+  "庭": { "meaning": "garden, yard", "note": "广 a shelter on the left with the open ground stretching out beside it. The part of your place with nothing built on it." },
+  "捜": { "meaning": "search for", "note": "扌 a hand on the left going right through a place after something that has gone missing." },
+  "故": { "meaning": "reason, deceased", "parts": [
+    { "c": "古", "name": "old" },
+    { "c": "攵", "name": "strike" }
+  ]},
+  "染": { "meaning": "dye, stain", "note": "氵 water and 木 a tree, which between them is where dye came from. The colour goes the whole way through." },
+  "標": { "meaning": "sign, mark, target", "note": "木 a tree on the left with a marker fixed to it. The post you take your aim at." },
+  "殊": { "meaning": "special, particular", "note": "歹 the bare bones radical on the left. Set apart from the rest, and once it meant set apart by dying." },
+  "油": { "meaning": "oil", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "由", "name": "reason, origin" }
+  ]},
+  "種": { "meaning": "seed, kind", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "重", "name": "heavy" }
+  ]},
+  "範": { "meaning": "pattern, extent", "note": "竹 bamboo over a cart, which is the frame marking out how far a thing is allowed to go." },
+  "菓": { "meaning": "confectionery", "parts": [
+    { "c": "艹", "name": "grass" },
+    { "c": "果", "name": "fruit, result" }
+  ]},
+  "袋": { "meaning": "bag", "parts": [
+    { "c": "代", "name": "substitute" },
+    { "c": "衣", "name": "garment" }
+  ]},
+  "録": { "meaning": "record", "note": "金 metal on the left, which is what a record was scratched into long before anybody had paper for it." },
+  "類": { "meaning": "kind, sort", "note": "頁 a head on the right with rice and a dog beside it. Things gathered into groups by what they resemble." },
+  "骨": { "meaning": "bone", "note": "A pictograph of a joint, with 月 the flesh sense drawn in underneath it." }
 }
