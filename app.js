@@ -860,6 +860,26 @@ function revealMnemonic(which){
 // rather than from memory, and that counts as a clean first attempt in the
 // per-item stats and keeps it out of Recent Mistakes. The stage is already lost
 // either way.
+// Both halves are answered, the stage has moved and the item is finished for
+// today. Nothing is left to hold back at that point: there is no unasked
+// question for the mnemonic, the breakdown or the translation to give away. It
+// is also the moment you are most likely to want to read the card, having just
+// proved you know it, so the whole thing opens.
+//
+// The half just tested is already sitting in the result panel above, so only
+// the other one is repeated here.
+function completedCard(item, askedType){
+  const other = askedType === 'meaning'
+    ? `<div class="field"><div class="k">Reading</div><div class="v jp">${escapeHtml(item.reading)}</div></div>`
+    : `<div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>`;
+  return `
+    ${other}
+    ${renderKanjiParts(item.word)}
+    ${item.mnemonic ? `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>` : ''}
+    ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
+  `;
+}
+
 function mnemonicPanel(state, item, holdBack, which){
   if(!answerVisible(state) || !item.mnemonic) return '';
   const field = `<div class="field"><div class="k">Mnemonic</div><div class="v mnem" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.mnemonic)}</div></div>`;
@@ -1862,8 +1882,8 @@ function renderReview(){
     </span>
   </div>
   <div class="bigword ${qClass}">${escapeHtml(item.word)}</div>
-  <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
   ${!reviewState.showAnswer ? `
+    <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
     <input type="text" id="reviewInput" placeholder="Type the ${label.toLowerCase()}" ${ANSWER_INPUT_ATTRS}>
     <button class="primary" onclick="submitReviewAnswer()">Check</button>
   ` : `
@@ -1874,8 +1894,9 @@ function renderReview(){
     </div>
     ${settings.showSrsIndicator && stageChange ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[stageChange.from]} → ${STAGE_NAMES[stageChange.to]}</p>` : ''}
     ${answerVisible(reviewState) ? `
+      ${stageChange ? completedCard(item, q.type) : ''}
       <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
-      ${mnemonicPanel(reviewState, item, holdBack, 'review')}
+      ${stageChange ? '' : mnemonicPanel(reviewState, item, holdBack, 'review')}
     ` : `
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
