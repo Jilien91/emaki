@@ -1581,5 +1581,38 @@
   "香": { "meaning": "fragrance", "parts": [
     { "c": "禾", "name": "grain" },
     { "c": "日", "name": "sun" }
-  ]}
+  ]},
+  "井": { "meaning": "well", "note": "The frame of a well seen from above, four beams crossed over at the corners." },
+  "兵": { "meaning": "soldier", "note": "An axe held up in both hands. The one carrying it rather than the weapon being carried." },
+  "句": { "meaning": "phrase, clause", "note": "口 a mouth with something wrapped round it. A set run of words rather than a whole sentence." },
+  "従": { "meaning": "follow, obey", "note": "彳 a step on the left, with somebody walking along behind whoever is out in front." },
+  "懐": { "meaning": "bosom, hold dear", "note": "忄 a heart on the left holding onto something that it has no intention of putting down." },
+  "才": { "meaning": "talent, natural ability", "note": "A shoot pushing up through the ground. What was there from the start rather than put in later." },
+  "投": { "meaning": "throw", "note": "扌 a hand on the left letting go of something halfway through the swing." },
+  "択": { "meaning": "choose", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "尺", "name": "measure" }
+  ]},
+  "映": { "meaning": "reflect, project", "parts": [
+    { "c": "日", "name": "sun" },
+    { "c": "央", "name": "centre" }
+  ]},
+  "査": { "meaning": "investigate", "note": "木 a tree over a stack of something, gone through one layer at a time until the bottom." },
+  "比": { "meaning": "compare", "note": "Two figures drawn side by side facing the same way, set up against one another." },
+  "氷": { "meaning": "ice", "note": "水 water with one extra stroke on it, which is all it takes. The same stuff, gone solid." },
+  "狭": { "meaning": "narrow", "parts": [
+    { "c": "犭", "name": "animal" },
+    { "c": "夾", "name": "hold between" }
+  ]},
+  "病": { "meaning": "illness", "note": "疒 the sickness radical wrapped round the outside of it, the same one that stands in 痛." },
+  "至": { "meaning": "arrive at, reach", "note": "An arrow drawn coming down onto a line. The far end of the flight rather than the loosing of it." },
+  "複": { "meaning": "multiple, compound", "note": "衤 the clothing radical on the left, layer over layer of it. More than one of the same thing." },
+  "院": { "meaning": "institution", "parts": [
+    { "c": "阝", "name": "hill" },
+    { "c": "完", "name": "complete" }
+  ]},
+  "雑": { "meaning": "miscellaneous, mixed", "note": "隹 a small bird on the right with everything else heaped in on the left. Mixed together, and not sorted." },
+  "騒": { "meaning": "noisy, make a din", "note": "馬 a horse on the left with something biting at it. Nothing about the result is quiet." },
+  "魚": { "meaning": "fish", "note": "A pictograph stood on its tail, the head up top and the fins drawn as the four marks below." },
+  "鳥": { "meaning": "bird", "note": "A pictograph, the eye and beak at the top and the tail feathers as the marks underneath." }
 }

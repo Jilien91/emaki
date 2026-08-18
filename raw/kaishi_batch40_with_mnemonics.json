@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1780",
+      "meaning" : "longed-for, nostalgic",
+      "mnemonic" : "The heart 忄 has hold of something it will not put down, and standing in this spot brings the whole lot back up. This place, for me: なつかしい.",
+      "notes" : "English has no clean word for it. Not sad and not merely fond, more that the past has come close enough to touch.",
+      "reading" : "なつかしい",
+      "sentence" : "ここは私にとって懐かしい場所です。",
+      "sentence_meaning" : "This is a nostalgic place for me.",
+      "word" : "懐かしい"
+   },
+   {
+      "frequency" : "1781",
+      "meaning" : "if, if ever",
+      "mnemonic" : "Not likely and you know it perfectly well, and you are going to say it out loud regardless. If she ever said yes: もしも.",
+      "notes" : "もし is the plain if. もしも is the same word held a beat longer, and it leans on how unlikely the thing is.",
+      "reading" : "もしも",
+      "sentence" : "もしも彼女と結婚できたらどんなに嬉しいだろう。",
+      "sentence_meaning" : "If I could ever marry her, how happy I would be!",
+      "word" : "もしも"
+   },
+   {
+      "frequency" : "1782",
+      "meaning" : "talent, ability",
+      "mnemonic" : "What was in you from the start 才 crossed with what you can actually do 能. He is full of the artistic sort: さいのう.",
+      "notes" : "能力 のうりょく is ability you built up. 才能 is the part you were born holding.",
+      "reading" : "さいのう",
+      "sentence" : "彼は芸術的な才能にあふれているね。",
+      "sentence_meaning" : "He is full of artistic talent.",
+      "word" : "才能"
+   },
+   {
+      "frequency" : "1785",
+      "meaning" : "to&nbsp;make a break for, to&nbsp;run off",
+      "mnemonic" : "You get away 逃 and then you are out 出 and still moving, which is two stages rather than one. The tiger is not in the cage: にげだす.",
+      "notes" : "",
+      "reading" : "にげだす",
+      "sentence" : "トラがおりから逃げ出しました。",
+      "sentence_meaning" : "The tiger escaped from the cage.",
+      "word" : "逃げ出す"
+   },
+   {
+      "frequency" : "1786",
+      "meaning" : "various, diverse",
+      "mnemonic" : "One sort 様 and then the mark that says do that again 々, and the city has the whole range of them in it: さまざま.",
+      "notes" : "色々 いろいろ is the everyday various. 様々 is a shade more formal and sits better in writing.",
+      "reading" : "さまざま",
+      "sentence" : "その都市には様々な人種が集まっているわ。",
+      "sentence_meaning" : "There are diverse ethnic groups in that city.",
+      "word" : "様々"
+   },
+   {
+      "frequency" : "1787",
+      "meaning" : "hospital",
+      "mnemonic" : "The place 院 you end up at once the sickness 疒 has wrapped itself properly round you. Off we go: びょういん.",
+      "notes" : "",
+      "reading" : "びょういん",
+      "sentence" : "病院へ行きます。",
+      "sentence_meaning" : "I will go to the hospital.",
+      "word" : "病院"
+   },
+   {
+      "frequency" : "1789",
+      "meaning" : "to compare, to contrast",
+      "mnemonic" : "Two figures stood side by side and facing the same way so that the difference shows up. Set against Japan, my country is freezing: くらべる.",
+      "notes" : "",
+      "reading" : "くらべる",
+      "sentence" : "日本と比べると、私の国はとても寒いです。",
+      "sentence_meaning" : "Compared to Japan, my country is very cold.",
+      "word" : "比べる"
+   },
+   {
+      "frequency" : "1790",
+      "meaning" : "ice",
+      "mnemonic" : "The same stuff that came out of the tap, gone hard enough to knock against the side of the glass. In mine, please: こおり.",
+      "notes" : "",
+      "reading" : "こおり",
+      "sentence" : "グラスに氷を入れてください。",
+      "sentence_meaning" : "Please put some ice in my glass.",
+      "word" : "氷"
+   },
+   {
+      "frequency" : "1792",
+      "meaning" : "narrow, cramped",
+      "mnemonic" : "An animal 犭 held between 夾 two walls with nowhere at all to turn round. My room is very much like that: せまい.",
+      "notes" : "細い ほそい is thin as in a thread or a finger. 狭い is narrow as in not enough room, and 広い ひろい is its opposite.",
+      "reading" : "せまい",
+      "sentence" : "私の部屋は狭いです。",
+      "sentence_meaning" : "My room is cramped.",
+      "word" : "狭い"
+   },
+   {
+      "frequency" : "1793",
+      "meaning" : "God, the divine",
+      "mnemonic" : "The god 神 with the highest honorific 様 on the end, which is how you address one rather than how you describe one. I asked for something: かみさま.",
+      "notes" : "神 かみ on its own is a god, and Shinto has a great many of them. 神様 is the one you actually speak to.",
+      "reading" : "かみさま",
+      "sentence" : "神様にお願いしました。",
+      "sentence_meaning" : "I asked a favor to God.",
+      "word" : "神様"
+   },
+   {
+      "frequency" : "1794",
+      "meaning" : "shaking, turbulence",
+      "mnemonic" : "Moving 動 and swaying 揺 at once, and it is not the building doing it. She heard the news and could not hold still: どうよう.",
+      "notes" : "",
+      "reading" : "どうよう",
+      "sentence" : "彼女はその知らせを聞いて激しく動揺した。",
+      "sentence_meaning" : "She trembled violently upon hearing that news.",
+      "word" : "動揺"
+   },
+   {
+      "frequency" : "1796",
+      "meaning" : "chief, head",
+      "mnemonic" : "The one with the long hair in the old drawing, which meant the eldest and so the one in charge. That monkey runs the group: ちょう.",
+      "notes" : "頭 あたま is the head on your shoulders. 長 is the head of a group, and it goes on the end of a title: 社長, 部長.",
+      "reading" : "ちょう",
+      "sentence" : "あの大きなサルは群れの長だ。",
+      "sentence_meaning" : "That big monkey is the leader of the group.",
+      "word" : "長"
+   },
+   {
+      "frequency" : "1797",
+      "meaning" : "still, in addition",
+      "mnemonic" : "The main business is finished and there is one more thing that has to be said before anybody leaves. If it rains, it is off: なお.",
+      "notes" : "Formal, and it turns up at the foot of notices. それに and 他に add a point in speech.",
+      "reading" : "なお",
+      "sentence" : "なお、雨の場合は中止です。",
+      "sentence_meaning" : "Moreover, it will be canceled in the event of rain.",
+      "word" : "なお"
+   },
+   {
+      "frequency" : "1798",
+      "meaning" : "story, tale",
+      "mnemonic" : "Things 物 told 語 one after another until between them they add up to something. Adventures, mostly: ものがたり.",
+      "notes" : "話 はなし is a talk or a story in the everyday sense. 物語 is a tale, the sort that gets written down.",
+      "reading" : "ものがたり",
+      "sentence" : "私は冒険の物語が大好きです。",
+      "sentence_meaning" : "I love adventure stories.",
+      "word" : "物語"
+   },
+   {
+      "frequency" : "1800",
+      "meaning" : "complaint",
+      "mnemonic" : "A phrase 句 of writing 文 that somebody has clearly been rehearsing, and she has one ready every single time: もんく.",
+      "notes" : "文句を言う is to complain. On its own 文句 can also simply mean the wording of something.",
+      "reading" : "もんく",
+      "sentence" : "彼女はいつも文句ばかり言う。",
+      "sentence_meaning" : "She always does nothing but complain.",
+      "word" : "文句"
+   },
+   {
+      "frequency" : "1801",
+      "meaning" : "to come to, to reach",
+      "mnemonic" : "The arrow comes down and lands and the flight is over. We got to a conclusion in the end: いたる.",
+      "notes" : "",
+      "reading" : "いたる",
+      "sentence" : "ようやく結論に至ったようね。",
+      "sentence_meaning" : "It seemed that we finally reached a conclusion.",
+      "word" : "至る"
+   },
+   {
+      "frequency" : "1802",
+      "meaning" : "fish",
+      "mnemonic" : "Ten minutes over the flame and turn it once, and the entire house knows what is for dinner: さかな.",
+      "notes" : "",
+      "reading" : "さかな",
+      "sentence" : "魚を10分くらい焼きます。",
+      "sentence_meaning" : "I will cook the fish for about 10 minutes.",
+      "word" : "魚"
+   },
+   {
+      "frequency" : "1804",
+      "meaning" : "bird",
+      "mnemonic" : "Up off the fence and away before you have the camera out of your pocket. There goes one: とり.",
+      "notes" : "",
+      "reading" : "とり",
+      "sentence" : "鳥が飛んでいます。",
+      "sentence_meaning" : "A bird is flying.",
+      "word" : "鳥"
+   },
+   {
+      "frequency" : "1805",
+      "meaning" : "to be reflected, to appear",
+      "mnemonic" : "Light 日 lands in the middle 央 of the glass and something that is not in the room appears in it. A man's shadow, in the window: うつる.",
+      "notes" : "現れる あらわれる is a thing actually turning up. 映る is an image of it landing on a surface, and it is the word for showing on a screen.",
+      "reading" : "うつる",
+      "sentence" : "窓に男性の影が映っています。",
+      "sentence_meaning" : "The shadow of a man is reflected in the window.",
+      "word" : "映る"
+   },
+   {
+      "frequency" : "1806",
+      "meaning" : "a lifetime",
+      "mnemonic" : "One 一 life 生, the whole of it end to end, which is how large the favour is being made out to be: いっしょう.",
+      "notes" : "",
+      "reading" : "いっしょう",
+      "sentence" : "一生のお願いがあります。",
+      "sentence_meaning" : "I have a once-in-a-lifetime favor to ask.",
+      "word" : "一生"
+   },
+   {
+      "frequency" : "1807",
+      "meaning" : "paper",
+      "mnemonic" : "Thread mashed flat and dried out, and the present goes inside it. Pick a nice one: かみ.",
+      "notes" : "Three かみ in this deck: 紙 paper, 髪 hair and 神 a god. The characters are the only thing keeping them apart.",
+      "reading" : "かみ",
+      "sentence" : "プレゼントをきれいな紙で包みました。",
+      "sentence_meaning" : "I wrapped the present in beautiful paper.",
+      "word" : "紙"
+   },
+   {
+      "frequency" : "1809",
+      "meaning" : "to be called..., to speak (humble form)",
+      "mnemonic" : "You give your own name and lower yourself in the act of giving it, which is the whole point of the verb. Suzuki, if you please: もうす.",
+      "notes" : "The humble form of 言う. Used about yourself and never about anybody else, exactly like 致す いたす.",
+      "reading" : "もうす",
+      "sentence" : "私は鈴木と申します。",
+      "sentence_meaning" : "My name is Suzuki.",
+      "word" : "申す"
+   },
+   {
+      "frequency" : "1810",
+      "meaning" : "complicated, intricate",
+      "mnemonic" : "Layer 複 on layer with everything mixed through it 雑 and none of it sorted. That program is a mess: ふくざつ.",
+      "notes" : "単純 たんじゅん is the direct contrast, simple as in uncomplicated, and 簡単 かんたん is simple as in easy.",
+      "reading" : "ふくざつ",
+      "sentence" : "このプログラムはとても複雑です。",
+      "sentence_meaning" : "This program is very complicated.",
+      "word" : "複雑"
+   },
+   {
+      "frequency" : "1813",
+      "meaning" : "to throw, to abandon",
+      "mnemonic" : "The hand lets go halfway through the swing and the thing carries on without it. Over here, please: なげる.",
+      "notes" : "",
+      "reading" : "なげる",
+      "sentence" : "ボールをこっちに投げてください。",
+      "sentence_meaning" : "Please throw the ball over here.",
+      "word" : "投げる"
+   },
+   {
+      "frequency" : "1816",
+      "meaning" : "occurrence, incident",
+      "mnemonic" : "A thing 事 that came about 出来 rather than one anybody arranged. Something interesting happened: できごと.",
+      "notes" : "発生 はっせい is the formal one, for accidents and incidents. 出来事 is an everyday occurrence, good or bad.",
+      "reading" : "できごと",
+      "sentence" : "面白い出来事がありました。",
+      "sentence_meaning" : "Something interesting happened.",
+      "word" : "出来事"
+   },
+   {
+      "frequency" : "1818",
+      "meaning" : "subordinate",
+      "mnemonic" : "The part of the department 部 that sits under 下 you, and his are rather good at their jobs: ぶか.",
+      "notes" : "",
+      "reading" : "ぶか",
+      "sentence" : "彼は優秀な部下を持っているわね。",
+      "sentence_meaning" : "He has outstanding subordinates, doesn't he?",
+      "word" : "部下"
+   },
+   {
+      "frequency" : "1819",
+      "meaning" : "fully, amply",
+      "mnemonic" : "Not merely enough but visibly more than enough, and the dish is heavy in the hand with it: たっぷり.",
+      "notes" : "",
+      "reading" : "たっぷり",
+      "sentence" : "この料理は、栄養がたっぷりですよ。",
+      "sentence_meaning" : "This dish contains plenty of nutrition.",
+      "word" : "たっぷり"
+   },
+   {
+      "frequency" : "1821",
+      "meaning" : "real ability, capability",
+      "mnemonic" : "The power 力 you actually 実 have rather than the one printed on the certificate. The two of them are level: じつりょく.",
+      "notes" : "",
+      "reading" : "じつりょく",
+      "sentence" : "二人の実力は互角です。",
+      "sentence_meaning" : "Their abilities are evenly matched.",
+      "word" : "実力"
+   },
+   {
+      "frequency" : "1822",
+      "meaning" : "right and left",
+      "mnemonic" : "Left 左 and right 右 in the one word and in that order, which is the reverse of the English. Both ways before you cross: さゆう.",
+      "notes" : "",
+      "reading" : "さゆう",
+      "sentence" : "通りを渡る前に左右を見た。",
+      "sentence_meaning" : "I looked left and right before crossing the street.",
+      "word" : "左右"
+   },
+   {
+      "frequency" : "1823",
+      "meaning" : "choice, selection",
+      "mnemonic" : "Two characters for choosing stacked up, one walking the row 選 and one measuring by hand 択. Five to pick from: せんたく.",
+      "notes" : "",
+      "reading" : "せんたく",
+      "sentence" : "この5種類から選択できます。",
+      "sentence_meaning" : "You can select one from these five types.",
+      "word" : "選択"
+   },
+   {
+      "frequency" : "1825",
+      "meaning" : "investigation, inquiry",
+      "mnemonic" : "You go round the thing 調 and then through it a layer at a time 査. We are looking into that one: ちょうさ.",
+      "notes" : "",
+      "reading" : "ちょうさ",
+      "sentence" : "私たちがその問題を調査しています。",
+      "sentence_meaning" : "We're investigating that problem.",
+      "word" : "調査"
+   },
+   {
+      "frequency" : "1826",
+      "meaning" : "for example",
+      "mnemonic" : "You pull one person 亻 out of the row 列 to show everybody what you mean. This software, say: たとえば.",
+      "notes" : "",
+      "reading" : "たとえば",
+      "sentence" : "例えば、このソフトで日本語を勉強することができます。",
+      "sentence_meaning" : "For example, you could use this software to study Japanese.",
+      "word" : "例えば"
+   },
+   {
+      "frequency" : "1827",
+      "meaning" : "to see (someone) off",
+      "mnemonic" : "You watch 見 and you send 送 and then you stand there on the concourse while the plane goes. He was off abroad: みおくる.",
+      "notes" : "",
+      "reading" : "みおくる",
+      "sentence" : "彼が外国に行くのを見送りました。",
+      "sentence_meaning" : "I saw him off on his trip overseas.",
+      "word" : "見送る"
+   },
+   {
+      "frequency" : "1654",
+      "meaning" : "quite right, reasonable",
+      "mnemonic" : "Nothing he said was unreasonable and there is no part of it you can argue with, which is its own sort of annoying: もっとも.",
+      "notes" : "Same reading as 最も もっとも, the most, which is written with the character. This one stays in kana and means fair enough.",
+      "reading" : "もっとも",
+      "sentence" : "彼の意見はもっともです。",
+      "sentence_meaning" : "His opinion is quite right.",
+      "word" : "もっとも"
+   },
+   {
+      "frequency" : "1831",
+      "meaning" : "to follow, to obey",
+      "mnemonic" : "You walk along behind whoever is in front and do not strike out on your own. She did not: したがう.",
+      "notes" : "",
+      "reading" : "したがう",
+      "sentence" : "彼女は命令に従わなかった。",
+      "sentence_meaning" : "She did not obey orders.",
+      "word" : "従う"
+   },
+   {
+      "frequency" : "1832",
+      "meaning" : "to let pass, to run through",
+      "mnemonic" : "You make the thing go the whole way through 通 rather than standing there watching it. Thread, through a needle: とおす.",
+      "notes" : "通る とおる is a thing passing through by itself. 通す is you putting it through.",
+      "reading" : "とおす",
+      "sentence" : "針に糸を通してください。",
+      "sentence_meaning" : "Please thread the needle.",
+      "word" : "通す"
+   },
+   {
+      "frequency" : "1836",
+      "meaning" : "to mistake, to confuse",
+      "mnemonic" : "You take the gap 間 the wrong way round 違 and land on the wrong answer. On an easy one, at that: まちがえる.",
+      "notes" : "間違う まちがう is being wrong. 間違える is getting a particular thing wrong, or taking one thing for another.",
+      "reading" : "まちがえる",
+      "sentence" : "やさしい問題を間違えてしまいました。",
+      "sentence_meaning" : "I made a mistake on an easy question.",
+      "word" : "間違える"
+   },
+   {
+      "frequency" : "1837",
+      "meaning" : "stamina, endurance",
+      "mnemonic" : "Power 力 that the body 体 has rather than the arms, which is what lets somebody go all day. The young have it: たいりょく.",
+      "notes" : "",
+      "reading" : "たいりょく",
+      "sentence" : "若者は体力がありますね。",
+      "sentence_meaning" : "Young people have a lot of stamina.",
+      "word" : "体力"
+   },
+   {
+      "frequency" : "1843",
+      "meaning" : "to accomplish, to carry out, to fulfill",
+      "mnemonic" : "The tree puts out its fruit 果 in the end, and you do the thing you said you were going to. He got it done: はたす.",
+      "notes" : "",
+      "reading" : "はたす",
+      "sentence" : "彼はしっかりと責任を果たしました。",
+      "sentence_meaning" : "He fulfilled his responsibilities diligently.",
+      "word" : "果たす"
+   },
+   {
+      "frequency" : "1844",
+      "meaning" : "to make a racket, to mess around",
+      "mnemonic" : "A horse 馬 with something biting at it, in a carriage, at eight in the morning. Not in here, thank you: さわぐ.",
+      "notes" : "ふざける is messing about. 騒ぐ is the noise that messing about makes.",
+      "reading" : "さわぐ",
+      "sentence" : "電車の中で騒がないでください。",
+      "sentence_meaning" : "Please don't make a racket in the train.",
+      "word" : "騒ぐ"
+   },
+   {
+      "frequency" : "1845",
+      "meaning" : "to dive into",
+      "mnemonic" : "Off the edge 飛 and straight in 込 without stopping to test the water. The frog did not think twice: とびこむ.",
+      "notes" : "",
+      "reading" : "とびこむ",
+      "sentence" : "カエルが池に飛び込んだね。",
+      "sentence_meaning" : "The frog jumped into the pond.",
+      "word" : "飛び込む"
+   },
+   {
+      "frequency" : "1847",
+      "meaning" : "to increase, to augment, to rise",
+      "mnemonic" : "Earth 土 going onto the heap and the heap getting taller, and the river has been at it all week: ます.",
+      "notes" : "増える ふえる is a thing increasing by itself and 増やす ふやす is you increasing it. 増す does both and is the more formal word.",
+      "reading" : "ます",
+      "sentence" : "大雨で川の水かさが増しているな。",
+      "sentence_meaning" : "The amount of water in the river rose due to heavy rains.",
+      "word" : "増す"
+   },
+   {
+      "frequency" : "1848",
+      "meaning" : "to hit, to bump into",
+      "mnemonic" : "Metal on concrete and the sound of it carrying a street away. The car found the pole: ぶつかる.",
+      "notes" : "",
+      "reading" : "ぶつかる",
+      "sentence" : "車が電柱にぶつかった。",
+      "sentence_meaning" : "The car crashed into the telephone pole.",
+      "word" : "ぶつかる"
+   },
+   {
+      "frequency" : "1851",
+      "meaning" : "recollections, memory",
+      "mnemonic" : "A thought 思 that comes back out 出 on its own years afterwards. The trip left you a few: おもいで.",
+      "notes" : "記憶 きおく is memory as the faculty. 思い出 is one particular memory that you keep.",
+      "reading" : "おもいで",
+      "sentence" : "旅行で楽しい思い出ができました。",
+      "sentence_meaning" : "I made fun memories during my trip.",
+      "word" : "思い出"
+   },
+   {
+      "frequency" : "1854",
+      "meaning" : "ceiling",
+      "mnemonic" : "The heaven 天 of the room, with a frame of beams 井 laid across it. This one is a long way up: てんじょう.",
+      "notes" : "",
+      "reading" : "てんじょう",
+      "sentence" : "この部屋は天井が高いですね。",
+      "sentence_meaning" : "This room has a high ceiling.",
+      "word" : "天井"
+   },
+   {
+      "frequency" : "1855",
+      "meaning" : "soldier",
+      "mnemonic" : "The one carrying the axe 兵 and serving 士 rather than choosing. Three of them hurt in the bombing: へいし.",
+      "notes" : "",
+      "reading" : "へいし",
+      "sentence" : "その爆撃で兵士が３人負傷しました。",
+      "sentence_meaning" : "Three soldiers were injured in that bombing.",
+      "word" : "兵士"
+   },
+   {
+      "frequency" : "1856",
+      "meaning" : "to fill, to become full",
+      "mnemonic" : "Filled 満 right to the edge with nothing at all left to add. The moon got there last night: みちる.",
+      "notes" : "満たす みたす is you filling something. 満ちる is it filling up on its own.",
+      "reading" : "みちる",
+      "sentence" : "月が満ちてきましたね。",
+      "sentence_meaning" : "The moon has become full, hasn't it?",
+      "word" : "満ちる"
+   },
+   {
+      "frequency" : "1857",
+      "meaning" : "can't stand, can't put up with",
+      "mnemonic" : "Past the point where you can sit with it and get on with anything else at all. Your head, this afternoon: たまらない.",
+      "notes" : "Also used of good things: 美味しくてたまらない is so good you cannot bear it.",
+      "reading" : "たまらない",
+      "sentence" : "頭が痛くてたまらない。",
+      "sentence_meaning" : "I have an unbearable headache.",
+      "word" : "たまらない"
+   },
+   {
+      "frequency" : "1857",
+      "meaning" : "to taste, to appreciate",
+      "mnemonic" : "You take the taste 味 slowly instead of swallowing, because it is your mother's cooking and you have not had it in a year: あじわう.",
+      "notes" : "",
+      "reading" : "あじわう",
+      "sentence" : "母の手料理をゆっくり味わいました。",
+      "sentence_meaning" : "I took my time savoring my mother's cooking.",
+      "word" : "味わう"
+   },
+   {
+      "frequency" : "1859",
+      "meaning" : "to go out",
+      "mnemonic" : "Out 出 through the door with somewhere to be, which is a good deal more than stepping outside. Sundays, mostly: でかける.",
+      "notes" : "出る でる is going out of a place or coming out of one. 出かける is setting off somewhere with an errand attached, and 消える きえる is the other go out, a light or a flame.",
+      "reading" : "でかける",
+      "sentence" : "日曜日によく出かけます。",
+      "sentence_meaning" : "I often go out on Sundays.",
+      "word" : "出かける"
+   }
+]
