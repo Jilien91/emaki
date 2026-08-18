@@ -74,9 +74,9 @@ script says so and exits clean.
 
 ## Word audio (optional)
 
-The app speaks a word by playing `audio/<id>.mp3` if it exists, and otherwise
-falls back to the device's own Japanese voice. Neither is required: with no
-audio generated and no voice installed, the speaker buttons simply don't
+The app speaks a word by playing its mp3 from `audio/`, falling back to the
+device's own Japanese voice for anything not covered. Neither is required: with
+no audio generated and no voice installed, the speaker buttons simply don't
 appear and nothing else changes.
 
 Shipping the files is worth it because the device voices are a lottery. On
@@ -85,18 +85,49 @@ network voices, and telling somebody to install a language pack before they can
 study is a bad first experience. Generated audio sounds the same everywhere and
 asks nothing of the user.
 
-`scripts/gen-audio.pl` builds them with Azure's Dragon HD Japanese voices, one
-female and one male, into `audio/f/` and `audio/m/`. Learners pick between them
-in Settings. It reads `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` from the
+The files are generated and committed, so this is already done: 1,500 words in
+each of two voices. You only need the rest of this section to regenerate them,
+after a correction to a reading or a change of voice.
+
+`scripts/gen-audio.pl` builds them with Azure's Japanese voices, one female and
+one male, into `audio/f/` and `audio/m/`. Learners pick between them in
+Settings. It reads `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` from the
 environment, never from a file, so no key ends up in the repository:
 
 ```
 export AZURE_SPEECH_KEY=...
-export AZURE_SPEECH_REGION=uksouth
-perl scripts/gen-audio.pl --limit 20   # hear them before committing to 3000 files
-perl scripts/gen-audio.pl              # the rest
-perl scripts/gen-audio.pl --only f     # one voice
+export AZURE_SPEECH_REGION=francecentral
+perl scripts/gen-audio.pl --set hd --limit 20   # hear them before making 3000 files
+perl scripts/gen-audio.pl --set hd              # the rest
+perl scripts/gen-audio.pl --only f              # one voice
 ```
+
+**Check the region stocks the voices before anything else.** This is the trap
+worth knowing about: HD voices exist in only nine regions, and a resource
+anywhere else answers `400` with an empty body, which tells you nothing. Ask the
+region directly:
+
+```
+curl -H "Ocp-Apim-Subscription-Key: $AZURE_SPEECH_KEY" \
+  https://$AZURE_SPEECH_REGION.tts.speech.microsoft.com/cognitiveservices/voices/list
+```
+
+`uksouth` returns 556 voices and zero Dragon ones. `francecentral` returns 728
+including both used here. The others with HD are `westeurope`, `swedencentral`,
+`eastus`, `eastus2`, `westus2`, `canadacentral`, `centralindia` and
+`southeastasia`.
+
+Two voice sets, chosen with `--set`:
+
+- `standard` (the default): `ja-JP-NanamiNeural` and `ja-JP-KeitaNeural`.
+  Available in every TTS region, and supports more SSML than HD, `<prosody>`
+  included.
+- `hd`: `ja-JP-Nanami:DragonHDLatestNeural` and `ja-JP-Masaru:DragonHDLatestNeural`.
+  Better, and what ships. Needs one of the nine regions above.
+
+Standard is the default because it works everywhere. Note the shipped files were
+made with `--set hd`, so a plain rerun with `--force` would replace them with
+standard voices.
 
 It speaks the reading rather than the characters, the same rule the app uses, so
 the synthesiser is never left to guess which reading a card teaches. Cards
@@ -105,11 +136,11 @@ and `--force` regenerates, which is what you want after changing a voice. It
 writes `data/audio.json` by scanning what is actually on disk, so a partly
 generated deck produces a correct manifest and the remaining words fall back.
 
-Both voices are `DragonHD`, which is a constraint rather than a preference:
-DragonHD accepts `<phoneme>` and Dragon HD Omni does not, so swapping either for
-an Omni voice would silently disable the pronunciation overrides below. HD
-voices reject `<prosody>` entirely, which is why speaking speed is applied in
-the browser rather than baked into the files.
+`DragonHD` rather than `Dragon HD Omni` is a constraint, not a preference:
+DragonHD accepts `<phoneme>` and Omni does not, so an Omni voice would silently
+disable the pronunciation overrides below. All HD voices reject `<prosody>`
+entirely, which is why speaking speed is applied in the browser rather than
+baked into the files.
 
 ### Pitch accent
 
@@ -135,8 +166,10 @@ Azure documents the notation with three examples and no rules, so annotating
 entry after hearing a word come out wrong, then regenerate that card with
 `--force`.
 
-The whole deck is about 4,900 characters of Japanese per voice, comfortably
-inside Azure's free tier even for both, and lands at roughly 4-8 MB of mp3 each.
+The whole deck is 4,902 characters of Japanese per voice, so both together are
+under 10,000 against a 500,000/month free tier. The generated set is 14 MB of
+mp3 across 3,000 files, median 4.6 KB each. A full two-voice run takes about
+forty minutes and is resumable.
 
 ## Run locally
 
