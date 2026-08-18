@@ -1366,5 +1366,52 @@
     { "c": "辶", "name": "road" },
     { "c": "入", "name": "enter" }
   ]},
-  "量": { "meaning": "quantity, measure", "note": "A weight drawn sitting on a measure. How much of the thing there turns out to be once somebody has counted." }
+  "量": { "meaning": "quantity, measure", "note": "A weight drawn sitting on a measure. How much of the thing there turns out to be once somebody has counted." },
+  "乱": { "meaning": "disorder, riot", "note": "A hand pulling at a tangle of threads on the left with a hook on the right. Everything at cross purposes at once." },
+  "例": { "meaning": "example", "parts": [
+    { "c": "亻", "name": "person" },
+    { "c": "列", "name": "row" }
+  ]},
+  "偶": { "meaning": "by chance, pair", "note": "亻 a person on the left with a creature beside them they had no expectation of meeting. Happening to run into a thing." },
+  "園": { "meaning": "garden, park", "note": "囗 a border drawn the whole way round a piece of ground, with everything that grows in it kept inside." },
+  "型": { "meaning": "type, mould", "note": "土 earth along the bottom, pressed into a mould. Everything that comes out of it afterwards is the same shape." },
+  "天": { "meaning": "heaven, sky", "note": "大 a person with both arms flung wide and a single line drawn above them. Whatever is over your head." },
+  "客": { "meaning": "guest, customer", "note": "宀 a roof with somebody underneath it who does not live there. They came, and at some point they go." },
+  "常": { "meaning": "always, usual", "note": "A long cloth hanging down below, the same one day after day. The thing that is always there." },
+  "怪": { "meaning": "strange, suspicious", "note": "忄 a heart on the left that has caught hold of something it cannot account for." },
+  "惑": { "meaning": "confusion, be misled", "note": "心 a heart at the bottom under a halberd guarding a border. Torn about which way it ought to go." },
+  "抑": { "meaning": "hold back, restrain", "note": "扌 a hand on the left with a kneeling figure beside it. Keeping a thing down rather than shoving it along." },
+  "抗": { "meaning": "resist, oppose", "note": "扌 a hand on the left, put up against whatever is coming and not stepping out of its way." },
+  "抵": { "meaning": "resist, reach", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "氐", "name": "base" }
+  ]},
+  "提": { "meaning": "propose, carry", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "是", "name": "this one" }
+  ]},
+  "条": { "meaning": "article, clause", "note": "A branch drawn under a cover. One strand of a thing, and from there one clause of an agreement." },
+  "柔": { "meaning": "soft, supple", "note": "木 a tree at the bottom with a spear shaft above it, the wood still young enough to bend instead of snapping." },
+  "派": { "meaning": "faction, send", "note": "氵 water on the left splitting off into branches. One stream going its own way apart from the rest." },
+  "混": { "meaning": "mix, confuse", "note": "氵 water on the left with everything stirred through it until no one part can be picked back out." },
+  "減": { "meaning": "decrease", "parts": [
+    { "c": "氵", "name": "water" },
+    { "c": "咸", "name": "all" }
+  ]},
+  "為": { "meaning": "do, act, for the sake of", "note": "Originally a hand leading an elephant. Doing something, and doing it for the sake of something else." },
+  "犯": { "meaning": "crime, violate", "parts": [
+    { "c": "犭", "name": "animal" },
+    { "c": "卩", "name": "kneeling figure" }
+  ]},
+  "璧": { "meaning": "flawless jewel", "note": "玉 a jewel at the bottom, the flat ring sort, and this one without a single mark anywhere on it." },
+  "細": { "meaning": "thin, fine", "parts": [
+    { "c": "糸", "name": "thread" },
+    { "c": "田", "name": "field" }
+  ]},
+  "試": { "meaning": "try, test", "note": "言 speech on the left with a set form beside it. Putting a thing through its paces to find out." },
+  "責": { "meaning": "blame, responsibility", "note": "貝 money down at the bottom with a mark over the top of it. What is owed, and who has to answer for it." },
+  "閉": { "meaning": "close, shut", "parts": [
+    { "c": "門", "name": "gate" },
+    { "c": "才", "name": "sapling" }
+  ]}
 }
