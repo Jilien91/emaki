@@ -14,7 +14,7 @@ const DEFAULT_SETTINGS = {
   lessonBatchSize: 5,
   reviewOrder: 'shuffled',  // 'shuffled' | 'genin-first' | 'lower-stage-first'
   showSrsIndicator: true,
-  speechRate: 0.9,          // a touch under natural pace reads clearer
+  speechRate: 0.8,          // device voices are hard to follow above this
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
   showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
@@ -212,15 +212,19 @@ function flagSync(){ if(typeof markDirty === 'function') markDirty(); }
 // ---- Speech ---------------------------------------------------------------
 // Audio comes from the browser's own Japanese voice rather than shipped files.
 //
-// OFF for now. Handing the synthesiser a bare kanji makes it guess the reading,
-// and it guesses by frequency rather than by what the card teaches. 人 came
-// out as ひと on a card teaching じん, which trains the wrong reading. The
-// device voices also run fast enough to be hard to follow at 0.9x.
+// Parked on 9 August 2026 and back on 18 August, with the fix that was noted
+// when it was parked. Handing the synthesiser a bare kanji made it guess the
+// reading, and it guessed by frequency rather than by what the card teaches:
+// 人 came out as ひと on a card teaching じん. So nothing hands it a kanji any
+// more. speakWord says item.reading, which is kana and cannot be misread, and
+// the default rate dropped to 0.8 because the device voices are hard to follow
+// faster than that.
 //
-// Flip this to true to bring the whole feature back. The likely fix when we
-// return: speak item.reading (kana, unambiguous) instead of item.word, and
-// drop the default rate.
-const AUDIO_ENABLED = false;
+// Word audio only. The example sentences have no kana anywhere in the data, so
+// speaking one means handing over kanji again and hoping context saves it, which
+// is the bug this feature was parked for. speakSentence is left below, unwired,
+// for if a reading ever gets added for the sentences.
+const AUDIO_ENABLED = true;
 
 let jaVoice = null;
 
@@ -269,10 +273,18 @@ function speakJa(text){
   }catch(e){ /* speech is a nicety; never let it break a review */ }
 }
 
+// The reading, not the word: kana leaves the synthesiser nothing to guess at.
+// Three cards carry two readings separated by ・ (何 なに・なん, 四 よん・し,
+// 七 なな・しち) and the first is the one the card teaches in each, which is
+// also the one the notes tell you to prefer, so take that and don't read the
+// separator out loud.
 function speakWord(id){
   const item = VOCAB.find(v=>v.id===id);
-  if(item) speakJa(item.word);
+  if(item) speakJa(item.reading.split('・')[0].trim());
 }
+// Deliberately not wired to anything: see the note on AUDIO_ENABLED. Speaking a
+// sentence means handing raw kanji over, which is what got the feature parked.
+// Kept for whenever the data carries a reading for the sentences too.
 function speakSentence(id){
   const item = VOCAB.find(v=>v.id===id);
   if(item) speakJa(item.sentence);
@@ -1599,7 +1611,7 @@ function renderLessonStudy(){
   ${renderKanjiParts(item.word)}
   <div class="field"><div class="k">Mnemonic</div><div class="v mnem">${escapeHtml(item.mnemonic)}</div></div>
   ${item.notes ? `<div class="field" style="background:var(--kage-bg);"><div class="k" style="color:var(--kage);">Usage note</div><div class="v" style="font-size:13px;">${escapeHtml(item.notes)}</div></div>` : ''}
-  <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
+  <div class="field"><div class="k">Example</div><div class="v jp" style="margin-bottom:4px;">${escapeHtml(item.sentence)}</div><div class="v" style="font-size:13px;color:var(--text-dim);">${escapeHtml(item.sentence_meaning)}</div></div>
   <div class="btnrow">
     ${studyIndex>0 ? `<button class="secondary" onclick="prevStudyItem()">Back</button>` : ''}
     <button class="primary" onclick="${isLast?'startQuiz()':'nextStudyItem()'}">${isLast?'Start quiz':'Next'}</button>
@@ -1756,7 +1768,7 @@ function renderAudioCard(){
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Audio</div>
     <div class="settings-row">
-      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered, never on the question itself.</div>
+      <div class="settings-desc">Using <b>${escapeHtml(jaVoice.name)}</b>. Audio is spoken by your device, so it only appears after you've answered, never on the question itself. It reads the word's kana rather than its characters, so it can't give you a reading the card isn't teaching.</div>
     </div>
     <div class="settings-row">
       <div class="settings-label">Play the word automatically in lessons</div>
@@ -1768,12 +1780,12 @@ function renderAudioCard(){
     <div class="settings-row">
       <div class="settings-label">Speaking speed</div>
       <select id="speechRateInput">
-        ${rates.map(r=>`<option value="${r}" ${settings.speechRate===r?'selected':''}>${r.toFixed(1)}×${r===0.9?' (default)':''}</option>`).join('')}
+        ${rates.map(r=>`<option value="${r}" ${settings.speechRate===r?'selected':''}>${r.toFixed(1)}×${r===DEFAULT_SETTINGS.speechRate?' (default)':''}</option>`).join('')}
       </select>
     </div>
     <button class="primary" onclick="saveAudioSettings()">Save</button>
     <p class="forecast" style="text-align:center;margin-top:12px;">
-      <button class="reset-link" onclick="speakJa('日本語を勉強しています。')">Play a test phrase</button>
+      <button class="reset-link" onclick="speakJa('にほんごをべんきょうしています。')">Play a test phrase</button>
     </p>
   </div>
   `;
@@ -1961,7 +1973,7 @@ function renderReview(){
     ${settings.showSrsIndicator && stageChange ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[stageChange.from]} → ${STAGE_NAMES[stageChange.to]}</p>` : ''}
     ${answerVisible(reviewState) ? `
       ${stageChange ? completedCard(item, q.type) : ''}
-      <div class="field"><div class="k">Example${audioBtn('speakSentence', item.id, 'Play sentence')}</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
+      <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div>${holdBack ? '' : `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:4px;">${escapeHtml(item.sentence_meaning)}</div>`}</div>
     ` : `
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
