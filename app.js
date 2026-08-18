@@ -1407,6 +1407,56 @@ function showItem(id, origin){
   switchView('item');
 }
 
+// Nine segments for the nine stages above New, filled up to where the item is.
+// Stage 0 lights none of them, which is the right picture for a word that has
+// not been started.
+function stageBar(stage, tier){
+  const cells = Array.from({length:9}, (_,i)=>`<span class="${i < stage ? 'on' : ''}"></span>`).join('');
+  return `<div class="stagebar" style="--tier-color:var(--${tier});">${cells}</div>`;
+}
+
+// The per-item history panel. Everything in it comes from recordAnswer, which
+// counts first attempts in reviews and nothing else, so these are recall
+// numbers: lesson quizzes and extra study leave them alone, and getting a word
+// right on the retry after a miss still reads here as a miss.
+function renderItemStats(p){
+  const m = p.m || blankStats();
+  const r = p.r || blankStats();
+  const attempts = m.c + m.w + r.c + r.w;
+  const age = p.unlocked ? now() - p.unlocked : null;
+  // Old items predate `unlocked` and only get one backfilled at their next
+  // review, so the line has to be droppable rather than assumed.
+  const since = age == null ? ''
+    : age < 60000 ? 'Unlocked just now'
+    : 'Unlocked ' + humanizeDuration(age) + ' ago';
+
+  const note = txt => `<div class="field"><div class="k">History</div><div class="v" style="font-size:13px;color:var(--text-dim);">${txt}</div></div>`;
+
+  // The card is reached from the rank tiles and from search, so a word nobody
+  // has touched arrives here too. Both of these say as much instead of
+  // printing 0% and reading like a failure.
+  if(p.stage === 0) return note('Not started. Nothing is counted until this word has been learned and comes back for its first review.');
+  if(attempts === 0) return note(since ? since + '. No reviews yet.' : 'No reviews yet.');
+
+  const rows = [['meaning','Meaning',m], ['reading','Reading',r]].map(([cls,label,s])=>{
+    const seen = s.c + s.w;
+    // One half can be answered and the other still be waiting in the queue, so
+    // a type with no attempts is a real state and not just a new item.
+    const score = seen === 0 ? 'Not asked yet' : `${s.c} of ${seen} · ${Math.round(s.c/seen*100)}%`;
+    const streak = seen === 0 ? '' : `<span class="statrow-streak">Streak ${s.s} · best ${s.b}</span>`;
+    return `<div class="statrow">
+      <span class="pill q-${cls}">${label}</span>
+      <span class="statrow-body"><span class="statrow-score">${score}</span>${streak}</span>
+    </div>`;
+  }).join('');
+
+  return `<div class="field">
+    <div class="k">History</div>
+    <div class="statrows">${rows}</div>
+    ${since ? `<div class="statfoot">${since}</div>` : ''}
+  </div>`;
+}
+
 function renderItemDetail(){
   const item = VOCAB.find(v=>v.id === detailId);
   if(!item) return renderTierList();
@@ -1437,7 +1487,9 @@ function renderItemDetail(){
       <span class="pill" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">${STAGE_NAMES[p.stage]}</span>
       <span style="font-size:13px;color:var(--text-dim);">${due}</span>
     </div>
+    ${stageBar(p.stage, tier)}
   </div>
+  ${renderItemStats(p)}
   ${reportCardLink(item)}
   <div style="text-align:center;margin-top:14px;">
     ${itemOrigin === 'dashboard'

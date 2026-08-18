@@ -158,6 +158,21 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .kanjirow-parts .part .jp{font-size:15px;color:var(--text);}
 .kanjirow-parts .plus{color:var(--text-faint);}
 .kanjirow-parts .part-note{font-style:italic;}
+/* Per-item history. Deliberately the same badge-then-two-lines shape as
+   .kanjirow above, so the two panels on the item card read as one thing.
+   inline-flex, though, where .kanjirow centres each row on its own: the block
+   shrink-wraps to its widest row and the .field's text-align centres the whole
+   thing, so a short row like "Not asked yet" can't pull its badge inward and
+   leave the two rows ragged. */
+.statrows{display:inline-flex;flex-direction:column;gap:8px;text-align:left;}
+.statrow{display:flex;align-items:center;gap:12px;}
+/* Fixed basis rather than shrink-wrapped: the two badges have to be the same
+   width, or the scores beside them sit at different indents. */
+.statrow .pill{flex:0 0 70px;text-align:center;}
+.statrow-body{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.statrow-score{font-size:14px;font-weight:600;}
+.statrow-streak{font-size:12px;color:var(--text-dim);}
+.statfoot{font-size:12px;color:var(--text-faint);margin-top:10px;}
 .audio-btn{
   border:none;background:none;cursor:pointer;padding:0 0 0 8px;
   font-size:15px;line-height:1;opacity:0.65;vertical-align:middle;
