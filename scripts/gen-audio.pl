@@ -30,15 +30,34 @@ use File::Temp qw(tempfile);
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
-# Both Dragon HD, which matters beyond quality: DragonHD supports <phoneme> and
-# HD Omni does not, so the pitch accent overrides below work in both voices and
-# would silently stop working if either were swapped for an Omni one. Keita was
-# the first choice for the male voice and has no HD version, which is why this
-# is Masaru.
-my %VOICES = (
-    f => { label => 'Nanami', azure => 'ja-jp-Nanami:DragonHDLatestNeural' },
-    m => { label => 'Masaru', azure => 'ja-jp-Masaru:DragonHDLatestNeural' },
+# Two sets, because HD is a regional privilege rather than a setting. The HD
+# voices only exist in some regions — westeurope, francecentral, swedencentral,
+# eastus, eastus2, westus2, canadacentral, centralindia, southeastasia — and a
+# resource anywhere else answers 400 with an empty body, which is a miserable
+# error to diagnose. uksouth is one of the regions without them.
+#
+# standard: available in every TTS region, and supports more SSML than HD does,
+#   including <prosody> as well as the <phoneme> the accent overrides need.
+# hd:       better, and DragonHD rather than HD Omni because Omni drops
+#   <phoneme> and would silently disable every override in pronunciation.json.
+#   Keita has no HD version, hence Masaru for the male voice.
+#
+# Check what a region actually has before assuming:
+#   curl -H "Ocp-Apim-Subscription-Key: $AZURE_SPEECH_KEY" \
+#     https://$AZURE_SPEECH_REGION.tts.speech.microsoft.com/cognitiveservices/voices/list
+my %VOICE_SETS = (
+    standard => {
+        f => { label => 'Nanami', azure => 'ja-JP-NanamiNeural' },
+        m => { label => 'Keita',  azure => 'ja-JP-KeitaNeural' },
+    },
+    # Casing taken from the region's own voices/list rather than the docs, which
+    # print these as ja-jp-. The API reports ja-JP-.
+    hd => {
+        f => { label => 'Nanami', azure => 'ja-JP-Nanami:DragonHDLatestNeural' },
+        m => { label => 'Masaru', azure => 'ja-JP-Masaru:DragonHDLatestNeural' },
+    },
 );
+my $SET = 'standard';
 
 my $FORMAT = 'audio-24khz-48kbitrate-mono-mp3';
 my $LIMIT  = 0;      # 0 = every card
@@ -54,9 +73,13 @@ while (@ARGV) {
     if    ($arg eq '--limit')  { $LIMIT  = shift @ARGV // die "--limit needs a value\n" }
     elsif ($arg eq '--only')   { $ONLY   = shift @ARGV // die "--only needs a value\n" }
     elsif ($arg eq '--format') { $FORMAT = shift @ARGV // die "--format needs a value\n" }
+    elsif ($arg eq '--set')    { $SET    = shift @ARGV // die "--set needs a value\n" }
     elsif ($arg eq '--force')  { $FORCE  = 1 }
     else { die "Unknown argument: $arg\n" }
 }
+die "--set $SET is not one of: " . join(', ', sort keys %VOICE_SETS) . "\n"
+    unless $VOICE_SETS{$SET};
+my %VOICES = %{ $VOICE_SETS{$SET} };
 die "--only $ONLY is not one of: " . join(', ', sort keys %VOICES) . "\n"
     if $ONLY && !$VOICES{$ONLY};
 
