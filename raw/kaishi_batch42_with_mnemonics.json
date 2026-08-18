@@ -1,0 +1,502 @@
+[
+   {
+      "frequency" : "1951",
+      "meaning" : "to go, to come (humble form)",
+      "mnemonic" : "You take yourself along 参 and lower yourself in the doing of it. Shall we, then: まいる.",
+      "notes" : "The humble form of 行く and 来る, used about yourself, where いらっしゃる is the honorific of the very same verbs and is used about somebody else. 参った on its own is admitting that you are beaten.",
+      "reading" : "まいる",
+      "sentence" : "さあ、参りましょうか。",
+      "sentence_meaning" : "Well, shall we go?",
+      "word" : "参る"
+   },
+   {
+      "frequency" : "1955",
+      "meaning" : "to look down, to overlook",
+      "mnemonic" : "You look 見 and every single thing is below 下 you, because you got to the top and the village did not. From the summit: みおろす.",
+      "notes" : "見上げる みあげる is the same movement the other way. Neither one carries the English sense of despising somebody.",
+      "reading" : "みおろす",
+      "sentence" : "山の頂上からふもとを見下ろしたの。",
+      "sentence_meaning" : "I looked down at the foot of the mountain from the summit.",
+      "word" : "見下ろす"
+   },
+   {
+      "frequency" : "1956",
+      "meaning" : "to burn, to get fired up",
+      "mnemonic" : "Fire 火 doing what fire does 然, and the whole hillside is at it: もえる.",
+      "notes" : "焼く やく is you burning or grilling something. 燃える is a thing being on fire, and it does getting fired up as well.",
+      "reading" : "もえる",
+      "sentence" : "山が燃えています。",
+      "sentence_meaning" : "The mountain's on fire.",
+      "word" : "燃える"
+   },
+   {
+      "frequency" : "1957",
+      "meaning" : "to accumulate, to store up",
+      "mnemonic" : "Nobody put it there in one go. It kept arriving and none of it ever left. His stress, over months: たまる.",
+      "notes" : "ためる is the transitive one, you piling something up or saving it. たまる is it accumulating on its own.",
+      "reading" : "たまる",
+      "sentence" : "彼はストレスがたまっているの。",
+      "sentence_meaning" : "He's under a lot of stress.",
+      "word" : "たまる"
+   },
+   {
+      "frequency" : "1959",
+      "meaning" : "to act violently, to rage about",
+      "mnemonic" : "Everything in the room gets rough treatment 暴 and not one bit of it was aimed at anybody. He had drunk far too much: あばれる.",
+      "notes" : "",
+      "reading" : "あばれる",
+      "sentence" : "彼は悪酔いして暴れたんだ。",
+      "sentence_meaning" : "He was so drunk that he became violent.",
+      "word" : "暴れる"
+   },
+   {
+      "frequency" : "1960",
+      "meaning" : "to go over, to go across, to go beyond",
+      "mnemonic" : "You run 走 at the line and carry on straight past it, and this time the line was a mountain. Over the top: こえる.",
+      "notes" : "超える こえる is the same reading for going beyond a number or a limit. 越える is going over something physical.",
+      "reading" : "こえる",
+      "sentence" : "私たちは高い山を越えました。",
+      "sentence_meaning" : "We went over a tall mountain.",
+      "word" : "越える"
+   },
+   {
+      "frequency" : "1962",
+      "meaning" : "mind, spirit",
+      "mnemonic" : "Rice 米 polished down to what is actually in it 精, with the god 神 part alongside. The mind rather than the body: せいしん.",
+      "notes" : "心 こころ is the heart you feel with, 気 き is energy or mood and 魂 たましい is the soul. 精神 is the mind as a faculty, and it is the word in mental health.",
+      "reading" : "せいしん",
+      "sentence" : "彼女は今、精神が不安定だ。",
+      "sentence_meaning" : "She is mentally unstable now.",
+      "word" : "精神"
+   },
+   {
+      "frequency" : "1966",
+      "meaning" : "boy, young man",
+      "mnemonic" : "Man 男 and child 子 pushed together into the word that goes on a register. Over here, please: だんし.",
+      "notes" : "男の子 おとこのこ is a boy as a person and 少年 しょうねん is a youth. 男子 is the counting one, for classes, teams and doors, and it pairs with 女子 じょし.",
+      "reading" : "だんし",
+      "sentence" : "男子はこっちに並んで。",
+      "sentence_meaning" : "Boys, line up here.",
+      "word" : "男子"
+   },
+   {
+      "frequency" : "1967",
+      "meaning" : "declaration",
+      "mnemonic" : "Words 言 laid out under the roof 宣 where every person present can hear them, so that nobody can claim afterwards they did not. A ceasefire: せんげん.",
+      "notes" : "",
+      "reading" : "せんげん",
+      "sentence" : "政府は停戦を宣言しました。",
+      "sentence_meaning" : "The government declared a ceasefire.",
+      "word" : "宣言"
+   },
+   {
+      "frequency" : "1968",
+      "meaning" : "to hold between, to put between, to pinch",
+      "mnemonic" : "Two things closing on whatever is in the middle 夾, and this time the two things were a door and its frame: はさむ.",
+      "notes" : "",
+      "reading" : "はさむ",
+      "sentence" : "ドアに指を挟んだ。",
+      "sentence_meaning" : "I trapped my finger in the door.",
+      "word" : "挟む"
+   },
+   {
+      "frequency" : "1969",
+      "meaning" : "to prevent, to defend",
+      "mnemonic" : "A hill 阝 put in the way 方 of the thing before it ever arrives, which is the whole idea of it. Stretch first: ふせぐ.",
+      "notes" : "",
+      "reading" : "ふせぐ",
+      "sentence" : "怪我を防ぐためによくストレッチをしてください。",
+      "sentence_meaning" : "Please stretch well to prevent injuries.",
+      "word" : "防ぐ"
+   },
+   {
+      "frequency" : "1973",
+      "meaning" : "to deposit, to entrust",
+      "mnemonic" : "You hand it across in advance 予 and somebody else's head 頁 is on it now. The key went to him: あずける.",
+      "notes" : "預かる あずかる is the other side of it, looking after something for somebody else.",
+      "reading" : "あずける",
+      "sentence" : "鍵を彼に預けた。",
+      "sentence_meaning" : "I gave him the key to look after.",
+      "word" : "預ける"
+   },
+   {
+      "frequency" : "1974",
+      "meaning" : "to be limited to",
+      "mnemonic" : "The ground stops going your way 限 and that is where the thing ends. Weekends only: かぎる.",
+      "notes" : "〜に限る also means nothing beats it: 夏はビールに限る.",
+      "reading" : "かぎる",
+      "sentence" : "このサービスは週末に限ります。",
+      "sentence_meaning" : "This service is limited to weekends.",
+      "word" : "限る"
+   },
+   {
+      "frequency" : "1975",
+      "meaning" : "to blame",
+      "mnemonic" : "You put the owing 責 on somebody and then keep it sitting there. He has had about enough of it: せめる.",
+      "notes" : "責任 せきにん is the responsibility itself. 責める is laying it at somebody's door.",
+      "reading" : "せめる",
+      "sentence" : "そんなに彼を責めてはかわいそうです。",
+      "sentence_meaning" : "It is a shame to blame him so much.",
+      "word" : "責める"
+   },
+   {
+      "frequency" : "1981",
+      "meaning" : "to crumble, to collapse",
+      "mnemonic" : "A mountain 山 on top and whatever was holding it up giving way underneath. The cliff went in the rain: くずれる.",
+      "notes" : "倒れる たおれる is a thing falling over, upright to flat. 崩れる is it coming apart where it stands.",
+      "reading" : "くずれる",
+      "sentence" : "大雨で崖が崩れたね。",
+      "sentence_meaning" : "The cliff collapsed due to heavy rains.",
+      "word" : "崩れる"
+   },
+   {
+      "frequency" : "1983",
+      "meaning" : "(not) even once, (not) ever",
+      "mnemonic" : "One 一 time 度, and not even that once. Kyoto, never, in all these years: いちども.",
+      "notes" : "Always with a negative behind it: 一度も行ったことがない.",
+      "reading" : "いちども",
+      "sentence" : "一度も京都へ行ったことがありません。",
+      "sentence_meaning" : "I haven't been to Kyoto even once.",
+      "word" : "一度も"
+   },
+   {
+      "frequency" : "1986",
+      "meaning" : "vaguely, absent-mindedly",
+      "mnemonic" : "His eyes are pointed at the far side of the room and there is nobody at all behind them. Miles away: ぼんやり.",
+      "notes" : "",
+      "reading" : "ぼんやり",
+      "sentence" : "彼は遠くをぼんやり見ていたの。",
+      "sentence_meaning" : "He stared vacantly into the distance.",
+      "word" : "ぼんやり"
+   },
+   {
+      "frequency" : "1987",
+      "meaning" : "before long, sooner or later",
+      "mnemonic" : "Somewhere inside 内 that stretch of time, with nobody putting a date on it. She will work it out: そのうち.",
+      "notes" : "もうすぐ is soon and means soon. その内 is vaguer, and can stretch to any time in the next twenty years.",
+      "reading" : "そのうち",
+      "sentence" : "彼女もその内、親の気持ちが分かるだろう。",
+      "sentence_meaning" : "Sooner or later, she'll come to understand her parents' feelings.",
+      "word" : "その内"
+   },
+   {
+      "frequency" : "1988",
+      "meaning" : "mirror",
+      "mnemonic" : "Metal 金 polished until it hands you your own face back. She checked her hair in it: かがみ.",
+      "notes" : "",
+      "reading" : "かがみ",
+      "sentence" : "彼女は鏡を見て髪を直した。",
+      "sentence_meaning" : "She looked in the mirror and tidied her hair.",
+      "word" : "鏡"
+   },
+   {
+      "frequency" : "1989",
+      "meaning" : "to go through, to carry out",
+      "mnemonic" : "A string through the middle of the whole stack and out the far side of it. He held to what he wanted right to the end: つらぬく.",
+      "notes" : "",
+      "reading" : "つらぬく",
+      "sentence" : "彼は最後まで自分の意思を貫きました。",
+      "sentence_meaning" : "He carried out his will to the end.",
+      "word" : "貫く"
+   },
+   {
+      "frequency" : "1991",
+      "meaning" : "to harden, to solidify",
+      "mnemonic" : "Walled in 囗 and left long enough 古 that it is not going to move again. Has the pudding got there yet: かたまる.",
+      "notes" : "固める かためる is you setting something. 固まる is it setting on its own.",
+      "reading" : "かたまる",
+      "sentence" : "もうプリンは固まったかな。",
+      "sentence_meaning" : "Has the pudding set already?",
+      "word" : "固まる"
+   },
+   {
+      "frequency" : "1994",
+      "meaning" : "peace, harmony",
+      "mnemonic" : "Level 平 ground and grain 禾 in every mouth 口, which is as good a definition as anybody has managed. This country has it: へいわ.",
+      "notes" : "",
+      "reading" : "へいわ",
+      "sentence" : "この国は平和です。",
+      "sentence_meaning" : "This country is peaceful.",
+      "word" : "平和"
+   },
+   {
+      "frequency" : "1995",
+      "meaning" : "will, volition",
+      "mnemonic" : "What the mind 意 has settled on with the heart 心 stood behind it 志. He does not bend: いし.",
+      "notes" : "Same reading as 石 いし, a stone. 意思 いし written with 思 is a near neighbour, closer to intention than to resolve.",
+      "reading" : "いし",
+      "sentence" : "彼は意志の強い人です。",
+      "sentence_meaning" : "He is a strong-willed man.",
+      "word" : "意志"
+   },
+   {
+      "frequency" : "1997",
+      "meaning" : "bad at, poor",
+      "mnemonic" : "A low 下 hand 手, which is exactly what being bad at a thing amounts to. Singing, in my case: へた.",
+      "notes" : "上手い うまい and 上手 じょうず are the opposite. The reading is irregular, so learn 下手 へた whole.",
+      "reading" : "へた",
+      "sentence" : "私は歌が下手です。",
+      "sentence_meaning" : "I am bad at singing.",
+      "word" : "下手"
+   },
+   {
+      "frequency" : "1999",
+      "meaning" : "continuation, sequel",
+      "mnemonic" : "The thread has not been cut and there is a good deal more of it coming. On the phone, later: つづき.",
+      "notes" : "",
+      "reading" : "つづき",
+      "sentence" : "話の続きは電話でしましょう。",
+      "sentence_meaning" : "Let's continue this conversation on the phone.",
+      "word" : "続き"
+   },
+   {
+      "frequency" : "2001",
+      "meaning" : "to pray",
+      "mnemonic" : "An axe 斤 laid down at the altar 礻 and something asked for that was never in your gift. World peace, every day: いのる.",
+      "notes" : "願う ねがう is wishing, or asking somebody for something. 祈る is praying, and it goes to a god rather than a person.",
+      "reading" : "いのる",
+      "sentence" : "世界の平和を祈っています。",
+      "sentence_meaning" : "I pray for world peace.",
+      "word" : "祈る"
+   },
+   {
+      "frequency" : "2003",
+      "meaning" : "afternoon, p.m.",
+      "mnemonic" : "After 後 noon 午, which is precisely what the word says on its face. Tomorrow, then: ごご.",
+      "notes" : "午前 ごぜん is the morning, before noon.",
+      "reading" : "ごご",
+      "sentence" : "明日の午後、お客様が来る。",
+      "sentence_meaning" : "A guest is coming to visit tomorrow afternoon.",
+      "word" : "午後"
+   },
+   {
+      "frequency" : "2004",
+      "meaning" : "similar",
+      "mnemonic" : "The same 同 manner 様 as the other thing, near enough that you would not bother separating them. We treat him as family: どうよう.",
+      "notes" : "Same reading as 動揺 どうよう, being shaken. This one has 同 same in it, and that one has 動 move.",
+      "reading" : "どうよう",
+      "sentence" : "私たちは彼を家族同様に思っている。",
+      "sentence_meaning" : "We think of him just like family.",
+      "word" : "同様"
+   },
+   {
+      "frequency" : "2005",
+      "meaning" : "to come undone, to be removed",
+      "mnemonic" : "The thing is outside 外 of where it was fastened and nobody undid it. Your shirt button: はずれる.",
+      "notes" : "外す はずす is you removing something. 外れる is it coming off, and it also does a guess missing.",
+      "reading" : "はずれる",
+      "sentence" : "シャツのボタンが外れています。",
+      "sentence_meaning" : "My shirt button came undone.",
+      "word" : "外れる"
+   },
+   {
+      "frequency" : "2008",
+      "meaning" : "to sing",
+      "mnemonic" : "Somebody with their mouth wide open making the same sound come out over and over again. All of us, in Japanese: うたう.",
+      "notes" : "",
+      "reading" : "うたう",
+      "sentence" : "皆で日本の歌を歌います。",
+      "sentence_meaning" : "We're all singing a Japanese song.",
+      "word" : "歌う"
+   },
+   {
+      "frequency" : "2009",
+      "meaning" : "times",
+      "mnemonic" : "One turn 回 round and then another, and somebody counting them. Three a week, to that shop: かい.",
+      "notes" : "度 ど also counts occasions. 回 is the everyday counter for how many times.",
+      "reading" : "かい",
+      "sentence" : "1週間に3回コンビニへ行きます。",
+      "sentence_meaning" : "I go to the convenience store three times a week.",
+      "word" : "回"
+   },
+   {
+      "frequency" : "2010",
+      "meaning" : "stiff, tight",
+      "mnemonic" : "Walled in 囗 and set that way for years 古, which about a person means he will not hear a new idea. My boss: かたい.",
+      "notes" : "Three かたい: 硬い physically hard, 固い firm and set, and 堅い solid or reliable. 固い is the one for a stubborn head.",
+      "reading" : "かたい",
+      "sentence" : "私の上司は頭が固い。",
+      "sentence_meaning" : "My boss is stubborn.",
+      "word" : "固い"
+   },
+   {
+      "frequency" : "2011",
+      "meaning" : "strongest",
+      "mnemonic" : "The most 最 strong 強 there is, stated flatly and with no hedging. He is on that team: さいきょう.",
+      "notes" : "",
+      "reading" : "さいきょう",
+      "sentence" : "彼は最強チームの一員です。",
+      "sentence_meaning" : "He is a member of the strongest team.",
+      "word" : "最強"
+   },
+   {
+      "frequency" : "2012",
+      "meaning" : "to strum (e.g. a guitar), to flick",
+      "mnemonic" : "A bow 弓 with a single 単 string on it, plucked rather than fired. He does it on a guitar: ひく.",
+      "notes" : "Same reading as 引く ひく, to pull. 弾く is playing an instrument you pluck or strike, a guitar or a piano.",
+      "reading" : "ひく",
+      "sentence" : "彼はギターを弾きます。",
+      "sentence_meaning" : "He plays the guitar.",
+      "word" : "弾く"
+   },
+   {
+      "frequency" : "2015",
+      "meaning" : "right answer, correct solution",
+      "mnemonic" : "The correct 正 untying 解 of it, which is the answer they were after all along. Nine out of ten: せいかい.",
+      "notes" : "",
+      "reading" : "せいかい",
+      "sentence" : "10問中9問正解しました。",
+      "sentence_meaning" : "Nine out of ten questions were answered correctly.",
+      "word" : "正解"
+   },
+   {
+      "frequency" : "2016",
+      "meaning" : "tight, tough",
+      "mnemonic" : "Not quite fitting, and letting you know about it steadily all day. This shirt, across the shoulders: きつい.",
+      "notes" : "固い かたい is stiff and will not bend. きつい is tight, and it also does a job or a schedule being punishing.",
+      "reading" : "きつい",
+      "sentence" : "このシャツは少しきついです。",
+      "sentence_meaning" : "This shirt is a little tight.",
+      "word" : "きつい"
+   },
+   {
+      "frequency" : "2017",
+      "meaning" : "help, thanks to",
+      "mnemonic" : "The help came from the shaded side 陰 where you could not see it happening, and you passed because of it. Thanks to the teacher: おかげ.",
+      "notes" : "お陰で is thanks to and お陰様で is the set phrase for saying you are well because of others. 手伝う てつだう is helping with a task, where お陰 is the help you credit afterwards.",
+      "reading" : "おかげ",
+      "sentence" : "先生のお陰で大学に合格できました。",
+      "sentence_meaning" : "Thanks to the teacher, I was able to pass the college entrance exam.",
+      "word" : "お陰"
+   },
+   {
+      "frequency" : "2020",
+      "meaning" : "hell",
+      "mnemonic" : "The ground 地 with a prison 獄 built down into it and dogs at the door of it. The town looked like that after the earthquake: じごく.",
+      "notes" : "",
+      "reading" : "じごく",
+      "sentence" : "地震の後、街は地獄のようだったよ。",
+      "sentence_meaning" : "After the earthquake, the town looked like hell.",
+      "word" : "地獄"
+   },
+   {
+      "frequency" : "2022",
+      "meaning" : "age, years",
+      "mnemonic" : "Years 年 counted off the way you would count them from a horse's teeth 歯. Twenty seven, in her case: ねんれい.",
+      "notes" : "時代 じだい is an age in history. 年齢 is how old somebody is, and 歳 さい is the counter that goes with it.",
+      "reading" : "ねんれい",
+      "sentence" : "彼女の年齢は27です。",
+      "sentence_meaning" : "She's 27 years old.",
+      "word" : "年齢"
+   },
+   {
+      "frequency" : "2023",
+      "meaning" : "illness",
+      "mnemonic" : "The sickness 疒 has got into the spirit 気 as well as the body. My grandfather has one: びょうき.",
+      "notes" : "",
+      "reading" : "びょうき",
+      "sentence" : "祖父が病気になった。",
+      "sentence_meaning" : "My grandfather got sick.",
+      "word" : "病気"
+   },
+   {
+      "frequency" : "2024",
+      "meaning" : "cell phone",
+      "mnemonic" : "Carried 携 and worn about you 帯, which is what the word literally says and why it ended up meaning the phone. Into the bag, every morning: けいたい.",
+      "notes" : "Short for 携帯電話. スマホ is what most people actually say now.",
+      "reading" : "けいたい",
+      "sentence" : "朝、携帯をバッグに入れます。",
+      "sentence_meaning" : "In the morning, I put my cell phone in the bag.",
+      "word" : "携帯"
+   },
+   {
+      "frequency" : "2027",
+      "meaning" : "increasingly",
+      "mnemonic" : "Worse yesterday than the day before it, and worse again today. It keeps going the same way: ますます.",
+      "notes" : "The same 増す ます, to increase, said twice over.",
+      "reading" : "ますます",
+      "sentence" : "状況はますます悪くなったね。",
+      "sentence_meaning" : "The situation has gotten worse and worse.",
+      "word" : "ますます"
+   },
+   {
+      "frequency" : "2030",
+      "meaning" : "to line up, to display, to set up",
+      "mnemonic" : "You set them shoulder to shoulder 並 and step back to look. The dishes, the length of the table: ならべる.",
+      "notes" : "並ぶ ならぶ is things standing in a line. 並べる is you lining them up.",
+      "reading" : "ならべる",
+      "sentence" : "私は料理をテーブルに並べた。",
+      "sentence_meaning" : "I arranged the food on the table.",
+      "word" : "並べる"
+   },
+   {
+      "frequency" : "2031",
+      "meaning" : "contract, agreement",
+      "mnemonic" : "A notched stick 契 and a promise 約, and the two halves of it have to match. He signed with the new team: けいやく.",
+      "notes" : "",
+      "reading" : "けいやく",
+      "sentence" : "その選手は新しいチームと契約した。",
+      "sentence_meaning" : "That player signed a contract with a new team.",
+      "word" : "契約"
+   },
+   {
+      "frequency" : "2032",
+      "meaning" : "eternity",
+      "mnemonic" : "A river that keeps on running 永 and a road that keeps on going 遠. Peace is that kind of subject: えいえん.",
+      "notes" : "",
+      "reading" : "えいえん",
+      "sentence" : "平和は人類の永遠のテーマです。",
+      "sentence_meaning" : "Peace is humanity's eternal endeavour.",
+      "word" : "永遠"
+   },
+   {
+      "frequency" : "2032",
+      "meaning" : "suddenly, unexpectedly",
+      "mnemonic" : "Nothing in anybody's mind 意 said it was coming 不, and then she was on her feet: ふいに.",
+      "notes" : "急に きゅうに is suddenly as a change of pace. 不意に is suddenly as in nobody saw it coming.",
+      "reading" : "ふいに",
+      "sentence" : "彼女は不意に立ち上がった。",
+      "sentence_meaning" : "She stood up unexpectedly.",
+      "word" : "不意に"
+   },
+   {
+      "frequency" : "2033",
+      "meaning" : "curse, spell",
+      "mnemonic" : "A mouth saying something over you that was put together to do harm, and the witch meant every word of it: のろい.",
+      "notes" : "",
+      "reading" : "のろい",
+      "sentence" : "魔女は恐ろしい呪いをかけました。",
+      "sentence_meaning" : "The witch cast a frightening curse.",
+      "word" : "呪い"
+   },
+   {
+      "frequency" : "2034",
+      "meaning" : "school class",
+      "mnemonic" : "Threads plaited into the one rope, and at a Japanese school that is your class for the year. First year, class two: くみ.",
+      "notes" : "",
+      "reading" : "くみ",
+      "sentence" : "彼は1年2組の生徒です。",
+      "sentence_meaning" : "He's a first-grade student in class 1-2.",
+      "word" : "組"
+   },
+   {
+      "frequency" : "2038",
+      "meaning" : "to dance",
+      "mnemonic" : "Both feet 足 busy and you finish the song standing exactly where you started it. She is out doing it most weekends: おどる.",
+      "notes" : "",
+      "reading" : "おどる",
+      "sentence" : "彼女はクラブで踊るのが好きです。",
+      "sentence_meaning" : "She likes to dance at the club.",
+      "word" : "踊る"
+   },
+   {
+      "frequency" : "2039",
+      "meaning" : "to wake (up), to come to one's senses",
+      "mnemonic" : "The eye 目 comes back on 覚 and everything behind it comes on with it. Half six, this morning: めざめる.",
+      "notes" : "起きる おきる is getting up out of bed. 目覚める is the waking itself, and it does coming to your senses about something.",
+      "reading" : "めざめる",
+      "sentence" : "今日は6時半に目覚めました。",
+      "sentence_meaning" : "Today I woke up at 6:30.",
+      "word" : "目覚める"
+   }
+]

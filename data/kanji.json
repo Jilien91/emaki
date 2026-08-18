@@ -1646,5 +1646,62 @@
     { "c": "阝", "name": "hill" },
     { "c": "昜", "name": "sun rising" }
   ]},
-  "鼻": { "meaning": "nose", "note": "The 自 nose shape sat on a stand. 自 was the original nose and got taken over to mean self, so this was built to replace it." }
+  "鼻": { "meaning": "nose", "note": "The 自 nose shape sat on a stand. 自 was the original nose and got taken over to mean self, so this was built to replace it." },
+  "午": { "meaning": "noon", "note": "A pestle drawn standing upright. It came to mark the middle of the day, and the horse in the old zodiac." },
+  "呪": { "meaning": "curse", "note": "口 a mouth on the left saying something over somebody. Words put together to do harm rather than good." },
+  "和": { "meaning": "harmony, Japanese", "parts": [
+    { "c": "禾", "name": "grain" },
+    { "c": "口", "name": "mouth" }
+  ]},
+  "固": { "meaning": "harden, firm", "parts": [
+    { "c": "囗", "name": "border" },
+    { "c": "古", "name": "old" }
+  ]},
+  "契": { "meaning": "pledge, contract", "note": "A tally stick with a knife taken to it, notched so that the two halves have to match. The agreement, and the proof of it." },
+  "宣": { "meaning": "proclaim", "note": "宀 a roof with the words laid out underneath it where everybody in the place can hear them." },
+  "崩": { "meaning": "crumble, collapse", "note": "山 a mountain sat on top of everything else, and the everything else giving way underneath it." },
+  "帯": { "meaning": "belt, carry with you", "note": "A sash with things hanging off it, drawn tied round the middle. Worn, and therefore carried about." },
+  "弾": { "meaning": "bullet, play strings", "parts": [
+    { "c": "弓", "name": "bow" },
+    { "c": "単", "name": "single" }
+  ]},
+  "志": { "meaning": "will, intention", "parts": [
+    { "c": "士", "name": "retainer" },
+    { "c": "心", "name": "heart" }
+  ]},
+  "挟": { "meaning": "hold between", "parts": [
+    { "c": "扌", "name": "hand" },
+    { "c": "夾", "name": "hold between" }
+  ]},
+  "携": { "meaning": "carry, portable", "note": "扌 a hand on the left with the thing held in it rather than left behind at home." },
+  "暴": { "meaning": "violent, expose", "note": "日 the sun up top with everything laid out underneath it and taking rough treatment." },
+  "歌": { "meaning": "song, sing", "note": "欠 an open mouth on the right, and on the left the sound coming out of it twice over." },
+  "永": { "meaning": "eternity, long", "note": "水 water with one more stroke on the top of it, a river that keeps on running. Long, and from there forever." },
+  "燃": { "meaning": "burn", "parts": [
+    { "c": "火", "name": "fire" },
+    { "c": "然", "name": "so, thus" }
+  ]},
+  "獄": { "meaning": "prison", "note": "犭 and 犬 two dogs with 言 speech held between them. The place where you are shut in and barked at." },
+  "祈": { "meaning": "pray", "parts": [
+    { "c": "礻", "name": "altar" },
+    { "c": "斤", "name": "axe" }
+  ]},
+  "精": { "meaning": "spirit, refined", "parts": [
+    { "c": "米", "name": "rice" },
+    { "c": "青", "name": "blue, fresh" }
+  ]},
+  "貫": { "meaning": "pierce, carry through", "note": "貝 money at the bottom with a string run straight through the middle of a whole stack of it." },
+  "越": { "meaning": "cross over, exceed", "note": "走 the run radical on the left, carrying on past wherever the line happened to be." },
+  "踊": { "meaning": "dance", "note": "足 the foot radical on the left, going up and down on the spot rather than forward." },
+  "鏡": { "meaning": "mirror", "note": "金 metal on the left, polished flat enough to hand you back your own face." },
+  "防": { "meaning": "prevent, defend", "parts": [
+    { "c": "阝", "name": "hill" },
+    { "c": "方", "name": "direction" }
+  ]},
+  "陰": { "meaning": "shade, behind the scenes", "note": "阝 a hill on the left with everything behind it out of the sun. The shaded side, and help that came from out of sight." },
+  "預": { "meaning": "deposit, entrust", "parts": [
+    { "c": "予", "name": "beforehand" },
+    { "c": "頁", "name": "head" }
+  ]},
+  "齢": { "meaning": "age", "note": "歯 teeth on the left, which is how you tell the age of a horse and once of a person." }
 }
