@@ -9,12 +9,28 @@
      off the top when it brings the answer box into view. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
 <title>Emaki</title>
-<!-- A real multi-resolution .ico holding 16px and 32px, which is what browsers
-     actually draw in a tab. It was previously a 1261x1247 PNG named .ico: it
+<!-- The brush E with the sakura, a simplification of the full app icon: the
+     enso, branch and seal in icon-source.png are lovely at 1024px and unreadable
+     at 16. A real multi-resolution .ico, holding 16/32/48/64, which is what a
+     browser actually draws in a tab. It was once a 1261x1247 PNG named .ico: it
      rendered, because browsers are forgiving, but it cost every visitor 2.4MB
-     and the browser's own downscale of an image that size is poor. The master
-     artwork is kept as icon-source.png to regenerate from. -->
-<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 32x32">
+     and the browser's own downscale of an image that size is poor.
+     Every size is declared rather than left to be probed, so nothing depends on
+     a file happening to sit at a conventional path. Sources for all variants,
+     light, dark, red and enso, are in the private repo's Emaki-Favicon-Pack. -->
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="icons/favicon-128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="icons/favicon-256x256.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<!-- theme_color and background_color in here are the app's own #15171c, not the
+     icon's white. They paint the browser chrome and the launch screen, so the
+     white a favicon generator defaults to would flash bright before a dark app. -->
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#15171c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
