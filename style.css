@@ -173,6 +173,32 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .statrow-score{font-size:14px;font-weight:600;}
 .statrow-streak{font-size:12px;color:var(--text-dim);}
 .statfoot{font-size:12px;color:var(--text-faint);margin-top:10px;}
+/* Pitch accent, drawn as a line above the morae. Borders rather than SVG or a
+   chart library: it has to sit inline with text at several sizes, and a border
+   inherits the font metrics for free. */
+.pitch{display:inline-flex;align-items:flex-end;line-height:1;
+  --pitch-line:var(--q-reading);}
+.pitch .mora{position:relative;padding-top:.62em;text-align:center;}
+.pitch .mora::before{content:"";position:absolute;left:0;right:0;
+  border-top:2px solid var(--pitch-line);}
+.pitch .high::before{top:.08em;}
+.pitch .low::before{top:.46em;}
+/* The vertical stroke where the line changes level. On a fall it belongs at the
+   right edge of the mora carrying the nucleus, on a rise at the left of the one
+   that starts high. */
+.pitch .mora.fall::after,.pitch .mora.rise::after{content:"";position:absolute;
+  top:.08em;height:.38em;border-left:2px solid var(--pitch-line);}
+.pitch .mora.fall::after{right:0;}
+.pitch .mora.rise::after{left:0;}
+/* Dashed, because it is not part of the word: it is what a following particle
+   would do. Heiban and an accent on the final mora are identical without it. */
+.pitch-tail{position:relative;width:.55em;align-self:stretch;}
+.pitch-tail::before{content:"";position:absolute;left:0;right:0;
+  border-top:2px dashed var(--pitch-line);}
+.pitch-tail.high::before{top:.08em;}
+.pitch-tail.low::before{top:.46em;}
+.pitch .accent-type{font-family:'Inter',sans-serif;font-size:.55em;
+  color:var(--text-faint);align-self:flex-end;margin-left:.4em;padding-bottom:.1em;}
 .audio-btn{
   border:none;background:none;cursor:pointer;padding:0 0 0 8px;
   font-size:15px;line-height:1;opacity:0.65;vertical-align:middle;

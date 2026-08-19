@@ -999,7 +999,7 @@ function revealMnemonic(which){
 // the other one is repeated here.
 function completedCard(item, askedType){
   const other = askedType === 'meaning'
-    ? `<div class="field"><div class="k">Reading</div><div class="v jp">${escapeHtml(item.reading)}</div></div>`
+    ? `<div class="field"><div class="k">Reading</div><div class="v">${renderReading(item)}</div></div>`
     : `<div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>`;
   return `
     ${other}
@@ -1609,7 +1609,7 @@ function renderItemDetail(){
   ${nav('dashboard')}
   <div class="bigword" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});">
     <span class="word-line">${escapeHtml(item.word)}${audioBtn('speakWord', item.id, 'Play word')}</span>
-    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
+    <div style="font-size:20px;color:var(--text-dim);margin-top:10px;">${renderReading(item)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
   ${renderKanjiParts(item.word)}
@@ -1689,7 +1689,92 @@ function renderLessons(){
   `;
 }
 
-// Shows what each kanji in the word is built from. Recognition aid only, 
+// ---- Pitch accent -------------------------------------------------------
+// Tokyo pitch accent, drawn over the reading. From data/pitch.json, built by
+// scripts/extract-pitch.pl out of UniDic, where the accent type is the mora
+// number carrying the nucleus and 0 means heiban, no drop at all.
+//
+// This exists because the audio cannot carry it. Heiban and odaka sound
+// identical in a word spoken alone, and every one of the 3,000 shipped mp3s is
+// a word spoken alone: the difference only appears on whatever follows. So the
+// distinction is drawn rather than pronounced, which is also the more useful
+// way round for a deck that explains things.
+//
+// 1390 of 1500 cards have a pattern. The rest are mostly set phrases with no
+// single accent to give, and they show nothing. A blank means not supplied and
+// must never be read as heiban.
+let PITCH = {};
+
+// Morae, not characters. A small kana rides on the one before it; っ, ん and ー
+// each count on their own. Checked against all 1500 readings in the deck: no
+// small vowels, no ー, one katakana reading, テレビ.
+const SMALL_KANA = 'ゃゅょぁぃぅぇぉゎャュョァィゥェォヮ';
+function splitMorae(reading){
+  const out = [];
+  for(const ch of reading){
+    if(out.length && SMALL_KANA.includes(ch)) out[out.length-1] += ch;
+    else out.push(ch);
+  }
+  return out;
+}
+
+// Which morae are high, for accent type `a` over `n` morae.
+//   0        low, then high all the way, and stays high onto the next word
+//   1        high on the first mora only, then low
+//   2..n     low, high up to the nucleus, low after it
+// The tail is what a following particle would do, and it is the only thing
+// separating heiban from an accent on the final mora.
+function pitchShape(a, n){
+  const high = [];
+  for(let i = 1; i <= n; i++){
+    if(a === 0)      high.push(i !== 1);
+    else if(a === 1) high.push(i === 1);
+    else             high.push(i !== 1 && i <= a);
+  }
+  return { high, tailHigh: a === 0, drops: a > 0 };
+}
+
+function pitchFor(id, reading){
+  const entry = PITCH[id];
+  if(!entry) return null;
+  const match = entry.find(e => e.reading === reading);
+  if(!match || !match.atypes || !match.atypes.length) return null;
+  // Coerced rather than trusted. These are numbers in the file, but a string
+  // "0" here would make every heiban word draw flat and low, which reads as a
+  // deliberate pattern rather than as a bug.
+  return match.atypes.map(Number).filter(n => Number.isInteger(n));
+}
+
+// A pure formatter, deliberately. It draws a reading it is given and decides
+// nothing about whether the reading should be on screen: that stays with
+// answerVisible and the sibling-question rules, which is where it can be
+// reasoned about.
+function renderReading(item, reading){
+  const r = reading || item.reading.split('・')[0].trim();
+  const atypes = pitchFor(item.id, r);
+  if(!atypes) return `<span class="jp">${escapeHtml(r)}</span>`;
+
+  const morae = splitMorae(r);
+  const shape = pitchShape(atypes[0], morae.length);
+  const cells = morae.map((m, i) => {
+    const isHigh = shape.high[i];
+    const next   = i + 1 < morae.length ? shape.high[i+1] : shape.tailHigh;
+    const turn   = isHigh !== next ? (isHigh ? ' fall' : ' rise') : '';
+    return `<span class="mora ${isHigh ? 'high' : 'low'}${turn}">${escapeHtml(m)}</span>`;
+  }).join('');
+  // The tail carries the heiban/odaka distinction, so it is never omitted.
+  const tail = `<span class="pitch-tail ${shape.tailHigh ? 'high' : 'low'}"></span>`;
+  // UniDic can offer more than one accepted pattern, commonest first. The extra
+  // ones are named rather than drawn: two overlapping lines would be unreadable.
+  const label = atypes.join(' or ');
+  const name  = atypes[0] === 0 ? 'heiban, no drop'
+              : atypes[0] === morae.length ? `drops after the word, mora ${atypes[0]}`
+              : `drops after mora ${atypes[0]}`;
+  return `<span class="pitch jp" title="Pitch accent ${label}: ${name}"
+    aria-label="${escapeHtml(r)}, pitch accent ${label}">${cells}${tail}<span class="accent-type">${label}</span></span>`;
+}
+
+// Shows what each kanji in the word is built from. Recognition aid only,
 // these aren't SRS items, they're context while the word is being taught.
 function renderKanjiParts(word){
   const chars = Array.from(word).filter(ch => KANJI[ch]);
@@ -1716,7 +1801,7 @@ function renderLessonStudy(){
   <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;text-align:center;">Lesson ${studyIndex+1} of ${batch.length}</div>
   <div class="bigword" style="background:var(--genin-bg);color:var(--genin);">
     <span class="word-line">${escapeHtml(item.word)}${audioBtn('speakWord', item.id, 'Play word')}</span>
-    <div class="jp" style="font-size:20px;color:var(--text-dim);margin-top:10px;">${escapeHtml(item.reading)}</div>
+    <div style="font-size:20px;color:var(--text-dim);margin-top:10px;">${renderReading(item)}</div>
   </div>
   <div class="field"><div class="k">Meaning</div><div class="v">${escapeHtml(item.meaning)}</div></div>
   ${renderKanjiParts(item.word)}
@@ -1769,7 +1854,7 @@ function renderLessonQuiz(){
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(lessonState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
-      ${answerVisible(lessonState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(q.type==='meaning'?item.meaning:item.reading)}</div>` : ''}
+      ${answerVisible(lessonState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(item.meaning) : renderReading(item)}</div>` : ""}
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${answerVisible(lessonState) ? '' : `
@@ -2116,7 +2201,7 @@ function renderReview(){
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
-      ${answerVisible(reviewState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
+      ${answerVisible(reviewState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
       ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(reviewState)?'margin-top:6px;':''}">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${settings.showSrsIndicator && stageChange ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[stageChange.from]} → ${STAGE_NAMES[stageChange.to]}</p>` : ''}
@@ -2160,7 +2245,7 @@ function renderExtraStudy(){
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(extraStudyState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
-      ${answerVisible(extraStudyState) ? `<div class="v ${q.type==='reading'?'jp':''}">${escapeHtml(answer)}</div>` : ''}
+      ${answerVisible(extraStudyState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
     ${answerVisible(extraStudyState) ? '' : `
@@ -2279,6 +2364,15 @@ async function init(){
     // Same again for the audio manifest, which is empty until gen-audio.pl has
     // been run and partial while it is being run. Either way the app falls back
     // to the device voice, so this must never be allowed to throw.
+    // Same again for the pitch data: a card with no entry simply shows a plain
+    // reading, so a failure here costs the pattern and nothing else.
+    try{
+      const pres = await fetch('data/pitch.json');
+      if(pres.ok){
+        const pitch = await pres.json();
+        if(pitch && pitch.pitch) PITCH = pitch.pitch;
+      }
+    }catch(e){ PITCH = {}; }
     try{
       const ares = await fetch('data/audio.json');
       if(ares.ok){

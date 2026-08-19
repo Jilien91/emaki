@@ -132,7 +132,10 @@ while (my $line = <$lf>) {
     # A comma inside aType is UniDic listing alternative patterns for one
     # lexeme, commonest first. That is one answer, not two rows disagreeing,
     # and treating it as a disagreement invents conflicts that do not exist.
-    my @atypes = $atype eq '*' ? () : grep { /^\d+$/ } split /,/, $atype;
+    # 0+ so these serialise as JSON numbers. As strings they encode to ["0"],
+    # and the app's `a === 0` is then false for heiban, which draws every word
+    # flat and low: the one pattern where being wrong looks deliberate.
+    my @atypes = $atype eq '*' ? () : map { 0 + $_ } grep { /^\d+$/ } split /,/, $atype;
 
     # NFKC-generated duplicates of an entry share its lid, so keying on lid
     # collapses them instead of counting the same lexeme twice.
