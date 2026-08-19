@@ -3,6 +3,7 @@ use warnings;
 use JSON::PP;
 use File::Path qw(make_path);
 use File::Temp qw(tempfile);
+use File::Copy qw(copy);
 
 # Generates word audio with Azure's neural Japanese voices, so the app ships its
 # own sound instead of depending on what a user has installed. The device voices
@@ -204,6 +205,11 @@ sub synthesise {
     print $tfh $ssml;
     close $tfh;
 
+    # Download beside the target, not onto it. Only a verified mp3 is ever moved
+    # into place, so a failed attempt cannot damage the file already there.
+    my ($ofh, $tmp_out) = tempfile(SUFFIX => '.mp3', UNLINK => 1);
+    close $ofh;
+
     for my $attempt (1 .. $MAX_ATTEMPTS) {
         my @cmd = (
             'curl', '-sS', '-f', '-X', 'POST', $ENDPOINT,
@@ -212,11 +218,20 @@ sub synthesise {
             '-H', "X-Microsoft-OutputFormat: $FORMAT",
             '-H', 'User-Agent: emaki-gen-audio',
             '--data-binary', "\@$tname",
-            '-o', $path,
+            '-o', $tmp_out,
         );
-        return 1 if system(@cmd) == 0 && looks_like_mp3($path);
+        if (system(@cmd) == 0 && looks_like_mp3($tmp_out)) {
+            # Verified first, moved second. copy rather than rename because the
+            # temp file may be on another filesystem.
+            copy($tmp_out, $path) or die "Could not put $path in place: $!\n";
+            return 1;
+        }
 
-        unlink $path if -e $path;   # never leave a truncated file behind
+        # Never leave a truncated file behind, but never destroy a good one
+        # either. Writing straight to $path means a failed run deletes the mp3
+        # that was already there, which is how a dry test of --id with a bogus
+        # key removed a shipped card's audio and committed the hole.
+        unlink $tmp_out if -e $tmp_out;
         if ($attempt < $MAX_ATTEMPTS) {
             my $wait = 2 ** $attempt;   # throttling is the usual cause
             warn "  retry $attempt in ${wait}s\n";
