@@ -189,7 +189,7 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .pitch .mora.fall::after,.pitch .mora.rise::after{content:"";position:absolute;
   top:.08em;height:.38em;border-left:2px solid var(--pitch-line);}
 .pitch .mora.fall::after{right:0;}
-.pitch .mora.rise::after{left:0;}
+.pitch .mora.rise::after{right:0;}   /* a rise is a boundary after this mora, same as a fall */
 /* Dashed, because it is not part of the word: it is what a following particle
    would do. Heiban and an accent on the final mora are identical without it. */
 .pitch-tail{position:relative;width:.55em;align-self:stretch;}
@@ -197,8 +197,10 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   border-top:2px dashed var(--pitch-line);}
 .pitch-tail.high::before{top:.08em;}
 .pitch-tail.low::before{top:.46em;}
-.pitch .accent-type{font-family:'Inter',sans-serif;font-size:.55em;
-  color:var(--text-faint);align-self:flex-end;margin-left:.4em;padding-bottom:.1em;}
+.pitch .accent-type{font-family:'Inter',sans-serif;font-size:.6em;
+  color:var(--text-dim);align-self:flex-end;margin-left:.4em;padding-bottom:.1em;}
+/* Separator between a card's two readings, e.g. 何 なに・なん. */
+.pitch-sep{color:var(--text-faint);margin:0 .25em;}
 .audio-btn{
   border:none;background:none;cursor:pointer;padding:0 0 0 8px;
   font-size:15px;line-height:1;opacity:0.65;vertical-align:middle;

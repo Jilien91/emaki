@@ -1750,7 +1750,17 @@ function pitchFor(id, reading){
 // answerVisible and the sibling-question rules, which is where it can be
 // reasoned about.
 function renderReading(item, reading){
-  const r = reading || item.reading.split('・')[0].trim();
+  // Called with no reading, draw all of them. Three cards carry two, 何 なに・なん,
+  // 四 よん・し and 七 なな・しち, and taking [0] here silently dropped the second
+  // everywhere a reading appears. Each alternative has its own accent, so each
+  // gets its own drawing.
+  if(reading === undefined){
+    const parts = item.reading.split('・').map(s => s.trim()).filter(Boolean);
+    return parts.map(p => renderReading(item, p))
+                .join('<span class="pitch-sep">・</span>');
+  }
+
+  const r = reading;
   const atypes = pitchFor(item.id, r);
   if(!atypes) return `<span class="jp">${escapeHtml(r)}</span>`;
 
@@ -1759,19 +1769,30 @@ function renderReading(item, reading){
   const cells = morae.map((m, i) => {
     const isHigh = shape.high[i];
     const next   = i + 1 < morae.length ? shape.high[i+1] : shape.tailHigh;
+    // The turn is always a boundary *after* this mora, whether it goes up or
+    // down, so both strokes belong on its right edge.
     const turn   = isHigh !== next ? (isHigh ? ' fall' : ' rise') : '';
     return `<span class="mora ${isHigh ? 'high' : 'low'}${turn}">${escapeHtml(m)}</span>`;
   }).join('');
   // The tail carries the heiban/odaka distinction, so it is never omitted.
   const tail = `<span class="pitch-tail ${shape.tailHigh ? 'high' : 'low'}"></span>`;
-  // UniDic can offer more than one accepted pattern, commonest first. The extra
-  // ones are named rather than drawn: two overlapping lines would be unreadable.
-  const label = atypes.join(' or ');
-  const name  = atypes[0] === 0 ? 'heiban, no drop'
-              : atypes[0] === morae.length ? `drops after the word, mora ${atypes[0]}`
-              : `drops after mora ${atypes[0]}`;
-  return `<span class="pitch jp" title="Pitch accent ${label}: ${name}"
-    aria-label="${escapeHtml(r)}, pitch accent ${label}">${cells}${tail}<span class="accent-type">${label}</span></span>`;
+  // UniDic can offer several accepted patterns in priority order, not frequency
+  // order. Only the first is drawn, because two overlapping lines are
+  // unreadable, so the label has to say which one that was: 144 of the 1393
+  // readings here have an alternative, which is too many to leave ambiguous.
+  const first = atypes[0];
+  const rest  = atypes.slice(1);
+  const label = rest.length ? `${first} (also ${rest.join(', ')})` : String(first);
+  const name  = first === 0 ? 'heiban, no drop'
+              : first === morae.length ? `drops after the word, on mora ${first}`
+              : `drops after mora ${first}`;
+  const spoken = `${r}, primary pitch accent ${first}, ${name}`
+               + (rest.length ? `. Also accepted: ${rest.join(', ')}` : '');
+  // role="img" because ARIA forbids naming a generic span, so without it a
+  // screen reader would drop the label and read the bare morae with a stray
+  // number after them.
+  return `<span class="pitch jp" role="img" title="${escapeHtml(spoken)}"
+    aria-label="${escapeHtml(spoken)}">${cells}${tail}<span class="accent-type" aria-hidden="true">${escapeHtml(label)}</span></span>`;
 }
 
 // Shows what each kanji in the word is built from. Recognition aid only,
