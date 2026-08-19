@@ -15,6 +15,12 @@ use File::Temp qw(tempfile);
 #   perl scripts/gen-audio.pl --limit 20    # both voices, first 20 words
 #   perl scripts/gen-audio.pl               # both voices, all 1500
 #   perl scripts/gen-audio.pl --only f      # just the female set
+#   perl scripts/gen-audio.pl --id 30       # one card, both voices, replaced
+#
+# --id is the one to reach for after hearing a word come out wrong: fix its
+# entry in data/pronunciation.json, regenerate that card, listen again. It
+# implies --force, because naming a card means replacing it, and it dies on an
+# id that matches no card rather than quietly doing less than you asked.
 #
 # Two voices, written to audio/f/<id>.mp3 and audio/m/<id>.mp3, so a learner can
 # pick. Resumable: a file already present is skipped, so an interrupted run
@@ -63,6 +69,7 @@ my $FORMAT = 'audio-24khz-48kbitrate-mono-mp3';
 my $LIMIT  = 0;      # 0 = every card
 my $FORCE  = 0;
 my $ONLY   = '';     # '' = every voice
+my @IDS;             # empty = every card; --id is repeatable
 my $OUTDIR = 'audio';
 my $MANIFEST = 'data/audio.json';
 my $PRONUNCIATION = 'data/pronunciation.json';
@@ -70,7 +77,8 @@ my $MAX_ATTEMPTS = 4;
 
 while (@ARGV) {
     my $arg = shift @ARGV;
-    if    ($arg eq '--limit')  { $LIMIT  = shift @ARGV // die "--limit needs a value\n" }
+    if    ($arg eq '--id')     { push @IDS, (shift @ARGV // die "--id needs a value\n") }
+    elsif ($arg eq '--limit')  { $LIMIT  = shift @ARGV // die "--limit needs a value\n" }
     elsif ($arg eq '--only')   { $ONLY   = shift @ARGV // die "--only needs a value\n" }
     elsif ($arg eq '--format') { $FORMAT = shift @ARGV // die "--format needs a value\n" }
     elsif ($arg eq '--set')    { $SET    = shift @ARGV // die "--set needs a value\n" }
@@ -82,6 +90,10 @@ die "--set $SET is not one of: " . join(', ', sort keys %VOICE_SETS) . "\n"
 my %VOICES = %{ $VOICE_SETS{$SET} };
 die "--only $ONLY is not one of: " . join(', ', sort keys %VOICES) . "\n"
     if $ONLY && !$VOICES{$ONLY};
+die "--id and --limit do not make sense together.\n" if @IDS && $LIMIT;
+for my $id (@IDS) {
+    die "--id $id is not a card number.\n" unless $id =~ /^[0-9]+$/;
+}
 
 my $KEY    = $ENV{AZURE_SPEECH_KEY}    or die "AZURE_SPEECH_KEY is not set.\n";
 my $REGION = $ENV{AZURE_SPEECH_REGION} or die "AZURE_SPEECH_REGION is not set.\n";
@@ -205,6 +217,28 @@ sub synthesise {
 # ---------------------------------------------------------------------------
 
 my @todo = @$vocab;
+# --id is how you fix one card after hearing it come out wrong. Before it, the
+# nearest thing was --limit 30 --force, which regenerates thirty cards to
+# replace one, and the difference matters once pitch accent overrides start
+# being added one at a time.
+#
+# It dies rather than warns on an id that matches nothing, and on a duplicate.
+# The house rule is that a script reporting fewer changes than expected should
+# stop: silently regenerating two cards when three were named would be found
+# much later, by ear, on the card that was quietly skipped.
+if (@IDS) {
+    my %want;
+    for my $id (@IDS) {
+        die "--id $id given twice.\n" if $want{$id}++;
+    }
+    @todo = grep { $want{ $_->{id} } } @$vocab;
+    if (@todo != keys %want) {
+        my %got = map { $_->{id} => 1 } @todo;
+        my @missing = sort { $a <=> $b } grep { !$got{$_} } keys %want;
+        die "No card with id: " . join(', ', @missing) . "\n";
+    }
+    $FORCE = 1;   # naming a card means replacing it; it already exists
+}
 @todo = @todo[0 .. $LIMIT - 1] if $LIMIT && $LIMIT < @todo;
 my @keys = $ONLY ? ($ONLY) : (sort keys %VOICES);
 
