@@ -122,6 +122,18 @@ if (-e $PRONUNCIATION) {
     $pron = JSON::PP->new->decode(do { local $/; <$pfh> });
     close $pfh;
     my $n = scalar grep { !/^_/ } keys %$pron;
+    # The file carries _verified to say whether anyone has established what
+    # Azure actually does with this notation. While that is false, an entry in
+    # here is a guess that would be baked into audio and only caught by ear,
+    # months later, on a card nobody replays. Dying is the point: a warning
+    # would be read as documentation and stepped over.
+    if ($n && !$pron->{_verified}) {
+        die "$PRONUNCIATION has $n override" . ($n == 1 ? '' : 's')
+          . " but _verified is false.\n"
+          . "Azure's ja-JP phoneme notation has not been established for these voices yet.\n"
+          . "Synthesise the card several ways with --id, listen in both voices, then set\n"
+          . "_verified true and record what was actually heard.\n";
+    }
     print "$PRONUNCIATION: $n pronunciation override" . ($n == 1 ? '' : 's') . "\n" if $n;
 }
 

@@ -1,5 +1,7 @@
 {
-   "_note" : "Per-card pronunciation overrides for scripts/gen-audio.pl, keyed by card id. Values are Azure's ja-JP sapi phone set: katakana, with ' immediately before the mora carrying the accent nucleus. This is the escape hatch for pitch accent. Add an entry only after hearing a word come out wrong, and regenerate that card with --force. Keys starting with _ are ignored.",
-   "_example" : "\"8\": \"ジ'ン\" would force the accent on the first mora of じん.",
-   "_why_not_bulk" : "Azure documents this notation with three examples and no rules, so a 1500-word accent layer applied on faith could easily make more words wrong than it fixes. The voices carry their own accent dictionaries and are usually right for common vocabulary, which is what this deck is. Corrections go here one at a time, each one heard first."
+   "_note" : "Per-card pronunciation strings for scripts/gen-audio.pl, keyed by card id, passed verbatim into Azure's <phoneme alphabet=\"sapi\"> for that card. This is the escape hatch for pitch accent.",
+   "_status" : "UNVERIFIED. Azure's ja-JP notation is documented with three examples and no rules, and the examples are visibly damaged: 合成 is transcribed ゴ'ウセ, a mora short of ごうせい. Apostrophe placement and how to encode heiban are both unestablished for the DragonHD voices this deck ships. Do not add an entry until its exact string has been synthesised and heard in both voices.",
+   "_verified" : false,
+   "_why_empty" : "Earlier versions of this file stated a placement rule and gave a worked example that contradicted each other, one saying the apostrophe precedes the accent nucleus and the other placing it after. Both are removed rather than one being guessed at: the next person to add an entry would follow whichever half they read first. Candidate strings to test belong in the collab notes, not here.",
+   "_how_to_verify" : "Synthesise one card several ways with --id, listen to both voices, and only then record what was heard. When the notation is established, set _verified true, write the real rule into _note, and add the first heard override in the same commit."
 }
