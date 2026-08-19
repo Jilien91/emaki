@@ -115,6 +115,9 @@ my $rows = 0;
 while (my $line = <$lf>) {
     $rows++;
     next unless $line =~ /\S/;
+    # lemma_id is the last column, so without this it carries the line ending
+    # and every comparison against it fails in a way that prints identically.
+    $line =~ s/\r?\n\z//;
     # Cheap pre-filter: the surface is the first field, so a row whose line does
     # not start with a wanted word cannot match. Saves parsing 879k rows fully.
     my ($surface) = $line =~ /^([^,]*)/;
@@ -177,8 +180,21 @@ for my $w (@wanted) {
     my $tag   = sprintf 'card %-4d %s %s = %s', $w->{id}, $w->{word}, $w->{reading}, $w->{meaning};
     my $okey  = "$w->{id}:$w->{reading}";
 
+    # A decision to omit wins over anything UniDic offers. Two different reasons
+    # land here: a multi-token phrase with no entry at all, and a word like the
+    # honorific さん where entries exist but every one of them is a different
+    # word. Both mean no pattern, so both stop here.
+    if ($omit->{$okey}) {
+        push @omitted, $tag;
+        # Drift is still worth seeing, just not worth dying over: an omission
+        # made because nothing matched should be revisited if something now
+        # does, while one made because the matches were wrong will always have
+        # matches. Reported, not fatal, and the reason in the file says which.
+        push @stale_omissions, $tag if $found && grep { @{ $_->{atypes} } } values %$found;
+        next;
+    }
+
     if (!$found) {
-        if ($omit->{$okey}) { push @omitted, $tag; next }
         push @no_row, $tag;
         next;
     }
@@ -186,7 +202,6 @@ for my $w (@wanted) {
     my @cands = grep { @{ $_->{atypes} } } values %$found;
     if (!@cands) {
         # UniDic knows the word but records no accent for it.
-        if ($omit->{$okey}) { push @omitted, $tag; next }
         push @no_atype, $tag;
         next;
     }
@@ -215,10 +230,16 @@ for my $w (@wanted) {
         # A recorded decision names a lexeme, not a number. Checking the number
         # alone would let a different homograph that happens to share it make a
         # stale note look valid.
-        my ($pick) = grep { $_->{lemma_id} eq $decided->{lemma_id} } @cands;
+        # lemma_id alone is not always enough: 余り carries lemma_id 1031 as both
+        # the adverb at [0] and the na-adjective at [3]. The decision names the
+        # accent too, and both must still be there or the note is stale.
+        my $want = join ',', @{ $decided->{atypes} };
+        my ($pick) = grep { $_->{lemma_id} eq $decided->{lemma_id}
+                            && join(',', @{ $_->{atypes} }) eq $want } @cands;
         unless ($pick) {
-            push @conflicts, "$tag: override names lemma_id $decided->{lemma_id}, "
-                           . "no longer among " . join(', ', map { $_->{lemma_id} } @cands);
+            push @conflicts, "$tag: override names lemma_id $decided->{lemma_id} at [$want], "
+                . "no longer among " . join(', ',
+                    map { sprintf '%s[%s]', $_->{lemma_id}, join(',', @{ $_->{atypes} }) } @cands);
             next;
         }
         push @{ $pitch{ $w->{id} } },
@@ -263,7 +284,9 @@ printf "\nresolved: %d cards\nomitted (expected): %d\nconflicts: %d\n"
     scalar @missing, scalar @no_row, scalar @no_atype;
 
 if (@stale_omissions) {
-    print "\nThese are on the expected-omissions list but now resolve. Remove them:\n";
+    print "\nOmitted, but UniDic does hold accent data for these. Expected where the\n"
+        . "recorded reason is that every candidate is a different word, worth a look\n"
+        . "where it is that nothing matched:\n";
     print "  $_\n" for @stale_omissions;
 }
 if (@conflicts) {
@@ -271,7 +294,7 @@ if (@conflicts) {
     print "  $_\n" for @conflicts;
 }
 if (@missing) {
-    my $n = @missing > 40 ? 40 : @missing;
+    my $n = scalar @missing;   # all of them: the list exists to be acted on
     print "\nNo accent available. A multi-token phrase belongs on the omissions list;\n"
         . "a single word here deserves investigating before it is written off:\n";
     print "  $_\n" for @missing[0 .. $n - 1];
@@ -282,7 +305,7 @@ die "\nRefusing to write $OUT while " . (scalar @conflicts) . " conflict(s) and 
   . (scalar @missing) . " unmatched reading(s) remain, and "
   . (scalar @stale_omissions) . " stale omission(s).\n"
   . "Record each decision in $OVERRIDES with its reason, then rerun.\n"
-    if @conflicts || @missing || @stale_omissions;
+    if @conflicts || @missing;
 
 if ($DRY) { print "\n--dry-run: not writing $OUT\n"; exit 0 }
 
