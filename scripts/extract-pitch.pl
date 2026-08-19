@@ -58,6 +58,7 @@ my $DRY        = 0;
 my ($C_SURFACE, $C_KANA, $C_ATYPE)   = (0, 24, 28);
 my ($C_POS1, $C_POS2, $C_POS3, $C_POS4) = (4, 5, 6, 7);
 my ($C_LEMMA, $C_GOSHU, $C_LID, $C_LEMMA_ID) = (11, 16, 31, 32);
+my ($C_CTYPE, $C_CFORM) = (8, 9);
 
 while (@ARGV) {
     my $a = shift @ARGV;
@@ -94,7 +95,8 @@ for my $card (@$vocab) {
     for my $r (@readings) {
         $r =~ s/^\s+|\s+$//g;
         my $key = $card->{word} . "\t" . to_katakana($r);
-        push @wanted, { id => $card->{id}, word => $card->{word}, reading => $r, key => $key };
+        push @wanted, { id => $card->{id}, word => $card->{word}, reading => $r,
+                        meaning => $card->{meaning}, key => $key };
         $queries{$key} = undef;
     }
 }
@@ -138,6 +140,8 @@ while (my $line = <$lf>) {
         pos      => [ grep { defined && $_ ne '*' } @f[$C_POS1, $C_POS2, $C_POS3, $C_POS4] ],
         lemma    => $f[$C_LEMMA] // '',
         goshu    => $f[$C_GOSHU] // '',
+        ctype    => $f[$C_CTYPE] // '',
+        cform    => $f[$C_CFORM] // '',
         lid      => $lid,
         lemma_id => $f[$C_LEMMA_ID] // '',
     };
@@ -168,7 +172,9 @@ my $proper = $ov->{_proper_nouns} || {};
 my (%pitch, @conflicts, @no_row, @no_atype, @omitted, @stale_omissions);
 for my $w (@wanted) {
     my $found = $seen{ $w->{key} };
-    my $tag   = "$w->{word} $w->{reading} (card $w->{id})";
+    # The meaning is on the line because it is what decides these: which lexeme
+    # a card intends is a question about the card, not about the dictionary.
+    my $tag   = sprintf 'card %-4d %s %s = %s', $w->{id}, $w->{word}, $w->{reading}, $w->{meaning};
     my $okey  = "$w->{id}:$w->{reading}";
 
     if (!$found) {
@@ -197,6 +203,14 @@ for my $w (@wanted) {
         next;
     }
 
+    # The same trick again for classical Japanese. 赤い has three rows: the
+    # modern adjective in two inflections, both aType 0, and a 文語形容詞-ク
+    # literary form at aType 1. Same lemma, same surface, different century.
+    # A beginner deck teaches the modern one, so drop 文語 rows when a modern
+    # row exists, and never when it is all there is.
+    my @modern = grep { $_->{ctype} !~ /^文語/ } @cands;
+    @cands = @modern if @modern && @modern != @cands;
+
     if (my $decided = $ov->{$okey}) {
         # A recorded decision names a lexeme, not a number. Checking the number
         # alone would let a different homograph that happens to share it make a
@@ -212,18 +226,32 @@ for my $w (@wanted) {
         next;
     }
 
-    my %distinct = map { join(',', @{ $_->{atypes} }) => $_ } @cands;
+    my %distinct = map { join(',', @{ $_->{atypes} }) => 1 } @cands;
     if (keys %distinct > 1) {
+        # Every candidate, not one per accent value. Two lexemes can share an
+        # accent, and collapsing on it hides the one that answers the question:
+        # あれ has 代名詞 and 動詞 rows both at [0], and only the pronoun is the
+        # word on the card.
+        # One line per lexeme, not per inflected row: 居る appears half a dozen
+        # times across its conjugations and they are all the same decision. The
+        # lemma is what tells 居る from 要る from 射る, which is the whole
+        # question, so it goes in front.
+        my %byLexeme;
+        $byLexeme{ $_->{lemma_id} . '|' . join(',', @{ $_->{atypes} }) } //= $_ for @cands;
         push @conflicts, "$tag: " . join('  |  ',
-            map { sprintf '[%s] %s %s', join(',', @{ $distinct{$_}{atypes} }),
-                  join('/', @{ $distinct{$_}{pos} }) || '?', $distinct{$_}{lemma_id} }
-            sort keys %distinct);
+            map { sprintf '%s [%s] %s %s', $_->{lemma}, join(',', @{ $_->{atypes} }),
+                  join('/', @{ $_->{pos} }) || '?', $_->{lemma_id} }
+            sort { join(',', @{ $a->{atypes} }) cmp join(',', @{ $b->{atypes} })
+                   || $a->{lemma_id} <=> $b->{lemma_id} } values %byLexeme);
         next;
     }
     # Bidirectional: something on the omissions list that now resolves means the
     # list is out of date, and a silently shrinking allowlist hides drift.
     push @stale_omissions, $tag if $omit->{$okey};
-    my ($only) = values %distinct;
+    # %distinct is now a set of accent strings, so take the lexeme from the
+    # candidates themselves. They all agree on the accent at this point; the
+    # lemma_id is recorded so a later run can tell if the entry has changed.
+    my ($only) = @cands;
     push @{ $pitch{ $w->{id} } },
         { reading => $w->{reading}, atypes => $only->{atypes}, lemma_id => $only->{lemma_id} };
 }
