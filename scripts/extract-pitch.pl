@@ -223,8 +223,14 @@ for my $w (@wanted) {
     # literary form at aType 1. Same lemma, same surface, different century.
     # A beginner deck teaches the modern one, so drop 文語 rows when a modern
     # row exists, and never when it is all there is.
-    my @modern = grep { $_->{ctype} !~ /^文語/ } @cands;
-    @cands = @modern if @modern && @modern != @cands;
+    # Only within a lexeme, never across them. 赤い's literary 文語形容詞-ク row
+    # and its modern one share a lemma_id, so dropping the classical form there
+    # is choosing a century, not a word. Dropping every 文語 row whenever any
+    # modern row exists would let an unrelated modern homograph silently
+    # suppress a literary lexeme that was the answer.
+    my %modern_lemmas;
+    $modern_lemmas{ $_->{lemma_id} } = 1 for grep { $_->{ctype} !~ /^文語/ } @cands;
+    @cands = grep { $_->{ctype} !~ /^文語/ || !$modern_lemmas{ $_->{lemma_id} } } @cands;
 
     if (my $decided = $ov->{$okey}) {
         # A recorded decision names a lexeme, not a number. Checking the number

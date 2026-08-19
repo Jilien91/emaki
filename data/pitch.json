@@ -1,5 +1,5 @@
 {
-   "_built" : "Wed Aug 19 18:12:54 2026 UTC",
+   "_built" : "Wed Aug 19 18:31:49 2026 UTC",
    "_meaning" : "atype is the mora number carrying the accent nucleus; 0 is heiban",
    "_source" : "UniDic 3.1.0 (NINJAL, BSD), field aType",
    "pitch" : {
@@ -291,7 +291,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "10701",
+            "lemma_id" : "10702",
             "reading" : "ぐうぜん"
          }
       ],
@@ -925,7 +925,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "9483",
+            "lemma_id" : "9481",
             "reading" : "きらい"
          }
       ],
@@ -934,7 +934,7 @@
             "atypes" : [
                "3"
             ],
-            "lemma_id" : "35762",
+            "lemma_id" : "35763",
             "reading" : "まちがい"
          }
       ],
@@ -2254,7 +2254,7 @@
             "atypes" : [
                "3"
             ],
-            "lemma_id" : "32685",
+            "lemma_id" : "32688",
             "reading" : "ふくめる"
          }
       ],
@@ -2362,7 +2362,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "23451",
+            "lemma_id" : "23449",
             "reading" : "ちがい"
          }
       ],
@@ -2391,7 +2391,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "5996",
+            "lemma_id" : "5998",
             "reading" : "かおり"
          }
       ],
@@ -2544,7 +2544,7 @@
             "atypes" : [
                "3"
             ],
-            "lemma_id" : "2267",
+            "lemma_id" : "2268",
             "reading" : "いっぽう"
          }
       ],
@@ -2789,7 +2789,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "27920",
+            "lemma_id" : "28085",
             "reading" : "なん"
          }
       ],
@@ -3775,7 +3775,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "24648",
+            "lemma_id" : "24644",
             "reading" : "つづき"
          }
       ],
@@ -3949,7 +3949,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "28034",
+            "lemma_id" : "28032",
             "reading" : "ならべる"
          }
       ],
@@ -4181,7 +4181,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "41327",
+            "lemma_id" : "41336",
             "reading" : "わらい"
          }
       ],
@@ -4665,7 +4665,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "26854",
+            "lemma_id" : "27373",
             "reading" : "どれ"
          }
       ],
@@ -5049,7 +5049,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "1215",
+            "lemma_id" : "1216",
             "reading" : "ある"
          }
       ],
@@ -5334,7 +5334,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "22342",
+            "lemma_id" : "22343",
             "reading" : "ただ"
          }
       ],
@@ -5352,7 +5352,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "22342",
+            "lemma_id" : "22343",
             "reading" : "ただ"
          }
       ],
@@ -5634,7 +5634,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "21393",
+            "lemma_id" : "21394",
             "reading" : "その"
          }
       ],
@@ -5733,7 +5733,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "912",
+            "lemma_id" : "911",
             "reading" : "あの"
          }
       ],
@@ -7446,7 +7446,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "2231",
+            "lemma_id" : "2230",
             "reading" : "いったい"
          }
       ],
@@ -7731,7 +7731,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "198530",
+            "lemma_id" : "292056",
             "reading" : "ちゃん"
          }
       ],
@@ -8022,7 +8022,7 @@
                "1",
                "2"
             ],
-            "lemma_id" : "24536",
+            "lemma_id" : "24534",
             "reading" : "つく"
          }
       ],
@@ -8415,7 +8415,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "196391",
+            "lemma_id" : "33341",
             "reading" : "ぶじ"
          }
       ],
@@ -8815,7 +8815,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "64251",
+            "lemma_id" : "31268",
             "reading" : "ひく"
          }
       ],
@@ -9107,7 +9107,7 @@
                "2",
                "3"
             ],
-            "lemma_id" : "12749",
+            "lemma_id" : "12752",
             "reading" : "こたえ"
          }
       ],
@@ -9190,7 +9190,7 @@
             "atypes" : [
                "1"
             ],
-            "lemma_id" : "33236",
+            "lemma_id" : "33543",
             "reading" : "ぶん"
          }
       ],
@@ -9272,7 +9272,7 @@
             "atypes" : [
                "3"
             ],
-            "lemma_id" : "1663",
+            "lemma_id" : "1662",
             "reading" : "いきおい"
          }
       ],
@@ -11930,7 +11930,7 @@
             "atypes" : [
                "0"
             ],
-            "lemma_id" : "10567",
+            "lemma_id" : "10568",
             "reading" : "くれる"
          }
       ],
