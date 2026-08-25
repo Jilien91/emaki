@@ -575,24 +575,47 @@ function replenishStreakSaves(){
 }
 
 // Spends kunai on days you missed, so studyStreak() reads them as covered.
-// Only bridges gaps that sit between earlier activity and today. It will never
-// spend one to invent a streak you never had.
+//
+// Only ever to rescue the *current* streak, and only when the whole gap can be
+// bridged. Two rules, both learned from getting it wrong:
+//
+// It used to walk back through the entire history hunting for any uncovered
+// day, so a single old gap silently ate every kunai the user would ever earn.
+// Lasz reported losing them while studying daily, and that was why: he had
+// nineteen unbroken days and the kunai went on a gap twenty days back, which no
+// amount of studying could ever repair.
+//
+// And it used to spend before checking the gap could be closed. A two-day
+// absence covered yesterday, ran out, and left the streak broken anyway: the
+// kunai gone and nothing bought with it.
 function applyStreakSaves(){
-  if(activityDates.length === 0) return;
-  const earliest = activityDates.slice().sort()[0];
+  if(activityDates.length === 0 || streakSaves.count <= 0) return;
+
   const covered = new Set(activityDates.concat(streakSaves.savedDates));
   let d = addDays(new Date(), -1);
-  let guard = 0;
-  while(streakSaves.count > 0 && guard < 40){
-    guard++;
-    const key = dateKey(d);
-    if(key < earliest) break;      // nothing before this to keep alive
-    if(covered.has(key)){ d = addDays(d, -1); continue; }
-    streakSaves.count--;
-    streakSaves.savedDates.push(key);
-    covered.add(key);
+
+  // Yesterday is covered, so nothing is at risk. This is the ordinary case for
+  // anyone studying regularly, and it must cost them nothing.
+  if(covered.has(dateKey(d))) return;
+
+  // Collect the run of missed days without touching state. One more than we
+  // hold is enough to know the gap is too wide.
+  const gap = [];
+  while(gap.length <= streakSaves.count && !covered.has(dateKey(d))){
+    gap.push(dateKey(d));
     d = addDays(d, -1);
   }
+  if(gap.length > streakSaves.count) return;   // cannot bridge it, so don't try
+  // Something has to be on the far side, or there is no streak to reconnect to
+  // and a kunai would buy nothing. Tested against covered rather than activity
+  // so an earlier save counts, the same way studyStreak() reads it.
+  if(!covered.has(dateKey(d))) return;
+
+  streakSaves.count -= gap.length;
+  streakSaves.savedDates.push(...gap);
+  // Set here rather than trusting replenishStreakSaves to have just run: the
+  // wait for the next one starts when this one is actually spent.
+  streakSaves.lastEarned = todayKey();
 }
 
 function refreshStreakSaves(){
@@ -1645,9 +1668,11 @@ function renderInfo(){
     <b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors</b>, who kindly
     gave permission for the word list to be used here.<br><br>
     SRS intervals follow WaniKani's timing: 4h → 8h → 1d → 2d → 1wk → 2wk → 1mo → 4mo → Kage.<br><br>
-    <b>Kunai.</b> You hold one at a time. Miss a day and it's spent automatically to keep your
-    study streak alive, you'll see it marked as spent on the dashboard. A replacement arrives
-    ${STREAK_SAVE_DAYS} days later, so missing two days close together will still break the streak.<br><br>
+    <b>Kunai.</b> You hold one at a time. Miss a single day and it is spent automatically to keep
+    your study streak alive, and you will see it marked as spent on the dashboard. A replacement
+    arrives ${STREAK_SAVE_DAYS} days later. Miss two days together and it stays in your hand: one
+    kunai cannot bridge a two-day gap, so spending it would cost you the kunai and break the
+    streak anyway.<br><br>
     ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable. Progress will not persist this session</span>'}
   </p>
   <p class="footer-note" style="text-align:left;">
