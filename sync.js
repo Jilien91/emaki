@@ -32,16 +32,34 @@ function syncActive(){ return !!(sb && syncUser); }
 // Local edits are flagged in localStorage rather than memory so that changes
 // made offline (or in a tab that was closed before the push landed) are still
 // known to be unpushed on the next load.
+// A counter rather than a flag. clearDirty used to wipe the mark whenever any
+// push finished, so an edit made while a push was in flight had its mark
+// cleared by that older request and was never sent: the edit survives locally
+// and silently never reaches the server. The token records which edit a push
+// actually carried, and only that one is cleared.
+let dirtyToken = 0;
 function markDirty(){
   if(applyingRemote) return; // writing pulled data back out isn't a local edit
-  try{ window.localStorage.setItem(DIRTY_KEY, '1'); }catch(e){}
+  dirtyToken++;
+  try{ window.localStorage.setItem(DIRTY_KEY, String(dirtyToken)); }catch(e){}
   if(syncActive()) schedulePush();
 }
 function isDirty(){
-  try{ return window.localStorage.getItem(DIRTY_KEY) === '1'; }catch(e){ return false; }
+  try{ return !!window.localStorage.getItem(DIRTY_KEY); }catch(e){ return false; }
 }
-function clearDirty(){
-  try{ window.localStorage.removeItem(DIRTY_KEY); }catch(e){}
+// The mark as it stood when a push began, so the push can tell afterwards
+// whether anything happened while it was away.
+function dirtyMark(){
+  try{ return window.localStorage.getItem(DIRTY_KEY); }catch(e){ return null; }
+}
+function clearDirty(mark){
+  // Only clear the exact mark that was pushed. If it moved on while the request
+  // was in flight there is a newer edit still waiting, and wiping it here would
+  // lose it for good.
+  try{
+    if(mark !== undefined && dirtyMark() !== mark) return;
+    window.localStorage.removeItem(DIRTY_KEY);
+  }catch(e){}
 }
 
 // Updates the badge in place instead of calling render(), because a push can
@@ -137,6 +155,56 @@ async function initSync(){
   });
 }
 
+// Deep equality that ignores key order. Everything here round-trips through a
+// jsonb column, and Postgres orders object keys by length then bytewise rather
+// than preserving insertion order. So an entry written as
+// {stage, nextReview, unlocked, m, r} comes back as {m, r, stage, unlocked,
+// nextReview} with identical data, and a raw JSON.stringify comparison calls
+// that a change. It used to, and the cost was an in-progress lesson being
+// thrown away by a pull that changed nothing.
+function sameData(a, b){
+  if(a === b) return true;
+  if(a === null || b === null || typeof a !== 'object' || typeof b !== 'object') return a === b;
+  if(Array.isArray(a) !== Array.isArray(b)) return false;
+  if(Array.isArray(a)){
+    return a.length === b.length && a.every((v, i) => sameData(v, b[i]));
+  }
+  const ka = Object.keys(a), kb = Object.keys(b);
+  if(ka.length !== kb.length) return false;
+  return ka.every(k => Object.prototype.hasOwnProperty.call(b, k) && sameData(a[k], b[k]));
+}
+
+// Which in-flight session, if any, a pull has invalidated.
+//
+// The old rule discarded all three whenever progress differed at all, so a
+// change to an unrelated card ended someone's lesson. What actually matters is
+// whether the pull moved ground the session is standing on.
+function invalidateSessionsAfterPull(before, after){
+  const changed = id => !sameData(before[id], after[id]);
+
+  // A lesson in its study phase has decided nothing. Its words are stage 0 on
+  // both sides and no SRS state depends on it, so a pull elsewhere in the deck
+  // must not cost the user their place. Only a batch word that has stopped
+  // being new invalidates it, which means another device taught it.
+  if(lessonState){
+    const batch = lessonState.batch || [];
+    const mine  = lessonState.phase === 'quiz'
+      ? batch.some(changed)                     // some may already be committed
+      : batch.some(id => (after[id] || {}).stage);
+    if(mine) lessonState = null;
+  }
+
+  // A review session's queue and results describe stages that must still be
+  // the ones it started from. Only its own items matter.
+  if(reviewState){
+    const ids = Object.keys(reviewState.results || {});
+    if(ids.some(changed)) reviewState = null;
+  }
+
+  // Extra study is a read-only drill over recent mistakes. It writes no SRS
+  // decisions at all, so nothing a pull brings back can invalidate it.
+}
+
 // Local unpushed edits win over the server; otherwise take the server's copy.
 // Pushing on every change keeps the window where both have changed very small.
 async function syncNow(){
@@ -162,27 +230,28 @@ async function pullRemote(){
     await pushRemote(); // first sign-in on this account: seed from local
     return;
   }
-  const before = JSON.stringify(localSnapshot());
-  const progressBefore = JSON.stringify(progress);
-  applySnapshot(data);
-  // An in-flight lesson, review or extra-study session was built from the
-  // progress that has just been replaced, its queue and per-item results
-  // describe SRS stages that no longer exist, so finishing it would write
-  // decisions based on the other device's stale view. Drop it and let the
-  // items fall back into the due pool. Only when progress actually moved:
-  // pulls happen every time the tab regains focus, and discarding a session
-  // on an identical pull would lose your place for nothing.
-  if(JSON.stringify(progress) !== progressBefore){
-    lessonState = null;
-    reviewState = null;
-    extraStudyState = null;
+  // The client may have changed while that request was in flight. syncNow()
+  // checked isDirty() before awaiting, so an answer committed in the meantime
+  // would otherwise be overwritten by applySnapshot and its dirty flag cleared,
+  // reverting a word that was just learned. Push instead and pull next time.
+  if(isDirty()){
+    await pushRemote();
+    return;
   }
+  const before = localSnapshot();
+  const progressBefore = JSON.parse(JSON.stringify(progress));
+  applySnapshot(data);
+  invalidateSessionsAfterPull(progressBefore, progress);
   // Only repaint when something actually changed, so a background pull can't
-  // clear an answer the user is midway through typing.
-  if(JSON.stringify(localSnapshot()) !== before) render();
+  // clear an answer the user is midway through typing. Compared by value: key
+  // order alone used to count as a change and force a repaint on every pull.
+  if(!sameData(localSnapshot(), before)) render();
 }
 
 async function pushRemote(){
+  // Captured before the request so clearDirty can tell whether this push
+  // actually covered whatever is marked when it returns.
+  const mark = dirtyMark();
   const payload = Object.assign({ user_id: syncUser.id }, localSnapshot());
   let { error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' });
   // streak_saves was added after the original schema. Until the ALTER TABLE in
@@ -193,7 +262,7 @@ async function pushRemote(){
     ({ error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' }));
   }
   if(error) throw error;
-  clearDirty();
+  clearDirty(mark);
 }
 
 function schedulePush(){
