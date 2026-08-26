@@ -27,6 +27,12 @@ use Digest::SHA qw(sha1_hex);
 # exactly when the file does, so an unrelated commit does not force everyone to
 # re-download, and there is no counter to remember to bump.
 
+# --check verifies without writing and exits non-zero if any stamp is stale, so
+# a release check can catch the case this script exists to prevent rather than
+# relying on somebody remembering to run it.
+my $check = @ARGV && $ARGV[0] eq '--check';
+die "usage: stamp-assets.pl [--check]\n" if @ARGV && !$check;
+
 my $html = 'index.html';
 my @assets = qw(style.css sync.js app.js);
 
@@ -47,6 +53,9 @@ for my $asset (@assets) {
 
 if ($src eq $before) {
     print "index.html already up to date\n";
+} elsif ($check) {
+    print STDERR "\nindex.html is stale: run `perl scripts/stamp-assets.pl` and commit it.\n";
+    exit 1;
 } else {
     open my $out, '>:encoding(UTF-8)', $html or die "$html: $!\n";
     print $out $src;
