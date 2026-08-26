@@ -276,7 +276,7 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .hb-cloth{fill:#1b1e25;stroke:var(--border-strong);stroke-width:0.6;}
 .hb-plate{fill:#aeb6c2;stroke:#7f8794;stroke-width:0.7;}
 .hb-rivets circle{fill:#6f7784;}
-.hb-leaf path{fill:none;stroke:#15171c;stroke-width:6.2;
+.hb-leaf path{fill:none;stroke:#15171c;stroke-width:5.6;
   stroke-linecap:round;stroke-linejoin:round;}
 /* The defector's mark: scored across the plate, over the leaf rather than
    under it, because the point is that the symbol has been struck through. A

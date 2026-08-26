@@ -1349,7 +1349,7 @@ function headbandSvg(state){
   //
   // The leaf is traced from the emblem rather than sketched: contour, stem,
   // corner chord and coil, drawn in their own 100-unit space and scaled onto
-  // the plate, which is why hb-leaf carries a stroke-width of 6.2 rather than
+  // the plate, which is why hb-leaf carries a stroke-width of 5.6 rather than
   // something that looks sane next to the plate's 0.7. Drawing it at plate
   // scale meant every coordinate was two decimals of noise.
   //
@@ -1359,13 +1359,13 @@ function headbandSvg(state){
   // spiral reads as a snail shell and the thing stops looking like the emblem,
   // which is how the first three attempts at this failed.
   const slash = state === 'saved'
-    ? `<path class="hb-slash" d="M6.2 12.31 L14 11.35 L27.5 11.35 L33.8 12.31 L27.5 13.27 L14 13.27 Z"/>`
+    ? `<path class="hb-slash" d="M4.9 13.45 L12 12.50 L28 12.50 L35.1 13.45 L28 14.40 L12 14.40 Z"/>`
     : '';
-  return `<svg class="hb hb-${state}" viewBox="0 0 40 24" aria-hidden="true">
-    <rect class="hb-cloth" x="0"  y="7.5" width="7"  height="9" rx="1.2"/>
-    <rect class="hb-cloth" x="33" y="7.5" width="7"  height="9" rx="1.2"/>
-    <rect class="hb-plate" x="6"  y="4"   width="28" height="16" rx="3"/>
-    <g class="hb-leaf" transform="translate(11.26 4.75) scale(0.1757)">
+  return `<svg class="hb hb-${state}" viewBox="0 0 40 26" aria-hidden="true">
+    <rect class="hb-cloth" x="0"    y="8"   width="5.5" height="10" rx="1.2"/>
+    <rect class="hb-cloth" x="34.5" y="8"   width="5.5" height="10" rx="1.2"/>
+    <rect class="hb-plate" x="4.5"  y="1.5" width="31"  height="23" rx="3.5"/>
+    <g class="hb-leaf" transform="translate(7.40 2.55) scale(0.2534)">
       <path d="M 3.5 76.5 C 5.8 65.0 10.0 55.5 14.5 47.5 C 17.2 39.0 20.2 29.5 25.5 22.0 C 30.5 16.4 35.5 12.9 42.0 11.0 C 47.0 8.8 57.0 8.6 64.0 9.6 C 70.0 10.5 75.5 12.5 79.0 17.5 C 82.0 24.0 82.5 33.0 82.0 44.0 C 81.5 53.5 79.5 62.5 72.0 69.5 C 66.0 74.0 59.0 77.6 52.0 78.0 L 3.5 76.5 Z"/>
       <path d="M 79.0 17.5 L 96.0 4.5"/>
       <path d="M 13.5 47.5 C 17.5 57.5 21.5 65.5 37.0 77.4"/>
@@ -1373,8 +1373,8 @@ function headbandSvg(state){
     </g>
     ${slash}
     <g class="hb-rivets">
-      <circle cx="9"  cy="7.6"  r="0.9"/><circle cx="9"  cy="16.4" r="0.9"/>
-      <circle cx="31" cy="7.6"  r="0.9"/><circle cx="31" cy="16.4" r="0.9"/>
+      <circle cx="7"  cy="5.2"  r="0.85"/><circle cx="7"  cy="20.8" r="0.85"/>
+      <circle cx="33" cy="5.2"  r="0.85"/><circle cx="33" cy="20.8" r="0.85"/>
     </g>
   </svg>`;
 }
