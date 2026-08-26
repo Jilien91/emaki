@@ -1309,6 +1309,10 @@ function renderDashboard(){
         : `It covered a missed day.<br>New kunai ${formatStamp(nextKunaiAt())}.`}</div>
     </div>
   </div>
+  <div class="card" style="margin-bottom:20px;">
+    <div class="section-title">This Week</div>
+    ${renderStreakWeek()}
+  </div>
   <div class="grid3">
     ${['new','genin','chunin','jonin','anbu','kage'].map(t=>`
       <button class="stat stat-btn" onclick="showTier('${t}')" title="Show these words">
@@ -1319,6 +1323,75 @@ function renderDashboard(){
     <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
   </div>
   `;
+}
+
+// ---- The week, as forehead protectors ---------------------------------------
+// Monday to Sunday, one headband a day. A day you studied wears an intact leaf.
+// A day a kunai covered wears a slashed one, the way a shinobi who has left
+// their village scores a line through the symbol: the streak survived, but not
+// cleanly, and the mark says so at a glance.
+//
+// Drawn rather than imported. Every piece is a plain shape so it inherits the
+// theme's colours and stays sharp at any size, and so the repository carries no
+// artwork it has no right to.
+const WEEKDAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+// Monday of the week `today` falls in. getDay() calls Sunday 0, which would put
+// Sunday at the start of its own week rather than the end of the previous one.
+function weekStart(d){
+  const day = (d.getDay() + 6) % 7;   // Monday 0 ... Sunday 6
+  return addDays(d, -day);
+}
+
+function headbandSvg(state){
+  // One drawing, four readings. The plate and the cloth are always there; what
+  // changes is what the plate carries and how much of it is lit.
+  const slash = state === 'saved'
+    ? `<path class="hb-slash" d="M6.5 20.5 L33.5 11.5"/>`
+    : '';
+  return `<svg class="hb hb-${state}" viewBox="0 0 40 24" role="img" aria-hidden="true">
+    <rect class="hb-cloth" x="0"  y="7.5" width="7"  height="9" rx="1.2"/>
+    <rect class="hb-cloth" x="33" y="7.5" width="7"  height="9" rx="1.2"/>
+    <rect class="hb-plate" x="6"  y="4"   width="28" height="16" rx="3"/>
+    <g class="hb-leaf">
+      <path d="M23.1 13.4 L28.7 7.2"/>
+      <path d="M23.1 13.4 C23.7 16.7 21.3 18.9 18.4 18.5 C15.5 18.1 14.5 15.1 15.7 12.7 C16.9 10.3 20.3 9.9 21.8 12.1 C22.9 13.7 21.9 15.8 20 15.5"/>
+    </g>
+    ${slash}
+    <g class="hb-rivets">
+      <circle cx="9"  cy="7.6"  r="0.9"/><circle cx="9"  cy="16.4" r="0.9"/>
+      <circle cx="31" cy="7.6"  r="0.9"/><circle cx="31" cy="16.4" r="0.9"/>
+    </g>
+  </svg>`;
+}
+
+function renderStreakWeek(){
+  const today   = todayKey();
+  const studied = new Set(activityDates);
+  const saved   = new Set(streakSaves.savedDates || []);
+  const start   = weekStart(new Date());
+
+  const cells = WEEKDAYS.map((label, i) => {
+    const key = dateKey(addDays(start, i));
+    // Order matters: a day can be in both sets if a kunai was spent and the
+    // user then studied after all, and having actually studied is the truer
+    // thing to show.
+    const state = studied.has(key) ? 'studied'
+                : saved.has(key)   ? 'saved'
+                : key === today    ? 'pending'
+                : key > today      ? 'future'
+                : 'missed';
+    const said = { studied: 'studied', saved: 'covered by a kunai',
+                   pending: 'not studied yet', future: 'still to come',
+                   missed: 'missed' }[state];
+    return `<div class="hb-day hb-day-${state}${key === today ? ' hb-today' : ''}">
+      ${headbandSvg(state)}
+      <span class="hb-label">${label}</span>
+      <span class="visually-hidden">${label}, ${said}</span>
+    </div>`;
+  }).join('');
+
+  return `<div class="hb-week" role="group" aria-label="This week">${cells}</div>`;
 }
 
 // Somewhere for a reader to say a card is wrong. Kaishi has a few hundred

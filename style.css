@@ -258,6 +258,45 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .stat-card .cta-sub{margin-bottom:0;}
 .cta-card{display:flex;flex-direction:column;}
 .cta-card button.primary{margin-top:auto;}
+/* ---- The week as forehead protectors --------------------------------------
+   Seven days, Monday first. Drawn with plain shapes so they take the theme's
+   colours, stay sharp at any size, and carry no imported artwork. */
+.hb-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:6px;}
+.hb-day{display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:10px 4px 8px;border-radius:10px;border:1px solid transparent;}
+/* Today is marked by its frame rather than by the band, so the band is free to
+   say only whether the day was studied. */
+.hb-day.hb-today{border-color:var(--border-strong);background:var(--surface-2);}
+.hb-label{font-size:11px;color:var(--text-faint);letter-spacing:0.3px;}
+.hb-day-studied .hb-label,.hb-day-saved .hb-label{color:var(--text-dim);}
+.hb-today .hb-label{color:var(--text);font-weight:600;}
+
+.hb{width:100%;max-width:76px;height:auto;display:block;}
+.hb-cloth{fill:#1b1e25;stroke:var(--border-strong);stroke-width:0.6;}
+.hb-plate{fill:#aeb6c2;stroke:#7f8794;stroke-width:0.7;}
+.hb-rivets circle{fill:#6f7784;}
+.hb-leaf path{fill:none;stroke:#15171c;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;}
+/* The defector's mark: scored across the plate, over the leaf rather than
+   under it, because the point is that the symbol has been struck through. */
+.hb-slash{stroke:#15171c;stroke-width:2.1;stroke-linecap:round;fill:none;}
+
+/* A day that was covered rather than earned. The plate is duller and the slash
+   is the whole story, so nothing else needs to shout. */
+.hb-saved .hb-plate{fill:#8d939e;}
+/* Missed, still to come, and today-not-yet are all "no band earned". They differ
+   only in how much light is on them: the past is spent, the future is waiting. */
+.hb-missed{opacity:0.28;}
+.hb-future{opacity:0.16;}
+.hb-pending{opacity:0.45;}
+.hb-missed .hb-plate,.hb-future .hb-plate,.hb-pending .hb-plate{fill:none;
+  stroke:var(--text-faint);stroke-dasharray:2.5 2;}
+.hb-missed .hb-leaf,.hb-future .hb-leaf,.hb-pending .hb-leaf{display:none;}
+.hb-missed .hb-rivets,.hb-future .hb-rivets,.hb-pending .hb-rivets{display:none;}
+.hb-missed .hb-cloth,.hb-future .hb-cloth,.hb-pending .hb-cloth{fill:none;}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;}
+
 .kunai{
   /* align-self keeps the pill shrink-wrapped and centred: the stat card is a
      flex column, whose children would otherwise stretch to its full width. */
@@ -270,3 +309,12 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .kunai.spent .kunai-mark{opacity:0.55;}
 .kunai-mark{width:13px;height:13px;flex:0 0 auto;display:block;}
 .kunai-note{font-size:11px;color:var(--text-faint);line-height:1.5;margin-top:7px;}
+
+/* On a phone the seven cells have about 300px between them, so the padding and
+   gaps that give the drawing room on a desktop are the difference between a
+   readable leaf and a grey smudge. Take the spacing back rather than the size. */
+@media (max-width: 480px){
+  .hb-week{gap:3px;}
+  .hb-day{padding:6px 1px 5px;gap:5px;}
+  .hb-label{font-size:10px;}
+}
