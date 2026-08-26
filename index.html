@@ -30,11 +30,18 @@
      icon's white. They paint the browser chrome and the launch screen, so the
      white a favicon generator defaults to would flash bright before a dark app. -->
 <link rel="manifest" href="site.webmanifest">
+<!-- Emaki is dark and has no light theme. Saying so is what stops a browser
+     deciding the page needs darkening for us: Chrome's Auto Dark Theme and the
+     night modes built into several mobile browsers only transform pages that
+     have not declared a scheme. Left undeclared they rewrite the palette, and
+     dark colours come back light and warm while backgrounds stay put, which is
+     how the week strip's headbands turned pale on a phone. -->
+<meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#15171c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=7dd40bcc">
+<link rel="stylesheet" href="style.css?v=0bf7bf67">
 </head>
 <body>
 <div id="root"><div class="loading">Loading…</div></div>

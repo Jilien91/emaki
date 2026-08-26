@@ -1,4 +1,8 @@
 :root{
+  /* Matches the meta in index.html. Both are worth having: the meta applies
+     before the stylesheet arrives, and this survives the meta being edited
+     away. */
+  color-scheme: dark;
   --bg:#15171c;
   --surface:#1c1f26;
   --surface-2:#242832;
