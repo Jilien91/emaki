@@ -346,12 +346,24 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 /* A day that was covered rather than earned. The plate is duller and the slash
    is the whole story, so nothing else needs to shout. */
 .hb-saved .hb-plate{fill:var(--hb-plate-saved);}
-/* Missed, still to come, and today-not-yet are all "no band earned". They differ
-   only in how much light is on them: the past is spent, the future is waiting. */
-.hb-missed .hb-plate,.hb-untracked .hb-plate{stroke:var(--border-strong);}
-.hb-future .hb-plate,.hb-pending .hb-plate{stroke:var(--border);}
+/* Four empty plates, and only one of them is a reproach.
+
+   A missed day gets a solid outline: the plate is there and nothing is on it.
+   The three that expected nothing of you -- before you started, still to come,
+   today not yet -- stay dashed. The difference is geometry rather than another
+   shade of grey, so it survives a palette being flattened by a forced-contrast
+   mode or a browser darkening the page itself. That is the case that matters:
+   with colour gone, a day you missed would otherwise look like a Saturday that
+   has not happened. Codex spotted that all four differed only in how bright
+   their stroke was.
+
+   untracked groups with future and pending rather than with missed, because a
+   day before your first ever review is not a day you failed to study. */
+.hb-missed .hb-plate{stroke:var(--border-strong);}
+.hb-future .hb-plate,.hb-pending .hb-plate,.hb-untracked .hb-plate{stroke:var(--border);}
 .hb-missed .hb-plate,.hb-future .hb-plate,.hb-pending .hb-plate,.hb-untracked .hb-plate{
-  fill:none;stroke-dasharray:2.5 2;}
+  fill:none;}
+.hb-future .hb-plate,.hb-pending .hb-plate,.hb-untracked .hb-plate{stroke-dasharray:2.5 2;}
 .hb-missed .hb-leaf,.hb-future .hb-leaf,.hb-pending .hb-leaf,.hb-untracked .hb-leaf{display:none;}
 .hb-missed .hb-rivets,.hb-future .hb-rivets,.hb-pending .hb-rivets,.hb-untracked .hb-rivets{display:none;}
 .hb-missed .hb-cloth,.hb-future .hb-cloth,.hb-pending .hb-cloth,.hb-untracked .hb-cloth{
