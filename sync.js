@@ -210,16 +210,19 @@ function invalidateSessionsAfterPull(before, after){
 async function syncNow(){
   if(!syncActive()) return;
   setSyncStatus('syncing');
-  try{
-    if(isDirty()){
-      await pushRemote();
-    }else{
-      await pullRemote();
+  // Queued behind anything already running, for the same reason.
+  return runExclusive(async ()=>{
+    try{
+      if(isDirty()){
+        await pushRemote();
+      }else{
+        await pullRemote();
+      }
+      setSyncStatus('synced');
+    }catch(e){
+      setSyncStatus('error', 'Sync failed, working offline');
     }
-    setSyncStatus('synced');
-  }catch(e){
-    setSyncStatus('error', 'Sync failed, working offline');
-  }
+  });
 }
 
 async function pullRemote(){
@@ -265,17 +268,34 @@ async function pushRemote(){
   clearDirty(mark);
 }
 
+// Single-flight. Two pushes in the air at once are not ordered by the server,
+// so the older upsert can land last and put an older snapshot back. The dirty
+// token stops an old push clearing a newer mark, but it cannot undo a write
+// that already happened in the wrong order. So: one at a time, and if anything
+// was marked while a push was away, push again after it.
+let inFlight = null;
+
+function runExclusive(fn){
+  const next = (inFlight || Promise.resolve()).then(fn, fn);
+  inFlight = next.catch(()=>{});
+  return next;
+}
+
 function schedulePush(){
   clearTimeout(pushTimer);
-  pushTimer = setTimeout(async ()=>{
+  pushTimer = setTimeout(()=>{
     if(!syncActive()) return;
     setSyncStatus('syncing');
-    try{
-      await pushRemote();
-      setSyncStatus('synced');
-    }catch(e){
-      setSyncStatus('error', 'Sync failed, working offline');
-    }
+    runExclusive(async ()=>{
+      try{
+        await pushRemote();
+        // Marked again while that was away, so it did not carry everything.
+        if(isDirty()) await pushRemote();
+        setSyncStatus('synced');
+      }catch(e){
+        setSyncStatus('error', 'Sync failed, working offline');
+      }
+    });
   }, PUSH_DEBOUNCE_MS);
 }
 

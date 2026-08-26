@@ -2468,10 +2468,73 @@ async function init(){
   // somebody who already uses the app and is sending it to a friend.
   if(window.location.hash === '#welcome' || isNewHere()) view = 'welcome';
   render();
+  lastRenderedDay = todayKey();
+  scheduleMidnightCheck();
+  window.addEventListener("storage", adoptOtherTabWrite);
+  document.addEventListener("visibilitychange", ()=>{
+    if(document.visibilityState === "visible") refreshForNewDay();
+  });
   // Sync is best-effort and must never block the app from being usable.
   if(typeof initSync === 'function'){
     initSync().catch(()=>{});
   }
+}
+
+// ---- The day turning over --------------------------------------------------
+// Everything dated is computed during render(), and nothing re-rendered on its
+// own, so a dashboard left open overnight kept yesterday's numbers under
+// today's labels: "Today 60, Yesterday 0" when a fresh render would have said
+// "Today 0, Yesterday 60". It looks exactly like a lost day of reviews, and it
+// is why Lasz reported one.
+//
+// A timer alone is not enough. Browsers throttle them in background tabs and
+// stop them entirely when a laptop sleeps, which is precisely the tab that will
+// have been open across midnight. So the date is also checked whenever the page
+// becomes visible again.
+let lastRenderedDay = todayKey();
+
+function dayChanged(){
+  if(todayKey() === lastRenderedDay) return false;
+  lastRenderedDay = todayKey();
+  return true;
+}
+
+// Refreshes only what is date-dependent, and only when the screen is showing
+// it. Redrawing mid-review would throw away a half-typed answer for the sake of
+// a number the user is not looking at.
+function refreshForNewDay(){
+  if(!dayChanged()) return;
+  refreshStreakSaves();
+  if(view === 'dashboard' || view === 'tierlist' || view === 'item') render();
+}
+
+function scheduleMidnightCheck(){
+  const now = new Date();
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 30);
+  // Half a minute past, so a clock a little behind ours has also turned over.
+  setTimeout(()=>{ refreshForNewDay(); scheduleMidnightCheck(); },
+             Math.max(1000, midnight - now));
+}
+
+// ---- Another tab writing underneath us -------------------------------------
+// Each tab loads its state once and then writes the whole object back. Two tabs
+// open across a day meant the older one could overwrite the newer one's work
+// wholesale: tab B, opened yesterday and holding an empty history, records one
+// review today and writes back its stale copy, erasing everything tab A did.
+// The storage event fires in the *other* tabs, so this is where that is caught.
+function adoptOtherTabWrite(e){
+  if(!e || !e.newValue) return;
+  try{
+    if(e.key === REVIEW_HISTORY_KEY)      reviewHistory = JSON.parse(e.newValue);
+    else if(e.key === ACTIVITY_KEY)       activityDates = JSON.parse(e.newValue);
+    else if(e.key === STORAGE_KEY)        progress      = JSON.parse(e.newValue);
+    else if(e.key === STREAK_SAVE_KEY)    streakSaves   = JSON.parse(e.newValue);
+    else if(e.key === DAILY_KEY)          dailyLessons  = JSON.parse(e.newValue);
+    else return;
+  }catch(err){ return; }   // a half-written value is not worth acting on
+  // Same restraint as the day rollover: do not redraw a screen someone is
+  // answering a question on.
+  if(view === 'dashboard' || view === 'tierlist') render();
 }
 
 init();
