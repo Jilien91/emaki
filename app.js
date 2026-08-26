@@ -1346,16 +1346,30 @@ function weekStart(d){
 function headbandSvg(state){
   // One drawing, four readings. The plate and the cloth are always there; what
   // changes is what the plate carries and how much of it is lit.
+  //
+  // The leaf is traced from the emblem rather than sketched: contour, stem,
+  // corner chord and coil, drawn in their own 100-unit space and scaled onto
+  // the plate, which is why hb-leaf carries a stroke-width of 6.2 rather than
+  // something that looks sane next to the plate's 0.7. Drawing it at plate
+  // scale meant every coordinate was two decimals of noise.
+  //
+  // The coil is the part that has to be right. It is not an even spiral: it
+  // tapers quickly for the first sixty degrees, holds a near-constant radius
+  // for most of a turn, then dives into a tight hook. An evenly shrinking
+  // spiral reads as a snail shell and the thing stops looking like the emblem,
+  // which is how the first three attempts at this failed.
   const slash = state === 'saved'
-    ? `<path class="hb-slash" d="M6.5 20.5 L33.5 11.5"/>`
+    ? `<path class="hb-slash" d="M6.2 12.31 L14 11.35 L27.5 11.35 L33.8 12.31 L27.5 13.27 L14 13.27 Z"/>`
     : '';
   return `<svg class="hb hb-${state}" viewBox="0 0 40 24" aria-hidden="true">
     <rect class="hb-cloth" x="0"  y="7.5" width="7"  height="9" rx="1.2"/>
     <rect class="hb-cloth" x="33" y="7.5" width="7"  height="9" rx="1.2"/>
     <rect class="hb-plate" x="6"  y="4"   width="28" height="16" rx="3"/>
-    <g class="hb-leaf">
-      <path d="M23.1 13.4 L28.7 7.2"/>
-      <path d="M23.1 13.4 C23.7 16.7 21.3 18.9 18.4 18.5 C15.5 18.1 14.5 15.1 15.7 12.7 C16.9 10.3 20.3 9.9 21.8 12.1 C22.9 13.7 21.9 15.8 20 15.5"/>
+    <g class="hb-leaf" transform="translate(11.26 4.75) scale(0.1757)">
+      <path d="M 3.5 76.5 C 5.8 65.0 10.0 55.5 14.5 47.5 C 17.2 39.0 20.2 29.5 25.5 22.0 C 30.5 16.4 35.5 12.9 42.0 11.0 C 47.0 8.8 57.0 8.6 64.0 9.6 C 70.0 10.5 75.5 12.5 79.0 17.5 C 82.0 24.0 82.5 33.0 82.0 44.0 C 81.5 53.5 79.5 62.5 72.0 69.5 C 66.0 74.0 59.0 77.6 52.0 78.0 L 3.5 76.5 Z"/>
+      <path d="M 79.0 17.5 L 96.0 4.5"/>
+      <path d="M 13.5 47.5 C 17.5 57.5 21.5 65.5 37.0 77.4"/>
+      <path d="M 69.6 25.2 C 63.8 20.0 54.1 20.7 47.6 24.8 C 47.4 24.9 47.2 25.0 47.0 25.1 C 40.6 27.5 36.0 33.0 34.8 39.7 C 33.8 46.3 36.3 53.1 41.7 57.0 C 46.8 60.7 53.7 61.4 59.0 58.2 C 63.3 55.6 66.3 49.7 64.6 44.9 C 64.1 43.6 62.5 41.6 61.2 40.9"/>
     </g>
     ${slash}
     <g class="hb-rivets">
