@@ -1,252 +1,252 @@
 [
- {
-  "word": "入る",
-  "reading": "はいる",
-  "meaning": "to enter",
-  "sentence": "レストランに入ります。",
-  "sentence_meaning": "I will enter the restaurant.",
-  "frequency": "116",
-  "mnemonic": "入 is a doorway drawn narrowing as it goes in, so you have to duck. You dip your head through it and say hi to the room as you arrive: はいる.",
-  "notes": ""
- },
- {
-  "word": "家族",
-  "reading": "かぞく",
-  "meaning": "family",
-  "sentence": "家族がテレビを見た。",
-  "sentence_meaning": "The family watched television.",
-  "frequency": "631",
-  "mnemonic": "家 the house with the pig under its roof, 族 a clan gathered under one banner. Together they are everyone who lives there: かぞく.",
-  "notes": ""
- },
- {
-  "word": "住む",
-  "reading": "すむ",
-  "meaning": "to live, to reside",
-  "sentence": "家族はタイに住んでいます。",
-  "sentence_meaning": "My family lives in Thailand.",
-  "frequency": "919",
-  "mnemonic": "亻 a person beside 主 the master of the house. The one who actually lives there rather than the one visiting. He has moved in for good: すむ.",
-  "notes": ""
- },
- {
-  "word": "大きな",
-  "reading": "おおきな",
-  "meaning": "big, large",
-  "sentence": "大きな家に住みたい。",
-  "sentence_meaning": "I want to live in a big house.",
-  "frequency": "321",
-  "mnemonic": "大 is a person with both arms flung as wide as they will go, and that is the entire word. Big. Say it long and slow: oh-oh-kee-na, おおきな.",
-  "notes": ""
- },
- {
-  "word": "大きい",
-  "reading": "おおきい",
-  "meaning": "big, large",
-  "sentence": "彼は大きい家に住んでいる。",
-  "sentence_meaning": "He lives in a big house.",
-  "frequency": "255",
-  "mnemonic": "The same 大, the same big. 大きな and 大きい mean exactly the same thing. This one just ends in い, the way most adjectives do: おおきい.",
-  "notes": "大きな sits directly in front of a noun; 大きい behaves like a normal い-adjective."
- },
- {
-  "word": "声",
-  "reading": "こえ",
-  "meaning": "voice, sound",
-  "sentence": "彼は大きな声で話した。",
-  "sentence_meaning": "He spoke with a loud voice.",
-  "frequency": "127",
-  "mnemonic": "Someone calls your name across a crowded room and you have turned round before you even thought about it. That sound arriving is こえ.",
-  "notes": ""
- },
- {
-  "word": "目",
-  "reading": "め",
-  "meaning": "eye",
-  "sentence": "ララちゃんは目が大きいです。",
-  "sentence_meaning": "Lara-chan has big eyes.",
-  "frequency": "130",
-  "mnemonic": "An eye stood up on its end, with the lines of the lid drawn straight across it. Point at one of your own and say the English word \"me\": め.",
-  "notes": ""
- },
- {
-  "word": "手",
-  "reading": "て",
-  "meaning": "hand",
-  "sentence": "分かった人は手を上げてください。",
-  "sentence_meaning": "The people who understood, please raise your hand.",
-  "frequency": "113",
-  "mnemonic": "A hand with its fingers drawn out from the wrist. You put it up to answer a question and somebody presses a cup of tea into it: て.",
-  "notes": ""
- },
- {
-  "word": "上げる",
-  "reading": "あげる",
-  "meaning": "to raise, to increase",
-  "sentence": "分かった人は手を上げてください。",
-  "sentence_meaning": "The people who understood, please raise your hand.",
-  "frequency": "207",
-  "mnemonic": "上 is a mark sitting above the line, up. Same あげる you already know for giving, except the thing going up is your own hand: あげる.",
-  "notes": "Same reading as あげる \"to give\". This one is written with 上 and means to lift."
- },
- {
-  "word": "嫌い",
-  "reading": "きらい",
-  "meaning": "dislike",
-  "sentence": "私はタバコが嫌いです。",
-  "sentence_meaning": "I hate cigarettes.",
-  "frequency": "852",
-  "mnemonic": "She is holding two things at once and cannot stand one of them. Whatever it is, she would rather kill it than keep it: きらい.",
-  "notes": ""
- },
- {
-  "word": "おじいさん",
-  "reading": "おじいさん",
-  "meaning": "grandfather",
-  "sentence": "おじいさんはジョギングが嫌いです。",
-  "sentence_meaning": "My grandfather dislikes jogging.",
-  "frequency": "7329",
-  "mnemonic": "Oh, jii-san. With the same さん bow on the end you already know from names. He is the old man of the house and he is not moving: おじいさん.",
-  "notes": ""
- },
- {
-  "word": "おばあさん",
-  "reading": "おばあさん",
-  "meaning": "grandmother",
-  "sentence": "彼女はおばあさんと住んでいる。",
-  "sentence_meaning": "She lives with her grandmother.",
-  "frequency": "10393",
-  "mnemonic": "Built exactly like おじいさん with baa in place of jii. Oh, baa-san, the old woman of the house, sheep noise included: おばあさん.",
-  "notes": ""
- },
- {
-  "word": "元気",
-  "reading": "げんき",
-  "meaning": "energetic, healthy",
-  "sentence": "スミスさんのおばあさんは元気です。",
-  "sentence_meaning": "Smith-san's grandmother is doing well.",
-  "frequency": "613",
-  "mnemonic": "元 a person at their starting point and 気 the steam coming off them. Someone with their original energy still rising: げんき.",
-  "notes": ""
- },
- {
-  "word": "いつも",
-  "reading": "いつも",
-  "meaning": "always, usually",
-  "sentence": "彼女はいつも元気だ。",
-  "sentence_meaning": "She's always full of energy.",
-  "frequency": "209",
-  "mnemonic": "いつ is when. Add も on the end and it stops being a question. Whenever you happen to ask, the answer comes back the same. Always: いつも.",
-  "notes": ""
- },
- {
-  "word": "持つ",
-  "reading": "もつ",
-  "meaning": "to have, to hold",
-  "sentence": "私は車を持っています。",
-  "sentence_meaning": "I have a car.",
-  "frequency": "128",
-  "mnemonic": "扌 a hand next to 寺 a temple, the very same 寺 you met in 時間 and 待つ. This time the hand is closed around something and holding on: もつ.",
-  "notes": ""
- },
- {
-  "word": "みんな",
-  "reading": "みんな",
-  "meaning": "all, everybody",
-  "sentence": "家族はみんな元気です。",
-  "sentence_meaning": "Everyone in my family is doing well.",
-  "frequency": "185",
-  "mnemonic": "Everybody, the whole lot of them, not one person left out. Ask whether anyone is missing and you get a flat \"mean? nah\" back: みんな.",
-  "notes": ""
- },
- {
-  "word": "使う",
-  "reading": "つかう",
-  "meaning": "to use",
-  "sentence": "毎日、コンピューターを使います。",
-  "sentence_meaning": "I use the computer every day.",
-  "frequency": "140",
-  "mnemonic": "亻 a person with 吏 an official standing over them: somebody put to work. Using a thing means exactly that. You put it to work: つかう.",
-  "notes": ""
- },
- {
-  "word": "大丈夫",
-  "reading": "だいじょうぶ",
-  "meaning": "alright, OK",
-  "sentence": "大丈夫ですか。",
-  "sentence_meaning": "Are you alright?",
-  "frequency": "146",
-  "mnemonic": "大 big, 丈 a full measure, 夫 a grown man. Three characters stacked up to say something is solid and there is nothing to worry about: だいじょうぶ.",
-  "notes": ""
- },
- {
-  "word": "始める",
-  "reading": "はじめる",
-  "meaning": "to start",
-  "sentence": "テストを始めてください。",
-  "sentence_meaning": "Please start the test.",
-  "frequency": "240",
-  "mnemonic": "女 a woman at 台 a platform, taking the first step up onto it. Everything has to begin somewhere and this is that moment: はじめる.",
-  "notes": ""
- },
- {
-  "word": "今日",
-  "reading": "きょう",
-  "meaning": "today",
-  "sentence": "今日の勉強を始めましょう。",
-  "sentence_meaning": "Let's begin today's studies.",
-  "frequency": "125",
-  "mnemonic": "今 this moment sealed off and 日 a day: this one day, the one you are standing in right now. Say kyo and it is already going: きょう.",
-  "notes": ""
- },
- {
-  "word": "部屋",
-  "reading": "へや",
-  "meaning": "room",
-  "sentence": "部屋にキッチンがあります。",
-  "sentence_meaning": "The room has a kitchen.",
-  "frequency": "162",
-  "mnemonic": "部 one section of something with 屋 a roof over the top of it. A walled-off piece of a house. Hey, ya, you knock before opening it: へや.",
-  "notes": ""
- },
- {
-  "word": "悪い",
-  "reading": "わるい",
-  "meaning": "bad",
-  "sentence": "あの人は悪い人です。",
-  "sentence_meaning": "That person is a bad person.",
-  "frequency": "163",
-  "mnemonic": "亜 second-rate sitting on 心 a heart, pressing down on it. That is what bad feels like, and it will rule you if you let it: わるい.",
-  "notes": ""
- },
- {
-  "word": "まあ",
-  "reading": "まあ",
-  "meaning": "well...",
-  "sentence": "まあこれでいいだろう。",
-  "sentence_meaning": "Well, this will do I suppose.",
-  "frequency": "171",
-  "mnemonic": "The noise you make when a thing is fine but not actually good. A shrug, half a smile, and a long drawn-out maa: it'll do. まあ.",
-  "notes": ""
- },
- {
-  "word": "食べる",
-  "reading": "たべる",
-  "meaning": "to eat",
-  "sentence": "昨日タイカレーを食べました。",
-  "sentence_meaning": "I ate Thai curry yesterday.",
-  "frequency": "195",
-  "mnemonic": "食 is a lid sitting over a heaped dish. Lift it off, pick up the tab afterwards, and everything in between is eating: たべる.",
-  "notes": ""
- },
- {
-  "word": "沢山",
-  "reading": "たくさん",
-  "meaning": "a lot, plenty",
-  "sentence": "私には友達がたくさんいます。",
-  "sentence_meaning": "I have a lot of friends.",
-  "frequency": "665",
-  "mnemonic": "氵 water and 尺 a measure make a marsh, then 山 a whole mountain on top of it. Far more of the stuff than anyone needs: たくさん.",
-  "notes": "Very often written in kana as たくさん."
- }
+   {
+      "frequency" : "116",
+      "meaning" : "to enter",
+      "mnemonic" : "入 is a doorway drawn narrowing as it goes in, so you have to duck. You dip your head through it and say hi to the room as you arrive: はいる.",
+      "notes" : "",
+      "reading" : "はいる",
+      "sentence" : "レストランに入ります。",
+      "sentence_meaning" : "I will enter the restaurant.",
+      "word" : "入る"
+   },
+   {
+      "frequency" : "631",
+      "meaning" : "family",
+      "mnemonic" : "家 the house with the pig under its roof, 族 a clan gathered under one banner. Together they are everyone who lives there: かぞく.",
+      "notes" : "",
+      "reading" : "かぞく",
+      "sentence" : "家族がテレビを見た。",
+      "sentence_meaning" : "The family watched television.",
+      "word" : "家族"
+   },
+   {
+      "frequency" : "919",
+      "meaning" : "to live, to reside",
+      "mnemonic" : "亻 a person beside 主 the master of the house. The one who actually lives there rather than the one visiting. He has moved in for good: すむ.",
+      "notes" : "",
+      "reading" : "すむ",
+      "sentence" : "家族はタイに住んでいます。",
+      "sentence_meaning" : "My family lives in Thailand.",
+      "word" : "住む"
+   },
+   {
+      "frequency" : "321",
+      "meaning" : "big, large",
+      "mnemonic" : "大 is a person with both arms flung as wide as they will go, and that is the entire word. Big. Say it long and slow: oh-oh-kee-na, おおきな.",
+      "notes" : "",
+      "reading" : "おおきな",
+      "sentence" : "大きな家に住みたい。",
+      "sentence_meaning" : "I want to live in a big house.",
+      "word" : "大きな"
+   },
+   {
+      "frequency" : "255",
+      "meaning" : "big, large",
+      "mnemonic" : "The same 大, the same big. 大きな and 大きい mean exactly the same thing. This one just ends in い, the way most adjectives do: おおきい.",
+      "notes" : "大きな sits directly in front of a noun; 大きい behaves like a normal い-adjective.",
+      "reading" : "おおきい",
+      "sentence" : "彼は大きい家に住んでいる。",
+      "sentence_meaning" : "He lives in a big house.",
+      "word" : "大きい"
+   },
+   {
+      "frequency" : "127",
+      "meaning" : "voice, sound",
+      "mnemonic" : "Someone calls your name across a crowded room and you have turned round before you even thought about it. That sound arriving is こえ.",
+      "notes" : "",
+      "reading" : "こえ",
+      "sentence" : "彼は大きな声で話した。",
+      "sentence_meaning" : "He spoke with a loud voice.",
+      "word" : "声"
+   },
+   {
+      "frequency" : "130",
+      "meaning" : "eye",
+      "mnemonic" : "An eye stood up on its end, with the lines of the lid drawn straight across it. Point at one of your own and say the English word \"me\": め.",
+      "notes" : "",
+      "reading" : "め",
+      "sentence" : "ララちゃんは目が大きいです。",
+      "sentence_meaning" : "Lara-chan has big eyes.",
+      "word" : "目"
+   },
+   {
+      "frequency" : "113",
+      "meaning" : "hand",
+      "mnemonic" : "A hand with its fingers drawn out from the wrist. You put it up to answer a question and somebody presses a cup of tea into it: て.",
+      "notes" : "",
+      "reading" : "て",
+      "sentence" : "分かった人は手を上げてください。",
+      "sentence_meaning" : "The people who understood, please raise your hand.",
+      "word" : "手"
+   },
+   {
+      "frequency" : "207",
+      "meaning" : "to raise, to increase",
+      "mnemonic" : "上 is a mark sitting above the line, up. Same あげる you already know for giving, except the thing going up is your own hand: あげる.",
+      "notes" : "Same reading as あげる \"to give\". This one is written with 上 and means to lift.",
+      "reading" : "あげる",
+      "sentence" : "分かった人は手を上げてください。",
+      "sentence_meaning" : "The people who understood, please raise your hand.",
+      "word" : "上げる"
+   },
+   {
+      "frequency" : "852",
+      "meaning" : "dislike",
+      "mnemonic" : "She is holding two things at once and cannot stand one of them. Whatever it is, she would rather kill it than keep it: きらい.",
+      "notes" : "",
+      "reading" : "きらい",
+      "sentence" : "私はタバコが嫌いです。",
+      "sentence_meaning" : "I hate cigarettes.",
+      "word" : "嫌い"
+   },
+   {
+      "frequency" : "7329",
+      "meaning" : "grandfather",
+      "mnemonic" : "Oh, jii-san. With the same さん bow on the end you already know from names. He is the old man of the house and he is not moving: おじいさん.",
+      "notes" : "",
+      "reading" : "おじいさん",
+      "sentence" : "おじいさんはジョギングが嫌いです。",
+      "sentence_meaning" : "My grandfather dislikes jogging.",
+      "word" : "おじいさん"
+   },
+   {
+      "frequency" : "10393",
+      "meaning" : "grandmother",
+      "mnemonic" : "Built exactly like おじいさん with baa in place of jii. Oh, baa-san, the old woman of the house, sheep noise included: おばあさん.",
+      "notes" : "",
+      "reading" : "おばあさん",
+      "sentence" : "彼女はおばあさんと住んでいる。",
+      "sentence_meaning" : "She lives with her grandmother.",
+      "word" : "おばあさん"
+   },
+   {
+      "frequency" : "613",
+      "meaning" : "energetic, healthy",
+      "mnemonic" : "元 a person at their starting point and 気 the steam coming off them. Someone with their original energy still rising: げんき.",
+      "notes" : "",
+      "reading" : "げんき",
+      "sentence" : "スミスさんのおばあさんは元気です。",
+      "sentence_meaning" : "Smith-san's grandmother is doing well.",
+      "word" : "元気"
+   },
+   {
+      "frequency" : "209",
+      "meaning" : "always, usually",
+      "mnemonic" : "いつ is when. Add も on the end and it stops being a question. Whenever you happen to ask, the answer comes back the same. Always: いつも.",
+      "notes" : "",
+      "reading" : "いつも",
+      "sentence" : "彼女はいつも元気だ。",
+      "sentence_meaning" : "She's always full of energy.",
+      "word" : "いつも"
+   },
+   {
+      "frequency" : "128",
+      "meaning" : "to have, to hold",
+      "mnemonic" : "扌 a hand next to 寺 a temple, the very same 寺 you met in 時間 and 待つ. This time the hand is closed around something and holding on: もつ.",
+      "notes" : "",
+      "reading" : "もつ",
+      "sentence" : "私は車を持っています。",
+      "sentence_meaning" : "I have a car.",
+      "word" : "持つ"
+   },
+   {
+      "frequency" : "185",
+      "meaning" : "all, everybody",
+      "mnemonic" : "Everybody, the whole lot of them, not one person left out. Ask whether anyone is missing and you get a flat \"mean? nah\" back: みんな.",
+      "notes" : "",
+      "reading" : "みんな",
+      "sentence" : "家族はみんな元気です。",
+      "sentence_meaning" : "Everyone in my family is doing well.",
+      "word" : "みんな"
+   },
+   {
+      "frequency" : "140",
+      "meaning" : "to use",
+      "mnemonic" : "亻 a person with 吏 an official standing over them: somebody put to work. Using a thing means exactly that. You put it to work: つかう.",
+      "notes" : "",
+      "reading" : "つかう",
+      "sentence" : "毎日、コンピューターを使います。",
+      "sentence_meaning" : "I use the computer every day.",
+      "word" : "使う"
+   },
+   {
+      "frequency" : "146",
+      "meaning" : "alright, OK",
+      "mnemonic" : "大 big, 丈 a full measure, 夫 a grown man. Three characters stacked up to say something is solid and there is nothing to worry about: だいじょうぶ.",
+      "notes" : "",
+      "reading" : "だいじょうぶ",
+      "sentence" : "大丈夫ですか。",
+      "sentence_meaning" : "Are you alright?",
+      "word" : "大丈夫"
+   },
+   {
+      "frequency" : "240",
+      "meaning" : "to start",
+      "mnemonic" : "女 a woman at 台 a platform, taking the first step up onto it. Everything has to begin somewhere and this is that moment: はじめる.",
+      "notes" : "",
+      "reading" : "はじめる",
+      "sentence" : "テストを始めてください。",
+      "sentence_meaning" : "Please start the test.",
+      "word" : "始める"
+   },
+   {
+      "frequency" : "125",
+      "meaning" : "today",
+      "mnemonic" : "今 this moment sealed off and 日 a day: this one day, the one you are standing in right now. Say kyo and it is already going: きょう.",
+      "notes" : "",
+      "reading" : "きょう",
+      "sentence" : "今日の勉強を始めましょう。",
+      "sentence_meaning" : "Let's begin today's studies.",
+      "word" : "今日"
+   },
+   {
+      "frequency" : "162",
+      "meaning" : "room",
+      "mnemonic" : "部 one section of something with 屋 a roof over the top of it. A walled-off piece of a house. Hey, ya, you knock before opening it: へや.",
+      "notes" : "",
+      "reading" : "へや",
+      "sentence" : "部屋にキッチンがあります。",
+      "sentence_meaning" : "The room has a kitchen.",
+      "word" : "部屋"
+   },
+   {
+      "frequency" : "163",
+      "meaning" : "bad",
+      "mnemonic" : "亜 second-rate sitting on 心 a heart, pressing down on it. That is what bad feels like, and it will rule you if you let it: わるい.",
+      "notes" : "",
+      "reading" : "わるい",
+      "sentence" : "あの人は悪い人です。",
+      "sentence_meaning" : "That person is a bad person.",
+      "word" : "悪い"
+   },
+   {
+      "frequency" : "171",
+      "meaning" : "well...",
+      "mnemonic" : "The noise you make when a thing is fine but not actually good. A shrug, half a smile, and a long drawn-out maa: it'll do. まあ.",
+      "notes" : "The hesitating well, the one that buys you a moment before you answer. よく is well as in skilfully or often, and じゃ is the well that moves things along.",
+      "reading" : "まあ",
+      "sentence" : "まあこれでいいだろう。",
+      "sentence_meaning" : "Well, this will do I suppose.",
+      "word" : "まあ"
+   },
+   {
+      "frequency" : "195",
+      "meaning" : "to eat",
+      "mnemonic" : "食 is a lid sitting over a heaped dish. Lift it off, pick up the tab afterwards, and everything in between is eating: たべる.",
+      "notes" : "",
+      "reading" : "たべる",
+      "sentence" : "昨日タイカレーを食べました。",
+      "sentence_meaning" : "I ate Thai curry yesterday.",
+      "word" : "食べる"
+   },
+   {
+      "frequency" : "665",
+      "meaning" : "a lot, plenty",
+      "mnemonic" : "氵 water and 尺 a measure make a marsh, then 山 a whole mountain on top of it. Far more of the stuff than anyone needs: たくさん.",
+      "notes" : "Very often written in kana as たくさん.",
+      "reading" : "たくさん",
+      "sentence" : "私には友達がたくさんいます。",
+      "sentence_meaning" : "I have a lot of friends.",
+      "word" : "沢山"
+   }
 ]

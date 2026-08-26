@@ -138,7 +138,27 @@ function openedSenses(meaning){
 // Under the old rule 彼 "he, that" accepted "what", because what is one edit
 // from that, and いる "to have, to exist" accepted six other verbs in the deck.
 // 766 such acceptances existed across the written cards.
-const meaningCore = s => s.replace(/^to /, '');
+// Normalisation before any comparison. The "to " is a convention of the deck's
+// glosses rather than part of the answer, and so is a leading or trailing
+// ellipsis: "please give..." means the verb takes an object, not that the dots
+// are part of the word.
+//
+// The dots used to count as typos. Against "please give..." the answer "please
+// give" scored three edits on a budget of two and was marked wrong, and so was
+// "please give, please do", which is both senses stated correctly. The only
+// answer the card accepted was one that reproduced the punctuation. 13 cards
+// carry an ellipsis in their meaning.
+//
+// The typo budget is untouched, but this is not free of consequences: removing
+// the dots can expose a genuine overlap between two glosses that the
+// punctuation had been hiding. "well..." for まあ becomes "well", which よく
+// also is. The cross-acceptance audit tracks those, and the cards concerned say
+// which is which rather than the grader pretending they are different.
+const meaningCore = s => s
+  .replace(/^to /, '')
+  .replace(/\.\.\.|…/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
 
 function fuzzyMatch(input, candidate){
   if(input === candidate) return true;
