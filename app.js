@@ -1347,6 +1347,10 @@ function headbandSvg(state){
   // One drawing, four readings. The plate and the cloth are always there; what
   // changes is what the plate carries and how much of it is lit.
   //
+  // The plate is a wide rectangle, near enough 2.1 to 1, because that is what a
+  // forehead protector is. It was briefly square, which let the emblem be much
+  // larger but stopped it reading as a headband at all.
+  //
   // The leaf is the emblem itself, not a drawing of it. Earlier attempts here
   // redrew it by hand from a description and never looked right, because the
   // coil holds a near-constant radius for most of a turn and then dives, which
@@ -1359,20 +1363,20 @@ function headbandSvg(state){
   // spiral whose boundary winds in and out, and evenodd turns that into the
   // holes for free. Drawn in its own 100-unit space and scaled onto the plate.
   const slash = state === 'saved'
-    ? `<path class="hb-slash" d="M4.9 13.54 L12 12.59 L28 12.59 L35.1 13.54 L28 14.49 L12 14.49 Z"/>`
+    ? `<path class="hb-slash" d="M5.4 9.81 L13 9.26 L32 9.26 L38.6 9.81 L32 10.36 L13 10.36 Z"/>`
     : '';
-  return `<svg class="hb hb-${state}" viewBox="0 0 40 26" aria-hidden="true">
-    <rect class="hb-cloth" x="0"    y="8"   width="5.5" height="10" rx="1.2"/>
-    <rect class="hb-cloth" x="34.5" y="8"   width="5.5" height="10" rx="1.2"/>
-    <rect class="hb-plate" x="4.5"  y="1.5" width="31"  height="23" rx="3.5"/>
-    <g class="hb-leaf" transform="translate(7.52 2.8) scale(0.2497)">
+  return `<svg class="hb hb-${state}" viewBox="0 0 44 19" aria-hidden="true">
+    <rect class="hb-cloth" x="0"    y="4.5" width="6.5" height="10" rx="1.2"/>
+    <rect class="hb-cloth" x="37.5" y="4.5" width="6.5" height="10" rx="1.2"/>
+    <rect class="hb-plate" x="5"    y="1.5" width="34"  height="16" rx="2.6"/>
+    <g class="hb-leaf" transform="translate(14.66 3.51) scale(0.1465)">
       <path fill-rule="evenodd" d="M96.6 0L98 -0.1L99.2 0.3L99.9 1L100.1 2.4L99.3 4.3L94.9 8.8L93.7 9.7L87.4 15.8L83.3 18.8L81.3 18.6L73.2 14.9L63.2 12.5L61.4 12.5L60.4 12.1L52.8 11.9L49.2 12.1L48.2 12.5L44.7 12.9L40.7 14.1L37 15.8L33.3 18L30.1 20.6L27.5 23.4L25.1 26.8L22.7 31.5L21.2 35.6L20.4 39.2L20 43.3L20.2 47.6L20.8 51.4L22.9 57.3L24.3 60.2L27.5 64.8L30.3 67.6L32.5 69.2L36.8 71.6L41.7 73.7L47 74.9L55.1 74.9L57.7 74.5L64 72.5L68.7 69.6L73.3 65L76.1 60.2L77.3 56.7L77.9 53.9L78.2 46.7L76.7 40.9L75.7 38.4L74.1 35.8L70.9 32.2L68.3 30.2L64 28.2L57.9 26.9L54.3 26.9L53 27.3L51.6 27.3L48 28.6L43.5 31.4L40.5 34.6L38.9 38L38.1 41.1L37.9 46.3L38.5 49.4L40.1 52.4L42.3 54.8L43.9 56L47.8 57.6L51.8 58L55.3 57.2L57.3 56L59.9 53L60.7 51L61.1 47.2L60.3 44.9L57.8 42.1L57 40L57 39L57.9 37.5L58.7 37.1L60.8 37.1L62.6 37.9L64.3 39.6L66 42.3L66.8 44.7L66.8 46.3L67.2 47.4L67.2 50.2L66.4 54.5L65.1 57.1L62.2 60.5L59.3 62.5L55.3 64.1L52.8 64.5L49.4 64.5L47 64.1L42.5 62.5L38.2 59.7L34.9 56.1L32.4 51.8L31.2 47.6L31.2 41.3L32.4 36.8L34.9 32.3L35.3 32.1L37.3 28.7L38.2 27.7L42.5 24.5L45.7 22.9L49.8 21.6L56.3 20.8L61.8 21.2L65.4 22.1L68.9 23.3L74.4 26.5L79 31.1L82.4 36.8L84.5 42.9L85.1 48L85.1 51.6L84.5 56.9L82.4 63.6L80 68.3L78.2 70.9L74 74.7L68.1 78.6L65 79.8L60.6 81L55.7 81.4L54.3 81.8L33.7 81.8L32.1 81.4L16.1 81.8L14 81.4L11.4 81.4L10.2 81L2.8 81L1.4 80.6L0.1 79.5L0.1 75.6L1.7 71.5L1.7 70.7L2.5 69.1L7.4 53.9L7.8 53.5L7.8 52.6L8.2 52.2L8.2 51.4L9 49.8L9.9 46.5L10.3 46.1L11.1 43.1L11.5 42.7L11.5 41.9L12.3 40.2L13.9 34.8L15.5 30.7L18 25.6L21 20.7L24.5 16.7L26.4 14.9L32.1 11.1L37 8.8L42.1 7.2L50.4 6L57.9 6L67.5 7.2L75.4 9.2L78 10.5L81.7 11.7L82.5 11.7L94.5 1.1L95.5 0.3ZM14.3 53.7L14.7 53.7L15.1 56.7L16.8 61.2L19.6 66.1L22.1 69.1L25 72.1L29.1 75.3L15.9 75.3L9.1 74.9L7.7 75.1L7.2 74.8L8.2 71.7L8.2 70.9L8.6 70.5L10.7 64.4L10.7 63.6L11.9 60.4L11.9 59.6L12.3 59.1L12.3 58.3L12.7 57.9L13.1 56.1Z
 "/>
     </g>
     ${slash}
     <g class="hb-rivets">
-      <circle cx="7"  cy="5.2"  r="0.85"/><circle cx="7"  cy="20.8" r="0.85"/>
-      <circle cx="33" cy="5.2"  r="0.85"/><circle cx="33" cy="20.8" r="0.85"/>
+      <circle cx="8.2"  cy="4.6" r="0.7"/><circle cx="8.2"  cy="9.5" r="0.7"/><circle cx="8.2"  cy="14.4" r="0.7"/>
+      <circle cx="35.8" cy="4.6" r="0.7"/><circle cx="35.8" cy="9.5" r="0.7"/><circle cx="35.8" cy="14.4" r="0.7"/>
     </g>
   </svg>`;
 }

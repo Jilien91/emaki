@@ -272,7 +272,7 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .hb-day-studied .hb-label,.hb-day-saved .hb-label{color:var(--text-dim);}
 .hb-today .hb-label{color:var(--text);font-weight:600;}
 
-.hb{width:100%;max-width:76px;height:auto;display:block;}
+.hb{width:100%;max-width:88px;height:auto;display:block;}
 .hb-cloth{fill:#1b1e25;stroke:var(--border-strong);stroke-width:0.6;}
 .hb-plate{fill:#aeb6c2;stroke:#7f8794;stroke-width:0.7;}
 .hb-rivets circle{fill:#6f7784;}
