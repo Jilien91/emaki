@@ -276,7 +276,14 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .hb-cloth{fill:#1b1e25;stroke:var(--border-strong);stroke-width:0.6;}
 .hb-plate{fill:#aeb6c2;stroke:#7f8794;stroke-width:0.7;}
 .hb-rivets circle{fill:#6f7784;}
-.hb-leaf path{fill:#15171c;stroke:none;}
+/* Stroked in its own fill colour, which dilates the shape. The emblem's arms
+   are about 6% of its width, so on a phone they land under a device pixel and
+   anti-alias into the plate: full-strength ink that still reads as a faint,
+   spidery mark. Weight is the fix, not contrast, since the ink is already 21
+   against the plate's 174. Kept light here and taken up at the narrow
+   breakpoint, because only there is the badge small enough to need it. */
+.hb-leaf path{fill:#15171c;stroke:#15171c;stroke-width:1.2;
+  stroke-linejoin:round;stroke-linecap:round;}
 /* The defector's mark: scored across the plate, over the leaf rather than
    under it, because the point is that the symbol has been struck through. A
    filled lens rather than a stroked line, because a sword cut is widest where
@@ -320,4 +327,7 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   .hb-week{gap:3px;}
   .hb-day{padding:6px 1px 5px;gap:5px;}
   .hb-label{font-size:10px;}
+  /* The badge is around 48px here against 88 on a desktop, so the emblem
+     needs the extra weight to survive. */
+  .hb-leaf path{stroke-width:3.4;}
 }
