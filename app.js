@@ -1349,7 +1349,7 @@ function headbandSvg(state){
   const slash = state === 'saved'
     ? `<path class="hb-slash" d="M6.5 20.5 L33.5 11.5"/>`
     : '';
-  return `<svg class="hb hb-${state}" viewBox="0 0 40 24" role="img" aria-hidden="true">
+  return `<svg class="hb hb-${state}" viewBox="0 0 40 24" aria-hidden="true">
     <rect class="hb-cloth" x="0"  y="7.5" width="7"  height="9" rx="1.2"/>
     <rect class="hb-cloth" x="33" y="7.5" width="7"  height="9" rx="1.2"/>
     <rect class="hb-plate" x="6"  y="4"   width="28" height="16" rx="3"/>
@@ -1366,32 +1366,43 @@ function headbandSvg(state){
 }
 
 function renderStreakWeek(){
-  const today   = todayKey();
+  // One reading of the clock. Sampling it twice let midnight fall between them,
+  // so the strip could take yesterday as "today" and build today's week around
+  // it. Sunday into Monday was the worst of it: a fresh Monday-to-Sunday row
+  // with no today in it at all.
+  const now     = new Date();
+  const today   = dateKey(now);
+  const start   = weekStart(now);
   const studied = new Set(activityDates);
   const saved   = new Set(streakSaves.savedDates || []);
-  const start   = weekStart(new Date());
+  // A day before the user's first ever activity was not missed, it was simply
+  // before they started. Telling somebody who opened the app on Wednesday that
+  // they missed Monday and Tuesday is both wrong and discouraging.
+  const began   = activityDates.length ? activityDates.slice().sort()[0] : today;
 
   const cells = WEEKDAYS.map((label, i) => {
     const key = dateKey(addDays(start, i));
-    // Order matters: a day can be in both sets if a kunai was spent and the
-    // user then studied after all, and having actually studied is the truer
-    // thing to show.
+    // Order matters: a day can be in both sets if the clock moved or two tabs
+    // raced, and having actually studied is the truer thing to show.
     const state = studied.has(key) ? 'studied'
                 : saved.has(key)   ? 'saved'
                 : key === today    ? 'pending'
                 : key > today      ? 'future'
+                : key < began      ? 'untracked'
                 : 'missed';
     const said = { studied: 'studied', saved: 'covered by a kunai',
                    pending: 'not studied yet', future: 'still to come',
-                   missed: 'missed' }[state];
-    return `<div class="hb-day hb-day-${state}${key === today ? ' hb-today' : ''}">
+                   untracked: 'no study recorded', missed: 'missed' }[state];
+    // The visible label is hidden from the reading, because the sentence below
+    // already begins with it and otherwise it is announced twice.
+    return `<li class="hb-day hb-day-${state}${key === today ? ' hb-today' : ''}">
       ${headbandSvg(state)}
-      <span class="hb-label">${label}</span>
+      <span class="hb-label" aria-hidden="true">${label}</span>
       <span class="visually-hidden">${label}, ${said}</span>
-    </div>`;
+    </li>`;
   }).join('');
 
-  return `<div class="hb-week" role="group" aria-label="This week">${cells}</div>`;
+  return `<ul class="hb-week" aria-label="This week">${cells}</ul>`;
 }
 
 // Somewhere for a reader to say a card is wrong. Kaishi has a few hundred

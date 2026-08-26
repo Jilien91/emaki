@@ -261,13 +261,14 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 /* ---- The week as forehead protectors --------------------------------------
    Seven days, Monday first. Drawn with plain shapes so they take the theme's
    colours, stay sharp at any size, and carry no imported artwork. */
-.hb-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:6px;}
+.hb-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:6px;
+  list-style:none;padding:0;margin-bottom:0;}
 .hb-day{display:flex;flex-direction:column;align-items:center;gap:7px;
   padding:10px 4px 8px;border-radius:10px;border:1px solid transparent;}
 /* Today is marked by its frame rather than by the band, so the band is free to
    say only whether the day was studied. */
 .hb-day.hb-today{border-color:var(--border-strong);background:var(--surface-2);}
-.hb-label{font-size:11px;color:var(--text-faint);letter-spacing:0.3px;}
+.hb-label{font-size:11px;color:var(--text-dim);letter-spacing:0.3px;}
 .hb-day-studied .hb-label,.hb-day-saved .hb-label{color:var(--text-dim);}
 .hb-today .hb-label{color:var(--text);font-weight:600;}
 
@@ -286,14 +287,14 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .hb-saved .hb-plate{fill:#8d939e;}
 /* Missed, still to come, and today-not-yet are all "no band earned". They differ
    only in how much light is on them: the past is spent, the future is waiting. */
-.hb-missed{opacity:0.28;}
-.hb-future{opacity:0.16;}
-.hb-pending{opacity:0.45;}
-.hb-missed .hb-plate,.hb-future .hb-plate,.hb-pending .hb-plate{fill:none;
-  stroke:var(--text-faint);stroke-dasharray:2.5 2;}
-.hb-missed .hb-leaf,.hb-future .hb-leaf,.hb-pending .hb-leaf{display:none;}
-.hb-missed .hb-rivets,.hb-future .hb-rivets,.hb-pending .hb-rivets{display:none;}
-.hb-missed .hb-cloth,.hb-future .hb-cloth,.hb-pending .hb-cloth{fill:none;}
+.hb-missed .hb-plate,.hb-untracked .hb-plate{stroke:var(--border-strong);}
+.hb-future .hb-plate,.hb-pending .hb-plate{stroke:var(--border);}
+.hb-missed .hb-plate,.hb-future .hb-plate,.hb-pending .hb-plate,.hb-untracked .hb-plate{
+  fill:none;stroke-dasharray:2.5 2;}
+.hb-missed .hb-leaf,.hb-future .hb-leaf,.hb-pending .hb-leaf,.hb-untracked .hb-leaf{display:none;}
+.hb-missed .hb-rivets,.hb-future .hb-rivets,.hb-pending .hb-rivets,.hb-untracked .hb-rivets{display:none;}
+.hb-missed .hb-cloth,.hb-future .hb-cloth,.hb-pending .hb-cloth,.hb-untracked .hb-cloth{
+  fill:none;stroke:var(--border);}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;}
 
