@@ -30,6 +30,61 @@
   --q-meaning-bg:#16283a;
   --q-reading:#d782d8;
   --q-reading-bg:#33203a;
+  /* Tints behind a right or wrong answer. The same alpha over a dark ground
+     and over a light one is not the same colour, so each theme states it. */
+  --ok-tint:rgba(62,207,142,0.12);
+  --bad-tint:rgba(224,92,92,0.12);
+  /* The forehead protector: cloth, metal plate, rivets, and the emblem's
+     ink. The same objects in both themes, so they move with the palette
+     rather than being drawn twice. */
+  --hb-cloth:#1b1e25;
+  --hb-plate:#aeb6c2;
+  --hb-plate-saved:#8d939e;
+  --hb-plate-edge:#7f8794;
+  --hb-rivet:#6f7784;
+  --hb-ink:#15171c;
+}
+
+/* The light theme.
+
+   Same hues, re-weighted rather than inverted. On a light ground the tier
+   colours have to darken to stay legible and their tinted backgrounds have to
+   lighten, so a mechanical inversion would have wrecked the ranks that carry
+   the meaning. The headband keeps dark cloth and a metal plate either way,
+   because that is what the object is.
+
+   Reached only through an explicit data-theme. app.js resolves the "system"
+   setting to light or dark itself and writes the attribute, which keeps the
+   palette in one place instead of repeating the whole list inside a
+   prefers-color-scheme query. */
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg:#f2f3f6;
+  --surface:#ffffff;
+  --surface-2:#e8eaf0;
+  --border:#d8dbe3;
+  --border-strong:#b2b8c4;
+  --text:#181a20;
+  --text-dim:#5a6070;
+  --text-faint:#878d9c;
+  --new:#878d9c;
+  --genin:#b34a1e;   --genin-bg:#fbeae2;
+  --chunin:#5646c0;  --chunin-bg:#eae7fa;
+  --jonin:#1a6ba3;   --jonin-bg:#e3eff9;
+  --anbu:#137a55;    --anbu-bg:#e0f3eb;
+  --kage:#8a6512;    --kage-bg:#f8f0da;
+  --danger:#c23b3b;
+  --success:#137a55;
+  --q-meaning:#1a6ba3;  --q-meaning-bg:#e3eff9;
+  --q-reading:#9c3f9d;  --q-reading-bg:#f8e9f8;
+  --ok-tint:rgba(19,122,85,0.10);
+  --bad-tint:rgba(194,59,59,0.10);
+  --hb-cloth:#2f333c;
+  --hb-plate:#aeb8c7;
+  --hb-plate-saved:#98a2b1;
+  --hb-plate-edge:#6f7889;
+  --hb-rivet:#6f7784;
+  --hb-ink:#181a20;
 }
 *{box-sizing:border-box;}
 body{
@@ -120,9 +175,9 @@ button.primary{
   font-family:'Inter';font-size:14px;font-weight:600;cursor:pointer;
 }
 button.primary:hover{opacity:0.9;}
-.field.result-correct{border:1px solid var(--success);background:rgba(62,207,142,0.12);}
+.field.result-correct{border:1px solid var(--success);background:var(--ok-tint);}
 .field.result-correct .k{color:var(--success);}
-.field.result-incorrect{border:1px solid var(--danger);background:rgba(224,92,92,0.12);}
+.field.result-incorrect{border:1px solid var(--danger);background:var(--bad-tint);}
 .field.result-incorrect .k{color:var(--danger);}
 button.secondary{
   width:100%;padding:13px;border-radius:10px;border:1px solid var(--border-strong);
@@ -277,20 +332,20 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .hb-today .hb-label{color:var(--text);font-weight:600;}
 
 .hb{width:100%;max-width:88px;height:auto;display:block;}
-.hb-cloth{fill:#1b1e25;stroke:var(--border-strong);stroke-width:0.6;}
-.hb-plate{fill:#aeb6c2;stroke:#7f8794;stroke-width:0.7;}
-.hb-rivets circle{fill:#6f7784;}
-.hb-leaf path{fill:#15171c;stroke:none;}
+.hb-cloth{fill:var(--hb-cloth);stroke:var(--border-strong);stroke-width:0.6;}
+.hb-plate{fill:var(--hb-plate);stroke:var(--hb-plate-edge);stroke-width:0.7;}
+.hb-rivets circle{fill:var(--hb-rivet);}
+.hb-leaf path{fill:var(--hb-ink);stroke:none;}
 /* The defector's mark: scored across the plate, over the leaf rather than
    under it, because the point is that the symbol has been struck through. A
    filled lens rather than a stroked line, because a sword cut is widest where
    it bit deepest and tapers to nothing at both ends, and a stroke cannot
    taper. */
-.hb-slash{fill:#15171c;stroke:none;}
+.hb-slash{fill:var(--hb-ink);stroke:none;}
 
 /* A day that was covered rather than earned. The plate is duller and the slash
    is the whole story, so nothing else needs to shout. */
-.hb-saved .hb-plate{fill:#8d939e;}
+.hb-saved .hb-plate{fill:var(--hb-plate-saved);}
 /* Missed, still to come, and today-not-yet are all "no band earned". They differ
    only in how much light is on them: the past is spent, the future is waiting. */
 .hb-missed .hb-plate,.hb-untracked .hb-plate{stroke:var(--border-strong);}

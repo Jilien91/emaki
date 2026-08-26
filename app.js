@@ -19,7 +19,8 @@ const DEFAULT_SETTINGS = {
   audioVoice: null,         // which shipped voice set to play; null = the first there is
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
-  showMnemonicOnAnswer: false // the mnemonic gives away the half you haven't been asked yet
+  showMnemonicOnAnswer: false, // the mnemonic gives away the half you haven't been asked yet
+  theme: 'system'            // 'system' | 'light' | 'dark'
 };
 const STREAK_SAVE_KEY = 'kaishi-streak-saves';
 const SYNC_PROMPT_KEY = 'kaishi-sync-prompt-dismissed';
@@ -446,6 +447,42 @@ function loadSettings(){
     const raw = window.localStorage.getItem(SETTINGS_KEY);
     if(raw){ settings = Object.assign({}, DEFAULT_SETTINGS, JSON.parse(raw)); }
   }catch(e){}
+}
+
+// Which theme is actually in force. "system" is resolved here rather than in
+// CSS: a prefers-color-scheme block would mean writing the whole light palette
+// out twice, once for the media query and once for the explicit choice, and
+// the two copies would drift.
+function resolvedTheme(){
+  const t = settings.theme || 'system';
+  if(t === 'light' || t === 'dark') return t;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+    ? 'light' : 'dark';
+}
+
+// theme-color paints the browser chrome and the iOS status bar. Left on the
+// dark value in light mode it puts a black bar above a white page.
+const THEME_BG = { dark: '#15171c', light: '#f2f3f6' };
+
+function applyTheme(){
+  const t = resolvedTheme();
+  document.documentElement.dataset.theme = t;
+  // Tells the browser what the page already is, so its own darkening stays out
+  // of the way. Not a guarantee everywhere: Firefox on iOS injects its night
+  // mode as a user script and does not consult this.
+  document.documentElement.style.colorScheme = t;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute('content', THEME_BG[t]);
+}
+
+// Only while the setting is "system"; an explicit choice should not move when
+// the operating system does.
+function watchSystemTheme(){
+  if(!window.matchMedia) return;
+  const mq = window.matchMedia('(prefers-color-scheme: light)');
+  const onChange = () => { if((settings.theme || 'system') === 'system') applyTheme(); };
+  if(mq.addEventListener) mq.addEventListener('change', onChange);
+  else if(mq.addListener) mq.addListener(onChange);
 }
 
 function saveSettings(){
@@ -890,6 +927,16 @@ function saveLessonSettings(){
   settings.dailyNewLimit = daily;
   saveSettings();
   switchView('dashboard');
+}
+
+function saveThemeSetting(){
+  const el = document.getElementById('themeInput');
+  if(!el) return;
+  settings.theme = el.value;
+  saveSettings();
+  applyTheme();
+  // No re-render: the palette is entirely CSS variables, so the page it is
+  // already showing changes underneath it and the select keeps its focus.
 }
 
 function saveReviewSettings(){
@@ -2039,7 +2086,20 @@ function renderSettings(){
   const dailyLabel = settings.dailyNewLimit===0
     ? `${dailyLessons.count} new lesson${dailyLessons.count===1?'':'s'} today (no daily limit)`
     : `${dailyLessons.count} of ${settings.dailyNewLimit} new lessons today`;
+  const theme = settings.theme || 'system';
   return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Appearance</div>
+    <div class="settings-row">
+      <div class="settings-label">Theme</div>
+      <div class="settings-desc">Follow the system and Emaki changes when your device does. Choosing light or dark here fixes it either way, whatever the device is set to.</div>
+      <select id="themeInput" onchange="saveThemeSetting()">
+        <option value="system" ${theme==='system'?'selected':''}>Follow system</option>
+        <option value="light" ${theme==='light'?'selected':''}>Light</option>
+        <option value="dark" ${theme==='dark'?'selected':''}>Dark</option>
+      </select>
+    </div>
+  </div>
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Lesson Settings</div>
     <div class="settings-row">
@@ -2512,6 +2572,10 @@ document.addEventListener('keydown', (e)=>{
 async function init(){
   loadProgress();
   loadSettings();
+  // Straight after the settings load and before the first render, so the
+  // choice is never briefly overridden by the default.
+  applyTheme();
+  watchSystemTheme();
   loadDailyLessons();
   loadMistakes();
   loadActivity();
