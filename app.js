@@ -1348,7 +1348,7 @@ function confirmLeavingReview(){
   if(!reviewState || reviewState.queue.length === 0) return true;
   const half = halfAnsweredCount();
   const risk = half > 0
-    ? `${half} word${half===1 ? ' has' : 's have'} had only one half answered. A word moves only when its meaning and its reading are both right, so ${half===1 ? 'that one starts' : 'those start'} again if you close Emaki before coming back.`
+    ? `${half} word${half===1 ? ' has' : 's have'} had only one half answered. A word progresses only when its meaning and its reading are both right, so ${half===1 ? 'that one starts' : 'those start'} again if you close Emaki before coming back.`
     : 'Nothing is half answered at the moment.';
   return confirm(`Leave this review session?\n\nEvery word you have finished is already saved. ${risk}\n\nComing back to Reviews picks up where you left off.`);
 }
