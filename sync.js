@@ -364,7 +364,28 @@ async function initSync(){
   // Coming back to a device should pick up whatever another device wrote.
   document.addEventListener('visibilitychange', ()=>{
     if(document.visibilityState === 'visible' && syncActive()) syncNow();
+    else if(document.visibilityState === 'hidden') syncOnTheWayOut();
   });
+  // Backgrounding an app on a phone fires visibilitychange; navigating away or
+  // closing the tab fires pagehide and may not fire the other one at all.
+  window.addEventListener('pagehide', syncOnTheWayOut);
+}
+
+// Leaving is the one moment the debounce cannot cover. An answer given a second
+// before the tab is closed is saved here but not yet sent, and nothing sends it
+// until the app is next opened on this device, so a morning on the phone can
+// reach the afternoon's PC one answer short.
+//
+// It is a try rather than a guarantee, and deliberately not more than that. The
+// browser is free to kill an in-flight request as the page goes away, and the
+// only way round that is sendBeacon or a keepalive fetch, neither of which can
+// read a reply. A write that cannot read the reply cannot tell whether its
+// compare and swap matched, which would mean giving up the protection that
+// stops two devices overwriting each other to save one round trip. Not a trade
+// worth making: the dirty mark already covers whatever this misses, and the
+// merge means a late answer is folded in rather than lost.
+function syncOnTheWayOut(){
+  if(syncActive() && isDirty()) syncNow();
 }
 
 // Deep equality that ignores key order. Everything here round-trips through a
