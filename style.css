@@ -392,3 +392,55 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   .hb-day{padding:6px 1px 5px;gap:5px;}
   .hb-label{font-size:10px;}
 }
+
+/* ---- Arranging the dashboard ----------------------------------------------
+   Only ever on screen in arrange mode. Outside it the sections render exactly
+   as they always have, with no wrapper, no handle and no drag listeners, so a
+   dashboard nobody is arranging costs nothing and cannot be dragged by
+   accident. */
+.arr-top{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin:0 2px 12px;font-size:12px;color:var(--text-dim);line-height:1.5;
+}
+/* The header button is the way out, so it also marks that the mode is on. */
+.icon-btn.on{
+  background:var(--genin-bg);border-color:var(--genin);color:var(--genin);
+}
+.arr{
+  position:relative;margin-bottom:16px;padding:8px;
+  border:1px dashed var(--border-strong);border-radius:16px;background:var(--surface-2);
+}
+.arr-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.arr-name{
+  flex:1;min-width:0;font-size:12px;font-weight:600;color:var(--text-dim);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.arr-grip{
+  flex:0 0 auto;width:34px;height:34px;border-radius:9px;
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text-dim);
+  font-size:16px;line-height:1;cursor:grab;
+  /* The handle is the only part that swallows touch gestures. Anywhere else on
+     the card a finger still scrolls the page. */
+  touch-action:none;
+}
+.arr-grip:hover{background:var(--border);color:var(--text);}
+.arr-grip:active{cursor:grabbing;}
+.arr-grip:focus-visible{outline:2px solid var(--genin);outline-offset:2px;}
+/* Two classes on purpose. `button.secondary` above sets width:100%, and a
+   single-class selector loses to it, which stretched this to the full width of
+   the card and pushed the page wider than the screen. */
+.arr-bar .arr-toggle{flex:0 0 auto;width:auto;padding:7px 12px;font-size:12px;margin-bottom:0;}
+/* The section is a preview while arranging, not a working card: a tap on Start
+   Reviews here means "I was aiming for the handle", not "start reviews". */
+.arr-body{pointer-events:none;}
+.arr-body > *:last-child{margin-bottom:0;}
+.arr-off{opacity:0.6;}
+.arr-dragging{
+  position:fixed;z-index:60;margin:0;pointer-events:none;
+  border-style:solid;border-color:var(--genin);
+  box-shadow:0 14px 30px rgba(0,0,0,0.45);
+}
+.arr-placeholder{
+  margin-bottom:16px;border-radius:16px;
+  border:1px dashed var(--genin);background:var(--genin-bg);opacity:0.45;
+}

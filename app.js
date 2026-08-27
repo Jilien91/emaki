@@ -20,7 +20,13 @@ const DEFAULT_SETTINGS = {
   autoPlayLessonAudio: true,
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
   showMnemonicOnAnswer: false, // the mnemonic gives away the half you haven't been asked yet
-  theme: 'system'            // 'system' | 'light' | 'dark'
+  theme: 'system',           // 'system' | 'light' | 'dark'
+  // null rather than a copy of the shipped order, so that a later version can
+  // change the default and everybody who never arranged anything gets it. Both
+  // are read through dashboardLayout() and dashboardHiddenIds(), which is where
+  // an unknown or missing section id is dealt with.
+  dashboardOrder: null,      // [sectionId, ...]; null = the order in DASHBOARD_SECTIONS
+  dashboardHidden: null      // [sectionId, ...]; null = nothing hidden
 };
 const STREAK_SAVE_KEY = 'kaishi-streak-saves';
 const SYNC_PROMPT_KEY = 'kaishi-sync-prompt-dismissed';
@@ -55,6 +61,9 @@ let streakSaves = { count: STREAK_SAVE_MAX, lastEarned: null, savedDates: [] };
 let reviewHistory = {}; // {'YYYY-MM-DD': count}
 let storageOk = true;
 let view = 'dashboard';
+// A CSS selector for whatever should hold the focus after the next render, set
+// by a handler that knows a redraw is about to take the focus away from it.
+let focusAfterRender = null;
 let sessionCorrect = 0;
 let sessionTotal = 0;
 let lessonState = null; // {batch, phase:'study'|'quiz', studyIndex, showAnswer, quizQueue, quizProgress, lastCorrect, lastInput}
@@ -1268,6 +1277,10 @@ function switchView(v){
   syncWelcomeHash(v);
   view = v;
   extraStudyState = null;
+  // Arranging is a thing you are doing to the dashboard, so leaving it ends.
+  // Coming back to a dashboard still in arrange mode, with no memory of having
+  // asked for it, would read as the app being broken.
+  if(v !== 'dashboard') arrangingDashboard = false;
   // Reviews run as a session; leaving and coming back resumes the same one,
   // and a fresh session (with a fresh tally) is only built once it's done.
   if(v==='review' && !reviewState) buildReviewSession();
@@ -1309,43 +1322,124 @@ function nav(active){
   </nav>`;
 }
 
-function renderDashboard(){
+// ---- The dashboard ---------------------------------------------------------
+//
+// It used to be one template string in a fixed order. It is now a list of named
+// sections rendered in whatever order the reader has put them in, because the
+// right order is not the same for everybody: somebody drilling reviews wants the
+// counts at the top, somebody working through lessons wants the streak where
+// they can see it, and somebody who never uses the word search wants it gone.
+//
+// A section is one card, or one pair of cards that only make sense side by side.
+// The pairs move as a unit rather than as two halves, so every arrangement is
+// still a composed layout rather than a half-width card stranded next to a gap.
+//
+// The order and the hidden list live in settings, so they sync with everything
+// else and a phone and a desktop agree about the dashboard.
+const DASHBOARD_SECTIONS = [
+  { id:'cta',      label:'Reviews and lessons',      render:renderCtaSection },
+  { id:'search',   label:'Look up a word',           render:renderSearchCard },
+  { id:'mistakes', label:'Recent mistakes',          render:renderMistakesSection },
+  { id:'stats',    label:'Reviews today and streak', render:renderStatsSection },
+  { id:'week',     label:'This week',                render:renderWeekSection },
+  { id:'tiers',    label:'Stage counts',             render:renderTiersSection }
+];
+
+// Arranging is a mode, not a setting. The setting is the layout it produces.
+// Kept out of `settings` on purpose: leaving your phone in arrange mode should
+// not put your desktop in arrange mode when it next syncs.
+let arrangingDashboard = false;
+
+// Everything the sections need, worked out once. Several of these walk the whole
+// deck, and six sections each calling dueReviews() for themselves would be six
+// passes over 1500 words to draw one screen.
+function dashboardContext(){
   const counts = {new:0,genin:0,chunin:0,jonin:0,anbu:0,kage:0};
-  VOCAB.forEach(v=>{
-    const p = getEntry(v.id);
-    counts[TIER_COLOR(p.stage)]++;
-  });
-  const due = dueReviews().length;
-  const upcoming = nextUpcoming();
-  const lessonsAvailable = Math.min(newWords().length, remainingToday());
-  const learnableCount = learnableWords().length;
-
-  const mistakeItems = recentMistakeIds().map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean);
-
-  const todayCount = reviewsCompletedOn();
-  const yesterdayCount = reviewsCompletedOn(addDays(new Date(), -1));
-
+  VOCAB.forEach(v=>{ counts[TIER_COLOR(getEntry(v.id).stage)]++; });
   refreshStreakSaves();
-  const streak = studyStreak();
+  return {
+    counts,
+    due: dueReviews().length,
+    upcoming: nextUpcoming(),
+    lessonsAvailable: Math.min(newWords().length, remainingToday()),
+    mistakeItems: recentMistakeIds().map(id=>VOCAB.find(v=>v.id===id)).filter(Boolean),
+    todayCount: reviewsCompletedOn(),
+    yesterdayCount: reviewsCompletedOn(addDays(new Date(), -1)),
+    streak: studyStreak()
+  };
+}
+
+// The stored order, made safe to use. Two things it has to survive: an id that
+// no longer exists, from a section that was removed or renamed, and a section
+// that the stored order has never heard of. The second is the one that matters —
+// a card added in a later version must appear for somebody who arranged their
+// dashboard last year, rather than silently never showing up.
+function dashboardLayout(){
+  const known = new Map(DASHBOARD_SECTIONS.map(s=>[s.id, s]));
+  const stored = Array.isArray(settings.dashboardOrder) ? settings.dashboardOrder : [];
+  const out = [], seen = new Set();
+  for(const id of stored){
+    if(known.has(id) && !seen.has(id)){ out.push(known.get(id)); seen.add(id); }
+  }
+  DASHBOARD_SECTIONS.forEach((s, i)=>{
+    if(!seen.has(s.id)) out.splice(Math.min(i, out.length), 0, s);
+  });
+  return out;
+}
+
+function dashboardHiddenIds(){
+  return Array.isArray(settings.dashboardHidden) ? settings.dashboardHidden.slice() : [];
+}
+
+function renderDashboard(){
+  const c = dashboardContext();
+  const hidden = new Set(dashboardHiddenIds());
+  const sections = dashboardLayout();
+
+  const body = arrangingDashboard
+    ? sections.map(s=>renderArrangeWrapper(s, c, hidden.has(s.id))).join('')
+    : sections.filter(s=>!hidden.has(s.id)).map(s=>s.render(c)).join('');
+
+  // Everything visible turned off is a legitimate choice, but a blank screen
+  // looks broken rather than chosen, and there would be no way back to the
+  // arranging screen from it.
+  const allOff = !arrangingDashboard && sections.every(s=>hidden.has(s.id));
 
   return `
   ${nav('dashboard')}
+  ${renderSyncPrompt()}
+  ${arrangingDashboard ? renderArrangeBar() : ''}
+  <div id="dashSections">${body}</div>
+  ${allOff ? `<div class="card" style="margin-bottom:16px;">
+    <div class="empty" style="padding:14px 0;">Every card is hidden. Use ⠿ at the top to bring one back.</div>
+  </div>` : ''}
+  <div style="text-align:center;margin-top:10px;">
+    <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
+  </div>
+  `;
+}
+
+function renderCtaSection(c){
+  return `
   <div class="grid2">
     <div class="card cta-card">
       <div class="cta-label">Reviews</div>
-      <div class="cta-count">${due}</div>
-      <div class="cta-sub">${due>0 ? 'Reviews are ready.' : (upcoming ? `Next batch in ${humanizeDuration(upcoming-now())}` : 'All caught up.')}</div>
+      <div class="cta-count">${c.due}</div>
+      <div class="cta-sub">${c.due>0 ? 'Reviews are ready.' : (c.upcoming ? `Next batch in ${humanizeDuration(c.upcoming-now())}` : 'All caught up.')}</div>
       <button class="primary" onclick="switchView('review')">Start Reviews</button>
     </div>
     <div class="card cta-card">
       <div class="cta-label">Today's Lessons</div>
-      <div class="cta-count">${lessonsAvailable}</div>
-      <div class="cta-sub">${lessonsAvailable>0 ? 'Learn something new.' : 'None available right now.'}</div>
+      <div class="cta-count">${c.lessonsAvailable}</div>
+      <div class="cta-sub">${c.lessonsAvailable>0 ? 'Learn something new.' : 'None available right now.'}</div>
       <button class="primary" onclick="switchView('lessons')">Start Lessons</button>
     </div>
-  </div>
-  ${renderSyncPrompt()}
-  ${renderSearchCard()}
+  </div>`;
+}
+
+function renderMistakesSection(c){
+  const mistakeItems = c.mistakeItems;
+  return `
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Recent Mistakes</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">From the past 24 hours.</div>
@@ -1359,17 +1453,21 @@ function renderDashboard(){
       </div>
       <button class="primary" style="margin-top:14px;" onclick="startExtraStudy()">Extra Study (${mistakeItems.length})</button>
     `}
-  </div>
+  </div>`;
+}
+
+function renderStatsSection(c){
+  return `
   <div class="grid2">
     <div class="card stat-card">
       <div class="section-title">Reviews Today</div>
-      <div class="cta-count">${todayCount}</div>
-      <div class="cta-sub">Yesterday: ${yesterdayCount}</div>
+      <div class="cta-count">${c.todayCount}</div>
+      <div class="cta-sub">Yesterday: ${c.yesterdayCount}</div>
     </div>
     <div class="card stat-card">
       <div class="section-title">Study Streak</div>
-      <div class="cta-count">${streak}</div>
-      <div class="cta-sub">${streak>0 ? `day${streak===1?'':'s'} in a row` : 'study today to start one'}</div>
+      <div class="cta-count">${c.streak}</div>
+      <div class="cta-sub">${c.streak>0 ? `day${c.streak===1?'':'s'} in a row` : 'study today to start one'}</div>
       <div class="kunai ${streakSaves.count>0?'held':'spent'}">
         <svg class="kunai-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.1" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="11.2" y="5.2" width="1.6" height="3.6" fill="currentColor"/><path d="M12 8.6 L15.4 12.4 L12 23 L8.6 12.4 Z" fill="currentColor"/></svg>
         <span>${streakSaves.count>0 ? 'Kunai ready' : 'Kunai spent'}</span>
@@ -1378,21 +1476,236 @@ function renderDashboard(){
         ? `Miss a day and this covers it. A new one ${STREAK_SAVE_DAYS} days after it's used.`
         : `It covered a missed day.<br>New kunai ${formatStamp(nextKunaiAt())}.`}</div>
     </div>
-  </div>
+  </div>`;
+}
+
+function renderWeekSection(){
+  return `
   <div class="card" style="margin-bottom:20px;">
     <div class="section-title">This Week</div>
     ${renderStreakWeek()}
-  </div>
+  </div>`;
+}
+
+function renderTiersSection(c){
+  return `
   <div class="grid3">
     ${['new','genin','chunin','jonin','anbu','kage'].map(t=>`
       <button class="stat stat-btn" onclick="showTier('${t}')" title="Show these words">
-        <div class="n">${counts[t]}</div><div class="l">${t.charAt(0).toUpperCase()+t.slice(1)}</div>
+        <div class="n">${c.counts[t]}</div><div class="l">${t.charAt(0).toUpperCase()+t.slice(1)}</div>
       </button>`).join('')}
-  </div>
-  <div style="text-align:center;margin-top:10px;">
-    <button class="reset-link" onclick="resetProgress()">Reset all progress</button>
-  </div>
-  `;
+  </div>`;
+}
+
+// ---- Arranging -------------------------------------------------------------
+//
+// Dragging is the obvious gesture and it is what Lasz asked for, but it cannot
+// be the only one. A drag needs a pointer, a steady hand and sight of the
+// screen, so the handle is also a button that moves its section with the arrow
+// keys. That covers a keyboard, a screen reader, and the case where a drag on a
+// phone turns into a scroll.
+//
+// The handle is the only draggable part rather than the whole card. Grabbing
+// anywhere would mean `touch-action:none` over the entire dashboard, and then a
+// finger swipe to scroll would pick a card up instead.
+
+// One line rather than a card. The button that turned arranging on is still
+// sitting in the header waiting to turn it off, so a panel repeating that in a
+// box of its own would be furniture.
+function renderArrangeBar(){
+  return `
+  <div class="arr-top">
+    <span>Drag a card by its handle, or select one and use the arrow keys.</span>
+    <button class="reset-link" onclick="resetDashboardLayout()">Restore the default order</button>
+  </div>`;
+}
+
+function renderArrangeWrapper(section, c, isHidden){
+  return `
+  <div class="arr${isHidden ? ' arr-off' : ''}" data-sec="${section.id}">
+    <div class="arr-bar">
+      <button class="arr-grip" type="button"
+              onpointerdown="startSectionDrag(event,'${section.id}')"
+              onkeydown="sectionGripKey(event,'${section.id}')"
+              aria-label="Move ${escapeHtml(section.label)}"
+              title="Drag to move, or use the arrow keys">⠿</button>
+      <span class="arr-name">${escapeHtml(section.label)}${isHidden ? ' — hidden' : ''}</span>
+      <button class="secondary arr-toggle" type="button"
+              onclick="toggleDashboardSection('${section.id}')"
+              aria-pressed="${isHidden ? 'false' : 'true'}">${isHidden ? 'Show' : 'Hide'}</button>
+    </div>
+    ${isHidden ? '' : `<div class="arr-body">${section.render(c)}</div>`}
+  </div>`;
+}
+
+// The header button is both the way in and the way out, so it toggles. It only
+// exists on the dashboard, because it is the only screen there is anything to
+// arrange on.
+function toggleArrangingDashboard(){
+  arrangingDashboard ? stopArrangingDashboard() : startArrangingDashboard();
+}
+
+function startArrangingDashboard(){
+  arrangingDashboard = true;
+  view = 'dashboard';
+  syncWelcomeHash(view);
+  render();
+}
+
+function stopArrangingDashboard(){
+  arrangingDashboard = false;
+  render();
+}
+
+function toggleDashboardSection(id){
+  const hidden = new Set(dashboardHiddenIds());
+  if(hidden.has(id)) hidden.delete(id); else hidden.add(id);
+  // A fresh array every time. DEFAULT_SETTINGS is copied by reference into
+  // settings for any key the saved copy doesn't have, so pushing into one of
+  // its arrays would edit the defaults for the rest of the session.
+  settings.dashboardHidden = Array.from(hidden);
+  saveSettings();
+  focusAfterRender = `.arr[data-sec="${id}"] .arr-toggle`;
+  render();
+}
+
+function setDashboardOrder(ids){
+  settings.dashboardOrder = ids.slice();
+  saveSettings();
+}
+
+function moveDashboardSection(id, delta){
+  const ids = dashboardLayout().map(s=>s.id);
+  const from = ids.indexOf(id);
+  const to = from + delta;
+  if(from < 0 || to < 0 || to >= ids.length) return;
+  ids.splice(to, 0, ids.splice(from, 1)[0]);
+  setDashboardOrder(ids);
+  focusAfterRender = `.arr[data-sec="${id}"] .arr-grip`;
+  render();
+}
+
+function resetDashboardLayout(){
+  settings.dashboardOrder = null;
+  settings.dashboardHidden = null;
+  saveSettings();
+  render();
+}
+
+function sectionGripKey(e, id){
+  if(e.key === 'ArrowUp' || e.key === 'ArrowDown'){
+    e.preventDefault();
+    moveDashboardSection(id, e.key === 'ArrowUp' ? -1 : 1);
+  }
+}
+
+// ---- Dragging one section --------------------------------------------------
+//
+// The card being dragged is taken out of the flow and pinned to the pointer,
+// and a placeholder of the same height holds its slot. Everything else then
+// reflows on its own as the placeholder moves, which is what makes the gap open
+// where the card is going to land without moving any other element by hand.
+//
+// Only the vertical position follows the pointer. The dashboard is one column,
+// so horizontal freedom would buy nothing and would let somebody drag a card
+// off the side of a phone.
+let dashDrag = null;
+
+function startSectionDrag(e, id){
+  if(!arrangingDashboard) return;
+  if(e.button !== undefined && e.button !== 0) return;   // right-click, not a drag
+  const list = document.getElementById('dashSections');
+  const wrap = list && list.querySelector(`.arr[data-sec="${id}"]`);
+  if(!wrap) return;
+  e.preventDefault();
+
+  const rect = wrap.getBoundingClientRect();
+  const holder = document.createElement('div');
+  holder.className = 'arr-placeholder';
+  holder.style.height = rect.height + 'px';
+  wrap.after(holder);
+
+  wrap.classList.add('arr-dragging');
+  wrap.style.width = rect.width + 'px';
+  wrap.style.left = rect.left + 'px';
+  wrap.style.top = rect.top + 'px';
+
+  dashDrag = { id, wrap, holder, list, grabY: e.clientY - rect.top, y: e.clientY, scroll: 0 };
+
+  // Keeps the moves coming to the handle even when the pointer outruns it.
+  // Throws if the pointer has already gone by the time we ask, which is not a
+  // reason to abandon the drag: the document listeners below are what actually
+  // drive it.
+  try{ e.target.setPointerCapture(e.pointerId); }catch(err){}
+  document.addEventListener('pointermove', onSectionDragMove);
+  document.addEventListener('pointerup', endSectionDrag);
+  document.addEventListener('pointercancel', endSectionDrag);
+}
+
+function onSectionDragMove(e){
+  if(!dashDrag) return;
+  dashDrag.y = e.clientY;
+  dashDrag.wrap.style.top = (e.clientY - dashDrag.grabY) + 'px';
+  placeSectionHolder(e.clientY);
+  edgeScroll(e.clientY);
+}
+
+// The slot the card would land in: the first section whose middle the pointer is
+// above. Measured live rather than from a table taken at the start, because the
+// list reflows as the placeholder moves and a cached table would be wrong the
+// moment anything shifted.
+function placeSectionHolder(y){
+  const { list, holder, wrap } = dashDrag;
+  let before = null;
+  for(const el of Array.from(list.children)){
+    if(el === wrap || el === holder) continue;
+    const r = el.getBoundingClientRect();
+    if(y < r.top + r.height/2){ before = el; break; }
+  }
+  if(before) list.insertBefore(holder, before);
+  else list.appendChild(holder);
+}
+
+// Dragging to a slot that is off the screen has to be possible, and on a phone
+// most of them are.
+let edgeScrollTimer = null;
+function edgeScroll(y){
+  const edge = 80;
+  let step = 0;
+  if(y < edge) step = -Math.ceil((edge - y) / 6);
+  else if(y > window.innerHeight - edge) step = Math.ceil((y - (window.innerHeight - edge)) / 6);
+  dashDrag.scroll = step;
+  if(step === 0){ stopEdgeScroll(); return; }
+  if(edgeScrollTimer) return;
+  edgeScrollTimer = setInterval(()=>{
+    if(!dashDrag || !dashDrag.scroll){ stopEdgeScroll(); return; }
+    window.scrollBy(0, dashDrag.scroll);
+    placeSectionHolder(dashDrag.y);
+  }, 16);
+}
+
+function stopEdgeScroll(){
+  if(edgeScrollTimer){ clearInterval(edgeScrollTimer); edgeScrollTimer = null; }
+}
+
+function endSectionDrag(){
+  if(!dashDrag) return;
+  const { wrap, holder, list, id } = dashDrag;
+  document.removeEventListener('pointermove', onSectionDragMove);
+  document.removeEventListener('pointerup', endSectionDrag);
+  document.removeEventListener('pointercancel', endSectionDrag);
+  stopEdgeScroll();
+
+  wrap.classList.remove('arr-dragging');
+  wrap.style.width = wrap.style.left = wrap.style.top = '';
+  list.insertBefore(wrap, holder);
+  holder.remove();
+  dashDrag = null;
+
+  const order = Array.from(list.children).map(el=>el.dataset.sec).filter(Boolean);
+  setDashboardOrder(order);
+  focusAfterRender = `.arr[data-sec="${id}"] .arr-grip`;
+  render();
 }
 
 // ---- The week, as forehead protectors ---------------------------------------
@@ -2525,12 +2838,25 @@ function render(){
       <h1>Emaki</h1>
       <div style="display:flex;align-items:center;gap:10px;">
         <span class="sub">1500-word deck</span>
+        ${view==='dashboard' ? `<button class="icon-btn${arrangingDashboard?' on':''}" onclick="toggleArrangingDashboard()"
+          title="${arrangingDashboard?'Finish arranging':'Arrange the dashboard'}"
+          aria-label="${arrangingDashboard?'Finish arranging the dashboard':'Arrange the dashboard'}"
+          aria-pressed="${arrangingDashboard?'true':'false'}">⠿</button>` : ''}
         <button class="icon-btn" onclick="switchView('info')" title="Info" aria-label="Info">ⓘ</button>
         <button class="icon-btn" onclick="switchView('settings')" title="Settings" aria-label="Settings">⚙</button>
       </div>
     </header>
     ${body}
   `;
+  // Moving a section with the keyboard redraws the whole dashboard, which
+  // throws the focus back to the body and leaves somebody arranging by keyboard
+  // with nothing selected after every single press. Whoever asked for the
+  // redraw says where the focus should land after it.
+  if(focusAfterRender){
+    const target = root.querySelector(focusAfterRender);
+    focusAfterRender = null;
+    if(target) target.focus();
+  }
   const input = document.getElementById('reviewInput')
     || document.getElementById('quizInput')
     || document.getElementById('extraInput');
