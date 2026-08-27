@@ -1316,10 +1316,53 @@ function nav(active){
   const due = dueReviews().length;
   const lessons = Math.min(newWords().length, remainingToday());
   return `<nav>
-    <button onclick="switchView('dashboard')" class="${active==='dashboard'?'active':''}">Dashboard</button>
-    <button onclick="switchView('lessons')" class="${active==='lessons'?'active':''}">Lessons (${lessons})</button>
-    <button onclick="switchView('review')" class="${active==='review'?'active':''}">Reviews (${due})</button>
+    <button onclick="navTo('dashboard')" class="${active==='dashboard'?'active':''}">Dashboard</button>
+    <button onclick="navTo('lessons')" class="${active==='lessons'?'active':''}">Lessons (${lessons})</button>
+    <button onclick="navTo('review')" class="${active==='review'?'active':''}">Reviews (${due})</button>
   </nav>`;
+}
+
+// ---- Leaving a review before it is finished --------------------------------
+//
+// Worth being exact about what is at stake, because the honest answer is less
+// alarming than it sounds and the message should say the true thing.
+//
+// Leaving is not destructive on its own. The session lives in memory and coming
+// back to Reviews resumes it at the same question. Every word already finished
+// was written the moment its second half was answered, so none of that is at
+// risk either.
+//
+// What is at risk is a word with only one half answered. Emaki only moves a
+// word when its meaning and its reading are both right, so a half-answered word
+// has not been written anywhere, and the session that remembers it is memory
+// only. Close the tab and that half is gone; the word comes round again whole.
+//
+// The confirm is here as much for the mis-tap as for the risk. Back sits beside
+// the button you press hundreds of times in a session.
+function halfAnsweredCount(){
+  if(!reviewState) return 0;
+  return Object.values(reviewState.results).filter(r => r.meaning !== r.reading).length;
+}
+
+function confirmLeavingReview(){
+  if(!reviewState || reviewState.queue.length === 0) return true;
+  const half = halfAnsweredCount();
+  const risk = half > 0
+    ? `${half} word${half===1 ? ' has' : 's have'} had only one half answered. A word moves only when its meaning and its reading are both right, so ${half===1 ? 'that one starts' : 'those start'} again if you close Emaki before coming back.`
+    : 'Nothing is half answered at the moment.';
+  return confirm(`Leave this review session?\n\nEvery word you have finished is already saved. ${risk}\n\nComing back to Reviews picks up where you left off.`);
+}
+
+function leaveReviewSession(){
+  if(!confirmLeavingReview()) return;
+  switchView('dashboard');
+}
+
+// The nav sits on the review screen too, so its buttons are the other way out
+// and need the same guard. On every other screen this is switchView unchanged.
+function navTo(v){
+  if(view === 'review' && v !== 'review' && !confirmLeavingReview()) return;
+  switchView(v);
 }
 
 // ---- The dashboard ---------------------------------------------------------
@@ -2761,7 +2804,10 @@ function renderReview(){
   ${!reviewState.showAnswer ? `
     <div class="field"><div class="k">Example</div><div class="v jp">${escapeHtml(item.sentence)}</div></div>
     <input type="text" id="reviewInput" placeholder="Type the ${label.toLowerCase()}" ${ANSWER_INPUT_ATTRS}>
-    <button class="primary" onclick="submitReviewAnswer()">Check</button>
+    <div class="btnrow">
+      <button class="secondary" onclick="leaveReviewSession()">Back</button>
+      <button class="primary" onclick="submitReviewAnswer()">Check</button>
+    </div>
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
@@ -2776,7 +2822,10 @@ function renderReview(){
       <button class="secondary" onclick="revealReviewAnswer()">Show answer</button>
     `}
     ${stageChange ? '' : mnemonicPanel(reviewState, item, holdBack, 'review')}
-    <button class="primary" onclick="advanceReview()">Next</button>
+    <div class="btnrow">
+      <button class="secondary" onclick="leaveReviewSession()">Back</button>
+      <button class="primary" onclick="advanceReview()">Next</button>
+    </div>
   `}
   `;
 }
