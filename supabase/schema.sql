@@ -18,6 +18,15 @@ create table if not exists public.user_state (
 alter table public.user_state
   add column if not exists streak_saves jsonb not null default '{}'::jsonb;
 
+-- The revision the client compares and swaps on. Every write says which
+-- revision it read, and the update only matches while that is still current,
+-- so two devices cannot both merge against the same copy and have the second
+-- one silently replace the first. A counter rather than updated_at because an
+-- exact timestamptz equality has to survive a round trip through JSON and back
+-- into Postgres, and a bigint simply does not have that problem.
+alter table public.user_state
+  add column if not exists revision bigint not null default 1;
+
 -- The publishable key ships inside the client, so anyone can read it out of
 -- the page source. Row-level security is the only thing keeping one account's
 -- data private from another's. These policies are not optional.
@@ -44,11 +53,19 @@ create policy "delete own state" on public.user_state
   for delete using (auth.uid() = user_id);
 
 -- Stamp updated_at on the server so "which device wrote last" never depends on
--- two devices agreeing about the time.
+-- two devices agreeing about the time, and move the revision on with it.
+--
+-- The revision is set here rather than by the client for the same reason: a
+-- client that could choose its own revision could choose one that makes its
+-- write look current when it is not, which is exactly what the compare and
+-- swap exists to catch.
 create or replace function public.touch_user_state()
 returns trigger language plpgsql as $$
 begin
   new.updated_at = now();
+  if tg_op = 'UPDATE' then
+    new.revision = coalesce(old.revision, 0) + 1;
+  end if;
   return new;
 end;
 $$;

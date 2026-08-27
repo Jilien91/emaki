@@ -620,10 +620,17 @@ function daysSince(key){
 // holding a full set the clock idles, so the wait always starts from the moment
 // you actually spent one.
 function replenishStreakSaves(){
-  if(streakSaves.count >= STREAK_SAVE_MAX){
-    streakSaves.lastEarned = todayKey();
-    return;
-  }
+  // While the set is full the clock is not running, so there is nothing to
+  // record. It used to stamp lastEarned with today here, which changed the
+  // saved state on the first load of every new day for no reason anybody could
+  // see, and that write was enough to mark the device as having local changes
+  // to send. Under the sync rules of the time that meant a device holding
+  // yesterday overwrote a newer copy on the server, having never read it. The
+  // sync side no longer works that way, and this side no longer writes for the
+  // sake of writing. Nothing reads lastEarned while the set is full: both
+  // nextKunaiInDays and nextKunaiAt return before they reach it, and spending
+  // one sets it in applyStreakSaves.
+  if(streakSaves.count >= STREAK_SAVE_MAX) return;
   const elapsed = daysSince(streakSaves.lastEarned);
   if(elapsed >= STREAK_SAVE_DAYS){
     streakSaves.count = Math.min(STREAK_SAVE_MAX, streakSaves.count + Math.floor(elapsed/STREAK_SAVE_DAYS));
@@ -782,6 +789,15 @@ function humanizeDuration(ms){
 // numbers and stop them meaning anything.
 function blankStats(){ return { c:0, w:0, s:0, b:0 }; }
 
+// When this item was last decided, so that two devices that both moved the same
+// card since they last agreed can be told apart by the merge in sync.js rather
+// than guessed at. Entries written before this existed have no stamp, and the
+// merge has a rule for that; every one written from here on has one.
+function touchEntry(id){
+  const p = progress[id];
+  if(p) p.t = now();
+}
+
 function ensureStats(id){
   const p = progress[id];
   if(!p) return null;
@@ -802,6 +818,7 @@ function recordAnswer(id, type, correct){
     s.w++;
     s.s = 0;
   }
+  touchEntry(id);
   saveProgress();
 }
 
@@ -810,6 +827,7 @@ function completeLesson(id){
     stage: 1,
     nextReview: now() + INTERVAL_HOURS[1]*3600*1000,
     unlocked: now(),
+    t: now(),
     m: blankStats(),
     r: blankStats()
   };
@@ -1021,6 +1039,7 @@ function applyReviewResult(id, allCorrect){
   if(!p.unlocked) p.unlocked = now();  // items from before this existed
   progress[id] = p;
   ensureStats(id);
+  touchEntry(id);
   saveProgress();
   recordActivityToday();
   recordReviewCompleted();
@@ -1273,6 +1292,10 @@ function resetProgress(){
   saveStreakSaves();
   saveReviewHistory();
   saveDailyLessons();
+  // An erasure is the one change sync must not merge away. Without this the
+  // next reconcile would see items this device no longer has, decide it had
+  // simply never learned them, and hand every one of them back.
+  if(typeof syncForceLocal === 'function') syncForceLocal();
   switchView('dashboard');
 }
 
@@ -2314,6 +2337,8 @@ async function confirmDeleteAccount(){
   localStorage.removeItem(ACTIVITY_KEY);
   localStorage.removeItem(REVIEW_HISTORY_KEY);
   localStorage.removeItem(STREAK_SAVE_KEY);
+  // The agreed base describes a row that no longer exists.
+  if(typeof clearSyncBase === 'function') clearSyncBase();
   deleteArmed = false;
   await signOutSync();
   syncNotice = 'Deleted. Your study data is gone from this device and from the server.';

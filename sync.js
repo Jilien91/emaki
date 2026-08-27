@@ -11,6 +11,13 @@
 const SUPABASE_URL = 'https://uozdxhcyxwnyqrplwokr.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_SztWNK2e8Ijq4tkSNtgllQ_-FZbgeDv';
 const DIRTY_KEY = 'kaishi-sync-dirty';
+// The last state this device and the server agreed on, per account, so a sync
+// can tell which side changed rather than having to pick a winner. See the
+// base section below for why nothing works properly without it.
+const BASE_KEY_PREFIX = 'kaishi-sync-base:';
+// Set only by a deliberate local erasure, which is the one case where this
+// device's copy should replace the server's rather than merge with it.
+const FORCE_KEY = 'kaishi-sync-force-local';
 const PUSH_DEBOUNCE_MS = 1500;
 
 let sb = null;
@@ -79,6 +86,10 @@ function setSyncStatus(status, detail){
   el.className = 'syncbadge' + (status==='error' ? ' err' : '');
 }
 
+// The seven fields that make up a saved state, in the shape the table stores
+// them. localSnapshot is what this device believes; rowSnapshot is what the
+// server sent back, with the gaps filled in so a row written by an older
+// version of the app still merges.
 function localSnapshot(){
   return {
     progress: progress,
@@ -91,18 +102,221 @@ function localSnapshot(){
   };
 }
 
-function applySnapshot(row){
-  progress       = row.progress       || {};
-  settings       = Object.assign({}, DEFAULT_SETTINGS, row.settings || {});
-  mistakes       = row.mistakes       || [];
-  activityDates  = row.activity_dates || [];
-  reviewHistory  = row.review_history || {};
-  dailyLessons   = row.daily_lessons  || { date: todayKey(), count: 0 };
-  if(row.streak_saves && typeof row.streak_saves.count === 'number'){
-    streakSaves = row.streak_saves;
+function rowSnapshot(row){
+  return {
+    progress:       row.progress       || {},
+    settings:       row.settings       || {},
+    mistakes:       row.mistakes       || [],
+    activity_dates: row.activity_dates || [],
+    review_history: row.review_history || {},
+    daily_lessons:  row.daily_lessons  || { date: todayKey(), count: 0 },
+    streak_saves:   validStreak(row.streak_saves) ? row.streak_saves : null
+  };
+}
+
+function validStreak(s){ return !!s && typeof s.count === 'number'; }
+
+// ---- The base: what this device and the server last agreed on ---------------
+//
+// Without it a sync can see that the two copies differ and cannot tell which
+// side moved, so the only options are to overwrite one or to guess. With it,
+// every field is a three-way merge: whichever side differs from the base is
+// the side that changed, and only a field both sides moved needs a rule.
+//
+// Kept per account, because signing into a different one must not reconcile
+// against somebody else's agreement.
+function baseKey(){ return BASE_KEY_PREFIX + (syncUser ? syncUser.id : 'anon'); }
+
+function loadBase(){
+  try{
+    const raw = window.localStorage.getItem(baseKey());
+    if(!raw) return null;
+    const b = JSON.parse(raw);
+    return b && b.snapshot ? b.snapshot : null;
+  }catch(e){ return null; }
+}
+
+function saveBase(revision, snapshot){
+  try{
+    window.localStorage.setItem(baseKey(), JSON.stringify({
+      revision: (revision === undefined ? null : revision),
+      snapshot: snapshot
+    }));
+  }catch(e){}
+}
+
+function clearSyncBase(){
+  try{
+    window.localStorage.removeItem(baseKey());
+    window.localStorage.removeItem(FORCE_KEY);
+  }catch(e){}
+}
+
+// "Reset all progress" is a deliberate erasure. A merge would treat the emptied
+// state as fields this device happened not to have and hand them straight back
+// from the server, so that path says plainly that local wins this once. The
+// mark survives a reload, because a reset may well be followed by one before
+// sync gets a turn.
+function syncForceLocal(){
+  try{ window.localStorage.setItem(FORCE_KEY, '1'); }catch(e){}
+  try{ window.localStorage.removeItem(baseKey()); }catch(e){}
+  if(typeof markDirty === 'function') markDirty();
+}
+function forcingLocal(){
+  try{ return window.localStorage.getItem(FORCE_KEY) === '1'; }catch(e){ return false; }
+}
+
+// ---- Merging ---------------------------------------------------------------
+//
+// base may be null: the first sync on a device, or one whose agreement was
+// cleared. Then there is no way to tell a change from a value that was always
+// there, so every rule falls back to the version that cannot lose work. The
+// merge is allowed to be a little generous rather than a little lossy.
+
+function mergeSnapshots(base, local, remote){
+  const b = base || null;
+  return {
+    progress:       mergeProgress(b && b.progress, local.progress, remote.progress),
+    settings:       mergeSettings(b && b.settings, local.settings, remote.settings),
+    mistakes:       mergeMistakes(local.mistakes, remote.mistakes),
+    activity_dates: mergeDates(local.activity_dates, remote.activity_dates),
+    review_history: mergeCounts(b && b.review_history, local.review_history, remote.review_history),
+    daily_lessons:  mergeDailyLessons(b && b.daily_lessons, local.daily_lessons, remote.daily_lessons),
+    streak_saves:   mergeStreakSaves(b && b.streak_saves, local.streak_saves, remote.streak_saves)
+  };
+}
+
+function mergeProgress(base, local, remote){
+  const out = {};
+  const ids = new Set(Object.keys(local || {}).concat(Object.keys(remote || {})));
+  for(const id of ids){
+    const l = local[id], r = remote[id];
+    // An item only ever appears; nothing in the app removes one except a reset,
+    // and a reset takes the forceLocal path rather than this one. So a side
+    // that lacks an item has not learned it yet, it has not deleted it.
+    if(!l){ out[id] = r; continue; }
+    if(!r){ out[id] = l; continue; }
+    if(sameData(l, r)){ out[id] = l; continue; }
+    if(base){
+      const b = base[id];
+      if(sameData(b, l)){ out[id] = r; continue; }   // only the server moved it
+      if(sameData(b, r)){ out[id] = l; continue; }   // only this device did
+    }
+    out[id] = pickEntry(l, r);
   }
+  return out;
+}
+
+// Both sides moved the same card since they last agreed. The write stamp says
+// which decision came second. Entries written before stamps existed have none,
+// and then the lower stage wins: repeating a review costs one review, while
+// keeping the higher stage lets a card the user has just forgotten vanish for
+// months. Deliberately not "furthest advanced": a failed review is supposed to
+// demote a card, and that demotion is real information about the user.
+function pickEntry(l, r){
+  const lt = typeof l.t === 'number' ? l.t : null;
+  const rt = typeof r.t === 'number' ? r.t : null;
+  if(lt !== null && rt !== null) return lt >= rt ? l : r;
+  if(lt !== null) return l;
+  if(rt !== null) return r;
+  return (l.stage || 0) <= (r.stage || 0) ? l : r;
+}
+
+// Field by field, so changing the theme here and the daily limit on the phone
+// keeps both.
+function mergeSettings(base, local, remote){
+  const out = {};
+  const keys = new Set(Object.keys(local || {}).concat(Object.keys(remote || {})));
+  for(const k of keys){
+    const inL = Object.prototype.hasOwnProperty.call(local, k);
+    const inR = Object.prototype.hasOwnProperty.call(remote, k);
+    if(!inR){ out[k] = local[k]; continue; }
+    if(!inL){ out[k] = remote[k]; continue; }
+    if(sameData(local[k], remote[k])){ out[k] = local[k]; continue; }
+    if(base && sameData(base[k], local[k])){ out[k] = remote[k]; continue; }
+    out[k] = local[k];   // both moved, or nothing to compare it with
+  }
+  return out;
+}
+
+// Timestamps are milliseconds, so an id, a type and a time identify one miss.
+function mergeMistakes(local, remote){
+  const seen = new Set();
+  const out = [];
+  for(const m of (local || []).concat(remote || [])){
+    if(!m || typeof m.timestamp !== 'number') continue;
+    const k = m.id + '|' + (m.type || 'meaning') + '|' + m.timestamp;
+    if(seen.has(k)) continue;
+    seen.add(k);
+    out.push(m);
+  }
+  out.sort((a, b) => a.timestamp - b.timestamp);
+  return out;
+}
+
+function mergeDates(local, remote){
+  return Array.from(new Set((local || []).concat(remote || []))).sort();
+}
+
+// Counts per day. Both devices may have reviewed since they last agreed, so
+// the two gains are added: a maximum would report ten when each device did ten.
+// Without a base there is no gain to measure and the larger of the two is the
+// most that can be claimed honestly.
+function mergeCounts(base, local, remote){
+  const out = {};
+  const keys = new Set(
+    Object.keys(local || {})
+      .concat(Object.keys(remote || {}))
+      .concat(Object.keys(base || {}))
+  );
+  for(const k of keys){
+    const b = base && typeof base[k] === 'number' ? base[k] : 0;
+    const l = typeof local[k]  === 'number' ? local[k]  : b;
+    const r = typeof remote[k] === 'number' ? remote[k] : b;
+    out[k] = base ? b + Math.max(0, l - b) + Math.max(0, r - b) : Math.max(l, r);
+  }
+  return out;
+}
+
+// Only today's count means anything. An older one belongs to a device that has
+// not noticed the date turn over yet, and its number must not be added to
+// today's.
+function mergeDailyLessons(base, local, remote){
+  const today = todayKey();
+  const count = s => (s && s.date === today && typeof s.count === 'number') ? s.count : 0;
+  const b = count(base), l = count(local), r = count(remote);
+  return { date: today, count: base ? b + Math.max(0, l - b) + Math.max(0, r - b) : Math.max(l, r) };
+}
+
+// count, lastEarned and savedDates are one piece of state, so they are merged
+// as one. Granting and spending are both movements away from the base and both
+// are kept; the cap stops two devices each granting the same kunai.
+function mergeStreakSaves(base, local, remote){
+  if(!validStreak(remote)) return local;
+  if(!validStreak(local))  return remote;
+  const savedDates = mergeDates(local.savedDates, remote.savedDates);
+  const lastEarned = [local.lastEarned, remote.lastEarned].filter(Boolean).sort().pop() || todayKey();
+  let count;
+  if(validStreak(base)){
+    count = base.count + (local.count - base.count) + (remote.count - base.count);
+  }else{
+    count = Math.min(local.count, remote.count);   // never grant one nothing accounts for
+  }
+  count = Math.max(0, Math.min(STREAK_SAVE_MAX, count));
+  return { count: count, lastEarned: lastEarned, savedDates: savedDates };
+}
+
+// Writes a merged snapshot into this device's own state. None of it is a local
+// edit, so markDirty stays out of the way while it happens.
+function applyMerged(snap){
+  progress      = snap.progress;
+  settings      = Object.assign({}, DEFAULT_SETTINGS, snap.settings);
+  mistakes      = snap.mistakes;
+  activityDates = snap.activity_dates;
+  reviewHistory = snap.review_history;
+  dailyLessons  = snap.daily_lessons;
+  if(validStreak(snap.streak_saves)) streakSaves = snap.streak_saves;
   if(dailyLessons.date !== todayKey()) dailyLessons = { date: todayKey(), count: 0 };
-  // Persist locally too, so the app still works offline / signed out later.
   applyingRemote = true;
   try{
     saveProgress(); saveSettings(); saveMistakes(); saveActivity();
@@ -110,8 +324,6 @@ function applySnapshot(row){
   }finally{
     applyingRemote = false;
   }
-  clearTimeout(pushTimer);
-  clearDirty();
 }
 
 async function initSync(){
@@ -174,16 +386,16 @@ function sameData(a, b){
   return ka.every(k => Object.prototype.hasOwnProperty.call(b, k) && sameData(a[k], b[k]));
 }
 
-// Which in-flight session, if any, a pull has invalidated.
+// Which in-flight session, if any, a reconcile has invalidated.
 //
 // The old rule discarded all three whenever progress differed at all, so a
 // change to an unrelated card ended someone's lesson. What actually matters is
-// whether the pull moved ground the session is standing on.
+// whether the merge moved ground the session is standing on.
 function invalidateSessionsAfterPull(before, after){
   const changed = id => !sameData(before[id], after[id]);
 
   // A lesson in its study phase has decided nothing. Its words are stage 0 on
-  // both sides and no SRS state depends on it, so a pull elsewhere in the deck
+  // both sides and no SRS state depends on it, so a merge elsewhere in the deck
   // must not cost the user their place. Only a batch word that has stopped
   // being new invalidates it, which means another device taught it.
   if(lessonState){
@@ -202,22 +414,33 @@ function invalidateSessionsAfterPull(before, after){
   }
 
   // Extra study is a read-only drill over recent mistakes. It writes no SRS
-  // decisions at all, so nothing a pull brings back can invalidate it.
+  // decisions at all, so nothing a merge brings back can invalidate it.
 }
 
-// Local unpushed edits win over the server; otherwise take the server's copy.
-// Pushing on every change keeps the window where both have changed very small.
+// ---- Reconciling -----------------------------------------------------------
+//
+// One rule, and it replaces the old one: the dirty mark means there is
+// something to reconcile, never that this device's copy is authoritative.
+//
+// The old code read `if(isDirty()) push else pull`, and a push wrote all seven
+// fields over whatever was there. So any device holding an unpushed change
+// replaced the server's copy with its own, sight unseen, including a device
+// that had marked itself dirty at boot simply by noticing the date had turned
+// over. A morning of study died that way on 27 August 2026: the laptop woke
+// holding yesterday, marked itself dirty rolling the day over, and wrote
+// yesterday over the top of it.
+//
+// So: always read first, merge against the base, and write the result back only
+// if the row has not moved since it was read. If it has, the merge was against
+// a copy that is no longer current, so read and merge again rather than insist.
+const CAS_RETRIES = 4;
+
 async function syncNow(){
   if(!syncActive()) return;
   setSyncStatus('syncing');
-  // Queued behind anything already running, for the same reason.
   return runExclusive(async ()=>{
     try{
-      if(isDirty()){
-        await pushRemote();
-      }else{
-        await pullRemote();
-      }
+      await reconcile();
       setSyncStatus('synced');
     }catch(e){
       setSyncStatus('error', 'Sync failed, working offline');
@@ -225,54 +448,93 @@ async function syncNow(){
   });
 }
 
-async function pullRemote(){
-  const { data, error } = await sb
-    .from('user_state').select('*').eq('user_id', syncUser.id).maybeSingle();
-  if(error) throw error;
-  if(!data){
-    await pushRemote(); // first sign-in on this account: seed from local
+async function reconcile(){
+  for(let attempt = 0; attempt < CAS_RETRIES; attempt++){
+    const { data, error } = await sb
+      .from('user_state').select('*').eq('user_id', syncUser.id).maybeSingle();
+    if(error) throw error;
+
+    // Read after the request comes back, so it accounts for anything answered
+    // while it was in flight, and captured alongside the copy it describes.
+    const mark  = dirtyMark();
+    const local = localSnapshot();
+
+    if(!data){
+      // First sign-in on this account: there is nothing to merge with.
+      const row = await writeRemote(local, undefined);
+      if(!row) continue;
+      saveBase(row.revision, local);
+      clearDirty(mark);
+      return;
+    }
+
+    const remote = rowSnapshot(data);
+    const before = JSON.parse(JSON.stringify(progress));
+    const merged = forcingLocal() ? local : mergeSnapshots(loadBase(), local, remote);
+
+    if(!sameData(merged, remote)){
+      const row = await writeRemote(merged, data.revision);
+      if(!row) continue;             // the row moved under us: read it again
+      saveBase(row.revision, merged);
+    }else{
+      saveBase(data.revision, merged);
+    }
+
+    if(!sameData(merged, local)){
+      applyMerged(merged);
+      invalidateSessionsAfterPull(before, progress);
+      // Only repaint when something actually changed, so a background sync
+      // cannot clear an answer the user is midway through typing.
+      render();
+    }
+    clearTimeout(pushTimer);
+    clearDirty(mark);
+    try{ window.localStorage.removeItem(FORCE_KEY); }catch(e){}
     return;
   }
-  // The client may have changed while that request was in flight. syncNow()
-  // checked isDirty() before awaiting, so an answer committed in the meantime
-  // would otherwise be overwritten by applySnapshot and its dirty flag cleared,
-  // reverting a word that was just learned. Push instead and pull next time.
-  if(isDirty()){
-    await pushRemote();
-    return;
-  }
-  const before = localSnapshot();
-  const progressBefore = JSON.parse(JSON.stringify(progress));
-  applySnapshot(data);
-  invalidateSessionsAfterPull(progressBefore, progress);
-  // Only repaint when something actually changed, so a background pull can't
-  // clear an answer the user is midway through typing. Compared by value: key
-  // order alone used to count as a change and force a repaint on every pull.
-  if(!sameData(localSnapshot(), before)) render();
+  throw new Error('Could not reconcile: the server copy kept moving');
 }
 
-async function pushRemote(){
-  // Captured before the request so clearDirty can tell whether this push
-  // actually covered whatever is marked when it returns.
-  const mark = dirtyMark();
-  const payload = Object.assign({ user_id: syncUser.id }, localSnapshot());
-  let { error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' });
+// Compare and swap. The update only matches while revision is still what the
+// read returned, so two devices cannot both merge against the same copy and
+// have the second one silently win. A null result means no row matched, which
+// here means somebody else wrote first.
+//
+// revision === undefined is the seeding case, where there is no row to guard.
+// revision === null is a live table that predates the revision column: the
+// merge still happened, which is the part that stops work being lost, but the
+// write is not protected against another device writing in the same instant.
+async function writeRemote(snap, revision){
+  const fields = Object.assign({}, snap);
+  if(!validStreak(fields.streak_saves)) delete fields.streak_saves;
+
+  const run = async (payload) => {
+    if(revision === undefined || revision === null){
+      return await sb.from('user_state')
+        .upsert(Object.assign({ user_id: syncUser.id }, payload), { onConflict: 'user_id' })
+        .select().maybeSingle();
+    }
+    return await sb.from('user_state')
+      .update(payload).eq('user_id', syncUser.id).eq('revision', revision)
+      .select().maybeSingle();
+  };
+
+  let { data, error } = await run(fields);
   // streak_saves was added after the original schema. Until the ALTER TABLE in
   // supabase/schema.sql has been run, drop that one field and sync the rest
-  // rather than letting the whole push fail.
+  // rather than letting the whole write fail.
   if(error && /streak_saves/.test(error.message || '')){
-    delete payload.streak_saves;
-    ({ error } = await sb.from('user_state').upsert(payload, { onConflict: 'user_id' }));
+    const trimmed = Object.assign({}, fields);
+    delete trimmed.streak_saves;
+    ({ data, error } = await run(trimmed));
   }
   if(error) throw error;
-  clearDirty(mark);
+  return data || null;
 }
 
-// Single-flight. Two pushes in the air at once are not ordered by the server,
-// so the older upsert can land last and put an older snapshot back. The dirty
-// token stops an old push clearing a newer mark, but it cannot undo a write
-// that already happened in the wrong order. So: one at a time, and if anything
-// was marked while a push was away, push again after it.
+// Single-flight. Two writes in the air at once are not ordered by the server,
+// so the older one can land last. Compare and swap catches that between
+// devices; this keeps one device from making the server do that work.
 let inFlight = null;
 
 function runExclusive(fn){
@@ -285,12 +547,14 @@ function schedulePush(){
   clearTimeout(pushTimer);
   pushTimer = setTimeout(()=>{
     if(!syncActive()) return;
+    // A reconcile may already have carried this edit. Firing anyway used to
+    // mean writing a snapshot nobody had asked to write, over a row another
+    // device had moved on in the meantime.
+    if(!isDirty()) return;
     setSyncStatus('syncing');
     runExclusive(async ()=>{
       try{
-        await pushRemote();
-        // Marked again while that was away, so it did not carry everything.
-        if(isDirty()) await pushRemote();
+        await reconcile();
         setSyncStatus('synced');
       }catch(e){
         setSyncStatus('error', 'Sync failed, working offline');

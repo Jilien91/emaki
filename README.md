@@ -226,10 +226,31 @@ identify the project, they don't grant access. The RLS policies in step 1 are
 what keep one account's rows private, so sync is only safe once that SQL has
 run.
 
-Sync is best-effort: the app keeps working offline and signed out, local edits
-are flagged and pushed when a connection returns, and on load the device with
-unpushed changes wins. Studying offline on two devices at once can still lose
-one side's changes. It's last-write-wins, not a merge.
+Sync is best-effort: the app keeps working offline and signed out, and local
+edits are reconciled when a connection returns.
+
+It is a merge, not last-write-wins. Each device remembers the state it and the
+server last agreed on, so a sync can tell which side changed a field rather than
+having to pick a winner: reviews and lessons from both devices are kept, counts
+add up instead of one replacing the other, and only a field both sides moved
+needs a rule. The write is then conditional on the row's `revision`, so two
+devices reconciling at the same moment cannot have the second silently replace
+the first; it reads and merges again instead.
+
+It used to be last-write-wins, and on 27 August 2026 that cost a morning of
+study. A laptop holding the previous day marked itself as having local changes
+purely by noticing the date had turned over, and the rule of the time was that
+a device with local changes pushed its whole copy without ever reading the
+server's. The rules now in `sync.js` are written against that sequence, and
+`scripts/sync-merge-test.js` replays it in both directions:
+
+```
+node scripts/sync-merge-test.js
+```
+
+Anyone upgrading from before that date needs to re-run `supabase/schema.sql` for
+the `revision` column. Without it the merge still runs, which is the part that
+stops work being lost; only the conditional write is skipped.
 
 ## Licensing
 
