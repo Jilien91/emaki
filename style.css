@@ -662,41 +662,27 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 :root[data-skin="paper"] .rank-card img{
   width:100%;height:100%;object-fit:contain;display:block;
 }
-/* The paper starts between 1.8% and 5.5% across the six, so 13% is inside the
-   panel on every one of them rather than clearing a worst case. */
+/* Both pieces of type live in the blank left half of the paper. The characters
+   are painted into the artwork in this set, so there is no text kanji any more,
+   and putting the name back under them would lay it across the cloudwork, which
+   is the part of these scrolls least worth covering up.
+
+   Multiply is what stops them looking stuck on. Flat dark text over a painting
+   of paper reads as a label, because the grain and the staining halt at the
+   edge of every stroke; blending the ink into what is behind it lets the fibre
+   and the water marks show through. The colours are lifted off black for the
+   same reason, since at full black a multiply has nothing left to reveal. */
 :root[data-skin="paper"] .rank-count{
-  position:absolute;left:13%;top:50%;transform:translate(-50%,-50%);
-  font-family:'Spectral',serif;font-size:8.5cqw;font-weight:600;line-height:1;
+  position:absolute;left:18%;top:41%;transform:translate(-50%,-50%);
+  font-family:'Spectral',serif;font-size:9cqw;font-weight:600;line-height:1;
   color:#3b2f26;
   mix-blend-mode:multiply;
 }
 
-/* Brush, not gothic. A sans-serif kanji on a painted scroll reads as a caption
-   stuck onto a painting. Yuji Syuku is brush-written, and index.html subsets it
-   to the eight characters these six ranks use. */
-:root[data-skin="paper"] .rank-kanji{
-  position:absolute;left:64%;top:44%;transform:translate(-50%,-50%);
-  font-family:'Yuji Syuku','Noto Sans JP',serif;
-  font-size:12cqw;font-weight:400;line-height:1;white-space:nowrap;
-  /* Multiply is what makes it look painted rather than typed. Flat dark text
-     over a photograph of paper reads as a label pasted on top, because the
-     paper's grain and staining stop dead at the edge of every stroke. Blending
-     the ink into what is behind it lets the fibre, the water marks and the fold
-     show through the strokes, which is what ink on old paper actually does.
-     The colour is lifted a little as well: at full black the multiply has
-     nothing left to reveal. */
-  color:#3b2f26;
-  mix-blend-mode:multiply;
-}
-
-/* Rock Salt, back under the characters and level. Lasz tried the angled
-   version and did not want it. Its single weight is left alone too: the stroke
-   that thickened it for the angled treatment made it heavy once it was sitting
-   quietly under the kanji again. */
 :root[data-skin="paper"] .rank-name{
-  position:absolute;left:64%;top:79%;transform:translate(-50%,-50%);
+  position:absolute;left:18%;top:66%;transform:translate(-50%,-50%);
   font-family:'Rock Salt','Spectral',serif;
-  font-size:4.2cqw;line-height:1;letter-spacing:0.01em;white-space:nowrap;
+  font-size:4cqw;line-height:1;letter-spacing:0.01em;white-space:nowrap;
   color:#3a2c1e;
   mix-blend-mode:multiply;
 }

@@ -1621,13 +1621,6 @@ function renderWeekSection(){
   </div>`;
 }
 
-// The rank characters. Drawn as text rather than being part of the artwork, so
-// they are correct, they sit in the same place on all six, and they take the
-// palette's ink colour instead of being fixed in the picture.
-const TIER_KANJI = {
-  new:'新', genin:'下忍', chunin:'中忍', jonin:'上忍', anbu:'暗部', kage:'影'
-};
-
 // Two ways of drawing the same six counts.
 //
 // The painted scrolls belong to the paper palettes. On Classic they would be
@@ -1653,7 +1646,6 @@ function renderTiersSection(c){
       <button class="rank-card" onclick="showTier('${t}')" title="Show these words">
         <img src="img/ranks/${t}.webp" alt="" loading="lazy" width="440" height="147">
         <span class="rank-count">${c.counts[t]}</span>
-        <span class="rank-kanji">${TIER_KANJI[t]}</span>
         <span class="rank-name">${t.charAt(0).toUpperCase()+t.slice(1)}</span>
       </button>`).join('')}
   </div>`;
