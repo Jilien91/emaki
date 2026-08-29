@@ -2222,25 +2222,10 @@ function renderTierList(){
       onclick="showItem(${v.id})" title="${escapeHtml(hint)}">${escapeHtml(v.word)}</button>`;
   }).join('');
 
-  // The scroll you pressed to get here, carried over as the heading. The rank
-  // is already a painting on the dashboard, so arriving at a plain uppercase
-  // word reads as having left that world rather than gone deeper into it. Full
-  // width here, where on the dashboard it is one of six.
-  //
-  // Only on the paper palettes, for the same reason as the dashboard: Classic
-  // is deliberately without the artwork, and it keeps its text heading.
-  const scrollHead = currentPalette().skin === 'paper' ? `
-    <div class="rank-head rank-${tier}">
-      <img src="img/ranks/${tier}.webp" alt="" width="440" height="147">
-      <span class="rank-count">${items.length}</span>
-      <span class="rank-name">${label}</span>
-    </div>` : '';
-
   return `
   ${nav('dashboard')}
-  ${scrollHead}
   <div class="card" style="margin-bottom:16px;">
-    ${scrollHead ? '' : `<div class="section-title">${label}</div>`}
+    <div class="section-title">${label}</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">
       ${items.length} word${items.length===1?'':'s'}${items.length > CAP ? `, showing the first ${CAP}` : ''}.
       ${tier === 'new'
