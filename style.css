@@ -676,9 +676,18 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   font-family:'Yuji Syuku','Noto Sans JP',serif;
   font-size:12cqw;font-weight:400;line-height:1;white-space:nowrap;
 }
+/* The same brush as the characters above it. Yuji Syuku draws Latin too, so
+   the romaji is the same hand rather than a sans-serif label sitting under a
+   painted one, and it costs no second font: index.html subsets one file to the
+   eight kanji and the sixteen letters the six rank names use. */
 :root[data-skin="paper"] .rank-name{
-  position:absolute;left:64%;top:78%;transform:translate(-50%,-50%);
-  font-size:4.4cqw;letter-spacing:0.04em;line-height:1;color:#4a3a2a;
+  position:absolute;left:64%;top:79%;transform:translate(-50%,-50%);
+  font-family:'Yuji Syuku','Spectral',serif;
+  font-size:5cqw;letter-spacing:0.06em;line-height:1;
+  /* A shade darker than it first was: on Jonin and Kage the name sits over the
+     gold cloud and the chrysanthemum, and the plainer scrolls can carry the
+     extra weight without it looking heavy. */
+  color:#3a2c1e;
 }
 /* The rule the artwork used to have painted between the number and the name. */
 :root[data-skin="paper"] .rank-card::after{
