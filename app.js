@@ -1621,23 +1621,6 @@ function renderWeekSection(){
   </div>`;
 }
 
-// Each rank's paper, sampled from its own artwork: the average of the blank
-// panel to the left of the characters, with anything gold or inked excluded.
-// The tier list continues this colour below the painting, so Anbu's grey and
-// Kage's cream carry on as themselves rather than as one shared beige.
-const TIER_PAPER = {
-  new:'#beb7ac', genin:'#e1ceb6', chunin:'#e7d5ba',
-  jonin:'#f5e2c7', anbu:'#bcb2aa', kage:'#eedfcd'
-};
-
-// The tier colours from the light theme, which are the ones drawn to hold up on
-// a pale ground. The dark-theme set is tuned for a dark card and goes to mud on
-// paper.
-const TIER_INK = {
-  new:'#878d9c', genin:'#b34a1e', chunin:'#5646c0',
-  jonin:'#1a6ba3', anbu:'#137a55', kage:'#8a6512'
-};
-
 // Two ways of drawing the same six counts.
 //
 // The painted scrolls belong to the paper palettes. On Classic they would be
@@ -2229,68 +2212,29 @@ function renderTierList(){
   const CAP = 300;
   const t = now();
 
-  // On the scroll the tiles are ink on paper, so they carry only the tier's
-  // colour for their edge and let the stylesheet do the rest. The dark-card
-  // colours are set inline, and an inline style beats any rule, so the two
-  // cases have to be written separately rather than overridden.
-  const onPaper = currentPalette().skin === 'paper';
   const tiles = items.slice(0, CAP).map(v=>{
     const p = getEntry(v.id);
     const due = p.nextReview == null
       ? (p.stage === 9 ? 'burned' : 'not started')
       : (p.nextReview <= t ? 'due now' : 'in ' + humanizeDuration(p.nextReview - t));
     const hint = `${v.reading}, ${v.meaning}\n${STAGE_NAMES[p.stage]}, ${due}`;
-    const style = onPaper
-      ? `--ink-tier:${TIER_INK[tier]};`
-      : `background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});`;
-    return `<button class="tile tile-btn jp" style="${style}"
+    return `<button class="tile tile-btn jp" style="background:var(--${tier}-bg,var(--surface-2));color:var(--${tier});border-color:var(--${tier});"
       onclick="showItem(${v.id})" title="${escapeHtml(hint)}">${escapeHtml(v.word)}</button>`;
   }).join('');
-
-  const caption = `${items.length} word${items.length===1?'':'s'}${items.length > CAP ? `, showing the first ${CAP}` : ''}.
-      ${tier === 'new'
-        ? 'Ready to learn but not started. Tap one to read its card.'
-        : 'Soonest due first. Tap one to read its card.'}`;
-  const body = items.length === 0
-    ? `<div class="empty" style="padding:16px 0;">Nothing at this rank yet.</div>`
-    : `<div class="tilegrid">${tiles}</div>`;
-
-  // The scroll unrolled. The painting is the top of the sheet and its paper
-  // carries on down behind the words, so the list is written on the scroll
-  // rather than sitting on a card underneath a picture of one.
-  //
-  // The paper colour is sampled from each rank's own artwork, so Anbu's grey
-  // and Kage's cream continue as themselves. The panel is inset by the width of
-  // the rollers, which is about 4% on all six, or the paper would be wider
-  // below the painting than in it.
-  if(currentPalette().skin === 'paper'){
-    return `
-    ${nav('dashboard')}
-    <div class="rank-sheet" style="--sheet-paper:${TIER_PAPER[tier]};">
-      <div class="rank-top">
-        <img src="img/ranks/${tier}.webp" alt="" width="440" height="147">
-        <span class="rank-count">${items.length}</span>
-        <span class="rank-name">${label}</span>
-      </div>
-      <div class="rank-paper">
-        <div class="forecast">${caption}</div>
-        ${body}
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:10px;">
-      <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
-    </div>
-    `;
-  }
 
   return `
   ${nav('dashboard')}
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">${label}</div>
     <div class="forecast" style="margin-top:-4px;margin-bottom:12px;">
-      ${caption}
+      ${items.length} word${items.length===1?'':'s'}${items.length > CAP ? `, showing the first ${CAP}` : ''}.
+      ${tier === 'new'
+        ? 'Ready to learn but not started. Tap one to read its card.'
+        : 'Soonest due first. Tap one to read its card.'}
     </div>
-    ${body}
+    ${items.length === 0
+      ? `<div class="empty" style="padding:16px 0;">Nothing at this rank yet.</div>`
+      : `<div class="tilegrid">${tiles}</div>`}
   </div>
   <div style="text-align:center;margin-top:10px;">
     <button class="reset-link" onclick="switchView('dashboard')">Back to dashboard</button>
