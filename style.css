@@ -636,16 +636,14 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
    because the artwork was regenerated with even rollers: on the first set the
    paper started anywhere from 3% to 22% in, and the count had to be inset far
    enough to clear the worst of them. */
+/* Two across at every width. Three fitted, but a scroll is only 196px wide at
+   three and the painting is the point: the bamboo on Anbu and the chrysanthemum
+   on Kage are simply not visible at that size. */
 :root[data-skin="paper"] .rank-row{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:10px;
   margin-bottom:20px;
-}
-/* Below this a scroll is under 110px wide and the kanji stops being readable,
-   which is the whole reason for showing the artwork. */
-@media (max-width:520px){
-  :root[data-skin="paper"] .rank-row{grid-template-columns:repeat(2,1fr);}
 }
 :root[data-skin="paper"] .rank-card{
   position:relative;padding:0;border:none;background:none;cursor:pointer;
