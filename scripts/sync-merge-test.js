@@ -152,6 +152,49 @@ const cases = `
   results.push(['an unchanged merge is recognised as unchanged',
     sameData(mergeSnapshots(same, same, same), same), true]);
 
+  // ---- The cases Codex found on 27 August 2026 ------------------------------
+
+  // A half-answer is not a decision, so a device that answered one half must
+  // not out-rank a device that finished the word. This is guarded here as well
+  // as at its source, because the stamp is what the merge trusts: if anything
+  // ever starts stamping half-answers again, this is where it should fail.
+  // The local side here is what a half-answer leaves behind now: statistics
+  // changed and the write stamp untouched, because only completing a lesson or
+  // a review calls
+  // touchEntry. That is what makes the completed review on the other device the
+  // later decision. If anything ever stamps a half-answer again this stops
+  // describing reality, which is the point of writing it down as data.
+  results.push(['a later half-answer does not undo a completed review',
+    mergeSnapshots(snap({progress:{5:{stage:3,t:100}}}),
+                   snap({progress:{5:{stage:3,t:100,m:{c:1,w:0,s:1,b:1}}}}),
+                   snap({progress:{5:{stage:4,t:200}}})).progress[5].stage,
+    4]);
+
+  // A base older than a state both sides already agree on. Nothing was gained
+  // by anybody, so nothing may be added.
+  const staleBase = snap({ review_history:{'2026-08-27':5}, daily_lessons:{date:TODAY,count:2} });
+  const agreed    = snap({ review_history:{'2026-08-27':9}, daily_lessons:{date:TODAY,count:6} });
+  results.push(['an old base does not inflate counts both sides already share',
+    [mergeSnapshots(staleBase, agreed, agreed).review_history['2026-08-27'],
+     mergeSnapshots(staleBase, agreed, agreed).daily_lessons.count],
+    [9, 6]]);
+
+  // One device banks the kunai, the other spends the same entitlement. It
+  // cannot both have covered a day and still be in hand.
+  results.push(['a kunai cannot be banked and spent at once',
+    mergeSnapshots(snap({streak_saves:{count:0,lastEarned:'2026-08-20',savedDates:[]}}),
+                   snap({streak_saves:{count:1,lastEarned:TODAY,savedDates:[]}}),
+                   snap({streak_saves:{count:0,lastEarned:TODAY,savedDates:['2026-08-26']}})).streak_saves,
+    {count:0, lastEarned:TODAY, savedDates:['2026-08-26']}]);
+
+  // Two stale devices spend one kunai on two different days. Both dates are
+  // real and are kept; the count must not go negative or wrap.
+  results.push(['two spends from one kunai floor at zero rather than going negative',
+    mergeSnapshots(snap({streak_saves:{count:1,lastEarned:'2026-08-20',savedDates:[]}}),
+                   snap({streak_saves:{count:0,lastEarned:TODAY,savedDates:['2026-08-25']}}),
+                   snap({streak_saves:{count:0,lastEarned:TODAY,savedDates:['2026-08-26']}})).streak_saves,
+    {count:0, lastEarned:TODAY, savedDates:['2026-08-25','2026-08-26']}]);
+
   return results;
 })()
 `;

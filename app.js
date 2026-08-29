@@ -798,10 +798,21 @@ function humanizeDuration(ms){
 // numbers and stop them meaning anything.
 function blankStats(){ return { c:0, w:0, s:0, b:0 }; }
 
-// When this item was last decided, so that two devices that both moved the same
-// card since they last agreed can be told apart by the merge in sync.js rather
-// than guessed at. Entries written before this existed have no stamp, and the
-// merge has a rule for that; every one written from here on has one.
+// When this item was last *decided*, so that two devices that both moved the
+// same card since they last agreed can be told apart by the merge in sync.js
+// rather than guessed at. Entries written before this existed have no stamp,
+// and the merge has a rule for that; every one written from here on has one.
+//
+// Decided is the whole of it, and it is only called from the two places that
+// decide: completing a lesson, and completing a review. It was briefly called
+// from recordAnswer too, which stamps every individual half, and that broke the
+// rule it exists to serve: a device answering one half at a later moment would
+// out-stamp a device that had finished the word, and the merge would take the
+// half-answered entry and put a completed card's stage back.
+//
+// The clock behind it is the device's own, so this orders two decisions only as
+// well as two devices agree about the time. It is better evidence than the
+// alternatives available here, not proof.
 function touchEntry(id){
   const p = progress[id];
   if(p) p.t = now();
@@ -827,7 +838,9 @@ function recordAnswer(id, type, correct){
     s.w++;
     s.s = 0;
   }
-  touchEntry(id);
+  // Deliberately no touchEntry here: see the comment on it. One half being
+  // answered is not the word being decided, and stamping it as though it were
+  // lets a half-answer outrank a completed review in the merge.
   saveProgress();
 }
 
@@ -1332,24 +1345,35 @@ function nav(active){
 // was written the moment its second half was answered, so none of that is at
 // risk either.
 //
-// What is at risk is a word with only one half answered. Emaki only moves a
-// word when its meaning and its reading are both right, so a half-answered word
-// has not been written anywhere, and the session that remembers it is memory
-// only. Close the tab and that half is gone; the word comes round again whole.
+// What is at risk is a word part-way through. A word progresses only when its
+// meaning and its reading are both right, so until then no stage has been
+// written for it and the session holding that half-finished state is memory
+// only. Close the tab and the word comes round again whole.
+//
+// Not that nothing at all has been written for it: recordAnswer and
+// recordMistake save the statistics and the mistake as they happen, so Extra
+// Study and the accuracy counts survive. It is the SRS decision that does not.
+//
+// Part-way includes a word that has only been got wrong. That state is
+// {meaning:false, reading:false, missed:true}, which a test for "exactly one
+// half is right" reads as untouched, and the confirm then said nothing was
+// waiting while a demotion the reader had earned was about to be dropped.
 //
 // The confirm is here as much for the mis-tap as for the risk. Back sits beside
 // the button you press hundreds of times in a session.
-function halfAnsweredCount(){
+function partlyReviewedCount(){
   if(!reviewState) return 0;
-  return Object.values(reviewState.results).filter(r => r.meaning !== r.reading).length;
+  return Object.values(reviewState.results).filter(r =>
+    (r.meaning || r.reading || r.missed) && !(r.meaning && r.reading)
+  ).length;
 }
 
 function confirmLeavingReview(){
   if(!reviewState || reviewState.queue.length === 0) return true;
-  const half = halfAnsweredCount();
-  const risk = half > 0
-    ? `${half} word${half===1 ? ' has' : 's have'} had only one half answered. A word progresses only when its meaning and its reading are both right, so ${half===1 ? 'that one starts' : 'those start'} again if you close Emaki before coming back.`
-    : 'Nothing is half answered at the moment.';
+  const part = partlyReviewedCount();
+  const risk = part > 0
+    ? `${part} word${part===1 ? ' is' : 's are'} part-way through. A word progresses only when its meaning and its reading are both right, so ${part===1 ? 'that one starts' : 'those start'} again if you close Emaki before coming back.`
+    : 'Nothing is part-way through at the moment.';
   return confirm(`Leave this review session?\n\nEvery word you have finished is already saved. ${risk}\n\nComing back to Reviews picks up where you left off.`);
 }
 
@@ -1424,9 +1448,13 @@ function dashboardLayout(){
   for(const id of stored){
     if(known.has(id) && !seen.has(id)){ out.push(known.get(id)); seen.add(id); }
   }
-  DASHBOARD_SECTIONS.forEach((s, i)=>{
-    if(!seen.has(s.id)) out.splice(Math.min(i, out.length), 0, s);
-  });
+  // Appended rather than dropped in at its position in the shipped order. For
+  // a dashboard nobody has arranged the two are the same thing, because the
+  // stored order is empty and they arrive in order anyway. For one somebody has
+  // arranged, inserting by shipped index lands a new card in the middle of a
+  // sequence they chose on purpose, and the bottom is both less rude and easier
+  // to find on the way to moving it.
+  DASHBOARD_SECTIONS.forEach(s=>{ if(!seen.has(s.id)) out.push(s); });
   return out;
 }
 
@@ -1657,6 +1685,10 @@ let dashDrag = null;
 function startSectionDrag(e, id){
   if(!arrangingDashboard) return;
   if(e.button !== undefined && e.button !== 0) return;   // right-click, not a drag
+  // A second finger, or a drag whose end was never seen. Without this the new
+  // drag overwrites dashDrag and the old card is left pinned to the page with
+  // nothing holding its slot.
+  cancelSectionDrag();
   const list = document.getElementById('dashSections');
   const wrap = list && list.querySelector(`.arr[data-sec="${id}"]`);
   if(!wrap) return;
@@ -1683,6 +1715,34 @@ function startSectionDrag(e, id){
   document.addEventListener('pointermove', onSectionDragMove);
   document.addEventListener('pointerup', endSectionDrag);
   document.addEventListener('pointercancel', endSectionDrag);
+  // Alt-tabbing away mid-drag never produces a pointerup, and the card would
+  // stay pinned to the screen with the edge-scroll timer still running.
+  window.addEventListener('blur', cancelSectionDrag);
+}
+
+function detachDrag(){
+  document.removeEventListener('pointermove', onSectionDragMove);
+  document.removeEventListener('pointerup', endSectionDrag);
+  document.removeEventListener('pointercancel', endSectionDrag);
+  window.removeEventListener('blur', cancelSectionDrag);
+  stopEdgeScroll();
+}
+
+// Puts everything back without committing an order. Called before any dashboard
+// redraw, because a render replaces the whole list and would otherwise detach
+// the card and its placeholder while the listeners, the timer and dashDrag
+// itself carried on referring to elements no longer on the page. A background
+// sync is enough to cause that render.
+function cancelSectionDrag(){
+  if(!dashDrag) return;
+  const { wrap, holder } = dashDrag;
+  dashDrag = null;
+  detachDrag();
+  if(wrap){
+    wrap.classList.remove('arr-dragging');
+    wrap.style.width = wrap.style.left = wrap.style.top = '';
+  }
+  if(holder && holder.parentNode) holder.remove();
 }
 
 function onSectionDragMove(e){
@@ -1734,10 +1794,7 @@ function stopEdgeScroll(){
 function endSectionDrag(){
   if(!dashDrag) return;
   const { wrap, holder, list, id } = dashDrag;
-  document.removeEventListener('pointermove', onSectionDragMove);
-  document.removeEventListener('pointerup', endSectionDrag);
-  document.removeEventListener('pointercancel', endSectionDrag);
-  stopEdgeScroll();
+  detachDrag();
 
   wrap.classList.remove('arr-dragging');
   wrap.style.width = wrap.style.left = wrap.style.top = '';
@@ -2696,8 +2753,10 @@ async function confirmDeleteAccount(){
   // The agreed base describes a row that no longer exists.
   if(typeof clearSyncBase === 'function') clearSyncBase();
   deleteArmed = false;
-  await signOutSync();
-  syncNotice = 'Deleted. Your study data is gone from this device and from the server.';
+  // Globally, so a device that is still signed in cannot find an empty account,
+  // seed it from the copy it still holds, and undo the delete a minute later.
+  await signOutSync('global');
+  syncNotice = 'Deleted. Your study data is gone from this device and from the server, and every other device has been signed out. A device that still holds a copy will upload it again if you sign in there, so clear it there too if you want it gone for good.';
   location.reload();
 }
 
@@ -2872,6 +2931,8 @@ function renderExtraStudy(){
 
 function render(){
   const root = document.getElementById('root');
+  // A drag in progress is holding elements that are about to be replaced.
+  if(typeof cancelSectionDrag === 'function') cancelSectionDrag();
   let body;
   if(view==='welcome') body = renderWelcome();
   else if(view==='dashboard') body = renderDashboard();
@@ -2891,8 +2952,8 @@ function render(){
           title="${arrangingDashboard?'Finish arranging':'Arrange the dashboard'}"
           aria-label="${arrangingDashboard?'Finish arranging the dashboard':'Arrange the dashboard'}"
           aria-pressed="${arrangingDashboard?'true':'false'}">⠿</button>` : ''}
-        <button class="icon-btn" onclick="switchView('info')" title="Info" aria-label="Info">ⓘ</button>
-        <button class="icon-btn" onclick="switchView('settings')" title="Settings" aria-label="Settings">⚙</button>
+        <button class="icon-btn" onclick="navTo('info')" title="Info" aria-label="Info">ⓘ</button>
+        <button class="icon-btn" onclick="navTo('settings')" title="Settings" aria-label="Settings">⚙</button>
       </div>
     </header>
     ${body}

@@ -248,6 +248,21 @@ server's. The rules now in `sync.js` are written against that sequence, and
 node scripts/sync-merge-test.js
 ```
 
+There is a second suite, and it is the one to run before touching `sync.js`:
+
+```
+node scripts/sync-reconcile-test.js
+```
+
+It drives the real `reconcile()` against a fake Supabase client that can be
+interfered with mid-request, and a "tab" in it is a whole separate copy of
+`sync.js` in its own context sharing one `localStorage`. Every sync bug that has
+actually cost anything here has been about *when* things happen rather than what
+the merge rules say — an edit made while a write was in flight, two tabs sharing
+a dirty mark but not their memory, a write the server committed and the client
+never heard about. None of that is visible to a test that calls the merge
+functions directly.
+
 Anyone upgrading from before that date needs to re-run `supabase/schema.sql` for
 the `revision` column. Without it the merge still runs, which is the part that
 stops work being lost; only the conditional write is skipped.

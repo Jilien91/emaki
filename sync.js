@@ -15,6 +15,8 @@ const DIRTY_KEY = 'kaishi-sync-dirty';
 // can tell which side changed rather than having to pick a winner. See the
 // base section below for why nothing works properly without it.
 const BASE_KEY_PREFIX = 'kaishi-sync-base:';
+// What the last write sent, kept until its reply is heard. See landedUnheard.
+const PENDING_KEY_PREFIX = 'kaishi-sync-pending:';
 // Set only by a deliberate local erasure, which is the one case where this
 // device's copy should replace the server's rather than merge with it.
 const FORCE_KEY = 'kaishi-sync-force-local';
@@ -39,16 +41,29 @@ function syncActive(){ return !!(sb && syncUser); }
 // Local edits are flagged in localStorage rather than memory so that changes
 // made offline (or in a tab that was closed before the push landed) are still
 // known to be unpushed on the next load.
-// A counter rather than a flag. clearDirty used to wipe the mark whenever any
+// A token rather than a flag. clearDirty used to wipe the mark whenever any
 // push finished, so an edit made while a push was in flight had its mark
 // cleared by that older request and was never sent: the edit survives locally
 // and silently never reaches the server. The token records which edit a push
 // actually carried, and only that one is cleared.
+//
+// The tab's own id is part of it, and that is not decoration. A bare counter
+// starts at zero in every tab, so two tabs each writing their first mark both
+// write "1", and whichever finishes a sync first clears the other's mark and
+// takes its edit with it. The mark has to say *which* edit it is, and an edit
+// belongs to a tab. Counting alone cannot express that, because the thing being
+// counted is per tab and the thing being read is per origin.
+const TAB_ID = (function(){
+  try{
+    if(window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+  }catch(e){}
+  return Math.random().toString(36).slice(2) + Date.now().toString(36);
+})();
 let dirtyToken = 0;
 function markDirty(){
   if(applyingRemote) return; // writing pulled data back out isn't a local edit
   dirtyToken++;
-  try{ window.localStorage.setItem(DIRTY_KEY, String(dirtyToken)); }catch(e){}
+  try{ window.localStorage.setItem(DIRTY_KEY, TAB_ID + ':' + dirtyToken); }catch(e){}
   if(syncActive()) schedulePush();
 }
 function isDirty(){
@@ -148,8 +163,56 @@ function saveBase(revision, snapshot){
 function clearSyncBase(){
   try{
     window.localStorage.removeItem(baseKey());
+    window.localStorage.removeItem(PENDING_KEY_PREFIX + (syncUser ? syncUser.id : 'anon'));
     window.localStorage.removeItem(FORCE_KEY);
   }catch(e){}
+}
+
+// ---- A write we sent but never heard back about ----------------------------
+//
+// The server can commit a write and the reply never arrive: the tab is closing,
+// the connection drops, the phone changes network. The base is then still the
+// old one while the server has already moved on, and because several fields
+// merge by adding each side's gain to the base, the next reconcile adds the
+// same reviews a second time. Twelve reviews become nineteen.
+//
+// So before every write, what is being sent and the revision it should produce
+// are recorded. If the next read finds exactly that revision holding exactly
+// that content, the write did land, and this is the base to reconcile against
+// rather than the older one. Both halves have to match: the revision alone
+// could be another device's write, and the content alone could be a coincidence
+// at the wrong revision.
+//
+// It is per account for the same reason the base is.
+function pendingKey(){ return PENDING_KEY_PREFIX + (syncUser ? syncUser.id : 'anon'); }
+
+function savePending(revision, snapshot){
+  try{
+    window.localStorage.setItem(pendingKey(), JSON.stringify({
+      revision: (revision === undefined ? null : revision), snapshot: snapshot
+    }));
+  }catch(e){}
+}
+
+function loadPending(){
+  try{
+    const raw = window.localStorage.getItem(pendingKey());
+    if(!raw) return null;
+    const p = JSON.parse(raw);
+    return p && p.snapshot ? p : null;
+  }catch(e){ return null; }
+}
+
+function clearPending(){
+  try{ window.localStorage.removeItem(pendingKey()); }catch(e){}
+}
+
+// Did the write we never heard back about actually land? If so its snapshot is
+// what this device and the server last agreed on, whatever the stored base says.
+function landedUnheard(pending, row, remote){
+  if(!pending) return false;
+  if(pending.revision !== null && row.revision !== pending.revision) return false;
+  return sameData(remote, pending.snapshot);
 }
 
 // "Reset all progress" is a deliberate erasure. A merge would treat the emptied
@@ -273,6 +336,16 @@ function mergeCounts(base, local, remote){
     const b = base && typeof base[k] === 'number' ? base[k] : 0;
     const l = typeof local[k]  === 'number' ? local[k]  : b;
     const r = typeof remote[k] === 'number' ? remote[k] : b;
+    // Two copies that already agree are not evidence of anybody having gained
+    // anything, whatever the base says, and a base can be older than it should
+    // be: a write can land with its reply lost, or saveBase can fail silently
+    // when storage is full. Adding both differences there invents reviews that
+    // were never done, and it does it every sync until the base catches up.
+    // Two devices each doing exactly the same number of reviews since the base
+    // is the case this gets wrong, and it reports the smaller true-ish number
+    // rather than a larger invented one, which is the right way round for a
+    // statistic nothing depends on.
+    if(l === r){ out[k] = l; continue; }
     out[k] = base ? b + Math.max(0, l - b) + Math.max(0, r - b) : Math.max(l, r);
   }
   return out;
@@ -285,6 +358,7 @@ function mergeDailyLessons(base, local, remote){
   const today = todayKey();
   const count = s => (s && s.date === today && typeof s.count === 'number') ? s.count : 0;
   const b = count(base), l = count(local), r = count(remote);
+  if(l === r) return { date: today, count: l };   // see mergeCounts
   return { date: today, count: base ? b + Math.max(0, l - b) + Math.max(0, r - b) : Math.max(l, r) };
 }
 
@@ -298,10 +372,31 @@ function mergeStreakSaves(base, local, remote){
   const lastEarned = [local.lastEarned, remote.lastEarned].filter(Boolean).sort().pop() || todayKey();
   let count;
   if(validStreak(base)){
-    count = base.count + (local.count - base.count) + (remote.count - base.count);
+    // Adding the two differences straight was wrong, and the case that shows it
+    // is one device replenishing and holding while the other replenishes the
+    // same entitlement and spends it. Both sides moved by +1 and -1+1, the
+    // deltas cancel, and the merge hands back a kunai that has already been
+    // spent: one grant that both covered a day and stayed in hand.
+    //
+    // Grants and spends are not the same kind of thing, so they are not counted
+    // the same way. A spend leaves evidence — a date in savedDates — so the
+    // spends are the dates that have appeared since the base, and every one of
+    // them is real. A grant leaves none, and both devices replenishing is the
+    // same entitlement arriving twice rather than two entitlements, so the
+    // grants are the larger of the two sides rather than their sum.
+    const baseDates = (base.savedDates || []).length;
+    const spent     = Math.max(0, savedDates.length - baseDates);
+    const gain = side => Math.max(0,
+      side.count + Math.max(0, (side.savedDates || []).length - baseDates) - base.count);
+    count = base.count + Math.max(gain(local), gain(remote)) - spent;
   }else{
     count = Math.min(local.count, remote.count);   // never grant one nothing accounts for
   }
+  // Two stale devices can spend on two different days from one kunai. The union
+  // keeps both dates and the count floors at zero, so the streak gets a day it
+  // did not strictly pay for. The shape cannot represent which grant a spend
+  // belongs to, and erring towards the user's streak is the right way to be
+  // wrong about it.
   count = Math.max(0, Math.min(STREAK_SAVE_MAX, count));
   return { count: count, lastEarned: lastEarned, savedDates: savedDates };
 }
@@ -349,13 +444,22 @@ async function initSync(){
   // typed this early in the load, so a repaint cannot eat an answer.
   render();
 
-  sb.auth.onAuthStateChange(async (event, session) => {
+  // Synchronous on purpose, and the sync is pushed out of it with a timeout.
+  //
+  // supabase-js holds an auth lock for as long as this handler runs, and an
+  // awaited Supabase call inside it deadlocks: the next call anywhere in the
+  // app never returns, so the app looks alive and simply stops syncing until
+  // the page is reloaded. Supabase document it themselves, in "Why is my
+  // supabase API call not returning?", and it is open as auth-js#762.
+  //
+  // Deferring costs nothing here. Nothing downstream needs to happen before
+  // this handler returns.
+  sb.auth.onAuthStateChange((event, session) => {
     const nextUser = session && session.user ? session.user : null;
     const changed = (nextUser && nextUser.id) !== (syncUser && syncUser.id);
     syncUser = nextUser;
     if(syncUser && changed){
-      await syncNow();
-      render();
+      setTimeout(()=>{ syncNow().then(render, render); }, 0);
     }else if(!syncUser){
       setSyncStatus('off');
     }
@@ -477,32 +581,58 @@ async function reconcile(){
 
     // Read after the request comes back, so it accounts for anything answered
     // while it was in flight, and captured alongside the copy it describes.
-    const mark  = dirtyMark();
-    const local = localSnapshot();
+    const mark    = dirtyMark();
+    const local   = localSnapshot();
+    const forcing = forcingLocal();
+
+    let row, merged;
 
     if(!data){
-      // First sign-in on this account: there is nothing to merge with.
-      const row = await writeRemote(local, undefined);
-      if(!row) continue;
-      saveBase(row.revision, local);
-      clearDirty(mark);
+      // Nobody has written for this account yet.
+      merged = local;
+      row = await writeRemote(local, 'seed');
+      if(!row) continue;             // somebody seeded first: read theirs
+    }else{
+      const remote  = rowSnapshot(data);
+      const pending = loadPending();
+      // A write of ours that landed while the reply was lost is what we last
+      // agreed on, whatever the stored base still says.
+      const base = landedUnheard(pending, data, remote) ? pending.snapshot : loadBase();
+      merged = forcing ? local : mergeSnapshots(base, local, remote);
+
+      if(sameData(merged, remote)){
+        row = data;                  // nothing to say
+      }else{
+        const revision = (data.revision === undefined ? null : data.revision);
+        savePending(revision === null ? null : revision + 1, merged);
+        row = await writeRemote(merged, revision);
+        if(!row) continue;           // the row moved under us: read it again
+      }
+    }
+
+    clearPending();
+
+    // What the server is actually holding now. The base has to be this and not
+    // `merged`, because a write can be trimmed on the way out — the streak_saves
+    // fallback drops a field — and a base describing something the server never
+    // stored makes the next merge wrong rather than merely late.
+    const stored = rowSnapshot(row);
+    saveBase(row.revision, stored);
+
+    // Anything answered while that write was away is newer than what we sent
+    // and newer than the picture we are holding. Writing `stored` over it here
+    // would revert it: the mark would survive and sync it back eventually, but
+    // the answer would be gone from this screen in the meantime, and a reset
+    // caught this way would simply undo itself. So leave local alone, leave the
+    // mark alone, and come back for it.
+    if(dirtyMark() !== mark){
+      schedulePush();
       return;
     }
 
-    const remote = rowSnapshot(data);
-    const before = JSON.parse(JSON.stringify(progress));
-    const merged = forcingLocal() ? local : mergeSnapshots(loadBase(), local, remote);
-
-    if(!sameData(merged, remote)){
-      const row = await writeRemote(merged, data.revision);
-      if(!row) continue;             // the row moved under us: read it again
-      saveBase(row.revision, merged);
-    }else{
-      saveBase(data.revision, merged);
-    }
-
-    if(!sameData(merged, local)){
-      applyMerged(merged);
+    if(!sameData(stored, local)){
+      const before = JSON.parse(JSON.stringify(progress));
+      applyMerged(stored);
       invalidateSessionsAfterPull(before, progress);
       // Only repaint when something actually changed, so a background sync
       // cannot clear an answer the user is midway through typing.
@@ -510,7 +640,7 @@ async function reconcile(){
     }
     clearTimeout(pushTimer);
     clearDirty(mark);
-    try{ window.localStorage.removeItem(FORCE_KEY); }catch(e){}
+    if(forcing){ try{ window.localStorage.removeItem(FORCE_KEY); }catch(e){} }
     return;
   }
   throw new Error('Could not reconcile: the server copy kept moving');
@@ -521,22 +651,32 @@ async function reconcile(){
 // have the second one silently win. A null result means no row matched, which
 // here means somebody else wrote first.
 //
-// revision === undefined is the seeding case, where there is no row to guard.
-// revision === null is a live table that predates the revision column: the
-// merge still happened, which is the part that stops work being lost, but the
-// write is not protected against another device writing in the same instant.
-async function writeRemote(snap, revision){
+// mode is 'seed' when the read found no row at all, a revision number to
+// compare and swap on, or null for a live table that predates the revision
+// column, where the merge still happens but the write is unprotected.
+//
+// Seeding inserts rather than upserts. Two devices signing in to a new account
+// can both read nothing and both write; an upsert makes the second one silently
+// replace the first one's row, which is the very thing the rest of this file
+// exists to prevent. An insert against an existing primary key is a conflict
+// instead, and a conflict means somebody seeded first, so read theirs and merge.
+async function writeRemote(snap, mode){
   const fields = Object.assign({}, snap);
   if(!validStreak(fields.streak_saves)) delete fields.streak_saves;
 
   const run = async (payload) => {
-    if(revision === undefined || revision === null){
+    if(mode === 'seed'){
+      return await sb.from('user_state')
+        .insert(Object.assign({ user_id: syncUser.id }, payload))
+        .select().maybeSingle();
+    }
+    if(mode === null || mode === undefined){
       return await sb.from('user_state')
         .upsert(Object.assign({ user_id: syncUser.id }, payload), { onConflict: 'user_id' })
         .select().maybeSingle();
     }
     return await sb.from('user_state')
-      .update(payload).eq('user_id', syncUser.id).eq('revision', revision)
+      .update(payload).eq('user_id', syncUser.id).eq('revision', mode)
       .select().maybeSingle();
   };
 
@@ -549,8 +689,21 @@ async function writeRemote(snap, revision){
     delete trimmed.streak_saves;
     ({ data, error } = await run(trimmed));
   }
+  // A seed that collided is not a failure. Somebody else created the row
+  // between our read and our write, so there is something to merge with after
+  // all: report it the same way a lost compare and swap is reported, and the
+  // loop will read it.
+  if(error && mode === 'seed' && isDuplicateRow(error)) return null;
   if(error) throw error;
   return data || null;
+}
+
+// Postgres reports a primary key collision as 23505. PostgREST passes the code
+// through, but not every layer does, so the message is checked too.
+function isDuplicateRow(error){
+  if(!error) return false;
+  if(error.code === '23505') return true;
+  return /duplicate key|already exists/i.test(error.message || '');
 }
 
 // Single-flight. Two writes in the air at once are not ordered by the server,
@@ -658,9 +811,26 @@ async function deleteRemoteData(){
   return { ok: true };
 }
 
-async function signOutSync(){
+// scope 'global' ends the session on every device rather than just this one.
+// Used by the delete path: the row can be removed here and put straight back by
+// another device that is still signed in, still holds the whole thing locally,
+// and finds no row to merge with, so seeds one from its own copy. Signing those
+// devices out stops them writing.
+//
+// It is a reduction in the window, not a closing of it. A device that still has
+// the data will seed it again the moment somebody signs in there. Closing it
+// properly needs the server to remember that a delete happened — a tombstone
+// the clients honour — which is a schema change and a decision about what a
+// deleted account means, not a tidy-up. Until then the UI says what actually
+// happens rather than implying more.
+async function signOutSync(scope){
   if(!sb) return;
-  await sb.auth.signOut();
+  try{
+    await sb.auth.signOut(scope === 'global' ? { scope: 'global' } : undefined);
+  }catch(e){
+    // A failed sign-out must not strand the caller mid-flow; the local session
+    // is dropped either way.
+  }
   syncUser = null;
   setSyncStatus('off');
   syncNotice = 'Signed out. Progress stays on this device.';
