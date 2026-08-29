@@ -676,21 +676,21 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   font-family:'Yuji Syuku','Noto Sans JP',serif;
   font-size:12cqw;font-weight:400;line-height:1;white-space:nowrap;
 }
-/* The same brush as the characters above it. Yuji Syuku draws Latin too, so
-   the romaji is the same hand rather than a sans-serif label sitting under a
-   painted one, and it costs no second font: index.html subsets one file to the
-   eight kanji and the sixteen letters the six rank names use. */
+/* Rock Salt, angled across the empty half of the paper like something written
+   on the scroll rather than printed under the characters. Lasz's call, and it
+   is the one that reads: at this size weight beats style, and a rough hand with
+   real thickness to it survives being 15px where a fine calligraphic one does
+   not.
+   
+   Rock Salt ships in a single weight, so the extra body comes from stroking the
+   glyphs in their own colour. A hair over a third of a pixel: enough to hold
+   the thin joins together, not enough to fill in the counters. */
 :root[data-skin="paper"] .rank-name{
-  position:absolute;left:64%;top:79%;transform:translate(-50%,-50%);
-  font-family:'Yuji Syuku','Spectral',serif;
-  font-size:5cqw;letter-spacing:0.06em;line-height:1;
-  /* A shade darker than it first was: on Jonin and Kage the name sits over the
-     gold cloud and the chrysanthemum, and the plainer scrolls can carry the
-     extra weight without it looking heavy. */
+  position:absolute;left:41%;top:50%;
+  transform:translate(-50%,-50%) rotate(-45deg);
+  font-family:'Rock Salt','Spectral',serif;
+  font-size:4.6cqw;line-height:1;letter-spacing:0.01em;white-space:nowrap;
   color:#3a2c1e;
+  -webkit-text-stroke:0.35px #3a2c1e;
 }
-/* The rule the artwork used to have painted between the number and the name. */
-:root[data-skin="paper"] .rank-card::after{
-  content:"";position:absolute;left:26%;top:24%;bottom:24%;width:1px;
-  background:currentColor;opacity:0.28;
-}
+
