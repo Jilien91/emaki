@@ -1621,12 +1621,40 @@ function renderWeekSection(){
   </div>`;
 }
 
+// The rank characters. Drawn as text rather than being part of the artwork, so
+// they are correct, they sit in the same place on all six, and they take the
+// palette's ink colour instead of being fixed in the picture.
+const TIER_KANJI = {
+  new:'新', genin:'下忍', chunin:'中忍', jonin:'上忍', anbu:'暗部', kage:'影'
+};
+
+// Two ways of drawing the same six counts.
+//
+// The painted scrolls belong to the paper palettes. On Classic they would be
+// six pieces of aged parchment in the middle of a flat blue-grey app, which is
+// not a look anybody chose, and Classic's promise is that it is unchanged. So
+// Classic keeps the plain buttons it has always had and the paper palettes get
+// the artwork. It is the same data, the same target and the same behaviour
+// either way: press one and the tier list opens.
 function renderTiersSection(c){
+  const tiers = ['new','genin','chunin','jonin','anbu','kage'];
+  if(currentPalette().skin !== 'paper'){
+    return `
+    <div class="grid3">
+      ${tiers.map(t=>`
+        <button class="stat stat-btn" onclick="showTier('${t}')" title="Show these words">
+          <div class="n">${c.counts[t]}</div><div class="l">${t.charAt(0).toUpperCase()+t.slice(1)}</div>
+        </button>`).join('')}
+    </div>`;
+  }
   return `
-  <div class="grid3">
-    ${['new','genin','chunin','jonin','anbu','kage'].map(t=>`
-      <button class="stat stat-btn" onclick="showTier('${t}')" title="Show these words">
-        <div class="n">${c.counts[t]}</div><div class="l">${t.charAt(0).toUpperCase()+t.slice(1)}</div>
+  <div class="rank-row">
+    ${tiers.map(t=>`
+      <button class="rank-card" onclick="showTier('${t}')" title="Show these words">
+        <img src="img/ranks/${t}.webp" alt="" loading="lazy" width="440" height="147">
+        <span class="rank-count">${c.counts[t]}</span>
+        <span class="rank-kanji">${TIER_KANJI[t]}</span>
+        <span class="rank-name">${t.charAt(0).toUpperCase()+t.slice(1)}</span>
       </button>`).join('')}
   </div>`;
 }

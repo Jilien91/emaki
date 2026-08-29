@@ -626,3 +626,64 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 }
 .palette-swatch[aria-pressed="true"]{border-color:var(--text);}
 .palette-swatch[aria-pressed="true"] .pl{color:var(--text);font-weight:600;}
+
+/* ---- The rank scrolls ------------------------------------------------------
+   Only on the paper palettes; Classic keeps the .grid3 stat buttons above, and
+   app.js decides which of the two to render.
+
+   All six art files are 3:1 and the same size, so one aspect fits every card
+   and the overlaid text lands in the same place on each. That is only true
+   because the artwork was regenerated with even rollers: on the first set the
+   paper started anywhere from 3% to 22% in, and the count had to be inset far
+   enough to clear the worst of them. */
+:root[data-skin="paper"] .rank-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+/* Below this a scroll is under 110px wide and the kanji stops being readable,
+   which is the whole reason for showing the artwork. */
+@media (max-width:520px){
+  :root[data-skin="paper"] .rank-row{grid-template-columns:repeat(2,1fr);}
+}
+:root[data-skin="paper"] .rank-card{
+  position:relative;padding:0;border:none;background:none;cursor:pointer;
+  display:block;border-radius:6px;aspect-ratio:3 / 1;
+  /* Text sized from the card, so the same rules hold at three across on a
+     monitor and two across on a phone. */
+  container-type:inline-size;
+  color:#2b2018;                 /* the ink, and the divider's currentColor */
+  transition:transform .08s, filter .12s;
+}
+:root[data-skin="paper"] .rank-card:hover{filter:brightness(1.06);}
+:root[data-skin="paper"] .rank-card:active{transform:translateY(1px);}
+:root[data-skin="paper"] .rank-card:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;
+}
+:root[data-skin="paper"] .rank-card img{
+  width:100%;height:100%;object-fit:contain;display:block;
+}
+/* The paper starts between 1.8% and 5.5% across the six, so 13% is inside the
+   panel on every one of them rather than clearing a worst case. */
+:root[data-skin="paper"] .rank-count{
+  position:absolute;left:13%;top:50%;transform:translate(-50%,-50%);
+  font-family:'Spectral',serif;font-size:8.5cqw;font-weight:600;line-height:1;
+}
+/* Brush, not gothic. A sans-serif kanji on a painted scroll reads as a caption
+   stuck onto a painting. Yuji Syuku is brush-written, and index.html subsets it
+   to the eight characters these six ranks use. */
+:root[data-skin="paper"] .rank-kanji{
+  position:absolute;left:64%;top:44%;transform:translate(-50%,-50%);
+  font-family:'Yuji Syuku','Noto Sans JP',serif;
+  font-size:12cqw;font-weight:400;line-height:1;white-space:nowrap;
+}
+:root[data-skin="paper"] .rank-name{
+  position:absolute;left:64%;top:78%;transform:translate(-50%,-50%);
+  font-size:4.4cqw;letter-spacing:0.04em;line-height:1;color:#4a3a2a;
+}
+/* The rule the artwork used to have painted between the number and the name. */
+:root[data-skin="paper"] .rank-card::after{
+  content:"";position:absolute;left:26%;top:24%;bottom:24%;width:1px;
+  background:currentColor;opacity:0.28;
+}
