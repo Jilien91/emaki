@@ -687,3 +687,27 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   mix-blend-mode:multiply;
 }
 
+
+/* The rank scroll as the tier list's heading. Same drawing and the same overlay
+   as the dashboard, at full width instead of one of six, so pressing a scroll
+   opens the scroll rather than a page that has forgotten about it.
+   The count is how many words are at this rank, which is the same number the
+   dashboard tile was showing, so it carries over unchanged. */
+:root[data-skin="paper"] .rank-head{
+  position:relative;display:block;margin-bottom:16px;
+  aspect-ratio:3 / 1;container-type:inline-size;color:#2b2018;
+}
+:root[data-skin="paper"] .rank-head img{
+  width:100%;height:100%;object-fit:contain;display:block;
+}
+:root[data-skin="paper"] .rank-head .rank-count{
+  position:absolute;left:18%;top:41%;transform:translate(-50%,-50%);
+  font-family:'Spectral',serif;font-size:9cqw;font-weight:600;line-height:1;
+  color:#3b2f26;mix-blend-mode:multiply;
+}
+:root[data-skin="paper"] .rank-head .rank-name{
+  position:absolute;left:18%;top:66%;transform:translate(-50%,-50%);
+  font-family:'Rock Salt','Spectral',serif;
+  font-size:4cqw;line-height:1;letter-spacing:0.01em;white-space:nowrap;
+  color:#3a2c1e;mix-blend-mode:multiply;
+}
