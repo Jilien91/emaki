@@ -444,3 +444,185 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
   margin-bottom:16px;border-radius:16px;
   border:1px dashed var(--genin);background:var(--genin-bg);opacity:0.45;
 }
+
+/* ---- Palettes --------------------------------------------------------------
+
+   Classic is the :root block at the top of this file and stays the default, so
+   an install that never touches the setting looks exactly as it always has.
+
+   Each palette below states its whole token set twice, once for dark and once
+   for light, rather than leaning on Classic for the values it does not mention.
+   Inheriting would work until it didn't: a palette's dark block and Classic's
+   light block have the same specificity, so in light mode whichever came later
+   in the file would win, and the answer would depend on the order of two
+   sections rather than on anything anybody decided. Stating both is longer and
+   has no such question in it.
+
+   data-skin is separate from data-palette because it says something different:
+   the palette is which colours, the skin is whether this is paper. Four of the
+   five want the paper treatment - the fibre, the stains, the serif numerals,
+   the gradient on the primary button - and Classic wants none of it, and a rule
+   that needs "any palette except classic" reads better as one attribute than as
+   a list of four that has to be extended every time somebody adds a fifth.
+
+   The tier colours are deliberately not restated per palette. They are what a
+   Genin card is, not what this month's theme is, and they appear in the tier
+   list, the pills and the mistake tiles where they have to mean the same thing
+   everywhere. Worth looking at again once these have been lived with: Genin's
+   orange against Ember's warm ground is the one that may want moving. */
+
+/* Ember: the parchment the sketch arrived in. */
+:root[data-palette="ember"]{
+  color-scheme: dark;
+  --bg:#070605; --surface:#17120e; --surface-2:#211912;
+  --border:rgba(219,188,137,.16); --border-strong:rgba(219,188,137,.28);
+  --text:#f0e5cf; --text-dim:#b4a68e; --text-faint:#837866;
+  --accent:#e60012; --accent-dark:#a9000d;
+  --paper-fibre:rgba(239,214,170,.026); --paper-fibre-dark:rgba(0,0,0,.11);
+  --paper-stain:rgba(126,73,33,.16); --card-wash:rgba(255,232,188,.022);
+}
+:root[data-palette="ember"][data-theme="light"]{
+  color-scheme: light;
+  --bg:#c9b391; --surface:#d8c39d; --surface-2:#e7d5b4;
+  --border:rgba(67,40,21,.22); --border-strong:rgba(67,40,21,.34);
+  --text:#2a1e14; --text-dim:#665846; --text-faint:#82715b;
+  --accent:#e60012; --accent-dark:#a9000d;
+  --paper-fibre:rgba(255,250,235,.13); --paper-fibre-dark:rgba(0,0,0,.05);
+  --paper-stain:rgba(125,76,34,.10); --card-wash:rgba(255,255,255,.16);
+}
+
+/* Indigo: aizome, the blue a work jacket is dyed with, on paper gone grey
+   rather than yellow. Gold rather than red, because red on blue is a flag. */
+:root[data-palette="indigo"]{
+  color-scheme: dark;
+  --bg:#05070a; --surface:#0f141c; --surface-2:#161d28;
+  --border:rgba(150,180,215,.16); --border-strong:rgba(150,180,215,.28);
+  --text:#e2e8f0; --text-dim:#9aa6b6; --text-faint:#6c7889;
+  --accent:#2f5d8c; --accent-dark:#1e4064;
+  --paper-fibre:rgba(239,214,170,.026); --paper-fibre-dark:rgba(0,0,0,.11);
+  --paper-stain:rgba(32,60,95,.16); --card-wash:rgba(255,255,255,.022);
+}
+:root[data-palette="indigo"][data-theme="light"]{
+  color-scheme: light;
+  --bg:#a9b6c4; --surface:#c5cfda; --surface-2:#d6dee7;
+  --border:rgba(25,40,60,.22); --border-strong:rgba(25,40,60,.34);
+  --text:#141b24; --text-dim:#465263; --text-faint:#5f6b7c;
+  --accent:#2f5d8c; --accent-dark:#1e4064;
+  --paper-fibre:rgba(255,250,235,.13); --paper-fibre-dark:rgba(0,0,0,.05);
+  --paper-stain:rgba(40,70,110,.10); --card-wash:rgba(255,255,255,.16);
+}
+
+/* Slate: stone and verdigris copper. Not paper at all, which is why the stains
+   are the weakest of the four. */
+:root[data-palette="slate"]{
+  color-scheme: dark;
+  --bg:#08090a; --surface:#141618; --surface-2:#1c1f22;
+  --border:rgba(170,185,195,.16); --border-strong:rgba(170,185,195,.28);
+  --text:#e8eaec; --text-dim:#9aa0a6; --text-faint:#6d737a;
+  --accent:#357f77; --accent-dark:#255954;
+  --paper-fibre:rgba(239,214,170,.02); --paper-fibre-dark:rgba(0,0,0,.09);
+  --paper-stain:rgba(50,70,75,.14); --card-wash:rgba(255,255,255,.02);
+}
+:root[data-palette="slate"][data-theme="light"]{
+  color-scheme: light;
+  --bg:#b0b5b8; --surface:#cbd0d3; --surface-2:#dadfe2;
+  --border:rgba(25,35,40,.22); --border-strong:rgba(25,35,40,.34);
+  --text:#15181a; --text-dim:#474d51; --text-faint:#5f666a;
+  --accent:#357f77; --accent-dark:#255954;
+  --paper-fibre:rgba(255,250,235,.1); --paper-fibre-dark:rgba(0,0,0,.04);
+  --paper-stain:rgba(55,80,85,.08); --card-wash:rgba(255,255,255,.16);
+}
+
+/* Plum: aubergine and cream. The most decorative, and the best ground the Kage
+   scroll has. */
+:root[data-palette="plum"]{
+  color-scheme: dark;
+  --bg:#08050a; --surface:#150f19; --surface-2:#1d1523;
+  --border:rgba(210,180,200,.16); --border-strong:rgba(210,180,200,.28);
+  --text:#f0e6ea; --text-dim:#b3a3ac; --text-faint:#847585;
+  --accent:#b0455f; --accent-dark:#7d2d42;
+  --paper-fibre:rgba(239,214,170,.026); --paper-fibre-dark:rgba(0,0,0,.11);
+  --paper-stain:rgba(95,45,80,.16); --card-wash:rgba(255,255,255,.022);
+}
+:root[data-palette="plum"][data-theme="light"]{
+  color-scheme: light;
+  --bg:#bfa8b6; --surface:#d6c3cd; --surface-2:#e4d5dd;
+  --border:rgba(50,30,45,.22); --border-strong:rgba(50,30,45,.34);
+  --text:#221820; --text-dim:#584a53; --text-faint:#6f606a;
+  --accent:#b0455f; --accent-dark:#7d2d42;
+  --paper-fibre:rgba(255,250,235,.13); --paper-fibre-dark:rgba(0,0,0,.05);
+  --paper-stain:rgba(110,55,90,.10); --card-wash:rgba(255,255,255,.16);
+}
+
+/* ---- The paper treatment ---------------------------------------------------
+   Everything that is not colour: what the ground is made of, what a card is,
+   and what the numbers are set in. Applies to every palette that asked for it
+   and to none that did not. */
+
+:root[data-skin="paper"] body{
+  background:
+    radial-gradient(ellipse at 48% -15%, rgba(54,46,38,.21), transparent 52%),
+    var(--bg);
+}
+/* Fibres running two ways and a couple of stains. One direction alone reads as
+   corduroy; the stains are what stop a flat ground looking like a flat ground.
+   The sheet runs the full height of the screen rather than stopping under the
+   last card, because a piece of paper that ends halfway down is a torn one. */
+:root[data-skin="paper"] #root{
+  background:
+    radial-gradient(ellipse at 18% 9%, var(--paper-stain), transparent 27rem),
+    radial-gradient(ellipse at 82% 54%, var(--paper-stain), transparent 30rem),
+    repeating-linear-gradient(96deg, transparent 0 17px, var(--paper-fibre) 18px 19px, transparent 20px 43px),
+    repeating-linear-gradient(2deg, transparent 0 3px, var(--paper-fibre-dark) 4px 5px, transparent 6px 11px),
+    var(--surface);
+  min-height:100dvh;
+  box-shadow:0 0 60px rgba(0,0,0,.4);
+}
+:root[data-skin="paper"] .card,
+:root[data-skin="paper"] .stat{
+  background:linear-gradient(180deg, var(--card-wash), transparent 60%), var(--surface-2);
+  box-shadow:inset 0 1px 0 rgba(255,235,200,.03), 0 1px 3px rgba(0,0,0,.3);
+}
+/* Classic already sets these in Spectral, so this is only the weight: 500
+   rather than 600. A semibold numeral looks set in metal and a regular one
+   looks written, and on paper the second is the right answer. Small enough to
+   be worth stating that it is the whole of the difference. */
+:root[data-skin="paper"] .cta-count,
+:root[data-skin="paper"] .stat .n{
+  font-weight:500;
+}
+:root[data-skin="paper"] button.primary{
+  background:linear-gradient(180deg, var(--accent), var(--accent-dark));
+  border:1px solid var(--accent-dark);
+  color:#fff;
+  box-shadow:0 1px 0 rgba(255,255,255,.14) inset, 0 2px 8px rgba(0,0,0,.35);
+}
+:root[data-skin="paper"] nav button.active{
+  border-color:var(--accent);
+}
+:root[data-skin="paper"] input[type=text]:focus,
+:root[data-skin="paper"] input[type=number]:focus,
+:root[data-skin="paper"] input[type=email]:focus,
+:root[data-skin="paper"] select:focus{
+  border-color:var(--accent);
+}
+
+/* The picker itself. A swatch each, because naming a colour is a poor way to
+   choose one. */
+.palette-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;}
+.palette-swatch{
+  flex:0 0 auto;width:70px;padding:0;border-radius:10px;overflow:hidden;
+  border:1px solid var(--border-strong);background:none;cursor:pointer;
+  font-family:'Inter',sans-serif;
+}
+.palette-swatch .pv{display:block;height:36px;position:relative;}
+.palette-swatch .pv::after{
+  content:"";position:absolute;left:9px;bottom:8px;width:24px;height:6px;
+  border-radius:3px;background:var(--sw-accent);
+}
+.palette-swatch .pl{
+  display:block;font-size:11px;padding:5px 2px 6px;color:var(--text-dim);
+  background:var(--surface-2);
+}
+.palette-swatch[aria-pressed="true"]{border-color:var(--text);}
+.palette-swatch[aria-pressed="true"] .pl{color:var(--text);font-weight:600;}

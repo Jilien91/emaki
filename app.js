@@ -21,6 +21,7 @@ const DEFAULT_SETTINGS = {
   hideAnswerOnMistake: true, // make yourself recall it before it's handed over
   showMnemonicOnAnswer: false, // the mnemonic gives away the half you haven't been asked yet
   theme: 'system',           // 'system' | 'light' | 'dark'
+  palette: 'classic',        // which colours; see PALETTES
   // null rather than a copy of the shipped order, so that a later version can
   // change the default and everybody who never arranged anything gets it. Both
   // are read through dashboardLayout() and dashboardHiddenIds(), which is where
@@ -469,19 +470,52 @@ function resolvedTheme(){
     ? 'light' : 'dark';
 }
 
-// theme-color paints the browser chrome and the iOS status bar. Left on the
-// dark value in light mode it puts a black bar above a white page.
-const THEME_BG = { dark: '#15171c', light: '#f2f3f6' };
+// ---- Palettes ---------------------------------------------------------------
+//
+// Two independent choices, not one list of eight. The palette says which
+// colours; light and dark says which end of that palette. Every palette states
+// both, so switching one never disturbs the other, and somebody who follows the
+// system clock still gets whichever palette they picked at either end of the day.
+//
+// `skin` is what the palette is made of rather than what colour it is. Four of
+// these are paper and want the fibre, the stains and the serif numerals; Classic
+// is not and wants none of it. style.css keys that off data-skin.
+//
+// bg is repeated here from the CSS because theme-color is set on a meta tag
+// rather than read from a stylesheet, and the browser chrome not matching the
+// page is the most visible thing on a phone.
+const PALETTES = [
+  { id:'classic', label:'Classic', skin:'plain', accent:'#4fa8e0',
+    bg:{ dark:'#15171c', light:'#f2f3f6' } },
+  { id:'ember',   label:'Ember',   skin:'paper', accent:'#e60012',
+    bg:{ dark:'#070605', light:'#c9b391' } },
+  { id:'indigo',  label:'Indigo',  skin:'paper', accent:'#2f5d8c',
+    bg:{ dark:'#05070a', light:'#a9b6c4' } },
+  { id:'slate',   label:'Slate',   skin:'paper', accent:'#357f77',
+    bg:{ dark:'#08090a', light:'#b0b5b8' } },
+  { id:'plum',    label:'Plum',    skin:'paper', accent:'#b0455f',
+    bg:{ dark:'#08050a', light:'#bfa8b6' } }
+];
+
+// An id from a newer version, or a corrupted settings blob, must not leave the
+// app with no palette at all.
+function currentPalette(){
+  return PALETTES.find(p => p.id === settings.palette) || PALETTES[0];
+}
 
 function applyTheme(){
   const t = resolvedTheme();
-  document.documentElement.dataset.theme = t;
+  const p = currentPalette();
+  const root = document.documentElement;
+  root.dataset.theme = t;
+  root.dataset.palette = p.id;
+  root.dataset.skin = p.skin;
   // Tells the browser what the page already is, so its own darkening stays out
   // of the way. Not a guarantee everywhere: Firefox on iOS injects its night
   // mode as a user script and does not consult this.
-  document.documentElement.style.colorScheme = t;
+  root.style.colorScheme = t;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if(meta) meta.setAttribute('content', THEME_BG[t]);
+  if(meta) meta.setAttribute('content', p.bg[t]);
 }
 
 // Only while the setting is "system"; an explicit choice should not move when
@@ -977,6 +1011,17 @@ function saveThemeSetting(){
   applyTheme();
   // No re-render: the palette is entirely CSS variables, so the page it is
   // already showing changes underneath it and the select keeps its focus.
+}
+
+// The swatches do need a redraw, but only so the pressed one moves. Everything
+// else on the page recolours itself through the variables, as above.
+function choosePalette(id){
+  if(!PALETTES.some(p => p.id === id)) return;
+  settings.palette = id;
+  saveSettings();
+  applyTheme();
+  focusAfterRender = `.palette-swatch[data-palette="${id}"]`;
+  render();
 }
 
 function saveReviewSettings(){
@@ -2553,6 +2598,20 @@ function renderSettings(){
         <option value="light" ${theme==='light'?'selected':''}>Light</option>
         <option value="dark" ${theme==='dark'?'selected':''}>Dark</option>
       </select>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Palette</div>
+      <div class="settings-desc">Which colours, separately from light and dark. Every palette has both, so this and the setting above do not fight each other. Classic is the one Emaki has always used; the other four are paper, and change the numerals to the serif as well as the colour.</div>
+      <div class="palette-row">
+        ${PALETTES.map(p=>`
+        <button class="palette-swatch" type="button" data-palette="${p.id}"
+                onclick="choosePalette('${p.id}')"
+                aria-pressed="${settings.palette===p.id ? 'true' : 'false'}"
+                title="${escapeHtml(p.label)}">
+          <span class="pv" style="background:${p.bg[resolvedTheme()]};--sw-accent:${p.accent};"></span>
+          <span class="pl">${escapeHtml(p.label)}</span>
+        </button>`).join('')}
+      </div>
     </div>
   </div>
   <div class="card" style="margin-bottom:16px;">
