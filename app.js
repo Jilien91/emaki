@@ -1090,6 +1090,24 @@ function siblingPending(rest, id){
   return rest.some(x => x.id === id);
 }
 
+// Is a reading question for this item still to come?
+//
+// The audio speaks the word's reading, so the speaker button on a graded answer
+// is the reading, out loud, on demand. Offering it while the reading is still
+// an unasked question hands over the answer: Lasz found it on a card where he
+// had just got the meaning right, pressed play, and was read the half he had
+// not been asked for yet.
+//
+// Deliberately narrower than siblingPending. Playing the word after the reading
+// has been answered gives nothing away about a pending meaning question, and
+// the audio is most of the point of the card, so it stays available there. And
+// deliberately by type rather than by "which half am I on": a missed question
+// goes back into the queue, so after a wrong reading answer the reading is
+// pending again even though the reading is the half on screen.
+function readingPending(rest, id){
+  return rest.some(x => x.id === id && x.type === 'reading');
+}
+
 function revealReviewAnswer(){ reviewState.revealed = true; render(); }
 function revealExtraStudyAnswer(){ extraStudyState.revealed = true; render(); }
 function revealQuizAnswer(){ lessonState.revealed = true; render(); }
@@ -2486,6 +2504,7 @@ function renderLessonQuiz(){
   }
   const q = quizQueue[0];
   const holdBack = siblingPending(quizQueue.slice(1), q.id);
+  const readingHeld = readingPending(quizQueue.slice(1), q.id);
   const item = VOCAB.find(v=>v.id===q.id);
   const label = q.type==='meaning' ? 'Meaning' : 'Reading';
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
@@ -2502,7 +2521,7 @@ function renderLessonQuiz(){
     <button class="primary" onclick="submitQuizAnswer()">Check</button>
   ` : `
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(lessonState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(lessonState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(lessonState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(item.meaning) : renderReading(item)}</div>` : ""}
       ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
@@ -2850,6 +2869,7 @@ function renderReview(){
   const stageChange = reviewState.stageChange;
   // queue[0] is the question on screen; anything after it is still to come.
   const holdBack = siblingPending(reviewState.queue.slice(1), item.id);
+  const readingHeld = readingPending(reviewState.queue.slice(1), item.id);
   return `
   ${nav('review')}
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;">
@@ -2869,7 +2889,7 @@ function renderReview(){
     </div>
   ` : `
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(reviewState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
       ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(reviewState)?'margin-top:6px;':''}">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
@@ -2901,6 +2921,7 @@ function renderExtraStudy(){
   const qClass = q.type==='meaning' ? 'q-meaning' : 'q-reading';
   const answer = q.type==='meaning' ? item.meaning : item.reading;
   const holdBack = siblingPending(extraStudyState.queue.slice(extraStudyState.index+1), item.id);
+  const readingHeld = readingPending(extraStudyState.queue.slice(extraStudyState.index+1), item.id);
   return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;">
     <span style="font-size:12px;color:var(--text-dim);">Extra Study · ${extraStudyState.index+1} of ${extraStudyState.queue.length}</span>
@@ -2916,7 +2937,7 @@ function renderExtraStudy(){
     <button class="primary" onclick="submitExtraStudyAnswer()">Check</button>
   ` : `
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
-      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(extraStudyState)?audioBtn('speakWord', item.id, 'Play word'):''}</div>
+      <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(extraStudyState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(extraStudyState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
       ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
     </div>
