@@ -433,7 +433,20 @@ async function initSync(){
     syncSettled = true;
     return;
   }
-  sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  // In its own try, and not in the one below, because the finally there raises
+  // syncChecked as well. A client that cannot even be constructed is the same
+  // situation as the library not loading at all: there is no point offering a
+  // sign-in that cannot work. What must happen either way is syncSettled, or
+  // applyStreakSaves waits for a pull that is never coming and the kunai is
+  // never spent again on this device. init() swallows what initSync throws, so
+  // nothing further up would notice.
+  try{
+    sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  }catch(e){
+    setSyncStatus('error', 'Sync library failed to load');
+    syncSettled = true;
+    return;
+  }
 
   try{
     const { data: { session } } = await sb.auth.getSession();
