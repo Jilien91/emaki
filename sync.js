@@ -30,6 +30,11 @@ let syncUser = null;
 // changed, which on a plain refresh it has not. Without this the dashboard
 // kept showing "sign in to sync" to somebody already signed in.
 let syncChecked = false;
+// True once the sync layer has finished its first pass: either there is nobody
+// signed in, or there is and we have tried to read their row. The streak reads
+// it before spending a kunai. See applyStreakSaves in app.js for why.
+let syncSettled = false;
+function remoteDataSettled(){ return syncSettled; }
 let syncStatus = 'off'; // 'off' | 'signing-in' | 'syncing' | 'synced' | 'error'
 let syncDetail = '';
 let syncNotice = ''; // one-off message shown on the Settings screen
@@ -424,6 +429,8 @@ function applyMerged(snap){
 async function initSync(){
   if(typeof supabase === 'undefined'){
     setSyncStatus('error', 'Sync library failed to load');
+    // Nothing is ever going to arrive, so the streak may as well stop waiting.
+    syncSettled = true;
     return;
   }
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
@@ -438,6 +445,7 @@ async function initSync(){
     // Set even if the lookup failed, or a network problem would leave the
     // dashboard permanently unable to offer sign-in at all.
     syncChecked = true;
+    syncSettled = true;
   }
   // Repaint now the answer is known. app.js painted before this point, so
   // whatever it decided about the sign-in prompt was decided blind. Nothing is

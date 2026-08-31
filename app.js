@@ -681,6 +681,32 @@ function replenishStreakSaves(){
   }
 }
 
+// A kunai spent on a day that turns out to have been studied is given back.
+//
+// The spend is decided from whatever this device has in localStorage, and a
+// device that has been away has stale activity: study on the phone in the
+// morning, open the laptop in the evening, and the laptop sees nothing for
+// yesterday and covers it. Sync then arrives with the truth. Lasz reported it
+// with 54 reviews showing against yesterday and the kunai already gone.
+//
+// The guard in applyStreakSaves is what stops that happening again. This is
+// what repairs the ones already spent, here and on every other device the
+// state reaches, because nothing else ever takes a date back out of
+// savedDates: a spend that was wrong stays wrong until something undoes it.
+//
+// It runs before the spend, so a kunai refunded on this pass is available to
+// cover a day that genuinely was missed on the same pass.
+function refundUnneededSaves(){
+  const dates = streakSaves.savedDates || [];
+  if(dates.length === 0) return;
+  const studied = new Set(activityDates);
+  const keep = dates.filter(k => !studied.has(k));
+  if(keep.length === dates.length) return;
+  streakSaves.savedDates = keep;
+  streakSaves.count = Math.min(STREAK_SAVE_MAX,
+                               streakSaves.count + (dates.length - keep.length));
+}
+
 // Spends kunai on days you missed, so studyStreak() reads them as covered.
 //
 // Only ever to rescue the *current* streak, and only when the whole gap can be
@@ -697,6 +723,12 @@ function replenishStreakSaves(){
 // kunai gone and nothing bought with it.
 function applyStreakSaves(){
   if(activityDates.length === 0 || streakSaves.count <= 0) return;
+  // Not until sync has had its first look. init() loads localStorage and comes
+  // straight here, long before initSync() has read anything, so a device that
+  // has been away decides whether a day was missed from a copy of the truth
+  // that is days old. Waiting costs a dashboard that is right a moment later.
+  // Not waiting costs a kunai that cannot be earned back for three days.
+  if(typeof remoteDataSettled === 'function' && !remoteDataSettled()) return;
 
   const covered = new Set(activityDates.concat(streakSaves.savedDates));
   let d = addDays(new Date(), -1);
@@ -727,6 +759,7 @@ function applyStreakSaves(){
 
 function refreshStreakSaves(){
   const before = JSON.stringify(streakSaves);
+  refundUnneededSaves();
   replenishStreakSaves();
   applyStreakSaves();
   if(JSON.stringify(streakSaves) !== before) saveStreakSaves();
