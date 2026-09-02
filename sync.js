@@ -462,6 +462,14 @@ function applyMerged(snap){
   }finally{
     applyingRemote = false;
   }
+  // The document has to follow the settings, not just the variable. Here rather
+  // than at the call site so it cannot be forgotten by the next caller.
+  //
+  // Codex found this in brief 019 and it is worse than a stale colour:
+  // renderTiersSection branches on settings.palette, so a device that was on
+  // Classic and receives Ember would draw the scroll markup while the root
+  // still said data-skin="plain", with none of the rules that markup needs.
+  applyTheme();
 }
 
 async function initSync(){
@@ -627,6 +635,12 @@ async function syncNow(){
       await reconcile();
       setSyncStatus('synced');
     }catch(e){
+      // Say what went wrong. This used to discard e entirely, so a genuine
+      // crash inside reconcile was indistinguishable from a dropped
+      // connection: the app said "working offline" and there was nothing
+      // anywhere to say otherwise. A missing function in applyMerged looked
+      // exactly like a flaky train.
+      if(typeof console !== 'undefined' && console.warn) console.warn('Emaki sync failed', e);
       setSyncStatus('error', 'Sync failed, working offline');
     }
   });

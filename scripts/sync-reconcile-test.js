@@ -140,6 +140,8 @@ function makeTab(store, server, name){
     var renders = 0;
     function todayKey(){ return '${TODAY}'; }
     function render(){ renders++; }
+    var themes = 0;
+    function applyTheme(){ themes++; }
     function saveProgress(){} function saveSettings(){} function saveMistakes(){}
     function saveActivity(){} function saveStreakSaves(){} function saveReviewHistory(){}
     function saveDailyLessons(){}
@@ -320,8 +322,35 @@ async function main(){
       base.revision, server.row.revision);
   }
 
+  // 14. A pull that actually changes something must land in the app.
+  //
+  // Every case above happened to leave stored and local equal, so the branch
+  // that calls applyMerged had never once run in this suite. That was not
+  // visible until applyTheme() was added to applyMerged and thirteen cases
+  // carried on passing with the function undefined: a ReferenceError in the
+  // one place that writes remote state into the app, and nothing anywhere
+  // said so. This is the case that would have said so.
+  {
+    const store = {}, server = makeServer();
+    const tab = makeTab(store, server, 'A');
+    server.row = { user_id:'test-user', revision: 2,
+                   progress:{ 5:{stage:4,t:50} },
+                   settings:{ palette:'ember' }, mistakes:[], activity_dates:['2026-08-26'],
+                   review_history:{'2026-08-26':12},
+                   daily_lessons:{date:TODAY,count:0},
+                   streak_saves:{count:1,lastEarned:TODAY,savedDates:[]} };
+    await tab.reconcile();
+    check('a pull that changes things reaches the app',
+      !!tab.get('progress[5]'), true);
+    check('and its settings',
+      tab.get("settings.palette"), 'ember');
+    check('and the document is told, so a new palette is not drawn under the old skin',
+      tab.get('themes') > 0, true);
+  }
+
   let failed = 0;
   for(const r of results){
+
     const ok = r.a === r.e;
     if(!ok) failed++;
     console.log((ok ? '  ok   ' : '  FAIL ') + r.name);
