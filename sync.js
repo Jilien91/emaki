@@ -472,74 +472,89 @@ function applyMerged(snap){
   applyTheme();
 }
 
-async function initSync(){
-  if(typeof supabase === 'undefined'){
-    setSyncStatus('error', 'Sync library failed to load');
-    // Nothing is ever going to arrive, so the streak may as well stop waiting.
-    syncSettled = true;
-    return;
-  }
-  // In its own try, and not in the one below, because the finally there raises
-  // syncChecked as well. A client that cannot even be constructed is the same
-  // situation as the library not loading at all: there is no point offering a
-  // sign-in that cannot work. What must happen either way is syncSettled, or
-  // applyStreakSaves waits for a pull that is never coming and the kunai is
-  // never spent again on this device. init() swallows what initSync throws, so
-  // nothing further up would notice.
-  try{
-    sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-  }catch(e){
-    setSyncStatus('error', 'Sync library failed to load');
-    syncSettled = true;
-    return;
-  }
+// However initSync ends, this is the end of it.
+//
+// Raising syncSettled is not enough on its own. applyStreakSaves waits on it,
+// and by the time this runs the dashboard has already been drawn once with the
+// guard on, so the streak has to be asked again or a genuinely missed day goes
+// uncovered until something incidental redraws. On the ordinary path a render
+// was happening here anyway; on the three failure paths nothing was, which is
+// the hole Codex found in brief 020.
+//
+// The render also repaints the sign-in prompt now the answer is known: app.js
+// painted before this point and decided that blind. Nothing is typed this
+// early in the load, so a repaint cannot eat an answer.
+function settleSync(){
+  if(syncSettled) return;
+  syncSettled = true;
+  refreshStreakSaves();
+  render();
+}
 
+async function initSync(){
   try{
-    const { data: { session } } = await sb.auth.getSession();
-    if(session && session.user){
-      syncUser = session.user;
-      await syncNow();
+    if(typeof supabase === 'undefined'){
+      setSyncStatus('error', 'Sync library failed to load');
+      return;
     }
-  }finally{
+    // syncChecked stays false on both library failures, deliberately. There is
+    // no point offering a sign-in through a client that does not exist.
+    try{
+      sb = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    }catch(e){
+      setSyncStatus('error', 'Sync library failed to load');
+      return;
+    }
+
+    try{
+      const { data: { session } } = await sb.auth.getSession();
+      if(session && session.user){
+        syncUser = session.user;
+        await syncNow();
+      }
+    }catch(e){
+      // Caught rather than allowed to propagate, or a lookup that rejects takes
+      // the listeners below down with it and the tab never syncs again for the
+      // life of the page: no auth changes, no pull on coming back to it, no
+      // flush on the way out.
+      if(typeof console !== 'undefined' && console.warn) console.warn('Emaki sign-in lookup failed', e);
+    }
     // Set even if the lookup failed, or a network problem would leave the
     // dashboard permanently unable to offer sign-in at all.
     syncChecked = true;
-    syncSettled = true;
+
+    // Synchronous on purpose, and the sync is pushed out of it with a timeout.
+    //
+    // supabase-js holds an auth lock for as long as this handler runs, and an
+    // awaited Supabase call inside it deadlocks: the next call anywhere in the
+    // app never returns, so the app looks alive and simply stops syncing until
+    // the page is reloaded. Supabase document it themselves, in "Why is my
+    // supabase API call not returning?", and it is open as auth-js#762.
+    //
+    // Deferring costs nothing here. Nothing downstream needs to happen before
+    // this handler returns.
+    sb.auth.onAuthStateChange((event, session) => {
+      const nextUser = session && session.user ? session.user : null;
+      const changed = (nextUser && nextUser.id) !== (syncUser && syncUser.id);
+      syncUser = nextUser;
+      if(syncUser && changed){
+        setTimeout(()=>{ syncNow().then(render, render); }, 0);
+      }else if(!syncUser){
+        setSyncStatus('off');
+      }
+    });
+  
+    // Coming back to a device should pick up whatever another device wrote.
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.visibilityState === 'visible' && syncActive()) syncNow();
+      else if(document.visibilityState === 'hidden') syncOnTheWayOut();
+    });
+    // Backgrounding an app on a phone fires visibilitychange; navigating away
+    // or closing the tab fires pagehide and may not fire the other one at all.
+    window.addEventListener('pagehide', syncOnTheWayOut);
+  }finally{
+    settleSync();
   }
-  // Repaint now the answer is known. app.js painted before this point, so
-  // whatever it decided about the sign-in prompt was decided blind. Nothing is
-  // typed this early in the load, so a repaint cannot eat an answer.
-  render();
-
-  // Synchronous on purpose, and the sync is pushed out of it with a timeout.
-  //
-  // supabase-js holds an auth lock for as long as this handler runs, and an
-  // awaited Supabase call inside it deadlocks: the next call anywhere in the
-  // app never returns, so the app looks alive and simply stops syncing until
-  // the page is reloaded. Supabase document it themselves, in "Why is my
-  // supabase API call not returning?", and it is open as auth-js#762.
-  //
-  // Deferring costs nothing here. Nothing downstream needs to happen before
-  // this handler returns.
-  sb.auth.onAuthStateChange((event, session) => {
-    const nextUser = session && session.user ? session.user : null;
-    const changed = (nextUser && nextUser.id) !== (syncUser && syncUser.id);
-    syncUser = nextUser;
-    if(syncUser && changed){
-      setTimeout(()=>{ syncNow().then(render, render); }, 0);
-    }else if(!syncUser){
-      setSyncStatus('off');
-    }
-  });
-
-  // Coming back to a device should pick up whatever another device wrote.
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.visibilityState === 'visible' && syncActive()) syncNow();
-    else if(document.visibilityState === 'hidden') syncOnTheWayOut();
-  });
-  // Backgrounding an app on a phone fires visibilitychange; navigating away or
-  // closing the tab fires pagehide and may not fire the other one at all.
-  window.addEventListener('pagehide', syncOnTheWayOut);
 }
 
 // Leaving is the one moment the debounce cannot cover. An answer given a second
@@ -703,6 +718,15 @@ async function reconcile(){
       return;
     }
 
+    // Which timer is ours to cancel. The render below can schedule one of its
+    // own: refundUnneededSaves repairs a wrongly spent kunai while the
+    // dashboard is being built, marks the state dirty and asks for a push.
+    // Cancelling unconditionally threw that request away. clearDirty then
+    // correctly refused to clear a token that had changed, so the repair
+    // itself survived, but with no timer behind it it sat waiting for some
+    // other event to carry it to the server. Codex, brief 020.
+    const ourTimer = pushTimer;
+
     if(!sameData(stored, local)){
       const before = JSON.parse(JSON.stringify(progress));
       applyMerged(stored);
@@ -711,7 +735,7 @@ async function reconcile(){
       // cannot clear an answer the user is midway through typing.
       render();
     }
-    clearTimeout(pushTimer);
+    if(pushTimer === ourTimer) clearTimeout(pushTimer);
     clearDirty(mark);
     if(forcing){ try{ window.localStorage.removeItem(FORCE_KEY); }catch(e){} }
     return;
