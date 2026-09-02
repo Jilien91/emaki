@@ -243,14 +243,19 @@ function forcingLocal(){
 
 function mergeSnapshots(base, local, remote){
   const b = base || null;
+  // The streak needs this, not just the snapshot: a kunai spent on a day that
+  // either device turns out to have studied was never needed. See
+  // canonicalStreak.
+  const activity = mergeDates(local.activity_dates, remote.activity_dates);
   return {
     progress:       mergeProgress(b && b.progress, local.progress, remote.progress),
     settings:       mergeSettings(b && b.settings, local.settings, remote.settings),
     mistakes:       mergeMistakes(local.mistakes, remote.mistakes),
-    activity_dates: mergeDates(local.activity_dates, remote.activity_dates),
+    activity_dates: activity,
     review_history: mergeCounts(b && b.review_history, local.review_history, remote.review_history),
     daily_lessons:  mergeDailyLessons(b && b.daily_lessons, local.daily_lessons, remote.daily_lessons),
-    streak_saves:   mergeStreakSaves(b && b.streak_saves, local.streak_saves, remote.streak_saves)
+    streak_saves:   mergeStreakSaves(b && b.streak_saves, local.streak_saves,
+                                     remote.streak_saves, activity)
   };
 }
 
@@ -367,12 +372,45 @@ function mergeDailyLessons(base, local, remote){
   return { date: today, count: base ? b + Math.max(0, l - b) + Math.max(0, r - b) : Math.max(l, r) };
 }
 
+// A kunai covering a day that was studied was never spent, so this rewrites the
+// state to what it would have been had the device known.
+//
+// It exists because refundUnneededSaves in app.js does the same thing locally,
+// and doing it only locally was wrong twice over. mergeDates is a union, so a
+// date the dashboard removes is put straight back by the next merge and never
+// leaves the server. And the arithmetic below measures spending by the *length*
+// of savedDates, on the assumption that the array only grows; a refund that
+// swaps one date for another is invisible to it, so a device that refunded and
+// a device that refunded and then covered a real day merged to a kunai in hand
+// that had already been spent. Codex found both, in brief 020.
+//
+// Canonicalising all three sides before measuring fixes both, because the
+// refund stops being a change any side has to account for: it is applied to the
+// base as well, so it is not a movement away from it.
+function canonicalStreak(s, studied){
+  if(!validStreak(s)) return s;
+  const dates = s.savedDates || [];
+  const keep = dates.filter(k => !studied.has(k));
+  if(keep.length === dates.length) return s;
+  return {
+    count: Math.min(STREAK_SAVE_MAX, s.count + (dates.length - keep.length)),
+    lastEarned: s.lastEarned,
+    savedDates: keep
+  };
+}
+
 // count, lastEarned and savedDates are one piece of state, so they are merged
 // as one. Granting and spending are both movements away from the base and both
 // are kept; the cap stops two devices each granting the same kunai.
-function mergeStreakSaves(base, local, remote){
+function mergeStreakSaves(base, local, remote, activity){
   if(!validStreak(remote)) return local;
   if(!validStreak(local))  return remote;
+  // Before anything is measured, so that a refund is never mistaken for a
+  // spend or a grant. activity may be missing when this is called directly.
+  const studied = new Set(activity || []);
+  base   = canonicalStreak(base, studied);
+  local  = canonicalStreak(local, studied);
+  remote = canonicalStreak(remote, studied);
   const savedDates = mergeDates(local.savedDates, remote.savedDates);
   const lastEarned = [local.lastEarned, remote.lastEarned].filter(Boolean).sort().pop() || todayKey();
   let count;

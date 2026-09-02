@@ -195,7 +195,55 @@ const cases = `
                    snap({streak_saves:{count:0,lastEarned:TODAY,savedDates:['2026-08-26']}})).streak_saves,
     {count:0, lastEarned:TODAY, savedDates:['2026-08-25','2026-08-26']}]);
 
+  // ---- The refund, and the two ways it broke this function -----------------
+  // A kunai spent on a day that turns out to have been studied is given back,
+  // by refundUnneededSaves in app.js and by canonicalStreak here. The first two
+  // cases below are Codex's, from brief 020, and both failed before the
+  // canonicalisation went in.
+  //
+  // ACT is the activity both devices agree on. The 26th was studied on another
+  // device, so a save covering it was never needed; the 27th was not.
+  const ACT = ['2026-08-24','2026-08-25','2026-08-26'];
+  const sv = s => snap({ activity_dates: ACT, streak_saves: s });
+
+  // Spending is measured by the length of savedDates, so swapping one date for
+  // another used to be invisible: one device refunds, the other refunds and
+  // then covers a day that really was missed, and the merge handed back a
+  // kunai that had already been spent.
+  results.push(['a refund on one device and a spend on the other do not make a free kunai',
+    mergeSnapshots(sv({count:0,lastEarned:'2026-08-26',savedDates:['2026-08-26']}),
+                   sv({count:1,lastEarned:'2026-08-26',savedDates:[]}),
+                   sv({count:0,lastEarned:TODAY,savedDates:['2026-08-27']})).streak_saves,
+    {count:0, lastEarned:TODAY, savedDates:['2026-08-27']}]);
+
+  // mergeDates is a union, so a date the dashboard removes is put straight back
+  // by the next merge. The repair has to survive the merge itself, or it never
+  // reaches the server and every later merge is measured against a date that
+  // should not be there.
+  results.push(['the refunded date leaves the server rather than being resurrected',
+    mergeSnapshots(sv({count:0,lastEarned:'2026-08-26',savedDates:['2026-08-26']}),
+                   sv({count:1,lastEarned:'2026-08-26',savedDates:[]}),
+                   sv({count:0,lastEarned:'2026-08-26',savedDates:['2026-08-26']})).streak_saves,
+    {count:1, lastEarned:'2026-08-26', savedDates:[]}]);
+
+  // And it must stay gone once the repair is the base as well, or two devices
+  // simply take turns putting it back.
+  results.push(['and stays gone when the repair is the base too',
+    mergeSnapshots(sv({count:1,lastEarned:'2026-08-26',savedDates:[]}),
+                   sv({count:1,lastEarned:'2026-08-26',savedDates:[]}),
+                   sv({count:1,lastEarned:'2026-08-26',savedDates:[]})).streak_saves,
+    {count:1, lastEarned:'2026-08-26', savedDates:[]}]);
+
+  // The refund must not eat a save that is doing its job. Nothing was studied
+  // on the 27th, so the kunai covering it stays spent.
+  results.push(['a save covering a day that really was missed is left alone',
+    mergeSnapshots(sv({count:1,lastEarned:'2026-08-26',savedDates:[]}),
+                   sv({count:0,lastEarned:TODAY,savedDates:['2026-08-27']}),
+                   sv({count:1,lastEarned:'2026-08-26',savedDates:[]})).streak_saves,
+    {count:0, lastEarned:TODAY, savedDates:['2026-08-27']}]);
+
   return results;
+
 })()
 `;
 
