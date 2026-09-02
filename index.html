@@ -52,6 +52,16 @@
     }
     document.documentElement.dataset.theme = t;
     document.documentElement.style.colorScheme = t;
+    // The palette needs the same treatment as the theme, and used not to get
+    // it: a reader on a paper palette was painted in Classic until app.js ran,
+    // with two blocking scripts ahead of it. The skins are duplicated from
+    // PALETTES in app.js because nothing here can reach it yet; an id this list
+    // does not know falls back to Classic, exactly as currentPalette does.
+    var skins = { classic:'plain', ember:'paper', indigo:'paper',
+                  slate:'paper', plum:'paper' };
+    var p = skins[s.palette] ? s.palette : 'classic';
+    document.documentElement.dataset.palette = p;
+    document.documentElement.dataset.skin = skins[p];
   }catch(e){}
 })();
 </script>
@@ -81,6 +91,6 @@
         integrity="sha384-OUpie84zd1LdwNlK9uJJQRwab0BLqo3eKYKFh7hSVL58FSk7wPp2l0kfUMIIoaQd"
         crossorigin="anonymous"></script>
 <script src="sync.js?v=a07c6cb8"></script>
-<script src="app.js?v=ba1df841"></script>
+<script src="app.js?v=76fb50d7"></script>
 </body>
 </html>

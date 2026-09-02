@@ -2659,7 +2659,7 @@ function renderSettings(){
         ${PALETTES.map(p=>`
         <button class="palette-swatch" type="button" data-palette="${p.id}"
                 onclick="choosePalette('${p.id}')"
-                aria-pressed="${settings.palette===p.id ? 'true' : 'false'}"
+                aria-pressed="${currentPalette().id===p.id ? 'true' : 'false'}"
                 title="${escapeHtml(p.label)}">
           <span class="pv" style="background:${p.bg[resolvedTheme()]};--sw-accent:${p.accent};"></span>
           <span class="pl">${escapeHtml(p.label)}</span>
@@ -3288,11 +3288,21 @@ function adoptOtherTabWrite(e){
     else if(e.key === STORAGE_KEY)        progress      = JSON.parse(e.newValue);
     else if(e.key === STREAK_SAVE_KEY)    streakSaves   = JSON.parse(e.newValue);
     else if(e.key === DAILY_KEY)          dailyLessons  = JSON.parse(e.newValue);
+    // Settings were missing here, and not only cost the other tab the change.
+    // Every save writes the whole object, so a tab holding a stale copy would
+    // put the old palette back the next time it saved anything at all. Merged
+    // over the defaults the same way loadSettings does it, so a field written
+    // by a newer version does not arrive as undefined.
+    else if(e.key === SETTINGS_KEY){
+      settings = Object.assign({}, DEFAULT_SETTINGS, JSON.parse(e.newValue));
+      applyTheme();
+    }
     else return;
   }catch(err){ return; }   // a half-written value is not worth acting on
   // Same restraint as the day rollover: do not redraw a screen someone is
-  // answering a question on.
-  if(view === 'dashboard' || view === 'tierlist') render();
+  // answering a question on. Settings is in the list because the palette
+  // changes the dashboard's markup and not only its colours.
+  if(view === 'dashboard' || view === 'tierlist' || view === 'settings') render();
 }
 
 init();
