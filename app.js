@@ -171,20 +171,65 @@ const meaningCore = s => s
   .replace(/\s+/g, ' ')
   .trim();
 
+// Whether two letters sit side by side on a QWERTY board, rows staggered by
+// half a key. v for b is a finger landing a key wide; m for f is not a slip.
+function nextToOnKeyboard(a, b){
+  const rows = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
+  const at = c => {
+    for(let y = 0; y < rows.length; y++){
+      const x = rows[y].indexOf(c);
+      if(x >= 0) return [x + y * 0.5, y];
+    }
+    return null;
+  };
+  const p = at(a), q = at(b);
+  return !!p && !!q && Math.hypot(p[0] - q[0], p[1] - q[1]) < 1.2;
+}
+
+// Every English word the deck itself uses, from its glosses, translations,
+// mnemonics and notes: about 5,300. Not a dictionary, but it holds the words a
+// learner of this deck is likely to type, and the only question put to it is
+// whether what they typed is a word in its own right. "rather" is, so it is
+// not a typo of "father". Built on first use and again if the deck is swapped.
+let englishWords = null, englishWordsOf = null;
+function isEnglishWord(s){
+  if(englishWordsOf !== VOCAB){
+    englishWords = new Set();
+    const add = t => (String(t || '').toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || []).forEach(w => englishWords.add(w));
+    VOCAB.forEach(v => { add(v.meaning); add(v.sentence_meaning); add(v.mnemonic); add(v.notes); });
+    Object.values(KANJI).forEach(k => add(k.meaning));
+    englishWordsOf = VOCAB;
+  }
+  return englishWords.has(s);
+}
+
 function fuzzyMatch(input, candidate){
   if(input === candidate) return true;
   // The "to " is a convention of the deck's glosses, not part of the answer.
   if(meaningCore(input) === meaningCore(candidate)) return true;
   const ci = meaningCore(input), cc = meaningCore(candidate);
   const len = cc.length;
-  if(len <= 5) return false; // short enough that a typo isn't worth guessing at
+  const budget = len <= 9 ? 1 : 2;
   // A slip of the fingers almost never lands on the first letter, while the
   // pairs that need keeping apart routinely differ only there: father and
   // mother, mother and other, rather and father are each one edit apart.
-  if(ci[0] !== cc[0]) return false;
   // Compare the cores, so dropping the "to " and fumbling a letter is one
   // deviation rather than four.
-  return levenshtein(ci, cc) <= (len <= 9 ? 1 : 2);
+  if(len > 5 && ci[0] === cc[0]) return levenshtein(ci, cc) <= budget;
+  // Past this point the answer is being given the benefit of the doubt, and it
+  // only gets it if what was typed is not a word of its own. Two slips used to
+  // be marked wrong that nobody would call wrong: the first letter hitting the
+  // key beside it ("vasically", 14 September 2026), and one letter out in a
+  // word under six letters ("hosue"), which had no budget at all. Opened
+  // without the guard, those two let 1,915 real words through as typos of some
+  // card across the deck; with it, none. r and f are neighbours, so the guard
+  // is now what keeps rather from father.
+  if(isEnglishWord(ci)) return false;
+  if(len > 5) return nextToOnKeyboard(ci[0], cc[0]) && levenshtein(ci, cc) <= budget;
+  // Four and five letters get one slip with the first letter intact. Three and
+  // under stay exact: that short, one edit is another word more often than a
+  // mistyped one, and the word list above will not know all of them.
+  return len >= 4 && ci[0] === cc[0] && levenshtein(ci, cc) <= 1;
 }
 
 // A single-kanji word inherits its kanji's meanings as acceptable answers, so a
@@ -206,30 +251,42 @@ function stripParens(s){
   return s.replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function checkMeaning(userInput, meaning, item){
+// Graded twice: first allowing no typos, and only if that fails, again allowing
+// them. An answer that needed the second pass is still right, but the result
+// screen says so, because the reader should see the spelling they missed, and
+// a typo forgiven in silence is also a different word accepted in silence.
+function gradeMeaning(userInput, meaning, item){
   const whole = userInput.trim().toLowerCase().replace(/\s+/g, ' ');
-  if(!whole) return false;
+  if(!whole) return {correct:false, typo:false};
   const correctCandidates = acceptedMeanings(meaning, item);
   const opened = openedSenses(meaning);
-  const hit = s => opened.includes(s) || correctCandidates.some(c => fuzzyMatch(s, c));
-  // Try the whole answer first. This is what accepts an exact copy of a
-  // stored meaning whose own parentheses contain commas, e.g. typing
-  // "I (polite, general)". Splitting that on commas would match nothing.
-  if(hit(whole)) return true;
-  // meaningCandidates drops parentheticals from the stored meaning but nothing
-  // dropped them from the answer, so "(not) very" was marked wrong against
-  // "(not) very, (not) much" while a bare "very" passed. Copying the card back
-  // faithfully has to be at least as right as typing half of it.
+  const exact = s => opened.includes(s) || correctCandidates.some(c => meaningCore(s) === meaningCore(c));
+  const close = s => exact(s) || correctCandidates.some(c => fuzzyMatch(s, c));
   const bare = stripParens(whole);
-  if(bare && bare !== whole && hit(bare)) return true;
-  // Otherwise treat it as a list of synonyms, so "like, fond of" is accepted
-  // for "fond of, liked". Every part must be a valid synonym. That keeps
-  // "he, cat" from passing for "he, him" on the strength of "he" alone. Order
-  // never mattered here and still doesn't: the senses are a set, so "(not)
-  // much, (not) very" is the same answer as "(not) very, (not) much".
   const parts = splitSenses(whole).map(s => stripParens(s)).filter(Boolean);
-  if(parts.length < 2) return false;
-  return parts.every(hit);
+  const passes = hit =>
+    // Try the whole answer first. This is what accepts an exact copy of a
+    // stored meaning whose own parentheses contain commas, e.g. typing
+    // "I (polite, general)". Splitting that on commas would match nothing.
+    hit(whole)
+    // meaningCandidates drops parentheticals from the stored meaning but nothing
+    // dropped them from the answer, so "(not) very" was marked wrong against
+    // "(not) very, (not) much" while a bare "very" passed. Copying the card back
+    // faithfully has to be at least as right as typing half of it.
+    || (!!bare && bare !== whole && hit(bare))
+    // Otherwise treat it as a list of synonyms, so "like, fond of" is accepted
+    // for "fond of, liked". Every part must be a valid synonym. That keeps
+    // "he, cat" from passing for "he, him" on the strength of "he" alone. Order
+    // never mattered here and still doesn't: the senses are a set, so "(not)
+    // much, (not) very" is the same answer as "(not) very, (not) much".
+    || (parts.length >= 2 && parts.every(hit));
+  if(passes(exact)) return {correct:true, typo:false};
+  if(passes(close)) return {correct:true, typo:true};
+  return {correct:false, typo:false};
+}
+
+function checkMeaning(userInput, meaning, item){
+  return gradeMeaning(userInput, meaning, item).correct;
 }
 
 function checkReading(userInput, reading){
@@ -1012,9 +1069,10 @@ function submitQuizAnswer(){
   const input = document.getElementById('quizInput');
   const value = input ? input.value : '';
   if(!value.trim()) return; // don't let a stray Enter count as a wrong answer
-  const correct = q.type==='meaning' ? checkMeaning(value, item.meaning, item) : checkReading(value, item.reading);
+  const graded = q.type==='meaning' ? gradeMeaning(value, item.meaning, item) : {correct: checkReading(value, item.reading), typo:false};
   lessonState.showAnswer = true;
-  lessonState.lastCorrect = correct;
+  lessonState.lastCorrect = graded.correct;
+  lessonState.lastTypo = graded.typo;
   lessonState.lastInput = value;
   lessonState.revealed = false;
   lessonState.mnemonicShown = false;
@@ -1153,6 +1211,19 @@ function applyReviewResult(id, allCorrect){
 // first. What it still governs is the mnemonic printing itself unasked.
 function answerVisible(state){
   return state.lastCorrect || state.revealed || !settings.hideAnswerOnMistake;
+}
+
+// The line under a graded answer saying what was typed. A wrong answer always
+// gets it. A right one gets it only when the grader forgave a typo, with a note,
+// so the eye goes to the spelling on the card rather than staying on its own.
+function typedLine(state){
+  if(state.lastCorrect && !state.lastTypo) return '';
+  const typed = `You typed: ${escapeHtml(state.lastInput) || '(nothing)'}`;
+  if(state.lastCorrect){
+    return `<div class="v" style="font-size:13px;color:var(--text-dim);margin-top:6px;">Your answer is a bit off, this must be a typo. Right, right?</div>`
+      + `<div class="v" style="font-size:12px;color:var(--text-faint);margin-top:2px;">${typed}</div>`;
+  }
+  return `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(state)?'margin-top:6px;':''}">${typed}</div>`;
 }
 
 // Every item is asked twice, meaning and reading, interleaved in one queue. So
@@ -1298,9 +1369,11 @@ function submitReviewAnswer(){
   const input = document.getElementById('reviewInput');
   const value = input ? input.value : '';
   if(!value.trim()) return; // don't let a stray Enter demote the item
-  reviewState.lastCorrect = q.type==='meaning'
-    ? checkMeaning(value, item.meaning, item)
-    : checkReading(value, item.reading);
+  const graded = q.type==='meaning'
+    ? gradeMeaning(value, item.meaning, item)
+    : {correct: checkReading(value, item.reading), typo:false};
+  reviewState.lastCorrect = graded.correct;
+  reviewState.lastTypo = graded.typo;
   reviewState.lastInput = value;
   reviewState.showAnswer = true;
   reviewState.revealed = false;
@@ -1321,6 +1394,7 @@ function advanceReview(){
   }
   reviewState.showAnswer = false;
   reviewState.lastCorrect = null;
+  reviewState.lastTypo = false;
   reviewState.lastInput = '';
   reviewState.revealed = false;
   reviewState.mnemonicShown = false;
@@ -1349,9 +1423,11 @@ function submitExtraStudyAnswer(){
   const input = document.getElementById('extraInput');
   const value = input ? input.value : '';
   if(!value.trim()) return;
-  extraStudyState.lastCorrect = q.type==='meaning'
-    ? checkMeaning(value, item.meaning, item)
-    : checkReading(value, item.reading);
+  const graded = q.type==='meaning'
+    ? gradeMeaning(value, item.meaning, item)
+    : {correct: checkReading(value, item.reading), typo:false};
+  extraStudyState.lastCorrect = graded.correct;
+  extraStudyState.lastTypo = graded.typo;
   extraStudyState.lastInput = value;
   extraStudyState.showAnswer = true;
   extraStudyState.revealed = false;
@@ -2621,7 +2697,7 @@ function renderLessonQuiz(){
     <div class="field result-${lessonState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${lessonState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(lessonState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(lessonState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(item.meaning) : renderReading(item)}</div>` : ""}
-      ${!lessonState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(lessonState)?'margin-top:6px;':''}">You typed: ${escapeHtml(lessonState.lastInput) || '(nothing)'}</div>` : ''}
+      ${typedLine(lessonState)}
     </div>
     ${answerVisible(lessonState) ? '' : `
       <button class="secondary" onclick="revealQuizAnswer()">Show answer</button>
@@ -3003,7 +3079,7 @@ function renderReview(){
     <div class="field result-${reviewState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${reviewState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(reviewState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(reviewState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
-      ${!reviewState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(reviewState)?'margin-top:6px;':''}">You typed: ${escapeHtml(reviewState.lastInput) || '(nothing)'}</div>` : ''}
+      ${typedLine(reviewState)}
     </div>
     ${settings.showSrsIndicator && stageChange ? `<p class="forecast" style="text-align:center;">${STAGE_NAMES[stageChange.from]} → ${STAGE_NAMES[stageChange.to]}</p>` : ''}
     ${answerVisible(reviewState) ? `
@@ -3051,7 +3127,7 @@ function renderExtraStudy(){
     <div class="field result-${extraStudyState.lastCorrect?'correct':'incorrect'}">
       <div class="k">${extraStudyState.lastCorrect ? 'Correct' : 'Incorrect'} · ${label}${answerVisible(extraStudyState) && !readingHeld ? audioBtn('speakWord', item.id, 'Play word') : ''}</div>
       ${answerVisible(extraStudyState) ? `<div class="v">${q.type==="meaning" ? escapeHtml(answer) : renderReading(item)}</div>` : ""}
-      ${!extraStudyState.lastCorrect ? `<div class="v" style="font-size:12px;color:var(--text-faint);${answerVisible(extraStudyState)?'margin-top:6px;':''}">You typed: ${escapeHtml(extraStudyState.lastInput) || '(nothing)'}</div>` : ''}
+      ${typedLine(extraStudyState)}
     </div>
     ${answerVisible(extraStudyState) ? '' : `
       <button class="secondary" onclick="revealExtraStudyAnswer()">Show answer</button>
