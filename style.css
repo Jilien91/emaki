@@ -43,6 +43,11 @@
   --hb-plate-edge:#7f8794;
   --hb-rivet:#6f7784;
   --hb-ink:#15171c;
+  /* The study history map. The kunai is the orange the kunai pill wears, a
+     step darker on this ground so the two hues sit at the same lightness.
+     Both pairs checked for colour-blind separation on every palette. */
+  --hm-studied:#4a9ad8;
+  --hm-kunai:#e06a40;
 }
 
 /* The light theme.
@@ -85,6 +90,8 @@
   --hb-plate-edge:#6f7889;
   --hb-rivet:#6f7784;
   --hb-ink:#181a20;
+  --hm-studied:#2f78c4;
+  --hm-kunai:#b34a1e;
 }
 *{box-sizing:border-box;}
 body{
@@ -383,6 +390,49 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 .kunai.spent .kunai-mark{opacity:0.55;}
 .kunai-mark{width:13px;height:13px;flex:0 0 auto;display:block;}
 .kunai-note{font-size:11px;color:var(--text-faint);line-height:1.5;margin-top:7px;}
+
+/* ---- Study history ----------------------------------------------------------
+   Opened from the This Week card. A year of weeks is wider than a phone, so the
+   map scrolls inside its card and opens at today's end. Month names hang under
+   their weeks and scroll with them. */
+.week-card{cursor:pointer;}
+.week-card:hover{border-color:var(--border-strong);}
+.arr-body .week-card{cursor:auto;}
+.week-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.week-more{font:inherit;font-size:12px;width:auto;padding:0;border:0;background:none;
+  color:var(--text-dim);cursor:pointer;}
+.week-more:hover{color:var(--text);}
+.hm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px;}
+.hm-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;}
+.hm-toggle{display:flex;gap:4px;}
+.hm-toggle button{font:inherit;font-size:12px;width:auto;padding:3px 9px;border:1px solid transparent;
+  border-radius:6px;background:none;color:var(--text-faint);cursor:pointer;}
+.hm-toggle button:hover{color:var(--text-dim);}
+.hm-toggle button.on{color:var(--text);border-color:var(--border-strong);background:var(--surface-2);}
+.hm-scroll{position:relative;overflow-x:auto;padding:4px 4px 0;
+  scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent;}
+.hm-grid{display:flex;gap:3px;width:max-content;padding-bottom:22px;outline:none;}
+.hm-grid:focus-visible{outline:2px solid var(--border-strong);outline-offset:2px;border-radius:4px;}
+.hm-week{position:relative;display:flex;flex-direction:column;gap:3px;border-radius:3px;}
+/* A week's days stand on a baseline, studied first and the kunai above. */
+.hm-weekly .hm-week{flex-direction:column-reverse;}
+.hm-weekly .hm-week::after{content:"";position:absolute;left:-3px;right:0;bottom:-3px;height:1px;background:var(--border-strong);}
+.hm-cell{display:block;width:13px;height:13px;border-radius:3px;background:var(--surface-2);}
+.hm-studied{background:var(--hm-studied);}
+/* The slash the spent headband carries, so a kunai day differs from a studied
+   one in shape as well as colour. */
+.hm-saved{background:linear-gradient(135deg,transparent 40%,var(--hb-ink) 40% 60%,transparent 60%),var(--hm-kunai);}
+.hm-missed{background:var(--border-strong);}
+.hm-untracked,.hm-pending{background:var(--surface-2);}
+.hm-future,.hm-empty{visibility:hidden;}
+.hm-today{outline:1px solid var(--text-faint);outline-offset:1px;}
+.hm-sel{box-shadow:0 0 0 2px var(--text);}
+.hm-month{position:absolute;left:0;top:calc(100% + 6px);font-size:10px;line-height:1;
+  color:var(--text-faint);white-space:nowrap;pointer-events:none;}
+.hm-detail{font-size:13px;color:var(--text-dim);margin-top:8px;min-height:1.5em;}
+.hm-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:10px;font-size:11px;color:var(--text-faint);}
+.hm-key{display:inline-flex;align-items:center;gap:6px;}
+.hm-legend .hm-cell{width:11px;height:11px;}
 
 /* On a phone the seven cells have about 300px between them, so the padding and
    gaps that give the drawing room on a desktop are the difference between a

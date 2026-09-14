@@ -855,6 +855,19 @@ function studyStreak(){
   return streak;
 }
 
+// The longest run there has ever been, counted the way studyStreak counts: a
+// day a kunai covered is part of the run, not a break in it.
+function longestStreak(){
+  const days = [...new Set(activityDates.concat(streakSaves.savedDates || []))].sort();
+  let best = 0, run = 0, prev = null;
+  days.forEach(key => {
+    run = prev !== null && dateKey(addDays(historyDate(prev), 1)) === key ? run + 1 : 1;
+    if(run > best) best = run;
+    prev = key;
+  });
+  return best;
+}
+
 function loadReviewHistory(){
   try{
     const raw = window.localStorage.getItem(REVIEW_HISTORY_KEY);
@@ -1722,10 +1735,16 @@ function renderStatsSection(c){
   </div>`;
 }
 
+// The card is the way into the study history, so all of it answers a tap. The
+// button is there for the keyboard, and for anybody who would not guess that.
+// It has no handler of its own: its click reaches the card's.
 function renderWeekSection(){
   return `
-  <div class="card" style="margin-bottom:20px;">
-    <div class="section-title">This Week</div>
+  <div class="card week-card" style="margin-bottom:20px;" onclick="showHistory()">
+    <div class="week-head">
+      <div class="section-title">This Week</div>
+      <button type="button" class="week-more">History ›</button>
+    </div>
     ${renderStreakWeek()}
   </div>`;
 }
@@ -2073,14 +2092,7 @@ function renderStreakWeek(){
 
   const cells = WEEKDAYS.map((label, i) => {
     const key = dateKey(addDays(start, i));
-    // Order matters: a day can be in both sets if the clock moved or two tabs
-    // raced, and having actually studied is the truer thing to show.
-    const state = studied.has(key) ? 'studied'
-                : saved.has(key)   ? 'saved'
-                : key === today    ? 'pending'
-                : key > today      ? 'future'
-                : key < began      ? 'untracked'
-                : 'missed';
+    const state = streakDayState(key, today, studied, saved, began);
     const said = { studied: 'studied', saved: 'covered by a kunai',
                    pending: 'not studied yet', future: 'still to come',
                    untracked: 'no study recorded', missed: 'missed' }[state];
@@ -2094,6 +2106,238 @@ function renderStreakWeek(){
   }).join('');
 
   return `<ul class="hb-week" aria-label="This week">${cells}</ul>`;
+}
+
+// What a day was, as far as the streak is concerned. The week strip and the
+// study history both ask this, so the two cannot disagree about a day.
+//
+// Order matters: a day can be in both sets if the clock moved or two tabs
+// raced, and having actually studied is the truer thing to show.
+function streakDayState(key, today, studied, saved, began){
+  return studied.has(key) ? 'studied'
+       : saved.has(key)   ? 'saved'
+       : key === today    ? 'pending'
+       : key > today      ? 'future'
+       : key < began      ? 'untracked'
+       : 'missed';
+}
+
+// ---- Study history ----------------------------------------------------------
+//
+// Every day since the first, as a map of small squares giving the week strip's
+// three answers: studied, covered by a kunai, or missed. Opened from the This
+// Week card, because it is that card's history. Lasz's idea, 14 September 2026,
+// after the activity map Claude shows for token use.
+//
+// Nothing new is stored. activityDates, savedDates and reviewHistory already
+// sync, so the map is the same on every device and goes back as far as they do.
+//
+// Two hues, not the headband's two greys. Plate and spent plate are 7 apart in
+// light mode, which the drawing gets away with because its slash says which is
+// which, and a 13px square does not. Kunai days carry a slash here too, so the
+// difference is never colour alone.
+
+const HISTORY_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+let historyMode = 'daily';    // or 'weekly'
+let historySelected = null;   // a date key; in weekly mode, the week it falls in
+
+function historyDate(key){
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+// Monday-to-Sunday weeks, oldest first, seven days each. At least a year, and
+// further back when study began earlier than that, so nothing recorded ever
+// falls off the left-hand end.
+function historyWeeks(now){
+  const today   = dateKey(now);
+  const studied = new Set(activityDates);
+  const saved   = new Set(streakSaves.savedDates || []);
+  const began   = activityDates.length ? activityDates.slice().sort()[0] : today;
+  const last    = weekStart(historyDate(today));
+  let first     = addDays(last, -52 * 7);
+  const beganWeek = weekStart(historyDate(began));
+  if(beganWeek < first) first = beganWeek;
+  const weeks = [];
+  for(let w = first; w <= last; w = addDays(w, 7)){
+    weeks.push(WEEKDAYS.map((_, i) => {
+      const key = dateKey(addDays(w, i));
+      return { key, state: streakDayState(key, today, studied, saved, began), reviews: reviewHistory[key] || 0 };
+    }));
+  }
+  return weeks;
+}
+
+function historyDayLabel(key){
+  const d = historyDate(key);
+  return `${WEEKDAYS[(d.getDay() + 6) % 7]} ${d.getDate()} ${HISTORY_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+// The line under the map, describing whatever is selected. Plain text: it is
+// written with textContent when the selection moves.
+function historyDetail(weeks, key){
+  const reviewsSaid = n => `${n} review${n === 1 ? '' : 's'}`;
+  if(historyMode === 'weekly'){
+    const week = weeks.find(w => w.some(d => d.key === key)) || weeks[weeks.length - 1];
+    const a = historyDate(week[0].key), b = historyDate(week[6].key);
+    const span = a.getFullYear() !== b.getFullYear()
+      ? `${a.getDate()} ${HISTORY_MONTHS[a.getMonth()]} ${a.getFullYear()} – ${b.getDate()} ${HISTORY_MONTHS[b.getMonth()]} ${b.getFullYear()}`
+      : a.getMonth() !== b.getMonth()
+      ? `${a.getDate()} ${HISTORY_MONTHS[a.getMonth()]} – ${b.getDate()} ${HISTORY_MONTHS[b.getMonth()]} ${b.getFullYear()}`
+      : `${a.getDate()} – ${b.getDate()} ${HISTORY_MONTHS[b.getMonth()]} ${b.getFullYear()}`;
+    // Days before the first ever study, and days still to come, were not
+    // missed, so they are not counted against the week either.
+    const counted = week.filter(d => d.state !== 'future' && d.state !== 'untracked').length;
+    if(counted === 0) return `${span} · Before you started`;
+    const studied = week.filter(d => d.state === 'studied').length;
+    const kunai   = week.filter(d => d.state === 'saved').length;
+    const reviews = week.reduce((n, d) => n + d.reviews, 0);
+    const soFar   = week.some(d => d.state === 'future' || d.state === 'pending') ? ' so far' : '';
+    return `${span} · ${studied} of ${counted} day${counted === 1 ? '' : 's'} studied${soFar}`
+      + (kunai ? ` · ${kunai} kunai` : '') + ` · ${reviewsSaid(reviews)}`;
+  }
+  const day = weeks.flat().find(d => d.key === key);
+  if(!day) return '';
+  const said = { studied: 'Studied', saved: 'Covered by a kunai', pending: 'Not studied yet',
+                 missed: 'Missed', untracked: 'Before you started', future: 'Still to come' }[day.state];
+  return `${historyDayLabel(key)} · ${said}${day.reviews ? ` · ${reviewsSaid(day.reviews)}` : ''}`;
+}
+
+function renderHistory(){
+  const now    = new Date();
+  const today  = dateKey(now);
+  const weeks  = historyWeeks(now);
+  const weekly = historyMode === 'weekly';
+  // Nothing chosen yet, or a choice the map no longer shows: start from today.
+  if(!weeks.flat().some(d => d.key === historySelected && d.state !== 'future')) historySelected = today;
+  const selectedWeek = weeks.findIndex(w => w.some(d => d.key === historySelected));
+
+  const columns = weeks.map((week, i) => {
+    // A month is named under the week its first day falls in. The very first
+    // column is named too, unless the next name is too close to fit beside it.
+    const first = week.find(d => d.key.endsWith('-01'));
+    const month = first ? HISTORY_MONTHS[historyDate(first.key).getMonth()]
+      : i === 0 && !weeks.slice(1, 4).some(w => w.some(d => d.key.endsWith('-01')))
+      ? HISTORY_MONTHS[historyDate(week[6].key).getMonth()] : '';
+    const label = month ? `<span class="hm-month" aria-hidden="true">${month}</span>` : '';
+    if(weekly){
+      // How many days of the week, standing on the baseline: studied first,
+      // then the kunai. The rest of the column is left empty.
+      const studied = week.filter(d => d.state === 'studied').length;
+      const kunai   = week.filter(d => d.state === 'saved').length;
+      const slots = WEEKDAYS.map((_, s) => `<span class="hm-cell ${
+        s < studied ? 'hm-studied' : s < studied + kunai ? 'hm-saved' : 'hm-empty'}"></span>`).join('');
+      return `<div class="hm-week${i === selectedWeek ? ' hm-sel' : ''}" data-key="${week[0].key}"
+        data-days="${week.map(d => d.key).join(' ')}">${slots}${label}</div>`;
+    }
+    const cells = week.map(d => `<span class="hm-cell hm-${d.state}${d.key === today ? ' hm-today' : ''}${
+      d.key === historySelected ? ' hm-sel' : ''}" data-key="${d.key}"></span>`).join('');
+    return `<div class="hm-week">${cells}${label}</div>`;
+  }).join('');
+
+  const totalReviews = Object.values(reviewHistory).reduce((n, v) => n + v, 0);
+  const kunaiDays = (streakSaves.savedDates || []).length;
+  const stat = (n, l) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`;
+
+  return `
+  ${nav('dashboard')}
+  <div class="hm-stats">
+    ${stat(studyStreak(), 'Current streak')}
+    ${stat(longestStreak(), 'Longest streak')}
+    ${stat(activityDates.length, 'Days studied')}
+    ${stat(totalReviews, 'Reviews')}
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="hm-head">
+      <div class="section-title" style="margin-bottom:0;">Study History</div>
+      <div class="hm-toggle" role="group" aria-label="Show by">
+        <button type="button" data-mode="daily" class="${weekly ? '' : 'on'}" aria-pressed="${!weekly}" onclick="setHistoryMode('daily')">Daily</button>
+        <button type="button" data-mode="weekly" class="${weekly ? 'on' : ''}" aria-pressed="${weekly}" onclick="setHistoryMode('weekly')">Weekly</button>
+      </div>
+    </div>
+    <div class="hm-scroll" id="hmScroll">
+      <div class="hm-grid${weekly ? ' hm-weekly' : ''}" id="hmGrid" tabindex="0"
+           aria-label="${weekly ? 'Weeks' : 'Days'} of study. The arrow keys move the selection, and the line below describes it."
+           onclick="pickHistoryDay(event)" onkeydown="historyKey(event)">${columns}</div>
+    </div>
+    <div class="hm-detail" id="hmDetail" aria-live="polite">${historyDetail(weeks, historySelected)}</div>
+    <div class="hm-legend">
+      <span class="hm-key"><span class="hm-cell hm-studied"></span>Studied</span>
+      <span class="hm-key"><span class="hm-cell hm-saved"></span>Kunai${kunaiDays ? ` (${kunaiDays})` : ''}</span>
+      ${weekly ? '' : `<span class="hm-key"><span class="hm-cell hm-missed"></span>Missed</span>`}
+    </div>
+  </div>`;
+}
+
+function showHistory(){
+  // The This Week card is inside the arranging view as well, where a tap on it
+  // is somebody moving the card rather than asking to leave.
+  if(arrangingDashboard) return;
+  historySelected = null;
+  switchView('history');
+}
+
+function setHistoryMode(mode){
+  historyMode = mode;
+  focusAfterRender = `.hm-toggle button[data-mode="${mode}"]`;
+  render();
+}
+
+function pickHistoryDay(e){
+  const el = e.target.closest('[data-key]');
+  if(!el || el.classList.contains('hm-future')) return;
+  selectHistoryDay(el.dataset.key);
+}
+
+function selectedHistoryElement(grid){
+  return historyMode === 'weekly'
+    ? grid.querySelector(`.hm-week[data-days~="${historySelected}"]`)
+    : grid.querySelector(`.hm-cell[data-key="${historySelected}"]`);
+}
+
+// Moves the selection without a redraw, which would throw away how far the map
+// had been scrolled.
+function selectHistoryDay(key){
+  const grid = document.getElementById('hmGrid');
+  if(!grid) return;
+  historySelected = key;
+  grid.querySelectorAll('.hm-sel').forEach(n => n.classList.remove('hm-sel'));
+  const el = selectedHistoryElement(grid);
+  if(el) el.classList.add('hm-sel');
+  const detail = document.getElementById('hmDetail');
+  if(detail) detail.textContent = historyDetail(historyWeeks(new Date()), key);
+  revealHistorySelection();
+}
+
+// Left and right are a week, up and down a day. In weekly mode there is no day
+// to move to, so up and down are left to scroll the page.
+function historyKey(e){
+  const steps = { ArrowLeft: -7, ArrowRight: 7, ArrowUp: -1, ArrowDown: 1 };
+  if(!(e.key in steps) || !historySelected) return;
+  if(historyMode === 'weekly' && Math.abs(steps[e.key]) === 1) return;
+  e.preventDefault();
+  const next = dateKey(addDays(historyDate(historySelected), steps[e.key]));
+  const grid = document.getElementById('hmGrid');
+  const target = historyMode === 'weekly'
+    ? grid.querySelector(`.hm-week[data-days~="${next}"]`)
+    : grid.querySelector(`.hm-cell[data-key="${next}"]`);
+  if(!target || target.classList.contains('hm-future')) return;
+  selectHistoryDay(next);
+}
+
+// The map opens at the right-hand end, where today is, and follows the
+// selection when the arrow keys walk it off either edge.
+function revealHistorySelection(){
+  const scroller = document.getElementById('hmScroll');
+  const grid = document.getElementById('hmGrid');
+  if(!scroller || !grid) return;
+  const el = selectedHistoryElement(grid);
+  if(!el){ scroller.scrollLeft = scroller.scrollWidth; return; }
+  const col = el.classList.contains('hm-week') ? el : el.parentElement;
+  const left = col.offsetLeft, right = left + col.offsetWidth;
+  if(left < scroller.scrollLeft + 8) scroller.scrollLeft = left - 24;
+  else if(right > scroller.scrollLeft + scroller.clientWidth - 8) scroller.scrollLeft = right - scroller.clientWidth + 24;
 }
 
 // Somewhere for a reader to say a card is wrong. Kaishi has a few hundred
@@ -3151,6 +3395,7 @@ function render(){
   else if(view==='settings') body = renderSettings();
   else if(view==='info') body = renderInfo();
   else if(view==='extrastudy') body = renderExtraStudy();
+  else if(view==='history') body = renderHistory();
   else body = renderReview();
   root.innerHTML = `
     <header>
@@ -3188,6 +3433,7 @@ function render(){
       window.wanakana.bind(input, { IMEMode: true });
     }
   }
+  if(view === 'history') revealHistorySelection();
 }
 
 // Which half of an item the on-screen question is asking, if any.
@@ -3339,7 +3585,7 @@ function dayChanged(){
 function refreshForNewDay(){
   if(!dayChanged()) return;
   refreshStreakSaves();
-  if(view === 'dashboard' || view === 'tierlist' || view === 'item') render();
+  if(view === 'dashboard' || view === 'tierlist' || view === 'item' || view === 'history') render();
 }
 
 function scheduleMidnightCheck(){
@@ -3378,7 +3624,7 @@ function adoptOtherTabWrite(e){
   // Same restraint as the day rollover: do not redraw a screen someone is
   // answering a question on. Settings is in the list because the palette
   // changes the dashboard's markup and not only its colours.
-  if(view === 'dashboard' || view === 'tierlist' || view === 'settings') render();
+  if(view === 'dashboard' || view === 'tierlist' || view === 'settings' || view === 'history') render();
 }
 
 init();
