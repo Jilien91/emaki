@@ -2986,6 +2986,8 @@ function renderSettings(){
         </button>`).join('')}
       </div>
     </div>
+    <p class="forecast" style="text-align:center;margin-top:0;margin-bottom:12px;">Theme and palette save as soon as you pick one.</p>
+    <button class="primary" onclick="switchView('dashboard')">Done</button>
   </div>
   <div class="card" style="margin-bottom:16px;">
     <div class="section-title">Lesson Settings</div>
