@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy · Emaki</title>
+<meta name="description" content="What Emaki stores, where it goes, and how to remove it.">
+<link rel="icon" type="image/x-icon" href="../favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+<meta name="color-scheme" content="light dark">
+<!-- The app's own stylesheet, so this page is Emaki rather than a legal annex.
+     Classic only: no palette bootstrap here, because the paper skins need
+     markup this page does not have, and a page of prose has nothing to gain
+     from them. Light and dark still follow the app's setting. -->
+<link rel="stylesheet" href="../style.css">
+<script>
+  // Mirrors the app: an explicit light or dark setting wins, otherwise follow
+  // the device. Wrapped because storage can throw in a private window.
+  try{
+    var saved = JSON.parse(localStorage.getItem('kaishi-settings') || '{}').theme || 'system';
+    var light = saved === 'light' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
+    if(light) document.documentElement.setAttribute('data-theme', 'light');
+  }catch(e){}
+</script>
+<style>
+  .doc{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
+  .doc h1{font-size:26px;margin:0 0 6px;}
+  .doc h2{font-size:15px;text-transform:uppercase;letter-spacing:0.4px;margin:28px 0 8px;}
+  .doc p,.doc li{color:var(--text-dim);line-height:1.65;font-size:14px;}
+  .doc li{margin-bottom:8px;}
+  .doc .lede{color:var(--text);font-size:15px;}
+  .doc .stamp{color:var(--text-faint);font-size:12px;margin-bottom:20px;}
+  .doc a{color:var(--text);}
+  .doc .back{margin-top:36px;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="doc">
+  <h1>Privacy</h1>
+  <p class="stamp">Emaki · last updated 24 September 2026</p>
+
+  <p class="lede">Emaki keeps as little as it can. You can use the whole app without an
+  account, and if you never sign in, nothing you do here leaves your device.</p>
+
+  <h2>What stays on your device</h2>
+  <p>Your progress, your settings and your study streak are stored by your browser, in
+  local storage, on the device you are using. No cookies are set. Clearing your browser
+  data for this site erases that copy, and if you have never signed in there is no other
+  copy anywhere.</p>
+
+  <h2>If you sign in</h2>
+  <p>Signing in is optional. It exists for one reason: so a phone and a laptop can share
+  one set of progress. If you do sign in:</p>
+  <ul>
+    <li>Your email address and your study progress are stored with <b>Supabase</b>, which
+    provides the database and the sign-in system.</li>
+    <li>Sign-in links are sent through <b>Resend</b>, which handles the email itself.</li>
+    <li>If you choose the GitHub or Google button instead, that provider tells Emaki your
+    email address and nothing else. Emaki cannot read anything else in those accounts.</li>
+  </ul>
+  <p>Progress here means which words you have studied, how well you answered and when each
+  is next due. There is no profile, no name, no payment information, and nothing about you
+  beyond the address you signed in with.</p>
+
+  <h2>Measurement</h2>
+  <p>Page views are counted with <b>Cloudflare Web Analytics</b>, which sets no cookies,
+  needs no consent banner and cannot follow you to other sites. It reports totals, not
+  people. Cloudflare also sits in front of the site as its network provider, so it handles
+  the requests your browser makes in order to serve them.</p>
+
+  <h2>What Emaki never does</h2>
+  <ul>
+    <li>No advertising, and no advertising or analytics trackers beyond the one named above.</li>
+    <li>Nothing is sold, rented or shared for marketing.</li>
+    <li>No email is sent to you except the sign-in link you asked for.</li>
+  </ul>
+
+  <h2>Removing your data</h2>
+  <p>Settings has a delete option that removes the stored copy of your account and its
+  progress. One honest caveat: if another device is still signed in to that account, it
+  can upload its own copy again afterwards. Sign out there first. Closing that properly
+  needs work that has not been built yet, and the app says so where you press the button.</p>
+  <p>To erase the local copy instead, clear this site's data in your browser.</p>
+
+  <h2>Children</h2>
+  <p>Emaki is not aimed at children and asks for no age information. It is a vocabulary
+  trainer, and the only personal detail it can hold is an email address.</p>
+
+  <h2>Changes</h2>
+  <p>If this page changes in a way that matters, the date at the top changes with it.</p>
+
+  <h2>Getting in touch</h2>
+  <p>Questions, corrections and requests about your data can go to
+  <a href="https://github.com/Jilien91/emaki/issues" target="_blank" rel="noopener noreferrer">the
+  issue tracker</a>, which is read by the person who built Emaki.</p>
+
+  <p class="back"><a href="../">Back to Emaki</a> · <a href="../terms/">Terms</a></p>
+</div>
+</body>
+</html>

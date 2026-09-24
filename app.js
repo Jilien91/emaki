@@ -2761,6 +2761,8 @@ function renderInfo(){
     nothing sold or shared. Deleting your account in Settings removes the stored copy;
     a device still signed in elsewhere can upload its own copy again, so sign out there
     first.
+    <br><br>The full version, and what Emaki is offered under, are on the
+    <a href="privacy/">privacy</a> and <a href="terms/">terms</a> pages.
   </p>
   <p class="footer-note" style="text-align:left;">
     <b>Found a mistake?</b> The mnemonics and the kanji breakdowns are written by

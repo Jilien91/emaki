@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms · Emaki</title>
+<meta name="description" content="The terms Emaki is offered under: free, as is, and what you may do with the writing.">
+<link rel="icon" type="image/x-icon" href="../favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../style.css">
+<script>
+  try{
+    var saved = JSON.parse(localStorage.getItem('kaishi-settings') || '{}').theme || 'system';
+    var light = saved === 'light' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
+    if(light) document.documentElement.setAttribute('data-theme', 'light');
+  }catch(e){}
+</script>
+<style>
+  .doc{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
+  .doc h1{font-size:26px;margin:0 0 6px;}
+  .doc h2{font-size:15px;text-transform:uppercase;letter-spacing:0.4px;margin:28px 0 8px;}
+  .doc p,.doc li{color:var(--text-dim);line-height:1.65;font-size:14px;}
+  .doc li{margin-bottom:8px;}
+  .doc .lede{color:var(--text);font-size:15px;}
+  .doc .stamp{color:var(--text-faint);font-size:12px;margin-bottom:20px;}
+  .doc a{color:var(--text);}
+  .doc .back{margin-top:36px;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="doc">
+  <h1>Terms</h1>
+  <p class="stamp">Emaki · last updated 24 September 2026</p>
+
+  <p class="lede">Emaki is a free study tool, made by one person. These terms are short
+  because there is not much to say.</p>
+
+  <h2>What you are getting</h2>
+  <p>A spaced repetition trainer for Japanese vocabulary, free to use, with no advertising
+  and nothing to buy. There is no company behind it and no support desk. It is offered as
+  it is, with no promise that it will be available, correct, or here forever.</p>
+
+  <h2>Your progress</h2>
+  <p>Progress is stored in your browser, and also with Supabase if you choose to sign in.
+  Please do not treat either as a safe place for anything you would hate to lose. Browsers
+  clear storage, services have outages, and a free project is not a backup service.
+  <a href="../privacy/">Privacy</a> explains what is kept and how to remove it.</p>
+
+  <h2>Accounts</h2>
+  <p>Sign in with an address you control, and do not use somebody else's. Accounts that are
+  used to attack the service, or to abuse other people through it, can be removed.</p>
+
+  <h2>The writing, and the word list</h2>
+  <p><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b> The
+  1,500 words, readings, meanings and example sentences come from the
+  <a href="https://github.com/donkuri/Kaishi" target="_blank" rel="noopener noreferrer">Kaishi
+  1.5k</a> deck, used with the permission of its author, and they remain the work of that
+  project rather than this one.</p>
+  <p>The mnemonics, usage notes and kanji breakdowns are original work, written for Emaki,
+  and are published under CC BY-SA 4.0: reuse them, including commercially, as long as you
+  credit them and keep them under the same licence. The app's own code is MIT. The detail
+  is in the
+  <a href="https://github.com/Jilien91/emaki#licensing" target="_blank" rel="noopener noreferrer">project
+  README</a>.</p>
+
+  <h2>Liability</h2>
+  <p>Emaki is provided without warranty of any kind, and its author is not liable for any
+  loss arising from using it, to the extent the law allows. It teaches vocabulary; it does
+  not promise you will learn any of it.</p>
+
+  <h2>Changes</h2>
+  <p>These terms can change, and the date at the top changes with them.</p>
+
+  <h2>Getting in touch</h2>
+  <p><a href="https://github.com/Jilien91/emaki/issues" target="_blank" rel="noopener noreferrer">The
+  issue tracker</a> is the way to reach the person who built this.</p>
+
+  <p class="back"><a href="../">Back to Emaki</a> · <a href="../privacy/">Privacy</a></p>
+</div>
+</body>
+</html>
