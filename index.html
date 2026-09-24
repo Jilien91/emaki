@@ -9,6 +9,25 @@
      off the top when it brings the answer box into view. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
 <title>Emaki</title>
+<!-- What a search result and a pasted link show. The description names Kaishi,
+     so it states the lack of affiliation too: the permission in donkuri/Kaishi#158
+     asks for that at the first mention, and for most people a link preview is the
+     first mention. og:image must be absolute, and the platforms cache it hard, so
+     a redrawn card needs a new filename rather than the same one overwritten.
+     The card is built by design/og-card.js in the private repo. -->
+<meta name="description" content="Spaced repetition for the Kaishi 1.5k Japanese vocabulary deck, with hand-written mnemonics, kanji breakdowns and audio. Not affiliated with Kaishi 1.5k.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emaki">
+<meta property="og:title" content="Emaki: spaced repetition for the Kaishi 1.5k deck">
+<meta property="og:description" content="1,500 Japanese words with hand-written mnemonics, kanji breakdowns and audio. Free, no ads, and no account needed. Not affiliated with Kaishi 1.5k.">
+<meta property="og:url" content="https://emakisrs.com/">
+<meta property="og:image" content="https://emakisrs.com/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Emaki: spaced repetition for the Kaishi 1.5k deck.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Emaki: spaced repetition for the Kaishi 1.5k deck.">
 <!-- The brush E with the sakura, a simplification of the full app icon: the
      enso, branch and seal in icon-source.png are lovely at 1024px and unreadable
      at 16. A real multi-resolution .ico, holding 16/32/48/64, which is what a
@@ -91,6 +110,6 @@
         integrity="sha384-OUpie84zd1LdwNlK9uJJQRwab0BLqo3eKYKFh7hSVL58FSk7wPp2l0kfUMIIoaQd"
         crossorigin="anonymous"></script>
 <script src="sync.js?v=a07c6cb8"></script>
-<script src="app.js?v=69b3d81c"></script>
+<script src="app.js?v=d671daf2"></script>
 </body>
 </html>

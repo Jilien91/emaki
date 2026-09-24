@@ -267,6 +267,21 @@ Anyone upgrading from before that date needs to re-run `supabase/schema.sql` for
 the `revision` column. Without it the merge still runs, which is the part that
 stops work being lost; only the conditional write is skipped.
 
+## Privacy
+
+Emaki keeps as little as it can, and says so in the app under the info panel.
+
+- **Progress lives in your browser.** Nothing leaves the device unless you sign in.
+- **Signing in is optional.** It exists so a phone and a laptop can share one set of
+  progress. Then your email address and your progress are stored in Supabase, and
+  sign-in links are sent through Resend.
+- **Analytics count page views only**, through Cloudflare Web Analytics. It sets no
+  cookies, needs no consent banner, and cannot follow anybody to another site.
+- **No ads, no third-party trackers**, and nothing sold or shared.
+- **Deleting your account** in Settings removes the stored copy. A device still signed
+  in elsewhere can upload its own copy again, so sign out there first. Closing that
+  hole properly needs a server-side tombstone, which is deliberately not built yet.
+
 ## Licensing
 
 Three layers, three answers. Please don't treat any one of them as covering the

@@ -2753,6 +2753,16 @@ function renderInfo(){
     ${storageOk ? '<span class="savebadge"><span class="dot"></span>Progress saves automatically</span>' : '<span class="savebadge"><span class="dot off"></span>Storage unavailable. Progress will not persist this session</span>'}
   </p>
   <p class="footer-note" style="text-align:left;">
+    <b>What is stored.</b> Your progress lives in this browser and nothing leaves the
+    device unless you sign in. If you do, your email address and your progress are kept
+    in Supabase so your other devices can pick them up, and sign-in links are sent
+    through Resend. Page views are counted by Cloudflare Web Analytics, which sets no
+    cookies and cannot follow you to other sites. No ads, no third-party trackers,
+    nothing sold or shared. Deleting your account in Settings removes the stored copy;
+    a device still signed in elsewhere can upload its own copy again, so sign out there
+    first.
+  </p>
+  <p class="footer-note" style="text-align:left;">
     <b>Found a mistake?</b> The mnemonics and the kanji breakdowns are written by
     hand and some of them will be wrong. There is a link at the bottom of every
     lesson card, or
