@@ -21,8 +21,8 @@ const ROOT = path.join(__dirname, '..');
 const APP = fs.readFileSync(path.join(ROOT, 'app.js'), 'utf8');
 
 const WANTED = ['levenshtein', 'splitSenses', 'meaningCandidates', 'openedSenses',
-                'nextToOnKeyboard', 'isEnglishWord', 'fuzzyMatch', 'acceptedMeanings',
-                'stripParens', 'gradeMeaning', 'checkMeaning'];
+                'nextToOnKeyboard', 'isEnglishWord', 'americanSpelling', 'fuzzyMatch',
+                'acceptedMeanings', 'stripParens', 'gradeMeaning', 'checkMeaning'];
 
 // Pull a top-level `function name(` and everything to its matching brace.
 function extract(name){
@@ -42,7 +42,7 @@ function extractDecl(prefix){
   return APP.slice(start + 1, APP.indexOf(';', start) + 1);
 }
 
-const SOURCE = [extractDecl('const meaningCore'), extractDecl('let englishWords')]
+const SOURCE = [extractDecl('const SPELLING_SWAPS'), extractDecl('const meaningCore'), extractDecl('let englishWords')]
   .concat(WANTED.map(extract)).join('\n\n');
 
 const ctx = {
@@ -86,6 +86,17 @@ check('a dropped letter, which was already accepted, now says so', grade('basica
 check('a transposition in a five-letter word', grade('hosue', 'house'), TYPO);
 check('one typo inside a list of senses', grade('in shrot, basically', 'in short, basically'), TYPO);
 
+// ---- The same word spelled the other way ------------------------------------
+// Not typos, so no note: a spelling is not a slip. 24 September 2026.
+check('favour is favor', grade('favour', 'favor'), RIGHT);
+check('colour is color', grade('colour', 'color'), RIGHT);
+check('honour is honor', grade('honour', 'to honor'), RIGHT);
+check('centre is center', grade('centre', 'center'), RIGHT);
+check('realise is realize', grade('realise', 'to realize'), RIGHT);
+check('practise is practice', grade('practise', 'practice'), RIGHT);
+check('the other direction too', grade('color', 'colour'), RIGHT);
+check('a typo on top of a spelling is still a typo', grade('favuor', 'favor'), TYPO);
+
 // ---- Wrong, and the reason each rule exists -------------------------------
 check('mother is not father', grade('mother', 'father'), WRONG);
 check('other is not mother', grade('other', 'mother'), WRONG);
@@ -96,6 +107,9 @@ check('three letters stay exact', grade('cst', 'cat'), WRONG);
 check('how much is not (not) much', grade('how much', '(not) much'), WRONG);
 check('a far-off first letter is not a slip', grade('masically', 'in short, basically'), WRONG);
 check('a typo does not rescue a wrong second sense', grade('in shrot, cat', 'in short, basically'), WRONG);
+check('four is not for: -our keeps its u when the word is short', grade('four', 'for'), WRONG);
+check('flavour is still not favor', grade('flavour', 'favor'), WRONG);
+check('hour is not honor', grade('hour', 'honor'), WRONG);
 check('checkMeaning still answers yes or no', ctx.checkMeaning('vasically', 'in short, basically', null), true);
 
 console.log(failures ? `\n${failures} failing` : '\nall passing');

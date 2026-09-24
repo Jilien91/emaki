@@ -165,10 +165,45 @@ function openedSenses(meaning){
 // punctuation had been hiding. "well..." for まあ becomes "well", which よく
 // also is. The cross-acceptance audit tracks those, and the cards concerned say
 // which is which rather than the grader pretending they are different.
+// British and American spellings are the same answer, not a near miss, so they
+// are folded together before anything is compared, and nothing calls them a
+// typo. Lasz typed "favour" for お願い on 24 September 2026 and was marked
+// wrong: "favor" is five letters, so it falls to the guarded band, and the
+// guard refuses to read a real English word as a slip. "favour" is a real
+// English word. It is also the same word.
+//
+// The patterns are deliberately timid, because over-reaching turns one word
+// into another: -our keeps its u under five letters, which leaves four, hour,
+// your, sour, tour and pour alone, and the doubled-l cases are a list rather
+// than a rule, since "filled" would otherwise become "filed".
+const SPELLING_SWAPS = {
+  grey:'gray', tyre:'tire', mould:'mold', moustache:'mustache', pyjamas:'pajamas',
+  storey:'story', aeroplane:'airplane', aluminium:'aluminum', sceptical:'skeptical',
+  jewellery:'jewelry', practise:'practice', defence:'defense', offence:'offense',
+  pretence:'pretense', licence:'license', plough:'plow', gaol:'jail', cheque:'check',
+  doughnut:'donut', manoeuvre:'maneuver', programme:'program', marvellous:'marvelous',
+  travelled:'traveled', travelling:'traveling', traveller:'traveler',
+  cancelled:'canceled', cancelling:'canceling', labelled:'labeled', modelling:'modeling'
+};
+
+function americanSpelling(w){
+  if(SPELLING_SWAPS[w]) return SPELLING_SWAPS[w];
+  if(w.length >= 5){
+    if(/our$/.test(w) && w !== 'flour' && w !== 'scour') return w.slice(0, -3) + 'or';
+    if(/tre$/.test(w)) return w.slice(0, -3) + 'ter';
+    if(/bre$/.test(w)) return w.slice(0, -3) + 'ber';
+    if(/ogue$/.test(w)) return w.slice(0, -4) + 'og';
+    if(/yse$/.test(w)) return w.slice(0, -3) + 'yze';
+  }
+  if(w.length >= 6 && /is(e|ed|ing|er|ation)$/.test(w)) return w.replace(/is(?=(e|ed|ing|er|ation)$)/, 'iz');
+  return w;
+}
+
 const meaningCore = s => s
   .replace(/^to /, '')
   .replace(/\.\.\.|…/g, ' ')
   .replace(/\s+/g, ' ')
+  .replace(/[a-z']+/g, americanSpelling)
   .trim();
 
 // Whether two letters sit side by side on a QWERTY board, rows staggered by
@@ -197,6 +232,9 @@ function isEnglishWord(s){
     englishWords = new Set();
     const add = t => (String(t || '').toLowerCase().match(/[a-z]+(?:'[a-z]+)?/g) || []).forEach(w => englishWords.add(w));
     VOCAB.forEach(v => { add(v.meaning); add(v.sentence_meaning); add(v.mnemonic); add(v.notes); });
+    // Both spellings of whatever the deck writes in British English, so the
+    // guard knows "color" is a word on a card whose mnemonic wrote "colour".
+    [...englishWords].forEach(w => englishWords.add(americanSpelling(w)));
     Object.values(KANJI).forEach(k => add(k.meaning));
     englishWordsOf = VOCAB;
   }
