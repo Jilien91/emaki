@@ -661,6 +661,42 @@ async function syncNow(){
   });
 }
 
+// Seeding an account is the one write that cannot be a merge: there is nothing
+// on the server to merge with, so whatever this browser holds becomes what the
+// account holds. When that is real progress, it is a question rather than a
+// formality.
+//
+// On 27 September 2026 a sign-in typed with the wrong address created an
+// account and quietly uploaded 204 words into it. Nothing was lost and nothing
+// looked wrong, which was the problem: the phone stayed on the old account and
+// the two disagreed for three days before anybody noticed a streak reading 0.
+let seedRefused = false;
+
+function confirmSeed(words){
+  if(seedRefused) return false;
+  // Only ever asked on a screen somebody is looking at. reconcile also runs
+  // from a visibility change and on the way out of the page, where a dialog is
+  // ignored or suppressed, and reading a suppressed dialog as a refusal would
+  // punish somebody for closing a tab. Hidden means: write nothing this time
+  // and ask again when the page is back in front.
+  if(typeof document !== 'undefined' && document.visibilityState === 'hidden') return false;
+  if(typeof window === 'undefined' || typeof window.confirm !== 'function') return true;
+  const who = syncUser && syncUser.email ? syncUser.email : 'This account';
+  const ok = window.confirm(
+`${who} has no saved progress yet.
+
+The ${words} word${words === 1 ? '' : 's'} studied in this browser will be uploaded and become that account's progress.
+
+If you meant to sign in to a different account, press Cancel. Nothing will be written either way until you say so.`);
+  if(!ok){
+    seedRefused = true;
+    syncNotice = 'Nothing was uploaded. Sign out and sign in again with the account you meant to use.';
+    setSyncStatus('off');
+    render();
+  }
+  return ok;
+}
+
 async function reconcile(){
   for(let attempt = 0; attempt < CAS_RETRIES; attempt++){
     const { data, error } = await sb
@@ -676,7 +712,10 @@ async function reconcile(){
     let row, merged;
 
     if(!data){
-      // Nobody has written for this account yet.
+      // Nobody has written for this account yet, so this write defines the
+      // account rather than merging with it. See confirmSeed above.
+      const words = Object.keys(local.progress || {}).length;
+      if(words && !confirmSeed(words)) return;   // nothing written, mark intact
       merged = local;
       row = await writeRemote(local, 'seed');
       if(!row) continue;             // somebody seeded first: read theirs

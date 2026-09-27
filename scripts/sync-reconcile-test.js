@@ -348,6 +348,75 @@ async function main(){
       tab.get('themes') > 0, true);
   }
 
+  // 17. Seeding an account that has nothing on it, with progress in this browser.
+  //     The write defines the account rather than merging with it, so it is
+  //     asked first. 27 September 2026: a sign-in typed with the wrong address
+  //     uploaded 204 words into a brand new account without a word.
+  {
+    const store = {}, server = makeServer();
+    const tab = makeTab(store, server, 'A');
+    tab.set('syncUser', { id: 'test-user', email: 'right@example.com' });
+    let asked = 0, message = '';
+    tab.ctx.window.confirm = m => { asked++; message = m; return true; };
+    tab.answer(1, 1, 100);
+    await tab.reconcile();
+    check('seeding an empty account asks first', asked, 1);
+    check('and names the account being written to', message.includes('right@example.com'), true);
+    check('and says how much is going into it', message.includes('1 word'), true);
+    check('and writes it once allowed', Object.keys(server.row.progress), ['1']);
+  }
+
+  // 18. The same, refused. Nothing may be written, and the local mark has to
+  //     survive so the answer is not lost along with the account it was not
+  //     uploaded to.
+  {
+    const store = {}, server = makeServer();
+    const tab = makeTab(store, server, 'A');
+    let asked = 0;
+    tab.ctx.window.confirm = () => { asked++; return false; };
+    tab.answer(1, 1, 100);
+    await tab.reconcile();
+    check('a refusal writes nothing', server.row, null);
+    check('and the change is still pending',
+      !!tab.get("window.localStorage.getItem('kaishi-sync-dirty')"), true);
+    check('and the progress is untouched locally', tab.get('progress[1].stage'), 1);
+    await tab.reconcile();
+    check('and it does not nag on every sync afterwards', asked, 1);
+  }
+
+  // 19. A reconcile from a hidden page, which is what a visibility change and
+  //     the way out of a tab look like. A dialog there is suppressed by the
+  //     browser, and treating that as a refusal would sign somebody out for
+  //     closing a tab, so it writes nothing and waits to ask properly.
+  {
+    const store = {}, server = makeServer();
+    const tab = makeTab(store, server, 'A');
+    let asked = 0;
+    tab.ctx.window.confirm = () => { asked++; return true; };
+    tab.ctx.document.visibilityState = 'hidden';
+    tab.answer(1, 1, 100);
+    await tab.reconcile();
+    check('a hidden page does not ask', asked, 0);
+    check('and writes nothing', server.row, null);
+    tab.ctx.document.visibilityState = 'visible';
+    await tab.reconcile();
+    check('and asks once it is back in front', asked, 1);
+    check('and seeds then', Object.keys(server.row.progress), ['1']);
+  }
+
+  // 20. A browser with nothing in it, which is the ordinary first sign-in.
+  //     There is nothing to lose, so there is nothing to ask about.
+  {
+    const store = {}, server = makeServer();
+    const tab = makeTab(store, server, 'A');
+    let asked = 0;
+    tab.ctx.window.confirm = () => { asked++; return true; };
+    tab.run('markDirty();');
+    await tab.reconcile();
+    check('a fresh browser seeds without a question', asked, 0);
+    check('and the account is created', !!server.row, true);
+  }
+
   let failed = 0;
   for(const r of results){
 

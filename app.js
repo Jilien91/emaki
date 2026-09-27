@@ -3098,6 +3098,7 @@ function renderSettings(){
     <button class="primary" onclick="saveReviewSettings()">Save</button>
   </div>
   ${renderAudioCard()}
+  ${renderBackupCard()}
   ${renderAccountCard()}
   ${renderDangerCard()}
   <div style="text-align:center;margin-top:10px;">
@@ -3212,7 +3213,12 @@ function renderSyncPrompt(){
   // simply unknown, and guessing "signed out" put the prompt in front of people
   // who were signed in the whole time.
   if(typeof syncChecked === 'undefined' || !syncChecked) return '';
-  if(typeof syncUser !== 'undefined' && syncUser) return ''; // already signed in
+  // Signed in: say which account, rather than nothing. Buried in Settings, this
+  // let a phone and a laptop sit on different accounts for three days in
+  // September 2026, with a streak reading 0 on one of them and no clue why.
+  if(typeof syncUser !== 'undefined' && syncUser){
+    return `<p class="synced-as">Synced as <b>${escapeHtml(syncUser.email || 'your account')}</b></p>`;
+  }
   if(syncPromptDismissed()) return '';
   return `
   <div class="card" style="margin-bottom:16px;">
@@ -3261,6 +3267,48 @@ async function confirmDeleteAccount(){
   await signOutSync('global');
   syncNotice = 'Deleted. Your study data is gone from this device and from the server, and every other device has been signed out. A device that still holds a copy will upload it again if you sign in there, so clear it there too if you want it gone for good.';
   location.reload();
+}
+
+// A copy of everything this device holds, as a file. There was no way to take
+// one until September 2026, when needing a backup in a hurry meant pasting a
+// snippet into a browser console and arguing with Firefox's paste guard first.
+//
+// Deliberately export only. Reading a file back in is a different feature with
+// its own way of going wrong, and an import that silently replaced good
+// progress with an old file would be worse than not having one.
+function renderBackupCard(){
+  return `
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-title">Your data</div>
+    <div class="settings-desc">Download everything this device holds: every stage and review count, your mistakes, your streak and your settings. Nothing in the app reads it back yet, so keep it as a safety net rather than a restore button. It is plain JSON, and it is yours.</div>
+    <button class="primary" style="margin-top:12px;" onclick="downloadBackup()">Download a backup</button>
+  </div>`;
+}
+
+function downloadBackup(){
+  const data = {
+    app: 'Emaki',
+    format: 1,
+    exported: new Date().toISOString(),
+    account: (typeof syncUser !== 'undefined' && syncUser) ? (syncUser.email || null) : null,
+    progress: progress,
+    settings: settings,
+    mistakes: mistakes,
+    activityDates: activityDates,
+    reviewHistory: reviewHistory,
+    dailyLessons: dailyLessons,
+    streakSaves: streakSaves
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'emaki-backup-' + todayKey() + '.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  // Revoked late: Safari has been known to cancel the download if the object
+  // URL goes away in the same tick as the click.
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
 
 function renderDangerCard(){
