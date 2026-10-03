@@ -405,6 +405,12 @@ input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,select:f
 /* Which account this device is synced to, said on the dashboard rather than
    only in Settings. Quiet enough to ignore, present enough to catch a device
    that is signed in to the wrong one. */
+/* The site footer, which lives in index.html rather than in a render, so it is
+   in the HTML a crawler is served. Quiet enough not to compete with the app. */
+.sitefoot{max-width:720px;margin:0 auto;padding:4px 20px 28px;text-align:center;
+  font-size:12px;color:var(--text-faint);}
+.sitefoot a{color:var(--text-faint);text-decoration:none;}
+.sitefoot a:hover{color:var(--text-dim);text-decoration:underline;}
 .synced-as{font-size:12px;color:var(--text-faint);text-align:center;margin:0 0 14px;}
 .synced-as b{color:var(--text-dim);font-weight:600;}
 .hm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px;}

@@ -91,11 +91,19 @@
 <!-- The rank names, angled across the scroll. Subsetted to the sixteen
      letters the six names use. -->
 <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&text=ACGJKNabeghinouw&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=bd16cfa6">
+<link rel="stylesheet" href="style.css?v=782dcb81">
 </head>
 <body>
 <div id="root"><div class="loading">Loading…</div></div>
 <div id="syncbadge" class="syncbadge" hidden></div>
+<!-- Static, so a crawler sees it: the app itself is one JavaScript page, and
+     the word pages would otherwise be reachable from nothing. Also the only
+     place privacy and terms are linked without opening the info panel. -->
+<footer class="sitefoot">
+  <a href="/word/">Browse all 1,500 words</a> ·
+  <a href="/privacy/">Privacy</a> ·
+  <a href="/terms/">Terms</a>
+</footer>
 <!-- Pinned with Subresource Integrity. These two are the only third-party code
      in the app, and without a hash a compromised CDN or a hijacked package
      would run arbitrary JavaScript here with access to signed-in sessions. The
