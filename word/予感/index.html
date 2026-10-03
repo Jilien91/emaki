@@ -51,10 +51,14 @@
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
   /* The app's own primary button, as a link: the stylesheet styles button.primary
-     by element, and this is an anchor. Same shape, same weight. */
-  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
-    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
-  .gobtn:hover{opacity:0.9;}
+     by element, and this is an anchor. Same shape, same weight.
+     Written as .cta a.gobtn rather than .gobtn because .cta a above is (0,1,1)
+     and a bare class is (0,1,0), so the colour here lost and the label was
+     painted in var(--text) on a var(--text) button: an empty white pill on
+     1,500 pages. The same trap as button.secondary and .arr-toggle. */
+  .cta a.gobtn{display:block;text-align:center;padding:14px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;}
+  .cta a.gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -88,7 +92,7 @@
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E4%BA%88%E5%AE%9A/"><span class="jp">予定</span> <span class="gloss">schedule, plan</span></a><a class="wlink" href="/word/%E4%BA%88%E6%83%B3/"><span class="jp">予想</span> <span class="gloss">prospect, expectation</span></a><a class="wlink" href="/word/%E6%84%9F%E3%81%98%E3%82%8B/"><span class="jp">感じる</span> <span class="gloss">to feel, to sense</span></a><a class="wlink" href="/word/%E6%84%9F%E3%81%98/"><span class="jp">感じ</span> <span class="gloss">feeling, impression</span></a><a class="wlink" href="/word/%E6%84%9F%E6%83%85/"><span class="jp">感情</span> <span class="gloss">feeling, emotion</span></a><a class="wlink" href="/word/%E6%84%9F%E8%AC%9D/"><span class="jp">感謝</span> <span class="gloss">appreciation, thanks</span></a><a class="wlink" href="/word/%E6%84%9F%E8%A6%9A/"><span class="jp">感覚</span> <span class="gloss">sensation</span></a><a class="wlink" href="/word/%E6%84%9F%E8%A7%A6/"><span class="jp">感触</span> <span class="gloss">feeling, touch</span></a><a class="wlink" href="/word/%E6%84%9F%E5%BF%83/"><span class="jp">感心</span> <span class="gloss">admiration</span></a></div>
   <div class="cta">
     <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <a class="gobtn" href="/#word-1249">Open 予感 in Emaki</a>
+    <a class="gobtn" href="/#word-1249">Study 予感 in Emaki</a>
     <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>

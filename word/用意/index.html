@@ -51,10 +51,14 @@
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
   /* The app's own primary button, as a link: the stylesheet styles button.primary
-     by element, and this is an anchor. Same shape, same weight. */
-  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
-    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
-  .gobtn:hover{opacity:0.9;}
+     by element, and this is an anchor. Same shape, same weight.
+     Written as .cta a.gobtn rather than .gobtn because .cta a above is (0,1,1)
+     and a bare class is (0,1,0), so the colour here lost and the label was
+     painted in var(--text) on a var(--text) button: an empty white pill on
+     1,500 pages. The same trap as button.secondary and .arr-toggle. */
+  .cta a.gobtn{display:block;text-align:center;padding:14px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;}
+  .cta a.gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -88,7 +92,7 @@
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E7%94%A8/"><span class="jp">用</span> <span class="gloss">things to do, (as a suffix) to do..., made for...</span></a><a class="wlink" href="/word/%E5%88%A9%E7%94%A8/"><span class="jp">利用</span> <span class="gloss">usage, utilization</span></a><a class="wlink" href="/word/%E4%BF%A1%E7%94%A8/"><span class="jp">信用</span> <span class="gloss">trust, credit</span></a><a class="wlink" href="/word/%E4%BD%BF%E7%94%A8/"><span class="jp">使用</span> <span class="gloss">usage</span></a><a class="wlink" href="/word/%E7%94%A8%E4%BA%8B/"><span class="jp">用事</span> <span class="gloss">things to do, errand, business</span></a><a class="wlink" href="/word/%E6%84%8F%E5%91%B3/"><span class="jp">意味</span> <span class="gloss">meaning, significance</span></a><a class="wlink" href="/word/%E6%84%8F%E8%AD%98/"><span class="jp">意識</span> <span class="gloss">consciousness, awareness</span></a><a class="wlink" href="/word/%E6%84%8F%E5%A4%96/"><span class="jp">意外</span> <span class="gloss">unexpected, unforeseen</span></a><a class="wlink" href="/word/%E6%84%8F%E8%A6%8B/"><span class="jp">意見</span> <span class="gloss">opinion</span></a><a class="wlink" href="/word/%E6%B3%A8%E6%84%8F/"><span class="jp">注意</span> <span class="gloss">care, watch out</span></a><a class="wlink" href="/word/%E6%84%8F%E5%BF%97/"><span class="jp">意志</span> <span class="gloss">will, volition</span></a><a class="wlink" href="/word/%E4%B8%8D%E6%84%8F%E3%81%AB/"><span class="jp">不意に</span> <span class="gloss">suddenly, unexpectedly</span></a></div>
   <div class="cta">
     <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <a class="gobtn" href="/#word-443">Open 用意 in Emaki</a>
+    <a class="gobtn" href="/#word-443">Study 用意 in Emaki</a>
     <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>

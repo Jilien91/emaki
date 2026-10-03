@@ -51,10 +51,14 @@
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
   /* The app's own primary button, as a link: the stylesheet styles button.primary
-     by element, and this is an anchor. Same shape, same weight. */
-  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
-    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
-  .gobtn:hover{opacity:0.9;}
+     by element, and this is an anchor. Same shape, same weight.
+     Written as .cta a.gobtn rather than .gobtn because .cta a above is (0,1,1)
+     and a bare class is (0,1,0), so the colour here lost and the label was
+     painted in var(--text) on a var(--text) button: an empty white pill on
+     1,500 pages. The same trap as button.secondary and .arr-toggle. */
+  .cta a.gobtn{display:block;text-align:center;padding:14px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;}
+  .cta a.gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -81,7 +85,7 @@
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E5%87%BA%E6%9D%A5%E3%82%8B/"><span class="jp">出来る</span> <span class="gloss">to be able to do, to be good at</span></a><a class="wlink" href="/word/%E5%87%BA%E3%82%8B/"><span class="jp">出る</span> <span class="gloss">to go out, to leave</span></a><a class="wlink" href="/word/%E5%87%BA%E3%81%99/"><span class="jp">出す</span> <span class="gloss">to take out</span></a><a class="wlink" href="/word/%E6%80%9D%E3%81%84%E5%87%BA%E3%81%99/"><span class="jp">思い出す</span> <span class="gloss">to recollect, to recall</span></a><a class="wlink" href="/word/%E5%87%BA%E4%BC%9A%E3%81%86/"><span class="jp">出会う</span> <span class="gloss">to meet (by chance), to come across</span></a><a class="wlink" href="/word/%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99/"><span class="jp">取り出す</span> <span class="gloss">to take out, to pull out</span></a><a class="wlink" href="/word/%E5%B7%AE%E3%81%97%E5%87%BA%E3%81%99/"><span class="jp">差し出す</span> <span class="gloss">to submit</span></a><a class="wlink" href="/word/%E9%A3%9B%E3%81%B3%E5%87%BA%E3%81%99/"><span class="jp">飛び出す</span> <span class="gloss">to fly out, to dash out</span></a><a class="wlink" href="/word/%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99/"><span class="jp">呼び出す</span> <span class="gloss">to call someone to</span></a><a class="wlink" href="/word/%E9%80%83%E3%81%92%E5%87%BA%E3%81%99/"><span class="jp">逃げ出す</span> <span class="gloss">to make a break for, to run off</span></a><a class="wlink" href="/word/%E5%87%BA%E6%9D%A5%E4%BA%8B/"><span class="jp">出来事</span> <span class="gloss">occurrence, incident</span></a><a class="wlink" href="/word/%E6%80%9D%E3%81%84%E5%87%BA/"><span class="jp">思い出</span> <span class="gloss">recollections, memory</span></a></div>
   <div class="cta">
     <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <a class="gobtn" href="/#word-1325">Open 出かける in Emaki</a>
+    <a class="gobtn" href="/#word-1325">Study 出かける in Emaki</a>
     <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>

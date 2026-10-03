@@ -51,10 +51,14 @@
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
   /* The app's own primary button, as a link: the stylesheet styles button.primary
-     by element, and this is an anchor. Same shape, same weight. */
-  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
-    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
-  .gobtn:hover{opacity:0.9;}
+     by element, and this is an anchor. Same shape, same weight.
+     Written as .cta a.gobtn rather than .gobtn because .cta a above is (0,1,1)
+     and a bare class is (0,1,0), so the colour here lost and the label was
+     painted in var(--text) on a var(--text) button: an empty white pill on
+     1,500 pages. The same trap as button.secondary and .arr-toggle. */
+  .cta a.gobtn{display:block;text-align:center;padding:14px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;}
+  .cta a.gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -88,7 +92,7 @@
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E7%A2%BA%E8%AA%8D/"><span class="jp">確認</span> <span class="gloss">confirmation</span></a><a class="wlink" href="/word/%E7%A2%BA%E3%81%8B/"><span class="jp">確か</span> <span class="gloss">certainly, surely, if I&#39;m not mistaken...</span></a><a class="wlink" href="/word/%E7%A2%BA%E5%AE%9F/"><span class="jp">確実</span> <span class="gloss">certain, secure</span></a><a class="wlink" href="/word/%E7%A2%BA%E3%81%8B%E3%82%81%E3%82%8B/"><span class="jp">確かめる</span> <span class="gloss">to check, to make sure of</span></a><a class="wlink" href="/word/%E6%AD%A3%E7%A2%BA/"><span class="jp">正確</span> <span class="gloss">accurate, precise</span></a><a class="wlink" href="/word/%E4%BF%A1%E3%81%98%E3%82%8B/"><span class="jp">信じる</span> <span class="gloss">to believe, to trust</span></a><a class="wlink" href="/word/%E8%87%AA%E4%BF%A1/"><span class="jp">自信</span> <span class="gloss">self-confidence</span></a><a class="wlink" href="/word/%E4%BF%A1%E7%94%A8/"><span class="jp">信用</span> <span class="gloss">trust, credit</span></a><a class="wlink" href="/word/%E4%BF%A1%E9%A0%BC/"><span class="jp">信頼</span> <span class="gloss">trust, faith</span></a></div>
   <div class="cta">
     <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <a class="gobtn" href="/#word-1219">Open 確信 in Emaki</a>
+    <a class="gobtn" href="/#word-1219">Study 確信 in Emaki</a>
     <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
