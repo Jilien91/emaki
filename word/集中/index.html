@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E9%9B%86%E3%81%BE%E3%82%8B/"><span class="jp">集まる</span> <span class="gloss">to gather, to be collected</span></a><a class="wlink" href="/word/%E9%9B%86%E3%82%81%E3%82%8B/"><span class="jp">集める</span> <span class="gloss">to gather, to collect</span></a><a class="wlink" href="/word/%E4%B8%AD/"><span class="jp">中</span> <span class="gloss">inside, middle</span></a><a class="wlink" href="/word/%E8%83%8C%E4%B8%AD/"><span class="jp">背中</span> <span class="gloss">back</span></a><a class="wlink" href="/word/%E9%80%94%E4%B8%AD/"><span class="jp">途中</span> <span class="gloss">on the way, half way</span></a><a class="wlink" href="/word/%E9%80%A3%E4%B8%AD/"><span class="jp">連中</span> <span class="gloss">party, this bunch</span></a><a class="wlink" href="/word/%E4%B8%AD%E8%BA%AB/"><span class="jp">中身</span> <span class="gloss">content, interior</span></a><a class="wlink" href="/word/%E4%B8%AD%E5%BF%83/"><span class="jp">中心</span> <span class="gloss">center, middle</span></a><a class="wlink" href="/word/%E4%B8%AD%E5%A4%AE/"><span class="jp">中央</span> <span class="gloss">center</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-883">Open 集中 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

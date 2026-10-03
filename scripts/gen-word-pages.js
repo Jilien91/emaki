@@ -114,6 +114,11 @@ const PAGE_CSS = `  .doc{max-width:720px;margin:0 auto;padding:24px 20px 60px;}
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}`;
@@ -184,8 +189,9 @@ function wordPage(w) {
   ${kanjiSection(w)}
   ${relatedSection(w)}
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-${w.id}">Open ${esc(w.word)} in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

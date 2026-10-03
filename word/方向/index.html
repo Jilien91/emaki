@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E6%96%B9-64/"><span class="jp">方</span> <span class="gloss">direction, side</span></a><a class="wlink" href="/word/%E6%96%B9-65/"><span class="jp">方</span> <span class="gloss">person (polite form)</span></a><a class="wlink" href="/word/%E6%96%B9%E6%B3%95/"><span class="jp">方法</span> <span class="gloss">method, way</span></a><a class="wlink" href="/word/%E5%91%B3%E6%96%B9/"><span class="jp">味方</span> <span class="gloss">friend, ally</span></a><a class="wlink" href="/word/%E8%A8%80%E3%81%84%E6%96%B9/"><span class="jp">言い方</span> <span class="gloss">way of speaking, expression</span></a><a class="wlink" href="/word/%E4%B8%80%E6%96%B9/"><span class="jp">一方</span> <span class="gloss">one way</span></a><a class="wlink" href="/word/%E5%90%91%E3%81%8B%E3%81%86/"><span class="jp">向かう</span> <span class="gloss">to face, to head toward</span></a><a class="wlink" href="/word/%E5%90%91%E3%81%91%E3%82%8B/"><span class="jp">向ける</span> <span class="gloss">to turn toward, to point at</span></a><a class="wlink" href="/word/%E5%90%91%E3%81%93%E3%81%86/"><span class="jp">向こう</span> <span class="gloss">the other side, the other party, opponent</span></a><a class="wlink" href="/word/%E5%90%91%E3%81%8F/"><span class="jp">向く</span> <span class="gloss">to face, to look</span></a><a class="wlink" href="/word/%E6%8C%AF%E3%82%8A%E5%90%91%E3%81%8F/"><span class="jp">振り向く</span> <span class="gloss">to turn around, to look back</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-896">Open 方向 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

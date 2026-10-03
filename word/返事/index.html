@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E8%BF%94%E3%81%99/"><span class="jp">返す</span> <span class="gloss">to return, to repay</span></a><a class="wlink" href="/word/%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%99/"><span class="jp">繰り返す</span> <span class="gloss">to repeat</span></a><a class="wlink" href="/word/%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8B/"><span class="jp">振り返る</span> <span class="gloss">to turn one&#39;s head, to look back on</span></a><a class="wlink" href="/word/%E4%BA%8B/"><span class="jp">事</span> <span class="gloss">thing, incident</span></a><a class="wlink" href="/word/%E4%BB%95%E4%BA%8B/"><span class="jp">仕事</span> <span class="gloss">work, job</span></a><a class="wlink" href="/word/%E5%A4%A7%E4%BA%8B/"><span class="jp">大事</span> <span class="gloss">important, precious</span></a><a class="wlink" href="/word/%E4%BA%8B%E5%AE%9F/"><span class="jp">事実</span> <span class="gloss">fact, truth</span></a><a class="wlink" href="/word/%E7%84%A1%E4%BA%8B/"><span class="jp">無事</span> <span class="gloss">safely, peacefully</span></a><a class="wlink" href="/word/%E4%BA%8B%E4%BB%B6/"><span class="jp">事件</span> <span class="gloss">affair, case</span></a><a class="wlink" href="/word/%E9%A3%9F%E4%BA%8B/"><span class="jp">食事</span> <span class="gloss">meal, dinner</span></a><a class="wlink" href="/word/%E4%BA%8B%E6%83%85/"><span class="jp">事情</span> <span class="gloss">circumstances, conditions</span></a><a class="wlink" href="/word/%E4%BA%8B%E6%85%8B/"><span class="jp">事態</span> <span class="gloss">situation, state of affairs</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-577">Open 返事 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

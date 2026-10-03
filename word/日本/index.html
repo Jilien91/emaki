@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E6%97%A5%E6%9C%AC%E8%AA%9E/"><span class="jp">日本語</span> <span class="gloss">Japanese language</span></a><a class="wlink" href="/word/%E6%AF%8E%E6%97%A5/"><span class="jp">毎日</span> <span class="gloss">every day</span></a><a class="wlink" href="/word/%E6%98%8E%E6%97%A5/"><span class="jp">明日</span> <span class="gloss">tomorrow</span></a><a class="wlink" href="/word/%E6%98%A8%E6%97%A5/"><span class="jp">昨日</span> <span class="gloss">yesterday</span></a><a class="wlink" href="/word/%E4%BB%8A%E6%97%A5/"><span class="jp">今日</span> <span class="gloss">today</span></a><a class="wlink" href="/word/%E6%97%A5/"><span class="jp">日</span> <span class="gloss">day</span></a><a class="wlink" href="/word/%E6%97%A5%E3%80%85/"><span class="jp">日々</span> <span class="gloss">daily, every day</span></a><a class="wlink" href="/word/%E6%9C%AC%E6%97%A5/"><span class="jp">本日</span> <span class="gloss">today</span></a><a class="wlink" href="/word/%E5%85%88%E6%97%A5/"><span class="jp">先日</span> <span class="gloss">the other day, a few days ago</span></a><a class="wlink" href="/word/%E6%9C%88%E6%9B%9C%E6%97%A5/"><span class="jp">月曜日</span> <span class="gloss">Monday</span></a><a class="wlink" href="/word/%E7%81%AB%E6%9B%9C%E6%97%A5/"><span class="jp">火曜日</span> <span class="gloss">Tuesday</span></a><a class="wlink" href="/word/%E6%B0%B4%E6%9B%9C%E6%97%A5/"><span class="jp">水曜日</span> <span class="gloss">Wednesday</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-51">Open 日本 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

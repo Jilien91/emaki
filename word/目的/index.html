@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E7%9B%AE/"><span class="jp">目</span> <span class="gloss">eye</span></a><a class="wlink" href="/word/%E9%A7%84%E7%9B%AE/"><span class="jp">駄目</span> <span class="gloss">no good</span></a><a class="wlink" href="/word/%E7%9B%AE%E6%8C%87%E3%81%99/"><span class="jp">目指す</span> <span class="gloss">to aim for</span></a><a class="wlink" href="/word/%E7%9C%9F%E9%9D%A2%E7%9B%AE/"><span class="jp">真面目</span> <span class="gloss">serious, earnest</span></a><a class="wlink" href="/word/%E7%9B%AE%E7%AB%8B%E3%81%A4/"><span class="jp">目立つ</span> <span class="gloss">to stand out, to be conspicuous</span></a><a class="wlink" href="/word/%E8%A6%8B%E3%81%9F%E7%9B%AE/"><span class="jp">見た目</span> <span class="gloss">outward appearance</span></a><a class="wlink" href="/word/%E7%9B%AE%E8%A6%9A%E3%82%81%E3%82%8B/"><span class="jp">目覚める</span> <span class="gloss">to wake (up), to come to one&#39;s senses</span></a><a class="wlink" href="/word/%E7%9B%AE%E6%A8%99/"><span class="jp">目標</span> <span class="gloss">target, goal</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-524">Open 目的 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

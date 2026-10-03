@@ -3646,7 +3646,20 @@ async function init(){
   // their progress down.
   // #welcome opens the intro whatever your progress, so the link works for
   // somebody who already uses the app and is sending it to a friend.
-  if(window.location.hash === '#welcome' || isNewHere()) view = 'welcome';
+  // A link from a word page: /#word-304 opens that card rather than the
+  // dashboard, so somebody arriving from a search lands on the word they
+  // searched for. Checked before the welcome gate, which is what every
+  // first-time visitor hits, and they are all first-time visitors.
+  //
+  // Narrow on purpose: a magic link comes back with its tokens in the hash,
+  // and anything looser here would have to be careful not to eat them.
+  const deep = (window.location.hash || "").match(/^#word-([0-9]+)$/);
+  const deepId = deep ? Number(deep[1]) : null;
+  if(deepId !== null && VOCAB.some(v => v.id === deepId)){
+    detailId = deepId;
+    itemOrigin = "dashboard";
+    view = "item";
+  }else if(window.location.hash === '#welcome' || isNewHere()) view = 'welcome';
   render();
   lastRenderedDay = todayKey();
   scheduleMidnightCheck();

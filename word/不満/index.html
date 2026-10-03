@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E4%B8%8D%E6%80%9D%E8%AD%B0/"><span class="jp">不思議</span> <span class="gloss">strange, wonderful</span></a><a class="wlink" href="/word/%E4%B8%8D%E5%AE%89/"><span class="jp">不安</span> <span class="gloss">uneasiness, anxiety</span></a><a class="wlink" href="/word/%E4%B8%8D%E5%8F%AF%E8%83%BD/"><span class="jp">不可能</span> <span class="gloss">impossible</span></a><a class="wlink" href="/word/%E4%B8%8D%E6%84%8F%E3%81%AB/"><span class="jp">不意に</span> <span class="gloss">suddenly, unexpectedly</span></a><a class="wlink" href="/word/%E6%BA%80%E8%B6%B3/"><span class="jp">満足</span> <span class="gloss">satisfaction</span></a><a class="wlink" href="/word/%E6%BA%80%E3%81%A1%E3%82%8B/"><span class="jp">満ちる</span> <span class="gloss">to fill, to become full</span></a><a class="wlink" href="/word/%E6%BA%80%E3%81%9F%E3%81%99/"><span class="jp">満たす</span> <span class="gloss">to fill, to satisfy</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-1234">Open 不満 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the

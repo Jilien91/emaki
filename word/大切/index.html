@@ -50,6 +50,11 @@
   .wlink .gloss{font-size:12px;color:var(--text-faint);}
   .cta{margin-top:30px;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:18px;}
   .cta a{color:var(--text);}
+  /* The app's own primary button, as a link: the stylesheet styles button.primary
+     by element, and this is an anchor. Same shape, same weight. */
+  .gobtn{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--text);
+    color:var(--bg);font-weight:600;font-size:14px;text-decoration:none;}
+  .gobtn:hover{opacity:0.9;}
   .foot{margin-top:28px;font-size:12px;color:var(--text-faint);line-height:1.6;}
   .foot a{color:var(--text-dim);}
   audio{width:100%;margin-top:10px;}
@@ -82,8 +87,9 @@
     </div>
   <h2>Words sharing these kanji</h2><div class="wlinks"><a class="wlink" href="/word/%E5%A4%A7%E5%A5%BD%E3%81%8D/"><span class="jp">大好き</span> <span class="gloss">love</span></a><a class="wlink" href="/word/%E5%A4%A7%E3%81%8D%E3%81%AA/"><span class="jp">大きな</span> <span class="gloss">big, large</span></a><a class="wlink" href="/word/%E5%A4%A7%E3%81%8D%E3%81%84/"><span class="jp">大きい</span> <span class="gloss">big, large</span></a><a class="wlink" href="/word/%E5%A4%A7%E4%B8%88%E5%A4%AB/"><span class="jp">大丈夫</span> <span class="gloss">alright, OK</span></a><a class="wlink" href="/word/%E5%A4%A7%E5%A4%89/"><span class="jp">大変</span> <span class="gloss">terrible, serious, grave</span></a><a class="wlink" href="/word/%E5%A4%A7%E4%BA%8B/"><span class="jp">大事</span> <span class="gloss">important, precious</span></a><a class="wlink" href="/word/%E5%B7%A8%E5%A4%A7/"><span class="jp">巨大</span> <span class="gloss">huge, gigantic</span></a><a class="wlink" href="/word/%E5%A4%A7%E4%BA%BA/"><span class="jp">大人</span> <span class="gloss">adult</span></a><a class="wlink" href="/word/%E5%A4%A7%E9%87%8F/"><span class="jp">大量</span> <span class="gloss">large quantity, great volume</span></a><a class="wlink" href="/word/%E5%A4%A7%E4%BD%93/"><span class="jp">大体</span> <span class="gloss">mostly</span></a><a class="wlink" href="/word/%E6%9C%80%E5%A4%A7/"><span class="jp">最大</span> <span class="gloss">biggest, largest</span></a><a class="wlink" href="/word/%E5%A4%A7%E5%88%86/"><span class="jp">大分</span> <span class="gloss">very, greatly</span></a></div>
   <div class="cta">
-    <p style="margin:0 0 10px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
-    <p style="margin:0;"><a href="/">Study the deck</a></p>
+    <p style="margin:0 0 12px;color:var(--text);">This is one of 1,500 words in Emaki, a free spaced repetition trainer with a written mnemonic on every card.</p>
+    <a class="gobtn" href="/#word-633">Open 大切 in Emaki</a>
+    <p style="margin:10px 0 0;font-size:12px;">Free, no account needed. Your progress stays in your browser.</p>
   </div>
   <p class="foot"><b>Emaki is not affiliated with, or endorsed by, Kaishi 1.5k or its authors.</b>
   The word, reading and meaning come from the
