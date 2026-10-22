@@ -263,7 +263,14 @@ function fuzzyMatch(input, candidate){
   // card across the deck; with it, none. r and f are neighbours, so the guard
   // is now what keeps rather from father.
   if(isEnglishWord(ci)) return false;
-  if(len > 5) return nextToOnKeyboard(ci[0], cc[0]) && levenshtein(ci, cc) <= budget;
+  // The first letter may also be a different vowel. An unstressed first vowel
+  // is spelled by ear, and the ear cannot tell which one it is: opponent is
+  // said uh-PO-nent, and "apponent" (22 October 2026) was typed by somebody who
+  // knew the word perfectly well. Vowel for vowel only, and only past the guard
+  // above, so affect still cannot pass for effect, nor ensure for insure.
+  const vowel = c => !!c && 'aeiou'.includes(c);
+  if(len > 5) return (nextToOnKeyboard(ci[0], cc[0]) || (vowel(ci[0]) && vowel(cc[0])))
+    && levenshtein(ci, cc) <= budget;
   // Four and five letters get one slip with the first letter intact. Three and
   // under stay exact: that short, one edit is another word more often than a
   // mistyped one, and the word list above will not know all of them.

@@ -97,6 +97,14 @@ check('practise is practice', grade('practise', 'practice'), RIGHT);
 check('the other direction too', grade('color', 'colour'), RIGHT);
 check('a typo on top of a spelling is still a typo', grade('favuor', 'favor'), TYPO);
 
+// ---- A first vowel spelled by ear ------------------------------------------
+// 22 October 2026: "apponent" for 相手. The first vowel of opponent is
+// unstressed, so it is heard as uh and spelled as whichever vowel comes to mind.
+check('apponent: first vowel spelled by ear', grade('apponent', 'partner, opponent'), TYPO);
+check('相手 itself, off the real card',
+  (r => ({ correct: r.correct, typo: r.typo }))(ctx.gradeMeaning('apponent', 'partner, opponent', ctx.VOCAB.find(v => v.id === 247))), TYPO);
+check('any vowel for any vowel', grade('ipponent', 'opponent'), TYPO);
+
 // ---- Wrong, and the reason each rule exists -------------------------------
 check('mother is not father', grade('mother', 'father'), WRONG);
 check('other is not mother', grade('other', 'mother'), WRONG);
@@ -110,6 +118,10 @@ check('a typo does not rescue a wrong second sense', grade('in shrot, cat', 'in 
 check('four is not for: -our keeps its u when the word is short', grade('four', 'for'), WRONG);
 check('flavour is still not favor', grade('flavour', 'favor'), WRONG);
 check('hour is not honor', grade('hour', 'honor'), WRONG);
+check('effect is not affect: a real word is never a vowel slip', grade('effect', 'to affect'), WRONG);
+check('a consonant for a vowel is not a vowel slip', grade('spponent', 'opponent'), WRONG);
+check('a vowel slip and a second slip is too far for eight letters', grade('appanent', 'opponent'), WRONG);
+check('five letters and under still keep their first letter', grade('apen', 'open'), WRONG);
 check('checkMeaning still answers yes or no', ctx.checkMeaning('vasically', 'in short, basically', null), true);
 
 console.log(failures ? `\n${failures} failing` : '\nall passing');
