@@ -104,20 +104,23 @@
   <a href="/privacy/">Privacy</a> ·
   <a href="/terms/">Terms</a>
 </footer>
-<!-- Pinned with Subresource Integrity. These two are the only third-party code
-     in the app, and without a hash a compromised CDN or a hijacked package
-     would run arbitrary JavaScript here with access to signed-in sessions. The
-     browser now refuses to execute either file unless it hashes to exactly
+<!-- Served from this domain rather than a CDN, because a review cannot work
+     without it. Blocked or failed, reading answers stay in roman letters and a
+     correct one is graded wrong, while the rest of the app looks fine. A byte
+     for byte copy of the npm 5.3.1 build; the version is in the filename, so
+     bumping it means a new file. -->
+<script src="vendor/wanakana-5.3.1.min.js"></script>
+<!-- Pinned with Subresource Integrity. This is the only third-party code still
+     loaded from elsewhere, and without a hash a compromised CDN or a hijacked
+     package would run arbitrary JavaScript here with access to signed-in
+     sessions. The browser refuses to execute it unless it hashes to exactly
      this. Recompute when bumping a version, or the script silently stops
      loading:
        curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A -->
-<script src="https://cdn.jsdelivr.net/npm/wanakana@5.3.1/wanakana.min.js"
-        integrity="sha384-ei/skGdXfWHx8zodPeKIHWR7N4qSpIlj3wBwEPMPfw2MvsbEJSFrPMUCPXnEuKSw"
-        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2/dist/umd/supabase.js"
         integrity="sha384-OUpie84zd1LdwNlK9uJJQRwab0BLqo3eKYKFh7hSVL58FSk7wPp2l0kfUMIIoaQd"
         crossorigin="anonymous"></script>
 <script src="sync.js?v=325a48ab"></script>
-<script src="app.js?v=3a7bf3da"></script>
+<script src="app.js?v=3594e0c6"></script>
 </body>
 </html>

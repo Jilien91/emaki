@@ -3536,8 +3536,14 @@ function render(){
     // Reading questions get romaji->kana conversion so no OS-level Japanese
     // IME is needed. Reviews and extra study ask readings too now, not just
     // the lesson quiz.
-    if(currentQuestionType()==='reading' && window.wanakana){
-      window.wanakana.bind(input, { IMEMode: true });
+    if(currentQuestionType()==='reading'){
+      if(window.wanakana){
+        window.wanakana.bind(input, { IMEMode: true });
+      }else{
+        // Without the library, romaji stays romaji and a right answer is graded
+        // wrong, which used to happen with nothing on screen to say why.
+        input.placeholder = 'Kana typing did not load. Reload, or type in kana';
+      }
     }
   }
   if(view === 'history') revealHistorySelection();

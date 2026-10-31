@@ -289,6 +289,8 @@ others.
 
 **The app** (`index.html`, `style.css`, `app.js`, `sync.js`, `scripts/`,
 `supabase/`) is MIT. See [LICENSE](LICENSE). Take it and do what you like.
+`vendor/` holds an unmodified copy of [WanaKana](https://github.com/WaniKani/WanaKana),
+which is also MIT, under its own [licence](vendor/wanakana-LICENSE).
 
 **The written content** is CC BY-SA 4.0: every mnemonic and usage note, all of
 [`data/kanji.json`](data/kanji.json) and the `raw/*_with_mnemonics.json` batch
